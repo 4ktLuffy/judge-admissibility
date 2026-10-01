@@ -1,21 +1,21 @@
 [
   {
     "config": "default (judge sees only the output)",
-    "seconds": 346,
+    "seconds": 492,
     "calls": 100,
-    "tokens": 211149,
+    "tokens": 201194,
     "judge": "LLMJudge(codex:gpt-5.6-luna)",
     "verdict": "INADMISSIBLE",
     "checks": [
       {
         "name": "acceptance",
-        "status": "PASS",
-        "successes": 36,
+        "status": "FAIL",
+        "successes": 0,
         "trials": 40,
-        "rate": 0.9,
+        "rate": 0.0,
         "interval": [
-          0.7694792561952611,
-          0.9604211124044252
+          0.0,
+          0.08762453925039232
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -23,53 +23,53 @@
       },
       {
         "name": "rejection",
-        "status": "FAIL",
-        "successes": 21,
+        "status": "PASS",
+        "successes": 40,
         "trials": 40,
-        "rate": 0.525,
+        "rate": 1.0,
         "interval": [
-          0.37497106853929735,
-          0.6706477044981831
+          0.9123754607496077,
+          1.0
         ],
         "threshold": 0.8,
         "errors": 0,
-        "detail": "mismatched_output 1/20, empty_output 20/20"
+        "detail": "mismatched_output 20/20, empty_output 20/20"
       },
       {
         "name": "invariance",
-        "status": "UNVALIDATED",
-        "successes": 15,
+        "status": "PASS",
+        "successes": 20,
         "trials": 20,
-        "rate": 0.75,
+        "rate": 1.0,
         "interval": [
-          0.5312949900419365,
-          0.888139947210597
+          0.8388698745050667,
+          1.0
         ],
         "threshold": 0.8,
         "errors": 0,
-        "detail": "whitespace_reformat 15/20; interval straddles the threshold: needs more cases"
+        "detail": "whitespace_reformat 20/20"
       },
       {
         "name": "stability",
-        "status": "UNVALIDATED",
-        "successes": 16,
+        "status": "PASS",
+        "successes": 20,
         "trials": 20,
-        "rate": 0.8,
+        "rate": 1.0,
         "interval": [
-          0.5839782779742401,
-          0.9193436467288
+          0.8388698745050667,
+          1.0
         ],
         "threshold": 0.8,
         "errors": 0,
-        "detail": "2 judgments per case; interval straddles the threshold: needs more cases"
+        "detail": "2 judgments per case"
       }
     ]
   },
   {
     "config": "with input (judge sees the question)",
-    "seconds": 346,
+    "seconds": 563,
     "calls": 100,
-    "tokens": 110487,
+    "tokens": 132953,
     "judge": "LLMJudge(codex:gpt-5.6-luna)",
     "verdict": "ADMISSIBLE",
     "checks": [

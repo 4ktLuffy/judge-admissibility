@@ -3,7 +3,7 @@
     PYTHONPATH=.:bench <venv>/bin/python bench/certify_codex_judge.py
 
 20 known-good answers, 2 judgments each, plus three controls per case: about 100 calls per
-configuration at ~600 tokens each. Writes `results/codex_judge.json`.
+configuration. Writes `results/codex_judge.json`.
 """
 
 from __future__ import annotations

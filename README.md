@@ -8,8 +8,9 @@ An `LLMJudge` that passes everything produces a perfect score on every dataset. 
 eval report distinguishes that judge from a good one: both say "pass" on the cases that should
 pass, and nobody looks at the cases that should not have passed, because the dataset does not
 contain any. Pydantic's own writing says judges "often flip [their] verdict" when the order of
-what they see changes, and that they have to be calibrated. This package measures that, with
-controls built from the cases you already have.
+what they see changes, and that they have to be calibrated. This package measures part of that
+(repeat consistency and agreement with people; not order swaps yet), with controls built from the
+cases you already have.
 
 ```python
 from pydantic_evals.evaluators import LLMJudge
@@ -30,7 +31,7 @@ if not certificate.admissible:
 | `rejection` | fail answers that cannot be right | another case's answer (`mismatched_output`), an empty answer (`empty_output`) |
 | `invariance` | keep its verdict when nothing that matters changes | the same answer, whitespace reformatted |
 | `stability` | give the same verdict when asked again | each answer judged `repeats` times |
-| `human_agreement` | agree with people beyond chance (Cohen's kappa) | `HumanLabel`s, for example a Logfire annotation export |
+| `human_agreement` | agree with people beyond chance (Cohen's kappa) | `HumanLabel`s, in any form (they could come from a Logfire annotation export) |
 
 Each rate carries a 95% Wilson interval and is decided on it, not on the point estimate:
 
@@ -62,29 +63,28 @@ certificate admits a sound judge and refuses each kind of broken one:
 
 ## A real judge: `LLMJudge`'s default configuration is inadmissible
 
-`bench/certify_codex_judge.py` certifies a real `LLMJudge` whose model is Codex
-(`gpt-5.6-luna`, no reasoning, through `bench/codex_judge.py`, no API key), on 20 known-good
-answers judged twice each, with the rubric *"The output correctly answers the question."*
+`bench/certify_codex_judge.py` certifies a real `LLMJudge`, with its own system prompt, whose model
+is Codex (`gpt-5.6-luna`, no reasoning, through `bench/codex_judge.py`, no API key). It uses 20
+known-good answers judged twice each and the rubric *"The output correctly answers the question."*
 
 | `LLMJudge` configuration | Certificate | acceptance | rejection | invariance | stability |
 |---|---|---|---|---|---|
-| default, `include_input=False` | **INADMISSIBLE** | 36/40 | **21/40** | 15/20 | 16/20 |
+| default, `include_input=False` | **INADMISSIBLE** | **0/40** | 40/40 | 20/20 | 20/20 |
 | `include_input=True` | ADMISSIBLE | 40/40 | 40/40 | 20/20 | 20/20 |
 
-The default configuration passed **19 of 20 answers to a different question** (each one
-another country's capital): with `include_input=False` the judge never sees the
-question its rubric refers to, so it cannot fail a wrong answer to it. It still rejected all
-20 empty answers, which is why `rejection` reports each control separately. The same model
-with the question in view is admissible on every check.
+With `include_input=False` the judge never sees the question its rubric refers to, so it cannot
+confirm any answer and fails all of them, right or wrong. In an eval report that judge's 0% pass
+rate would read as a broken agent, when the judge is what is broken. `acceptance` is the check
+that catches it; `rejection`, `invariance` and `stability` all pass, which is why no single check
+is a certificate. With the question in view, the same model is admissible on every check.
 
-Nothing in an ordinary eval report shows this. On a dataset of correct answers the default
-judge scores 90%, which looks like a working judge. The certificate needs no human labels to
-find it.
-
-The Codex adapter replaces Codex's own agent instructions with the judge's system prompt,
-which takes a call from ~12,600 tokens to ~620. (Codex silently ignores an instructions file
-under macOS's `/var/folders` temp directory, and a half-written one, and falls back to its full
-prompt; the adapter writes the file atomically inside the project.)
+**Correction.** An earlier version of this section reported the default judge passing 19 of 20
+answers to a different question. That run had a bug: the adapter passed `LLMJudge`'s system
+prompt through a Codex setting that Codex ignores, so the model judged without it. The same
+bug made this README claim the adapter cut each call to about 620 tokens; the token counts Codex
+reports do not show that, and a real judge call here costs about 1,300 to 2,000 tokens. Both are
+fixed: the adapter now uses `model_instructions_file`, checked by instructing the model to reply
+with a fixed word and confirming it does.
 
 ## Limits
 
