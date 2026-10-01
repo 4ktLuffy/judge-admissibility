@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+results/scratch/
+.env
+results/*.log
+results/local_judges.json

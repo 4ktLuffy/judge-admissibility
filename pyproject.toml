@@ -1,0 +1,10 @@
+[project]
+name = "pydantic-evals-admissibility"
+version = "0.1.0"
+description = "Certify a pydantic-evals judge with controls before its scores count."
+requires-python = ">=3.10"
+dependencies = ["pydantic-evals"]
+
+[tool.pytest.ini_options]
+anyio_mode = "auto"
+testpaths = ["tests"]
