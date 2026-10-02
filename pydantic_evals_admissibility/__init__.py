@@ -53,6 +53,8 @@ from ._pairwise import (
 from ._reports import compare_reports, outcomes
 from ._review import ReviewPlan, ReviewResult
 from ._stats import cohen_kappa, wilson
+from ._steering import DEFAULT_NEUTRAL, SteeringResult, SteeringVerdict, assess_steering
+from ._stress import ATTACKS, Attack, StressResult, stress_judge
 
 __all__ = (
     'DatasetJudgeCertificate',
@@ -111,4 +113,12 @@ __all__ = (
     'compare_judges',
     'ReviewPlan',
     'ReviewResult',
+    'ATTACKS',
+    'Attack',
+    'StressResult',
+    'stress_judge',
+    'DEFAULT_NEUTRAL',
+    'SteeringResult',
+    'SteeringVerdict',
+    'assess_steering',
 )

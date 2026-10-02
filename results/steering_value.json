@@ -1,0 +1,341 @@
+{
+  "states": 24,
+  "repeats": 3,
+  "kinds": {
+    "recovered": 6,
+    "on_track": 8,
+    "needs_correction": 10
+  },
+  "helpful": {
+    "verdict": "HELPS",
+    "reason": "the advice beats a content-free message at the same moments",
+    "control": "neutral",
+    "completion": {
+      "silent": 0.6944444444444445,
+      "steer": 0.9027777777777778,
+      "neutral": 0.6944444444444445
+    },
+    "completion_by_kind": {
+      "needs_correction": {
+        "silent": 0.3333333333333333,
+        "steer": 0.8333333333333334,
+        "neutral": 0.3333333333333333
+      },
+      "on_track": {
+        "silent": 0.9166666666666666,
+        "steer": 0.9166666666666666,
+        "neutral": 0.9166666666666666
+      },
+      "recovered": {
+        "silent": 1.0,
+        "steer": 1.0,
+        "neutral": 1.0
+      }
+    },
+    "steps_per_run": {
+      "silent": 1.3194444444444444,
+      "steer": 1.5972222222222223,
+      "neutral": 1.3194444444444444
+    },
+    "intervened": 10,
+    "comparisons": {
+      "steer vs silent": {
+        "decision": "PROMOTE",
+        "mean_gain": 0.20833333333333334,
+        "interval": [
+          0.09722222222222222,
+          0.3333333333333333
+        ],
+        "p_better": 0.0020997900209979003,
+        "p_worse": 1.0,
+        "improved": 9,
+        "regressed": 0
+      },
+      "steer vs neutral": {
+        "decision": "PROMOTE",
+        "mean_gain": 0.20833333333333334,
+        "interval": [
+          0.09722222222222222,
+          0.3333333333333333
+        ],
+        "p_better": 0.0020997900209979003,
+        "p_worse": 1.0,
+        "improved": 9,
+        "regressed": 0
+      },
+      "neutral vs silent": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ],
+        "p_better": 1.0,
+        "p_worse": 1.0,
+        "improved": 0,
+        "regressed": 0
+      }
+    },
+    "good_path": {
+      "states": 12,
+      "kinds": {
+        "needs_correction": 0,
+        "on_track": 6,
+        "recovered": 6
+      },
+      "decision": "INCONCLUSIVE",
+      "mean_gain": 0.0,
+      "p_worse": 1.0,
+      "harmed": 0
+    }
+  },
+  "over-interventionist": {
+    "verdict": "INCONCLUSIVE",
+    "reason": "the states cannot tell the advice from a content-free message; on 12 states already on a good path it makes things worse (12 states)",
+    "control": "neutral",
+    "completion": {
+      "silent": 0.6944444444444445,
+      "steer": 0.6388888888888888,
+      "neutral": 0.6944444444444445
+    },
+    "completion_by_kind": {
+      "needs_correction": {
+        "silent": 0.3333333333333333,
+        "steer": 0.8333333333333334,
+        "neutral": 0.3333333333333333
+      },
+      "on_track": {
+        "silent": 0.9166666666666666,
+        "steer": 0.5,
+        "neutral": 0.9166666666666666
+      },
+      "recovered": {
+        "silent": 1.0,
+        "steer": 0.5,
+        "neutral": 1.0
+      }
+    },
+    "steps_per_run": {
+      "silent": 1.3194444444444444,
+      "steer": 2.7222222222222223,
+      "neutral": 1.3194444444444444
+    },
+    "intervened": 24,
+    "comparisons": {
+      "steer vs silent": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": -0.05555555555555557,
+        "interval": [
+          -0.2638888888888889,
+          0.16666666666666666
+        ],
+        "p_better": 0.7419258074192581,
+        "p_worse": 0.34976502349765026,
+        "improved": 9,
+        "regressed": 13
+      },
+      "steer vs neutral": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": -0.05555555555555557,
+        "interval": [
+          -0.2638888888888889,
+          0.16666666666666666
+        ],
+        "p_better": 0.7419258074192581,
+        "p_worse": 0.34976502349765026,
+        "improved": 9,
+        "regressed": 13
+      },
+      "neutral vs silent": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ],
+        "p_better": 1.0,
+        "p_worse": 1.0,
+        "improved": 0,
+        "regressed": 0
+      }
+    },
+    "good_path": {
+      "states": 12,
+      "kinds": {
+        "needs_correction": 0,
+        "on_track": 6,
+        "recovered": 6
+      },
+      "decision": "REJECT",
+      "mean_gain": -0.5000000000000001,
+      "p_worse": 0.00029997000299970003,
+      "harmed": 12
+    }
+  },
+  "stale": {
+    "verdict": "HURTS",
+    "reason": "the agent does worse with the advice than with a content-free message; on 12 states already on a good path it makes things worse (6 states)",
+    "control": "neutral",
+    "completion": {
+      "silent": 0.6944444444444445,
+      "steer": 0.5694444444444444,
+      "neutral": 0.6944444444444445
+    },
+    "completion_by_kind": {
+      "needs_correction": {
+        "silent": 0.3333333333333333,
+        "steer": 0.3333333333333333,
+        "neutral": 0.3333333333333333
+      },
+      "on_track": {
+        "silent": 0.9166666666666666,
+        "steer": 0.9166666666666666,
+        "neutral": 0.9166666666666666
+      },
+      "recovered": {
+        "silent": 1.0,
+        "steer": 0.5,
+        "neutral": 1.0
+      }
+    },
+    "steps_per_run": {
+      "silent": 1.3194444444444444,
+      "steer": 1.8194444444444444,
+      "neutral": 1.3194444444444444
+    },
+    "intervened": 6,
+    "comparisons": {
+      "steer vs silent": {
+        "decision": "REJECT",
+        "mean_gain": -0.12500000000000003,
+        "interval": [
+          -0.22222222222222224,
+          -0.041666666666666664
+        ],
+        "p_better": 1.0,
+        "p_worse": 0.0163983601639836,
+        "improved": 0,
+        "regressed": 6
+      },
+      "steer vs neutral": {
+        "decision": "REJECT",
+        "mean_gain": -0.12500000000000003,
+        "interval": [
+          -0.22222222222222224,
+          -0.041666666666666664
+        ],
+        "p_better": 1.0,
+        "p_worse": 0.0163983601639836,
+        "improved": 0,
+        "regressed": 6
+      },
+      "neutral vs silent": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ],
+        "p_better": 1.0,
+        "p_worse": 1.0,
+        "improved": 0,
+        "regressed": 0
+      }
+    },
+    "good_path": {
+      "states": 12,
+      "kinds": {
+        "needs_correction": 0,
+        "on_track": 6,
+        "recovered": 6
+      },
+      "decision": "REJECT",
+      "mean_gain": -0.25000000000000006,
+      "p_worse": 0.017198280171982803,
+      "harmed": 6
+    }
+  },
+  "helpful, agent that heeds any message": {
+    "verdict": "INCONCLUSIVE",
+    "reason": "the states cannot tell the advice from a content-free message",
+    "control": "neutral",
+    "completion": {
+      "silent": 0.6944444444444445,
+      "steer": 0.9027777777777778,
+      "neutral": 0.9027777777777778
+    },
+    "completion_by_kind": {
+      "needs_correction": {
+        "silent": 0.3333333333333333,
+        "steer": 0.8333333333333334,
+        "neutral": 0.8333333333333334
+      },
+      "on_track": {
+        "silent": 0.9166666666666666,
+        "steer": 0.9166666666666666,
+        "neutral": 0.9166666666666666
+      },
+      "recovered": {
+        "silent": 1.0,
+        "steer": 1.0,
+        "neutral": 1.0
+      }
+    },
+    "steps_per_run": {
+      "silent": 1.3194444444444444,
+      "steer": 1.5972222222222223,
+      "neutral": 1.5972222222222223
+    },
+    "intervened": 10,
+    "comparisons": {
+      "steer vs silent": {
+        "decision": "PROMOTE",
+        "mean_gain": 0.20833333333333334,
+        "interval": [
+          0.09722222222222222,
+          0.3333333333333333
+        ],
+        "p_better": 0.0020997900209979003,
+        "p_worse": 1.0,
+        "improved": 9,
+        "regressed": 0
+      },
+      "steer vs neutral": {
+        "decision": "INCONCLUSIVE",
+        "mean_gain": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ],
+        "p_better": 1.0,
+        "p_worse": 1.0,
+        "improved": 0,
+        "regressed": 0
+      },
+      "neutral vs silent": {
+        "decision": "PROMOTE",
+        "mean_gain": 0.20833333333333334,
+        "interval": [
+          0.09722222222222222,
+          0.3333333333333333
+        ],
+        "p_better": 0.0020997900209979003,
+        "p_worse": 1.0,
+        "improved": 9,
+        "regressed": 0
+      }
+    },
+    "good_path": {
+      "states": 12,
+      "kinds": {
+        "needs_correction": 0,
+        "on_track": 6,
+        "recovered": 6
+      },
+      "decision": "INCONCLUSIVE",
+      "mean_gain": 0.0,
+      "p_worse": 1.0,
+      "harmed": 0
+    }
+  }
+}

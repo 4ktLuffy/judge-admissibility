@@ -177,6 +177,21 @@ was not, in simulation, when the judge's mistakes were spread evenly; it stays a
 the default. On a small real dataset grouping did not help either (28.8 labels against 26.1),
 which the README reports next to the simulation where it did.
 
+**Why freeze the attack and test it on new cases?** A search that tries enough rewrites on the
+same cases will find something the judge passes by chance. Freezing the best attack and measuring
+it once, case by case against the plain wrong answer, on cases the search never touched, is the
+same discipline as selecting a prompt on one set and confirming it on another. And an attack only
+counts if an oracle confirms the rewritten answer is still wrong: a rewrite that happens to fix
+the answer is not the judge being fooled.
+
+**Why a neutral message, and why check the states that were fine?** An agent may do better after
+any interruption: more attention, another turn. Against silence, every judge would look helpful;
+against a neutral message where the judge spoke, only the content of the advice is measured. And
+an average over states hides a judge that fixes broken runs while breaking good ones; in the
+simulator, a judge that always steered looked inconclusive overall while every state already on
+track got worse. The good-path states are compared with the neutral arm, not silence, because
+silence is what picked them.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

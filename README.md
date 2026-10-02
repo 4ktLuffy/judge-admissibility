@@ -241,6 +241,68 @@ The second run is partial: Codex ran out of credits during it. Its known-good ju
 (more than 10% errored), and a reasoning judge was not run. `results/evidence_contract.json`
 marks the run; deleting that entry and running the script again completes it.
 
+## Under optimization pressure: `stress_judge`
+
+A self-improving agent keeps whatever its judge scores well, so the judge will be searched for
+weaknesses whether anyone intends it or not. `stress_judge` does that search on purpose, before
+an optimizer does. It rewrites wrong answers (a claim of authority, confident framing, the
+rubric's own words, a note to the grader, formatting), keeps only rewrites an oracle confirms
+are still wrong, spends a fixed budget of judge calls on discovery cases, freezes the attack
+that worked best, and measures it against the plain wrong answer on cases the search never saw.
+
+```python
+result = await stress_judge(judge, discovery_cases, fresh_cases, wrong=make_wrong, oracle=is_correct, budget=60)
+print(result.table())  # VULNERABLE / NO EFFECT FOUND / INCONCLUSIVE, with the attack that worked
+```
+
+`bench/judge_pressure.py` (scripted judges through `LLMJudge`'s real prompt, 20 seeds each):
+
+| Judge | Frozen attack VULNERABLE on fresh cases | Calls to the first wrong answer passed, adaptive / random |
+|---|---|---|
+| checks the answer | 0 of 160 runs | never |
+| trusts "Verified by ..." | 20/20 adaptive, 17/20 random (budget 15) | 3.1 / 5.1 |
+| trusts a note to the grader | 20/20 both | 3.5 / 4.2 |
+
+It never called a sound judge vulnerable, and found both weaknesses. The adaptive search
+(an upper confidence bound over attacks) found them sooner and then spent its budget on what
+worked; with pairs of attacks added (25 in all) it had no edge at these budgets, since it tries
+each once first. These judges' weaknesses are easy to find on purpose; the real test is a model
+judge, and `--backend codex` runs it on the support task's plausible wrong answers when Codex
+credits allow. A VULNERABLE says the judge falls to this search at this budget; NO EFFECT FOUND
+is not proof of robustness.
+
+## Does the judge's advice help? `assess_steering`
+
+A runtime judge that watches an agent and steers it (Pydantic AI Harness's trajectory judge does
+this) can be right about a problem and still make the agent worse: interrupting a plan that was
+fine, repeating advice about something already fixed, spending the budget. `assess_steering`
+resumes saved agent states three ways: silent, with the judge's message, and with a neutral
+message of the same kind where the judge spoke. The neutral arm is the honest comparison: an
+agent that does better after *any* message makes every judge look helpful against silence.
+
+```python
+result = assess_steering(states, resume=resume, outcome=completed_correctly, steer=judge_message, repeats=3)
+print(result.table())  # HELPS / HURTS / INCONCLUSIVE (steer vs neutral), and harm on states already on track
+```
+
+`bench/steering_value.py`, offline: a deterministic refund workflow (`bench/steering_sim.py`), 24
+saved states (10 that need correcting, 8 on track, 6 already recovered), scripted agents and
+judges, 3 repeats:
+
+| Judge | Completed: silent / steer / neutral | Steer vs neutral | States already on track | Verdict |
+|---|---|---|---|---|
+| helpful | 0.69 / 0.90 / 0.69 | +0.21 | unharmed | HELPS |
+| steers every time | 0.69 / 0.64 / 0.69 | -0.06 | all 12 worse (-0.50) | INCONCLUSIVE overall, harm flagged |
+| stale (advice about a fixed problem) | 0.69 / 0.57 / 0.69 | -0.13 | 6 worse | HURTS |
+| helpful, with an agent that heeds any message | 0.69 / 0.90 / 0.90 | 0.00 | unharmed | INCONCLUSIVE |
+
+The over-eager judge is the one to look at: its gains on broken states hide its damage in the
+overall verdict, and only the check on states that were already on track shows it. The last row
+is why the neutral arm exists: against silence that judge looks as good as the helpful one. This
+is a simulator built to contain these failure modes, so it shows the method can separate them,
+not how real judges behave; plugging in a pydantic-ai agent and a model judge is described in
+`bench/steering_value.py` (`--model`) and needs model calls.
+
 ## Pydantic's own example judge
 
 `bench/pydantic_example_judge.py` certifies the judge that pydantic-ai's example evals
