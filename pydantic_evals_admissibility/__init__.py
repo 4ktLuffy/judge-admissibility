@@ -29,6 +29,7 @@ from ._dataset import (
 )
 from ._diagnose import diagnose
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
+from ._identity import judge_identity
 from ._logfire import finish_canary, promote, start_canary
 from ._pairwise import (
     PairCase,
@@ -66,6 +67,7 @@ __all__ = (
     'decide_unpaired',
     'detectable_gain',
     'diagnose',
+    'judge_identity',
     'outcomes',
     'finish_canary',
     'first_position_rate',

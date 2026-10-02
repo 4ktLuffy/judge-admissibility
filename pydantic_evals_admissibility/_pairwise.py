@@ -19,6 +19,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from ._certify import Certificate, Check, Judgment, Verdict, _check
+from ._identity import judge_identity
 
 Choice = Literal['A', 'B']
 Compare = Callable[[Any, Any, Any], Awaitable[Choice]]
@@ -111,7 +112,15 @@ async def certify_pairwise(
     name = type(compare).__name__ if not hasattr(compare, '__name__') else compare.__name__  # type: ignore[attr-defined]
     model = getattr(compare, 'model', None)
     label = f'{name}({getattr(model, "model_name", model)})' if model is not None else name
-    return Certificate(verdict, checks, tuple(judgments), judge=label, calls=len(plan), planned=len(plan))
+    return Certificate(
+        verdict,
+        checks,
+        tuple(judgments),
+        judge=label,
+        calls=len(plan),
+        planned=len(plan),
+        identity=judge_identity(compare),
+    )
 
 
 def _assess_pairs(
@@ -181,7 +190,13 @@ def recertify_pairwise(certificate: Certificate, thresholds: PairThresholds | No
     names = list(dict.fromkeys(j.case for j in certificate.judgments))
     verdict, checks = _assess_pairs(certificate.judgments, names, thresholds or PairThresholds())
     return Certificate(
-        verdict, checks, certificate.judgments, certificate.judge, certificate.calls, certificate.planned
+        verdict,
+        checks,
+        certificate.judgments,
+        certificate.judge,
+        certificate.calls,
+        certificate.planned,
+        identity=certificate.identity,
     )
 
 

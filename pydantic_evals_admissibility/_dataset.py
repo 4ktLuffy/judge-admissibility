@@ -65,7 +65,11 @@ def map_prose(output: Any, change: Callable[[str], str]) -> Any | None:
 
 @dataclass(frozen=True)
 class EmptyProse:
-    """Every prose field emptied: nothing left to read. Must fail under any rubric."""
+    """Every prose field emptied: nothing left to read.
+
+    Must fail under a rubric that asks for content (an explanation, a friendly message). Not under
+    one that only forbids something ("contains no personal data"): pass `controls=` for those.
+    """
 
     name: str = 'empty_output'
     kind: ControlKind = 'must_fail'

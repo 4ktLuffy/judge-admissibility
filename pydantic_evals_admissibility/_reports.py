@@ -40,6 +40,7 @@ def compare_reports(
     assertion: str,
     certificate: Certificate | None = None,
     rules: GateRules | None = None,
+    judge: Any = None,
 ) -> GateResult:
     """Decide whether `candidate` should replace `baseline`, from one assertion in both reports.
 
@@ -51,5 +52,9 @@ def compare_reports(
         certificate: The certificate of the judge behind `assertion`. Without an ADMISSIBLE
             certificate the gate refuses; leave it out only for deterministic evaluators.
         rules: The thresholds; use `rules.for_candidates(k)` when choosing among `k` candidates.
+        judge: The judge behind `assertion`; given, a certificate for another configuration of it
+            is refused.
     """
-    return decide(outcomes(baseline, assertion), outcomes(candidate, assertion), certificate=certificate, rules=rules)
+    return decide(
+        outcomes(baseline, assertion), outcomes(candidate, assertion), certificate=certificate, rules=rules, judge=judge
+    )

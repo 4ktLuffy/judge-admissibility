@@ -39,7 +39,7 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible
 results = await certify_dataset(dataset)  # every LLMJudge in a pydantic-evals Dataset, controls chosen per rubric
 certificate = await certify_judge(judge, cases, batch_size=10)  # is it evidence? stops early if clearly not
 certificate.raise_unless_admissible(judge)  # fail CI, with what's wrong and what to try
-result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)  # is the change real?
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate, judge=judge)  # real?
 ```
 
 **The core** is three functions: `certify_judge` (pointwise judges), `certify_pairwise`
@@ -324,10 +324,11 @@ before `reason`: the judge chose before it thought. On the same 54 pairs, same m
 | choice first (the bug) | 0.53 (57/108) | 29/54 | 0.68, interval [0.59, 0.76] |
 | reason first | 0.85 (92/108) | 46/54 | 0.48, interval [0.43, 0.54] |
 
-The position bias was real, and the field order caused it: a judge without reasoning that is
-asked for its verdict first commits to it before writing a word of reasoning, and here it fell
-back on position. Keep the verdict after the reason in any judge's output type, and in anything
-that rewrites its schema.
+So, on these pairs with this model and adapter, asking for the reason before the choice turned a
+judge that followed position into one that did not. A judge without reasoning that is asked for
+its verdict first commits to it before writing any reasoning; whether that is the whole mechanism
+these runs cannot say. Keep the verdict after the reason in any judge's output type, and in
+anything that rewrites its schema.
 `bench/field_order.py` prints every certificate the bug touched next to its re-run.
 
 ## The package's own controls
@@ -382,8 +383,8 @@ from pydantic_evals_admissibility import GateRules, compare_reports, promote
 baseline = await dataset.evaluate(agent_with_current_prompt, repeat=2)
 candidate = await dataset.evaluate(agent_with_new_prompt, repeat=2)
 
-result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)
-print(result.summary())  # PROMOTE / REJECT / INCONCLUSIVE / REFUSED
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate, judge=judge)
+print(result.summary())  # PROMOTE / REJECT / INCONCLUSIVE / REFUSED (also if `judge` is not the one certified)
 promote(result, 'agent_prompt', new_prompt)  # moves the Logfire label only on PROMOTE
 ```
 
@@ -492,9 +493,22 @@ cache entry, and the first run had judged them separately, not always alike.
 
 ## Limits
 
-- The controls are generic. `mismatched_output` assumes another case's answer is wrong for
-  this case, which fails on datasets where many cases share an answer; the donor is drawn only
-  from cases with a different answer, and a case with none is skipped.
-- `human_agreement` uses kappa's point estimate, without an interval.
-- A certificate covers one judge configuration (model, rubric, flags, settings) on one set of
-  cases. Change any of them and certify again.
+- **The automatic controls can be wrong for your task.** `mismatched_output` assumes another
+  case's answer is wrong for this one; it is not for "name a prime" (another case's "3" is a
+  prime too). Donors are drawn only from cases with a different expected answer, which helps but
+  does not prove the donor wrong. Whitespace changes are not meaning-preserving for code or YAML
+  answers, and an empty answer satisfies a rubric that only forbids something. `certify_dataset`
+  guesses a rubric's kind from its words. For anything but plain prose answers, pass the controls
+  that fit your rubric (`Rewrite`, `MismatchedOutput(kind=...)`).
+- **The canary is a negative-control sentinel, not a drift detector.** It checks that the judge
+  still fails an empty answer on live traffic. A judge that fails everything passes it; its
+  health is a rolling window, not a time-uniform test; and requests from one user are treated
+  as independent.
+- **A certificate covers one judge configuration.** It records the judge's identity (rubric,
+  model, what it sees, settings, pydantic-evals version), and `raise_unless_admissible(judge)`
+  and the gate (`judge=`) refuse it for a different one. It cannot see what happens outside the
+  judge: a provider adapter that reorders the output schema, as this repository's did, changes
+  the judge without changing its identity.
+- **The evidence comes from two synthetic task families and Codex models**, through one CLI
+  adapter. Native providers, human-adjudicated cases, and harder wrong answers (plausible
+  mistakes, not only borrowed and empty ones) would test it further.

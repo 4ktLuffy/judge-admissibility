@@ -9,7 +9,7 @@ description = "Certify a pydantic-evals judge with controls, and gate changes on
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-dependencies = ["pydantic-evals"]
+dependencies = ["pydantic-evals>=2.52,<3"]
 
 [project.scripts]
 judge-admissibility = "pydantic_evals_admissibility._cli:main_exit"

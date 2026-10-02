@@ -30,7 +30,7 @@ from __future__ import annotations
 import random
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field, replace
-from typing import Literal
+from typing import Any, Literal
 
 from ._certify import Certificate
 
@@ -95,12 +95,29 @@ def _rate(outcomes: Sequence[bool]) -> float:
     return sum(outcomes) / len(outcomes)
 
 
+def _refusal(certificate: Certificate | None, judge: Any) -> GateResult | None:
+    """REFUSED unless the certificate is ADMISSIBLE and, when the judge is given, is about it."""
+    if certificate is None:
+        return None
+    if judge is not None:
+        changed = certificate.differences(judge)
+        if changed:
+            return GateResult(
+                'REFUSED', f'the certificate is for another configuration of the judge ({", ".join(changed)} changed)'
+            )
+    if not certificate.admissible:
+        failing = ', '.join(c.name for c in certificate.checks if c.status != 'PASS')
+        return GateResult('REFUSED', f'the judge is {certificate.verdict} ({failing}); its scores are not evidence')
+    return None
+
+
 def decide(
     baseline: Mapping[str, Sequence[bool]],
     candidate: Mapping[str, Sequence[bool]],
     *,
     certificate: Certificate | None = None,
     rules: GateRules | None = None,
+    judge: Any = None,
 ) -> GateResult:
     """Compare per-case pass/fail outcomes (one or more repeats per case) and decide.
 
@@ -111,11 +128,13 @@ def decide(
         certificate: The certificate of the judge that produced the outcomes. Leave it out only
             when the outcomes come from ground truth rather than a judge.
         rules: The thresholds.
+        judge: The judge that produced the outcomes. Given, the gate refuses a certificate issued
+            for a different configuration of it (another rubric, model, or settings).
     """
     rules = rules or GateRules()
-    if certificate is not None and not certificate.admissible:
-        failing = ', '.join(c.name for c in certificate.checks if c.status != 'PASS')
-        return GateResult('REFUSED', f'the judge is {certificate.verdict} ({failing}); its scores are not evidence')
+    refused = _refusal(certificate, judge)
+    if refused is not None:
+        return refused
     if not baseline or not candidate:
         raise ValueError('there are no cases to compare')
     if set(baseline) != set(candidate):
@@ -229,6 +248,7 @@ def decide_unpaired(
     *,
     certificate: Certificate | None = None,
     rules: GateRules | None = None,
+    judge: Any = None,
 ) -> GateResult:
     """The gate for traffic that is not paired by case: two arms of a canary, say.
 
@@ -236,9 +256,9 @@ def decide_unpaired(
     when the arms are the same, every assignment is equally likely, so the test is exact.
     """
     rules = rules or GateRules()
-    if certificate is not None and not certificate.admissible:
-        failing = ', '.join(c.name for c in certificate.checks if c.status != 'PASS')
-        return GateResult('REFUSED', f'the judge is {certificate.verdict} ({failing}); its scores are not evidence')
+    refused = _refusal(certificate, judge)
+    if refused is not None:
+        return refused
     if not baseline or not candidate:
         raise ValueError('both arms need at least one outcome')
     b, c = [bool(x) for x in baseline], [bool(x) for x in candidate]

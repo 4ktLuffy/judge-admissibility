@@ -26,6 +26,7 @@ from pydantic_evals.otel._errors import SpanTreeRecordingError
 
 from ._cases import HumanLabel, JudgeCase
 from ._controls import DEFAULT_CONTROLS, Control
+from ._identity import differences, fingerprint, judge_identity
 from ._stats import clopper_pearson, cohen_kappa, wilson
 
 CheckStatus = Literal['PASS', 'FAIL', 'UNVALIDATED']
@@ -104,16 +105,38 @@ class Certificate:
     planned: int | None = None
     looks: int = 1
     """How many times the evidence was looked at with the chance to stop (sequential batches)."""
+    identity: dict[str, Any] | None = field(default=None, compare=False)
+    """The certified judge's configuration (`judge_identity`): the certificate covers only this."""
 
     @property
     def admissible(self) -> bool:
         return self.verdict == 'ADMISSIBLE'
+
+    @property
+    def fingerprint(self) -> str | None:
+        return fingerprint(self.identity) if self.identity is not None else None
+
+    def differences(self, judge: Any) -> list[str]:
+        """Settings in which `judge` differs from the judge this certificate certified."""
+        if self.identity is None:
+            return []
+        return differences(self.identity, judge_identity(judge))
+
+    def covers(self, judge: Any) -> bool:
+        """Whether this certificate is evidence about `judge`, as configured now."""
+        return not self.differences(judge)
 
     def raise_unless_admissible(self, judge: Any = None) -> None:
         """Raise `InadmissibleJudge` with the table and the doctor's advice unless ADMISSIBLE.
 
         For a test or a CI step: the failure says what is wrong with the judge and what to try.
         """
+        changed = self.differences(judge) if judge is not None else []
+        if changed:
+            raise InadmissibleJudge(
+                f'this certificate is for a different configuration of the judge: {", ".join(changed)} changed. '
+                'Certify the judge as it is now.'
+            )
         if self.admissible:
             return
         from ._diagnose import diagnose
@@ -174,6 +197,8 @@ class Certificate:
             'calls': self.calls,
             'planned': self.planned,
             'looks': self.looks,
+            'identity': self.identity,
+            'fingerprint': self.fingerprint,
         }
 
     @classmethod
@@ -208,6 +233,7 @@ class Certificate:
             data.get('calls'),
             data.get('planned'),
             data.get('looks', 1),
+            data.get('identity'),
         )
 
 
@@ -366,7 +392,13 @@ async def certify_judge(
         judgments = await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in planned))
         verdict, checks = _assess(judgments, repeats, thresholds, slices=slices)
         return Certificate(
-            verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(planned), planned=len(planned)
+            verdict,
+            checks,
+            tuple(judgments),
+            judge=_describe(judge),
+            calls=len(planned),
+            planned=len(planned),
+            identity=judge_identity(judge),
         )
     return await _certify_sequentially(
         judge, cases, planned, repeats, thresholds, assertion, limit, rng, batch_size=batch_size, slices=slices
@@ -418,6 +450,7 @@ async def _certify_sequentially(
         calls=len(judgments),
         planned=len(planned),
         looks=len(batches),
+        identity=judge_identity(judge),
     )
 
 
@@ -446,6 +479,7 @@ def recertify(
         certificate.calls,
         certificate.planned,
         certificate.looks,
+        certificate.identity,
     )
 
 

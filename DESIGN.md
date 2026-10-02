@@ -131,13 +131,14 @@ specific. Then the advice is to read those answers first, and the doctor stops d
 conclusions (noise, cases needed) from numbers those answers feed into. It does not blame the data
 when the judge passes almost nothing, because a dataset is not wrong everywhere.
 
-**Why does the doctor clear an answer the judge passed when reformatted?** `certify_dataset` on
+**Why does the doctor stop blaming an answer the judge passed when reformatted?** `certify_dataset` on
 the same dataset found a fourth answer the judge failed every time: *"No timeframe could be
 inferred from your request."*, failed as "not second person". With its spaces doubled the judge
 passed it (in the first run citing "your request"; a second run repeated both). A whitespace change is a must-hold control: it means the same
 answer, so passing it contradicts the three failures. Consistency over repeats points at the data
-only when nothing the judge did contradicts it; a contradicted answer is reported as the judge's
-mistake. Another case's answer (`mismatched_output`) does not count, because it is a different
+only when nothing the judge did contradicts it. A contradiction does not say which verdict was
+wrong, only that the judge is inconsistent on that answer, so the doctor reports it as the judge's
+problem to look at, not as bad data. Another case's answer (`mismatched_output`) does not count, because it is a different
 answer.
 
 **Why does `certify_dataset` change only prose fields?** A structured output holds timestamps
