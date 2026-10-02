@@ -51,6 +51,7 @@ from ._pairwise import (
     recertify_pairwise,
 )
 from ._reports import compare_reports, outcomes
+from ._review import ReviewPlan, ReviewResult
 from ._stats import cohen_kappa, wilson
 
 __all__ = (
@@ -108,4 +109,6 @@ __all__ = (
     'JudgeBridge',
     'compare_judge_reports',
     'compare_judges',
+    'ReviewPlan',
+    'ReviewResult',
 )

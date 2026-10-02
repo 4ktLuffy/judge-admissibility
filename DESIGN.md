@@ -169,6 +169,14 @@ the claim is well written. Changing a tool result while keeping the reply word f
 one question: does the verdict depend on what actually happened? Shown only the reply, a Codex
 judge passed half the false "refund issued" claims; shown the tool calls, none.
 
+**Why group the cases a person labels by the judge's verdict?** Because the judge, right or
+wrong, sorts cases by how likely they are to have changed. Sampling every group at random keeps
+the estimate unbiased whatever the judge's mistakes; weighting each group by its size gives the
+dataset's true gain. Labelling more densely where the judge saw a difference sounded better and
+was not, in simulation, when the judge's mistakes were spread evenly; it stays an option, not
+the default. On a small real dataset grouping did not help either (28.8 labels against 26.1),
+which the README reports next to the simulation where it did.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

@@ -501,6 +501,42 @@ each extreme; at the margin it claimed equivalence wrongly up to 6% of the time 
 against a 2.5% budget, within budget from about 400 (`_bridge._interval` has the measurements).
 Treat a PASS on fewer cases as approximate.
 
+## When the judge cannot decide: human review for one release
+
+The gate said INCONCLUSIVE, or the judge is not certified. `ReviewPlan` turns that into a
+labelling plan for people, aimed at that one decision: which cases to label next, and when the
+labels are enough.
+
+```python
+plan = ReviewPlan.from_verdicts(judge_on_baseline, judge_on_candidate, looks=(12, 24, 48))
+while batch := plan.next_batch():  # the cases to label before the next look
+    plan.add_labels(label(batch))  # people's verdicts on both versions' outputs
+    if plan.decision().decision != 'INCONCLUSIVE':
+        break
+print(plan.decision().summary())  # PROMOTE / REJECT, with the true gain and its interval
+```
+
+It groups the cases by what the judge said (candidate better, the same, worse), labels a random
+sample of every group, and estimates the true gain over the whole dataset, each group weighted
+by its size. The judge's verdicts are never taken as correct; they only decide how the sample
+is spread. The looks are fixed in advance and each spends its share of the error budget.
+
+`bench/review_budget.py`, ground truth standing in for people. In simulation (N cases, a judge
+wrong on each verdict with the given probability, looks of 12, 24, 48 and 96 labels, 800 trials):
+
+| Dataset | Decided, grouped by the judge | Decided, labels at random | Labels used, grouped / random |
+|---|---|---|---|
+| 200 cases, true gain 0.2, judge wrong 10% | 98% | 87% | 61 / 68 |
+| 200 cases, true gain 0.3, judge wrong 5% | 100% | 100% | 34 / 43 |
+| 400 cases, true gain 0.15, judge wrong 10% | 78% | 54% | 82 / 82 |
+
+No wrong decision on any dataset with a gain; with no gain at all, grouped never picked a side
+(random did 0.5% of the time). Replayed on the optimization experiment's 40 training questions,
+with the uncertified plain judge: both ways promoted the real gain in all 1,000 label orders,
+and grouping used slightly more labels there (28.8 against 26.1). The interval is the standard
+stratified one with a pseudo-label at each extreme; it was conservative in every simulation
+(at least 98.7% coverage for a 95% interval), not exact.
+
 ## Experiment: one round of prompt optimization, decided three ways
 
 `bench/optimize.py` runs one round of a self-improving loop on a task with answers computed by

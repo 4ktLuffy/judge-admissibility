@@ -1,0 +1,76 @@
+{
+  "simulation": {
+    "N=200 true gain 0.0 judge wrong 10% grouped": {
+      "wrong": 0.0,
+      "decided": 0.1225,
+      "labels": 95.4
+    },
+    "N=200 true gain 0.0 judge wrong 10% random": {
+      "wrong": 0.005,
+      "decided": 0.1075,
+      "labels": 93.105
+    },
+    "N=200 true gain 0.2 judge wrong 10% grouped": {
+      "wrong": 0.0,
+      "decided": 0.97625,
+      "labels": 61.245
+    },
+    "N=200 true gain 0.2 judge wrong 10% random": {
+      "wrong": 0.0,
+      "decided": 0.87125,
+      "labels": 67.98
+    },
+    "N=200 true gain 0.2 judge wrong 20% grouped": {
+      "wrong": 0.0,
+      "decided": 0.94375,
+      "labels": 67.92
+    },
+    "N=200 true gain 0.2 judge wrong 20% random": {
+      "wrong": 0.0,
+      "decided": 0.87125,
+      "labels": 67.98
+    },
+    "N=200 true gain 0.3 judge wrong 5% grouped": {
+      "wrong": 0.0,
+      "decided": 1.0,
+      "labels": 33.75
+    },
+    "N=200 true gain 0.3 judge wrong 5% random": {
+      "wrong": 0.0,
+      "decided": 0.99875,
+      "labels": 43.305
+    },
+    "N=400 true gain 0.15 judge wrong 10% grouped": {
+      "wrong": 0.0,
+      "decided": 0.7825,
+      "labels": 82.065
+    },
+    "N=400 true gain 0.15 judge wrong 10% random": {
+      "wrong": 0.00125,
+      "decided": 0.54,
+      "labels": 82.14
+    }
+  },
+  "replay": {
+    "true_gain": 0.175,
+    "cases": 40,
+    "grouped by judge": {
+      "decisions": {
+        "PROMOTE": 1000,
+        "REJECT": 0,
+        "INCONCLUSIVE": 0
+      },
+      "mean_labels": 28.848,
+      "judge_gain": 0.175
+    },
+    "random": {
+      "decisions": {
+        "PROMOTE": 1000,
+        "REJECT": 0,
+        "INCONCLUSIVE": 0
+      },
+      "mean_labels": 26.06,
+      "judge_gain": 0.0
+    }
+  }
+}
