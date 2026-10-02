@@ -1,0 +1,100 @@
+{
+  "replay": {
+    "proposer_saw": [
+      "letters-8",
+      "dates-2",
+      "dates-4",
+      "dates-6",
+      "dates-8",
+      "dates-18",
+      "strings-0",
+      "strings-2"
+    ],
+    "train_exposed": 40,
+    "held_out_fresh": 40,
+    "held_out_total": 40,
+    "overlap_train_held_out": 0,
+    "confirmation_on_train": "REFUSED: 40 confirmation case(s) were already exposed to the optimizer: 'arithmetic-0' (by selection: best of 5 candidates on train scores), 'arithmetic-10' (by selection: best of 5 candidates on train scores), 'arithmetic-12' (by selection: best of 5 candidates on train scores), 'arithmetic-14' (by selection: best of 5 candidates on train scores), 'arithmetic-16' (by selection: best of 5 candidates on train scores) and 35 more; results on them do not confirm anything, confirm on fresh cases",
+    "ledger": {
+      "events": [
+        {
+          "by": "proposer: failing baseline replies shown to codex",
+          "cases": [
+            "letters-8",
+            "dates-2",
+            "dates-4",
+            "dates-6",
+            "dates-8",
+            "dates-18",
+            "strings-0",
+            "strings-2"
+          ]
+        },
+        {
+          "by": "selection: best of 5 candidates on train scores",
+          "cases": [
+            "arithmetic-0",
+            "arithmetic-2",
+            "arithmetic-4",
+            "arithmetic-6",
+            "arithmetic-8",
+            "arithmetic-10",
+            "arithmetic-12",
+            "arithmetic-14",
+            "arithmetic-16",
+            "arithmetic-18",
+            "letters-0",
+            "letters-2",
+            "letters-4",
+            "letters-6",
+            "letters-8",
+            "letters-10",
+            "letters-12",
+            "letters-14",
+            "letters-16",
+            "letters-18",
+            "dates-0",
+            "dates-2",
+            "dates-4",
+            "dates-6",
+            "dates-8",
+            "dates-10",
+            "dates-12",
+            "dates-14",
+            "dates-16",
+            "dates-18",
+            "strings-0",
+            "strings-2",
+            "strings-4",
+            "strings-6",
+            "strings-8",
+            "strings-10",
+            "strings-12",
+            "strings-14",
+            "strings-16",
+            "strings-18"
+          ]
+        }
+      ]
+    }
+  },
+  "simulation": {
+    "k=5": {
+      "exposed": 0.063,
+      "exposed, level split k ways": 0.008,
+      "fresh": 0.012
+    },
+    "k=20": {
+      "exposed": 0.13,
+      "exposed, level split k ways": 0.004,
+      "fresh": 0.022
+    },
+    "setup": {
+      "cases": 40,
+      "repeats": 2,
+      "trials": 1000,
+      "budget": 0.025,
+      "resamples": 2000
+    }
+  }
+}

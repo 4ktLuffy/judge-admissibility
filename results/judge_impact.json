@@ -1,0 +1,315 @@
+{
+  "rules": {
+    "level": 0.01,
+    "resamples": 10000,
+    "seed": 0
+  },
+  "questions": 40,
+  "missing_verdicts": {
+    "judge": 0,
+    "judge-reference": 0
+  },
+  "naive_pick": 2,
+  "gate_on_reference": [
+    "REJECT",
+    "INCONCLUSIVE",
+    "INCONCLUSIVE",
+    "REJECT",
+    "REJECT"
+  ],
+  "analyses": {
+    "plain judge -> reference judge": {
+      "counts": {
+        "records": 5,
+        "flipped": 2,
+        "flip INCONCLUSIVE->REJECT": 2,
+        "dangerous": 0,
+        "unsupported": 1,
+        "missed": 0
+      },
+      "records": {
+        "candidate 0": {
+          "old": "INCONCLUSIVE",
+          "new": "REJECT",
+          "flipped": true,
+          "direction": "INCONCLUSIVE->REJECT",
+          "taken": null,
+          "gain_old": -0.125,
+          "gain_new": -0.275,
+          "concern": "none",
+          "interaction": -0.15,
+          "interaction_interval": [
+            -0.4166666666666667,
+            0.14285714285714285
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 1": {
+          "old": "INCONCLUSIVE",
+          "new": "INCONCLUSIVE",
+          "flipped": false,
+          "direction": "INCONCLUSIVE->INCONCLUSIVE",
+          "taken": null,
+          "gain_old": -0.05,
+          "gain_new": -0.1375,
+          "concern": "none",
+          "interaction": -0.0875,
+          "interaction_interval": [
+            -0.3333333333333333,
+            0.18421052631578946
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 2": {
+          "old": "INCONCLUSIVE",
+          "new": "INCONCLUSIVE",
+          "flipped": false,
+          "direction": "INCONCLUSIVE->INCONCLUSIVE",
+          "taken": "PROMOTE",
+          "gain_old": 0.175,
+          "gain_new": 0.1375,
+          "concern": "unsupported",
+          "interaction": -0.0375,
+          "interaction_interval": [
+            -0.275,
+            0.19230769230769232
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 3": {
+          "old": "INCONCLUSIVE",
+          "new": "REJECT",
+          "flipped": true,
+          "direction": "INCONCLUSIVE->REJECT",
+          "taken": null,
+          "gain_old": -0.1125,
+          "gain_new": -0.2,
+          "concern": "none",
+          "interaction": -0.0875,
+          "interaction_interval": [
+            -0.3333333333333333,
+            0.17647058823529413
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 4": {
+          "old": "REJECT",
+          "new": "REJECT",
+          "flipped": false,
+          "direction": "REJECT->REJECT",
+          "taken": null,
+          "gain_old": -0.225,
+          "gain_new": -0.3,
+          "concern": "none",
+          "interaction": -0.075,
+          "interaction_interval": [
+            -0.35,
+            0.21428571428571427
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        }
+      }
+    },
+    "plain judge -> ground truth": {
+      "counts": {
+        "records": 5,
+        "flipped": 2,
+        "flip INCONCLUSIVE->PROMOTE": 1,
+        "flip INCONCLUSIVE->REJECT": 1,
+        "dangerous": 0,
+        "unsupported": 0,
+        "missed": 0
+      },
+      "records": {
+        "candidate 0": {
+          "old": "INCONCLUSIVE",
+          "new": "REJECT",
+          "flipped": true,
+          "direction": "INCONCLUSIVE->REJECT",
+          "taken": null,
+          "gain_old": -0.125,
+          "gain_new": -0.2375,
+          "concern": "none",
+          "interaction": -0.1125,
+          "interaction_interval": [
+            -0.38235294117647056,
+            0.17391304347826086
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 1": {
+          "old": "INCONCLUSIVE",
+          "new": "INCONCLUSIVE",
+          "flipped": false,
+          "direction": "INCONCLUSIVE->INCONCLUSIVE",
+          "taken": null,
+          "gain_old": -0.05,
+          "gain_new": -0.0875,
+          "concern": "none",
+          "interaction": -0.0375,
+          "interaction_interval": [
+            -0.2777777777777778,
+            0.21428571428571427
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 2": {
+          "old": "INCONCLUSIVE",
+          "new": "PROMOTE",
+          "flipped": true,
+          "direction": "INCONCLUSIVE->PROMOTE",
+          "taken": "PROMOTE",
+          "gain_old": 0.175,
+          "gain_new": 0.175,
+          "concern": "none",
+          "interaction": 0.0,
+          "interaction_interval": [
+            -0.21428571428571427,
+            0.21052631578947367
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 3": {
+          "old": "INCONCLUSIVE",
+          "new": "INCONCLUSIVE",
+          "flipped": false,
+          "direction": "INCONCLUSIVE->INCONCLUSIVE",
+          "taken": null,
+          "gain_old": -0.1125,
+          "gain_new": -0.1625,
+          "concern": "none",
+          "interaction": -0.05,
+          "interaction_interval": [
+            -0.2916666666666667,
+            0.20588235294117646
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 4": {
+          "old": "REJECT",
+          "new": "REJECT",
+          "flipped": false,
+          "direction": "REJECT->REJECT",
+          "taken": null,
+          "gain_old": -0.225,
+          "gain_new": -0.2625,
+          "concern": "none",
+          "interaction": -0.0375,
+          "interaction_interval": [
+            -0.30952380952380953,
+            0.23684210526315788
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        }
+      }
+    },
+    "reference judge -> ground truth": {
+      "counts": {
+        "records": 5,
+        "flipped": 2,
+        "flip INCONCLUSIVE->PROMOTE": 1,
+        "flip REJECT->INCONCLUSIVE": 1,
+        "dangerous": 0,
+        "unsupported": 0,
+        "missed": 1
+      },
+      "records": {
+        "candidate 0": {
+          "old": "REJECT",
+          "new": "REJECT",
+          "flipped": false,
+          "direction": "REJECT->REJECT",
+          "taken": "REJECT",
+          "gain_old": -0.275,
+          "gain_new": -0.2375,
+          "concern": "none",
+          "interaction": 0.0375,
+          "interaction_interval": [
+            -0.125,
+            0.20588235294117646
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 1": {
+          "old": "INCONCLUSIVE",
+          "new": "INCONCLUSIVE",
+          "flipped": false,
+          "direction": "INCONCLUSIVE->INCONCLUSIVE",
+          "taken": "INCONCLUSIVE",
+          "gain_old": -0.1375,
+          "gain_new": -0.0875,
+          "concern": "none",
+          "interaction": 0.05,
+          "interaction_interval": [
+            -0.125,
+            0.21875
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 2": {
+          "old": "INCONCLUSIVE",
+          "new": "PROMOTE",
+          "flipped": true,
+          "direction": "INCONCLUSIVE->PROMOTE",
+          "taken": "INCONCLUSIVE",
+          "gain_old": 0.1375,
+          "gain_new": 0.175,
+          "concern": "missed",
+          "interaction": 0.0375,
+          "interaction_interval": [
+            -0.125,
+            0.20588235294117646
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 3": {
+          "old": "REJECT",
+          "new": "INCONCLUSIVE",
+          "flipped": true,
+          "direction": "REJECT->INCONCLUSIVE",
+          "taken": "REJECT",
+          "gain_old": -0.2,
+          "gain_new": -0.1625,
+          "concern": "none",
+          "interaction": 0.0375,
+          "interaction_interval": [
+            -0.125,
+            0.20588235294117646
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        },
+        "candidate 4": {
+          "old": "REJECT",
+          "new": "REJECT",
+          "flipped": false,
+          "direction": "REJECT->REJECT",
+          "taken": "REJECT",
+          "gain_old": -0.3,
+          "gain_new": -0.2625,
+          "concern": "none",
+          "interaction": 0.0375,
+          "interaction_interval": [
+            -0.125,
+            0.20588235294117646
+          ],
+          "comparable": "UNVALIDATED",
+          "cases": 40
+        }
+      }
+    }
+  }
+}

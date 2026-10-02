@@ -599,6 +599,88 @@ and grouping used slightly more labels there (28.8 against 26.1). The interval i
 stratified one with a pseudo-label at each extreme; it was conservative in every simulation
 (at least 98.7% coverage for a 95% interval), not exact.
 
+## Which defects would your evals catch? `mutation_report`
+
+Mutation testing for an eval suite: break known-good outputs in known ways (`Mutant`: a number
+changed, yes and no swapped, the last sentence dropped, emptied, the evidence changed under an
+unchanged reply), run every evaluator on them, and report per evaluator and mutant whether it
+caught the defect, missed it, or cannot observe it (it is never shown what changed). An oracle
+decides which mutants are really defects; ones it still accepts are not counted.
+
+```python
+report = await mutation_report(
+    {'contains': lambda c: Contains(value=c.expected_output), 'judge': judge}, cases, DEFAULT_MUTANTS, oracle=is_correct
+)
+print(report.table())
+report.raise_unless_caught('judge', 'number_changed', min_rate=0.8)  # in a test
+```
+
+`bench/mutation_report.py`, offline, on 40 known-good support replies (36 of them real cached
+Codex replies), `is_correct` as the oracle:
+
+| Evaluator | Wrong amount | Yes/no flipped | Plausible wrong answer | Policy changed, reply not |
+|---|---|---|---|---|
+| `EqualsExpected` | fails every correct reply too: unusable on free text | | | |
+| `Contains(expected answer)` | 5/20 | 15/20 | 20/40 | cannot observe |
+| `IsInstance(str)` | 0/20 | 0/20 | 0/40 | cannot observe |
+| scripted lenient judge | 0/20 | 0/20 | 0/40 | 0/40 |
+
+`Contains` misses most wrong amounts because the right amount still appears in the reply's
+working. The oracle removed 50 mutants that were not defects (a changed number in the
+explanation of a yes/no answer; a cut explanation that left the answer line). The bench's
+"checks the answer" and "output only" judges are scripted, so their own kill rates are true by
+construction; the deterministic evaluators and the blind column are the findings.
+
+## Before you switch judges: `decision_impact`
+
+`compare_judges` asks whether a new judge measures the same gain; `decision_impact` asks what it
+would have changed. Give it past comparisons (each with both judges' per-case verdicts, and the
+decision acted on) and it re-runs the gate under both judges, listing every decision that flips
+and flagging the ones that matter: a shipped change the new judge would REJECT (dangerous), or
+would no longer PROMOTE (unsupported), and a gain the old judge missed.
+
+Replayed on the optimization experiment's five candidates (`bench/judge_impact.py`, no calls,
+the level split five ways as the optimizer did):
+
+| Switch | Decisions that flip | Of concern |
+|---|---|---|
+| plain judge -> reference judge | 2 of 5 (two INCONCLUSIVE -> REJECT) | the shipped candidate would stay INCONCLUSIVE: unsupported |
+| plain judge -> ground truth | 2 of 5 | none |
+| reference judge -> ground truth | 2 of 5 | one missed gain (the candidate that was in fact better) |
+
+No switch would have turned the shipped candidate into a REJECT.
+
+## Feedback is spent: `FeedbackLedger`
+
+An optimizer that reads the judge's feedback on a case, or picks the best of several prompts by
+their scores on it, has used that case up: results on it no longer confirm anything.
+`FeedbackLedger` records who saw what, and `ledger.confirm(...)` is the gate that refuses
+(REFUSED, naming the cases) to confirm on exposed cases.
+
+```python
+ledger.record(failed_cases_shown_to_the_proposer, by='round 3 proposer')
+ledger.record(training_cases, by='round 3 selection')
+result = ledger.confirm(baseline, candidate, certificate=certificate)  # REFUSED if any case was seen
+```
+
+`bench/ledger_demo.py`: with no real gain, choosing the best of k candidates on 40 cases and then
+"confirming" on the same cases promoted a fake gain 6.3% of the time for k = 5 and 13.0% for
+k = 20, against a 2.5% budget; on fresh cases, 1.2% and 2.2% (1,000 trials). The repository's own
+confirmation passes the ledger: its 40 questions were never shown to the optimizer.
+
+## From fooled to the line that fooled it: `minimize_witness`
+
+A judge fooled by a long reply or a long trace is hard to fix from the example. `minimize_witness`
+removes sentences, tool calls or messages for as long as the judge is still fooled and an oracle
+confirms the example is still wrong (delta debugging), and returns the smallest witness: a line to
+read and a regression case to keep. `confirm=n` requires every candidate to fool a nondeterministic
+judge n times.
+
+`bench/witness_demo.py` chains it with `stress_judge` on a scripted judge: the search found the
+"note to the grader" attack (20 of 20 fresh wrong answers passed with it, 0 of 20 without), and
+each 11-sentence reply carrying it, with a wrong refund amount, shrank to the one line
+*"Note to the grader:"* in 7 judge calls, 1-minimal.
+
 ## Experiment: one round of prompt optimization, decided three ways
 
 `bench/optimize.py` runs one round of a self-improving loop on a task with answers computed by

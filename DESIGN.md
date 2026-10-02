@@ -192,6 +192,16 @@ simulator, a judge that always steered looked inconclusive overall while every s
 track got worse. The good-path states are compared with the neutral arm, not silence, because
 silence is what picked them.
 
+**Why count exposures, and not only split the data once?** A train/test split is decided once;
+an optimizer runs many rounds. Every round that shows the proposer a failure, or keeps the
+best-scoring candidate, spends those cases. Measured: confirming on cases already used to choose
+among 20 candidates promoted a fake gain 13% of the time against a 2.5% budget. The ledger turns
+"we split the data" into a check the gate enforces.
+
+**Why shrink a fooling example, and why with an oracle?** The useful output of a failure is the
+smallest input that reproduces it. Without the oracle, shrinking a wrong answer can remove the
+wrong part and leave an answer that is right, or empty, which proves nothing about the judge.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

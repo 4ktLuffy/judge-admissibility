@@ -39,7 +39,26 @@ from ._dataset import (
 from ._diagnose import diagnose
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
 from ._identity import judge_identity
+from ._impact import ComparisonRecord, Impact, ImpactReport, decision_impact
+from ._ledger import ExposedCases, FeedbackLedger
 from ._logfire import finish_canary, promote, start_canary
+from ._mutation import (
+    DEFAULT_MUTANTS,
+    EMPTIED,
+    LAST_SENTENCE_DROPPED,
+    NUMBER_CHANGED,
+    TRUNCATED,
+    YES_NO_FLIPPED,
+    KillRate,
+    Mutant,
+    MutantSummary,
+    MutationOutcome,
+    MutationReport,
+    UncaughtDefects,
+    field_dropped,
+    mutation_report,
+    observed_by,
+)
 from ._pairwise import (
     PairCase,
     PairThresholds,
@@ -55,6 +74,7 @@ from ._review import ReviewPlan, ReviewResult
 from ._stats import cohen_kappa, wilson
 from ._steering import DEFAULT_NEUTRAL, SteeringResult, SteeringVerdict, assess_steering
 from ._stress import ATTACKS, Attack, StressResult, stress_judge
+from ._witness import Witness, minimize_witness
 
 __all__ = (
     'DatasetJudgeCertificate',
@@ -117,8 +137,31 @@ __all__ = (
     'Attack',
     'StressResult',
     'stress_judge',
+    'Witness',
+    'minimize_witness',
     'DEFAULT_NEUTRAL',
     'SteeringResult',
     'SteeringVerdict',
     'assess_steering',
+    'ComparisonRecord',
+    'Impact',
+    'ImpactReport',
+    'decision_impact',
+    'ExposedCases',
+    'FeedbackLedger',
+    'DEFAULT_MUTANTS',
+    'EMPTIED',
+    'LAST_SENTENCE_DROPPED',
+    'NUMBER_CHANGED',
+    'TRUNCATED',
+    'YES_NO_FLIPPED',
+    'KillRate',
+    'Mutant',
+    'MutantSummary',
+    'MutationOutcome',
+    'MutationReport',
+    'UncaughtDefects',
+    'field_dropped',
+    'mutation_report',
+    'observed_by',
 )
