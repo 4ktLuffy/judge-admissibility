@@ -77,3 +77,33 @@ def test_cases_needed_is_the_smallest_that_works() -> None:
     advice = diagnose(Certificate('UNVALIDATED', (check,), ()))
     assert any('16 would' in a for a in advice), advice
     assert wilson(16, 16)[0] >= 0.8 > wilson(15, 15)[0]
+
+
+def test_a_judge_that_consistently_fails_some_good_answers_points_at_the_data() -> None:
+    """Found on pydantic-ai's example dataset: some 'known-good' answers did not meet its rubric."""
+    from pydantic_evals_admissibility import Judgment
+
+    judgments = tuple(
+        Judgment(f'c{i}', f'reference#{r}', 'out', i >= 3)  # cases 0-2 always failed, the rest always passed
+        for i in range(10)
+        for r in range(3)
+    )
+    checks = (
+        Check('acceptance', 'FAIL', 21, 30, (0.52, 0.83), 0.9),
+        Check('rejection', 'PASS', 20, 20, (0.84, 1.0), 0.8),
+    )
+    advice = diagnose(Certificate('INADMISSIBLE', checks, judgments))
+    assert any("'c0', 'c1', 'c2'" in a and 'may be right' in a for a in advice), advice
+    assert not any('cannot confirm anything' in a for a in advice)  # no contradiction
+
+
+def test_a_noisy_judge_is_not_mistaken_for_a_specific_one() -> None:
+    from pydantic_evals_admissibility import Judgment
+
+    judgments = tuple(Judgment(f'c{i}', f'reference#{r}', 'out', (i + r) % 2 == 0) for i in range(10) for r in range(3))
+    checks = (
+        Check('acceptance', 'FAIL', 15, 30, (0.33, 0.67), 0.9),
+        Check('rejection', 'PASS', 20, 20, (0.84, 1.0), 0.8),
+    )
+    advice = diagnose(Certificate('INADMISSIBLE', checks, judgments))
+    assert not any('may be right' in a for a in advice)

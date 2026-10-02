@@ -80,6 +80,22 @@ final answers shown, the Codex comparison judge chose whichever came first in 68
 presentations. Asking both ways and answering only when they agree raised accuracy from 0.77 to
 0.85 where there was a signal to recover, and could not help where there was none.
 
+## When the controls or the data are the problem
+
+**Why must controls be chosen for the rubric?** The default controls assume the rubric is about
+correctness, where another case's answer is wrong. Under a style rubric it is just as well
+written, and a sound judge passes it. With the defaults, a sound style judge in the tests is
+INADMISSIBLE (0 of 40 borrowed answers rejected); with `MismatchedOutput(kind='must_hold')` and a
+`Rewrite` control that breaks the rubric itself, it is ADMISSIBLE.
+
+**Why does the doctor check the data before the judge?** On pydantic-ai's example dataset, two
+judges of different strength failed the same three "good" answers on every repeat, and their
+reasons held up: those answers do not meet the rubric as written. A noisy judge fails good answers
+at random; one that fails the same few every time and passes most others every time is being
+specific. Then the advice is to read those answers first, and the doctor stops drawing
+conclusions (noise, cases needed) from numbers those answers feed into. It does not blame the data
+when the judge passes almost nothing, because a dataset is not wrong everywhere.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

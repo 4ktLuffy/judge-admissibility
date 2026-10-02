@@ -14,7 +14,9 @@ from typing import Any
 from ._certify import Certificate, Check
 from ._stats import wilson
 
-_MENTIONS_INPUT = re.compile(r'\b(question|input|query|request|prompt|asked|context|user)\b', re.I)
+_MENTIONS_INPUT = re.compile(
+    r"\b(question|input|query|prompt|asked|context|user'?s? (?:question|request|message|query))\b", re.I
+)  # not a bare 'user': 'appropriate for user display' says nothing about the input
 _ABOUT_CORRECTNESS = re.compile(r'\b(correct\w*|accura\w*|right|true|answers?|factual\w*|valid)\b', re.I)
 _ABOUT_STYLE = re.compile(r'\b(style|tone|friendly|polite|format\w*|concise|second-person|grammar|wording)\b', re.I)
 _MENTIONS_EXPECTED = re.compile(r'\b(expected|reference|correct answer|ground truth|gold)\b', re.I)
@@ -31,6 +33,36 @@ def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
             return n
         n += 1 if n < 1000 else n // 10  # exact for any realistic size, coarse beyond it
     return None
+
+
+def _consistent_rejections(certificate: Certificate) -> list[str]:
+    """Known-good answers the judge fails every time: maybe the answers, not the judge.
+
+    A noisy judge fails good answers at random. One that fails the same few answers on every
+    repeat, and passes the rest every time, is being specific, and may be right: the "known-good"
+    answers in a dataset do not always meet its own rubric. Found on pydantic-ai's example
+    dataset, where both a weak and a strong judge failed the same three expected outputs every
+    time, with reasons that hold up ("impersonal, not second person").
+    """
+    by_case: dict[str, list[bool]] = {}
+    for j in certificate.judgments:
+        if j.role.startswith('reference#') and j.passed is not None:
+            by_case.setdefault(j.case, []).append(j.passed)
+    repeated = {case: v for case, v in by_case.items() if len(v) > 1}
+    always_failed = [case for case, v in repeated.items() if not any(v)]
+    always_passed = [case for case, v in repeated.items() if all(v)]
+    consistent = len(always_failed) + len(always_passed)
+    if not always_failed or consistent < 0.8 * len(repeated) or len(always_passed) < 0.3 * len(repeated):
+        # Nothing failed consistently; or too many mixed cases (noise, not specificity); or it passes
+        # almost nothing, and a dataset is not wrong everywhere: then it is the judge.
+        return []
+    names = ', '.join(repr(c) for c in always_failed[:5]) + (' ...' if len(always_failed) > 5 else '')
+    return [
+        f'It fails the same known-good answers every time ({len(always_failed)} of {len(repeated)}: {names}) and '
+        f'is consistent on {consistent} of {len(repeated)} cases. A judge that consistent may be right: read those answers against the '
+        'rubric before blaming the judge, and fix or drop the ones that do not meet it. Other cases borrow them '
+        'as controls too, so fix them before reading `invariance`.'
+    ]
 
 
 def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
@@ -51,13 +83,22 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
         return checks[name].status if name in checks else None
 
     acceptance, rejection = checks.get('acceptance'), checks.get('rejection')
+    data_suspect = _consistent_rejections(certificate)
     if status('acceptance') == 'FAIL' and status('rejection') == 'PASS':
-        advice.append(
-            f'It fails answers that are right ({acceptance.successes}/{acceptance.trials} passed) as readily as '
-            'wrong ones: it cannot confirm anything, so its pass rate measures the judge, not the agent.'
-            if acceptance
-            else 'It fails answers that are right.'
-        )
+        if data_suspect:
+            advice.append(
+                f'It passed {acceptance.successes} of {acceptance.trials} judgments of the answers marked good, '
+                'but it fails the same ones every time (below): check those answers before the judge.'
+                if acceptance
+                else 'It fails some of the answers marked good, the same ones every time (below).'
+            )
+        else:
+            advice.append(
+                f'It fails answers that are right ({acceptance.successes}/{acceptance.trials} passed) as readily '
+                'as wrong ones: it cannot confirm anything, so its pass rate measures the judge, not the agent.'
+                if acceptance
+                else 'It fails answers that are right.'
+            )
         if sees_input is False and _MENTIONS_INPUT.search(rubric):
             advice.append(
                 'The rubric refers to the question, but `include_input=False`: the judge never sees it. '
@@ -99,7 +140,7 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 "It accepts another question's answer even though it sees the question: it cannot verify the "
                 'answer itself. If your dataset has expected outputs, set `include_expected_output=True`.'
             )
-    if status('invariance') == 'FAIL':
+    if status('invariance') == 'FAIL' and not data_suspect:  # with suspect answers as donors, it would mislead
         if status('stability') in ('FAIL', 'UNVALIDATED'):
             advice.append(
                 'Its verdict changes when only whitespace changes, but it also disagrees with itself on the very '
@@ -126,7 +167,10 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 'It also disagrees with people beyond chance; fix the failures above first, then certify again '
                 'before reading anything into the disagreement.'
             )
+    advice += data_suspect
     for check in certificate.checks:
+        if data_suspect and check.name in ('acceptance', 'invariance'):
+            continue  # both are computed from the answers that need checking first
         if check.status == 'UNVALIDATED' and 'interval straddles' in check.detail:
             needed = _cases_needed(check)
             if needed is not None:

@@ -143,6 +143,44 @@ without the restocking fee, the wrong side of the shipping threshold), both ways
 No position preference here, unlike the arithmetic task below, where the judge could not check
 the answers itself.
 
+## Pydantic's own example judge
+
+`bench/pydantic_example_judge.py` certifies the judge that pydantic-ai's example evals
+(`examples/pydantic_ai_examples/evals/datasets/time_range_v2.yaml`) apply to every case:
+
+> Ensure the explanation or error_message fields are truly appropriate for user display, in a
+> second-person or friendly style.
+
+It is a style rubric, so the default controls are the wrong ones: another case's friendly
+explanation is still friendly. The controls are written for it with `Rewrite`: an empty
+explanation and a raw debug string must fail; another case's explanation
+(`MismatchedOutput(kind='must_hold')`) and extra spaces must not change the verdict. The
+dataset's 10 expected outputs are the answers marked good.
+
+| Judge (Codex `gpt-5.6-luna`) | Certificate | Good answers passed | Must-fail controls rejected |
+|---|---|---|---|
+| no reasoning | INADMISSIBLE | 14/30 | 20/20 |
+| reasoning high | UNVALIDATED | 18/30 | 20/20 |
+
+Both judges failed the same three expected outputs every time they were asked, with reasons that
+hold up against the rubric's words:
+
+- *"Conflicting time instructions: 2025 and 2020 cannot both apply."*: "clear but impersonal and
+  does not address the user in a second-person or friendly style"
+- *"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled."*: the same
+- *"We interpret the mention of early May as extraneous ..."*: first person, not second; this one
+  is arguable
+
+So the low acceptance is at least partly the dataset: some of its answers marked good do not meet
+its own rubric as written. `diagnose` now says so instead of blaming the judge when a judge fails
+the same answers on every repeat and passes most others every time. With 10 cases, the judge could
+not be certified either way; the doctor puts the stability check alone at 54 cases for the
+weaker judge. Two things from this run changed the package: rubric-specific controls (`Rewrite`,
+`MismatchedOutput(kind='must_hold')`), and the doctor checking the data before the judge.
+
+A third-person rewrite was left out as a control on purpose: the rubric says "second-person **or**
+friendly", so a friendly third-person explanation meets it.
+
 ## Comparison judges: does the order decide?
 
 Pydantic's own warning: *"Swap the order of two answers and an LLM judge will often flip its
