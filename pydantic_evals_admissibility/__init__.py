@@ -15,7 +15,7 @@ from ._certify import (
     assertion_of,
     certify_judge,
 )
-from ._controls import DEFAULT_CONTROLS, Control, EmptyOutput, MismatchedOutput, WhitespaceReformat
+from ._controls import DEFAULT_CONTROLS, Control, EmptyOutput, MismatchedOutput, Rewrite, WhitespaceReformat
 from ._diagnose import diagnose
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
 from ._logfire import finish_canary, promote, start_canary
@@ -61,6 +61,7 @@ __all__ = (
     'PairThresholds',
     'PairVerdict',
     'PairwiseJudge',
+    'Rewrite',
     'Thresholds',
     'WhitespaceReformat',
     'assertion_of',

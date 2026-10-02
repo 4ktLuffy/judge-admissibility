@@ -1,0 +1,1266 @@
+{
+  "commit": "6bc07cf",
+  "rubric": "Ensure the explanation or error_message fields are truly appropriate for user display, in a second-person or friendly style.",
+  "cases": 10,
+  "judges": {
+    "no reasoning": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "FAIL",
+          "successes": 14,
+          "trials": 30,
+          "rate": 0.4666666666666667,
+          "interval": [
+            0.30232127224128236,
+            0.6385798671847496
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": ""
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 20,
+          "trials": 20,
+          "rate": 1.0,
+          "interval": [
+            0.8388698745050667,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "empty_explanation 10/10, debug_string 10/10"
+        },
+        {
+          "name": "invariance",
+          "status": "FAIL",
+          "successes": 12,
+          "trials": 20,
+          "rate": 0.6,
+          "interval": [
+            0.3865779423152061,
+            0.7811960325858074
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "mismatched_output 3/10, extra_spaces 9/10"
+        },
+        {
+          "name": "stability",
+          "status": "UNVALIDATED",
+          "successes": 9,
+          "trials": 10,
+          "rate": 0.9,
+          "interval": [
+            0.5958436145024278,
+            0.9821242504842788
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "3 judgments per case; interval straddles the threshold: needs more cases"
+        }
+      ],
+      "judgments": [
+        {
+          "case": "Single day mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation is clear and user-facing, directly addressing the user with \u201cYou mentioned\u201d and explaining the selected date range.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in a clear, friendly second-person style: \u201cYou mentioned a single day.\u201d",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation is clear and appropriate for user display, directly addressing the user in a friendly second-person style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation is not in a second-person or friendly user-facing style; it uses impersonal phrasing such as \u201cWe interpret\u201d and does not directly address the user.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation uses first-person phrasing ('We interpret') and is not written in a second-person or clearly friendly user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation is not written in a second-person or friendly user-facing style; it uses impersonal wording such as \u201cWe interpret\u201d and does not directly address the user.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": false,
+          "reason": "The explanation uses second person ('You'), but it is not fully appropriate: it inaccurately says a single point in time was mentioned despite the output providing a 20-minute window, and the wording is somewhat awkward.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": true,
+          "reason": "The explanation is user-facing and uses a clear second-person style ('You only mentioned...').",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": true,
+          "reason": "The explanation is user-facing and friendly, directly addressing the user as \"you\" and clearly explaining the selected time window.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation uses a clear, second-person style ('You requested...') and is appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person using a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#0",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is not in a friendly or second-person style; it describes the conflict impersonally.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#1",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is not user-friendly or second-person; it states a conflict impersonally and does not clearly guide the user on how to resolve it.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#2",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is clear but not user-friendly or addressed in a second-person style; it states a conflict without explaining how the user can resolve it.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#0",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is understandable but not friendly or phrased in the second person; it refers impersonally to \u201cyour request.\u201d",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#1",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is not in a friendly or second-person style; it states the issue impersonally rather than addressing the user directly.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#2",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is not in a friendly or second-person style; it states the issue impersonally without addressing or helping the user.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": false,
+          "reason": "The explanation is not written in a second-person or friendly user-facing style; it uses impersonal phrasing such as \u201cWe interpret.\u201d",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": false,
+          "reason": "The explanation is not written in a second-person or friendly user-facing style; it uses impersonal phrasing such as \u201cWe interpret\u201d and does not directly address the user.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": false,
+          "reason": "The explanation uses first-person plural ('We interpret') rather than addressing the user directly or using a clearly friendly user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is concise and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly states the requested month is fully included.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#0",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is not written in a friendly, user-facing style and does not address the user directly in the second person.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#1",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is not friendly or user-directed; it describes conflicting instructions impersonally and does not address the user in second person.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#2",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is not user-friendly or second-person; it describes the conflict impersonally and does not clearly guide the user.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and uses clear, friendly wording appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou asked\u201d) and clearly explains the date-range interpretation in a user-friendly way.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person ('You asked') and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The output has an empty explanation field, so it does not provide a user-facing explanation in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a friendly, user-facing message in second-person or approachable style.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The error_message is empty, so it provides no user-facing explanation or friendly guidance.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The error_message is empty, so it does not provide a user-facing explanation or friendly second-person message.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The `error_message` field is empty, so it does not provide a user-facing explanation or friendly second-person message.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a terse machine-oriented diagnostic string rather than a friendly, user-facing message in second-person or conversational style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a technical status string with internal keys and codes, not a friendly or second-person message suitable for user display.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is an internal diagnostic string ('ERR_OK keys=... status=... trace=none') rather than friendly, user-facing text in second-person or an approachable style.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a terse machine-style status string rather than a friendly, user-facing message in second-person or approachable language.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is a technical diagnostic string rather than a friendly, user-facing explanation in second-person or approachable language.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is a cryptic internal diagnostic string rather than a friendly, user-facing explanation in second-person or approachable language.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is an internal diagnostic string rather than a friendly, user-facing message in second-person or approachable language.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a technical diagnostic string rather than a friendly, second-person user-facing message.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is a terse technical diagnostic rather than a friendly, user-facing explanation addressed in second person.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-oriented status string ('ERR_OK keys=... status=...') rather than a friendly, user-facing message in second-person or approachable language.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person ('You requested') and is clear and friendly for display.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in a clear, friendly style using \u201cYou mentioned\u201d and appropriately explains the selected full-day range.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is understandable but not friendly or written in the second person; it does not directly guide the user to provide a timeframe.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is clear and friendly for display.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is not in a friendly or second-person style; it describes the conflict impersonally and does not address the user.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly states the requested month is fully included.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is not user-friendly or written in a second-person/friendly style; it states a conflict impersonally.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly describes the selected date range in a user-friendly way.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is not in a friendly, second-person style; it states the problem impersonally and does not guide the user on what to provide.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You  mentioned  a  single  day  (2021-05-08).  The  entire  day  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation is user-facing and uses second-person language (\u201cYou mentioned\u201d), while clearly describing the selected date range.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We  interpret  the  mention  of  early  May  as  extraneous,  focusing  on  'last  week  or  so'  from  the  current  time.\\n\"}",
+          "passed": false,
+          "reason": "The explanation is not written in a friendly, user-facing style and uses an awkward first-person phrasing (\u201cWe interpret\u201d) rather than addressing the user directly.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You  only  mentioned  a  single  point  in  time,  so  a  10-minute  window  around  that  time  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person ('You') and clearly explains the 10-minute window in a user-friendly manner.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You  requested  logs  starting  from  2  hours  prior  to  the  current  time.\\n'}",
+          "passed": false,
+          "reason": "The explanation is not user-friendly due to awkward extra spacing and the phrase \u201cYou requested\u201d does not clearly or naturally explain the result.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': 'Conflicting  time  instructions:  2025  and  2020  cannot  both  apply.\\n'}",
+          "passed": false,
+          "reason": "The error message is not user-friendly or second-person; it states a conflict impersonally and uses awkward spacing.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': 'No  timeframe  could  be  inferred  from  your  request.\\n'}",
+          "passed": false,
+          "reason": "The error message is not in a friendly, user-directed style; it refers to \u201cyour request\u201d but does not clearly explain what timeframe is needed or invite the user to provide one.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We  interpret  'around  the  start  of  last  quarter'  as  the  first  few  days  of  Q2  2023.\\n\"}",
+          "passed": false,
+          "reason": "The explanation is not addressed to the user in a second-person or friendly style; it uses an impersonal first-person statement ('We interpret...').",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You  requested  logs  from  January  3050.  The  entire  month  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is understandable for display, despite extra spacing.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': \"Conflicting  instructions:  'yesterday'  versus  'last  year'  could  not  be  reconciled.\\n\"}",
+          "passed": false,
+          "reason": "The error message is not written in a friendly, user-facing style and does not address the user directly in the second person.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You  asked  specifically  for  December  25th  to  December  26th.  The  mention  of  an  earlier  date  is  ignored  since  a  range  was  provided.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou asked\u201d) and uses a generally appropriate, friendly tone for display.",
+          "error": null
+        }
+      ],
+      "advice": [
+        "It fails answers that are right (14/30 passed) as readily as wrong ones: it cannot confirm anything, so its pass rate measures the judge, not the agent.",
+        "The rubric refers to the question, but `include_input=False`: the judge never sees it. Set `include_input=True`.",
+        "Its verdict changes when only whitespace changes, but it also disagrees with itself on the very same answer, so this is most likely noise rather than formatting sensitivity. Lower its temperature (`model_settings={\"temperature\": 0}`) or use a stronger model, then certify again.",
+        "`stability` is 0.90 against a bar of 0.80 but 10 judgments cannot show it; 54 would, at the same rate."
+      ]
+    },
+    "reasoning high": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "verdict": "UNVALIDATED",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "UNVALIDATED",
+          "successes": 18,
+          "trials": 30,
+          "rate": 0.6,
+          "interval": [
+            0.42320052498273836,
+            0.7540960567391659
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "interval straddles the threshold: needs more cases"
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 20,
+          "trials": 20,
+          "rate": 1.0,
+          "interval": [
+            0.8388698745050667,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "empty_explanation 10/10, debug_string 10/10"
+        },
+        {
+          "name": "invariance",
+          "status": "UNVALIDATED",
+          "successes": 14,
+          "trials": 20,
+          "rate": 0.7,
+          "interval": [
+            0.4810232237710206,
+            0.854524726031006
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "mismatched_output 5/10, extra_spaces 9/10; interval straddles the threshold: needs more cases"
+        },
+        {
+          "name": "stability",
+          "status": "UNVALIDATED",
+          "successes": 8,
+          "trials": 10,
+          "rate": 0.8,
+          "interval": [
+            0.49015684672072335,
+            0.9433190520193067
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "3 judgments per case; interval straddles the threshold: needs more cases"
+        }
+      ],
+      "judgments": [
+        {
+          "case": "Single day mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in a clear, friendly second-person style using \u201cYou mentioned.\u201d",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains that the full mentioned day is being used.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains the selected full-day time range.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation uses an internal, impersonal phrasing (\u201cWe interpret\u201d) rather than directly addressing the user or clearly using a friendly user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation uses first-person plural ('We interpret') rather than a second-person or clearly friendly user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.\"}",
+          "passed": false,
+          "reason": "The explanation uses an internal, impersonal phrasing (\u201cWe interpret\u201d) rather than addressing the user directly or using a clearly friendly style.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and uses a clear, friendly tone suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou only mentioned...\u201d) and clearly explains the resulting time window in a user-friendly way.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You only mentioned a single point in time, so a 10-minute window around that time is used.'}",
+          "passed": true,
+          "reason": "The explanation is user-facing, uses second-person language (\u201cYou only mentioned\u201d), and clearly explains the chosen time window in a friendly manner.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is clear and suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation is appropriate for user display and directly addresses the user in a clear, friendly second-person style.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You requested logs starting from 2 hours prior to the current time.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#0",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is clear but impersonal and does not address the user in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#1",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is understandable but uses a terse, impersonal style rather than addressing the user in a second-person or friendly manner.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#2",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message is not phrased in a friendly or second-person style; it states the conflict impersonally.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#0",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is understandable but uses impersonal, formal wording rather than addressing the user directly or using a friendly style.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#1",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": true,
+          "reason": "The error message is suitable for user display and uses a second-person reference (\u201cyour request\u201d) in a clear, neutral tone.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#2",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is understandable but impersonal and not phrased in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": false,
+          "reason": "The explanation uses a formal, impersonal \u201cWe interpret\u201d phrasing rather than addressing the user directly or using a clearly friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": true,
+          "reason": "The explanation is clear, concise, and phrased in a neutral, user-friendly manner suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We interpret 'around the start of last quarter' as the first few days of Q2 2023.\"}",
+          "passed": true,
+          "reason": "The explanation is clear and user-display appropriate, using a polite, friendly tone even though it is phrased in the first-person plural rather than directly addressing the user.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains the selected date range in a friendly, user-appropriate way.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly states the selected date range in a user-friendly way.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#0",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is understandable but impersonal and not written in a friendly or second-person style for user display.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#1",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is impersonal and technical rather than user-facing in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#2",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is impersonal and does not address the user in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#0",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and uses a clear, friendly tone suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#1",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains how the requested date range was interpreted.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#2",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation is appropriate for user display, directly addresses the user in second person, and clearly explains the date-range interpretation.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The error_message field is empty, so it does not provide a user-facing explanation in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The error_message field is empty, so it does not provide a user-displayable explanation in a friendly or second-person style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide user-facing guidance in a friendly or second-person style.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_fail:empty_explanation",
+          "output": "{'error_message': ''}",
+          "passed": false,
+          "reason": "The error_message field is empty, so it does not provide a user-facing explanation or friendly guidance.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_fail:empty_explanation",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': ''}",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-readable status string rather than a friendly, user-facing message or second-person wording.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-readable status string ('ERR_OK keys=...') rather than a friendly, user-facing message in second-person or conversational style.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-readable diagnostic string rather than a friendly or second-person message suitable for user display.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-readable diagnostic string rather than user-facing text in a friendly or second-person style.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is a technical diagnostic string and is not phrased in a friendly or second-person style for user display.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is a machine-readable status string and is not phrased in a friendly, user-facing or second-person style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a technical system-style message ('ERR_OK keys=... status=0x00 trace=none'), not friendly or written in the second person for user display.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a technical status string rather than friendly, user-facing wording in the second person.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_fail:debug_string",
+          "output": "{'error_message': 'ERR_OK keys=[] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The error_message is cryptic machine-readable diagnostic text rather than a friendly, user-facing explanation addressed to the user.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_fail:debug_string",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'ERR_OK keys=[max_timestamp_with_offset,min_timestamp_with_offset] status=0x00 trace=none'}",
+          "passed": false,
+          "reason": "The explanation is a machine-oriented status string ('ERR_OK keys=... status=0x00 trace=none'), not a friendly, second-person message suitable for user display.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains the selected date range in a friendly, user-appropriate way.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You mentioned a single day (2021-05-08). The entire day is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly explains the selected full-day range.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": false,
+          "reason": "The error message is understandable but impersonal and not phrased in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is clear, concise, and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': \"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.\"}",
+          "passed": false,
+          "reason": "The error message is clear but impersonal and does not address the user in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly describes the selected date range in a suitable display style.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'Conflicting time instructions: 2025 and 2020 cannot both apply.'}",
+          "passed": false,
+          "reason": "The error message identifies the conflict but is not written in a second-person or friendly style for user display.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:mismatched_output",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You requested logs from January 3050. The entire month is used.'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly describes the selected date range in a user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:mismatched_output",
+          "output": "{'error_message': 'No timeframe could be inferred from your request.'}",
+          "passed": true,
+          "reason": "The error message is suitable for user display and uses a direct second-person reference to \u201cyour request.\u201d",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2021-05-08T00:00:00Z', 'max_timestamp_with_offset': '2021-05-08T23:59:59Z', 'explanation': 'You  mentioned  a  single  day  (2021-05-08).  The  entire  day  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation is user-facing and uses second-person language (\u201cYou mentioned\u201d), clearly and appropriately explaining the selected full-day range.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-21T09:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': \"We  interpret  the  mention  of  early  May  as  extraneous,  focusing  on  'last  week  or  so'  from  the  current  time.\\n\"}",
+          "passed": false,
+          "reason": "The explanation uses internal first-person wording (\u201cWe interpret\u201d) rather than addressing the user in a second-person or clearly friendly style.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-27T13:50:00Z', 'max_timestamp_with_offset': '2023-10-27T14:10:00Z', 'explanation': 'You  only  mentioned  a  single  point  in  time,  so  a  10-minute  window  around  that  time  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and clearly describes the inferred 10-minute window in a friendly, user-appropriate way.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-10-28T07:30:00Z', 'max_timestamp_with_offset': '2023-10-28T09:30:00Z', 'explanation': 'You  requested  logs  starting  from  2  hours  prior  to  the  current  time.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person and is suitable for display, despite extra spacing.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': 'Conflicting  time  instructions:  2025  and  2020  cannot  both  apply.\\n'}",
+          "passed": false,
+          "reason": "The error message is understandable but uses a terse, impersonal technical style rather than addressing the user in a second-person or friendly manner.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': 'No  timeframe  could  be  inferred  from  your  request.\\n'}",
+          "passed": false,
+          "reason": "The error message is understandable but impersonal and does not use a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-04-01T00:00:00Z', 'max_timestamp_with_offset': '2023-04-05T23:59:59Z', 'explanation': \"We  interpret  'around  the  start  of  last  quarter'  as  the  first  few  days  of  Q2  2023.\\n\"}",
+          "passed": false,
+          "reason": "The explanation uses first-person wording (\u201cWe interpret\u201d) rather than a second-person or clearly friendly user-facing style.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '3050-01-01T00:00:00Z', 'max_timestamp_with_offset': '3050-01-31T23:59:59Z', 'explanation': 'You  requested  logs  from  January  3050.  The  entire  month  is  used.\\n'}",
+          "passed": true,
+          "reason": "The explanation is appropriate for user display and uses a clear second-person style by addressing the user directly.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:extra_spaces",
+          "output": "{'error_message': \"Conflicting  instructions:  'yesterday'  versus  'last  year'  could  not  be  reconciled.\\n\"}",
+          "passed": false,
+          "reason": "The error message is impersonal and does not address the user in a second-person or friendly style.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:extra_spaces",
+          "output": "{'min_timestamp_with_offset': '2023-12-25T00:00:00Z', 'max_timestamp_with_offset': '2023-12-26T23:59:59Z', 'explanation': 'You  asked  specifically  for  December  25th  to  December  26th.  The  mention  of  an  earlier  date  is  ignored  since  a  range  was  provided.\\n'}",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou asked\u201d) and clearly explains the date-range decision in a user-friendly manner.",
+          "error": null
+        }
+      ],
+      "advice": [
+        "`acceptance` is 0.60, at or below its bar of 0.70: more cases will not make it pass.",
+        "`invariance` is 0.70, at or below its bar of 0.80: more cases will not make it pass.",
+        "`stability` is 0.80, at or below its bar of 0.80: more cases will not make it pass."
+      ]
+    }
+  }
+}

@@ -15,6 +15,8 @@ from ._certify import Certificate, Check
 from ._stats import wilson
 
 _MENTIONS_INPUT = re.compile(r'\b(question|input|query|request|prompt|asked|context|user)\b', re.I)
+_ABOUT_CORRECTNESS = re.compile(r'\b(correct\w*|accura\w*|right|true|answers?|factual\w*|valid)\b', re.I)
+_ABOUT_STYLE = re.compile(r'\b(style|tone|friendly|polite|format\w*|concise|second-person|grammar|wording)\b', re.I)
 _MENTIONS_EXPECTED = re.compile(r'\b(expected|reference|correct answer|ground truth|gold)\b', re.I)
 
 
@@ -69,6 +71,24 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
     if status('rejection') == 'FAIL' and rejection:
         detail = rejection.detail
         advice.append(f'It passes answers that cannot be right ({detail}).')
+        empty = re.search(r'empty_output (\d+)/(\d+)', detail)
+        # A judge of correctness that passes another question's answer is broken; only a rubric
+        # about style can make that control the mistake. With no rubric to read, say it as a maybe.
+        about_style = bool(_ABOUT_STYLE.search(rubric)) if rubric else True
+        about_correctness = bool(_ABOUT_CORRECTNESS.search(rubric)) and not _ABOUT_STYLE.search(rubric)
+        if (
+            'mismatched_output' in detail
+            and empty
+            and empty.group(1) == empty.group(2)
+            and about_style
+            and not about_correctness
+        ):
+            advice.append(
+                "It rejects every empty answer and fails only on other cases' answers. If the rubric grades "
+                "style, tone or format rather than correctness, another case's answer can satisfy it, and the "
+                "control is wrong, not the judge: use `MismatchedOutput(kind='must_hold')` and `Rewrite` controls "
+                'that break the rubric itself.'
+            )
         if 'mismatched_output' in detail and sees_input is False:
             advice.append(
                 "It accepts another question's answer, and with `include_input=False` it cannot tell which "

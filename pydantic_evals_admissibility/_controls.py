@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import random
 import re
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import Any, Literal, Protocol
 
@@ -46,6 +46,9 @@ class MismatchedOutput:
 
     name: str = 'mismatched_output'
     kind: ControlKind = 'must_fail'
+    """`must_fail` for rubrics about correctness. For a rubric about style or tone, another case's
+    answer is just as well written, so use `MismatchedOutput(kind='must_hold')`: the judge must
+    not be swayed by content it was not asked to grade."""
 
     def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
         donors = [
@@ -91,6 +94,25 @@ class WhitespaceReformat:
             return None
         reformatted = re.sub(r'[ \t]+', ' ', case.output.strip()).replace('\n', '\n\n') + '\n'
         return reformatted if reformatted != case.output else '  ' + case.output + '\n'
+
+
+@dataclass(frozen=True)
+class Rewrite:
+    """Your own control: `rewrite(output)` returns an output whose correct verdict you know.
+
+    The default controls test correctness. For any other rubric, write the change that should
+    break it (`kind='must_fail'`: a second-person explanation turned third-person, for a rubric
+    asking for second person) or the change it should not notice (`kind='must_hold'`). Return
+    None to skip a case the rewrite does not apply to, or that it leaves unchanged.
+    """
+
+    rewrite: Callable[[Any], Any | None]
+    name: str
+    kind: ControlKind = 'must_fail'
+
+    def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
+        changed = self.rewrite(case.output)
+        return None if changed is None or changed == case.output else changed
 
 
 DEFAULT_CONTROLS: tuple[Control, ...] = (MismatchedOutput(), EmptyOutput(), WhitespaceReformat())
