@@ -146,3 +146,20 @@ async def test_thresholds_are_applied_to_the_interval_bound(threshold: float) ->
     n = 2 * len(CASES)
     expected = 'PASS' if wilson(n, n)[0] >= threshold else 'UNVALIDATED'
     assert status(certificate, 'rejection') == expected
+
+
+def test_a_mismatched_answer_is_never_one_that_is_also_right() -> None:
+    """Small answer spaces: another case answering "yes" is not a wrong answer to a "yes" question."""
+    import random
+
+    from pydantic_evals_admissibility import MismatchedOutput
+
+    cases = [
+        JudgeCase(f'q{i}', f'question {i}', f'Sure. Answer: {a}', expected_output=a)
+        for i, a in enumerate('yes no yes no yes no'.split())
+    ]
+    control = MismatchedOutput()
+    for case in cases:
+        for seed in range(20):
+            donor = control.make(case, cases, random.Random(seed))
+            assert donor is not None and donor.split()[-1] != case.expected_output

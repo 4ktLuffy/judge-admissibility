@@ -1,27 +1,41 @@
 # pydantic-evals-admissibility
 
-Certify a [pydantic-evals](https://ai.pydantic.dev/evals/) judge before its scores count.
+**Find out whether your LLM judge can be trusted before you trust its scores.**
 
-> **A judge's verdict is evidence only once the judge has been shown to fail what it should fail.**
+An `LLMJudge` that passes everything scores 100% on a dataset of good answers, and the report
+looks exactly like one from a judge that works. This package tests the judge itself, with
+controls built from the cases you already have: answers it must fail, changes it must ignore,
+orderings it must not care about. A judge's verdicts count only once it has been shown to fail
+what it should fail.
 
-An `LLMJudge` that passes everything produces a perfect score on every dataset. Nothing in an
-eval report distinguishes that judge from a good one: both say "pass" on the cases that should
-pass, and nobody looks at the cases that should not have passed, because the dataset does not
-contain any. Pydantic's own writing says judges "often flip [their] verdict" when the order of
-what they see changes, and that they have to be calibrated. This package measures part of that
-(repeat consistency and agreement with people; not order swaps yet), with controls built from the
-cases you already have.
+What it found on real judges (Codex `gpt-5.6-luna`; every number is reproduced in `bench/`):
+
+- **A strong judge, a realistic task, `LLMJudge`'s default settings:** grading a support agent's
+  replies against a store policy, a reasoning judge with the default `include_input=False`
+  passed **10 of 10 answers that belonged to other customers' questions**. Certification caught it
+  after 70 of 280 calls. With `include_input=True` the same judge agreed with ground truth on
+  80 of 80 replies.
+- **Order decides when the judge can't check:** asked which of two bare answers was right, the
+  comparison judge picked **whichever came first in 68% of presentations** (interval 0.58 to
+  0.76) and was right 53% of the time. On the support task, where it could check the policy, it
+  showed no preference (49%). Measure your judge on your task.
+- **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
+  than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
+  certified judge, then confirming on fresh questions, promoted the one real improvement
+  (p = 0.015), the same call ground truth makes.
 
 ```python
-from pydantic_evals.evaluators import LLMJudge
-from pydantic_evals_admissibility import JudgeCase, certify_judge
-
-cases = [JudgeCase(name=c.name, inputs=c.inputs, output=good_answer, expected_output=c.expected_output) for c in ...]
-certificate = await certify_judge(LLMJudge(rubric='The output correctly answers the question.', include_input=True), cases)
-print(certificate.table())
-if not certificate.admissible:
-    ...  # do not report this judge's scores
+certificate = await certify_judge(judge, cases, batch_size=10)  # is it evidence? stops early if clearly not
+certificate.raise_unless_admissible(judge)  # fail CI, with what's wrong and what to try
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)  # is the change real?
 ```
+
+**The core** is three functions: `certify_judge` (pointwise judges), `certify_pairwise`
+(comparison judges, including position bias) and `diagnose` (what to change when either fails).
+**Built on them:** `decide` / `compare_reports` (is a change real?), `detectable_gain` (can your
+dataset even see it?), and, for Logfire users, `promote`, the canary rollout and `JudgeCanary`
+(keep checking a judge in production). The reasoning behind every choice is in
+[DESIGN.md](DESIGN.md).
 
 ## Install
 
@@ -94,6 +108,40 @@ into plain advice. On the two real failures in this README it says:
 The advice is a hypothesis to re-certify, not a fix. `certificate.raise_unless_admissible(judge)`
 raises `InadmissibleJudge` with the table and the advice, for a test or a CI step that should fail
 when a judge stops being evidence.
+
+## A strong judge on a realistic task
+
+`bench/support_eval.py`: a support agent (Codex, no reasoning) answers 40 customer questions
+from short store policies (return windows, restocking fees, shipping thresholds, warranties, with
+distracting details); answers are computed by code and balanced between yes and no. The agent got
+72 of 80 replies right. Three judges were certified on those 80 replies, ground truth as labels,
+sequentially in batches of 10:
+
+| Judge (Codex `gpt-5.6-luna`) | Certificate | Calls | Agreement with ground truth |
+|---|---|---|---|
+| no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 74/80, kappa 0.53 |
+| reasoning high, `include_input=True` | ADMISSIBLE | 280 of 280 | 80/80, kappa 1.00 |
+| reasoning high, default `include_input=False` | **INADMISSIBLE** | **70 of 280** | 16/20, kappa 0.23 |
+
+The default-configured judge passed every one of the 10 answers borrowed from other customers'
+questions (each with a different correct answer, so wrong by construction). `diagnose` said why:
+*"It accepts another question's answer, and with `include_input=False` it cannot tell which
+question was asked. Set `include_input=True`."*
+
+On the arithmetic task the same default made the judge fail everything instead (0 of 40 right
+answers passed). Both are inadmissible; which way a blind judge fails depends on the task, which
+is the argument for measuring rather than assuming.
+
+The comparison judges, asked to pick between the right answer and a plausible mistake (the refund
+without the restocking fee, the wrong side of the shipping threshold), both ways round:
+
+| Comparison judge | Accuracy | Same pick both ways | Chose the answer shown first |
+|---|---|---|---|
+| no reasoning | 0.89 (71/80) | 39/40 | 0.49 |
+| reasoning high | 0.88 (70/80) | 40/40 | 0.50 |
+
+No position preference here, unlike the arithmetic task below, where the judge could not check
+the answers itself.
 
 ## Comparison judges: does the order decide?
 

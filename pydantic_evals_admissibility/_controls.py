@@ -38,15 +38,27 @@ class Control(Protocol):
 class MismatchedOutput:
     """Another case's known-good answer: right for some question, wrong for this one.
 
-    The donor is drawn from cases whose answer differs from this case's, so a dataset with
-    repeated answers cannot hand the judge its own answer and call that a control.
+    The donor must give a different answer. Its output text has to differ, and when both cases
+    carry an `expected_output`, those have to differ too: on a task whose answers are often "yes"
+    or "no", another case's "Answer: yes" is as likely to be right as wrong, and a sound judge
+    that passes it is not at fault.
     """
 
     name: str = 'mismatched_output'
     kind: ControlKind = 'must_fail'
 
     def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
-        donors = [other for other in cases if other is not case and other.output != case.output]
+        donors = [
+            other
+            for other in cases
+            if other is not case
+            and other.output != case.output
+            and (
+                case.expected_output is None
+                or other.expected_output is None
+                or other.expected_output != case.expected_output
+            )
+        ]
         if not donors:
             return None
         return rng.choice(donors).output

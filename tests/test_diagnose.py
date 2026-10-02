@@ -42,7 +42,7 @@ async def test_formatting_sensitivity_vs_noise_are_told_apart() -> None:
 def test_says_how_many_cases_would_settle_an_open_check() -> None:
     open_check = Check('stability', 'UNVALIDATED', 12, 12, (0.76, 1.0), 0.8, 'interval straddles the threshold')
     advice = diagnose(Certificate('UNVALIDATED', (open_check,), ()))
-    assert any('about 16 would' in a for a in advice), advice
+    assert any('16 would' in a for a in advice), advice
 
 
 async def test_ci_failure_carries_the_table_and_the_advice() -> None:
@@ -56,3 +56,24 @@ async def test_ci_failure_carries_the_table_and_the_advice() -> None:
     message = str(raised.value)
     assert 'INADMISSIBLE' in message and 'acceptance' in message and 'cannot confirm anything' in message
     (await certify_judge(judge(oracle), CASES)).raise_unless_admissible()  # admissible: no error
+
+
+def test_disagreement_is_not_blamed_on_the_rubric_when_controls_fail() -> None:
+    """Found on a real certificate: a judge failing rejection was told it 'passes the controls'."""
+    checks = (
+        Check('acceptance', 'PASS', 40, 40, (0.91, 1.0), 0.7),
+        Check('rejection', 'FAIL', 10, 20, (0.26, 0.74), 0.8, 'mismatched_output 0/10, empty_output 10/10'),
+        Check('human_agreement', 'FAIL', 16, 20, (0.52, 0.94), 0.4, 'kappa=0.23'),
+    )
+    advice = diagnose(Certificate('INADMISSIBLE', checks, ()))
+    assert not any('passes the controls' in a for a in advice)
+    assert any('fix the failures above first' in a for a in advice)
+
+
+def test_cases_needed_is_the_smallest_that_works() -> None:
+    from pydantic_evals_admissibility import wilson
+
+    check = Check('invariance', 'UNVALIDATED', 10, 10, (0.72, 1.0), 0.8, 'interval straddles the threshold')
+    advice = diagnose(Certificate('UNVALIDATED', (check,), ()))
+    assert any('16 would' in a for a in advice), advice
+    assert wilson(16, 16)[0] >= 0.8 > wilson(15, 15)[0]

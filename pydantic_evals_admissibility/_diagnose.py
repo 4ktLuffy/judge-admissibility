@@ -27,7 +27,7 @@ def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
     while n <= limit:
         if wilson(round(rate * n), n)[0] >= check.threshold:
             return n
-        n = int(n * 1.25) + 1
+        n += 1 if n < 1000 else n // 10  # exact for any realistic size, coarse beyond it
     return None
 
 
@@ -95,17 +95,24 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
     elif status('stability') == 'FAIL':
         advice.append('It disagrees with itself on the same answer. Lower its temperature or use a stronger model.')
     if status('human_agreement') == 'FAIL':
-        advice.append(
-            'It passes the controls but disagrees with people: the rubric is not what your labellers mean. '
-            'Read the disagreements and rewrite the rubric, one criterion at a time.'
-        )
+        controls_hold = all(status(n) in (None, 'PASS') for n in ('acceptance', 'rejection', 'invariance'))
+        if controls_hold:
+            advice.append(
+                'It passes the controls but disagrees with people: the rubric is not what your labellers mean. '
+                'Read the disagreements and rewrite the rubric, one criterion at a time.'
+            )
+        else:
+            advice.append(
+                'It also disagrees with people beyond chance; fix the failures above first, then certify again '
+                'before reading anything into the disagreement.'
+            )
     for check in certificate.checks:
         if check.status == 'UNVALIDATED' and 'interval straddles' in check.detail:
             needed = _cases_needed(check)
             if needed is not None:
                 advice.append(
                     f'`{check.name}` is {check.rate:.2f} against a bar of {check.threshold:.2f} but '
-                    f'{check.trials} judgments cannot show it; about {needed} would, at the same rate.'
+                    f'{check.trials} judgments cannot show it; {needed} would, at the same rate.'
                 )
             else:
                 advice.append(
