@@ -9,7 +9,8 @@ judge with `certify_dataset`, prints each certificate with the doctor's advice, 
 unless every judge it certified is ADMISSIBLE, so it can gate a CI job. `report` prints a saved
 result again, with the current doctor, without calling a judge.
 
-Exit codes: 0 every certified judge is ADMISSIBLE; 1 one is not; 2 no judge could be certified.
+Exit codes: 0 every judge is certified ADMISSIBLE; 1 one is not, or one was skipped (unless
+`--allow-skipped`); 2 no judge could be certified.
 """
 
 from __future__ import annotations
@@ -61,10 +62,12 @@ def load(path: Path) -> Any:
     return Dataset[Any, Any, Any].from_dict(only_judges(data), default_name=path.stem)
 
 
-def _exit_code(results: Sequence[DatasetJudgeCertificate]) -> int:
+def _exit_code(results: Sequence[DatasetJudgeCertificate], allow_skipped: bool = False) -> int:
     certified = [r.certificate for r in results if r.certificate is not None]
     if not certified:
         return 2
+    if not allow_skipped and len(certified) < len(results):
+        return 1  # a CI gate over the whole dataset must not pass on the judges it could check
     return 0 if all(c.admissible for c in certified) else 1
 
 
@@ -84,7 +87,7 @@ async def _certify(args: argparse.Namespace) -> int:
     print(dataset_report(results))
     if args.json:
         Path(args.json).write_text(json.dumps({'judges': [r.to_dict() for r in results]}, indent=2, default=str))
-    return _exit_code(results)
+    return _exit_code(results, args.allow_skipped)
 
 
 def _report(args: argparse.Namespace) -> int:
@@ -114,6 +117,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     certify.add_argument('--batch-size', type=int, help='judge this many cases at a time; stop early on failure')
     certify.add_argument('--max-concurrency', type=int, default=8, help='judgments in flight (default 8)')
     certify.add_argument('--json', help='also write the certificates, with every verdict, to this file')
+    certify.add_argument(
+        '--allow-skipped', action='store_true', help='exit 0 even if some judges could not be certified'
+    )
 
     report = commands.add_parser('report', help='print saved certificates again, without calling a judge')
     report.add_argument('saved', help='a file written by `certify --json`')

@@ -78,3 +78,38 @@ async def test_a_style_judge_that_grades_content_is_caught() -> None:
 
     results = await certify_dataset(time_range_dataset(scripted(content_sensitive)))
     assert results[0].certificate is not None and results[0].certificate.verdict == 'INADMISSIBLE'
+
+
+async def test_case_judges_with_the_same_rubric_but_different_models_are_certified_apart() -> None:
+    calls: list[str] = []
+
+    def tracked(name: str):  # type: ignore[no-untyped-def]
+        def decide(output: str) -> bool:
+            calls.append(name)
+            return friendly(output)
+
+        return scripted(decide)
+
+    dataset = time_range_dataset(scripted(friendly))
+    models = {'a': tracked('a'), 'b': tracked('b')}
+    for i, case in enumerate(dataset.cases):
+        case.evaluators = (LLMJudge(rubric=STYLE, model=models['a' if i % 2 else 'b']),)
+    results = await certify_dataset(dataset, min_cases=10)
+    case_judges = [r for r in results if not r.label.startswith('dataset')]
+    assert len(case_judges) == 2 and all(r.certificate is not None for r in case_judges)
+    assert {'a', 'b'} <= set(calls)  # both models were asked, not the first one twice
+
+
+async def test_unnamed_cases_and_score_only_judges() -> None:
+    dataset = time_range_dataset(scripted(friendly))
+    for case in dataset.cases:
+        case.name = None  # valid in a pydantic-evals Dataset
+    dataset.evaluators = [*dataset.evaluators, LLMJudge(rubric=STYLE, assertion=False, score={'include_reason': True})]
+    results = await certify_dataset(dataset)
+    assert results[0].certificate is not None and results[0].certificate.verdict == 'ADMISSIBLE'
+    assert 'scores only' in (results[1].skipped or '')
+
+
+def test_prose_is_words_not_timestamps_or_ids() -> None:
+    assert map_prose({'at': '2026-10-02 10:00:00', 'sku': 'ACME 007'}, str.upper) is None
+    assert rubric_kind('The answer is friendly and concise.') == 'style'

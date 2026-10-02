@@ -17,20 +17,21 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible
   79 of 80 replies.
 - **Ask for the reason before the verdict.** A bug in this repository's Codex adapter sorted
   the judge's output schema, so judges gave the verdict first. A judge without reasoning then
-  certified ADMISSIBLE overall while passing **0 of 10 correct "no" answers**, its own reasons
-  saying they were right; slicing the certificate by kind of case caught it. A comparison judge
-  picked **whichever answer came first 68% of the time** and was right 53%. With the reason first,
-  as `LLMJudge` defines it: 10 of 10, and no position preference (48%) at 85%. Judges with
+  certified ADMISSIBLE overall while failing **every case whose correct answer was "no"** to a
+  return-window question (0 of 5), its own reasons often saying the answer was right; slicing the
+  certificate by kind of case flagged it. A comparison judge picked **whichever answer came first
+  68% of the time** and was right 53%. With the reason first, as `LLMJudge` defines it: 5 of 5,
+  and no detectable position preference (48%) at 85%. Judges with
   reasoning reached the same verdicts either way. Every result is re-run; `bench/field_order.py`
   shows both.
 - **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
   than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
-  certified judge, then confirming on fresh questions, promoted the one real improvement
-  (p = 0.015), the same call ground truth makes.
+  certified judge, then confirming on held-out questions, promoted the one real improvement
+  (p = 0.015, a retrospective analysis), the same call ground truth makes.
 - **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
   `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
-  judge failed **4 of its 10 "good" answers every time**. On three its reasons hold up: they
-  are impersonal, while the rubric asks for "second-person or friendly". On the fourth it
+  judge failed **4 of its 10 "good" answers every time**. On three its reasons are a fair reading
+  of the rubric: the answers are impersonal, and it asks for "second-person or friendly". On the fourth it
   contradicted itself: it failed *"...inferred from your request"* three times as not second
   person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
 
@@ -80,12 +81,22 @@ online evaluation imports it), also `pip install sniffio` to use `JudgeCanary` o
 | `human_agreement` | agree with people beyond chance (Cohen's kappa) | `HumanLabel`s, in any form (they could come from a Logfire annotation export) |
 | `slices` (opt-in) | not be below the bar on any one kind of case | `slice_by`: a name for each case's kind |
 
-Each rate carries a 95% Wilson interval and is decided on it, not on the point estimate:
+Each rate is decided on an interval, never on the point estimate:
 
-- **PASS** when the interval's lower bound clears the threshold;
-- **FAIL** when its upper bound is below it, which is evidence the judge is below the bar;
+- **PASS** when the 95% Wilson interval's lower bound clears the threshold;
+- **FAIL** when an exact (Clopper-Pearson) upper bound is below it, with the 2.5% upper tail
+  shared across every check, control family and sequential look that could fail the certificate
+  (Bonferroni), so a sound judge is failed by chance at most 2.5% of the time however many checks
+  and looks it faces (computed exactly in `bench/sequential_error.py`: at most 2.2%);
 - **UNVALIDATED** otherwise. Twelve out of twelve is a lower bound of 0.76: not a failure, and
   not yet a pass. The certificate says "needs more cases" instead of rounding up.
+
+**The unit of evidence is the case.** Repeats of one case share its difficulty, so they are not
+new evidence: `acceptance` and `slices` count each case's first judgment, and repeats are used
+only for `stability`. Each control family is decided on its own, since a pooled rate can hide a
+family the judge always gets wrong. Errored judgments are left out of a rate, and more than 10%
+of them leaves the check UNVALIDATED. `human_agreement` is decided on Cohen's kappa with an
+interval that resamples cases.
 
 The certificate is **ADMISSIBLE** only if every check passes, **INADMISSIBLE** if any fails,
 and **UNVALIDATED** otherwise. `acceptance` and `rejection` are both required because each
@@ -96,19 +107,23 @@ and stability, and one that always fails clears rejection.
 
 **Stop early when a judge has clearly failed.** `certify_judge(..., batch_size=10)` judges ten
 cases at a time and stops as soon as a check fails beyond doubt; a judge that is not failing runs
-to the end and is judged exactly as if all at once. Early looks use a wider interval (the
-confidence level split across the looks), so peeking rarely fails a sound judge: it gave the same
-verdict as judging everything in 100 of 100 runs (below). `certificate.calls` says how many judgments were actually made.
+to the end. Every look's FAIL, the last included, uses a bound widened for the number of looks,
+so peeking does not raise the chance of failing a sound judge; the price is some power on
+borderline judges. `certificate.calls` says how many judgments were actually made.
 
 Measured with scripted judges whose verdicts are fixed per answer, so both modes see the same
 verdicts (60 cases, 2 repeats, batches of 15, 100 seeds each, `bench/sequential_check.py`):
 
 | Judge | Same verdict as judging everything | Calls used |
 |---|---|---|
-| broken (passes 60% of wrong answers) | 100/100 | 26% |
-| borderline bad (25%; the bar is 20%) | 100/100 | 89% |
+| broken (passes 60% of wrong answers) | 100/100 | 29% |
+| borderline bad (25%; the bar is 20%) | 89/100 | 100% |
 | borderline good (10%) | 100/100 | 100% |
 | sound | 100/100 | 100% |
+
+The 11 differences all go the same way: judging everything said INADMISSIBLE and the sequential
+certificate, paying for its looks, said UNVALIDATED. It never failed a judge that judging
+everything passed.
 
 On a real judge, the Codex `LLMJudge` that failed certification on the arithmetic task: the
 sequential certificate reached the same verdict, INADMISSIBLE, after 140 of 280 calls
@@ -164,10 +179,10 @@ is the argument for measuring rather than assuming.
 The comparison judges, asked to pick between the right answer and a plausible mistake (the refund
 without the restocking fee, the wrong side of the shipping threshold), both ways round:
 
-| Comparison judge | Accuracy | Same pick both ways | Chose the answer shown first |
+| Comparison judge | Accuracy, one presentation per pair | Same pick both ways | Chose the answer shown first |
 |---|---|---|---|
-| no reasoning | 0.96 (77/80) | 39/40 | 0.51 |
-| reasoning high | 0.96 (77/80) | 39/40 | 0.51 |
+| no reasoning | 38/40 | 39/40 | 0.51, interval [0.50, 0.54] |
+| reasoning high | 38/40 | 39/40 | 0.51, interval [0.50, 0.54] |
 
 (The same totals, from different mistakes: the two judges were wrong on mostly different pairs.)
 
@@ -176,17 +191,18 @@ without the restocking fee, the wrong side of the shipping threshold), both ways
 `certify_judge(..., slice_by=...)` names the kind of each case and adds a `slices` check, which
 fails when the judge is shown to be below the bar on one kind of case. `recertify` applies it to a
 certificate already paid for. Sliced by kind and correct answer (`return: no`, `refund`, ...),
-every judge that sees the question passes it. It found something only when the judge was broken: through the adapter
-bug described under comparison judges, both judges without reasoning were asked for the verdict
-before the reason, and both certified ADMISSIBLE overall (70/80 accepted) while passing **0 of 10
-correct "no" answers** to return-window questions. Many of their reasons said the answers were right,
-after the verdict had been given: *"...98 days later, so the answer 'no' is correct."* Sliced,
-both certificates were INADMISSIBLE.
+every judge that sees the question passes it. It flagged something only when the judge was
+broken: through the adapter bug described under comparison judges, both judges without reasoning
+were asked for the verdict before the reason, and both certified ADMISSIBLE overall while failing
+**all 5 cases whose correct answer was "no"** to a return-window question (0 of 10 judgments).
+Many of their reasons said the answer was right, after the verdict had been given: *"...98 days
+later, so the answer 'no' is correct."* Sliced, both certificates were UNVALIDATED: 0 of 5 is at
+or below the bar, but five cases cannot prove it, and the check says exactly that.
 
-Each slice is decided with an exact (Clopper-Pearson) interval, split across the slices. A sound
-judge exactly at the bar fails the check at most 2.5% of the time, computed exactly for 2 to 12
-slices of 10 to 40 cases (`bench/slice_error.py`; with Wilson intervals it reached 8.2%). A slice
-it always gets wrong is caught every time with 10 cases.
+Each slice counts cases, not repeats, and is decided with an exact (Clopper-Pearson) interval at
+its share of the error budget. A sound judge exactly at the bar fails the check at most 2.5% of the
+time, computed exactly for 2 to 12 slices of 10 to 40 cases (`bench/slice_error.py`; with Wilson
+intervals it reached 8.2%). A slice it always gets wrong is caught every time with 10 cases.
 
 ## Pydantic's own example judge
 
@@ -202,10 +218,12 @@ explanation and a raw debug string must fail; another case's explanation
 (`MismatchedOutput(kind='must_hold')`) and extra spaces must not change the verdict. The
 dataset's 10 expected outputs are the answers marked good.
 
-| Judge (Codex `gpt-5.6-luna`) | Certificate | Good answers passed | Must-fail controls rejected |
-|---|---|---|---|
-| no reasoning | INADMISSIBLE | 15/30 | 20/20 |
-| reasoning high | UNVALIDATED | 18/30 | 20/20 |
+| Judge (Codex `gpt-5.6-luna`) | Certificate | Good answers passed, first try | All tries | Must-fail controls rejected |
+|---|---|---|---|---|
+| no reasoning | UNVALIDATED | 5/10 | 15/30 | 20/20 |
+| reasoning high | UNVALIDATED | 7/10 | 18/30 | 20/20 |
+
+With 10 cases neither judge can be shown above or below any bar.
 
 Both judges failed the same three expected outputs every time they were asked (the one without
 reasoning failed two more), with reasons that hold up against the rubric's words:
@@ -249,13 +267,15 @@ On pydantic-ai's example dataset (`bench/certify_pydantic_dataset.py`, their `ma
 `6bc07cf`, Codex `gpt-5.6-luna` reasoning high, 3 repeats), against the hand-written controls of the
 previous section:
 
-| Controls | Calls | Good answers passed | Must-fail rejected | Certificate |
+| Controls | Calls | Good answers passed, first try (all tries) | Must-fail rejected | Certificate |
 |---|---|---|---|---|
-| written by hand for this rubric | 70 | 18/30 | 20/20 | UNVALIDATED |
-| chosen by `certify_dataset` | 60 | 17/30 | 10/10 | UNVALIDATED |
+| written by hand for this rubric | 70 | 7/10 (18/30) | 20/20 | UNVALIDATED |
+| chosen by `certify_dataset` | 60 | 6/10 (17/30) | 10/10 | UNVALIDATED |
 
 The same verdict, without writing a control, and the same numbers again in a second run after
-the schema fix. The judge failed four answers on all three tries.
+the schema fix. The judge failed four answers on all three tries. A judge failing the same
+answers every time is not proof those answers are bad: two judges can share one reading of a
+rubric. These are rubric disputes to settle by reading them, which is what the doctor asks for.
 Three are the three the hand-written run found ("Ambiguous mention", "Impossible range",
 "Confusing relative references"); the doctor says to read those against the rubric. The fourth,
 "No mention" (*"No timeframe could be inferred from your request."*), is second person, and the
@@ -283,12 +303,14 @@ Measured on Codex `gpt-5.6-luna`, no reasoning (`bench/pairwise_codex.py`): 54 p
 agent replies to the same arithmetic question, one right and one wrong by ground truth, each asked
 both ways (108 calls). The output schema is `PairVerdict`: `reason`, then `choice`.
 
-| Pairs as the agent wrote them | Accuracy | Same pick both ways | Chose the answer shown first |
+| Pairs as the agent wrote them | Accuracy, one presentation per pair (all 108) | Same pick both ways | Chose the answer shown first |
 |---|---|---|---|
-| full replies, with the working | 0.85 (92/108) | 48/54 | 0.50, interval [0.41, 0.59] |
-| final answer line only | 0.85 (92/108) | 46/54 | 0.48, interval [0.39, 0.57] |
+| full replies, with the working | 44/54 (92/108) | 48/54 | 0.50, interval [0.45, 0.55] |
+| final answer line only | 44/54 (92/108) | 46/54 | 0.48, interval [0.43, 0.54] |
 
-No position preference, and the same accuracy whether or not the working is shown.
+No position preference was detected, and any there is is small: the intervals, which resample
+pairs, rule out more than about five points either way. Both certificates are UNVALIDATED: 54
+pairs cannot show accuracy above 0.8 or consistency above 0.9.
 `both_orders(compare)`, which asks both ways and answers only when the two agree, raised accuracy
 to 0.90 (43/48, abstaining on 6 pairs) with the working and 0.91 (42/46, abstaining on 8) without.
 
@@ -299,8 +321,8 @@ before `reason`: the judge chose before it thought. On the same 54 pairs, same m
 
 | Final answer line only | Accuracy | Same pick both ways | Chose the answer shown first |
 |---|---|---|---|
-| choice first (the bug) | 0.53 (57/108) | 29/54 | 0.68, interval [0.58, 0.76] |
-| reason first | 0.85 (92/108) | 46/54 | 0.48, interval [0.39, 0.57] |
+| choice first (the bug) | 0.53 (57/108) | 29/54 | 0.68, interval [0.59, 0.76] |
+| reason first | 0.85 (92/108) | 46/54 | 0.48, interval [0.43, 0.54] |
 
 The position bias was real, and the field order caused it: a judge without reasoning that is
 asked for its verdict first commits to it before writing a word of reasoning, and here it fell
@@ -324,7 +346,7 @@ certificate admits a sound judge and refuses each kind of broken one:
 | raises on every call | INADMISSIBLE: an error is not a verdict |
 | oracle on 3 or 12 cases | UNVALIDATED |
 
-## A real judge: `LLMJudge`'s default configuration is inadmissible
+## A real judge: a rubric about the question, with the question hidden
 
 `bench/certify_codex_judge.py` certifies a real `LLMJudge`, with its own system prompt, whose model
 is Codex (`gpt-5.6-luna`, no reasoning, through `bench/codex_judge.py`, no API key). It uses 20
@@ -377,7 +399,9 @@ promote(result, 'agent_prompt', new_prompt)  # moves the Logfire label only on P
   `production` label moved) and records the decision and its evidence on a span either way.
 - **`start_canary` / `decide_unpaired` / `finish_canary`** do the same for live traffic: serve
   the candidate to a share of requests, compare the arms, then promote, roll back, or keep
-  waiting when the traffic cannot tell yet.
+  waiting when the traffic cannot tell yet. `finish_canary` takes the version `start_canary`
+  returned and refuses a stale decision, so a result can never promote a newer candidate it did
+  not measure.
 - **`JudgeCanary`** keeps checking a judge after it is certified, on the traffic it grades. On a
   sampled share of calls it also asks the judge about an empty answer, which it must fail.
   `borrow=True` adds another request's answer as a control; it is off by default because on
@@ -402,7 +426,8 @@ How well the gate itself behaves, measured in this package's tests (40 cases, 2 
 
 It never called a better version worse or promoted a worse one. Small gains are mostly
 INCONCLUSIVE, which is the honest answer at this size: on the real Codex baseline below,
-`detectable_gain` says 40 questions with 2 runs each reliably see only a 25-point gain.
+`detectable_gain` says 40 questions with 2 runs each reliably see only a 25-point shift in each
+case's success probability (capped at 1, so the mean gain it stands for is smaller).
 
 ## Experiment: one round of prompt optimization, decided three ways
 
@@ -410,8 +435,9 @@ INCONCLUSIVE, which is the honest answer at this size: on the real Codex baselin
 Python (`bench/task.py`: arithmetic, letter counts, weekday arithmetic, string transformations).
 The agent, the judges and the optimizer are all Codex `gpt-5.6-luna` with no reasoning. Codex
 proposes five prompts from the baseline and the failures the judge flagged; each runs twice on
-40 training questions. Ground truth is never used to decide anything: it is the referee, and the
-40 held-out questions are scored only after the decisions are made.
+40 training questions. No decision uses ground-truth scores of the candidates: ground truth is the
+referee, and it labels the replies the judges are certified on. This is a retrospective analysis:
+the confirmation step below was added after the held-out results had been seen.
 
 Two judges, certified first on the agent's real replies with ground truth as the labels:
 
@@ -447,11 +473,13 @@ What it shows, including where it did not go the way I expected:
   and got longer replies (median 67 characters).
 - **The gate rejected all three clearly worse prompts and promoted nothing bad, but missed the
   good one.** With 40 questions and the level split five ways it could not separate a measured 14-point
-  gain from noise, as `detectable_gain` predicted (it puts this dataset's reliable floor at 25
-  points, 40 with the level split five ways).
-- **Selecting and confirming on different questions fixes that.** `bench/confirm.py` tests only
+  gain from noise, as `detectable_gain` predicted: at the split level it needs a shift of 40
+  points in each case's success probability (capped at 1) to be seen reliably.
+- **Selecting and confirming on different questions can fix that.** `bench/confirm.py` tests only
   the selected candidate, once, on the 40 held-out questions, scored by the certified judge:
-  PROMOTE (gain +0.16 per case, p = 0.015), the same decision ground truth gives. The certified
+  PROMOTE (gain +0.16 per case, one-sided Monte Carlo p = 0.015), the same decision ground truth
+  gives. Retrospective: it was run after the held-out results were seen, so it shows the
+  procedure, not a prospective test of it. The certified
   judge agreed with ground truth on all 160 held-out replies.
 - **The certified judge found a bug in my ground truth.** It passed "−27 pens" (a U+2212 minus)
   for an expected -27, which my checker had failed. The checker is fixed and tested; no row of the

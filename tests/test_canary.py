@@ -80,25 +80,37 @@ def served_to_everyone(var) -> set[str]:  # type: ignore[no-untyped-def]
 
 
 def test_a_better_candidate_is_promoted_to_all_traffic(prompt_var) -> None:  # type: ignore[no-untyped-def]
-    start_canary(prompt_var.name, 'better', weight=0.5)
+    version = start_canary(prompt_var.name, 'better', weight=0.5)
     arms = run_traffic(prompt_var, {'current': 0.5, 'better': 0.75}, requests=600, seed=1)
     assert 200 < len(arms['candidate']) < 400  # Logfire really split the traffic
     result = decide_unpaired(arms['production'], arms['candidate'], rules=FAST)
-    assert finish_canary(result, prompt_var.name) == 'promoted'
+    assert finish_canary(result, prompt_var.name, expected_version=version) == 'promoted'
     assert served_to_everyone(prompt_var) == {'better'}
 
 
 def test_a_worse_candidate_is_rolled_back(prompt_var) -> None:  # type: ignore[no-untyped-def]
-    start_canary(prompt_var.name, 'worse', weight=0.5)
+    version = start_canary(prompt_var.name, 'worse', weight=0.5)
     arms = run_traffic(prompt_var, {'current': 0.6, 'worse': 0.35}, requests=600, seed=2)
     result = decide_unpaired(arms['production'], arms['candidate'], rules=FAST)
-    assert finish_canary(result, prompt_var.name) == 'rolled back'
+    assert finish_canary(result, prompt_var.name, expected_version=version) == 'rolled back'
     assert served_to_everyone(prompt_var) == {'current'}
 
 
 def test_too_little_traffic_keeps_the_canary_running(prompt_var) -> None:  # type: ignore[no-untyped-def]
-    start_canary(prompt_var.name, 'same', weight=0.5)
+    version = start_canary(prompt_var.name, 'same', weight=0.5)
     arms = run_traffic(prompt_var, {'current': 0.5, 'same': 0.5}, requests=60, seed=3)
     result = decide_unpaired(arms['production'], arms['candidate'], rules=FAST)
-    assert finish_canary(result, prompt_var.name) == 'continued'
+    assert finish_canary(result, prompt_var.name, expected_version=version) == 'continued'
     assert served_to_everyone(prompt_var) == {'current', 'same'}  # still split
+
+
+def test_a_stale_decision_does_not_promote_a_newer_candidate(prompt_var) -> None:  # type: ignore[no-untyped-def]
+    """The decision was made on 'better'; by the time it lands, 'untested' occupies the label."""
+    version = start_canary(prompt_var.name, 'better', weight=0.5)
+    arms = run_traffic(prompt_var, {'current': 0.5, 'better': 0.75}, requests=600, seed=1)
+    result = decide_unpaired(arms['production'], arms['candidate'], rules=FAST)
+    assert result.decision == 'PROMOTE'
+    start_canary(prompt_var.name, 'untested', weight=0.5)
+    with pytest.raises(ValueError, match='stale'):
+        finish_canary(result, prompt_var.name, expected_version=version)
+    assert served_to_everyone(prompt_var) == {'current', 'untested'}  # nothing changed

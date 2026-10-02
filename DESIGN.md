@@ -56,7 +56,31 @@ It stays available for scores that are not noisy.
 
 **What is `detectable_gain` for?** To say, before anything runs, whether the dataset can see the
 improvement you are hoping for. On the real baseline here, 40 questions with 2 runs each reliably
-see only a 25-point gain. A 5-point "improvement" on such a set is not evidence of anything.
+see only a 25-point shift in each case's success probability (capped at 1, so the mean gain is
+smaller). A 5-point "improvement" on such a set is not evidence of anything.
+
+**Why is the case the unit, and not the judgment?** Judging a case again tells you about the
+judge's noise, not about another case. An external review showed the cost of pooling them: a
+judge right on 16 of 20 cases, judged ten times each, went from 16/20 (UNVALIDATED) to 160/200
+(ADMISSIBLE) without seeing a new case, and six slices of ten cases judged three times each
+failed a sound judge 25% of the time. `acceptance` and `slices` now use each case's first
+judgment; the repeats feed `stability`, which is about exactly that noise. Comparison judges
+count one presentation per pair, the better answer first in alternate pairs.
+
+**Why is each control family decided on its own?** A pooled rejection rate measures a mixture.
+Nine families rejected perfectly and one never rejected pool to 270/300, which passes. The
+certificate claims the judge rejects each kind of wrong answer, so each family must pass.
+
+**Why share one error budget across the FAIL decisions, and not the PASS ones?** A certificate is
+ADMISSIBLE only if every check passes: being wrongly admitted needs every check to be wrong at
+once, so a PASS needs no correction. It is INADMISSIBLE if any one check fails, so each check and
+family is another chance to fail a sound judge by luck; their FAILs split one 2.5% tail.
+
+**Why is an errored judgment missing, not a failure?** Scoring a timeout as a failure fails a sound
+judge on a slow day; dropping it silently lets a judge that errors on the hard cases pass on the
+easy ones. So errors are left out of the rate and counted, and above 10% the check is
+UNVALIDATED. The same applies to human agreement, whose kappa is now decided on an interval that
+resamples cases, since a case's labelled outputs are not independent.
 
 ## The controls
 
@@ -125,7 +149,7 @@ space in them and leave the rest as it was.
 **Why slice a certificate by kind of case?** An overall rate is an average over kinds of case,
 and a judge can be wrong on every case of one kind while the average passes. Measured, through
 the field-order bug: two no-reasoning judges accepted 70 of 80 good answers, comfortably over the
-bar, and 0 of the 10 that were a correct "no" to a return-window question. `slice_by` is opt-in
+bar, and none of the 5 cases whose correct answer was "no" to a return-window question. `slice_by` is opt-in
 because only you know which kinds matter. Its `PASS` is weaker than the other checks': it means no
 slice is shown to be below the bar, not that each slice is shown above it. To certify one kind,
 certify its cases alone.
@@ -143,14 +167,18 @@ of the time with 10 cases instead of 88%.
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has
 to be watched to the end to earn a PASS. Stopping early for success too was tried and dropped: it
 certified sound judges less often for a small saving (the variant is gone, so no numbers are
-claimed for it). Stopping only for failure
-gives the same verdict as judging everything in 400 of 400 paired runs, at 26% of the calls for a
-broken judge.
+claimed for it). Stopping only for failure gives the same verdict as judging everything in 389
+of 400 paired runs, at 29% of the calls for a broken judge; in the other 11 a borderline-bad judge
+was UNVALIDATED instead of INADMISSIBLE, the cost of paying for the looks.
 
-**Why are early looks stricter?** Looking after every batch and stopping when the evidence looks
-bad gives a sound judge several chances to look bad by luck. Each early look uses an interval
-widened for the number of looks (Bonferroni). The final look uses the normal one, because a judge
-that got that far is judged as if all at once.
+**Why are the looks stricter?** Looking after every batch and stopping when the evidence looks
+bad gives a sound judge several chances to look bad by luck. Every look's FAIL, the last
+included, uses an exact interval widened for the number of looks (Bonferroni). An earlier version
+used the normal interval at the last look; the review computed that this spent the budget twice
+(4.1% false FAILs at the bar against 2.2% judging all at once). Splitting the budget with Wilson
+intervals still leaked (3.4%), because Wilson undercovers at these sizes; with exact bounds it is
+at most 2.2% in every layout computed (`bench/sequential_error.py`). A PASS, only possible at the
+end, uses the usual Wilson interval.
 
 ## Mistakes that shaped it
 
@@ -162,7 +190,13 @@ were corrected where they were reported:
 - The Codex adapter sorted the output schema's keys, so judges gave the verdict before the reason.
   It made a no-reasoning judge fail every correct "no" to a return-date question while its own
   reasons said the answer was right, and it produced a 68% position bias that this README
-  reported. Found by slicing a certificate by kind of case; every affected result was re-run.
+  reported. Flagged by slicing a certificate by kind of case; every affected result was re-run.
+- An external review (Codex `gpt-6-astra`) found that repeats were counted as if they were new
+  cases, which narrowed every interval; that pooled control families could hide one that always
+  failed; that the last sequential look spent the error budget a second time; and that errored
+  judgments were scored as failures. Each is fixed with a regression test, and every saved
+  certificate was decided again (`bench/recertify_all.py`). No headline verdict changed; one
+  other did (Pydantic's example judge without reasoning, INADMISSIBLE to UNVALIDATED on 10 cases).
 - A ground-truth checker failed "−27" written with a Unicode minus. The certified judge was
   right and the checker was wrong.
 - The gate's bootstrap made too many false calls; the regression guard rejected real gains; the

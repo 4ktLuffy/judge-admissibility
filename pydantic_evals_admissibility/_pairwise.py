@@ -10,14 +10,15 @@ flip, the certificate says which position it went with.
 from __future__ import annotations
 
 import asyncio
+import random
 from collections.abc import Awaitable, Callable, Sequence
 from dataclasses import dataclass
+from statistics import NormalDist
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-from ._certify import Certificate, Judgment, Verdict, _check
-from ._stats import wilson
+from ._certify import Certificate, Check, Judgment, Verdict, _check
 
 Choice = Literal['A', 'B']
 Compare = Callable[[Any, Any, Any], Awaitable[Choice]]
@@ -62,7 +63,11 @@ class PairwiseJudge:
 @dataclass(frozen=True)
 class PairThresholds:
     min_accuracy: float = 0.8
-    """Lower bound on the share of presentations in which the judge picks the better answer."""
+    """Lower bound on the share of pairs in which the judge picks the better answer.
+
+    One presentation per pair counts, the better answer first in alternate pairs: the two
+    presentations of a pair share its difficulty and are not two pieces of evidence.
+    """
     min_consistency: float = 0.9
     """Lower bound on the share of pairs where it picks the same answer both ways round."""
     min_trials: int = 10
@@ -84,6 +89,8 @@ async def certify_pairwise(
             for the pairs where it did not, how often it went with the answer shown first.
     """
     thresholds = thresholds or PairThresholds()
+    if max_concurrency < 1 or repeats < 1:
+        raise ValueError('max_concurrency and repeats must be >= 1')
     limit = asyncio.Semaphore(max_concurrency)
 
     async def ask(case: PairCase, better_first: bool, repeat: int) -> Judgment:
@@ -100,18 +107,35 @@ async def certify_pairwise(
     plan = [(case, first, r) for case in cases for r in range(repeats) for first in (True, False)]
     judgments = await asyncio.gather(*(ask(c, first, r) for c, first, r in plan))
 
+    verdict, checks = _assess_pairs(judgments, [case.name for case in cases], thresholds)
+    name = type(compare).__name__ if not hasattr(compare, '__name__') else compare.__name__  # type: ignore[attr-defined]
+    model = getattr(compare, 'model', None)
+    label = f'{name}({getattr(model, "model_name", model)})' if model is not None else name
+    return Certificate(verdict, checks, tuple(judgments), judge=label, calls=len(plan), planned=len(plan))
+
+
+def _assess_pairs(
+    judgments: Sequence[Judgment], names: Sequence[str], thresholds: PairThresholds
+) -> tuple[Verdict, tuple[Check, ...]]:
+    """Both checks and the verdict from a comparison judge's verdicts; `names` fixes the pair order."""
+    # Two checks can fail the certificate: each FAIL gets half of the 2.5% upper tail.
+    z_fail = NormalDist().inv_cdf(1 - 0.05 / 4)
+    order = {name: i for i, name in enumerate(names)}
+    counted = [j for j in judgments if j.role == ('better_first#0' if order[j.case] % 2 == 0 else 'worse_first#0')]
     accuracy = _check(
         'accuracy',
-        sum(j.passed is True for j in judgments),
-        len(judgments),
+        sum(j.passed is True for j in counted),
+        sum(j.passed is not None for j in counted),
         thresholds.min_accuracy,
         thresholds.min_trials,
-        errors=sum(j.error is not None for j in judgments),
+        detail='one presentation per pair, better answer first in alternate pairs',
+        errors=sum(j.passed is None for j in counted),
+        z_fail=z_fail,
     )
-    by_pair: dict[tuple[str, str], dict[bool, Judgment]] = {}
+    by_pair: dict[str, dict[bool, Judgment]] = {}
     for j in judgments:
-        first = j.role.startswith('better_first')
-        by_pair.setdefault((j.case, j.role.split('#')[1]), {})[first] = j
+        if j.role.endswith('#0'):  # the first repeat: pairs, not repeats, are the unit
+            by_pair.setdefault(j.case, {})[j.role.startswith('better_first')] = j
     consistent = 0
     flipped_to_first = flipped = 0
     for pair in by_pair.values():
@@ -131,8 +155,16 @@ async def certify_pairwise(
         if flipped
         else 'never flipped'
     )
+    complete = consistent + flipped
     consistency = _check(
-        'order_consistency', consistent, len(by_pair), thresholds.min_consistency, thresholds.min_trials, detail=detail
+        'order_consistency',
+        consistent,
+        complete,
+        thresholds.min_consistency,
+        thresholds.min_trials,
+        detail=detail,
+        errors=len(by_pair) - complete,
+        z_fail=z_fail,
     )
     checks = (accuracy, consistency)
     if any(c.status == 'FAIL' for c in checks):
@@ -141,22 +173,40 @@ async def certify_pairwise(
         verdict = 'UNVALIDATED'
     else:
         verdict = 'ADMISSIBLE'
-    name = type(compare).__name__ if not hasattr(compare, '__name__') else compare.__name__  # type: ignore[attr-defined]
-    model = getattr(compare, 'model', None)
-    label = f'{name}({getattr(model, "model_name", model)})' if model is not None else name
-    return Certificate(verdict, checks, tuple(judgments), judge=label, calls=len(plan), planned=len(plan))
+    return verdict, checks
+
+
+def recertify_pairwise(certificate: Certificate, thresholds: PairThresholds | None = None) -> Certificate:
+    """Decide a comparison judge's certificate again from its saved verdicts, without calling it."""
+    names = list(dict.fromkeys(j.case for j in certificate.judgments))
+    verdict, checks = _assess_pairs(certificate.judgments, names, thresholds or PairThresholds())
+    return Certificate(
+        verdict, checks, certificate.judgments, certificate.judge, certificate.calls, certificate.planned
+    )
 
 
 def first_position_rate(certificate: Certificate) -> tuple[float, tuple[float, float]] | None:
     """Share of all presentations in which the judge chose whichever answer was shown first.
 
-    0.5 is no preference. Returned with its Wilson interval, or None if nothing was judged.
+    0.5 is no preference. Returned with a 95% interval that resamples pairs, since the
+    presentations of one pair are not independent, or None if nothing was judged. An interval
+    around 0.5 means no preference was detected, not that there is none.
     """
-    picks = [j for j in certificate.judgments if j.passed is not None]
-    if not picks:
+    by_pair: dict[str, list[bool]] = {}
+    for j in certificate.judgments:
+        if j.passed is not None:
+            by_pair.setdefault(j.case, []).append(j.role.startswith('better_first') == j.passed)
+    if not by_pair:
         return None
-    first = sum((j.role.startswith('better_first')) == j.passed for j in picks)
-    return first / len(picks), wilson(first, len(picks))
+    pairs = list(by_pair.values())
+    picks = [p for ps in pairs for p in ps]
+    rng = random.Random(0)
+    rates = []
+    for _ in range(2000):
+        sample = [p for _ in pairs for p in pairs[rng.randrange(len(pairs))]]
+        rates.append(sum(sample) / len(sample))
+    rates.sort()
+    return sum(picks) / len(picks), (rates[50], rates[1949])
 
 
 def both_orders(compare: Compare) -> Callable[[Any, Any, Any], Awaitable[Choice | None]]:

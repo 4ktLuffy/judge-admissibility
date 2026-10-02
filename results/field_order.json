@@ -7,8 +7,8 @@
       "invariance": "40/40",
       "stability": "40/40",
       "human_agreement": "74/80",
-      "slices": "FAIL: worst first: return: no 0/10, refund 20/20, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
-      "verdict by slice": "INADMISSIBLE"
+      "slices": "UNVALIDATED: worst first: return: no 0/5, refund 10/10, return: yes 5/5, shipping 10/10, warranty: no 5/5, warranty: yes 5/5; return: no is at or below the bar but too small to show it",
+      "verdict by slice": "UNVALIDATED"
     },
     "reason first": {
       "verdict": "ADMISSIBLE",
@@ -17,7 +17,7 @@
       "invariance": "39/40",
       "stability": "40/40",
       "human_agreement": "80/80",
-      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "slices": "PASS: worst first: refund 10/10, return: no 5/5, return: yes 5/5, shipping 10/10, warranty: no 5/5, warranty: yes 5/5",
       "verdict by slice": "ADMISSIBLE"
     }
   },
@@ -29,7 +29,7 @@
       "invariance": "39/40",
       "stability": "39/40",
       "human_agreement": "80/80",
-      "slices": "PASS: worst first: refund 19/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "slices": "PASS: worst first: refund 9/10, return: no 5/5, return: yes 5/5, shipping 10/10, warranty: no 5/5, warranty: yes 5/5",
       "verdict by slice": "ADMISSIBLE"
     },
     "reason first": {
@@ -39,7 +39,7 @@
       "invariance": "37/38",
       "stability": "38/40",
       "human_agreement": "79/80",
-      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 16/16, warranty: no 10/10, warranty: yes 10/10",
+      "slices": "PASS: worst first: refund 10/10, return: no 5/5, return: yes 5/5, shipping 8/8, warranty: no 5/5, warranty: yes 5/5",
       "verdict by slice": "ADMISSIBLE"
     }
   },
@@ -51,7 +51,7 @@
       "invariance": "10/10",
       "stability": "10/10",
       "human_agreement": "16/20",
-      "slices": "UNVALIDATED: worst first: shipping 4/8, return: no 0/2, refund 4/4, warranty: no 4/4, warranty: yes 2/2; shipping is at or below the bar but too small to show it",
+      "slices": "UNVALIDATED: worst first: shipping 2/4, return: no 0/1, refund 2/2, warranty: no 2/2, warranty: yes 1/1; shipping is at or below the bar but too small to show it",
       "verdict by slice": "INADMISSIBLE"
     },
     "reason first": {
@@ -61,7 +61,7 @@
       "invariance": "10/10",
       "stability": "10/10",
       "human_agreement": "15/20",
-      "slices": "UNVALIDATED: worst first: shipping 4/8, return: no 0/2, refund 4/4, warranty: no 4/4, warranty: yes 2/2; shipping is at or below the bar but too small to show it",
+      "slices": "UNVALIDATED: worst first: shipping 2/4, return: no 0/1, refund 2/2, warranty: no 2/2, warranty: yes 1/1; shipping is at or below the bar but too small to show it",
       "verdict by slice": "INADMISSIBLE"
     }
   },
@@ -73,8 +73,8 @@
       "invariance": "40/40",
       "stability": "40/40",
       "human_agreement": "75/80",
-      "slices": "FAIL: worst first: return: no 0/10, refund 20/20, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
-      "verdict by slice": "INADMISSIBLE"
+      "slices": "UNVALIDATED: worst first: return: no 0/5, refund 10/10, return: yes 5/5, shipping 10/10, warranty: no 5/5, warranty: yes 5/5; return: no is at or below the bar but too small to show it",
+      "verdict by slice": "UNVALIDATED"
     },
     "reason first": {
       "verdict": "ADMISSIBLE",
@@ -83,7 +83,7 @@
       "invariance": "38/40",
       "stability": "40/40",
       "human_agreement": "78/80",
-      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "slices": "PASS: worst first: refund 10/10, return: no 5/5, return: yes 5/5, shipping 10/10, warranty: no 5/5, warranty: yes 5/5",
       "verdict by slice": "ADMISSIBLE"
     }
   },

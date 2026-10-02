@@ -38,17 +38,22 @@ def leaky(pass_wrong: float, fail_right: float, seed: int):  # type: ignore[no-u
 
 async def run(label: str, pass_wrong: float, fail_right: float, seeds: int) -> None:
     full_admit = seq_admit = agree = 0
+    differ: dict[str, int] = {}
     calls_full = calls_seq = 0
     for s in range(seeds):
         full = await certify_judge(judge(leaky(pass_wrong, fail_right, s)), CASES, repeats=2, seed=s)
         seq = await certify_judge(judge(leaky(pass_wrong, fail_right, s)), CASES, repeats=2, seed=s, batch_size=15)
         full_admit += full.admissible
         seq_admit += seq.admissible
-        agree += full.verdict == seq.verdict or (seq.verdict == 'UNVALIDATED' and full.verdict == 'UNVALIDATED')
+        agree += full.verdict == seq.verdict
+        if full.verdict != seq.verdict:
+            key = f'full {full.verdict} / sequential {seq.verdict}'
+            differ[key] = differ.get(key, 0) + 1
         calls_full += full.calls or 0
         calls_seq += seq.calls or 0
     print(f'{label:46} ADMISSIBLE full {full_admit:3}/{seeds}  sequential {seq_admit:3}/{seeds}  '
-          f'same verdict {agree:3}/{seeds}  calls {calls_seq / calls_full:.0%} of full')  # fmt: skip
+          f'same verdict {agree:3}/{seeds}  calls {calls_seq / calls_full:.0%} of full'
+          + (f'  differences: {differ}' if differ else ''))  # fmt: skip
 
 
 async def main() -> None:

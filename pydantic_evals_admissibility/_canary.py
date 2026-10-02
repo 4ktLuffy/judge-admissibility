@@ -13,7 +13,8 @@ for open-ended outputs, where two requests rarely share a right answer.
 
 Every verdict on real outputs passes through unchanged; the canary's result is added as
 `judge_canary_rejected`, so online it lands in Logfire next to the scores, and `CanaryMonitor`
-turns the running counts into HEALTHY, DRIFTING or UNKNOWN.
+turns the recent checks into HEALTHY, DRIFTING or UNKNOWN. A control call that raises is counted
+as an error, not a check, and never costs the real verdict.
 
 Because it is an ordinary `Evaluator`, it works with `Dataset.evaluate` and with
 `pydantic_evals.online.evaluate` alike.
@@ -37,16 +38,36 @@ Health = Literal['HEALTHY', 'DRIFTING', 'UNKNOWN']
 
 @dataclass
 class CanaryMonitor:
-    """Running counts of the canary checks, and what they say about the judge."""
+    """Counts of the canary checks, and what the recent ones say about the judge."""
 
     min_rejection: float = 0.8
     min_checks: int = 20
     rejected: int = 0
+    """Lifetime count of controls the judge rejected; `health` does not use it."""
     checks: int = 0
+    """Lifetime count of checks; `health` does not use it."""
     keep: int = 100
-    """How many recent checks to keep in `history`, for auditing what the judge passed."""
+    """How many recent checks to keep in `history`: the window `health` is judged on.
+
+    A lifetime rate would let a long healthy past outvote a judge that just broke: after 10,000
+    rejected controls, 100 passed ones barely move it. Must be at least `min_checks`.
+    """
+    errors: int = 0
+    """Control calls that raised; they are not checks, since the judge gave no verdict."""
+    last_error: BaseException | None = field(default=None, repr=False)
     history: deque[dict[str, Any]] = field(default_factory=deque, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
+
+    def __post_init__(self) -> None:
+        if self.keep < self.min_checks:
+            raise ValueError(
+                f'keep ({self.keep}) must be at least min_checks ({self.min_checks}), or health stays UNKNOWN'
+            )
+
+    def record_error(self, error: BaseException) -> None:
+        with self._lock:
+            self.errors += 1
+            self.last_error = error
 
     def record(self, rejected: bool, **detail: Any) -> None:
         with self._lock:
@@ -57,12 +78,18 @@ class CanaryMonitor:
                 self.history.popleft()
 
     def health(self) -> Health:
-        """HEALTHY when the rejection rate's lower bound clears `min_rejection`, DRIFTING when its
-        upper bound is below it, UNKNOWN until there are enough checks to say either."""
-        low, high = wilson(self.rejected, self.checks)
-        if self.checks >= self.min_checks and low >= self.min_rejection:
+        """HEALTHY when the recent rejection rate's lower bound clears `min_rejection`, DRIFTING when
+        its upper bound is below it, UNKNOWN until there are enough checks to say either.
+
+        Recent means the last `keep` checks, those in `history`.
+        """
+        with self._lock:
+            checks = len(self.history)
+            rejected = sum(bool(h['rejected']) for h in self.history)
+        low, high = wilson(rejected, checks)
+        if checks >= self.min_checks and low >= self.min_rejection:
             return 'HEALTHY'
-        if self.checks >= self.min_checks and high < self.min_rejection:
+        if checks >= self.min_checks and high < self.min_rejection:
             return 'DRIFTING'
         return 'UNKNOWN'
 
@@ -106,7 +133,11 @@ class JudgeCanary(Evaluator[Any, Any, Any]):
         if control is None:
             return verdict
         kind, output = control
-        passed, _ = assertion_of(await self.judge.evaluate_async(replace(ctx, output=output)), self.assertion)
+        try:
+            passed, _ = assertion_of(await self.judge.evaluate_async(replace(ctx, output=output)), self.assertion)
+        except Exception as error:  # the control is ours; its failure must not cost the caller the real verdict
+            self.monitor.record_error(error)
+            return verdict
         self.monitor.record(not passed, control=kind, inputs=ctx.inputs, control_output=output, live_output=ctx.output)
         canary = EvaluationReason(value=not passed, reason=f'{kind} control; judge health {self.monitor.health()}')
         if isinstance(verdict, dict):

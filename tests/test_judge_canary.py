@@ -2,8 +2,13 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+from typing import Any
+
+import pytest
 from judges import judge, oracle, yes_man
 from pydantic_evals import Case, Dataset
+from pydantic_evals.evaluators import Evaluator, EvaluatorContext
 
 from pydantic_evals_admissibility import CanaryMonitor, JudgeCanary
 
@@ -100,3 +105,37 @@ async def test_systematic_sampling_checks_exactly_every_nth_call() -> None:
     canary = JudgeCanary(judge(oracle), every=4, monitor=monitor)
     await dataset(canary).evaluate(answer, repeat=4, progress=False)  # 40 calls
     assert monitor.checks == 10
+
+
+async def test_a_control_call_that_raises_keeps_the_real_verdict() -> None:
+    @dataclass
+    class FailsOnControl(Evaluator[Any, Any, Any]):
+        def evaluate(self, ctx: EvaluatorContext[Any, Any, Any]) -> bool:
+            if ctx.output == '':
+                raise RuntimeError('provider timed out')
+            return True
+
+    monitor = CanaryMonitor(min_checks=10)
+    canary = JudgeCanary(FailsOnControl(), rate=1.0, monitor=monitor, seed=0)
+    report = await dataset(canary).evaluate(answer, progress=False)
+    assert not report.failures
+    assert all(case.assertions['FailsOnControl'].value for case in report.cases)
+    assert monitor.errors == len(CAPITALS) and monitor.checks == 0
+    assert isinstance(monitor.last_error, RuntimeError)
+
+
+def test_health_is_judged_on_recent_checks_not_the_lifetime() -> None:
+    """A long sound past must not outvote a judge that just stopped rejecting anything."""
+    monitor = CanaryMonitor(keep=100)
+    for _ in range(10_000):
+        monitor.record(True)
+    assert monitor.health() == 'HEALTHY'
+    for _ in range(100):
+        monitor.record(False)
+    assert monitor.checks == 10_100 and monitor.rejected == 10_000  # lifetime counts are kept
+    assert monitor.health() == 'DRIFTING'
+
+
+def test_a_window_smaller_than_min_checks_is_an_error() -> None:
+    with pytest.raises(ValueError, match='min_checks'):
+        CanaryMonitor(keep=5, min_checks=20)

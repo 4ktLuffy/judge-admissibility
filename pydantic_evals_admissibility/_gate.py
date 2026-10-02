@@ -8,16 +8,19 @@ when the improvement holds up.
 - **REFUSED** when the scores came from a judge whose certificate is not ADMISSIBLE: those
   scores are not evidence of anything, so there is nothing to decide.
 - **PROMOTE** when a paired sign-flip test says the mean per-case gain is above zero at the
-  chosen level and the gain exceeds `min_gain` (and, if `max_regressions` is set, few enough
-  cases got worse).
+  chosen level and the observed gain exceeds `min_gain` (a floor on the estimate, not a second
+  test; and, if `max_regressions` is set, few enough cases got worse).
 - **REJECT** when the same test says it is below zero (or, if set, too many cases got worse).
 - **INCONCLUSIVE** otherwise: the cases cannot tell the two apart. That is the expected answer
   when the candidate is the baseline.
 
 The comparison is paired: each case is compared with itself, so a hard case drags both sides
 down equally instead of adding noise to the difference. The decision uses a sign-flip
-permutation test, which is exact when the two versions are the same: each case's gain is then
-as likely to be negative as positive. A bootstrap interval of the mean gain is reported as the
+permutation test. It assumes the sharp null of no per-case difference: each case's outcomes are
+then exchangeable between the two versions, so its gain is as likely negative as positive, and
+the test is exact. That holds only if both versions ran each case equally often; with 1 run of
+the baseline against 100 of the candidate, the baseline's rate is far noisier and the gain is not
+symmetric, so `decide` refuses unequal counts. A bootstrap interval of the mean gain is reported as the
 estimate, but not used to decide, because with few binary cases it is too narrow and made
 false calls in this package's own A/A test.
 """
@@ -37,7 +40,11 @@ Decision = Literal['PROMOTE', 'REJECT', 'INCONCLUSIVE', 'REFUSED']
 @dataclass(frozen=True)
 class GateRules:
     min_gain: float = 0.0
-    """The interval's lower bound on the mean per-case gain must exceed this to promote."""
+    """The observed mean per-case gain must exceed this to promote; the test is against zero.
+
+    It is a floor on the point estimate, not a test that the true gain exceeds `min_gain`: a
+    candidate is promoted when the gain is shown to be above zero and the estimate is above this.
+    """
     max_regressions: float | None = None
     """Share of cases allowed to get worse in a promoted candidate; None to not check.
 
@@ -99,7 +106,8 @@ def decide(
 
     Args:
         baseline: Case name to the outcomes the current version got on it.
-        candidate: The same for the proposed version. Must cover the same cases.
+        candidate: The same for the proposed version. Must cover the same cases, each with as
+            many outcomes as the baseline has for it: the sign-flip test is exact only then.
         certificate: The certificate of the judge that produced the outcomes. Leave it out only
             when the outcomes come from ground truth rather than a judge.
         rules: The thresholds.
@@ -108,11 +116,21 @@ def decide(
     if certificate is not None and not certificate.admissible:
         failing = ', '.join(c.name for c in certificate.checks if c.status != 'PASS')
         return GateResult('REFUSED', f'the judge is {certificate.verdict} ({failing}); its scores are not evidence')
+    if not baseline or not candidate:
+        raise ValueError('there are no cases to compare')
     if set(baseline) != set(candidate):
         raise ValueError('baseline and candidate must be scored on the same cases')
     names = sorted(baseline)
     if any(not baseline[n] or not candidate[n] for n in names):
         raise ValueError('every case needs at least one outcome on each side')
+    unequal = [n for n in names if len(baseline[n]) != len(candidate[n])]
+    if unequal:
+        n = unequal[0]
+        raise ValueError(
+            f'every case needs the same number of outcomes on each side ({len(unequal)} differ; '
+            f'{n!r} has {len(baseline[n])} baseline and {len(candidate[n])} candidate): with unequal counts '
+            'the sign-flip test is not exact'
+        )
     gains = {n: _rate(candidate[n]) - _rate(baseline[n]) for n in names}
     values = [gains[n] for n in names]
     mean = sum(values) / len(values)
@@ -123,8 +141,9 @@ def decide(
     low = means[int(0.025 * rules.resamples)]
     high = means[min(rules.resamples - 1, int(0.975 * rules.resamples))]
 
-    # Sign-flip: under "no difference" each case's gain is as likely negated, so the observed mean
-    # is compared with the means of randomly sign-flipped gains. +1 counts the observed labelling.
+    # Sign-flip: under the sharp null (no per-case difference, equal counts) each case's gain is as
+    # likely negated, so the observed mean is compared with the means of randomly sign-flipped gains.
+    # +1 counts the observed labelling.
     observed = sum(values)
     at_least = at_most = 1
     for _ in range(rules.resamples):
@@ -172,15 +191,22 @@ def detectable_gain(
     gains: Sequence[float] = (0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5),
     seed: int = 0,
 ) -> float | None:
-    """The smallest uniform gain per case that `decide` would promote at least `power` of the time.
+    """The smallest shift in per-case pass rate that `decide` would promote at least `power` of the time.
 
     Answers "can this dataset see the improvement I'm hoping for?" before an optimizer runs. Each
     case's observed pass rate stands in for its true rate; a candidate is simulated as that rate
-    plus `gain` (capped at 1), with the same number of repeats, and decided against a fresh
-    baseline draw. Returns None if no gain in `gains` is detected reliably enough.
+    plus the shift, capped at 1, with the same number of repeats, and decided against a fresh
+    baseline draw. Returns the shift, or None if no shift in `gains` is detected reliably enough.
+
+    The shift is not the mean improvement it simulated: the cap takes gain away from cases already
+    near 1 (a case at 0.95 shifted by 0.2 gains 0.05), so the simulated mean gain is
+    `mean(min(1, p + shift) - p)` over the cases' rates, at most the shift. On a dataset with many
+    near-perfect cases the improvement actually detected is smaller than the number returned.
     """
     rules = rules or GateRules(resamples=1000)
     rng = random.Random(seed)
+    if not baseline or any(not outcomes for outcomes in baseline.values()):
+        raise ValueError('the baseline needs at least one case, each with at least one outcome')
     rates = {name: _rate(outcomes) for name, outcomes in baseline.items()}
     n = repeats or max(len(o) for o in baseline.values())
 

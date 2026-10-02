@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import dataclasses
 import random
+import re
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from typing import Any, Literal
@@ -25,13 +26,20 @@ from typing import Any, Literal
 from ._cases import JudgeCase
 from ._certify import DEFAULT_THRESHOLDS, Certificate, Thresholds, certify_judge
 from ._controls import Control, ControlKind, MismatchedOutput
-from ._diagnose import _ABOUT_CORRECTNESS, _ABOUT_STYLE, diagnose
+from ._diagnose import _ABOUT_STYLE, diagnose
 
 RubricKind = Literal['correctness', 'style']
 
 
 def _is_prose(value: Any) -> bool:
-    return isinstance(value, str) and ' ' in value.strip()
+    """Words, not a timestamp or an id: at least three tokens, two of them alphabetic words.
+
+    `"2026-10-02 10:00:00"` and `"ACME 007"` are not prose; `"You asked for May."` is.
+    """
+    if not isinstance(value, str):
+        return False
+    tokens = value.split()
+    return len(tokens) >= 3 and sum(t.strip('.,;:!?\'"()').isalpha() for t in tokens) >= 2
 
 
 def map_prose(output: Any, change: Callable[[str], str]) -> Any | None:
@@ -77,10 +85,17 @@ class ProseWhitespace:
         return map_prose(case.output, lambda text: text.replace(' ', '  ') + '\n')
 
 
+_ABOUT_BEING_RIGHT = re.compile(r'\b(correct\w*|accura\w*|right|true|factual\w*|valid|wrong|incorrect)\b', re.I)
+
+
 def rubric_kind(rubric: str) -> RubricKind:
-    """'style' when the rubric talks about style, tone or format and not about being right."""
+    """'style' when the rubric talks about style, tone or format and not about being right.
+
+    A guess from the rubric's words, reported with the result; pass `controls=` to decide it
+    yourself. The word "answer" says nothing either way ("the answer is friendly" is about style).
+    """
     style = bool(_ABOUT_STYLE.search(rubric))
-    correctness = bool(_ABOUT_CORRECTNESS.search(rubric))
+    correctness = bool(_ABOUT_BEING_RIGHT.search(rubric))
     return 'style' if style and not correctness else 'correctness'
 
 
@@ -144,15 +159,28 @@ def _judges(dataset: Any) -> list[tuple[str, Any, list[Any]]]:
     for judge in dataset.evaluators:
         if isinstance(judge, LLMJudge):
             found.append(('dataset', judge, list(dataset.cases)))
-    by_rubric: dict[tuple[Any, ...], tuple[Any, list[Any]]] = {}
+    by_config: dict[tuple[Any, ...], tuple[Any, list[Any]]] = {}
     for case in dataset.cases:
         for judge in case.evaluators:
             if isinstance(judge, LLMJudge):
-                key = (judge.rubric, judge.include_input, judge.include_expected_output)
-                by_rubric.setdefault(key, (judge, []))[1].append(case)
-    for judge, cases in by_rubric.values():
-        found.append((f'{len(cases)} case(s): ' + ', '.join(c.name for c in cases[:3]), judge, cases))
+                by_config.setdefault(_identity(judge), (judge, []))[1].append(case)
+    for judge, cases in by_config.values():
+        found.append((f'{len(cases)} case(s): ' + ', '.join(str(c.name) for c in cases[:3]), judge, cases))
     return found
+
+
+def _identity(judge: Any) -> tuple[Any, ...]:
+    """Case-level judges are certified together only when they are the same judge in every setting."""
+    model = judge.model if isinstance(judge.model, str | type(None)) else id(judge.model)
+    return (
+        judge.rubric,
+        model,
+        judge.include_input,
+        judge.include_expected_output,
+        repr(judge.model_settings),
+        repr(judge.score),
+        repr(judge.assertion),
+    )
 
 
 async def certify_dataset(
@@ -181,13 +209,33 @@ async def certify_dataset(
         if model is not None:
             judge = dataclasses.replace(judge, model=model)
         kind = rubric_kind(judge.rubric)
+        position = {id(c): i for i, c in enumerate(dataset.cases)}
         known = [
-            JudgeCase(c.name, c.inputs, c.expected_output, expected_output=c.expected_output, metadata=c.metadata)
+            JudgeCase(
+                c.name or f'case {position[id(c)]}',  # unnamed cases are valid in a Dataset
+                c.inputs,
+                c.expected_output,
+                expected_output=c.expected_output,
+                metadata=c.metadata,
+            )
             for c in cases
             if c.expected_output is not None
         ]
         label = f'{scope}: {judge.rubric[:60]}'
         flags = {'include_input': judge.include_input, 'include_expected_output': judge.include_expected_output}
+        if judge.assertion is False:
+            results.append(
+                DatasetJudgeCertificate(
+                    label,
+                    judge.rubric,
+                    kind,
+                    len(known),
+                    None,
+                    skipped='scores only (assertion=False): there is no pass/fail verdict to certify',
+                    **flags,
+                )  # fmt: skip
+            )
+            continue
         if len(known) < min_cases:
             results.append(
                 DatasetJudgeCertificate(

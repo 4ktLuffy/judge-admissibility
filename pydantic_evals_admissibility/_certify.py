@@ -71,9 +71,13 @@ class Check:
     threshold: float
     detail: str = ''
     errors: int = 0
+    estimate: float | None = None
+    """The statistic decided on when it is not `successes / trials` (Cohen's kappa)."""
 
     @property
     def rate(self) -> float | None:
+        if self.estimate is not None:
+            return self.estimate
         return self.successes / self.trials if self.trials else None
 
 
@@ -98,6 +102,8 @@ class Certificate:
     calls: int | None = None
     """Judge calls made; fewer than `planned` when a sequential certificate stopped early."""
     planned: int | None = None
+    looks: int = 1
+    """How many times the evidence was looked at with the chance to stop (sequential batches)."""
 
     @property
     def admissible(self) -> bool:
@@ -161,11 +167,13 @@ class Certificate:
                     'threshold': c.threshold,
                     'errors': c.errors,
                     'detail': c.detail,
+                    'estimate': c.estimate,
                 }
                 for c in self.checks
             ],
             'calls': self.calls,
             'planned': self.planned,
+            'looks': self.looks,
         }
 
     @classmethod
@@ -184,14 +192,23 @@ class Certificate:
                 c['threshold'],
                 c.get('detail', ''),
                 c.get('errors', 0),
-            )  # fmt: skip
+                c.get('estimate'),
+            )
             for c in data['checks']
         )
         judgments = tuple(
             Judgment(j['case'], j['role'], j['output'], j['passed'], j.get('reason'), j.get('error'))
             for j in data.get('judgments', ())
         )
-        return cls(data['verdict'], checks, judgments, data.get('judge', ''), data.get('calls'), data.get('planned'))
+        return cls(
+            data['verdict'],
+            checks,
+            judgments,
+            data.get('judge', ''),
+            data.get('calls'),
+            data.get('planned'),
+            data.get('looks', 1),
+        )
 
 
 def assertion_of(output: Any, assertion: str | None = None) -> tuple[bool, str | None]:
@@ -265,12 +282,27 @@ def _check(
     *,
     detail: str = '',
     errors: int = 0,
-    z: float = 1.96,
+    z_fail: float = 1.96,
+    max_missing: float = 0.1,
 ) -> Check:
-    interval = wilson(successes, trials, z)
-    low, high = interval
-    if trials < minimum:
+    """PASS on the 95% lower bound; FAIL on an upper bound widened for every other chance to fail.
+
+    A certificate needs every check to pass, so a PASS needs no correction for the number of
+    checks. It is INADMISSIBLE if any check fails, so the FAILs share one error budget: `z_fail`
+    is widened for the number of checks and looks. Errored judgments are left out of the rate, and
+    more than `max_missing` of them leaves the check UNVALIDATED: a judge that errors on the hard
+    cases must not pass on the easy ones.
+    """
+    interval = wilson(successes, trials)
+    # The FAIL bound is exact (Clopper-Pearson): Wilson's undercoverage at small n leaked through
+    # the split budget (3.4% false FAILs at the bar over four looks, against 2.5%).
+    alpha_fail = 2 * (1 - NormalDist().cdf(z_fail))
+    low, high = interval[0], clopper_pearson(successes, trials, alpha_fail)[1]
+    if errors > max_missing * (trials + errors):
         status: CheckStatus = 'UNVALIDATED'
+        detail = (detail + '; ' if detail else '') + f'{errors} of {trials + errors} judgments errored'
+    elif trials < minimum:
+        status = 'UNVALIDATED'
         detail = (detail + '; ' if detail else '') + f'fewer than {minimum} judgments'
     elif low >= threshold:
         status = 'PASS'
@@ -319,6 +351,10 @@ async def certify_judge(
     """
     if repeats < 1:
         raise ValueError(f'repeats must be >= 1, got {repeats}')
+    if max_concurrency < 1 or (batch_size is not None and batch_size < 1):
+        raise ValueError('max_concurrency and batch_size must be >= 1')
+    if not cases:
+        raise ValueError('no cases to certify the judge on')
     names = [case.name for case in cases]
     if len(set(names)) != len(names):
         raise ValueError('case names must be unique: human labels are matched to cases by name')
@@ -354,31 +390,34 @@ async def _certify_sequentially(
 
     A judge that is broken shows it fast: after the first batch it is already failing controls
     beyond any doubt, and there is no reason to pay for the rest. A judge that is doing well is
-    not stopped early: it runs to the end and is judged there with the usual interval, so stopping
-    early costs a sound judge little. Early failures use a wider interval, the confidence level
-    split across the looks (Bonferroni), so peeking does not fail a sound judge by chance.
+    not stopped early: it runs to the end. A FAIL at any look, the last included, uses an interval
+    widened for the number of looks (Bonferroni), so peeking does not raise the chance of failing a
+    sound judge; a PASS, only possible at the end, uses the usual interval.
     (Stopping early for success too was tried and rejected: it certified sound judges less often
     for a small saving in calls.)
     """
     order = [case.name for case in cases]
     rng.shuffle(order)
     batches = [order[i : i + batch_size] for i in range(0, len(order), batch_size)]
-    z_early = NormalDist().inv_cdf(1 - 0.05 / (2 * len(batches)))
     judgments: list[Judgment] = []
     verdict: Verdict = 'UNVALIDATED'
     checks: tuple[Check, ...] = ()
-    for index, batch in enumerate(batches):
+    for batch in batches:
         names = set(batch)
         todo = [(c, out, role) for c, out, role in planned if c.name in names]
         judgments += await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in todo))
-        if index < len(batches) - 1:
-            verdict, checks = _assess(judgments, repeats, thresholds, z_early, slices=slices)
-            if verdict == 'INADMISSIBLE':
-                break
-        else:
-            verdict, checks = _assess(judgments, repeats, thresholds, slices=slices)
+        # Every look, the last included, spends its share of the FAIL budget.
+        verdict, checks = _assess(judgments, repeats, thresholds, looks=len(batches), slices=slices)
+        if verdict == 'INADMISSIBLE':
+            break
     return Certificate(
-        verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(judgments), planned=len(planned)
+        verdict,
+        checks,
+        tuple(judgments),
+        judge=_describe(judge),
+        calls=len(judgments),
+        planned=len(planned),
+        looks=len(batches),
     )
 
 
@@ -391,13 +430,22 @@ def recertify(
     """Decide a certificate again from its saved judgments, without calling the judge.
 
     For new thresholds or a new `slices` mapping (case name to kind of case) on a certificate
-    already paid for, for example one rebuilt with `Certificate.from_dict`.
+    already paid for, for example one rebuilt with `Certificate.from_dict`. A sequential
+    certificate keeps its number of looks, so its error budget is not spent twice.
     """
     refs = [j.role for j in certificate.judgments if j.role.startswith('reference#')]
     repeats = max((int(role.split('#')[1]) + 1 for role in refs), default=1)
-    verdict, checks = _assess(certificate.judgments, repeats, thresholds, slices=dict(slices) if slices else None)
+    verdict, checks = _assess(
+        certificate.judgments, repeats, thresholds, looks=certificate.looks, slices=dict(slices) if slices else None
+    )
     return Certificate(
-        verdict, checks, certificate.judgments, certificate.judge, certificate.calls, certificate.planned
+        verdict,
+        checks,
+        certificate.judgments,
+        certificate.judge,
+        certificate.calls,
+        certificate.planned,
+        certificate.looks,
     )
 
 
@@ -431,15 +479,22 @@ def _assess(
     judgments: Sequence[Judgment],
     repeats: int,
     thresholds: Thresholds,
-    z: float = 1.96,
     *,
+    looks: int = 1,
     slices: dict[str, str] | None = None,
 ) -> tuple[Verdict, tuple[Check, ...]]:
-    """Every check, and the verdict, from the judgments made so far."""
+    """Every check, and the verdict, from the judgments made so far.
+
+    The unit of evidence is the case. Repeats of one case share its difficulty, so they are not
+    new evidence: acceptance and slices use each case's first judgment, and the repeats are used
+    only for stability. Control families (`empty_output`, `mismatched_output`, ...) are decided
+    separately, since a pooled rate can hide one that always fails.
+    """
     references: dict[str, list[Judgment]] = defaultdict(list)
     for judgment in judgments:
         if judgment.role.startswith('reference#'):
             references[judgment.case].append(judgment)
+    first = [j for js in references.values() for j in js if j.role == 'reference#0']
 
     def majority(case: str) -> bool | None:
         verdicts = [j.passed for j in references[case] if j.passed is not None]
@@ -447,92 +502,62 @@ def _assess(
             return None
         return sum(verdicts) * 2 > len(verdicts)
 
-    checks: list[Check] = []
-    reference_judgments = [j for js in references.values() for j in js]
-    checks.append(
+    def family(prefix: str) -> dict[str, list[Judgment]]:
+        out: dict[str, list[Judgment]] = defaultdict(list)
+        for j in judgments:
+            if j.role.startswith(prefix) and (prefix == 'must_fail:' or majority(j.case) is not None):
+                out[j.role.split(':', 1)[1]].append(j)
+        return out
+
+    must_fail, must_hold = family('must_fail:'), family('must_hold:')
+    labelled = [j for j in judgments if j.role.startswith('human:')]
+    slice_names = sorted(set(slices[c] for c in references if c in slices)) if slices else []
+    # Every test that can fail the certificate, at every look, shares one 2.5% upper tail.
+    tests = 1 + len(must_fail) + len(must_hold) + len(slice_names) + (repeats > 1) + bool(labelled)
+    alpha_fail = 0.05 / (tests * looks)
+    z_fail = NormalDist().inv_cdf(1 - alpha_fail / 2)
+
+    checks: list[Check] = [
         _check(
             'acceptance',
-            sum(j.passed is True for j in reference_judgments),
-            len(reference_judgments),
+            sum(j.passed is True for j in first),
+            sum(j.passed is not None for j in first),
             thresholds.min_acceptance,
             thresholds.min_trials,
-            z=z,
-            errors=sum(j.error is not None for j in reference_judgments),
-        )
-    )
-
-    must_fail = [j for j in judgments if j.role.startswith('must_fail:')]
-    checks.append(
-        _check(
-            'rejection',
-            sum(j.passed is False for j in must_fail),
-            len(must_fail),
-            thresholds.min_rejection,
-            thresholds.min_trials,
-            z=z,
-            detail=_breakdown(must_fail, lambda j: j.passed is False),
-            errors=sum(j.error is not None for j in must_fail),
-        )
-    )
-
-    must_hold = [j for j in judgments if j.role.startswith('must_hold:')]
-    held = [j for j in must_hold if majority(j.case) is not None]
-    checks.append(
-        _check(
+            z_fail=z_fail,
+            detail='first judgment of each case' if repeats > 1 else '',
+            errors=sum(j.passed is None for j in first),
+        ),
+        _families('rejection', must_fail, lambda j: j.passed is False, thresholds.min_rejection, thresholds, z_fail),
+        _families(
             'invariance',
-            sum(j.passed is not None and j.passed == majority(j.case) for j in held),
-            len(held),
+            must_hold,
+            lambda j: j.passed == majority(j.case),
             thresholds.min_invariance,
-            thresholds.min_trials,
-            z=z,
-            detail=_breakdown(held, lambda j: j.passed == majority(j.case)),
-            errors=sum(j.error is not None for j in held),
-        )
-    )
-
+            thresholds,
+            z_fail,
+        ),
+    ]
     if slices:
-        checks.append(_slice_check(reference_judgments, slices, thresholds.min_acceptance, z))
+        checks.append(_slice_check(first, slices, slice_names, thresholds.min_acceptance, alpha_fail))
 
     if repeats > 1:
-        stable = [
-            all(j.passed is not None for j in js) and len({j.passed for j in js}) == 1 for js in references.values()
-        ]
+        complete = [js for js in references.values() if all(j.passed is not None for j in js)]
         checks.append(
             _check(
                 'stability',
-                sum(stable),
-                len(stable),
+                sum(len({j.passed for j in js}) == 1 for js in complete),
+                len(complete),
                 thresholds.min_stability,
                 thresholds.min_trials,
-                z=z,
+                z_fail=z_fail,
                 detail=f'{repeats} judgments per case',
+                errors=len(references) - len(complete),  # a case with an errored repeat is missing, not unstable
             )
         )
 
-    labelled = [j for j in judgments if j.role.startswith('human:')]
     if labelled:
-        pairs = [(j.role == 'human:1', j.passed) for j in labelled if j.passed is not None]
-        kappa = cohen_kappa(pairs)  # type: ignore[arg-type]
-        agree = sum(a == b for a, b in pairs)
-        interval = wilson(agree, len(pairs), z)
-        if kappa is None or len(pairs) < thresholds.min_trials:
-            status: CheckStatus = 'UNVALIDATED'
-            detail = 'kappa undefined: labels or verdicts are all one value' if kappa is None else ''
-        else:
-            status = 'PASS' if kappa >= thresholds.min_kappa else 'FAIL'
-            detail = f'kappa={kappa:.2f}'
-        checks.append(
-            Check(
-                'human_agreement',
-                status,
-                agree,
-                len(pairs),
-                interval,
-                thresholds.min_kappa,
-                detail,
-                errors=len(labelled) - len(pairs),
-            )
-        )
+        checks.append(_agreement(labelled, thresholds, alpha_fail))
 
     if any(check.status == 'FAIL' for check in checks):
         verdict: Verdict = 'INADMISSIBLE'
@@ -543,40 +568,129 @@ def _assess(
     return verdict, tuple(checks)
 
 
-def _slice_check(references: Sequence[Judgment], slices: dict[str, str], threshold: float, z: float) -> Check:
+def _families(
+    name: str,
+    families: dict[str, list[Judgment]],
+    ok: Callable[[Judgment], bool],
+    threshold: float,
+    thresholds: Thresholds,
+    z_fail: float,
+) -> Check:
+    """One check per control family, reported as one row: it passes only if every family passes."""
+    parts = {
+        family: _check(
+            family,
+            sum(j.passed is not None and ok(j) for j in js),
+            sum(j.passed is not None for j in js),
+            threshold,
+            thresholds.min_trials,
+            z_fail=z_fail,
+            errors=sum(j.passed is None for j in js),
+        )
+        for family, js in families.items()
+    }
+    successes = sum(c.successes for c in parts.values())
+    trials = sum(c.trials for c in parts.values())
+    statuses = {c.status for c in parts.values()}
+    status: CheckStatus = 'FAIL' if 'FAIL' in statuses else 'PASS' if statuses == {'PASS'} else 'UNVALIDATED'
+    detail = ', '.join(
+        f'{family} {c.successes}/{c.trials}' + ('' if c.status == 'PASS' else f' {c.status}')
+        for family, c in parts.items()
+    )
+    if not parts:
+        detail = 'no controls'
+    return Check(
+        name, status, successes, trials, wilson(successes, trials), threshold, detail,
+        sum(c.errors for c in parts.values()),
+    )  # fmt: skip
+
+
+def _agreement(labelled: Sequence[Judgment], thresholds: Thresholds, alpha_fail: float) -> Check:
+    """Cohen's kappa against human labels, decided on an interval resampled by case.
+
+    Labelled outputs of one case are not independent, so the bootstrap resamples cases.
+    """
+    done = [j for j in labelled if j.passed is not None]
+    errors = len(labelled) - len(done)
+    by_case: dict[str, list[tuple[bool, bool]]] = defaultdict(list)
+    for j in done:
+        by_case[j.case].append((j.role == 'human:1', bool(j.passed)))
+    pairs = [p for ps in by_case.values() for p in ps]
+    kappa = cohen_kappa(pairs)
+    agree = sum(a == b for a, b in pairs)
+    if errors > 0.1 * len(labelled):
+        status: CheckStatus = 'UNVALIDATED'
+        detail, interval = f'{errors} of {len(labelled)} labelled judgments errored', (0.0, 1.0)
+    elif kappa is None or len(pairs) < thresholds.min_trials:
+        status, interval = 'UNVALIDATED', (0.0, 1.0)
+        detail = 'kappa undefined: no variation in labels or verdicts' if kappa is None else 'too few labels'
+    else:
+        interval = _bootstrap_kappa(list(by_case.values()), 0.05)
+        low, high = interval[0], _bootstrap_kappa(list(by_case.values()), alpha_fail)[1]
+        status = 'PASS' if low >= thresholds.min_kappa else 'FAIL' if high < thresholds.min_kappa else 'UNVALIDATED'
+        detail = f'kappa={kappa:.2f}, interval by case; agreement {agree}/{len(pairs)}'
+    return Check(
+        'human_agreement', status, agree, len(pairs), interval, thresholds.min_kappa, detail, errors, estimate=kappa
+    )
+
+
+def _bootstrap_kappa(
+    clusters: Sequence[Sequence[tuple[bool, bool]]], alpha: float, resamples: int = 2000
+) -> tuple[float, float]:
+    """Percentile interval for kappa, resampling whole cases; undefined resamples are dropped."""
+    rng = random.Random(0)
+    values = []
+    for _ in range(resamples):
+        sample = [p for _ in clusters for p in clusters[rng.randrange(len(clusters))]]
+        k = cohen_kappa(sample)
+        if k is not None:
+            values.append(k)
+    if not values:
+        return 0.0, 1.0
+    values.sort()
+    lo = values[max(0, int(alpha / 2 * len(values)))]
+    hi = values[min(len(values) - 1, int((1 - alpha / 2) * len(values)))]
+    return lo, hi
+
+
+def _slice_check(
+    first: Sequence[Judgment], slices: dict[str, str], names: Sequence[str], threshold: float, alpha: float
+) -> Check:
     """Acceptance on each kind of case; fails when one kind is shown to be below the bar.
 
-    It looks for a blind spot, it does not certify each slice. FAIL: a slice is shown to be below
-    the bar. UNVALIDATED: a slice is at or below the bar but has too few cases to show it. PASS:
-    every slice is above the bar and none is shown below it. To certify a slice, certify its cases
-    alone.
+    One judgment per case, as for acceptance. It looks for a blind spot, it does not certify each
+    slice. FAIL: a slice is shown to be below the bar. UNVALIDATED: a slice is at or below the
+    bar but too small to show it, or has no completed judgment. PASS: no slice is shown or
+    estimated below the bar. To certify one kind, certify its cases alone. Each slice's FAIL is
+    decided with an exact interval at its share `alpha` of the error budget.
     """
-    counts: dict[str, list[int]] = defaultdict(lambda: [0, 0])
-    for j in references:
-        if j.passed is not None:
-            counts[slices[j.case]][0] += j.passed
-            counts[slices[j.case]][1] += 1
-    # One test per slice: split the level across them, as `GateRules.for_candidates` does. Exact
-    # intervals, because Wilson's undercoverage on small slices failed a sound judge 6.2% of the time.
-    alpha = 2 * (1 - NormalDist().cdf(z)) / max(len(counts), 1)
+    counts: dict[str, list[int]] = {name: [0, 0] for name in names}
+    errors = 0
+    for j in first:
+        if j.case not in slices:
+            continue
+        if j.passed is None:
+            errors += 1
+            continue
+        counts[slices[j.case]][0] += j.passed
+        counts[slices[j.case]][1] += 1
+    if not counts:
+        return Check('slices', 'UNVALIDATED', 0, 0, (0.0, 1.0), threshold, 'no judgments yet')
     bounds = {name: clopper_pearson(k, n, alpha) for name, (k, n) in counts.items()}
     order = sorted(counts, key=lambda name: (bounds[name][1], name))
-    if not order:
-        return Check('slices', 'UNVALIDATED', 0, 0, (0.0, 1.0), threshold, 'no judgments yet')
     worst = order[0]
-    k, n = counts[worst]
     detail = 'worst first: ' + ', '.join(f'{name} {counts[name][0]}/{counts[name][1]}' for name in order)
-    low = [name for name in order if counts[name][0] <= threshold * counts[name][1]]
+    low = [name for name in order if counts[name][1] == 0 or counts[name][0] <= threshold * counts[name][1]]
     status: CheckStatus
-    if bounds[worst][1] < threshold:
+    if counts[worst][1] and bounds[worst][1] < threshold:
         status = 'FAIL'
     elif low:
         status, worst = 'UNVALIDATED', low[0]
-        k, n = counts[worst]
         detail += f'; {worst} is at or below the bar but too small to show it'
     else:
         status = 'PASS'
-    return Check('slices', status, k, n, bounds[worst], threshold, detail)
+    k, n = counts[worst]
+    return Check('slices', status, k, n, clopper_pearson(k, n), threshold, detail, errors)
 
 
 def _breakdown(judgments: Sequence[Judgment], ok: Any) -> str:

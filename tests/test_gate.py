@@ -76,6 +76,24 @@ def test_mismatched_cases_are_an_error() -> None:
         decide({'a': [True]}, {'b': [True]})
 
 
+def test_unequal_repeats_per_case_are_an_error() -> None:
+    """1 baseline run against 100 candidate runs makes the gain asymmetric under no difference.
+
+    Simulated with equal true quality, the sign-flip test then acted on most comparisons.
+    """
+    rng = random.Random(0)
+    d = difficulties()
+    baseline = {f'c{i}': [rng.random() < p] for i, p in enumerate(d)}
+    candidate = {f'c{i}': [rng.random() < p for _ in range(100)] for i, p in enumerate(d)}
+    with pytest.raises(ValueError, match='same number of outcomes'):
+        decide(baseline, candidate, rules=FAST)
+
+
+def test_no_cases_are_an_error() -> None:
+    with pytest.raises(ValueError, match='no cases'):
+        decide({}, {})
+
+
 def test_real_aa_the_two_baseline_runs_are_not_told_apart() -> None:
     """The same prompt, run twice on Codex: 11 of 40 questions changed. The gate must not act on it."""
     path = Path(__file__).parent.parent / 'results' / 'task_baseline.json'

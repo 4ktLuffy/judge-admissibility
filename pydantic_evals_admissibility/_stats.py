@@ -18,7 +18,19 @@ def wilson(successes: int, trials: int, z: float = 1.96) -> tuple[float, float]:
 
 
 def _binomial_cdf(k: int, n: int, p: float) -> float:
-    return sum(math.comb(n, i) * p**i * (1 - p) ** (n - i) for i in range(k + 1))
+    """P(X <= k) for X ~ Binomial(n, p), summed in log space.
+
+    The direct form, `math.comb(n, i) * p**i * ...`, overflows a float once `comb` passes 1e308
+    (from about n = 1030), so each term is a log, and the sum is a log-sum-exp.
+    """
+    if k >= n or p <= 0.0:
+        return 1.0
+    if p >= 1.0:
+        return 0.0
+    log_p, log_q, log_n = math.log(p), math.log1p(-p), math.lgamma(n + 1)
+    terms = [log_n - math.lgamma(i + 1) - math.lgamma(n - i + 1) + i * log_p + (n - i) * log_q for i in range(k + 1)]
+    top = max(terms)
+    return min(1.0, math.exp(top) * sum(math.exp(t - top) for t in terms))
 
 
 def clopper_pearson(successes: int, trials: int, alpha: float = 0.05) -> tuple[float, float]:

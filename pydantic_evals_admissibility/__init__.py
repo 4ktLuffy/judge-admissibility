@@ -38,6 +38,7 @@ from ._pairwise import (
     both_orders,
     certify_pairwise,
     first_position_rate,
+    recertify_pairwise,
 )
 from ._reports import compare_reports, outcomes
 from ._stats import cohen_kappa, wilson
@@ -68,6 +69,7 @@ __all__ = (
     'outcomes',
     'finish_canary',
     'first_position_rate',
+    'recertify_pairwise',
     'promote',
     'start_canary',
     'EmptyOutput',

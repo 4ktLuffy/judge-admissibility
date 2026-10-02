@@ -74,8 +74,9 @@ def start_canary(
 ) -> int:
     """Serve `value` to `weight` of traffic under `label`, the rest staying on `production`.
 
-    Returns the candidate's version. Which arm served a request is `resolved.label` from
-    `logfire.var(...).get(targeting_key=...)`, so outcomes can be attributed to arms.
+    Returns the candidate's version; pass it to `finish_canary` as `expected_version`. Which arm
+    served a request is `resolved.label` from `logfire.var(...).get(targeting_key=...)`, so
+    outcomes can be attributed to arms.
     """
     import logfire
     from logfire.variables.config import LabeledValue, LatestVersion, Rollout
@@ -104,6 +105,7 @@ def finish_canary(
     result: GateResult,
     variable: str,
     *,
+    expected_version: int,
     label: str = 'candidate',
     production: str = 'production',
     provider: Any = None,
@@ -112,6 +114,11 @@ def finish_canary(
 
     INCONCLUSIVE leaves it running: more traffic is the only thing that can decide it. Returns
     `'promoted'`, `'rolled back'` or `'continued'`, and records the decision on a span.
+
+    `expected_version` is the version `start_canary` returned. `label` is mutable: if another
+    canary started since, it points at a candidate `result` never saw, and acting on it would
+    promote, or roll back, the wrong version. So this raises ValueError, changing nothing, when
+    `label` no longer points at `expected_version`.
     """
     import logfire
     from logfire.variables.config import Rollout
@@ -126,7 +133,16 @@ def finish_canary(
         'gate.p_worse': result.p_worse,
         'gate.requests': result.cases,
     }
-    with logfire.span('canary {variable}: {gate.decision}', variable=variable, **attributes):
+    with logfire.span(
+        'canary {variable}: {gate.decision}', variable=variable, expected_version=expected_version, **attributes
+    ):
+        serving = current.labels.get(label)
+        if serving is None or serving.version != expected_version:
+            found = 'no version' if serving is None else f'version {serving.version}'
+            raise ValueError(
+                f'{variable!r} label {label!r} points at {found}, not the decided version {expected_version}; '
+                'the decision is stale, so nothing was changed'
+            )
         if result.decision == 'INCONCLUSIVE':
             return 'continued'
         labels = dict(current.labels)
