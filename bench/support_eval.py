@@ -3,9 +3,10 @@
     PYTHONPATH=.:bench <venv>/bin/python bench/support_eval.py
 
 1. The agent (Codex `gpt-5.6-luna`, no reasoning) answers the 40 support questions twice.
-2. Three `LLMJudge`s are certified on those 80 real replies, ground truth as the labels:
+2. Four `LLMJudge`s are certified on those 80 real replies, ground truth as the labels:
    weak (no reasoning, sees the question), strong (reasoning effort high, sees the question),
-   and strong but default (`include_input=False`). Sequential, batches of 10.
+   strong but default (`include_input=False`), and `gpt-reserve` (no reasoning, sees the
+   question). Sequential, batches of 10.
 3. Position bias: a `PairwiseJudge`, weak and strong, compares the right answer with a plausible
    wrong one (the refund without the restocking fee, the other side of the shipping threshold,
    the opposite yes/no), each pair both ways round.

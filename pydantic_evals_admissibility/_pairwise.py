@@ -163,8 +163,8 @@ def both_orders(compare: Compare) -> Callable[[Any, Any, Any], Awaitable[Choice 
     """Ask both ways round and answer only when the two agree; otherwise None (abstain).
 
     The standard defence against position bias, at twice the calls. On the Codex pairwise judge
-    in this package's README it raised accuracy from 0.77 (83/108 single presentations) to 0.85
-    (35/41) on the pairs it answered, abstaining on 13 of 54.
+    in this package's README it raised accuracy from 0.85 (92/108 single presentations) to 0.90
+    (43/48) on the pairs it answered, abstaining on 6 of 54.
     """
 
     async def wrapped(inputs: Any, a: Any, b: Any) -> Choice | None:

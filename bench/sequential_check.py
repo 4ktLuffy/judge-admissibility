@@ -1,6 +1,6 @@
 """Does stopping early save calls without certifying worse judges? Scripted judges, many seeds.
 
-PYTHONPATH=.:tests <venv>/bin/python bench/sequential_check.py
+PYTHONPATH=.:bench:tests <venv>/bin/python bench/sequential_check.py
 """
 
 from __future__ import annotations

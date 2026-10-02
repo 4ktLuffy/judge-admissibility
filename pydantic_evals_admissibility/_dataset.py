@@ -101,6 +101,39 @@ class DatasetJudgeCertificate:
     certificate: Certificate | None
     advice: list[str] = field(default_factory=list)
     skipped: str | None = None
+    include_input: bool = False
+    include_expected_output: bool = False
+
+    def to_dict(self) -> dict[str, Any]:
+        """JSON-ready, with every verdict; `from_dict` rebuilds it to re-read or re-diagnose later."""
+        out: dict[str, Any] = {
+            'label': self.label,
+            'rubric': self.rubric,
+            'kind': self.kind,
+            'cases': self.cases,
+            'include_input': self.include_input,
+            'include_expected_output': self.include_expected_output,
+            'skipped': self.skipped,
+            'advice': self.advice,
+        }
+        if self.certificate is not None:
+            out['certificate'] = self.certificate.to_dict()
+        return out
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> DatasetJudgeCertificate:
+        cert = data.get('certificate')
+        return cls(
+            data['label'],
+            data.get('rubric', ''),
+            data.get('kind', 'correctness'),
+            data.get('cases', 0),
+            Certificate.from_dict(cert) if cert else None,
+            list(data.get('advice', [])),
+            data.get('skipped'),
+            data.get('include_input', False),
+            data.get('include_expected_output', False),
+        )
 
 
 def _judges(dataset: Any) -> list[tuple[str, Any, list[Any]]]:
@@ -154,6 +187,7 @@ async def certify_dataset(
             if c.expected_output is not None
         ]
         label = f'{scope}: {judge.rubric[:60]}'
+        flags = {'include_input': judge.include_input, 'include_expected_output': judge.include_expected_output}
         if len(known) < min_cases:
             results.append(
                 DatasetJudgeCertificate(
@@ -163,7 +197,8 @@ async def certify_dataset(
                     len(known),
                     None,
                     skipped=f'grades {len(known)} case(s) with an expected output; at least {min_cases} are needed',
-                )  # fmt: skip
+                    **flags,
+                )
             )
             continue
         cert = await certify_judge(
@@ -175,7 +210,9 @@ async def certify_dataset(
             batch_size=batch_size,
             max_concurrency=max_concurrency,
         )
-        results.append(DatasetJudgeCertificate(label, judge.rubric, kind, len(known), cert, diagnose(cert, judge)))
+        results.append(
+            DatasetJudgeCertificate(label, judge.rubric, kind, len(known), cert, diagnose(cert, judge), **flags)
+        )
     return results
 
 

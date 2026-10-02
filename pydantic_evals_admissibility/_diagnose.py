@@ -105,7 +105,7 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
 
     acceptance, rejection = checks.get('acceptance'), checks.get('rejection')
     consistency_advice, data_suspect = _consistent_rejections(certificate)
-    if status('acceptance') == 'FAIL' and status('rejection') == 'PASS':
+    if status('acceptance') == 'FAIL' and status('rejection') in ('PASS', 'UNVALIDATED'):
         if data_suspect:
             advice.append(
                 f'It passed {acceptance.successes} of {acceptance.trials} judgments of the answers marked good, '

@@ -1,0 +1,4 @@
+sound (passes 0% wrong, fails 2% right)        ADMISSIBLE full  90/100  sequential  90/100  same verdict 100/100  calls 100% of full
+broken (passes 60% of wrong answers)           ADMISSIBLE full   0/100  sequential   0/100  same verdict 100/100  calls 26% of full
+borderline bad (passes 25% wrong; bar is 20%)  ADMISSIBLE full   0/100  sequential   0/100  same verdict 100/100  calls 89% of full
+borderline good (passes 10% wrong)             ADMISSIBLE full  68/100  sequential  68/100  same verdict 100/100  calls 100% of full

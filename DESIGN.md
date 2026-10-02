@@ -66,8 +66,9 @@ another case's "yes" is right half the time, and a sound judge that passes it is
 When cases carry `expected_output`, the donor's must differ.
 
 **Why does the live canary use empty answers by default and not borrowed ones?** Live traffic has
-no known answers to compare. Measured from cached replies: a borrowed answer from a question of
-the same kind was in fact correct 20% of the time for weekdays and 27% for letter counts. The
+no known answers to compare. Measured from cached replies (`bench/canary_borrow.py`): a borrowed
+answer from a question of the same kind was in fact correct 20% of the time for weekdays and 27%
+for letter counts. The
 canary marked a sound judge down for agreeing with a correct answer. Empty answers are always
 wrong.
 
@@ -86,9 +87,9 @@ in schema order. A judge without reasoning asked for `pass` (or `choice`) first 
 has written any reasoning. Measured by accident, through a bug in this repository's Codex adapter
 that sorted the schema's keys: on the support task the no-reasoning judge passed 70 of 80 good
 answers verdict-first and 80 of 80 reason-first, and the comparison judge's accuracy went from
-0.53 to 0.85. `LLMJudge` and `PairwiseJudge` both put the reason first; a provider adapter or a
+0.53 to 0.85 on the arithmetic pairs. `LLMJudge` and `PairwiseJudge` both put the reason first; a provider adapter or a
 custom output type that reorders it undoes that silently. Judges with reasoning were unaffected:
-their certificates came out the same in both orders.
+they reached the same verdicts in both orders.
 
 ## When the controls or the data are the problem
 
@@ -109,7 +110,7 @@ when the judge passes almost nothing, because a dataset is not wrong everywhere.
 **Why does the doctor clear an answer the judge passed when reformatted?** `certify_dataset` on
 the same dataset found a fourth answer the judge failed every time: *"No timeframe could be
 inferred from your request."*, failed as "not second person". With its spaces doubled the judge
-passed it, citing "your request". A whitespace change is a must-hold control: it means the same
+passed it (in the first run citing "your request"; a second run repeated both). A whitespace change is a must-hold control: it means the same
 answer, so passing it contradicts the three failures. Consistency over repeats points at the data
 only when nothing the judge did contradicts it; a contradicted answer is reported as the judge's
 mistake. Another case's answer (`mismatched_output`) does not count, because it is a different
@@ -131,16 +132,18 @@ certify its cases alone.
 
 **Why an exact interval for slices, when the other checks use Wilson?** Slices are small and
 many, and each is a chance to fail a sound judge. With Wilson intervals, a judge exactly at the
-bar on six slices of ten failed the check 6.3% of the time against a 5% budget. With exact
-Clopper-Pearson intervals, split across the slices, it was at most 1.9% in every layout simulated
-(2 to 12 slices of 10 to 40 cases), and a slice the judge always gets wrong was still caught every
-time. The price: a slice at 0.2 is caught 68% of the time with 10 cases instead of 89%.
+bar on six slices of ten fails the check 6.2% of the time against a 5% budget, and up to 8.2% in
+other layouts. With exact Clopper-Pearson intervals, split across the slices, it is at most 2.5%
+in every layout computed (2 to 12 slices of 10 to 40 cases, `bench/slice_error.py`), and a slice
+the judge always gets wrong is still caught every time. The price: a slice at 0.2 is caught 68%
+of the time with 10 cases instead of 88%.
 
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has
-to be watched to the end to earn a PASS. Stopping early for success too was tried: it certified
-sound judges less often (74/100 against 87/100) to save 18% of calls. Stopping only for failure
+to be watched to the end to earn a PASS. Stopping early for success too was tried and dropped: it
+certified sound judges less often for a small saving (the variant is gone, so no numbers are
+claimed for it). Stopping only for failure
 gives the same verdict as judging everything in 400 of 400 paired runs, at 26% of the calls for a
 broken judge.
 
@@ -151,7 +154,8 @@ that got that far is judged as if all at once.
 
 ## Mistakes that shaped it
 
-Every one of these was caught by a control or a check before a number was reported:
+Every one of these was caught by a control or a check; three had already been reported publicly, and
+were corrected where they were reported:
 
 - A Codex setting that silently ignored the judge's instructions made the default `LLMJudge` look
   like it passed wrong answers. With the instructions delivered, it fails right answers instead.

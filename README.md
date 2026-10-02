@@ -8,7 +8,7 @@ controls built from the cases you already have: answers it must fail, changes it
 orderings it must not care about. A judge's verdicts count only once it has been shown to fail
 what it should fail.
 
-What it found on real judges (Codex `gpt-5.6-luna`; every number is reproduced in `bench/`):
+What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible from `bench/` and `tests/`):
 
 - **A strong judge, a realistic task, `LLMJudge`'s default settings:** grading a support agent's
   replies against a store policy, a reasoning judge with the default `include_input=False`
@@ -21,15 +21,16 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproduced i
   saying they were right; slicing the certificate by kind of case caught it. A comparison judge
   picked **whichever answer came first 68% of the time** and was right 53%. With the reason first,
   as `LLMJudge` defines it: 10 of 10, and no position preference (48%) at 85%. Judges with
-  reasoning were unaffected. Every result is re-run; `bench/field_order.py` shows both.
+  reasoning reached the same verdicts either way. Every result is re-run; `bench/field_order.py`
+  shows both.
 - **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
   than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
   certified judge, then confirming on fresh questions, promoted the one real improvement
   (p = 0.015), the same call ground truth makes.
 - **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
   `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
-  judge failed **the same 3 of its 10 "good" answers every time**, and its reasons hold up: they
-  are impersonal, while the rubric asks for "second-person or friendly". On a fourth it
+  judge failed **4 of its 10 "good" answers every time**. On three its reasons hold up: they
+  are impersonal, while the rubric asks for "second-person or friendly". On the fourth it
   contradicted itself: it failed *"...inferred from your request"* three times as not second
   person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
 
@@ -53,6 +54,16 @@ dataset even see it?), and, for Logfire users, `promote`, the canary rollout and
 ```bash
 pip install "pydantic-evals-admissibility[logfire] @ git+https://github.com/4ktLuffy/judge-admissibility"
 ```
+
+From a shell or a CI job, on any pydantic-evals dataset file. Only its `LLMJudge` evaluators
+are loaded, so the dataset's own custom evaluators need not be importable:
+
+```bash
+judge-admissibility certify cases.yaml --model openai:gpt-5 --json certificates.json
+judge-admissibility report certificates.json  # again, with the current doctor, no judge calls
+```
+
+`certify` exits 1 unless every judge it certified is ADMISSIBLE, and prints what to change.
 
 The `logfire` extra is only needed for `promote` and the canary functions. Tested against the
 released pydantic-evals 2.52.0 and logfire 5.1.1. Until pydantic-evals declares `sniffio` (its
@@ -85,9 +96,9 @@ and stability, and one that always fails clears rejection.
 
 **Stop early when a judge has clearly failed.** `certify_judge(..., batch_size=10)` judges ten
 cases at a time and stops as soon as a check fails beyond doubt; a judge that is not failing runs
-to the end and is judged exactly as if all at once, so stopping early costs a sound judge nothing.
-Early looks use a wider interval (the confidence level split across the looks), so peeking does not
-fail a sound judge by chance. `certificate.calls` says how many judgments were actually made.
+to the end and is judged exactly as if all at once. Early looks use a wider interval (the
+confidence level split across the looks), so peeking rarely fails a sound judge: it gave the same
+verdict as judging everything in 100 of 100 runs (below). `certificate.calls` says how many judgments were actually made.
 
 Measured with scripted judges whose verdicts are fixed per answer, so both modes see the same
 verdicts (60 cases, 2 repeats, batches of 15, 100 seeds each, `bench/sequential_check.py`):
@@ -103,8 +114,10 @@ On a real judge, the Codex `LLMJudge` that failed certification on the arithmeti
 sequential certificate reached the same verdict, INADMISSIBLE, after 140 of 280 calls
 (`results/judge_vs_truth.sequential.json`).
 
-Stopping early for success as well was tried and dropped: it certified sound judges less often
-(74/100 against 87/100) to save 18% of calls.
+Stopping early for success as well was tried and dropped: an early pass is decided on a few
+batches, and it certified sound judges less often for a small saving in calls. (That variant's
+code is gone, so its numbers are not reproduced here.) `results/sequential_check.txt` holds the
+table above.
 
 **Say why, and what to try.** `diagnose(certificate, judge)` turns the pattern of failed checks
 into plain advice. On the two real failures in this README it says:
@@ -156,23 +169,24 @@ without the restocking fee, the wrong side of the shipping threshold), both ways
 | no reasoning | 0.96 (77/80) | 39/40 | 0.51 |
 | reasoning high | 0.96 (77/80) | 39/40 | 0.51 |
 
-(The same totals, from different mistakes: the two judges were wrong on different pairs.)
+(The same totals, from different mistakes: the two judges were wrong on mostly different pairs.)
 
 ### Slices: a passing rate can hide a kind of case
 
 `certify_judge(..., slice_by=...)` names the kind of each case and adds a `slices` check, which
 fails when the judge is shown to be below the bar on one kind of case. `recertify` applies it to a
 certificate already paid for. Sliced by kind and correct answer (`return: no`, `refund`, ...),
-every judge above passes it. It found something only when the judge was broken: through the adapter
+every judge that sees the question passes it. It found something only when the judge was broken: through the adapter
 bug described under comparison judges, both judges without reasoning were asked for the verdict
 before the reason, and both certified ADMISSIBLE overall (70/80 accepted) while passing **0 of 10
-correct "no" answers** to return-window questions. Their reasons said the answers were right,
+correct "no" answers** to return-window questions. Many of their reasons said the answers were right,
 after the verdict had been given: *"...98 days later, so the answer 'no' is correct."* Sliced,
 both certificates were INADMISSIBLE.
 
 Each slice is decided with an exact (Clopper-Pearson) interval, split across the slices. A sound
-judge exactly at the bar fails the check at most 1.9% of the time (simulated: 2 to 12 slices
-of 10 to 40 cases each); a slice it always gets wrong is caught every time with 10 cases.
+judge exactly at the bar fails the check at most 2.5% of the time, computed exactly for 2 to 12
+slices of 10 to 40 cases (`bench/slice_error.py`; with Wilson intervals it reached 8.2%). A slice
+it always gets wrong is caught every time with 10 cases.
 
 ## Pydantic's own example judge
 
@@ -196,8 +210,8 @@ dataset's 10 expected outputs are the answers marked good.
 Both judges failed the same three expected outputs every time they were asked (the one without
 reasoning failed two more), with reasons that hold up against the rubric's words:
 
-- *"Conflicting time instructions: 2025 and 2020 cannot both apply."*: "clear but impersonal and
-  does not address the user in a second-person or friendly style"
+- *"Conflicting time instructions: 2025 and 2020 cannot both apply."*: "terse and impersonal; it
+  does not use a second-person or friendly user-facing style"
 - *"Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled."*: the same
 - *"We interpret the mention of early May as extraneous ..."*: first person, not second; this one
   is arguable
@@ -245,8 +259,9 @@ the schema fix. The judge failed four answers on all three tries.
 Three are the three the hand-written run found ("Ambiguous mention", "Impossible range",
 "Confusing relative references"); the doctor says to read those against the rubric. The fourth,
 "No mention" (*"No timeframe could be inferred from your request."*), is second person, and the
-judge passed it once its spaces were doubled, now saying it "refers directly to 'your request'"
-(and again in the second run).
+judge passed it once its spaces were doubled, saying in the first run that it "refers directly to
+'your request'". The second run did the same (failed it three times, passed it with doubled
+spaces).
 The doctor reports that one as the judge contradicting itself, not as bad data. The one judge attached to a single case was reported and
 not certified: one case cannot certify anything.
 
@@ -366,7 +381,8 @@ promote(result, 'agent_prompt', new_prompt)  # moves the Logfire label only on P
 - **`JudgeCanary`** keeps checking a judge after it is certified, on the traffic it grades. On a
   sampled share of calls it also asks the judge about an empty answer, which it must fail.
   `borrow=True` adds another request's answer as a control; it is off by default because on
-  this package's task a borrowed answer was in fact right for 20-27% of same-kind questions, which
+  this package's task a borrowed answer was in fact right for 20-27% of same-kind questions
+  (`bench/canary_borrow.py`), which
   made a sound judge look unhealthy. Use it only where answers are specific to their question.
   `every=n` checks exactly every n-th call instead of sampling, so a monitor sees a known number
   of checks; the monitor says HEALTHY only once the evidence supports it (16 straight rejections
@@ -408,7 +424,7 @@ On the 40 training questions:
 
 | Prompt | Plain judge | Certified judge | Truth | Gate on plain judge | Gate on certified judge (level split 5 ways) |
 |---|---|---|---|---|---|
-| baseline | 0.625 | 0.550 | 0.513 | | |
+| baseline | 0.625 | 0.550 | 0.512 | | |
 | candidate 0 | 0.500 | 0.275 | 0.275 | REFUSED | REJECT |
 | candidate 1 | 0.575 | 0.412 | 0.425 | REFUSED | INCONCLUSIVE |
 | candidate 2 | 0.800 | 0.688 | 0.688 | REFUSED | INCONCLUSIVE (p = 0.018, needs < 0.005) |
@@ -418,7 +434,7 @@ On the 40 training questions:
 What it shows, including where it did not go the way I expected:
 
 - **The uncertified judge's numbers were wrong, its ranking was not.** It overstated every
-  prompt by 11 to 23 points, evenly, so "keep the highest-scoring prompt" still picked
+  prompt by 11 to 23 points, so "keep the highest-scoring prompt" still picked
   candidate 2, which is genuinely better: 0.588 vs 0.425 on the held-out questions (p = 0.015).
   The danger in an uncertified judge here is anything that trusts its number: a release bar,
   a regression threshold, a claim that the agent is 80% accurate when it is 69%.
@@ -432,7 +448,7 @@ What it shows, including where it did not go the way I expected:
 - **The gate rejected all three clearly worse prompts and promoted nothing bad, but missed the
   good one.** With 40 questions and the level split five ways it could not separate a measured 14-point
   gain from noise, as `detectable_gain` predicted (it puts this dataset's reliable floor at 25
-  points).
+  points, 40 with the level split five ways).
 - **Selecting and confirming on different questions fixes that.** `bench/confirm.py` tests only
   the selected candidate, once, on the 40 held-out questions, scored by the certified judge:
   PROMOTE (gain +0.16 per case, p = 0.015), the same decision ground truth gives. The certified

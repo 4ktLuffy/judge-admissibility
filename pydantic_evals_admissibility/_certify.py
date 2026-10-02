@@ -355,10 +355,10 @@ async def _certify_sequentially(
     A judge that is broken shows it fast: after the first batch it is already failing controls
     beyond any doubt, and there is no reason to pay for the rest. A judge that is doing well is
     not stopped early: it runs to the end and is judged there with the usual interval, so stopping
-    early costs a sound judge nothing. Early failures use a wider interval, the confidence level
+    early costs a sound judge little. Early failures use a wider interval, the confidence level
     split across the looks (Bonferroni), so peeking does not fail a sound judge by chance.
-    (Stopping early for success too was measured and rejected: it certified sound judges less
-    often, 74/100 against 87/100, for an 18% saving.)
+    (Stopping early for success too was tried and rejected: it certified sound judges less often
+    for a small saving in calls.)
     """
     order = [case.name for case in cases]
     rng.shuffle(order)
@@ -557,7 +557,7 @@ def _slice_check(references: Sequence[Judgment], slices: dict[str, str], thresho
             counts[slices[j.case]][0] += j.passed
             counts[slices[j.case]][1] += 1
     # One test per slice: split the level across them, as `GateRules.for_candidates` does. Exact
-    # intervals, because Wilson's undercoverage on small slices failed a sound judge 6.3% of the time.
+    # intervals, because Wilson's undercoverage on small slices failed a sound judge 6.2% of the time.
     alpha = 2 * (1 - NormalDist().cdf(z)) / max(len(counts), 1)
     bounds = {name: clopper_pearson(k, n, alpha) for name, (k, n) in counts.items()}
     order = sorted(counts, key=lambda name: (bounds[name][1], name))

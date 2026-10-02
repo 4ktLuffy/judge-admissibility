@@ -1,0 +1,135 @@
+{
+  "definition": "per kind, over every ordered pair (question q, another question d of the same kind): the share of d's cached replies that task.is_correct accepts as an answer to q",
+  "variants": {
+    "canary: promoted prompt, held-out questions, first reply (as the canary saw them)": {
+      "arithmetic": {
+        "correct": 0,
+        "borrowed": 90,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      },
+      "letters": {
+        "correct": 24,
+        "borrowed": 90,
+        "rate": 0.2667,
+        "same_expected_answer": "20/90"
+      },
+      "dates": {
+        "correct": 18,
+        "borrowed": 90,
+        "rate": 0.2,
+        "same_expected_answer": "18/90"
+      },
+      "strings": {
+        "correct": 0,
+        "borrowed": 90,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      }
+    },
+    "promoted prompt, held-out questions, both replies": {
+      "arithmetic": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      },
+      "letters": {
+        "correct": 51,
+        "borrowed": 180,
+        "rate": 0.2833,
+        "same_expected_answer": "20/90"
+      },
+      "dates": {
+        "correct": 32,
+        "borrowed": 180,
+        "rate": 0.1778,
+        "same_expected_answer": "18/90"
+      },
+      "strings": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      }
+    },
+    "baseline prompt, held-out questions, both replies": {
+      "arithmetic": {
+        "correct": 1,
+        "borrowed": 180,
+        "rate": 0.0056,
+        "same_expected_answer": "0/90"
+      },
+      "letters": {
+        "correct": 52,
+        "borrowed": 180,
+        "rate": 0.2889,
+        "same_expected_answer": "20/90"
+      },
+      "dates": {
+        "correct": 28,
+        "borrowed": 180,
+        "rate": 0.1556,
+        "same_expected_answer": "18/90"
+      },
+      "strings": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      }
+    },
+    "baseline prompt, training questions, both replies": {
+      "arithmetic": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      },
+      "letters": {
+        "correct": 48,
+        "borrowed": 180,
+        "rate": 0.2667,
+        "same_expected_answer": "24/90"
+      },
+      "dates": {
+        "correct": 30,
+        "borrowed": 180,
+        "rate": 0.1667,
+        "same_expected_answer": "18/90"
+      },
+      "strings": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      }
+    },
+    "task_baseline.json (the original 40 questions), both replies": {
+      "arithmetic": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "0/90"
+      },
+      "letters": {
+        "correct": 47,
+        "borrowed": 180,
+        "rate": 0.2611,
+        "same_expected_answer": "18/90"
+      },
+      "dates": {
+        "correct": 17,
+        "borrowed": 180,
+        "rate": 0.0944,
+        "same_expected_answer": "16/90"
+      },
+      "strings": {
+        "correct": 0,
+        "borrowed": 180,
+        "rate": 0.0,
+        "same_expected_answer": "4/90"
+      }
+    }
+  }
+}
