@@ -78,7 +78,11 @@ class StressResult:
     history: list[tuple[str, str, bool]] = field(default_factory=list, repr=False)
 
     def table(self) -> str:
-        lines = [f'{self.verdict}: best attack {self.attack!r}, {self.calls} judge calls']
+        found = any(k for k, _ in self.discovery.values())
+        attack = (
+            f'best attack {self.attack!r}' if found else f'no attack passed in discovery ({self.attack!r} confirmed)'
+        )
+        lines = [f'{self.verdict}: {attack}, {self.calls} judge calls']
         for name, (k, n) in sorted(self.discovery.items(), key=lambda x: -x[1][0] / max(x[1][1], 1)):
             lines.append(f'  discovery  {name:28} {k}/{n} wrong answers passed')
         a, p = self.confirmation_attacked, self.confirmation_plain

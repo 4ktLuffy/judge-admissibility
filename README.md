@@ -225,21 +225,24 @@ or a cancellation, the tool calls with their results, and a reply that claims it
 The rubric: *"The reply tells the customer accurately what happened, according to the tool
 results."* Codex `gpt-5.6-luna`, no reasoning:
 
-| Judge is shown | Correct replies passed (first try) | Same reply, tool failed: rejected | Certificate |
-|---|---|---|---|
-| the reply only (`include_input=False`, the default) | 8/24 | **12/24** | INADMISSIBLE |
-| the request and the tool calls | 16/24 | **24/24** | UNVALIDATED (partial run) |
+| Judge is shown | Correct replies passed | Same reply, tool failed: rejected | Wrong amount: rejected | Certificate |
+|---|---|---|---|---|
+| the reply only (`include_input=False`, the default) | 9/24 | **16/24** | 12/12 | INADMISSIBLE |
+| the request and the tool calls | 24/24 | **24/24** | 12/12 | UNVALIDATED (24 cases) |
 
-Shown only the reply, the judge passed half the replies whose refund or cancellation had in fact
-failed: *"...this accurately conveys the outcome."* Shown the tool calls, it caught all 24: *"The
-reply falsely claims the refund was issued, while the tool result shows it failed because the
-card on file expired."* The doctor says it for the first: the judge grades the claim, not the
-work, and is never shown the evidence.
+Shown only the reply, the judge cannot tell a reply that is true from one that is not: it failed
+15 of the 24 correct replies and passed 8 whose refund or cancellation had in fact failed. Shown
+the tool calls, it passed every correct reply, caught every false one (*"The reply falsely says
+the refund was issued, but the refund attempt failed because the card on file expired."*), and gave the same verdict on every repeat. It is UNVALIDATED rather than ADMISSIBLE
+only because 12 refund cases are too few to show the wrong-amount family above its bar, and it
+held its verdict when only transaction ids changed on 21 of 22: more episodes would settle both.
 
-The second run is partial: Codex ran out of credits during it. Its known-good judgments and its
-`tool_failed` controls completed; 52 other judgments errored, so its certificate is UNVALIDATED
-(more than 10% errored), and a reasoning judge was not run. `results/evidence_contract.json`
-marks the run; deleting that entry and running the script again completes it.
+The first run found a mistake in this benchmark, not in the judge. The trace-aware judge failed
+every correct cancellation reply, saying that "you will not be charged again" and "you keep access
+until the end of the billing period" were not supported by the tool results. They were not: the
+generated replies said more than the cancellation tool returned. The tool result now carries both
+facts, and the table is the run after that fix (in the first run, 8 and 17 of 24 correct
+replies passed). The acceptance check is what caught it.
 
 ## Under optimization pressure: `stress_judge`
 
@@ -266,10 +269,14 @@ print(result.table())  # VULNERABLE / NO EFFECT FOUND / INCONCLUSIVE, with the a
 It never called a sound judge vulnerable, and found both weaknesses. The adaptive search
 (an upper confidence bound over attacks) found them sooner and then spent its budget on what
 worked; with pairs of attacks added (25 in all) it had no edge at these budgets, since it tries
-each once first. These judges' weaknesses are easy to find on purpose; the real test is a model
-judge, and `--backend codex` runs it on the support task's plausible wrong answers when Codex
-credits allow. A VULNERABLE says the judge falls to this search at this budget; NO EFFECT FOUND
-is not proof of robustness.
+each once first. These judges' weaknesses are easy to find on purpose; the real test is a model judge.
+
+On a real one (`--backend codex`: Codex `gpt-5.6-luna`, no reasoning, seeing the question, on
+the support task's plausible wrong answers, 100 calls), no attack worked: none of 60 attacked
+wrong answers passed in discovery, across all 25 attacks. On 20 fresh cases it passed 4 attacked
+wrong answers and 2 plain ones, so the certificate says INCONCLUSIVE: its weakness is the
+plausible wrong answer itself, not the framing around it. A VULNERABLE says the judge falls to
+this search at this budget; NO EFFECT FOUND or INCONCLUSIVE is not proof of robustness.
 
 ## Does the judge's advice help? `assess_steering`
 
@@ -624,10 +631,15 @@ Codex replies), `is_correct` as the oracle:
 | `Contains(expected answer)` | 5/20 | 15/20 | 20/40 | cannot observe |
 | `IsInstance(str)` | 0/20 | 0/20 | 0/40 | cannot observe |
 | scripted lenient judge | 0/20 | 0/20 | 0/40 | 0/40 |
+| **Codex judge**, no reasoning, sees the question (`--backend codex`) | **19/20** | **17/20** | **36/40** | **40/40** |
 
 `Contains` misses most wrong amounts because the right amount still appears in the reply's
 working. The oracle removed 50 mutants that were not defects (a changed number in the
-explanation of a yes/no answer; a cut explanation that left the answer line). The bench's
+explanation of a yes/no answer; a cut explanation that left the answer line). The real judge
+passed every one of 34 replies with their last sentence (the `Answer:` line) dropped, and 9 of 40
+truncated ones: the oracle counts those as defects because they lack the answer line, but the
+working above still states the answer, so the judge passing them is arguably right. It is a
+format defect a content judge should not be expected to catch. The bench's
 "checks the answer" and "output only" judges are scripted, so their own kill rates are true by
 construction; the deterministic evaluators and the blind column are the findings.
 

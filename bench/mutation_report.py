@@ -21,6 +21,9 @@ is the real one `LLMJudge` builds; only the decision is scripted): one that read
 checks the answer (`include_input=True`), one lenient one that passes any reply with an
 `Answer:` line (`include_input=True`), and one shown only the reply and the expected answer
 (`include_input=False`, the default).
+
+With `--backend codex` the scripted judges are replaced by one real `LLMJudge` on Codex
+`gpt-5.6-luna` (no reasoning) that sees the question; results go to `results/mutation_report.codex.json`.
 """
 
 from __future__ import annotations
@@ -30,6 +33,7 @@ import hashlib
 import json
 import math
 import re
+import sys
 from dataclasses import replace
 from datetime import datetime
 from pathlib import Path
@@ -150,15 +154,22 @@ async def main() -> None:
         c = next(c for c in support if c.answer == expected)  # is_correct reads only the kind and the answer
         return is_correct(replace(c, answer=expected), output)
 
-    evaluators = {
+    evaluators: dict[str, Any] = {
         'EqualsExpected': EqualsExpected(),
         'Contains(expected)': lambda case: Contains(value=case.expected_output),
         'IsInstance(str)': IsInstance('str'),
-        'judge: checks the answer': scripted(checks_the_answer, include_input=True),
-        'judge: lenient': scripted(lenient, include_input=True),
-        'judge: output only': scripted(against_expected, include_input=False),
     }
-    report = await mutation_report(evaluators, judge_cases, mutants, oracle=oracle)
+    if CODEX:  # a real judge in place of the scripted ones; effort none, the cheapest Codex setting
+        from codex_judge import codex_model
+
+        evaluators['Codex judge, sees the question'] = LLMJudge(rubric=RUBRIC, model=codex_model(), include_input=True)
+    else:
+        evaluators |= {
+            'judge: checks the answer': scripted(checks_the_answer, include_input=True),
+            'judge: lenient': scripted(lenient, include_input=True),
+            'judge: output only': scripted(against_expected, include_input=False),
+        }
+    report = await mutation_report(evaluators, judge_cases, mutants, oracle=oracle, max_concurrency=4)
     sources = [source for _, source in good.values()]
     print(f'{sources.count("agent")} real agent replies, {sources.count("template")} templated\n')
     print(report.table())
@@ -173,6 +184,10 @@ async def main() -> None:
         )
     )
 
+
+CODEX = '--backend' in sys.argv and sys.argv[sys.argv.index('--backend') + 1] == 'codex'
+if CODEX:
+    OUT = OUT.with_name('mutation_report.codex.json')
 
 if __name__ == '__main__':
     asyncio.run(main())

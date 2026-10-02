@@ -76,7 +76,12 @@ def _cancel(rng: random.Random, i: int) -> JudgeCase:
                 'tool': 'cancel_subscription',
                 'span_id': _id(rng, 'span'),
                 'arguments': {'plan': plan},
-                'result': {'status': 'cancelled', 'confirmation': _id(rng, 'cx')},
+                'result': {
+                    'status': 'cancelled',
+                    'confirmation': _id(rng, 'cx'),
+                    'further_charges': 'none',
+                    'access_until': 'end of the current billing period',
+                },
             },
         ],
     }

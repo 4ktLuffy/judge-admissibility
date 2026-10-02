@@ -228,7 +228,12 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
             continue  # both are computed from the answers that need checking first
         if check.status == 'UNVALIDATED' and 'interval straddles' in check.detail:
             needed = _cases_needed(check)
-            if needed is not None:
+            if needed is not None and needed > 20 * check.trials:
+                advice.append(
+                    f'`{check.name}` is {check.rate:.2f}, barely above its bar of {check.threshold:.2f}: it would take '
+                    f'about {needed} judgments to show it. Improve the judge rather than count on more cases.'
+                )
+            elif needed is not None:
                 advice.append(
                     f'`{check.name}` is {check.rate:.2f} against a bar of {check.threshold:.2f} but '
                     f'{check.trials} judgments cannot show it; {needed} would, at the same rate.'

@@ -167,7 +167,7 @@ of the time with 10 cases instead of 88%.
 borrowed answer, an empty one. A judge that grades the agent's claim passes those tests whenever
 the claim is well written. Changing a tool result while keeping the reply word for word isolates
 one question: does the verdict depend on what actually happened? Shown only the reply, a Codex
-judge passed half the false "refund issued" claims; shown the tool calls, none.
+judge passed 8 of 24 false "refund issued" or "cancelled" claims; shown the tool calls, none.
 
 **Why group the cases a person labels by the judge's verdict?** Because the judge, right or
 wrong, sorts cases by how likely they are to have changed. Sampling every group at random keeps

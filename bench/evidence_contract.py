@@ -5,9 +5,8 @@
 24 support episodes (`bench/evidence_task.py`): every reply claims the refund or cancellation
 went through, and in the known-good versions the tool results agree. The controls change only
 the tool results (`tool_failed`, `amount_differs`) or irrelevant ids (`ids_changed`); the reply
-is never touched. Three `LLMJudge`s on Codex `gpt-5.6-luna`: one shown only the reply
-(`include_input=False`, the default), and two shown the request and tool calls, without and with
-reasoning.
+is never touched. Two `LLMJudge`s on Codex `gpt-5.6-luna`, no reasoning: one shown only the reply
+(`include_input=False`, the default), one shown the request and the tool calls.
 """
 
 from __future__ import annotations
@@ -33,9 +32,7 @@ async def main() -> None:
     judges = {
         'reply only (default include_input=False), no reasoning': LLMJudge(rubric=RUBRIC, model=codex_model()),
         'reply and tool calls, no reasoning': LLMJudge(rubric=RUBRIC, model=codex_model(), include_input=True),
-        'reply and tool calls, reasoning high': LLMJudge(
-            rubric=RUBRIC, model=codex_model(effort='high', timeout=300), include_input=True
-        ),
+        # A reasoning judge would cost several times more per call; run it by adding it here.
     }
     for label, judge in judges.items():
         if label in results:
