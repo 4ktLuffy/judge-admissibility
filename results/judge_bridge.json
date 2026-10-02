@@ -1,0 +1,126 @@
+{
+  "candidate_index": 2,
+  "margin": 0.05,
+  "bridges": {
+    "train: plain judge -> reference judge": {
+      "cases": 40,
+      "missing_verdicts": {
+        "plain judge": 0,
+        "reference judge": 0
+      },
+      "rates": {
+        "baseline/old": 0.625,
+        "candidate/old": 0.8,
+        "baseline/new": 0.55,
+        "candidate/new": 0.6875
+      },
+      "gain_old": 0.175,
+      "gain_new": 0.1375,
+      "decision_old": "PROMOTE: mean gain +0.175 per case, bootstrap interval [+0.062, +0.287], p(better)=0.006, p(worse)=0.998; 15 improved, 4 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decision_new": "PROMOTE: mean gain +0.138 per case, bootstrap interval [+0.025, +0.250], p(better)=0.018, p(worse)=0.995; 13 improved, 4 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decisions_differ": false,
+      "interaction": -0.0375,
+      "interaction_interval": [
+        -0.2222222222222222,
+        0.14285714285714285
+      ],
+      "shift_baseline": [
+        -0.075,
+        [
+          -0.20588235294117646,
+          0.06666666666666667
+        ]
+      ],
+      "shift_candidate": [
+        -0.1125,
+        [
+          -0.2222222222222222,
+          0.0
+        ]
+      ],
+      "comparable": "UNVALIDATED",
+      "cases_with_interaction": 14
+    },
+    "train: reference judge -> ground truth": {
+      "cases": 40,
+      "missing_verdicts": {
+        "reference judge": 0
+      },
+      "rates": {
+        "baseline/old": 0.55,
+        "candidate/old": 0.6875,
+        "baseline/new": 0.5125,
+        "candidate/new": 0.6875
+      },
+      "gain_old": 0.1375,
+      "gain_new": 0.175,
+      "decision_old": "PROMOTE: mean gain +0.138 per case, bootstrap interval [+0.025, +0.250], p(better)=0.018, p(worse)=0.995; 13 improved, 4 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decision_new": "PROMOTE: mean gain +0.175 per case, bootstrap interval [+0.075, +0.275], p(better)=0.002, p(worse)=1.000; 14 improved, 2 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decisions_differ": false,
+      "interaction": 0.0375,
+      "interaction_interval": [
+        -0.10526315789473684,
+        0.175
+      ],
+      "shift_baseline": [
+        -0.0375,
+        [
+          -0.11904761904761904,
+          0.05263157894736842
+        ]
+      ],
+      "shift_candidate": [
+        0.0,
+        [
+          -0.058823529411764705,
+          0.058823529411764705
+        ]
+      ],
+      "comparable": "UNVALIDATED",
+      "cases_with_interaction": 2
+    },
+    "held_out: reference judge -> ground truth": {
+      "cases": 40,
+      "missing_verdicts": {
+        "reference judge": 0
+      },
+      "rates": {
+        "baseline/old": 0.425,
+        "candidate/old": 0.5875,
+        "baseline/new": 0.425,
+        "candidate/new": 0.5875
+      },
+      "gain_old": 0.1625,
+      "gain_new": 0.1625,
+      "decision_old": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decision_new": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+      "decisions_differ": false,
+      "interaction": 0.0,
+      "interaction_interval": [
+        -0.11764705882352941,
+        0.11764705882352941
+      ],
+      "shift_baseline": [
+        0.0,
+        [
+          -0.058823529411764705,
+          0.058823529411764705
+        ]
+      ],
+      "shift_candidate": [
+        0.0,
+        [
+          -0.058823529411764705,
+          0.058823529411764705
+        ]
+      ],
+      "comparable": "UNVALIDATED",
+      "cases_with_interaction": 0
+    }
+  },
+  "held_out: plain judge": "160 verdicts not saved; not bridged",
+  "certificates": {
+    "plain judge": "INADMISSIBLE",
+    "reference judge": "ADMISSIBLE"
+  }
+}

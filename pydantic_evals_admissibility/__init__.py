@@ -4,6 +4,7 @@ A judge's verdicts are evidence only once the judge has been shown to fail what 
 pass what it should pass, and give the same verdict when nothing that matters has changed.
 """
 
+from ._bridge import Effect, JudgeBridge, compare_judge_reports, compare_judges
 from ._canary import CanaryMonitor, JudgeCanary
 from ._cases import HumanLabel, JudgeCase
 from ._certify import (
@@ -16,7 +17,15 @@ from ._certify import (
     certify_judge,
     recertify,
 )
-from ._controls import DEFAULT_CONTROLS, Control, EmptyOutput, MismatchedOutput, Rewrite, WhitespaceReformat
+from ._controls import (
+    DEFAULT_CONTROLS,
+    Control,
+    EmptyOutput,
+    EvidenceRewrite,
+    MismatchedOutput,
+    Rewrite,
+    WhitespaceReformat,
+)
 from ._dataset import (
     DatasetJudgeCertificate,
     EmptyProse,
@@ -75,6 +84,7 @@ __all__ = (
     'promote',
     'start_canary',
     'EmptyOutput',
+    'EvidenceRewrite',
     'HumanLabel',
     'InadmissibleJudge',
     'JudgeCase',
@@ -94,4 +104,8 @@ __all__ = (
     'certify_pairwise',
     'cohen_kappa',
     'wilson',
+    'Effect',
+    'JudgeBridge',
+    'compare_judge_reports',
+    'compare_judges',
 )

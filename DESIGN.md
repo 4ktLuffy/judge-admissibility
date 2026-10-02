@@ -163,6 +163,12 @@ in every layout computed (2 to 12 slices of 10 to 40 cases, `bench/slice_error.p
 the judge always gets wrong is still caught every time. The price: a slice at 0.2 is caught 68%
 of the time with 10 cases instead of 88%.
 
+**Why change the evidence and not the answer?** Every other control changes the output: a
+borrowed answer, an empty one. A judge that grades the agent's claim passes those tests whenever
+the claim is well written. Changing a tool result while keeping the reply word for word isolates
+one question: does the verdict depend on what actually happened? Shown only the reply, a Codex
+judge passed half the false "refund issued" claims; shown the tool calls, none.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

@@ -22,6 +22,17 @@ _ABOUT_STYLE = re.compile(r'\b(style|tone|friendly|polite|format\w*|concise|seco
 _MENTIONS_EXPECTED = re.compile(r'\b(expected|reference|correct answer|ground truth|gold)\b', re.I)
 
 
+def _failed_families(detail: str) -> list[str]:
+    """Control families a check's detail marks as FAIL, e.g. `tool_failed 0/24 FAIL`.
+
+    Certificates saved before families were decided one by one carry no marks; for those, a family
+    that did not reject all its controls is the best available reading.
+    """
+    if re.search(r'\d+/\d+ (FAIL|UNVALIDATED)', detail) or 'PASS' in detail:
+        return re.findall(r'(\w+) \d+/\d+ FAIL', detail)
+    return [name for name, k, n in re.findall(r'(\w+) (\d+)/(\d+)', detail) if int(k) < int(n)]
+
+
 def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
     """Judgments needed for the interval to clear the threshold at the observed rate, if it can."""
     rate = check.rate
@@ -133,13 +144,14 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
     if status('rejection') == 'FAIL' and rejection:
         detail = rejection.detail
         advice.append(f'It passes answers that cannot be right ({detail}).')
+        failed = set(_failed_families(detail))
         empty = re.search(r'empty_output (\d+)/(\d+)', detail)
         # A judge of correctness that passes another question's answer is broken; only a rubric
         # about style can make that control the mistake. With no rubric to read, say it as a maybe.
         about_style = bool(_ABOUT_STYLE.search(rubric)) if rubric else True
         about_correctness = bool(_ABOUT_CORRECTNESS.search(rubric)) and not _ABOUT_STYLE.search(rubric)
         if (
-            'mismatched_output' in detail
+            'mismatched_output' in failed
             and empty
             and empty.group(1) == empty.group(2)
             and about_style
@@ -151,15 +163,28 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 "control is wrong, not the judge: use `MismatchedOutput(kind='must_hold')` and `Rewrite` controls "
                 'that break the rubric itself.'
             )
-        if 'mismatched_output' in detail and sees_input is False:
+        if 'mismatched_output' in failed and sees_input is False:
             advice.append(
                 "It accepts another question's answer, and with `include_input=False` it cannot tell which "
                 'question was asked. Set `include_input=True`.'
             )
-        elif 'mismatched_output' in detail and sees_expected is False:
+        elif 'mismatched_output' in failed and sees_expected is False:
             advice.append(
                 "It accepts another question's answer even though it sees the question: it cannot verify the "
                 'answer itself. If your dataset has expected outputs, set `include_expected_output=True`.'
+            )
+        evidence = sorted(failed - {'mismatched_output', 'empty_output'})
+        if evidence and sees_input is False:
+            advice.append(
+                f'It passes answers made wrong by a change in what it was given ({", ".join(evidence)}), and with '
+                '`include_input=False` it is never shown that. It grades the claim, not the work. Set '
+                '`include_input=True`, with the trace in the inputs.'
+            )
+        elif evidence:
+            advice.append(
+                f'It is shown the evidence and still passes answers it contradicts ({", ".join(evidence)}): it grades '
+                'the claim, not the work. Try a judge that reasons, or a rubric that says to check the answer '
+                'against the tool results.'
             )
     if status('invariance') == 'FAIL' and not data_suspect:  # with suspect answers as donors, it would mislead
         if status('stability') in ('FAIL', 'UNVALIDATED'):

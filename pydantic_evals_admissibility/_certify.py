@@ -497,9 +497,16 @@ def _plan(
         planned.extend((case, case.output, f'reference#{i}') for i in range(repeats))
     for control in controls:
         for case in cases:
+            role = f'{control.kind}:{control.name}'
+            make_case = getattr(control, 'make_case', None)
+            if make_case is not None:  # a control that changes the evidence, not the answer
+                changed = make_case(case, cases, rng)
+                if changed is not None:
+                    planned.append((changed, changed.output, role))
+                continue
             made = control.make(case, cases, rng)
             if made is not None:
-                planned.append((case, made, f'{control.kind}:{control.name}'))
+                planned.append((case, made, role))
     for label in human_labels:
         case = by_name.get(label.case)
         if case is None:

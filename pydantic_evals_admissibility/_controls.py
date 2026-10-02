@@ -14,7 +14,7 @@ from __future__ import annotations
 import random
 import re
 from collections.abc import Callable, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any, Literal, Protocol
 
 from ._cases import JudgeCase
@@ -113,6 +113,36 @@ class Rewrite:
     def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
         changed = self.rewrite(case.output)
         return None if changed is None or changed == case.output else changed
+
+
+@dataclass(frozen=True)
+class EvidenceRewrite:
+    """Change the evidence, keep the answer: does the judge grade the work or the agent's claim?
+
+    `rewrite(inputs)` returns the case's inputs with one fact changed: a tool result, a message in
+    the conversation, a record the agent looked up. The output stays exactly as it was. With
+    `kind='must_fail'` the change makes the unchanged answer wrong (the refund tool now says
+    "failed", the reply still says "your refund was issued"); with `kind='must_hold'` it changes
+    nothing the rubric is about (a transaction id, a span id, the order of unrelated records).
+
+    The judge has to be shown the inputs for this to be fair to it (`include_input=True`, or
+    however your evaluator reads the trace); a judge that cannot see the evidence fails the
+    `must_fail` family, which is the point. Return None to skip a case the change does not apply to.
+    """
+
+    rewrite: Callable[[Any], Any | None]
+    name: str
+    kind: ControlKind = 'must_fail'
+
+    def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
+        return None  # the output never changes; see `make_case`
+
+    def make_case(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> JudgeCase | None:
+        """The case with its evidence changed and its output untouched, or None if it does not apply."""
+        changed = self.rewrite(case.inputs)
+        if changed is None or changed == case.inputs:
+            return None
+        return replace(case, inputs=changed)
 
 
 DEFAULT_CONTROLS: tuple[Control, ...] = (MismatchedOutput(), EmptyOutput(), WhitespaceReformat())

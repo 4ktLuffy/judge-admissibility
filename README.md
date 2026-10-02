@@ -204,6 +204,43 @@ its share of the error budget. A sound judge exactly at the bar fails the check 
 time, computed exactly for 2 to 12 slices of 10 to 40 cases (`bench/slice_error.py`; with Wilson
 intervals it reached 8.2%). A slice it always gets wrong is caught every time with 10 cases.
 
+## Does the judge grade the work, or the claim? Evidence controls
+
+An agent's reply can say "your refund was issued" whether or not the refund tool succeeded.
+`EvidenceRewrite` changes the evidence and keeps the answer: it rewrites the case's inputs (the
+tool results, a message in the conversation) and leaves the output exactly as it was. With
+`kind='must_fail'` the change makes the unchanged answer wrong; with `kind='must_hold'` it changes
+nothing the rubric is about.
+
+```python
+controls = (
+    EvidenceRewrite(make_refund_fail, 'tool_failed', 'must_fail'),  # same reply, failed refund
+    EvidenceRewrite(change_span_ids, 'ids_changed', 'must_hold'),  # nothing the customer was told
+)
+certificate = await certify_judge(judge, episodes, controls=controls)
+```
+
+`bench/evidence_contract.py` runs it on 24 support episodes (`bench/evidence_task.py`): a refund
+or a cancellation, the tool calls with their results, and a reply that claims it went through.
+The rubric: *"The reply tells the customer accurately what happened, according to the tool
+results."* Codex `gpt-5.6-luna`, no reasoning:
+
+| Judge is shown | Correct replies passed (first try) | Same reply, tool failed: rejected | Certificate |
+|---|---|---|---|
+| the reply only (`include_input=False`, the default) | 8/24 | **12/24** | INADMISSIBLE |
+| the request and the tool calls | 16/24 | **24/24** | UNVALIDATED (partial run) |
+
+Shown only the reply, the judge passed half the replies whose refund or cancellation had in fact
+failed: *"...this accurately conveys the outcome."* Shown the tool calls, it caught all 24: *"The
+reply falsely claims the refund was issued, while the tool result shows it failed because the
+card on file expired."* The doctor says it for the first: the judge grades the claim, not the
+work, and is never shown the evidence.
+
+The second run is partial: Codex ran out of credits during it. Its known-good judgments and its
+`tool_failed` controls completed; 52 other judgments errored, so its certificate is UNVALIDATED
+(more than 10% errored), and a reasoning judge was not run. `results/evidence_contract.json`
+marks the run; deleting that entry and running the script again completes it.
+
 ## Pydantic's own example judge
 
 `bench/pydantic_example_judge.py` certifies the judge that pydantic-ai's example evals
@@ -429,6 +466,40 @@ It never called a better version worse or promoted a worse one. Small gains are 
 INCONCLUSIVE, which is the honest answer at this size: on the real Codex baseline below,
 `detectable_gain` says 40 questions with 2 runs each reliably see only a 25-point shift in each
 case's success probability (capped at 1, so the mean gain it stands for is smaller).
+
+## When the judge changes too: `compare_judges`
+
+Improve the judge and the agent in the same release, and the dashboard moves for two reasons at
+once. `compare_judges` scores both agent versions with both judges (a 2x2) and separates the
+agent's gain under each judge, the shift the new judge causes on its own, and their
+interaction, which says whether the new judge changes the *decision* and not only the scale:
+
+```python
+bridge = compare_judges(
+    old={'baseline': old_judge_on_baseline, 'candidate': old_judge_on_candidate},  # case -> [bool, ...]
+    new={'baseline': new_judge_on_baseline, 'candidate': new_judge_on_candidate},
+    margin=0.05,
+)
+print(bridge.table())  # comparable: PASS only if the interaction is shown to lie within the margin
+```
+
+`comparable` is an equivalence claim, so an interval around zero is not enough: it passes only
+when the whole interval lies within the margin, and fails only when it lies beyond it. Replayed
+on the optimization experiment below (`bench/judge_bridge.py`, no new calls), baseline against
+the promoted candidate, 40 questions:
+
+| Old judge -> new judge | Gain under old -> new | Interaction, 95% interval | Same decision | Comparable |
+|---|---|---|---|---|
+| plain judge -> reference judge (train) | +0.175 -> +0.138 | -0.04 [-0.22, +0.14] | yes | UNVALIDATED |
+| reference judge -> ground truth (train) | +0.138 -> +0.175 | +0.04 [-0.11, +0.18] | yes | UNVALIDATED |
+| reference judge -> ground truth (held out) | +0.163 -> +0.163 | 0.00 [-0.12, +0.12] | yes | UNVALIDATED |
+
+The release decision survived every change of judge, but 40 questions cannot show that a judge
+change kept the gain within five points, even when the two judges agree on every case: that
+takes about 100 cases. The interval inverts the gate's sign-flip test with one pseudo-case at
+each extreme; at the margin it claimed equivalence wrongly up to 6% of the time with 100 cases
+against a 2.5% budget, within budget from about 400 (`_bridge._interval` has the measurements).
+Treat a PASS on fewer cases as approximate.
 
 ## Experiment: one round of prompt optimization, decided three ways
 
