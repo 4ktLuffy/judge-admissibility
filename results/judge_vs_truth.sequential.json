@@ -1,0 +1,1207 @@
+{
+  "rubric": "The output correctly answers the question.",
+  "confusion": {
+    "pass_correct": 20,
+    "pass_wrong": 5,
+    "fail_correct": 3,
+    "fail_wrong": 12,
+    "no_verdict": 0
+  },
+  "calls": 140,
+  "judge": "LLMJudge(codex:gpt-5.6-luna)",
+  "verdict": "INADMISSIBLE",
+  "checks": [
+    {
+      "name": "acceptance",
+      "status": "UNVALIDATED",
+      "successes": 29,
+      "trials": 40,
+      "rate": 0.725,
+      "interval": [
+        0.5278454934068363,
+        0.861440216443559
+      ],
+      "threshold": 0.7,
+      "errors": 0,
+      "detail": "interval straddles the threshold: needs more cases"
+    },
+    {
+      "name": "rejection",
+      "status": "PASS",
+      "successes": 40,
+      "trials": 40,
+      "rate": 1.0,
+      "interval": [
+        0.8650793552231006,
+        1.0
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "mismatched_output 20/20, empty_output 20/20"
+    },
+    {
+      "name": "invariance",
+      "status": "FAIL",
+      "successes": 10,
+      "trials": 20,
+      "rate": 0.5,
+      "interval": [
+        0.25619564551342444,
+        0.7438043544865756
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "whitespace_reformat 10/20"
+    },
+    {
+      "name": "stability",
+      "status": "UNVALIDATED",
+      "successes": 15,
+      "trials": 20,
+      "rate": 0.75,
+      "interval": [
+        0.47121130473446693,
+        0.9099075687323014
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "2 judgments per case; interval straddles the threshold: needs more cases"
+    },
+    {
+      "name": "human_agreement",
+      "status": "PASS",
+      "successes": 32,
+      "trials": 40,
+      "rate": 0.8,
+      "interval": [
+        0.6071242481714572,
+        0.9119233649624032
+      ],
+      "threshold": 0.4,
+      "errors": 0,
+      "detail": "kappa=0.58"
+    }
+  ],
+  "judgments": [
+    {
+      "case": "arithmetic-1",
+      "role": "reference#0",
+      "output": "Answer: 113",
+      "passed": false,
+      "reason": "The correct calculation is 29\u00d719\u2212384\u22126\u00d719+60 = 161 pens, not 113.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "reference#1",
+      "output": "Answer: 113",
+      "passed": false,
+      "reason": "The correct calculation is 29\u00d719\u2212384\u22126\u00d719+60 = 131, not 113.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "reference#0",
+      "output": "Answer: 195",
+      "passed": false,
+      "reason": "The correct calculation is 51\u00d712\u2212351\u22128\u00d712+30 = 165 pens, not 195.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "reference#1",
+      "output": "Answer: 195",
+      "passed": true,
+      "reason": "The correct calculation is 51\u00d712\u2212351\u22128\u00d712+30 = 195 pens, matching the output.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "reference#0",
+      "output": "Answer: 548",
+      "passed": true,
+      "reason": "The correct calculation is 36\u00d724\u2212228\u22125\u00d724+32 = 548 pens, matching the output.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "reference#1",
+      "output": "Answer: 548",
+      "passed": false,
+      "reason": "The correct calculation is 36\u00d724\u2212228\u22125\u00d724+32 = 644, not 548.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "reference#0",
+      "output": "Answer: 1017",
+      "passed": true,
+      "reason": "The calculation is 47\u00d735\u2212362\u22128\u00d735+14 = 1017, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "reference#1",
+      "output": "Answer: 1017",
+      "passed": true,
+      "reason": "The correct calculation is 47\u00d735\u2212362\u22128\u00d735+14 = 1017 pens, matching the output.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "reference#0",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The letter \u201ce\u201d appears three times in \u201cstrawberry occurrence,\u201d so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "reference#1",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The letter \"e\" appears 3 times in \"strawberry occurrence,\" so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "reference#0",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "398 days after Tuesday advances by 6 weekdays, resulting in Monday. The output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "reference#1",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "398 days after Tuesday advances by 6 days modulo 7, resulting in Monday. The output answers Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "reference#0",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "320 days after Sunday is Friday, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "reference#1",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "320 days after Sunday is Friday, since 320 mod 7 equals  five days forward.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "reference#0",
+      "output": "Answer: nOIssEssOp",
+      "passed": true,
+      "reason": "The reversed word is \u201cnoissessop,\u201d and applying the requested capitalization yields \u201cnOIssEssOp.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "reference#1",
+      "output": "Answer: nOIssEssOp",
+      "passed": true,
+      "reason": "The output is incorrect: \u201cpossession\u201d backwards is \u201cnoisessop,\u201d which should become \u201cnOIssEssOp\u201d; however, the provided output matches this exact transformation.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "reference#0",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": false,
+      "reason": "The reversed word is \"margollelarap\"; capitalizing vowels yields \"mArgOllElArAp\", so the provided output has an extra capital L and is incorrect.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "reference#1",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": false,
+      "reason": "The reversed word is \u201cmargol ellarap\u201d; capitalizing vowels yields \u201cmArgOllArAp,\u201d so the provided output has an extra capital L and is incorrect.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "reference#0",
+      "output": "Answer: yrrEbwArts",
+      "passed": false,
+      "reason": "The correct reversed string is \"yrrebwarts\"; capitalizing the vowel \"a\" gives \"yrrebwArts\", but the output has additional incorrect capitalization and letter ordering.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "reference#1",
+      "output": "Answer: yrrEbwArts",
+      "passed": false,
+      "reason": "The correct result is \"yrrebwarts\" with vowels uppercased: \"yrrEbWArts\"; the provided output has incorrect letter casing and ordering.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "The output 'Wednesday' does not answer the arithmetic question about the number of pens in the warehouse.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: tnEmssEssA",
+      "passed": false,
+      "reason": "The output is an unreadable string and does not provide the correct numerical answer (261 pens).",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "The output says \u201cWednesday,\u201d which does not answer the arithmetic question about the number of pens remaining.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Monday",
+      "passed": false,
+      "reason": "The output says \u201cMonday,\u201d which does not answer the arithmetic question. The correct total is 1,299 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": false,
+      "reason": "The output is an arbitrary string and does not state the correct count of the letter \"e\" in \"strawberry occurrence\" (which is 3).",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": false,
+      "reason": "The output is nonsensical and does not identify the correct day of the week, which is Sunday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 2",
+      "passed": false,
+      "reason": "320 days after Sunday is Friday, so the output '2' does not correctly answer the question.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": false,
+      "reason": "The reversed word is \"noisse ssop\"? Correctly, \"possession\" backwards is \"noissessop\", which transforms to \"nOIssEssOp\"; the provided output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 200",
+      "passed": false,
+      "reason": "The output is incorrect; the required transformed word is \u201cmargOllelarAp\u201d rather than \u201c200.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The required transformation is \u201cyrrebwarts,\u201d not \u201cSaturday.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens (261).",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens (628).",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens (1,021).",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer how many times the letter \"e\" appears.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the day-of-the-week question.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the transformed spelling of \u201cpossession.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the transformed word.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the transformed word.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 113\n",
+      "passed": false,
+      "reason": "The correct calculation is 29\u00d719\u2212384\u22126\u00d719+60 = 229 pens, not 113.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 195\n",
+      "passed": false,
+      "reason": "The correct calculation is 51\u00d712\u2212351\u22128\u00d712+30 = 153 pens, not 195.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 548\n",
+      "passed": false,
+      "reason": "The correct calculation is 36\u00d724\u2212228\u22125\u00d724+32 = 596, not 548.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 1017\n",
+      "passed": true,
+      "reason": "The calculation is 47\u00d735\u2212362\u22128\u00d735+14 = 1017, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 3\n",
+      "passed": false,
+      "reason": "The letter \"e\" appears twice in \"strawberry occurrence,\" not three times.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Monday\n",
+      "passed": true,
+      "reason": "398 days is 6 days modulo 7, so Tuesday advances to Monday. The output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Friday\n",
+      "passed": false,
+      "reason": "The correct day is Thursday, not Friday; 320 days is 5 days modulo 7 after Sunday.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: nOIssEssOp\n",
+      "passed": true,
+      "reason": "The correct reversed string is \"noisse ssop\"? Specifically, \"possession\" backwards is \"noisse ssop\" without the space: \"noisses sop\"; applying uppercase vowels gives \"nOIssEssOp\". The output matches.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: mArgOlEllArAp\n",
+      "passed": true,
+      "reason": "The reversed word is \"margolellarap\"; capitalizing its vowels yields \"mArgOlEllArAp,\" matching the output.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: yrrEbwArts\n",
+      "passed": true,
+      "reason": "The reversed word is \u201cyrrebwarts,\u201d and converting the vowel a to uppercase gives \u201cyrrEbwArts.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "human:1",
+      "output": "Initial pens: 29 \u00d7 19 = 551  \nAfter selling: 551 \u2212 384 = 167  \nAfter shipping: 167 \u2212 (6 \u00d7 19) = 53  \nAfter return: 53 + 60 = **113**\n\nAnswer: 113 pens",
+      "passed": true,
+      "reason": "The arithmetic is correct: 29\u00d719\u2212384\u22126\u00d719+60 = 113 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "human:1",
+      "output": "There are **19 \u00d7 29 = 551 pens** initially.\n\nAfter selling 384, shipping 6 \u00d7 19 = 114, and receiving 60 returned:\n\n**551 \u2212 384 \u2212 114 + 60 = 113 pens**\n\nAnswer: **113 pens**",
+      "passed": true,
+      "reason": "The calculation is correct: 29\u00d719=551, then 551\u2212384\u2212114+60=113 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "human:1",
+      "output": "Initially: \\(51 \\times 12 = 612\\) pens.  \nAfter selling 351: \\(612 - 351 = 261\\).  \nAfter shipping 8 boxes: \\(261 - 8 \\times 12 = 165\\).  \nAfter the return: \\(165 + 30 = 195\\).\n\nAnswer: 195 pens",
+      "passed": true,
+      "reason": "The calculation correctly starts with 612 pens, subtracts 351 sold and 96 shipped, then adds 30 returned, yielding 195 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "human:1",
+      "output": "Initial pens: 51 \u00d7 12 = 612  \nAfter sales: 612 \u2212 351 = 261  \nAfter shipping: 261 \u2212 8 \u00d7 12 = 165  \nAfter return: 165 + 30 = 195  \n\nAnswer: 195 pens",
+      "passed": true,
+      "reason": "The calculations correctly track inventory: 612 \u2212 351 \u2212 96 + 30 = 195 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "human:1",
+      "output": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales: 864 \u2212 228 = 636  \nAfter shipping: 636 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = **548 pens**\n\nAnswer: 548 pens",
+      "passed": true,
+      "reason": "The calculation correctly starts with 864 pens, subtracts 228 sold and 120 shipped, then adds 32 returned, yielding 548 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "human:1",
+      "output": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales and shipment: 864 \u2212 228 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = 548  \n\nAnswer: 548 pens",
+      "passed": true,
+      "reason": "The calculation is correct: 864 \u2212 228 \u2212 120 + 32 = 548 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "human:1",
+      "output": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "passed": true,
+      "reason": "The calculations correctly account for the initial inventory, sales, shipment, and returned pens, resulting in 1,017 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "human:1",
+      "output": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "passed": true,
+      "reason": "The calculations are correct: 1,645 \u2212 362 \u2212 280 + 14 = 1,017 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "human:0",
+      "output": "2\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The letter \"e\" appears twice in \"strawberry occurrence,\" so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "human:1",
+      "output": "The letter **\u201ce\u201d** appears **3 times** in \u201cstrawberry occurrence\u201d.\n\nAnswer: 3",
+      "passed": false,
+      "reason": "The word \u201cstrawberry\u201d has no e\u2019s, while \u201coccurrence\u201d has two e\u2019s, so the correct count is 2, not 3.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "human:0",
+      "output": "398 days later is **Thursday**.\n\nAnswer: Thursday",
+      "passed": false,
+      "reason": "The answer is incorrect: 398 days after Tuesday advances by 6 weekdays, resulting in Monday, not Thursday.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "human:1",
+      "output": "398 mod 7 = 6, so Tuesday + 6 days = **Monday**.\n\nAnswer: Monday",
+      "passed": true,
+      "reason": "The calculation is correct: 398 mod 7 equals 6, and six days after Tuesday is Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "human:0",
+      "output": "320 days later is **Tuesday**.\n\nAnswer: Tuesday",
+      "passed": true,
+      "reason": "2026-06-07 plus 320 days falls on a Tuesday, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "human:1",
+      "output": "320 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": true,
+      "reason": "The answer is incorrect: 320 days after Sunday advances by 5 days, which is Friday? Actually 320 mod 7 =  opt; 320 mod 7 =  \u092c\u0947\u091f? 7*45=315, remainder 5, so Sunday + 5 = Friday. The output is correct.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "human:1",
+      "output": "Possession backwards: **noissessop**  \nWith vowels uppercase: **nOIssEssOp**\n\nAnswer: nOIssEssOp",
+      "passed": true,
+      "reason": "The output reverses \u201cpossession\u201d as \u201cnoissessop\u201d and correctly capitalizes all vowels while lowercasing the other letters.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "human:0",
+      "output": "Answer: NOISSESSOP",
+      "passed": false,
+      "reason": "The reversed word is \u201cnoisse ssop\u201d \u2192 \u201cnoissessop,\u201d and uppercasing vowels gives \u201cnOIssEssOp,\u201d not \u201cNOISSESSOP.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "human:0",
+      "output": "marGolElarap\n\nAnswer: marGolElarap",
+      "passed": false,
+      "reason": "The requested transformation is incorrect: \u201cparallelogram\u201d backwards is \u201cmargol\u2026.,\u201d and the vowels should be uppercase, yielding \u201cmArGOllElArAp,\u201d not \u201cmarGolElarap.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "human:0",
+      "output": "Answer: MARGOLLELARAP",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cparallelogram\u201d backwards is \u201cmargollelarap,\u201d which should be \u201cmArgOllElArAp\u201d with vowels uppercase and consonants lowercase.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "human:0",
+      "output": "yrrebWArtS",
+      "passed": true,
+      "reason": "The correct transformed string is \"yrrebWArtS\", matching the output exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "human:0",
+      "output": "Answer: yrRebwaRts",
+      "passed": true,
+      "reason": "The reversed word is \u201cyrrebwarts,\u201d and applying the requested capitalization gives \u201cyrRebwaRts.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "reference#0",
+      "output": "Answer: 161",
+      "passed": false,
+      "reason": "The correct calculation is 44\u00d714 \u2212 385 \u2212 7\u00d714 + 28 = 147, not 161.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "reference#1",
+      "output": "Answer: 161",
+      "passed": true,
+      "reason": "The correct calculation is 44\u00d714\u2212385\u22127\u00d714+28 = 161 pens, matching the output.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "reference#0",
+      "output": "Answer: 741",
+      "passed": true,
+      "reason": "The correct calculation is 41\u00d726\u2212172\u22128\u00d726+55 = 741 pens, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "reference#1",
+      "output": "Answer: 741",
+      "passed": true,
+      "reason": "The calculation is 41\u00d726\u2212172\u22128\u00d726+55 = 741 pens, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The letter \"r\" appears twice in \"onomatopoeia referee,\" so the answer is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The letter \"r\" appears twice in \"referee\" and not in \"onomatopoeia,\" so the answer is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The letter \"m\" appears twice in \"referee committee,\" so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The letter \"m\" appears twice in \"referee committee,\" so the answer is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "reference#0",
+      "output": "Answer: 5",
+      "passed": false,
+      "reason": "The string contains 2 s's in \"strawberry\" and 4 s's in \"sassafras,\" for a total of 6, not 5.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "reference#1",
+      "output": "Answer: 5",
+      "passed": true,
+      "reason": "The letter \"s\" appears 5 times in \"strawberry sassafras,\" so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "reference#0",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "286 days after Saturday advances by vore 6 days modulo 7, which is Friday; the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "reference#1",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "286 days after Saturday advances by 6 days modulo 7, resulting in Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "reference#0",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "102 days after Tuesday is Saturday, so the output correctly answers the question.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "reference#1",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "102 days after Tuesday is Saturday, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "reference#0",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "319 days after Saturday is Wednesday (319 mod 7 = 4), so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "reference#1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "319 days after Saturday shifts by 4 days (319 mod 7 = 4), resulting in Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "reference#0",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "326 days after Saturday advances by 4 days because 326 mod 7 =  anot 4; Saturday plus 4 days is Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "reference#1",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "326 days after Saturday advances by 4 days because 326 mod 7 =  Anton?",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "reference#0",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The correct transformed string is \u201cAIEOpOtAmOnO,\u201d matching the output.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "reference#1",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The reversed word is \"aieopotamono\"; converting vowels to uppercase and consonants to lowercase gives \"AIEOpOtAmOnO\", matching the output.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: sArfAssAs",
+      "passed": false,
+      "reason": "The output is nonsensical and does not provide the correct number of pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output says \u201cSaturday,\u201d which does not answer the pen-count question. The correct count is 41\u00d726\u2212172\u22128\u00d726+55 = 671 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Friday",
+      "passed": false,
+      "reason": "The output says \u201cFriday,\u201d which does not answer how many times the letter \u201cr\u201d appears in the given phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 741",
+      "passed": false,
+      "reason": "The phrase contains only two occurrences of the letter \"m,\" so the answer 741 is incorrect.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output says \u201cSaturday,\u201d which does not answer how many times the letter \u201cs\u201d appears in \u201cstrawberry sassafras.\u201d",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "286 days is 6 days modulo 7; Saturday plus 6 days is Friday, so the output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: nOIssEssOp",
+      "passed": false,
+      "reason": "The output is nonsensical and does not identify the weekday 102 days after Tuesday.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Friday",
+      "passed": false,
+      "reason": "319 days is 4 days modulo 7; Saturday plus 4 days is Wednesday, not Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: ArbAdAcArbA",
+      "passed": false,
+      "reason": "The output is not a valid day of the week and does not answer the date calculation.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 1309",
+      "passed": false,
+      "reason": "The output \u201cAnswer: 1309\u201d does not provide the reversed and vowel-capitalized form of \u201conomatopoeia.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens (241 pens).",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct number of pens (951).",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer how many times the letter \u201cr\u201d appears.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer how many times the letter \"m\" appears.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer how many times the letter \u201cs\u201d appears.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the day-of-the-week question.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the transformed word.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 161\n",
+      "passed": true,
+      "reason": "The correct calculation is 44\u00d714\u2212385\u22127\u00d714+28 = 161 pens, matching the output.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 741\n",
+      "passed": false,
+      "reason": "The correct calculation is 41\u00d726\u2212172\u22128\u00d726+55 = 689, not 741.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": false,
+      "reason": "The phrase contains three occurrences of the letter \u201cr\u201d (one in \u201conomatopoeia referee\u201d and two in \u201creferee\u201d), so the output\u2019s answer of 2 is incorrect.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": true,
+      "reason": "The phrase \"referee committee\" contains two instances of the letter \"m,\" so the answer is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 5\n",
+      "passed": true,
+      "reason": "The phrase contains 5 instances of the letter \"s,\" so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Friday\n",
+      "passed": true,
+      "reason": "286 days after Saturday advances by 6 days modulo 7, resulting in Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Saturday\n",
+      "passed": true,
+      "reason": "102 days after Tuesday is Saturday, so the output is correct.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Wednesday\n",
+      "passed": true,
+      "reason": "319 days after Saturday advances by 4 days of the week, resulting in Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Wednesday\n",
+      "passed": true,
+      "reason": "326 days after Saturday advances by 4 days because 326 mod 7 = va 4, yielding Wednesday.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: AIEOpOtAmOnO\n",
+      "passed": false,
+      "reason": "The output is incorrect: \u201conomatopoeia\u201d backwards is \u201caieopoamtono,\u201d which should become \u201cAIEOPOAMTONO,\u201d not \u201cAIEOpOtAmOnO.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "human:1",
+      "output": "Initial pens: 44 \u00d7 14 = 616  \nAfter sales, shipment, and return: 616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "passed": true,
+      "reason": "The calculation is correct: 616 \u2212 385 \u2212 98 + 28 = 161 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "human:1",
+      "output": "44 \u00d7 14 = 616 pens  \n616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "passed": true,
+      "reason": "The calculation is correct: 616 \u2212 385 \u2212 98 + 28 = 161 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "human:1",
+      "output": "Initial pens: \\(41 \\times 26 = 1{,}066\\)\n\nAfter sales, shipping, and returns:\n\n\\[\n1{,}066 - 172 - (8 \\times 26) + 55 = 741\n\\]\n\nAnswer: **741 pens**",
+      "passed": true,
+      "reason": "The arithmetic is correct: 1,066 \u2212 172 \u2212 208 + 55 = 741 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "human:1",
+      "output": "There are \\(41 \\times 26 = 1{,}066\\) pens initially.\n\nAfter selling and shipping: \\(1{,}066 - 172 - (8 \\times 26) = 686\\).\n\nAfter the return: \\(686 + 55 = 741\\).\n\nAnswer: 741 pens",
+      "passed": true,
+      "reason": "The calculation is correct: 41\u00d726\u2212172\u22128\u00d726+55 = 741 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "human:1",
+      "output": "2\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The letter \u201cr\u201d appears twice in \u201creferee,\u201d and none in \u201conomatopoeia.\u201d The output answers 2.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "human:1",
+      "output": "2\n\nAnswer: 2",
+      "passed": false,
+      "reason": "The letter \"r\" appears once in \"onomatopoeia\" and twice in \"referee,\" for a total of 2. The output is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "human:1",
+      "output": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The word \u201ccommittee\u201d contains two instances of the letter \u201cm,\u201d so the answer is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "human:1",
+      "output": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly counts two occurrences of the letter \u201cm\u201d in \u201creferee committee.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "human:1",
+      "output": "The letter **\u201cs\u201d** appears **5 times**.\n\nAnswer: 5",
+      "passed": false,
+      "reason": "The answer is incorrect: \u201cstrawberry sassafras\u201d contains 6 occurrences of the letter \u201cs,\u201d not 5.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "human:0",
+      "output": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "passed": false,
+      "reason": "The answer is incorrect: \u201cstrawberry sassafras\u201d contains 5 occurrences of the letter \u201cs,\u201d not 4.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "human:0",
+      "output": "Answer: Sunday",
+      "passed": false,
+      "reason": "286 days is 6 days modulo 7; six days after Saturday is Friday, not Sunday.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "human:0",
+      "output": "286 days later is **Sunday**.\n\nAnswer: Sunday",
+      "passed": false,
+      "reason": "286 days after Saturday advances by \u0561\u0576\u057b? 286 mod 7 = 6 days, yielding Friday, not Sunday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "human:0",
+      "output": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": false,
+      "reason": "The calculation is incorrect: 102 days after Tuesday advances by 4 days, which is Saturday, not Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "human:0",
+      "output": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": false,
+      "reason": "The output is incorrect: 102 days after Tuesday advances by 4 days, yielding Saturday, not Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "human:1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "319 days after Saturday advances by  Howe 4 days modulo 7, resulting in Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "human:0",
+      "output": "319 days later is **Thursday**.\n\nAnswer: Thursday",
+      "passed": false,
+      "reason": "The output is incorrect: 319 days after Saturday advances by \u7b56? 319 mod 7 =  bliss? 4 days, yielding Wednesday, not Thursday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "human:0",
+      "output": "Answer: Monday",
+      "passed": false,
+      "reason": "326 days after Saturday advances by 4 days (326 mod 7 = 4), which is Wednesday, not Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "human:1",
+      "output": "326 mod 7 = 4, so four days after Saturday is **Wednesday**.\n\nAnswer: Wednesday",
+      "passed": true,
+      "reason": "326 days modulo 7 is 4, and four days after Saturday is Wednesday; the output is correct.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "human:0",
+      "output": "AIEOPOTAMONO\n\nAnswer: AIEOPOTAMONO",
+      "passed": true,
+      "reason": "The output is incorrect: \u201conomatopoeia\u201d backwards is \u201caieopotamono,\u201d which should become \u201cAIEOPOTAMONO\u201d; however, the given output includes an extra duplicated answer line but still contains the correct answer.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "human:0",
+      "output": "AeOpOtAmOnO\n\nAnswer: AeOpOtAmOnO",
+      "passed": false,
+      "reason": "The output is incorrect: \u201conomatopoeia\u201d backwards is \u201caieopo tamono\u201d without the space, and the required casing is \u201cAIEOPO TAMONO,\u201d not \u201cAeOpOtAmOnO.\u201d",
+      "error": null
+    }
+  ]
+}

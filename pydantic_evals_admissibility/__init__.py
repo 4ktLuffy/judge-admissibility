@@ -6,8 +6,17 @@ pass what it should pass, and give the same verdict when nothing that matters ha
 
 from ._canary import CanaryMonitor, JudgeCanary
 from ._cases import HumanLabel, JudgeCase
-from ._certify import Certificate, Check, Judgment, Thresholds, assertion_of, certify_judge
+from ._certify import (
+    Certificate,
+    Check,
+    InadmissibleJudge,
+    Judgment,
+    Thresholds,
+    assertion_of,
+    certify_judge,
+)
 from ._controls import DEFAULT_CONTROLS, Control, EmptyOutput, MismatchedOutput, WhitespaceReformat
+from ._diagnose import diagnose
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
 from ._logfire import finish_canary, promote, start_canary
 from ._reports import compare_reports, outcomes
@@ -27,12 +36,14 @@ __all__ = (
     'decide',
     'decide_unpaired',
     'detectable_gain',
+    'diagnose',
     'outcomes',
     'finish_canary',
     'promote',
     'start_canary',
     'EmptyOutput',
     'HumanLabel',
+    'InadmissibleJudge',
     'JudgeCase',
     'Judgment',
     'MismatchedOutput',

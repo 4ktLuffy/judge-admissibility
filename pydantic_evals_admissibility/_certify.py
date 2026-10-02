@@ -18,6 +18,7 @@ import random
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
+from statistics import NormalDist
 from typing import Any, Literal
 
 from pydantic_evals.evaluators import EvaluationReason, Evaluator, EvaluatorContext
@@ -56,6 +57,10 @@ class Thresholds:
 DEFAULT_THRESHOLDS = Thresholds()
 
 
+class InadmissibleJudge(AssertionError):
+    """A judge's certificate is not ADMISSIBLE; the message says why and what to try."""
+
+
 @dataclass(frozen=True)
 class Check:
     name: str
@@ -90,10 +95,26 @@ class Certificate:
     checks: tuple[Check, ...]
     judgments: tuple[Judgment, ...] = field(repr=False)
     judge: str = ''
+    calls: int | None = None
+    """Judge calls made; fewer than `planned` when a sequential certificate stopped early."""
+    planned: int | None = None
 
     @property
     def admissible(self) -> bool:
         return self.verdict == 'ADMISSIBLE'
+
+    def raise_unless_admissible(self, judge: Any = None) -> None:
+        """Raise `InadmissibleJudge` with the table and the doctor's advice unless ADMISSIBLE.
+
+        For a test or a CI step: the failure says what is wrong with the judge and what to try.
+        """
+        if self.admissible:
+            return
+        from ._diagnose import diagnose
+
+        advice = diagnose(self, judge)
+        lines = [self.table(), ''] + [f'- {a}' for a in advice]
+        raise InadmissibleJudge('\n'.join(lines))
 
     def failures(self) -> list[Check]:
         return [check for check in self.checks if check.status == 'FAIL']
@@ -209,9 +230,17 @@ async def _judge(
 
 
 def _check(
-    name: str, successes: int, trials: int, threshold: float, minimum: int, *, detail: str = '', errors: int = 0
+    name: str,
+    successes: int,
+    trials: int,
+    threshold: float,
+    minimum: int,
+    *,
+    detail: str = '',
+    errors: int = 0,
+    z: float = 1.96,
 ) -> Check:
-    interval = wilson(successes, trials)
+    interval = wilson(successes, trials, z)
     low, high = interval
     if trials < minimum:
         status: CheckStatus = 'UNVALIDATED'
@@ -238,6 +267,7 @@ async def certify_judge(
     assertion: str | None = None,
     max_concurrency: int = 8,
     seed: int = 0,
+    batch_size: int | None = None,
 ) -> Certificate:
     """Run `judge` over `cases`, controls built from them, and any human labels.
 
@@ -251,6 +281,9 @@ async def certify_judge(
         assertion: The result to read when the judge returns several boolean results.
         max_concurrency: Judgments in flight at once.
         seed: Seeds the choice of mismatched answers, so a certificate can be reproduced.
+        batch_size: Judge this many cases at a time and stop early if the judge has clearly
+            failed (intervals widened for the number of looks). A judge that is not failing runs
+            to the end and is judged as if all at once. None judges everything at once.
     """
     if repeats < 1:
         raise ValueError(f'repeats must be >= 1, got {repeats}')
@@ -259,8 +292,71 @@ async def certify_judge(
         raise ValueError('case names must be unique: human labels are matched to cases by name')
     rng = random.Random(seed)
     limit = asyncio.Semaphore(max_concurrency)
-    by_name = {case.name: case for case in cases}
+    planned = _plan(cases, controls, human_labels, repeats, rng)
+    if batch_size is None:
+        judgments = await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in planned))
+        verdict, checks = _assess(judgments, repeats, thresholds)
+        return Certificate(
+            verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(planned), planned=len(planned)
+        )
+    return await _certify_sequentially(
+        judge, cases, planned, repeats, thresholds, assertion, limit, rng, batch_size=batch_size
+    )
 
+
+async def _certify_sequentially(
+    judge: Evaluator[Any, Any, Any],
+    cases: Sequence[JudgeCase],
+    planned: list[tuple[JudgeCase, Any, str]],
+    repeats: int,
+    thresholds: Thresholds,
+    assertion: str | None,
+    limit: asyncio.Semaphore,
+    rng: random.Random,
+    *,
+    batch_size: int,
+) -> Certificate:
+    """Judge `batch_size` cases at a time and stop early only when the judge has clearly failed.
+
+    A judge that is broken shows it fast: after the first batch it is already failing controls
+    beyond any doubt, and there is no reason to pay for the rest. A judge that is doing well is
+    not stopped early: it runs to the end and is judged there with the usual interval, so stopping
+    early costs a sound judge nothing. Early failures use a wider interval, the confidence level
+    split across the looks (Bonferroni), so peeking does not fail a sound judge by chance.
+    (Stopping early for success too was measured and rejected: it certified sound judges less
+    often, 74/100 against 87/100, for an 18% saving.)
+    """
+    order = [case.name for case in cases]
+    rng.shuffle(order)
+    batches = [order[i : i + batch_size] for i in range(0, len(order), batch_size)]
+    z_early = NormalDist().inv_cdf(1 - 0.05 / (2 * len(batches)))
+    judgments: list[Judgment] = []
+    verdict: Verdict = 'UNVALIDATED'
+    checks: tuple[Check, ...] = ()
+    for index, batch in enumerate(batches):
+        names = set(batch)
+        todo = [(c, out, role) for c, out, role in planned if c.name in names]
+        judgments += await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in todo))
+        if index < len(batches) - 1:
+            verdict, checks = _assess(judgments, repeats, thresholds, z_early)
+            if verdict == 'INADMISSIBLE':
+                break
+        else:
+            verdict, checks = _assess(judgments, repeats, thresholds)
+    return Certificate(
+        verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(judgments), planned=len(planned)
+    )
+
+
+def _plan(
+    cases: Sequence[JudgeCase],
+    controls: Sequence[Control],
+    human_labels: Sequence[HumanLabel],
+    repeats: int,
+    rng: random.Random,
+) -> list[tuple[JudgeCase, Any, str]]:
+    """Every judgment the certificate needs: known-good answers, controls, labelled outputs."""
+    by_name = {case.name: case for case in cases}
     planned: list[tuple[JudgeCase, Any, str]] = []
     for case in cases:
         planned.extend((case, case.output, f'reference#{i}') for i in range(repeats))
@@ -275,8 +371,13 @@ async def certify_judge(
             raise KeyError(f'human label for unknown case {label.case!r}')
         planned.append((case, label.output, f'human:{int(label.passed)}'))
 
-    judgments = await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in planned))
+    return planned
 
+
+def _assess(
+    judgments: Sequence[Judgment], repeats: int, thresholds: Thresholds, z: float = 1.96
+) -> tuple[Verdict, tuple[Check, ...]]:
+    """Every check, and the verdict, from the judgments made so far."""
     references: dict[str, list[Judgment]] = defaultdict(list)
     for judgment in judgments:
         if judgment.role.startswith('reference#'):
@@ -297,6 +398,7 @@ async def certify_judge(
             len(reference_judgments),
             thresholds.min_acceptance,
             thresholds.min_trials,
+            z=z,
             errors=sum(j.error is not None for j in reference_judgments),
         )
     )
@@ -309,6 +411,7 @@ async def certify_judge(
             len(must_fail),
             thresholds.min_rejection,
             thresholds.min_trials,
+            z=z,
             detail=_breakdown(must_fail, lambda j: j.passed is False),
             errors=sum(j.error is not None for j in must_fail),
         )
@@ -323,6 +426,7 @@ async def certify_judge(
             len(held),
             thresholds.min_invariance,
             thresholds.min_trials,
+            z=z,
             detail=_breakdown(held, lambda j: j.passed == majority(j.case)),
             errors=sum(j.error is not None for j in held),
         )
@@ -339,6 +443,7 @@ async def certify_judge(
                 len(stable),
                 thresholds.min_stability,
                 thresholds.min_trials,
+                z=z,
                 detail=f'{repeats} judgments per case',
             )
         )
@@ -348,7 +453,7 @@ async def certify_judge(
         pairs = [(j.role == 'human:1', j.passed) for j in labelled if j.passed is not None]
         kappa = cohen_kappa(pairs)  # type: ignore[arg-type]
         agree = sum(a == b for a, b in pairs)
-        interval = wilson(agree, len(pairs))
+        interval = wilson(agree, len(pairs), z)
         if kappa is None or len(pairs) < thresholds.min_trials:
             status: CheckStatus = 'UNVALIDATED'
             detail = 'kappa undefined: labels or verdicts are all one value' if kappa is None else ''
@@ -374,7 +479,7 @@ async def certify_judge(
         verdict = 'UNVALIDATED'
     else:
         verdict = 'ADMISSIBLE'
-    return Certificate(verdict, tuple(checks), tuple(judgments), judge=_describe(judge))
+    return verdict, tuple(checks)
 
 
 def _breakdown(judgments: Sequence[Judgment], ok: Any) -> str:

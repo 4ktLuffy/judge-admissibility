@@ -55,6 +55,46 @@ and **UNVALIDATED** otherwise. `acceptance` and `rejection` are both required be
 alone is satisfied by a constant judge: one that always passes clears acceptance, invariance
 and stability, and one that always fails clears rejection.
 
+## Cheaper certificates, and what to do when one fails
+
+**Stop early when a judge has clearly failed.** `certify_judge(..., batch_size=10)` judges ten
+cases at a time and stops as soon as a check fails beyond doubt; a judge that is not failing runs
+to the end and is judged exactly as if all at once, so stopping early costs a sound judge nothing.
+Early looks use a wider interval (the confidence level split across the looks), so peeking does not
+fail a sound judge by chance. `certificate.calls` says how many judgments were actually made.
+
+Measured with scripted judges whose verdicts are fixed per answer, so both modes see the same
+verdicts (60 cases, 2 repeats, batches of 15, 100 seeds each, `bench/sequential_check.py`):
+
+| Judge | Same verdict as judging everything | Calls used |
+|---|---|---|
+| broken (passes 60% of wrong answers) | 100/100 | 26% |
+| borderline bad (25%; the bar is 20%) | 100/100 | 89% |
+| borderline good (10%) | 100/100 | 100% |
+| sound | 100/100 | 100% |
+
+On a real judge, the Codex `LLMJudge` that failed certification on the arithmetic task: the
+sequential certificate reached the same verdict, INADMISSIBLE, after 140 of 280 calls
+(`results/judge_vs_truth.sequential.json`).
+
+Stopping early for success as well was tried and dropped: it certified sound judges less often
+(74/100 against 87/100) to save 18% of calls.
+
+**Say why, and what to try.** `diagnose(certificate, judge)` turns the pattern of failed checks
+into plain advice. On the two real failures in this README it says:
+
+- default `LLMJudge`: *"It fails answers that are right (0/40 passed) as readily as wrong ones ...
+  The rubric refers to the question, but `include_input=False`: the judge never sees it. Set
+  `include_input=True`."*
+- the plain judge on the arithmetic task: *"Its verdict changes when only whitespace changes, but
+  it also disagrees with itself on the very same answer, so this is most likely noise rather than
+  formatting sensitivity. Lower its temperature ..."*, and that more cases will not make its
+  acceptance or stability pass, since their rates are below the bar.
+
+The advice is a hypothesis to re-certify, not a fix. `certificate.raise_unless_admissible(judge)`
+raises `InadmissibleJudge` with the table and the advice, for a test or a CI step that should fail
+when a judge stops being evidence.
+
 ## The package's own controls
 
 `tests/test_certify.py` drives the real `LLMJudge` with scripted models and checks that the

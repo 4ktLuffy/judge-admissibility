@@ -31,6 +31,7 @@ async def main() -> None:
     root = Path(__file__).parent.parent
     baseline = json.loads((root / 'results' / 'task_baseline.json').read_text())
     reference = '--reference' in sys.argv  # the judge also sees the expected answer
+    sequential = '--sequential' in sys.argv  # stop early if the judge has clearly failed
     cases = [
         JudgeCase(q.name, q.question, f'Answer: {q.answer}', expected_output=q.answer if reference else None)
         for q in questions()
@@ -38,7 +39,10 @@ async def main() -> None:
     labels = [HumanLabel(r['question'], r['reply'], r['correct']) for r in baseline['rows']]
     judge = LLMJudge(rubric=RUBRIC, model=codex_model(), include_input=True, include_expected_output=reference)
     started = time.monotonic()
-    certificate = await certify_judge(judge, cases, human_labels=labels, repeats=2, max_concurrency=4)
+    certificate = await certify_judge(
+        judge, cases, human_labels=labels, repeats=2, max_concurrency=4, batch_size=10 if sequential else None
+    )
+    print(f'judge calls: {certificate.calls} of {certificate.planned} planned')
     print(f'{time.monotonic() - started:.0f}s, {len(TOKENS)} calls, {sum(TOKENS):,} tokens')
     print(certificate.table())
     confusion = {'pass_correct': 0, 'pass_wrong': 0, 'fail_correct': 0, 'fail_wrong': 0, 'no_verdict': 0}
@@ -51,7 +55,7 @@ async def main() -> None:
         else:
             confusion[f'{"pass" if j.passed else "fail"}_{"correct" if truth else "wrong"}'] += 1
     print('judge vs ground truth on the 80 real replies:', confusion)
-    name = 'judge_vs_truth.reference.json' if reference else 'judge_vs_truth.json'
+    name = 'judge_vs_truth' + ('.reference' if reference else '') + ('.sequential' if sequential else '') + '.json'
     (root / 'results' / name).write_text(
         json.dumps({'rubric': RUBRIC, 'confusion': confusion, 'calls': len(TOKENS), **certificate.to_dict()}, indent=2)
     )
