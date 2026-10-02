@@ -16,6 +16,7 @@ import hashlib
 import json
 import tempfile
 from pathlib import Path
+from typing import Any
 
 from pydantic_ai.messages import (
     ModelMessage,
@@ -92,22 +93,46 @@ async def run_codex(
     return reply
 
 
-def codex_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120) -> FunctionModel:
-    """A judge model: returns `LLMJudge`'s structured verdict."""
-    WORKDIR.mkdir(parents=True, exist_ok=True)
-    schema = WORKDIR / 'schema.json'
-    schema.write_text(json.dumps(SCHEMA))
+def _strict(schema: Any) -> Any:
+    """Codex's structured output wants every object closed and every property required."""
+    if isinstance(schema, dict):
+        out = {k: _strict(v) for k, v in schema.items() if k != 'title'}
+        if out.get('type') == 'object' and 'properties' in out:
+            out['additionalProperties'] = False
+            out['required'] = list(out['properties'])
+        return out
+    if isinstance(schema, list):
+        return [_strict(v) for v in schema]
+    return schema
 
-    async def judge(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
-        instructions = (info.instructions or '') + '\n' + _text(messages, SystemPromptPart)
-        instructions += '\nReply with the JSON verdict only: reason, pass, score.'
-        reply = await run_codex(
-            instructions, _text(messages, UserPromptPart), model=model, effort=effort, schema=schema, timeout=timeout
-        )
+
+def codex_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120) -> FunctionModel:
+    """A model for structured output: an `LLMJudge`, or any agent with an `output_type`.
+
+    The agent's own output schema is passed to Codex (made strict), so the reply is that type.
+    """
+    WORKDIR.mkdir(parents=True, exist_ok=True)
+
+    async def structured(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
         tool = info.output_tools[0]
+        schema = _strict(tool.parameters_json_schema)
+        schema_text = json.dumps(schema, sort_keys=True)
+        schema_path = WORKDIR / f'schema-{hashlib.sha256(schema_text.encode()).hexdigest()[:16]}.json'
+        if not schema_path.exists():
+            schema_path.write_text(schema_text)
+        instructions = (info.instructions or '') + '\n' + _text(messages, SystemPromptPart)
+        instructions += '\nReply with JSON only, matching the requested schema.'
+        reply = await run_codex(
+            instructions,
+            _text(messages, UserPromptPart),
+            model=model,
+            effort=effort,
+            schema=schema_path,
+            timeout=timeout,
+        )
         return ModelResponse(parts=[ToolCallPart(tool.name, json.loads(reply))], model_name=f'codex:{model}')
 
-    return FunctionModel(judge, model_name=f'codex:{model}')
+    return FunctionModel(structured, model_name=f'codex:{model}')
 
 
 def codex_text_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120) -> FunctionModel:

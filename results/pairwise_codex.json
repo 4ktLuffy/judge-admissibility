@@ -1,0 +1,909 @@
+{
+  "judge": "PairwiseJudge(codex:gpt-5.6-luna)",
+  "verdict": "INADMISSIBLE",
+  "checks": [
+    {
+      "name": "accuracy",
+      "status": "UNVALIDATED",
+      "successes": 83,
+      "trials": 108,
+      "rate": 0.7685185185185185,
+      "interval": [
+        0.6805831252811039,
+        0.8380074528222137
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "interval straddles the threshold: needs more cases"
+    },
+    {
+      "name": "order_consistency",
+      "status": "FAIL",
+      "successes": 41,
+      "trials": 54,
+      "rate": 0.7592592592592593,
+      "interval": [
+        0.6305222087076177,
+        0.8535584529614926
+      ],
+      "threshold": 0.9,
+      "errors": 0,
+      "detail": "when it flipped, it chose the answer shown first in 10/13"
+    }
+  ],
+  "judgments": [
+    {
+      "case": "arithmetic-0",
+      "role": "better_first#0",
+      "output": "('Initial pens: 43 \u00d7 16 = 688  \\nAfter sales: 688 \u2212 302 = 386  \\nAfter shipping: 386 \u2212 (8 \u00d7 16) = 258  \\nAfter return: 258 + 13 = **271 pens**\\n\\nAnswer: 271 pens', '688 pens\\n\\nAnswer: 688 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "worse_first#0",
+      "output": "('688 pens\\n\\nAnswer: 688 pens', 'Initial pens: 43 \u00d7 16 = 688  \\nAfter sales: 688 \u2212 302 = 386  \\nAfter shipping: 386 \u2212 (8 \u00d7 16) = 258  \\nAfter return: 258 + 13 = **271 pens**\\n\\nAnswer: 271 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "better_first#0",
+      "output": "('Initial pens: 26 \u00d7 28 = 728  \\nAfter sales, shipment, and return: 728 \u2212 209 \u2212 (3 \u00d7 28) + 15 = **450 pens**\\n\\nAnswer: 450 pens', 'Answer: 501 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "worse_first#0",
+      "output": "('Answer: 501 pens', 'Initial pens: 26 \u00d7 28 = 728  \\nAfter sales, shipment, and return: 728 \u2212 209 \u2212 (3 \u00d7 28) + 15 = **450 pens**\\n\\nAnswer: 450 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "better_first#0",
+      "output": "('Initial pens: 58 \u00d7 25 = 1,450  \\nAfter sales, shipment, and return: 1,450 \u2212 130 \u2212 (9 \u00d7 25) + 46 = **1,141 pens**\\n\\nAnswer: 1,141 pens', 'Answer: 1206 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "worse_first#0",
+      "output": "('Answer: 1206 pens', 'Initial pens: 58 \u00d7 25 = 1,450  \\nAfter sales, shipment, and return: 1,450 \u2212 130 \u2212 (9 \u00d7 25) + 46 = **1,141 pens**\\n\\nAnswer: 1,141 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "better_first#0",
+      "output": "('The warehouse starts with \\\\(60 \\\\times 24 = 1{,}440\\\\) pens.\\n\\n\\\\(1{,}440 - 125 - (4 \\\\times 24) + 12 = 1{,}231\\\\).\\n\\nAnswer: **1,231 pens**', 'Answer: 1,183 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "worse_first#0",
+      "output": "('Answer: 1,183 pens', 'The warehouse starts with \\\\(60 \\\\times 24 = 1{,}440\\\\) pens.\\n\\n\\\\(1{,}440 - 125 - (4 \\\\times 24) + 12 = 1{,}231\\\\).\\n\\nAnswer: **1,231 pens**')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "better_first#0",
+      "output": "('Initial pens: 57 \u00d7 15 = 855  \\nAfter sales and shipment: 855 \u2212 392 \u2212 (5 \u00d7 15) = 388  \\nAfter return: 388 + 45 = **433 pens**\\n\\nAnswer: 433 pens', 'Answer: 308 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "worse_first#0",
+      "output": "('Answer: 308 pens', 'Initial pens: 57 \u00d7 15 = 855  \\nAfter sales and shipment: 855 \u2212 392 \u2212 (5 \u00d7 15) = 388  \\nAfter return: 388 + 45 = **433 pens**\\n\\nAnswer: 433 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-10",
+      "role": "better_first#0",
+      "output": "('Initial pens: 63 \u00d7 18 = 1,134  \\nAfter sales and shipment: 1,134 \u2212 290 \u2212 (3 \u00d7 18) = 790  \\nAfter return: 790 + 45 = **835 pens**\\n\\nAnswer: 835 pens', 'Answer: 838 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-10",
+      "role": "worse_first#0",
+      "output": "('Answer: 838 pens', 'Initial pens: 63 \u00d7 18 = 1,134  \\nAfter sales and shipment: 1,134 \u2212 290 \u2212 (3 \u00d7 18) = 790  \\nAfter return: 790 + 45 = **835 pens**\\n\\nAnswer: 835 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-12",
+      "role": "better_first#0",
+      "output": "('Initial pens: 36 \u00d7 27 = 972  \\nAfter sales, shipment, and return: 972 \u2212 372 \u2212 (6 \u00d7 27) + 59 = **497 pens**\\n\\nAnswer: 497 pens', 'Answer: 529 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-12",
+      "role": "worse_first#0",
+      "output": "('Answer: 529 pens', 'Initial pens: 36 \u00d7 27 = 972  \\nAfter sales, shipment, and return: 972 \u2212 372 \u2212 (6 \u00d7 27) + 59 = **497 pens**\\n\\nAnswer: 497 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-14",
+      "role": "better_first#0",
+      "output": "('Initial pens: 42 \u00d7 19 = 798  \\nAfter sales: 798 \u2212 192 = 606  \\nAfter shipping: 606 \u2212 (8 \u00d7 19) = 454  \\nAfter returns: 454 + 59 = **513**\\n\\nAnswer: 513 pens', 'Answer: 539 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-14",
+      "role": "worse_first#0",
+      "output": "('Answer: 539 pens', 'Initial pens: 42 \u00d7 19 = 798  \\nAfter sales: 798 \u2212 192 = 606  \\nAfter shipping: 606 \u2212 (8 \u00d7 19) = 454  \\nAfter returns: 454 + 59 = **513**\\n\\nAnswer: 513 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-16",
+      "role": "better_first#0",
+      "output": "('Total pens: \\\\(54 \\\\times 22 = 1188\\\\)\\n\\nAfter sales, shipment, and returns: \\\\(1188 - 329 - (5 \\\\times 22) + 48 = 797\\\\).\\n\\nAnswer: 797 pens', 'Answer: 761 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-16",
+      "role": "worse_first#0",
+      "output": "('Answer: 761 pens', 'Total pens: \\\\(54 \\\\times 22 = 1188\\\\)\\n\\nAfter sales, shipment, and returns: \\\\(1188 - 329 - (5 \\\\times 22) + 48 = 797\\\\).\\n\\nAnswer: 797 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-18",
+      "role": "better_first#0",
+      "output": "('Initial pens: 44 \u00d7 16 = 704  \\nAfter sales, shipment, and return: 704 \u2212 350 \u2212 (6 \u00d7 16) + 12 = **270 pens**\\n\\nAnswer: 270 pens', 'Answer: 276 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-18",
+      "role": "worse_first#0",
+      "output": "('Answer: 276 pens', 'Initial pens: 44 \u00d7 16 = 704  \\nAfter sales, shipment, and return: 704 \u2212 350 \u2212 (6 \u00d7 16) + 12 = **270 pens**\\n\\nAnswer: 270 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "better_first#0",
+      "output": "('The letter **\u201cn\u201d** appears **2 times** in \u201coccurrence assessment\u201d.\\n\\nAnswer: 2', 'The letter \u201cn\u201d appears 3 times.\\n\\nAnswer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "worse_first#0",
+      "output": "('The letter \u201cn\u201d appears 3 times.\\n\\nAnswer: 3', 'The letter **\u201cn\u201d** appears **2 times** in \u201coccurrence assessment\u201d.\\n\\nAnswer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "better_first#0",
+      "output": "('The letter \u201ce\u201d appears **3 times**.\\n\\nAnswer: 3', 'Answer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "worse_first#0",
+      "output": "('Answer: 4', 'The letter \u201ce\u201d appears **3 times**.\\n\\nAnswer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "better_first#0",
+      "output": "('The letter **\u201ci\u201d** appears **5 times**.\\n\\nAnswer: 5', 'The letter **\u201ci\u201d** appears **4 times** in \u201cmississippi possession.\u201d\\n\\nAnswer: 4')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201ci\u201d** appears **4 times** in \u201cmississippi possession.\u201d\\n\\nAnswer: 4', 'The letter **\u201ci\u201d** appears **5 times**.\\n\\nAnswer: 5')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-12",
+      "role": "better_first#0",
+      "output": "('Answer: 2', '3\\n\\nAnswer: 3')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-12",
+      "role": "worse_first#0",
+      "output": "('3\\n\\nAnswer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-14",
+      "role": "better_first#0",
+      "output": "('The letter **\u201co\u201d** appears **4** times.\\n\\nAnswer: 4', 'The letter **\u201co\u201d** appears **5** times.\\n\\nAnswer: 5')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-14",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201co\u201d** appears **5** times.\\n\\nAnswer: 5', 'The letter **\u201co\u201d** appears **4** times.\\n\\nAnswer: 4')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-16",
+      "role": "better_first#0",
+      "output": "('The letter **\u201cb\u201d** appears **2 times**.\\n\\nAnswer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-16",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'The letter **\u201cb\u201d** appears **2 times**.\\n\\nAnswer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-18",
+      "role": "better_first#0",
+      "output": "('The letter **\u201ck\u201d** appears **2 times** in \u201cbookkeeper committee.\u201d\\n\\nAnswer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-18",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'The letter **\u201ck\u201d** appears **2 times** in \u201cbookkeeper committee.\u201d\\n\\nAnswer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "better_first#0",
+      "output": "('Answer: Sunday', 'Answer: Thursday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Sunday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "better_first#0",
+      "output": "('313 days later is **Saturday**.\\n\\nAnswer: Saturday', '313 days later is **Sunday**.\\n\\nAnswer: Sunday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "worse_first#0",
+      "output": "('313 days later is **Sunday**.\\n\\nAnswer: Sunday', '313 days later is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "better_first#0",
+      "output": "('203 mod 7 =  imao 0, so it remains Saturday.\\n\\nAnswer: Saturday', '203 days later is **Sunday**.\\n\\nAnswer: Sunday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "worse_first#0",
+      "output": "('203 days later is **Sunday**.\\n\\nAnswer: Sunday', '203 mod 7 =  imao 0, so it remains Saturday.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "better_first#0",
+      "output": "('Answer: Sunday', '356 days later is **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "worse_first#0",
+      "output": "('356 days later is **Tuesday**.\\n\\nAnswer: Tuesday', 'Answer: Sunday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "better_first#0",
+      "output": "('273 mod 7 = 0, so it remains a Wednesday.\\n\\nAnswer: Wednesday', '273 days later is **Friday**.\\n\\nAnswer: Friday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "worse_first#0",
+      "output": "('273 days later is **Friday**.\\n\\nAnswer: Friday', '273 mod 7 = 0, so it remains a Wednesday.\\n\\nAnswer: Wednesday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-10",
+      "role": "better_first#0",
+      "output": "('243 days later is **Saturday**.\\n\\nAnswer: Saturday', '243 days later is **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-10",
+      "role": "worse_first#0",
+      "output": "('243 days later is **Tuesday**.\\n\\nAnswer: Tuesday', '243 days later is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-12",
+      "role": "better_first#0",
+      "output": "('286 mod 7 = 6, so six days after Monday is Sunday.\\n\\nAnswer: Sunday', '286 mod 7 = 2, so two days after Monday is Wednesday.\\n\\nAnswer: Wednesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-12",
+      "role": "worse_first#0",
+      "output": "('286 mod 7 = 2, so two days after Monday is Wednesday.\\n\\nAnswer: Wednesday', '286 mod 7 = 6, so six days after Monday is Sunday.\\n\\nAnswer: Sunday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-14",
+      "role": "better_first#0",
+      "output": "('137 days \u2261  auspiciously 4 days (mod 7). Sunday + 4 days = **Thursday**.\\n\\nAnswer: Thursday', '137 days later is **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-14",
+      "role": "worse_first#0",
+      "output": "('137 days later is **Tuesday**.\\n\\nAnswer: Tuesday', '137 days \u2261  auspiciously 4 days (mod 7). Sunday + 4 days = **Thursday**.\\n\\nAnswer: Thursday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-16",
+      "role": "better_first#0",
+      "output": "('123 days later is a **Tuesday**.\\n\\nAnswer: Tuesday', '123 days later is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-16",
+      "role": "worse_first#0",
+      "output": "('123 days later is **Saturday**.\\n\\nAnswer: Saturday', '123 days later is a **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-18",
+      "role": "better_first#0",
+      "output": "('66 days later is 3 days later modulo 7: **Saturday**.\\n\\nAnswer: Saturday', 'Answer: Monday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-18",
+      "role": "worse_first#0",
+      "output": "('Answer: Monday', '66 days later is 3 days later modulo 7: **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "better_first#0",
+      "output": "('Answer: mUInnEllIm', 'Answer: MUINNELLIM')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "worse_first#0",
+      "output": "('Answer: MUINNELLIM', 'Answer: mUInnEllIm')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "better_first#0",
+      "output": "('tnEmssEssA\\n\\nAnswer: tnEmssEssA', 'Answer: TNEMSSsA?')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "worse_first#0",
+      "output": "('Answer: TNEMSSsA?', 'tnEmssEssA\\n\\nAnswer: tnEmssEssA')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-10",
+      "role": "better_first#0",
+      "output": "('Answer: mhtyhr', 'mhtyrh\\n\\nAnswer: mhtyrh')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-10",
+      "role": "worse_first#0",
+      "output": "('mhtyrh\\n\\nAnswer: mhtyrh', 'Answer: mhtyhr')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-16",
+      "role": "better_first#0",
+      "output": "('Answer: ArbAdAcArbA', 'arbAdAcArbA\\n\\nAnswer: arbAdAcArbA')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-16",
+      "role": "worse_first#0",
+      "output": "('arbAdAcArbA\\n\\nAnswer: arbAdAcArbA', 'Answer: ArbAdAcArbA')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "better_first#0",
+      "output": "('Initial pens: 27 \u00d7 29 = 783  \\nAfter sales, shipment, and return: 783 \u2212 148 \u2212 (5 \u00d7 29) + 47 = **537**\\n\\nAnswer: 537 pens', 'The warehouse has:\\n\\n\\\\(27 \\\\times 29 - 148 - (5 \\\\times 29) + 47 = 560\\\\)\\n\\nAnswer: **560 pens**')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "worse_first#0",
+      "output": "('The warehouse has:\\n\\n\\\\(27 \\\\times 29 - 148 - (5 \\\\times 29) + 47 = 560\\\\)\\n\\nAnswer: **560 pens**', 'Initial pens: 27 \u00d7 29 = 783  \\nAfter sales, shipment, and return: 783 \u2212 148 \u2212 (5 \u00d7 29) + 47 = **537**\\n\\nAnswer: 537 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "better_first#0",
+      "output": "('Initial pens: \\\\(50 \\\\times 25 = 1{,}250\\\\)\\n\\nAfter sales and shipment: \\\\(1{,}250 - 135 - (4 \\\\times 25) = 1{,}015\\\\)\\n\\nAfter the return: \\\\(1{,}015 + 15 = 1{,}030\\\\)\\n\\nAnswer: 1,030 pens', 'Answer: 960 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "worse_first#0",
+      "output": "('Answer: 960 pens', 'Initial pens: \\\\(50 \\\\times 25 = 1{,}250\\\\)\\n\\nAfter sales and shipment: \\\\(1{,}250 - 135 - (4 \\\\times 25) = 1{,}015\\\\)\\n\\nAfter the return: \\\\(1{,}015 + 15 = 1{,}030\\\\)\\n\\nAnswer: 1,030 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "better_first#0",
+      "output": "('Initial pens: 58 \u00d7 16 = 928  \\nAfter sales and shipment: 928 \u2212 248 \u2212 (6 \u00d7 16) = 584  \\nAfter return: 584 + 19 = **603**\\n\\nAnswer: 603 pens', 'Answer: 487 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "worse_first#0",
+      "output": "('Answer: 487 pens', 'Initial pens: 58 \u00d7 16 = 928  \\nAfter sales and shipment: 928 \u2212 248 \u2212 (6 \u00d7 16) = 584  \\nAfter return: 584 + 19 = **603**\\n\\nAnswer: 603 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "better_first#0",
+      "output": "('Initial pens: 66 \u00d7 17 = 1,122  \\nAfter sales: 1,122 \u2212 152 = 970  \\nAfter shipping: 970 \u2212 (7 \u00d7 17) = 851  \\nAfter returns: 851 + 46 = **897 pens**\\n\\nAnswer: 897 pens', '66 \u00d7 17 \u2212 152 \u2212 7 \u00d7 17 + 46 = **1,135 pens**\\n\\nAnswer: 1,135 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "worse_first#0",
+      "output": "('66 \u00d7 17 \u2212 152 \u2212 7 \u00d7 17 + 46 = **1,135 pens**\\n\\nAnswer: 1,135 pens', 'Initial pens: 66 \u00d7 17 = 1,122  \\nAfter sales: 1,122 \u2212 152 = 970  \\nAfter shipping: 970 \u2212 (7 \u00d7 17) = 851  \\nAfter returns: 851 + 46 = **897 pens**\\n\\nAnswer: 897 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-13",
+      "role": "better_first#0",
+      "output": "('Initial pens: \\\\(43 \\\\times 26 = 1{,}118\\\\)\\n\\nAfter sales, shipment, and return:\\n\\n\\\\(1{,}118 - 399 - (6 \\\\times 26) + 33 = 596\\\\)\\n\\nAnswer: 596 pens', '43 \u00d7 26 \u2212 399 \u2212 6 \u00d7 26 + 33 = **617 pens**\\n\\nAnswer: 617 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-13",
+      "role": "worse_first#0",
+      "output": "('43 \u00d7 26 \u2212 399 \u2212 6 \u00d7 26 + 33 = **617 pens**\\n\\nAnswer: 617 pens', 'Initial pens: \\\\(43 \\\\times 26 = 1{,}118\\\\)\\n\\nAfter sales, shipment, and return:\\n\\n\\\\(1{,}118 - 399 - (6 \\\\times 26) + 33 = 596\\\\)\\n\\nAnswer: 596 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-17",
+      "role": "better_first#0",
+      "output": "('Initially: 27 \u00d7 15 = 405 pens.  \\nAfter sales: 405 \u2212 362 = 43.  \\nAfter shipping: 43 \u2212 (6 \u00d7 15) = \u221247.  \\nAfter returns: \u221247 + 20 = **\u221227 pens**.\\n\\nThis is impossible physically; the scenario is inconsistent because more pens were sold and shipped than were initially available.\\n\\nAnswer: \u221227 pens (mathematically; physically impossible).', '27 \u00d7 15 \u2212 362 \u2212 6 \u00d7 15 + 20 = 43 pens.\\n\\nAnswer: 43 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-17",
+      "role": "worse_first#0",
+      "output": "('27 \u00d7 15 \u2212 362 \u2212 6 \u00d7 15 + 20 = 43 pens.\\n\\nAnswer: 43 pens', 'Initially: 27 \u00d7 15 = 405 pens.  \\nAfter sales: 405 \u2212 362 = 43.  \\nAfter shipping: 43 \u2212 (6 \u00d7 15) = \u221247.  \\nAfter returns: \u221247 + 20 = **\u221227 pens**.\\n\\nThis is impossible physically; the scenario is inconsistent because more pens were sold and shipped than were initially available.\\n\\nAnswer: \u221227 pens (mathematically; physically impossible).')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-19",
+      "role": "better_first#0",
+      "output": "('Initial pens: \\\\(65 \\\\times 14 = 910\\\\)\\n\\nAfter sales, shipment, and return:\\n\\n\\\\(910 - 385 - (7 \\\\times 14) + 60 = 487\\\\)\\n\\nAnswer: **487 pens**', '65 \u00d7 14 \u2212 385 \u2212 7 \u00d7 14 + 60 = 702 pens.\\n\\nAnswer: 702 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-19",
+      "role": "worse_first#0",
+      "output": "('65 \u00d7 14 \u2212 385 \u2212 7 \u00d7 14 + 60 = 702 pens.\\n\\nAnswer: 702 pens', 'Initial pens: \\\\(65 \\\\times 14 = 910\\\\)\\n\\nAfter sales, shipment, and return:\\n\\n\\\\(910 - 385 - (7 \\\\times 14) + 60 = 487\\\\)\\n\\nAnswer: **487 pens**')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "better_first#0",
+      "output": "('The letter **\u201ca\u201d** appears **5 times**.\\n\\nAnswer: 5', '4\\n\\nAnswer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "worse_first#0",
+      "output": "('4\\n\\nAnswer: 4', 'The letter **\u201ca\u201d** appears **5 times**.\\n\\nAnswer: 5')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "better_first#0",
+      "output": "('The letter **\u201cp\u201d** appears **2 times**.\\n\\nAnswer: 2', 'The letter **\u201cp\u201d** appears **3 times**.\\n\\nAnswer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201cp\u201d** appears **3 times**.\\n\\nAnswer: 3', 'The letter **\u201cp\u201d** appears **2 times**.\\n\\nAnswer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "better_first#0",
+      "output": "('The letter \u201ce\u201d appears **3 times** in \u201ccommittee parallelogram.\u201d\\n\\nAnswer: 3', 'The letter **\u201ce\u201d** appears **4 times**.\\n\\nAnswer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201ce\u201d** appears **4 times**.\\n\\nAnswer: 4', 'The letter \u201ce\u201d appears **3 times** in \u201ccommittee parallelogram.\u201d\\n\\nAnswer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-11",
+      "role": "better_first#0",
+      "output": "('2\\n\\nAnswer: 2', 'The letter \u201ca\u201d appears 1 time.\\n\\nAnswer: 1')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-11",
+      "role": "worse_first#0",
+      "output": "('The letter \u201ca\u201d appears 1 time.\\n\\nAnswer: 1', '2\\n\\nAnswer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-13",
+      "role": "better_first#0",
+      "output": "('The letter **\u201cl\u201d** appears **3 times** in \u201csassafras parallelogram\u201d.\\n\\nAnswer: 3', 'The letter **\u201cl\u201d** appears **2 times**.\\n\\nAnswer: 2')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-13",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201cl\u201d** appears **2 times**.\\n\\nAnswer: 2', 'The letter **\u201cl\u201d** appears **3 times** in \u201csassafras parallelogram\u201d.\\n\\nAnswer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-15",
+      "role": "better_first#0",
+      "output": "('The letter \u201cm\u201d appears 2 times.\\n\\nAnswer: 2', 'The letter **\u201cm\u201d** appears **3 times**.\\n\\nAnswer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-15",
+      "role": "worse_first#0",
+      "output": "('The letter **\u201cm\u201d** appears **3 times**.\\n\\nAnswer: 3', 'The letter \u201cm\u201d appears 2 times.\\n\\nAnswer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "better_first#0",
+      "output": "('114 mod 7 = 2, so 2 days after Saturday is Monday.\\n\\nAnswer: Monday', '114 days later is a **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "worse_first#0",
+      "output": "('114 days later is a **Tuesday**.\\n\\nAnswer: Tuesday', '114 mod 7 = 2, so 2 days after Saturday is Monday.\\n\\nAnswer: Monday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "better_first#0",
+      "output": "('352 mod 7 = 2, so two days after Thursday is **Saturday**.\\n\\nAnswer: Saturday', 'Answer: Wednesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "worse_first#0",
+      "output": "('Answer: Wednesday', '352 mod 7 = 2, so two days after Thursday is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "better_first#0",
+      "output": "('393 days later is **Saturday**.\\n\\nAnswer: Saturday', '393 mod 7 =  enhancer  converge. 393 days later is icirc Thursday.\\n\\nAnswer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "worse_first#0",
+      "output": "('393 mod 7 =  enhancer  converge. 393 days later is icirc Thursday.\\n\\nAnswer: Thursday', '393 days later is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "better_first#0",
+      "output": "('326 mod 7 =  \u0442\u043e\u0433\u043e 4, so Tuesday + 4 days = **Saturday**.\\n\\nAnswer: Saturday', '326 days later is **Thursday**.\\n\\nAnswer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "worse_first#0",
+      "output": "('326 days later is **Thursday**.\\n\\nAnswer: Thursday', '326 mod 7 =  \u0442\u043e\u0433\u043e 4, so Tuesday + 4 days = **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-11",
+      "role": "better_first#0",
+      "output": "('241 mod 7 = 3, so three days after Friday is Monday.\\n\\nAnswer: Monday', '241 days later is **Saturday**.\\n\\nAnswer: Saturday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-11",
+      "role": "worse_first#0",
+      "output": "('241 days later is **Saturday**.\\n\\nAnswer: Saturday', '241 mod 7 = 3, so three days after Friday is Monday.\\n\\nAnswer: Monday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-15",
+      "role": "better_first#0",
+      "output": "('146 days \u2261 6 days (mod 7). Wednesday + 6 days = **Tuesday**.\\n\\nAnswer: Tuesday', '146 days later is **Thursday**.\\n\\nAnswer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-15",
+      "role": "worse_first#0",
+      "output": "('146 days later is **Thursday**.\\n\\nAnswer: Thursday', '146 days \u2261 6 days (mod 7). Wednesday + 6 days = **Tuesday**.\\n\\nAnswer: Tuesday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-17",
+      "role": "better_first#0",
+      "output": "('214 mod 7 = 4, so four days after Thursday is Monday.\\n\\nAnswer: Monday', '214 days later is **Thursday**.\\n\\nAnswer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-17",
+      "role": "worse_first#0",
+      "output": "('214 days later is **Thursday**.\\n\\nAnswer: Thursday', '214 mod 7 = 4, so four days after Thursday is Monday.\\n\\nAnswer: Monday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "better_first#0",
+      "output": "('Reversed: `repeekkoob`  \\nTransformed: `rEpEEkkOOb`\\n\\nAnswer: rEpEEkkOOb', 'reEpkOOb  \\nAnswer: reEpkOOb')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "worse_first#0",
+      "output": "('reEpkOOb  \\nAnswer: reEpkOOb', 'Reversed: `repeekkoob`  \\nTransformed: `rEpEEkkOOb`\\n\\nAnswer: rEpEEkkOOb')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "better_first#0",
+      "output": "('nOOllAb\\nAnswer: nOOllAb', 'Answer: NOOLLAB')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "worse_first#0",
+      "output": "('Answer: NOOLLAB', 'nOOllAb\\nAnswer: nOOllAb')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    }
+  ],
+  "pairs": 54,
+  "first_position_rate": [
+    0.5648148148148148,
+    [
+      0.4706765816044607,
+      0.6545004544894435
+    ]
+  ],
+  "calls": 108
+}

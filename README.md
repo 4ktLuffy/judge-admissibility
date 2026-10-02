@@ -95,6 +95,34 @@ The advice is a hypothesis to re-certify, not a fix. `certificate.raise_unless_a
 raises `InadmissibleJudge` with the table and the advice, for a test or a CI step that should fail
 when a judge stops being evidence.
 
+## Comparison judges: does the order decide?
+
+Pydantic's own warning: *"Swap the order of two answers and an LLM judge will often flip its
+verdict on the same pair, favoring whichever it saw first."* `certify_pairwise(compare, pairs)`
+measures exactly that. Every pair has a known better answer and is shown both ways round; the
+judge must pick the better one (`accuracy`) and the same one either way (`order_consistency`),
+and when it flips, the certificate says which position it followed. `PairwiseJudge(rubric,
+model)` is a comparison judge on any Pydantic AI model with a typed verdict.
+
+Measured on Codex `gpt-5.6-luna` (`bench/pairwise_codex.py`): 54 pairs of real agent replies to
+the same question, one right and one wrong by ground truth, each asked both ways (108 calls).
+
+| Pairs as the agent wrote them | Accuracy | Same pick both ways | Chose the answer shown first |
+|---|---|---|---|
+| full replies, with the working | 0.77 (83/108) | 41/54 | 0.56, interval [0.47, 0.65] |
+| final answer line only | **0.53** (57/108) | **29/54** | **0.68, interval [0.58, 0.76]** |
+
+With the working in view, it mostly picks the right answer, but a quarter of its picks change
+with the order. With the final answer only, so that it has to know the answer itself, it is at
+chance, and it goes with whichever answer came first: 68% of presentations, and 22 of the 25
+pairs where swapping changed its pick. Its 77% with the working in view is most likely the
+working, not the judge: right answers here tend to show it, wrong ones tend not to.
+
+`both_orders(compare)` asks both ways and answers only when the two agree. With the working in
+view it raised accuracy from 0.77 to 0.85 (35/41), abstaining on 13 of 54 pairs. With the final
+answer only it could not help (16/29, abstaining on 25): there was no signal under the bias to
+recover.
+
 ## The package's own controls
 
 `tests/test_certify.py` drives the real `LLMJudge` with scripted models and checks that the

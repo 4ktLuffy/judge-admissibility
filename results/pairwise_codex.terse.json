@@ -1,0 +1,909 @@
+{
+  "judge": "PairwiseJudge(codex:gpt-5.6-luna)",
+  "verdict": "INADMISSIBLE",
+  "checks": [
+    {
+      "name": "accuracy",
+      "status": "FAIL",
+      "successes": 57,
+      "trials": 108,
+      "rate": 0.5277777777777778,
+      "interval": [
+        0.4342949982627799,
+        0.6193523029203218
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": ""
+    },
+    {
+      "name": "order_consistency",
+      "status": "FAIL",
+      "successes": 29,
+      "trials": 54,
+      "rate": 0.5370370370370371,
+      "interval": [
+        0.4060512701625496,
+        0.6631031100758948
+      ],
+      "threshold": 0.9,
+      "errors": 0,
+      "detail": "when it flipped, it chose the answer shown first in 22/25"
+    }
+  ],
+  "judgments": [
+    {
+      "case": "arithmetic-0",
+      "role": "better_first#0",
+      "output": "('Answer: 271 pens', 'Answer: 688 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "worse_first#0",
+      "output": "('Answer: 688 pens', 'Answer: 271 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "better_first#0",
+      "output": "('Answer: 450 pens', 'Answer: 501 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "worse_first#0",
+      "output": "('Answer: 501 pens', 'Answer: 450 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "better_first#0",
+      "output": "('Answer: 1,141 pens', 'Answer: 1206 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "worse_first#0",
+      "output": "('Answer: 1206 pens', 'Answer: 1,141 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "better_first#0",
+      "output": "('Answer: 1,231 pens', 'Answer: 1,183 pens')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "worse_first#0",
+      "output": "('Answer: 1,183 pens', 'Answer: 1,231 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "better_first#0",
+      "output": "('Answer: 433 pens', 'Answer: 308 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "worse_first#0",
+      "output": "('Answer: 308 pens', 'Answer: 433 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-10",
+      "role": "better_first#0",
+      "output": "('Answer: 835 pens', 'Answer: 838 pens')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-10",
+      "role": "worse_first#0",
+      "output": "('Answer: 838 pens', 'Answer: 835 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-12",
+      "role": "better_first#0",
+      "output": "('Answer: 497 pens', 'Answer: 529 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-12",
+      "role": "worse_first#0",
+      "output": "('Answer: 529 pens', 'Answer: 497 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-14",
+      "role": "better_first#0",
+      "output": "('Answer: 513 pens', 'Answer: 539 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-14",
+      "role": "worse_first#0",
+      "output": "('Answer: 539 pens', 'Answer: 513 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-16",
+      "role": "better_first#0",
+      "output": "('Answer: 797 pens', 'Answer: 761 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-16",
+      "role": "worse_first#0",
+      "output": "('Answer: 761 pens', 'Answer: 797 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-18",
+      "role": "better_first#0",
+      "output": "('Answer: 270 pens', 'Answer: 276 pens')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-18",
+      "role": "worse_first#0",
+      "output": "('Answer: 276 pens', 'Answer: 270 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "better_first#0",
+      "output": "('Answer: 3', 'Answer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "worse_first#0",
+      "output": "('Answer: 4', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "better_first#0",
+      "output": "('Answer: 5', 'Answer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "worse_first#0",
+      "output": "('Answer: 4', 'Answer: 5')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-12",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-12",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-14",
+      "role": "better_first#0",
+      "output": "('Answer: 4', 'Answer: 5')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-14",
+      "role": "worse_first#0",
+      "output": "('Answer: 5', 'Answer: 4')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-16",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-16",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-18",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-18",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "better_first#0",
+      "output": "('Answer: Sunday', 'Answer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Sunday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Sunday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "worse_first#0",
+      "output": "('Answer: Sunday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Sunday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "worse_first#0",
+      "output": "('Answer: Sunday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "better_first#0",
+      "output": "('Answer: Sunday', 'Answer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "worse_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Sunday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "better_first#0",
+      "output": "('Answer: Wednesday', 'Answer: Friday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "worse_first#0",
+      "output": "('Answer: Friday', 'Answer: Wednesday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-10",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-10",
+      "role": "worse_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-12",
+      "role": "better_first#0",
+      "output": "('Answer: Sunday', 'Answer: Wednesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-12",
+      "role": "worse_first#0",
+      "output": "('Answer: Wednesday', 'Answer: Sunday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-14",
+      "role": "better_first#0",
+      "output": "('Answer: Thursday', 'Answer: Tuesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-14",
+      "role": "worse_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Thursday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-16",
+      "role": "better_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-16",
+      "role": "worse_first#0",
+      "output": "('Answer: Saturday', 'Answer: Tuesday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-18",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Monday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-18",
+      "role": "worse_first#0",
+      "output": "('Answer: Monday', 'Answer: Saturday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "better_first#0",
+      "output": "('Answer: mUInnEllIm', 'Answer: MUINNELLIM')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "worse_first#0",
+      "output": "('Answer: MUINNELLIM', 'Answer: mUInnEllIm')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "better_first#0",
+      "output": "('Answer: tnEmssEssA', 'Answer: TNEMSSsA?')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "worse_first#0",
+      "output": "('Answer: TNEMSSsA?', 'Answer: tnEmssEssA')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-10",
+      "role": "better_first#0",
+      "output": "('Answer: mhtyhr', 'Answer: mhtyrh')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-10",
+      "role": "worse_first#0",
+      "output": "('Answer: mhtyrh', 'Answer: mhtyhr')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-16",
+      "role": "better_first#0",
+      "output": "('Answer: ArbAdAcArbA', 'Answer: arbAdAcArbA')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-16",
+      "role": "worse_first#0",
+      "output": "('Answer: arbAdAcArbA', 'Answer: ArbAdAcArbA')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "better_first#0",
+      "output": "('Answer: 537 pens', 'Answer: 560 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "worse_first#0",
+      "output": "('Answer: 560 pens', 'Answer: 537 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "better_first#0",
+      "output": "('Answer: 1,030 pens', 'Answer: 960 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "worse_first#0",
+      "output": "('Answer: 960 pens', 'Answer: 1,030 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "better_first#0",
+      "output": "('Answer: 603 pens', 'Answer: 487 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "worse_first#0",
+      "output": "('Answer: 487 pens', 'Answer: 603 pens')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "better_first#0",
+      "output": "('Answer: 897 pens', 'Answer: 1,135 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "worse_first#0",
+      "output": "('Answer: 1,135 pens', 'Answer: 897 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-13",
+      "role": "better_first#0",
+      "output": "('Answer: 596 pens', 'Answer: 617 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-13",
+      "role": "worse_first#0",
+      "output": "('Answer: 617 pens', 'Answer: 596 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-17",
+      "role": "better_first#0",
+      "output": "('Answer: \u221227 pens (mathematically; physically impossible)', 'Answer: 43 pens')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "arithmetic-17",
+      "role": "worse_first#0",
+      "output": "('Answer: 43 pens', 'Answer: \u221227 pens (mathematically; physically impossible)')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-19",
+      "role": "better_first#0",
+      "output": "('Answer: 487 pens', 'Answer: 702 pens')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "arithmetic-19",
+      "role": "worse_first#0",
+      "output": "('Answer: 702 pens', 'Answer: 487 pens')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "better_first#0",
+      "output": "('Answer: 5', 'Answer: 4')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "worse_first#0",
+      "output": "('Answer: 4', 'Answer: 5')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "better_first#0",
+      "output": "('Answer: 3', 'Answer: 4')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "worse_first#0",
+      "output": "('Answer: 4', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-11",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 1')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-11",
+      "role": "worse_first#0",
+      "output": "('Answer: 1', 'Answer: 2')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-13",
+      "role": "better_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "letters-13",
+      "role": "worse_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-15",
+      "role": "better_first#0",
+      "output": "('Answer: 2', 'Answer: 3')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "letters-15",
+      "role": "worse_first#0",
+      "output": "('Answer: 3', 'Answer: 2')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "better_first#0",
+      "output": "('Answer: Monday', 'Answer: Tuesday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "worse_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Monday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Wednesday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "worse_first#0",
+      "output": "('Answer: Wednesday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "better_first#0",
+      "output": "('Answer: Saturday', 'Answer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-11",
+      "role": "better_first#0",
+      "output": "('Answer: Monday', 'Answer: Saturday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-11",
+      "role": "worse_first#0",
+      "output": "('Answer: Saturday', 'Answer: Monday')",
+      "passed": false,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-15",
+      "role": "better_first#0",
+      "output": "('Answer: Tuesday', 'Answer: Thursday')",
+      "passed": false,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-15",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Tuesday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "dates-17",
+      "role": "better_first#0",
+      "output": "('Answer: Monday', 'Answer: Thursday')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "dates-17",
+      "role": "worse_first#0",
+      "output": "('Answer: Thursday', 'Answer: Monday')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "better_first#0",
+      "output": "('Answer: rEpEEkkOOb', 'Answer: reEpkOOb')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "worse_first#0",
+      "output": "('Answer: reEpkOOb', 'Answer: rEpEEkkOOb')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "better_first#0",
+      "output": "('Answer: nOOllAb', 'Answer: NOOLLAB')",
+      "passed": true,
+      "reason": "chose A",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "worse_first#0",
+      "output": "('Answer: NOOLLAB', 'Answer: nOOllAb')",
+      "passed": true,
+      "reason": "chose B",
+      "error": null
+    }
+  ],
+  "pairs": 54,
+  "first_position_rate": [
+    0.6759259259259259,
+    [
+      0.5829315590730475,
+      0.7568346817532641
+    ]
+  ],
+  "calls": 108
+}
