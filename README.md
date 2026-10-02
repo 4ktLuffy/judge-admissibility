@@ -2,53 +2,54 @@
 
 **Find out whether your LLM judge can be trusted before you trust its scores.**
 
-An `LLMJudge` that passes everything scores 100% on a dataset of good answers, and the report
-looks exactly like one from a judge that works. This package tests the judge itself, with
-controls built from the cases you already have: answers it must fail, changes it must ignore,
-orderings it must not care about. A judge's verdicts count only once it has been shown to fail
-what it should fail.
+An `LLMJudge` that passes everything scores 100% on a dataset of good answers, exactly like one
+that works. This package tests the judge itself, with controls built from the cases you already
+have (answers it must fail, changes it must ignore, evidence it must notice), decides every check
+on an interval, and says what to change when the judge fails.
 
-What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible from `bench/` and `tests/`):
+**Three things it found on real judges** (Codex, every number reproducible from `bench/`):
 
-- **A strong judge, a realistic task, `LLMJudge`'s default settings:** grading a support agent's
-  replies against a store policy, a reasoning judge with the default `include_input=False`
-  passed **10 of 10 answers that belonged to other customers' questions**. Certification caught it
-  after 70 of 280 calls. With `include_input=True` the same judge agreed with ground truth on
-  79 of 80 replies.
-- **Ask for the reason before the verdict.** A bug in this repository's Codex adapter sorted
-  the judge's output schema, so judges gave the verdict first. A judge without reasoning then
-  certified ADMISSIBLE overall while failing **every case whose correct answer was "no"** to a
-  return-window question (0 of 5), its own reasons often saying the answer was right; slicing the
-  certificate by kind of case flagged it. A comparison judge picked **whichever answer came first
-  68% of the time** and was right 53%. With the reason first, as `LLMJudge` defines it: 5 of 5,
-  and no detectable position preference (48%) at 85%. Judges with
-  reasoning reached the same verdicts either way. Every result is re-run; `bench/field_order.py`
-  shows both.
-- **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
-  than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
-  certified judge, then confirming on held-out questions, promoted the one real improvement
-  (p = 0.015, a retrospective analysis), the same call ground truth makes.
-- **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
-  `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
-  judge failed **4 of its 10 "good" answers every time**. On three its reasons are a fair reading
-  of the rubric: the answers are impersonal, and it asks for "second-person or friendly". On the fourth it
-  contradicted itself: it failed *"...inferred from your request"* three times as not second
-  person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
+- **The default hides the question.** With `include_input=False`, a reasoning judge passed 10 of 10
+  answers that belonged to *other* customers' questions; certification caught it after 70 of 280
+  calls. With the question shown, the same judge agreed with ground truth on 79 of 80 replies.
+- **Judges grade the claim, not the work.** Shown only the agent's reply, a judge passed 8 of 24
+  "your refund was issued" replies whose refund had failed; shown the tool calls, none. With the
+  tool result removed entirely, a plain `LLMJudge` passed 9 of 16, *"consistent with the tool call
+  results"* that did not exist.
+- **Pydantic's own example dataset, in one call:** `certify_dataset(Dataset.from_file(...))` found
+  the judge failing 4 of its 10 "good" answers every time, and the judges siding against the
+  dataset's author on 4 of 5 disputes, over whether "we" counts as friendly.
 
 ```python
-results = await certify_dataset(dataset)  # every LLMJudge in a pydantic-evals Dataset, controls chosen per rubric
-certificate = await certify_judge(judge, cases, batch_size=10)  # is it evidence? stops early if clearly not
-certificate.raise_unless_admissible(judge)  # fail CI, with what's wrong and what to try
-result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate, judge=judge)  # real?
+results = await certify_dataset(dataset)  # every LLMJudge in a Dataset, controls chosen per rubric
+certificate = await certify_judge(judge, cases)  # PASS / FAIL / UNVALIDATED per check, on intervals
+certificate.raise_unless_admissible(judge)  # in a test or CI, with what is wrong and what to try
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate, judge=judge)
 ```
 
-**The core** is three functions: `certify_judge` (pointwise judges), `certify_pairwise`
-(comparison judges, including position bias) and `diagnose` (what to change when either fails).
-`certify_dataset` runs `certify_judge` on every judge in a `Dataset`.
-**Built on them:** `decide` / `compare_reports` (is a change real?), `detectable_gain` (can your
-dataset even see it?), and, for Logfire users, `promote`, the canary rollout and `JudgeCanary`
-(keep checking a judge in production). The reasoning behind every choice is in
-[DESIGN.md](DESIGN.md).
+Or from a shell: `judge-admissibility certify cases.yaml`.
+
+**What is in it**
+
+- *Certify a judge:* [`certify_judge`, `certify_dataset`](#what-it-checks), evidence controls
+  ([`EvidenceRewrite`](#does-the-judge-grade-the-work-or-the-claim-evidence-controls), temporal and
+  retry controls), comparison judges ([`certify_pairwise`](#comparison-judges-does-the-order-decide)),
+  slices, citations and abstention, and `diagnose`, which says what to change.
+- *Decide with it:* the paired [gate](#from-a-certificate-to-a-decision-gating-changes) for prompt
+  changes, [`FeedbackLedger`](#feedback-is-spent-feedbackledger) so an optimizer cannot confirm on
+  what it has seen, [`ReviewPlan`](#when-the-judge-cannot-decide-human-review-for-one-release) for
+  human review, and `qualify`, which says whether a judge may gate, promote or steer.
+- *Probe it:* [`stress_judge`](#under-optimization-pressure-stress_judge),
+  [`mutation_report`](#which-defects-would-your-evals-catch-mutation_report),
+  [`minimize_witness`](#from-fooled-to-the-line-that-fooled-it-minimize_witness), judge routing,
+  evidence budgets, rubric distillation into code.
+- *Live with it:* Logfire promotion and canaries, [`compare_judges`](#when-the-judge-changes-too-compare_judges)
+  and [`decision_impact`](#before-you-switch-judges-decision_impact) when the judge itself changes,
+  delayed-outcome calibration, and [twelve more tools, each measured](#more-tools-each-measured).
+
+[DESIGN.md](DESIGN.md) gives the measurement behind every choice, including the mistakes this
+repository made and corrected in public: an adapter that asked judges for the verdict before the
+reason, and an external review that found repeated judgments being counted as new cases.
 
 ## Install
 
@@ -102,6 +103,50 @@ The certificate is **ADMISSIBLE** only if every check passes, **INADMISSIBLE** i
 and **UNVALIDATED** otherwise. `acceptance` and `rejection` are both required because each
 alone is satisfied by a constant judge: one that always passes clears acceptance, invariance
 and stability, and one that always fails clears rejection.
+
+## The findings in full
+
+What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible from `bench/` and `tests/`):
+
+- **A strong judge, a realistic task, `LLMJudge`'s default settings:** grading a support agent's
+  replies against a store policy, a reasoning judge with the default `include_input=False`
+  passed **10 of 10 answers that belonged to other customers' questions**. Certification caught it
+  after 70 of 280 calls. With `include_input=True` the same judge agreed with ground truth on
+  79 of 80 replies.
+- **Ask for the reason before the verdict.** A bug in this repository's Codex adapter sorted
+  the judge's output schema, so judges gave the verdict first. A judge without reasoning then
+  certified ADMISSIBLE overall while failing **every case whose correct answer was "no"** to a
+  return-window question (0 of 5), its own reasons often saying the answer was right; slicing the
+  certificate by kind of case flagged it. A comparison judge picked **whichever answer came first
+  68% of the time** and was right 53%. With the reason first, as `LLMJudge` defines it: 5 of 5,
+  and no detectable position preference (48%) at 85%. Judges with
+  reasoning reached the same verdicts either way. Every result is re-run; `bench/field_order.py`
+  shows both.
+- **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
+  than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
+  certified judge, then confirming on held-out questions, promoted the one real improvement
+  (p = 0.015, a retrospective analysis), the same call ground truth makes.
+- **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
+  `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
+  judge failed **4 of its 10 "good" answers every time**. On three its reasons are a fair reading
+  of the rubric: the answers are impersonal, and it asks for "second-person or friendly". On the fourth it
+  contradicted itself: it failed *"...inferred from your request"* three times as not second
+  person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
+
+```python
+results = await certify_dataset(dataset)  # every LLMJudge in a pydantic-evals Dataset, controls chosen per rubric
+certificate = await certify_judge(judge, cases, batch_size=10)  # is it evidence? stops early if clearly not
+certificate.raise_unless_admissible(judge)  # fail CI, with what's wrong and what to try
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate, judge=judge)  # real?
+```
+
+**The core** is three functions: `certify_judge` (pointwise judges), `certify_pairwise`
+(comparison judges, including position bias) and `diagnose` (what to change when either fails).
+`certify_dataset` runs `certify_judge` on every judge in a `Dataset`.
+**Built on them:** `decide` / `compare_reports` (is a change real?), `detectable_gain` (can your
+dataset even see it?), and, for Logfire users, `promote`, the canary rollout and `JudgeCanary`
+(keep checking a judge in production). The reasoning behind every choice is in
+[DESIGN.md](DESIGN.md).
 
 ## Cheaper certificates, and what to do when one fails
 
