@@ -37,7 +37,9 @@ def judge(decide: Decide) -> LLMJudge:
             parts=[ToolCallPart(tool.name, {'reason': 'scripted', 'pass': passed, 'score': float(passed)})]
         )
 
-    return LLMJudge(rubric='The output answers the question correctly.', model=FunctionModel(model), include_expected_output=True)
+    return LLMJudge(
+        rubric='The output answers the question correctly.', model=FunctionModel(model), include_expected_output=True
+    )
 
 
 def oracle(output: str, expected: str) -> bool:

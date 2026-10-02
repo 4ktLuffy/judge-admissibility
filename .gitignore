@@ -4,3 +4,5 @@ results/scratch/
 .env
 results/*.log
 results/local_judges.json
+NIGHT_LOG.md
+MORNING.md

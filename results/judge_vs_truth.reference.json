@@ -1,0 +1,2327 @@
+{
+  "rubric": "The output correctly answers the question.",
+  "confusion": {
+    "pass_correct": 41,
+    "pass_wrong": 0,
+    "fail_correct": 0,
+    "fail_wrong": 39,
+    "no_verdict": 0
+  },
+  "calls": 280,
+  "judge": "LLMJudge(codex:gpt-5.6-luna)",
+  "verdict": "ADMISSIBLE",
+  "checks": [
+    {
+      "name": "acceptance",
+      "status": "PASS",
+      "successes": 75,
+      "trials": 80,
+      "rate": 0.9375,
+      "interval": [
+        0.8618967084664824,
+        0.9730110223020145
+      ],
+      "threshold": 0.7,
+      "errors": 0,
+      "detail": ""
+    },
+    {
+      "name": "rejection",
+      "status": "PASS",
+      "successes": 80,
+      "trials": 80,
+      "rate": 1.0,
+      "interval": [
+        0.954180263735425,
+        1.0
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "mismatched_output 40/40, empty_output 40/40"
+    },
+    {
+      "name": "invariance",
+      "status": "PASS",
+      "successes": 37,
+      "trials": 40,
+      "rate": 0.925,
+      "interval": [
+        0.8013546984090248,
+        0.9741644432281419
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "whitespace_reformat 37/40"
+    },
+    {
+      "name": "stability",
+      "status": "PASS",
+      "successes": 39,
+      "trials": 40,
+      "rate": 0.975,
+      "interval": [
+        0.8711834051199223,
+        0.9955732825922052
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "2 judgments per case"
+    },
+    {
+      "name": "human_agreement",
+      "status": "PASS",
+      "successes": 80,
+      "trials": 80,
+      "rate": 1.0,
+      "interval": [
+        0.954180263735425,
+        1.0
+      ],
+      "threshold": 0.4,
+      "errors": 0,
+      "detail": "kappa=1.00"
+    }
+  ],
+  "judgments": [
+    {
+      "case": "arithmetic-0",
+      "role": "reference#0",
+      "output": "Answer: 200",
+      "passed": true,
+      "reason": "The output gives 200, which is the correct result: 30\u00d722\u2212357\u22127\u00d722+51 = 200.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "reference#1",
+      "output": "Answer: 200",
+      "passed": true,
+      "reason": "The output gives 200, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "reference#0",
+      "output": "Answer: 113",
+      "passed": true,
+      "reason": "The output gives 113, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "reference#1",
+      "output": "Answer: 113",
+      "passed": true,
+      "reason": "The output gives 113, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "reference#0",
+      "output": "Answer: 1158",
+      "passed": true,
+      "reason": "The output gives 1158, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "reference#1",
+      "output": "Answer: 1158",
+      "passed": true,
+      "reason": "The output gives 1158, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "reference#0",
+      "output": "Answer: 1309",
+      "passed": true,
+      "reason": "The output gives 1309, which matches the expected number of pens in the warehouse.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "reference#1",
+      "output": "Answer: 1309",
+      "passed": true,
+      "reason": "The output gives 1309, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "reference#0",
+      "output": "Answer: 54",
+      "passed": true,
+      "reason": "The output gives 54, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "reference#1",
+      "output": "Answer: 54",
+      "passed": true,
+      "reason": "The output gives 54, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "reference#0",
+      "output": "Answer: 195",
+      "passed": true,
+      "reason": "The output gives 195, which is the correct number of pens remaining.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "reference#1",
+      "output": "Answer: 195",
+      "passed": true,
+      "reason": "The output gives 195, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "reference#0",
+      "output": "Answer: 548",
+      "passed": true,
+      "reason": "The output gives 548, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "reference#1",
+      "output": "Answer: 548",
+      "passed": true,
+      "reason": "The output gives 548, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "reference#0",
+      "output": "Answer: 1017",
+      "passed": true,
+      "reason": "The output gives 1017, which matches the expected answer and correctly solves the calculation.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "reference#1",
+      "output": "Answer: 1017",
+      "passed": true,
+      "reason": "The output gives 1017, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "reference#0",
+      "output": "Answer: 161",
+      "passed": true,
+      "reason": "The output gives 161, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "reference#1",
+      "output": "Answer: 161",
+      "passed": true,
+      "reason": "The output gives 161, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "reference#0",
+      "output": "Answer: 741",
+      "passed": true,
+      "reason": "The output gives 741, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "reference#1",
+      "output": "Answer: 741",
+      "passed": true,
+      "reason": "The output gives 741, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output states that the letter \"r\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output says 2, which correctly counts the occurrences of the letter \u201cr\u201d in \u201cassessment referee.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "reference#0",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The output gives the correct count, 3, for the occurrences of the letter \"e\".",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "reference#1",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The output gives the correct count: the letter \u201ce\u201d appears 3 times.",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output gives the correct count: the letter \"a\" appears twice.",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output states that the letter \"a\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output states 2, which is the correct count of the letter \"r\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output gives 2, which is the correct count of the letter \"r\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "reference#0",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The output gives 3, which is the correct count of the letter \"p\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "reference#1",
+      "output": "Answer: 3",
+      "passed": true,
+      "reason": "The output answers 3, which is the correct count of the letter \"p\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "reference#0",
+      "output": "Answer: 4",
+      "passed": true,
+      "reason": "The output states 4, which is the correct number of occurrences of the letter \u201cs\u201d in \u201creferee possession.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "reference#1",
+      "output": "Answer: 4",
+      "passed": true,
+      "reason": "The output states 4, which is the correct count of the letter \"s\" in \"referee possession.\"",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "reference#0",
+      "output": "Answer: 4",
+      "passed": true,
+      "reason": "The output gives the correct count of 4 occurrences of the letter \"s\".",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "reference#1",
+      "output": "Answer: 4",
+      "passed": true,
+      "reason": "The output states that the letter \"s\" appears 4 times, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "reference#0",
+      "output": "Answer: 5",
+      "passed": true,
+      "reason": "The output says 5, which is the correct count of the letter \"e\" in \"referee possession\".",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "reference#1",
+      "output": "Answer: 5",
+      "passed": true,
+      "reason": "The output answers 5, which is the correct count of the letter \u201ce\u201d in \u201creferee possession.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "reference#0",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201cm\u201d appears 2 times.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "reference#1",
+      "output": "Answer: 2",
+      "passed": true,
+      "reason": "The output states 2, which is the correct count of the letter \"m\" in \"referee committee\".",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "reference#0",
+      "output": "Answer: 5",
+      "passed": true,
+      "reason": "The output states 5, which is the correct count of the letter \"s\" in \"strawberry sassafras\".",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "reference#1",
+      "output": "Answer: 5",
+      "passed": true,
+      "reason": "The output gives 5, which is the correct count of the letter \u201cs\u201d in \u201cstrawberry sassafras.\u201d",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "reference#0",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "The output states Monday, which matches the expected day of the week 358 days later.",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "reference#1",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "The output states Monday, which is the correct day of the week 358 days after Sunday, 2026-02-22.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "reference#0",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output answers Saturday, which is the correct day 280 days after 2026-08-08.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "reference#1",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output correctly states that the day is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "reference#0",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "The output states Friday, which is the correct day of the week 286 days after Saturday, March 14, 2026.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "reference#1",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "The output answers \u201cFriday,\u201d which is the expected day of the week 286 days after 2026-03-14.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "reference#0",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output correctly identifies Saturday as the day 102 days after Tuesday, April 28, 2026.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "reference#1",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output correctly identifies the day as Saturday, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "reference#0",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "The output states Monday, which is the correct day 398 days after Tuesday, November 17, 2026.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "reference#1",
+      "output": "Answer: Monday",
+      "passed": true,
+      "reason": "The output states Monday, which is the correct day of the week 398 days after Tuesday, November 17, 2026.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "reference#0",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output states Saturday, which is the correct weekday 385 days after 2026-08-22.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "reference#1",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output answers Saturday, which is the correct day 385 days after the given date.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "reference#0",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output states Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "reference#1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output gives Wednesday, which is the correct day of the week 319 days after Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "reference#0",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output states Wednesday, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "reference#1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output gives Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "reference#0",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output states Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "reference#1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output states Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "reference#0",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "The output states Friday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "reference#1",
+      "output": "Answer: Friday",
+      "passed": true,
+      "reason": "The output states Friday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "reference#0",
+      "output": "Answer: ArbAdAcArbA",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "reference#1",
+      "output": "Answer: ArbAdAcArbA",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "reference#0",
+      "output": "Answer: sArfAssAs",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly: sArfAssAs.",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "reference#1",
+      "output": "Answer: sArfAssAs",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "reference#0",
+      "output": "Answer: tnEmssEssA",
+      "passed": false,
+      "reason": "The output includes an extra \"Answer:\" label, but the requested transformed string itself is exactly correct.",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "reference#1",
+      "output": "Answer: tnEmssEssA",
+      "passed": false,
+      "reason": "The output includes extra text ('Answer:') and does not exactly provide the requested transformed string.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "reference#0",
+      "output": "Answer: nOIssEssOp",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly, aside from the harmless \u201cAnswer:\u201d prefix.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "reference#1",
+      "output": "Answer: nOIssEssOp",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "reference#0",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "reference#1",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "reference#0",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The output exactly matches the expected transformed string.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "reference#1",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": true,
+      "reason": "The output exactly matches the expected transformed spelling.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "reference#0",
+      "output": "Answer: EEttImmOc",
+      "passed": false,
+      "reason": "The output includes extra text ('Answer:') and does not exactly provide the expected answer, though the transformed word itself is present.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "reference#1",
+      "output": "Answer: EEttImmOc",
+      "passed": false,
+      "reason": "The output includes extra text and the transformed word is incorrect; the expected answer is exactly \"EEttImmOc\".",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "reference#0",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": true,
+      "reason": "The output exactly matches the expected transformed spelling.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "reference#1",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": true,
+      "reason": "The output exactly matches the expected transformed spelling.",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "reference#0",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "reference#1",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "reference#0",
+      "output": "Answer: yrrEbwArts",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "reference#1",
+      "output": "Answer: yrrEbwArts",
+      "passed": false,
+      "reason": "The output includes the required transformed string, but the added \u201cAnswer:\u201d prefix means it does not exactly satisfy the requested answer format.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output 'Saturday' does not answer the arithmetic question; the correct result is 200 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "The output 'Wednesday' does not answer the arithmetic question; the correct result is 113 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 1309",
+      "passed": false,
+      "reason": "The output is incorrect. Starting with 59\u00d729 = 1711 pens, then 1711\u2212351\u22129\u00d729+59 = 1158 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 5",
+      "passed": false,
+      "reason": "The output says 5, but the correct calculation is 60\u00d726\u2212222\u22123\u00d726+49 = 1309.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: nOIssEssOp",
+      "passed": false,
+      "reason": "The output is nonsensical and does not provide the correct answer of 54 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: tnEmssEssA",
+      "passed": false,
+      "reason": "The output does not provide the correct numerical answer, 195; it is an unrelated string.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "The output \u201cWednesday\u201d does not answer the arithmetic question; the correct result is 548 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Monday",
+      "passed": false,
+      "reason": "The output gives \u201cMonday,\u201d which is unrelated to the required calculation; the correct result is 1,017 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: sArfAssAs",
+      "passed": false,
+      "reason": "The output is nonsensical and does not provide the correct total of 161 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output says \u201cSaturday,\u201d which does not answer the arithmetic question. The correct total is 741 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 4",
+      "passed": false,
+      "reason": "The phrase contains three occurrences of the letter \"r\"\u2014one in \"assessment\" and two in \"referee\"\u2014so the output of 4 is incorrect.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": false,
+      "reason": "The output is not the correct count; the letter \"e\" appears 3 times in \"strawberry occurrence\".",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 161",
+      "passed": false,
+      "reason": "The output claims 161, but the letter \u201ca\u201d appears only 2 times in \u201cpossession onomatopoeia.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Friday",
+      "passed": false,
+      "reason": "The output says \u201cFriday,\u201d which does not answer the letter-counting question; the correct count is 2.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 161",
+      "passed": false,
+      "reason": "The output says 161, but the letter \u201cp\u201d appears 3 times in \u201cmississippi onomatopoeia.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 548",
+      "passed": false,
+      "reason": "The output claims 548, but the letter \"s\" appears 4 times in \"referee possession\".",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 2",
+      "passed": false,
+      "reason": "The phrase contains four instances of the letter \u201cs,\u201d but the output states 2.",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: EEttImmOc",
+      "passed": false,
+      "reason": "The output \u201cEEttImmOc\u201d does not provide the correct count, which is 5.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 741",
+      "passed": false,
+      "reason": "The phrase \u201creferee committee\u201d contains two occurrences of the letter \u201cm,\u201d not 741.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output says \u201cSaturday,\u201d which does not answer the letter-counting question; the correct count is 5.",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 548",
+      "passed": false,
+      "reason": "The output gives \u201c548,\u201d which is not the day of the week 358 days after Sunday; the correct answer is Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 54",
+      "passed": false,
+      "reason": "The output gives \u201c54,\u201d which is not a day of the week; 280 days later is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "286 days is 6 days modulo 7; six days after Saturday is Friday, so the output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: nOIssEssOp",
+      "passed": false,
+      "reason": "The output \u201cnOIssEssOp\u201d does not answer the day-of-week question; the correct answer is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: mArgOlEllArAp",
+      "passed": false,
+      "reason": "The output does not identify Monday, the correct day 398 days after Tuesday, and is unrelated gibberish.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 548",
+      "passed": false,
+      "reason": "The output gives \u201c548,\u201d which is not the day of the week 385 days after Saturday; the correct answer is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Friday",
+      "passed": false,
+      "reason": "319 days is 4 days modulo 7, so Saturday advances to Wednesday. The output says Friday, which is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: ArbAdAcArbA",
+      "passed": false,
+      "reason": "The output does not provide the correct day; 326 days after Saturday is Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Monday",
+      "passed": false,
+      "reason": "382 days is 2 days beyond 54 weeks, so Saturday advances to Monday, not Wednesday. The output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 2",
+      "passed": false,
+      "reason": "The output gives \u201c2\u201d instead of the correct day, Friday.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: EEttImmOc",
+      "passed": false,
+      "reason": "The expected transformed string is \"ArbAdAcArbA\", but the output \"EEttImmOc\" is incorrect.",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: ArbAdAcArbA",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201csassafras\u201d gives \u201csarfassas,\u201d and applying the requested capitalization yields \u201csArfAssAs.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Wednesday",
+      "passed": false,
+      "reason": "The output does not follow the requested transformation; it says \u201cWednesday\u201d instead of \u201ctnEmssEssA\u201d.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cpossession\u201d backwards is \u201cnoisse ssop\u201d (nOIssEssOp when formatted), not \u201cAIEOpOtAmOnO.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 4",
+      "passed": false,
+      "reason": "The output \u201cAnswer: 4\u201d does not provide the requested transformed spelling of \u201conomatopoeia.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 1309",
+      "passed": false,
+      "reason": "The output is unrelated to the requested transformed spelling of \u201conomatopoeia\u201d and does not match the expected answer.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: AIEOpOtAmOnO",
+      "passed": false,
+      "reason": "The expected transformation of \u201ccommittee\u201d backwards is \u201ceettimmoc,\u201d with vowels uppercased to \u201cEEttImmOc.\u201d The provided output does not match.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 200",
+      "passed": false,
+      "reason": "The output does not provide the requested transformed spelling; it says \u201cAnswer: 200\u201d instead of \u201cmArgOlEllArAp.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: 195",
+      "passed": false,
+      "reason": "The output \u201cAnswer: 195\u201d does not reverse \u201cparallelogram\u201d or apply the requested capitalization.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_fail:mismatched_output",
+      "output": "Answer: Saturday",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cstrawberry\u201d backwards with vowels uppercase is \u201cyrrEbwArts,\u201d not \u201cSaturday.\u201d",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 200.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 113.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 1158.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 1309.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, which is 54 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 195.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is blank and does not provide the correct answer, 548.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is blank and does not provide the expected answer of 1017 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 161.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, 741.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count, which is 2.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 3.",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count, which is 2.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count, which is 2.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 3.",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 4.",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 4.",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 5.",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is blank and does not answer the question; the correct count is 2.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct count of 5.",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the expected answer, Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, which is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the expected answer, Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the expected answer, Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question; the correct day is Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question; the correct day is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required answer, Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question; the correct day is Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the correct answer, Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not answer the question; the correct day is Friday.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed string.",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed string \u201csArfAssAs\u201d.",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed string \"tnEmssEssA\".",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed string \"nOIssEssOp\".",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the requested transformed word.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the requested transformed word.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the transformed string \u201cEEttImmOc.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed spelling.",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the reversed, vowel-capitalized form \u201cmArgOlEllArAp.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_fail:empty_output",
+      "output": "",
+      "passed": false,
+      "reason": "The output is empty and does not provide the required transformed word \"yrrEbwArts\".",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 200\n",
+      "passed": true,
+      "reason": "The output gives 200, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 113\n",
+      "passed": true,
+      "reason": "The output gives 113, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 1158\n",
+      "passed": true,
+      "reason": "The output gives 1158, which is the correct number of pens remaining after the sales, shipment, and return.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 1309\n",
+      "passed": true,
+      "reason": "The output gives 1309, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 54\n",
+      "passed": true,
+      "reason": "The output gives 54, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 195\n",
+      "passed": true,
+      "reason": "The output gives 195, which is the correct number of pens remaining.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 548\n",
+      "passed": true,
+      "reason": "The output gives 548, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 1017\n",
+      "passed": true,
+      "reason": "The output gives 1017, which matches the expected answer and correctly answers the question.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 161\n",
+      "passed": true,
+      "reason": "The output gives 161, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 741\n",
+      "passed": true,
+      "reason": "The output gives 741, which matches the expected answer and correctly answers the question.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": true,
+      "reason": "The output states that the letter \"r\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 3\n",
+      "passed": true,
+      "reason": "The output states that the letter \"e\" appears 3 times, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": true,
+      "reason": "The output states that the letter \"a\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": true,
+      "reason": "The output answers 2, which is the correct count of the letter \"r\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 3\n",
+      "passed": true,
+      "reason": "The output gives 3, which is the correct count of the letter \"p\" in the phrase.",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 4\n",
+      "passed": true,
+      "reason": "The output states 4, which is the correct count of the letter \"s\" in \"referee possession.\"",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 4\n",
+      "passed": true,
+      "reason": "The output states that the letter \"s\" appears 4 times, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 5\n",
+      "passed": true,
+      "reason": "The output says 5, which is the correct count of the letter \"e\" in \"referee possession\".",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 2\n",
+      "passed": true,
+      "reason": "The output correctly states that the letter \"m\" appears 2 times.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: 5\n",
+      "passed": true,
+      "reason": "The output answers 5, which is the correct count of the letter \"s\" in \"strawberry sassafras\".",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Monday\n",
+      "passed": true,
+      "reason": "The output answers \"Monday,\" which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Saturday\n",
+      "passed": true,
+      "reason": "The output answers Saturday, which is correct because 280 days is exactly 40 weeks later.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Friday\n",
+      "passed": true,
+      "reason": "The output answers Friday, which is the correct day of the week 286 days after Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Saturday\n",
+      "passed": true,
+      "reason": "The output states Saturday, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Monday\n",
+      "passed": true,
+      "reason": "The output states Monday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Saturday\n",
+      "passed": true,
+      "reason": "The output states Saturday, which is the correct day 385 days after Saturday because 385 is divisible by 7.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Wednesday\n",
+      "passed": true,
+      "reason": "The output states Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Wednesday\n",
+      "passed": true,
+      "reason": "The output answers Wednesday, matching the expected day of the week.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Wednesday\n",
+      "passed": true,
+      "reason": "The output states Wednesday, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: Friday\n",
+      "passed": true,
+      "reason": "The output answers Friday, which matches the expected day of the week 320 days later.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: ArbAdAcArbA\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: sArfAssAs\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly: sArfAssAs.",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: tnEmssEssA\n",
+      "passed": true,
+      "reason": "The output includes the correct transformed string, tnEmssEssA.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: nOIssEssOp\n",
+      "passed": false,
+      "reason": "The output includes an extra \"Answer:\" prefix, but the transformed word itself is correct: nOIssEssOp.",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: AIEOpOtAmOnO\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: AIEOpOtAmOnO\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: EEttImmOc\n",
+      "passed": false,
+      "reason": "The output includes extra text and the transformed word is incorrect; reversing \u201ccommittee\u201d and uppercasing vowels yields \u201cEEttImmOc\u201d only.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: mArgOlEllArAp\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: mArgOlEllArAp\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed spelling exactly.",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "must_hold:whitespace_reformat",
+      "output": "Answer: yrrEbwArts\n",
+      "passed": true,
+      "reason": "The output matches the expected transformed string exactly: yrrEbwArts.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "human:1",
+      "output": "Initial pens: \\(30 \\times 22 = 660\\)\n\nAfter sales: \\(660 - 357 = 303\\)\n\nAfter shipping 7 boxes: \\(303 - (7 \\times 22) = 149\\)\n\nAfter return: \\(149 + 51 = 200\\)\n\nAnswer: **200 pens**",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 200 pens and matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-0",
+      "role": "human:1",
+      "output": "Initial pens: 30 \u00d7 22 = 660  \nAfter sales: 660 \u2212 357 = 303  \nAfter shipping: 303 \u2212 (7 \u00d7 22) = 149  \nAfter return: 149 + 51 = 200  \n\nAnswer: 200 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the warehouse inventory as 200 pens, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "human:1",
+      "output": "Initial pens: 29 \u00d7 19 = 551  \nAfter selling: 551 \u2212 384 = 167  \nAfter shipping: 167 \u2212 (6 \u00d7 19) = 53  \nAfter return: 53 + 60 = **113**\n\nAnswer: 113 pens",
+      "passed": true,
+      "reason": "The output correctly computes the inventory changes and concludes there are 113 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-1",
+      "role": "human:1",
+      "output": "There are **19 \u00d7 29 = 551 pens** initially.\n\nAfter selling 384, shipping 6 \u00d7 19 = 114, and receiving 60 returned:\n\n**551 \u2212 384 \u2212 114 + 60 = 113 pens**\n\nAnswer: **113 pens**",
+      "passed": true,
+      "reason": "The output correctly computes 29 \u00d7 19 \u2212 384 \u2212 6 \u00d7 19 + 60 = 113 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "human:1",
+      "output": "Initial pens: 59 \u00d7 29 = 1,711  \nAfter sales: 1,711 \u2212 351 = 1,360  \nAfter shipping: 1,360 \u2212 (9 \u00d7 29) = 1,099  \nAfter return: 1,099 + 59 = 1,158  \n\nAnswer: 1,158 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 1,158 pens, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-2",
+      "role": "human:1",
+      "output": "Initial pens: \\(59 \\times 29 = 1711\\)\n\nAfter selling: \\(1711 - 351 = 1360\\)\n\nAfter shipping 9 boxes: \\(1360 - (9 \\times 29) = 1099\\)\n\nAfter return: \\(1099 + 59 = 1158\\)\n\nAnswer: **1,158 pens**",
+      "passed": true,
+      "reason": "The output correctly calculates the warehouse inventory as 1,158 pens, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "human:0",
+      "output": "1549 pens.",
+      "passed": false,
+      "reason": "The correct calculation is 60\u00d726\u2212222\u22123\u00d726+49 = 1309 pens, not 1549.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-3",
+      "role": "human:1",
+      "output": "Total pens initially: \\(60 \\times 26 = 1560\\)\n\nAfter selling 222, shipping \\(3 \\times 26 = 78\\), and receiving 49 returned pens:\n\n\\[\n1560 - 222 - 78 + 49 = 1309\n\\]\n\nAnswer: **1,309 pens**",
+      "passed": true,
+      "reason": "The output correctly calculates 60 \u00d7 26 \u2212 222 \u2212 3 \u00d7 26 + 49 = 1309 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "human:1",
+      "output": "Start with \\(28 \\times 15 = 420\\) pens.\n\n\\(420 - 247 - (9 \\times 15) + 16 = 54\\).\n\nAnswer: 54 pens",
+      "passed": true,
+      "reason": "The output correctly computes 420 \u2212 247 \u2212 135 + 16 = 54 pens, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-4",
+      "role": "human:1",
+      "output": "Initial pens: 28 \u00d7 15 = 420  \nAfter sales: 420 \u2212 247 = 173  \nAfter shipping: 173 \u2212 (9 \u00d7 15) = 38  \nAfter return: 38 + 16 = **54 pens**\n\nAnswer: 54 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory changes and concludes there are 54 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "human:1",
+      "output": "Initially: \\(51 \\times 12 = 612\\) pens.  \nAfter selling 351: \\(612 - 351 = 261\\).  \nAfter shipping 8 boxes: \\(261 - 8 \\times 12 = 165\\).  \nAfter the return: \\(165 + 30 = 195\\).\n\nAnswer: 195 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 195 pens and matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-5",
+      "role": "human:1",
+      "output": "Initial pens: 51 \u00d7 12 = 612  \nAfter sales: 612 \u2212 351 = 261  \nAfter shipping: 261 \u2212 8 \u00d7 12 = 165  \nAfter return: 165 + 30 = 195  \n\nAnswer: 195 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 195 pens and matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "human:1",
+      "output": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales: 864 \u2212 228 = 636  \nAfter shipping: 636 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = **548 pens**\n\nAnswer: 548 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 548 pens and matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-6",
+      "role": "human:1",
+      "output": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales and shipment: 864 \u2212 228 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = 548  \n\nAnswer: 548 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 548 pens and states that answer clearly.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "human:1",
+      "output": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 1,017 pens, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-7",
+      "role": "human:1",
+      "output": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the initial inventory, subtracts sales and shipped boxes, adds the returned pens, and gives 1,017 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "human:1",
+      "output": "Initial pens: 44 \u00d7 14 = 616  \nAfter sales, shipment, and return: 616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the warehouse inventory as 161 pens and states the answer clearly.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-8",
+      "role": "human:1",
+      "output": "44 \u00d7 14 = 616 pens  \n616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "passed": true,
+      "reason": "The output correctly computes the warehouse inventory as 161 pens and clearly states the answer.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "human:1",
+      "output": "Initial pens: \\(41 \\times 26 = 1{,}066\\)\n\nAfter sales, shipping, and returns:\n\n\\[\n1{,}066 - 172 - (8 \\times 26) + 55 = 741\n\\]\n\nAnswer: **741 pens**",
+      "passed": true,
+      "reason": "The output correctly calculates the inventory as 741 pens.",
+      "error": null
+    },
+    {
+      "case": "arithmetic-9",
+      "role": "human:1",
+      "output": "There are \\(41 \\times 26 = 1{,}066\\) pens initially.\n\nAfter selling and shipping: \\(1{,}066 - 172 - (8 \\times 26) = 686\\).\n\nAfter the return: \\(686 + 55 = 741\\).\n\nAnswer: 741 pens",
+      "passed": true,
+      "reason": "The output correctly calculates the initial inventory, subtracts sales and shipped boxes, adds returned pens, and concludes with 741 pens.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "human:0",
+      "output": "The letter \u201cr\u201d appears **3 times**.\n\nAnswer: 3",
+      "passed": false,
+      "reason": "The phrase contains two occurrences of the letter \u201cr\u201d in \u201creferee,\u201d so the output\u2019s count of 3 is incorrect.",
+      "error": null
+    },
+    {
+      "case": "letters-0",
+      "role": "human:1",
+      "output": "The letter \u201cr\u201d appears **2 times**.\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \"r\" appears 2 times in \"assessment referee.\"",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "human:0",
+      "output": "2\n\nAnswer: 2",
+      "passed": false,
+      "reason": "The output is incorrect: the letter \u201ce\u201d appears 3 times in \u201cstrawberry occurrence,\u201d not 2.",
+      "error": null
+    },
+    {
+      "case": "letters-1",
+      "role": "human:1",
+      "output": "The letter **\u201ce\u201d** appears **3 times** in \u201cstrawberry occurrence\u201d.\n\nAnswer: 3",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201ce\u201d appears 3 times in \u201cstrawberry occurrence.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "human:1",
+      "output": "The letter **\u201ca\u201d** appears **2** times.\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201ca\u201d appears 2 times.",
+      "error": null
+    },
+    {
+      "case": "letters-2",
+      "role": "human:1",
+      "output": "The letter **\u201ca\u201d** appears **2 times**.\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201ca\u201d appears 2 times, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "human:1",
+      "output": "2\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output states that the letter \"r\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-3",
+      "role": "human:1",
+      "output": "2\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output states that the letter \"r\" appears 2 times, which is correct.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "human:0",
+      "output": "The letter **\u201cp\u201d** appears **4 times**.\n\nAnswer: 4",
+      "passed": false,
+      "reason": "The output incorrectly counts the letter \u201cp\u201d as 4; \u201cmississippi onomatopoeia\u201d contains 3 occurrences.",
+      "error": null
+    },
+    {
+      "case": "letters-4",
+      "role": "human:0",
+      "output": "The letter \u201cp\u201d appears **4 times**.\n\nAnswer: 4",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cmississippi\u201d contains four p\u2019s and \u201conomatopoeia\u201d contains one, for a total of five, not three.",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "human:0",
+      "output": "The letter \u201cs\u201d appears **2 times**.\n\nAnswer: 2",
+      "passed": false,
+      "reason": "The output is incorrect: \u201creferee possession\u201d contains four occurrences of the letter \u201cs,\u201d not two.",
+      "error": null
+    },
+    {
+      "case": "letters-5",
+      "role": "human:0",
+      "output": "The letter \u201cs\u201d appears **2 times**.\n\nAnswer: 2",
+      "passed": false,
+      "reason": "The phrase contains one \u201cs\u201d in \u201creferee\u201d and three in \u201cpossession,\u201d for a total of 4; the output incorrectly states 2.",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "human:1",
+      "output": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "passed": true,
+      "reason": "The output gives the correct count, 4, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-6",
+      "role": "human:1",
+      "output": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "passed": true,
+      "reason": "The output states that the letter \u201cs\u201d appears 4 times, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "human:1",
+      "output": "The letter \u201ce\u201d appears **5 times**.\n\nAnswer: 5",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201ce\u201d appears 5 times in \u201creferee possession.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-7",
+      "role": "human:1",
+      "output": "The letter **\u201ce\u201d** appears **5 times**.\n\nAnswer: 5",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201ce\u201d appears 5 times in \u201creferee possession.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "human:1",
+      "output": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201cm\u201d appears 2 times in \u201creferee committee.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-8",
+      "role": "human:1",
+      "output": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "passed": true,
+      "reason": "The output correctly states that the letter \u201cm\u201d appears 2 times in \u201creferee committee.\u201d",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "human:1",
+      "output": "The letter **\u201cs\u201d** appears **5 times**.\n\nAnswer: 5",
+      "passed": true,
+      "reason": "The output gives the correct count, 5, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "letters-9",
+      "role": "human:0",
+      "output": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "passed": false,
+      "reason": "The output says 4, but \u201cstrawberry sassafras\u201d contains 5 occurrences of the letter \u201cs\u201d.",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "human:1",
+      "output": "358 days later is **Monday**.\n\nAnswer: Monday",
+      "passed": true,
+      "reason": "The output correctly identifies the day as Monday, matching the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-0",
+      "role": "human:0",
+      "output": "358 days later is **Tuesday**.\n\nAnswer: Tuesday",
+      "passed": false,
+      "reason": "358 days is 1 day short of 51 weeks, so the weekday advances by 6 days from Sunday to Saturday, not Tuesday.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "human:1",
+      "output": "280 days \u2261 0 (mod 7), so it will also be a **Saturday**.\n\nAnswer: Saturday",
+      "passed": true,
+      "reason": "The output correctly concludes that 280 days later falls on a Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-1",
+      "role": "human:1",
+      "output": "Answer: Saturday",
+      "passed": true,
+      "reason": "The output states Saturday, which is the correct day 280 days after 2026-08-08 because 280 is divisible by 7.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "human:0",
+      "output": "Answer: Sunday",
+      "passed": false,
+      "reason": "286 days is 6 days modulo 7; six days after Saturday is Friday, not Sunday.",
+      "error": null
+    },
+    {
+      "case": "dates-2",
+      "role": "human:0",
+      "output": "286 days later is **Sunday**.\n\nAnswer: Sunday",
+      "passed": false,
+      "reason": "286 days is  \u091b\u0939 days modulo one week; Saturday plus six days is Friday, not Sunday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "human:0",
+      "output": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": false,
+      "reason": "102 days after Tuesday advances by 4 days of the week, landing on Saturday; the output incorrectly says Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-3",
+      "role": "human:0",
+      "output": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": false,
+      "reason": "The output says Friday, but 102 days after Tuesday advances by 4 days, which is Saturday.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "human:0",
+      "output": "398 days later is **Thursday**.\n\nAnswer: Thursday",
+      "passed": false,
+      "reason": "398 days is 3 days modulo 7, so Tuesday advances to Friday, not Thursday; the output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-4",
+      "role": "human:1",
+      "output": "398 mod 7 = 6, so Tuesday + 6 days = **Monday**.\n\nAnswer: Monday",
+      "passed": true,
+      "reason": "The output correctly computes 398 mod 7 as 6 and advances Tuesday by six days to Monday.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "human:0",
+      "output": "Answer: Sunday",
+      "passed": false,
+      "reason": "385 days is 5 days beyond 54 weeks, so Saturday advances to Thursday, not Sunday. The output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-5",
+      "role": "human:0",
+      "output": "Answer: Sunday",
+      "passed": false,
+      "reason": "385 days is 5 days modulo 7, so Saturday advances to Thursday, not Sunday; the output is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "human:1",
+      "output": "Answer: Wednesday",
+      "passed": true,
+      "reason": "The output states Wednesday, which matches the expected answer.",
+      "error": null
+    },
+    {
+      "case": "dates-6",
+      "role": "human:0",
+      "output": "319 days later is **Thursday**.\n\nAnswer: Thursday",
+      "passed": false,
+      "reason": "319 days after Saturday advances by 4 days because 319 mod 7 = 4, resulting in Wednesday. The output incorrectly says Thursday.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "human:0",
+      "output": "Answer: Monday",
+      "passed": false,
+      "reason": "326 days after Saturday advances by 4 days because 326 mod 7 = 4, yielding Wednesday. The output says Monday, so it is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-7",
+      "role": "human:1",
+      "output": "326 mod 7 = 4, so four days after Saturday is **Wednesday**.\n\nAnswer: Wednesday",
+      "passed": true,
+      "reason": "The output correctly computes 326 mod 7 as 4 and identifies four days after Saturday as Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "human:0",
+      "output": "382 days later is **Sunday**.\n\nAnswer: Sunday",
+      "passed": false,
+      "reason": "382 days is 4 days beyond 54 weeks; Saturday plus 4 days is Wednesday, so the output's Sunday answer is incorrect.",
+      "error": null
+    },
+    {
+      "case": "dates-8",
+      "role": "human:0",
+      "output": "382 days later is **Sunday**.\n\nAnswer: Sunday",
+      "passed": false,
+      "reason": "382 days is 2 days beyond 54 weeks, so Saturday advances to Monday, not Sunday or Wednesday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "human:0",
+      "output": "320 days later is **Tuesday**.\n\nAnswer: Tuesday",
+      "passed": false,
+      "reason": "The output says Tuesday, but 320 days after Sunday advances by 5 days, which is Friday.",
+      "error": null
+    },
+    {
+      "case": "dates-9",
+      "role": "human:1",
+      "output": "320 days later is **Friday**.\n\nAnswer: Friday",
+      "passed": true,
+      "reason": "The output correctly states that 320 days after Sunday, June 7, 2026, is Friday.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "human:0",
+      "output": "Answer: ARBAcadarbA",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \"abracadabra\" gives \"arbadacarba\", which should become \"ArbAdAcArbA\" under the stated capitalization rule.",
+      "error": null
+    },
+    {
+      "case": "strings-0",
+      "role": "human:0",
+      "output": "Answer: ArbAcAdArbA",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201cabracadabra\u201d and capitalizing only vowels produces \u201cArbAdAcArbA,\u201d not \u201cArbAcAdArbA.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "human:0",
+      "output": "sarfassa\n\nAnswer: sarfassa",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201csassafras\u201d gives \u201csarfassas,\u201d and uppercasing vowels yields \u201csArfAssAs.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-1",
+      "role": "human:0",
+      "output": "Answer: SArFAsSaS",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201csassafras\u201d gives \u201csarfassas,\u201d which transforms to \u201csArfAssAs,\u201d not \u201cSArFAsSaS.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "human:0",
+      "output": "Answer: TnEmssEssAset",
+      "passed": false,
+      "reason": "The output is incorrect: the expected transformed string is \"tnEmssEssA\", but the provided answer includes extra characters and an incorrect prefix.",
+      "error": null
+    },
+    {
+      "case": "strings-2",
+      "role": "human:1",
+      "output": "tnEmssEssA\nAnswer: tnEmssEssA",
+      "passed": true,
+      "reason": "The output exactly matches the expected transformed string, \u201ctnEmssEssA.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "human:1",
+      "output": "Possession backwards: **noissessop**  \nWith vowels uppercase: **nOIssEssOp**\n\nAnswer: nOIssEssOp",
+      "passed": true,
+      "reason": "The output gives the correctly reversed word with vowels uppercase and all other letters lowercase: nOIssEssOp.",
+      "error": null
+    },
+    {
+      "case": "strings-3",
+      "role": "human:0",
+      "output": "Answer: NOISSESSOP",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cpossession\u201d backwards is \u201cnoisse ssop\u201d (nOIssEssOp after vowel capitalization), not \u201cNOISSESSOP.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "human:0",
+      "output": "Answer: AIEOPOTAMONO",
+      "passed": false,
+      "reason": "The output is incorrect: the transformed string should be \u201cAIEOpOtAmOnO,\u201d not \u201cAIEOPOTAMONO.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-4",
+      "role": "human:0",
+      "output": "Answer: AIEOPOTAMONO",
+      "passed": false,
+      "reason": "The output does not match the required transformed spelling: it incorrectly uppercases consonants and differs from the expected `AIEOpOtAmOnO`.",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "human:0",
+      "output": "AIEOPOTAMONO\n\nAnswer: AIEOPOTAMONO",
+      "passed": false,
+      "reason": "The output is incorrect: the required transformed string is \u201cAIEOpOtAmOnO,\u201d while it gives \u201cAIEOPOTAMONO.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-5",
+      "role": "human:0",
+      "output": "AeOpOtAmOnO\n\nAnswer: AeOpOtAmOnO",
+      "passed": false,
+      "reason": "The output is incorrect: \u201conomatopoeia\u201d backwards with vowels uppercase is \u201cAIEOpOtAmOnO,\u201d not \u201cAeOpOtAmOnO.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "human:0",
+      "output": "Answer: EETTImmOC",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201ccommittee\u201d gives \u201ceettimmoc,\u201d which should become \u201cEEttImmOc\u201d under the capitalization rule.",
+      "error": null
+    },
+    {
+      "case": "strings-6",
+      "role": "human:0",
+      "output": "Answer: ETTIMMOC",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201ccommittee\u201d gives \u201ceettimmoc,\u201d which becomes \u201cEEttImmOc\u201d with vowels uppercase and consonants lowercase.",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "human:0",
+      "output": "marGolElarap\n\nAnswer: marGolElarap",
+      "passed": false,
+      "reason": "The output is incorrect: \u201cparallelogram\u201d backwards is \u201cmargol l elarap\u201d (with the correct letter sequence \u201cmargollelarap\u201d), which should become \u201cmArgOllElArAp\u201d under the capitalization rule, not \u201cmarGolElarap.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-7",
+      "role": "human:0",
+      "output": "Answer: MARGOLLELARAP",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201cparallelogram\u201d and capitalizing only vowels yields \u201cmArgOlEllArAp,\u201d not \u201cMARGOLLELARAP.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "human:0",
+      "output": "Answer: margellarap\n",
+      "passed": false,
+      "reason": "The output is incorrect: it does not reverse \u201cparallelogram\u201d correctly or apply the required vowel capitalization.",
+      "error": null
+    },
+    {
+      "case": "strings-8",
+      "role": "human:0",
+      "output": "mArgEllElArAp\n\nAnswer: mArgEllElArAp",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201cparallelogram\u201d and capitalizing vowels yields \u201cmArgOlEllArAp,\u201d not \u201cmArgEllElArAp.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "human:0",
+      "output": "yrrebWArtS",
+      "passed": false,
+      "reason": "The output is incorrect: the reversed word is \u201cyrrebwarts,\u201d and applying the vowel capitalization rule yields \u201cyrrEbwArts.\u201d",
+      "error": null
+    },
+    {
+      "case": "strings-9",
+      "role": "human:0",
+      "output": "Answer: yrRebwaRts",
+      "passed": false,
+      "reason": "The output is incorrect: reversing \u201cstrawberry\u201d gives \u201cyrrebwarts,\u201d and uppercasing vowels produces \u201cyrrEbwArts,\u201d not \u201cyrRebwaRts.\u201d",
+      "error": null
+    }
+  ]
+}

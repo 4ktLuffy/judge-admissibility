@@ -1,0 +1,85 @@
+{
+  "rubric": "The output correctly answers the question.",
+  "confusion": {
+    "pass_correct": 35,
+    "pass_wrong": 7,
+    "fail_correct": 6,
+    "fail_wrong": 32,
+    "no_verdict": 0
+  },
+  "calls": 280,
+  "judge": "LLMJudge(codex:gpt-5.6-luna)",
+  "verdict": "INADMISSIBLE",
+  "checks": [
+    {
+      "name": "acceptance",
+      "status": "UNVALIDATED",
+      "successes": 52,
+      "trials": 80,
+      "rate": 0.65,
+      "interval": [
+        0.5407980232189245,
+        0.7454560559017032
+      ],
+      "threshold": 0.7,
+      "errors": 0,
+      "detail": "interval straddles the threshold: needs more cases"
+    },
+    {
+      "name": "rejection",
+      "status": "PASS",
+      "successes": 78,
+      "trials": 80,
+      "rate": 0.975,
+      "interval": [
+        0.9133539994467789,
+        0.9931172511018748
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "mismatched_output 38/40, empty_output 40/40"
+    },
+    {
+      "name": "invariance",
+      "status": "FAIL",
+      "successes": 26,
+      "trials": 40,
+      "rate": 0.65,
+      "interval": [
+        0.4950559699353738,
+        0.7786566682895086
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "whitespace_reformat 26/40"
+    },
+    {
+      "name": "stability",
+      "status": "UNVALIDATED",
+      "successes": 28,
+      "trials": 40,
+      "rate": 0.7,
+      "interval": [
+        0.545696893456796,
+        0.8192532908430471
+      ],
+      "threshold": 0.8,
+      "errors": 0,
+      "detail": "2 judgments per case; interval straddles the threshold: needs more cases"
+    },
+    {
+      "name": "human_agreement",
+      "status": "PASS",
+      "successes": 67,
+      "trials": 80,
+      "rate": 0.8375,
+      "interval": [
+        0.7415689513651669,
+        0.9025027266562451
+      ],
+      "threshold": 0.4,
+      "errors": 0,
+      "detail": "kappa=0.67"
+    }
+  ]
+}

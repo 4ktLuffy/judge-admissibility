@@ -1,0 +1,646 @@
+{
+  "prompt": "Answer the question. End your reply with a line \"Answer: <answer>\".",
+  "tokens": 171759,
+  "rows": [
+    {
+      "question": "arithmetic-0",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: \\(30 \\times 22 = 660\\)\n\nAfter sales: \\(660 - 357 = 303\\)\n\nAfter shipping 7 boxes: \\(303 - (7 \\times 22) = 149\\)\n\nAfter return: \\(149 + 51 = 200\\)\n\nAnswer: **200 pens**",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-0",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: 30 \u00d7 22 = 660  \nAfter sales: 660 \u2212 357 = 303  \nAfter shipping: 303 \u2212 (7 \u00d7 22) = 149  \nAfter return: 149 + 51 = 200  \n\nAnswer: 200 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-1",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: 29 \u00d7 19 = 551  \nAfter selling: 551 \u2212 384 = 167  \nAfter shipping: 167 \u2212 (6 \u00d7 19) = 53  \nAfter return: 53 + 60 = **113**\n\nAnswer: 113 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-1",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "There are **19 \u00d7 29 = 551 pens** initially.\n\nAfter selling 384, shipping 6 \u00d7 19 = 114, and receiving 60 returned:\n\n**551 \u2212 384 \u2212 114 + 60 = 113 pens**\n\nAnswer: **113 pens**",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-2",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: 59 \u00d7 29 = 1,711  \nAfter sales: 1,711 \u2212 351 = 1,360  \nAfter shipping: 1,360 \u2212 (9 \u00d7 29) = 1,099  \nAfter return: 1,099 + 59 = 1,158  \n\nAnswer: 1,158 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-2",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: \\(59 \\times 29 = 1711\\)\n\nAfter selling: \\(1711 - 351 = 1360\\)\n\nAfter shipping 9 boxes: \\(1360 - (9 \\times 29) = 1099\\)\n\nAfter return: \\(1099 + 59 = 1158\\)\n\nAnswer: **1,158 pens**",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-3",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "1549 pens.",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "arithmetic-3",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Total pens initially: \\(60 \\times 26 = 1560\\)\n\nAfter selling 222, shipping \\(3 \\times 26 = 78\\), and receiving 49 returned pens:\n\n\\[\n1560 - 222 - 78 + 49 = 1309\n\\]\n\nAnswer: **1,309 pens**",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-4",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Start with \\(28 \\times 15 = 420\\) pens.\n\n\\(420 - 247 - (9 \\times 15) + 16 = 54\\).\n\nAnswer: 54 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-4",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: 28 \u00d7 15 = 420  \nAfter sales: 420 \u2212 247 = 173  \nAfter shipping: 173 \u2212 (9 \u00d7 15) = 38  \nAfter return: 38 + 16 = **54 pens**\n\nAnswer: 54 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-5",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initially: \\(51 \\times 12 = 612\\) pens.  \nAfter selling 351: \\(612 - 351 = 261\\).  \nAfter shipping 8 boxes: \\(261 - 8 \\times 12 = 165\\).  \nAfter the return: \\(165 + 30 = 195\\).\n\nAnswer: 195 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-5",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: 51 \u00d7 12 = 612  \nAfter sales: 612 \u2212 351 = 261  \nAfter shipping: 261 \u2212 8 \u00d7 12 = 165  \nAfter return: 165 + 30 = 195  \n\nAnswer: 195 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-6",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales: 864 \u2212 228 = 636  \nAfter shipping: 636 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = **548 pens**\n\nAnswer: 548 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-6",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: 36 \u00d7 24 = 864  \nAfter sales and shipment: 864 \u2212 228 \u2212 (5 \u00d7 24) = 516  \nAfter return: 516 + 32 = 548  \n\nAnswer: 548 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-7",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-7",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "Initial pens: 47 \u00d7 35 = 1,645  \nAfter sales: 1,645 \u2212 362 = 1,283  \nAfter shipping: 1,283 \u2212 (8 \u00d7 35) = 1,003  \nAfter return: 1,003 + 14 = **1,017 pens**\n\nAnswer: 1,017 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-8",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: 44 \u00d7 14 = 616  \nAfter sales, shipment, and return: 616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-8",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "44 \u00d7 14 = 616 pens  \n616 \u2212 385 \u2212 (7 \u00d7 14) + 28 = **161 pens**\n\nAnswer: 161 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-9",
+      "kind": "arithmetic",
+      "repeat": 0,
+      "reply": "Initial pens: \\(41 \\times 26 = 1{,}066\\)\n\nAfter sales, shipping, and returns:\n\n\\[\n1{,}066 - 172 - (8 \\times 26) + 55 = 741\n\\]\n\nAnswer: **741 pens**",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "arithmetic-9",
+      "kind": "arithmetic",
+      "repeat": 1,
+      "reply": "There are \\(41 \\times 26 = 1{,}066\\) pens initially.\n\nAfter selling and shipping: \\(1{,}066 - 172 - (8 \\times 26) = 686\\).\n\nAfter the return: \\(686 + 55 = 741\\).\n\nAnswer: 741 pens",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-0",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter \u201cr\u201d appears **3 times**.\n\nAnswer: 3",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-0",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter \u201cr\u201d appears **2 times**.\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-1",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "2\n\nAnswer: 2",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-1",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201ce\u201d** appears **3 times** in \u201cstrawberry occurrence\u201d.\n\nAnswer: 3",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-2",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter **\u201ca\u201d** appears **2** times.\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-2",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201ca\u201d** appears **2 times**.\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-3",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "2\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-3",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "2\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-4",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter **\u201cp\u201d** appears **4 times**.\n\nAnswer: 4",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-4",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter \u201cp\u201d appears **4 times**.\n\nAnswer: 4",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-5",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter \u201cs\u201d appears **2 times**.\n\nAnswer: 2",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-5",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter \u201cs\u201d appears **2 times**.\n\nAnswer: 2",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "letters-6",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-6",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-7",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter \u201ce\u201d appears **5 times**.\n\nAnswer: 5",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-7",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201ce\u201d** appears **5 times**.\n\nAnswer: 5",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-8",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-8",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201cm\u201d** appears **2 times** in \u201creferee committee.\u201d\n\nAnswer: 2",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-9",
+      "kind": "letters",
+      "repeat": 0,
+      "reply": "The letter **\u201cs\u201d** appears **5 times**.\n\nAnswer: 5",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "letters-9",
+      "kind": "letters",
+      "repeat": 1,
+      "reply": "The letter **\u201cs\u201d** appears **4 times**.\n\nAnswer: 4",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-0",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "358 days later is **Monday**.\n\nAnswer: Monday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-0",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "358 days later is **Tuesday**.\n\nAnswer: Tuesday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-1",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "280 days \u2261 0 (mod 7), so it will also be a **Saturday**.\n\nAnswer: Saturday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-1",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "Answer: Saturday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-2",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "Answer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-2",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "286 days later is **Sunday**.\n\nAnswer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-3",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-3",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "102 days later is **Friday**.\n\nAnswer: Friday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-4",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "398 days later is **Thursday**.\n\nAnswer: Thursday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-4",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "398 mod 7 = 6, so Tuesday + 6 days = **Monday**.\n\nAnswer: Monday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-5",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "Answer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-5",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "Answer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-6",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "Answer: Wednesday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-6",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "319 days later is **Thursday**.\n\nAnswer: Thursday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-7",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "Answer: Monday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-7",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "326 mod 7 = 4, so four days after Saturday is **Wednesday**.\n\nAnswer: Wednesday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "dates-8",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "382 days later is **Sunday**.\n\nAnswer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-8",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "382 days later is **Sunday**.\n\nAnswer: Sunday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-9",
+      "kind": "dates",
+      "repeat": 0,
+      "reply": "320 days later is **Tuesday**.\n\nAnswer: Tuesday",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "dates-9",
+      "kind": "dates",
+      "repeat": 1,
+      "reply": "320 days later is **Friday**.\n\nAnswer: Friday",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "strings-0",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Answer: ARBAcadarbA",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-0",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: ArbAcAdArbA",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-1",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "sarfassa\n\nAnswer: sarfassa",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-1",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: SArFAsSaS",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-2",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Answer: TnEmssEssAset",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-2",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "tnEmssEssA\nAnswer: tnEmssEssA",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "strings-3",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Possession backwards: **noissessop**  \nWith vowels uppercase: **nOIssEssOp**\n\nAnswer: nOIssEssOp",
+      "error": null,
+      "correct": true
+    },
+    {
+      "question": "strings-3",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: NOISSESSOP",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-4",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Answer: AIEOPOTAMONO",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-4",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: AIEOPOTAMONO",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-5",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "AIEOPOTAMONO\n\nAnswer: AIEOPOTAMONO",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-5",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "AeOpOtAmOnO\n\nAnswer: AeOpOtAmOnO",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-6",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Answer: EETTImmOC",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-6",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: ETTIMMOC",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-7",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "marGolElarap\n\nAnswer: marGolElarap",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-7",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: MARGOLLELARAP",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-8",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "Answer: margellarap\n",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-8",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "mArgEllElArAp\n\nAnswer: mArgEllElArAp",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-9",
+      "kind": "strings",
+      "repeat": 0,
+      "reply": "yrrebWArtS",
+      "error": null,
+      "correct": false
+    },
+    {
+      "question": "strings-9",
+      "kind": "strings",
+      "repeat": 1,
+      "reply": "Answer: yrRebwaRts",
+      "error": null,
+      "correct": false
+    }
+  ]
+}

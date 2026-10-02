@@ -1,0 +1,79 @@
+{
+  "baseline_prompt": "Answer the question. End your reply with a line \"Answer: <answer>\".",
+  "rubric": "The output correctly answers the question.",
+  "judge_certificate": "INADMISSIBLE",
+  "reference_certificate": "ADMISSIBLE",
+  "baseline_train": {
+    "plain_judge": 0.625,
+    "reference_judge": 0.55,
+    "truth": 0.5125
+  },
+  "candidates": [
+    {
+      "index": 0,
+      "prompt": "Solve each question carefully. For counting, count every occurrence exactly, including repeated letters and spaces only when relevant. For day arithmetic, compute the offset modulo 7 and verify against the stated starting weekday. For string transformations, reverse the string first, then apply the requested capitalization character by character. End with exactly one final line: \"Answer: <answer>\".",
+      "judge_train": 0.5,
+      "reference_train": 0.275,
+      "truth_train": 0.275
+    },
+    {
+      "index": 1,
+      "prompt": "Answer the question using explicit, reliable step-by-step reasoning internally. Check arithmetic, weekday calculations, letter counts, reversal order, and capitalization before responding. The final line must be exactly \"Answer: <answer>\" with the correct answer substituted.",
+      "judge_train": 0.575,
+      "reference_train": 0.4125,
+      "truth_train": 0.425
+    },
+    {
+      "index": 2,
+      "prompt": "Prioritize correctness over brevity. For weekday questions, use days-later modulo 7; for letter-count questions, inspect the entire quoted string; for transformations, preserve every character, reverse first, then uppercase only vowels and lowercase all other letters. End your response with a line formatted exactly as \"Answer: <answer>\".",
+      "judge_train": 0.8,
+      "reference_train": 0.6875,
+      "truth_train": 0.6875
+    },
+    {
+      "index": 3,
+      "prompt": "Act as a meticulous verifier. Recalculate numerical results independently, count characters one by one when needed, and validate transformed strings against the original length and reversed character order. Always finish with exactly: \"Answer: <answer>\".",
+      "judge_train": 0.5125,
+      "reference_train": 0.35,
+      "truth_train": 0.35
+    },
+    {
+      "index": 4,
+      "prompt": "Solve the requested task and silently double-check the result before answering. Do not infer patterns from examples. Treat quoted text literally, apply operations in the stated order, and ensure weekday offsets are reduced modulo 7. End with the required final line: \"Answer: <answer>\".",
+      "judge_train": 0.4,
+      "reference_train": 0.25,
+      "truth_train": 0.25
+    }
+  ],
+  "naive_pick": 2,
+  "gate_on_judge": [
+    "REFUSED",
+    "REFUSED",
+    "REFUSED",
+    "REFUSED",
+    "REFUSED"
+  ],
+  "gate_on_reference": [
+    "REJECT: mean gain -0.275 per case, bootstrap interval [-0.425, -0.138], p(better)=1.000, p(worse)=0.000; 2 improved, 17 regressed of 40. the candidate is worse beyond the noise",
+    "INCONCLUSIVE: mean gain -0.138 per case, bootstrap interval [-0.263, -0.013], p(better)=0.990, p(worse)=0.031; 5 improved, 12 regressed of 40. the cases cannot tell the two apart",
+    "INCONCLUSIVE: mean gain +0.138 per case, bootstrap interval [+0.025, +0.250], p(better)=0.018, p(worse)=0.995; 13 improved, 4 regressed of 40. the cases cannot tell the two apart",
+    "REJECT: mean gain -0.200 per case, bootstrap interval [-0.312, -0.087], p(better)=1.000, p(worse)=0.001; 2 improved, 17 regressed of 40. the candidate is worse beyond the noise",
+    "REJECT: mean gain -0.300 per case, bootstrap interval [-0.450, -0.150], p(better)=1.000, p(worse)=0.001; 3 improved, 18 regressed of 40. the candidate is worse beyond the noise"
+  ],
+  "gated_pick": null,
+  "held_out": {
+    "baseline": {
+      "truth": 0.425,
+      "prompt": "Answer the question. End your reply with a line \"Answer: <answer>\"."
+    },
+    "naive pick": {
+      "truth": 0.5875,
+      "prompt": "Prioritize correctness over brevity. For weekday questions, use days-later modulo 7; for letter-count questions, inspect the entire quoted string; for transformations, preserve every character, reverse first, then uppercase only vowels and lowercase all other letters. End your response with a line formatted exactly as \"Answer: <answer>\"."
+    }
+  },
+  "held_out_vs_baseline": {
+    "naive pick": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed"
+  },
+  "calls": 0,
+  "tokens": 0
+}

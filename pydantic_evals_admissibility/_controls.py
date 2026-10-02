@@ -23,8 +23,11 @@ ControlKind = Literal['must_fail', 'must_hold']
 
 
 class Control(Protocol):
-    name: str
-    kind: ControlKind
+    @property
+    def name(self) -> str: ...
+
+    @property
+    def kind(self) -> ControlKind: ...
 
     def make(self, case: JudgeCase, cases: Sequence[JudgeCase], rng: random.Random) -> Any | None:
         """The control output for `case`, or None when this control does not apply to it."""

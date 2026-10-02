@@ -23,6 +23,16 @@ if not certificate.admissible:
     ...  # do not report this judge's scores
 ```
 
+## Install
+
+```bash
+pip install "pydantic-evals-admissibility[logfire] @ git+https://github.com/4ktLuffy/judge-admissibility"
+```
+
+The `logfire` extra is only needed for `promote` and the canary functions. Tested against the
+released pydantic-evals 2.52.0 and logfire 5.1.1. Until pydantic-evals declares `sniffio` (its
+online evaluation imports it), also `pip install sniffio` to use `JudgeCanary` online.
+
 ## What it checks
 
 | Check | The judge must... | Built from |
@@ -85,6 +95,118 @@ bug made this README claim the adapter cut each call to about 620 tokens; the to
 reports do not show that, and a real judge call here costs about 1,300 to 2,000 tokens. Both are
 fixed: the adapter now uses `model_instructions_file`, checked by instructing the model to reply
 with a fixed word and confirming it does.
+
+## From a certificate to a decision: gating changes
+
+A certificate says whether a judge's verdicts are evidence. The rest of the package uses that
+to decide whether a change, such as a new prompt, should ship.
+
+```python
+from pydantic_evals_admissibility import GateRules, compare_reports, promote
+
+baseline = await dataset.evaluate(agent_with_current_prompt, repeat=2)
+candidate = await dataset.evaluate(agent_with_new_prompt, repeat=2)
+
+result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)
+print(result.summary())                       # PROMOTE / REJECT / INCONCLUSIVE / REFUSED
+promote(result, 'agent_prompt', new_prompt)   # moves the Logfire label only on PROMOTE
+```
+
+- **`decide` / `compare_reports`** compare the two versions case by case (a paired sign-flip
+  test, exact when nothing changed). A judge without an ADMISSIBLE certificate gets **REFUSED**:
+  its scores are not evidence, so there is nothing to decide. `compare_reports` reads two ordinary
+  pydantic-evals reports, groups repeats by source case and counts a crashed run as a fail.
+- **`GateRules().for_candidates(k)`** splits the significance level when an optimizer picks the
+  best of `k` proposals; otherwise the best of several noisy candidates wins by luck.
+- **`detectable_gain(outcomes)`** answers, before anything runs, how big an improvement the
+  dataset can see at all.
+- **`promote`** applies a PROMOTE to a Logfire managed variable (a new version, the
+  `production` label moved) and records the decision and its evidence on a span either way.
+- **`start_canary` / `decide_unpaired` / `finish_canary`** do the same for live traffic: serve
+  the candidate to a share of requests, compare the arms, then promote, roll back, or keep
+  waiting when the traffic cannot tell yet.
+- **`JudgeCanary`** keeps checking a judge after it is certified, on the traffic it grades. On a
+  sampled share of calls it also asks the judge about an empty answer, which it must fail.
+  `borrow=True` adds another request's answer as a control; it is off by default because on
+  this package's task a borrowed answer was in fact right for 20-27% of same-kind questions, which
+  made a sound judge look unhealthy. Use it only where answers are specific to their question.
+  `every=n` checks exactly every n-th call instead of sampling, so a monitor sees a known number
+  of checks; the monitor says HEALTHY only once the evidence supports it (16 straight rejections
+  at the default 0.8 bar). Works with `Dataset.evaluate` and with online evaluation; online, the
+  result lands in Logfire as `judge_canary_rejected`.
+
+How well the gate itself behaves, measured in this package's tests (40 cases, 2 runs each,
+200 trials for A/A and 50 for the others):
+
+| True situation | PROMOTE | INCONCLUSIVE | REJECT |
+|---|---|---|---|
+| identical versions | 5 (2.5%) | 193 | 2 (1%) |
+| better by 0.1 | 15 | 35 | 0 |
+| better by 0.3 | 49 | 1 | 0 |
+| worse by 0.1 | 0 | 45 | 5 |
+| worse by 0.3 | 0 | 1 | 49 |
+
+It never called a better version worse or promoted a worse one. Small gains are mostly
+INCONCLUSIVE, which is the honest answer at this size: on the real Codex baseline below,
+`detectable_gain` says 40 questions with 2 runs each reliably see only a 25-point gain.
+
+## Experiment: one round of prompt optimization, decided three ways
+
+`bench/optimize.py` runs one round of a self-improving loop on a task with answers computed by
+Python (`bench/task.py`: arithmetic, letter counts, weekday arithmetic, string transformations).
+The agent, the judges and the optimizer are all Codex `gpt-5.6-luna` with no reasoning. Codex
+proposes five prompts from the baseline and the failures the judge flagged; each runs twice on
+40 training questions. Ground truth is never used to decide anything: it is the referee, and the
+40 held-out questions are scored only after the decisions are made.
+
+Two judges, certified first on the agent's real replies with ground truth as the labels:
+
+| Judge | Certificate | Agreement with ground truth on 80 real replies |
+|---|---|---|
+| plain `LLMJudge(include_input=True)` | INADMISSIBLE | passed 7 of 39 wrong answers, failed 6 of 41 right ones |
+| reference `LLMJudge(include_input=True, include_expected_output=True)` | ADMISSIBLE | 80 of 80 |
+
+On the 40 training questions:
+
+| Prompt | Plain judge | Certified judge | Truth | Gate on plain judge | Gate on certified judge (level split 5 ways) |
+|---|---|---|---|---|---|
+| baseline | 0.625 | 0.550 | 0.513 | | |
+| candidate 0 | 0.500 | 0.275 | 0.275 | REFUSED | REJECT |
+| candidate 1 | 0.575 | 0.412 | 0.425 | REFUSED | INCONCLUSIVE |
+| candidate 2 | 0.800 | 0.688 | 0.688 | REFUSED | INCONCLUSIVE (p = 0.018, needs < 0.005) |
+| candidate 3 | 0.512 | 0.350 | 0.350 | REFUSED | REJECT |
+| candidate 4 | 0.400 | 0.250 | 0.250 | REFUSED | REJECT |
+
+What it shows, including where it did not go the way I expected:
+
+- **The uncertified judge's numbers were wrong, its ranking was not.** It overstated every
+  prompt by 11 to 23 points, evenly, so "keep the highest-scoring prompt" still picked
+  candidate 2, which is genuinely better: 0.588 vs 0.425 on the held-out questions (p = 0.015).
+  The danger in an uncertified judge here is anything that trusts its number: a release bar,
+  a regression threshold, a claim that the agent is 80% accurate when it is 69%.
+- **Most proposals were worse than the prompt they replaced.** Four of five, by 9 to 26 points of
+  truth. All four worse prompts got the model to
+  reply tersely, median 16 to 18 characters against the baseline's 46, and two of them asked
+  for "internal" or "silent" reasoning outright. At no reasoning effort the written working is
+  the model's only reasoning, and the terse replies came with lower accuracy (this run shows the
+  association, not the cause). The one better prompt said "prioritize correctness over brevity"
+  and got longer replies (median 67 characters).
+- **The gate rejected all three clearly worse prompts and promoted nothing bad, but missed the
+  good one.** With 40 questions and the level split five ways it could not separate a measured 14-point
+  gain from noise, as `detectable_gain` predicted (it puts this dataset's reliable floor at 25
+  points).
+- **Selecting and confirming on different questions fixes that.** `bench/confirm.py` tests only
+  the selected candidate, once, on the 40 held-out questions, scored by the certified judge:
+  PROMOTE (gain +0.16 per case, p = 0.015), the same decision ground truth gives. The certified
+  judge agreed with ground truth on all 160 held-out replies.
+- **The certified judge found a bug in my ground truth.** It passed "−27 pens" (a U+2212 minus)
+  for an expected -27, which my checker had failed. The checker is fixed and tested; no row of the
+  baseline changed.
+
+The numbers above are from a re-run over the call cache after that fix, with no new calls. A few
+training-set judge rates differ from the first run by about 0.01: identical replies share one
+cache entry, and the first run had judged them separately, not always alike.
+
 
 ## Limits
 

@@ -53,6 +53,9 @@ class Thresholds:
     """Fewer judgments than this and a check is UNVALIDATED, whatever its rate."""
 
 
+DEFAULT_THRESHOLDS = Thresholds()
+
+
 @dataclass(frozen=True)
 class Check:
     name: str
@@ -111,7 +114,18 @@ class Certificate:
             )
         return '\n'.join(rows)
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self, *, judgments: bool = True) -> dict[str, Any]:
+        out = self._summary()
+        if judgments:
+            # Every verdict, so a certificate can be audited case by case after the fact.
+            out['judgments'] = [
+                {'case': j.case, 'role': j.role, 'output': j.output if isinstance(j.output, str) else repr(j.output),
+                 'passed': j.passed, 'reason': j.reason, 'error': j.error}
+                for j in self.judgments
+            ]  # fmt: skip
+        return out
+
+    def _summary(self) -> dict[str, Any]:
         return {
             'judge': self.judge,
             'verdict': self.verdict,
@@ -220,7 +234,7 @@ async def certify_judge(
     controls: Sequence[Control] = DEFAULT_CONTROLS,
     human_labels: Sequence[HumanLabel] = (),
     repeats: int = 3,
-    thresholds: Thresholds = Thresholds(),
+    thresholds: Thresholds = DEFAULT_THRESHOLDS,
     assertion: str | None = None,
     max_concurrency: int = 8,
     seed: int = 0,

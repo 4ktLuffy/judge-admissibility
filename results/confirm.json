@@ -1,0 +1,20 @@
+{
+  "selected_index": 2,
+  "on_judge": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+  "on_truth": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+  "decision": "PROMOTE",
+  "judge_truth_agreement": [
+    160,
+    160
+  ],
+  "rates": {
+    "baseline": {
+      "judge": 0.425,
+      "truth": 0.425
+    },
+    "selected": {
+      "judge": 0.5875,
+      "truth": 0.5875
+    }
+  }
+}

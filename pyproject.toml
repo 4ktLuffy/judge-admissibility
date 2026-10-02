@@ -1,10 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "pydantic-evals-admissibility"
-version = "0.1.0"
-description = "Certify a pydantic-evals judge with controls before its scores count."
+version = "0.2.0"
+description = "Certify a pydantic-evals judge with controls, and gate changes on its verdicts."
+readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
 dependencies = ["pydantic-evals"]
+
+[project.optional-dependencies]
+# Only `promote`, `start_canary` and `finish_canary` need Logfire's managed variables.
+logfire = ["logfire[variables]>=5.1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pydantic_evals_admissibility"]
 
 [tool.pytest.ini_options]
 anyio_mode = "auto"
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

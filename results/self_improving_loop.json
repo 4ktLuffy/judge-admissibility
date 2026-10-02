@@ -1,0 +1,85 @@
+{
+  "judge": "LLMJudge(codex:gpt-5.6-luna)",
+  "certificates": {
+    "plain": "INADMISSIBLE",
+    "reference": "ADMISSIBLE"
+  },
+  "selection": {
+    "0": "REJECT",
+    "1": "INCONCLUSIVE",
+    "2": "INCONCLUSIVE",
+    "3": "REJECT",
+    "4": "REJECT"
+  },
+  "selected": 2,
+  "confirmation": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+  "referee": "PROMOTE: mean gain +0.163 per case, bootstrap interval [+0.037, +0.287], p(better)=0.015, p(worse)=0.996; 16 improved, 6 regressed of 40. the gain is beyond what chance produces when nothing changed",
+  "promoted": true,
+  "canary": {
+    "checks": 10,
+    "rejected": 10,
+    "health": "UNKNOWN",
+    "history": [
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "The warehouse starts with \\(58 \\times 16 = 928\\) pens.\n\n\\(928 - 248 - (6 \\times 16) + 19 = 603\\) pens.\n\nAnswer: 603 pens"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "Initial pens: 38 \u00d7 14 = 532  \nAfter sales, shipping, and returns: 532 \u2212 394 \u2212 (5 \u00d7 14) + 43 = 111\n\nAnswer: 111 pens"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "The letter \u201ca\u201d appears **5** times.\n\nAnswer: 5"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "The letter \u201ca\u201d appears 1 time.\n\nAnswer: 1"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "The letter **\u201co\u201d** appears **2 times** in \u201cstrawberry possession.\u201d\n\nAnswer: 2"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "386 mod 7 = 1, so one day after Wednesday is Thursday.\n\nAnswer: Thursday"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "146 mod 7 = 6. Six days after Wednesday is Tuesday.\n\nAnswer: Tuesday"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "EETTImmOC  \nAnswer: EETTImmOC"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "Answer: SArfAsSaS"
+      },
+      {
+        "rejected": true,
+        "control": "empty_output",
+        "control_output": "",
+        "live_output": "EtAdOmMoCcA\n\nAnswer: EtAdOmMoCcA"
+      }
+    ]
+  }
+}

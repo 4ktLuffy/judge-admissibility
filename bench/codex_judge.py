@@ -48,7 +48,9 @@ def _text(messages: list[ModelMessage], kind: type) -> str:
     )
 
 
-async def run_codex(instructions: str, prompt: str, *, model: str, effort: str, schema: Path | None, timeout: float) -> str:
+async def run_codex(
+    instructions: str, prompt: str, *, model: str, effort: str, schema: Path | None, timeout: float
+) -> str:
     """One `codex exec` call with `instructions` in place of Codex's own agent prompt; returns its last message."""
     WORKDIR.mkdir(parents=True, exist_ok=True)
     digest = hashlib.sha256(instructions.encode()).hexdigest()[:16]

@@ -41,7 +41,15 @@ async def main() -> None:
         elapsed = time.monotonic() - started
         print(f'\n=== {config} | {elapsed:.0f}s | {len(TOKENS)} calls, {sum(TOKENS):,} tokens')
         print(certificate.table())
-        rows.append({'config': config, 'seconds': round(elapsed), 'calls': len(TOKENS), 'tokens': sum(TOKENS), **certificate.to_dict()})
+        rows.append(
+            {
+                'config': config,
+                'seconds': round(elapsed),
+                'calls': len(TOKENS),
+                'tokens': sum(TOKENS),
+                **certificate.to_dict(),
+            }
+        )
         (Path(__file__).parent.parent / 'results' / 'codex_judge.json').write_text(json.dumps(rows, indent=2))
 
 
