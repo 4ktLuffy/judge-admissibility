@@ -59,8 +59,9 @@ def _consistent_rejections(certificate: Certificate) -> list[str]:
     names = ', '.join(repr(c) for c in always_failed[:5]) + (' ...' if len(always_failed) > 5 else '')
     return [
         f'It fails the same known-good answers every time ({len(always_failed)} of {len(repeated)}: {names}) and '
-        f'is consistent on {consistent} of {len(repeated)} cases. A judge that consistent may be right: read those answers against the '
-        'rubric before blaming the judge, and fix or drop the ones that do not meet it. Other cases borrow them '
+        f'is consistent on {consistent} of {len(repeated)} cases. A judge that consistent may be right: '
+        'read those answers against the rubric before blaming the judge, and fix or drop the ones that do '
+        'not meet it. Other cases borrow them '
         'as controls too, so fix them before reading `invariance`.'
     ]
 
