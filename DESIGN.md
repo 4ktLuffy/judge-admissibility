@@ -202,6 +202,12 @@ among 20 candidates promoted a fake gain 13% of the time against a 2.5% budget. 
 smallest input that reproduces it. Without the oracle, shrinking a wrong answer can remove the
 wrong part and leave an answer that is right, or empty, which proves nothing about the judge.
 
+**Why do several of the newer tools come with their own negative result?** Because each was
+measured once on a real judge before it was described, and the measurement often disagreed with
+the plan: self-consistency routing cannot see a judge that is wrong the same way every time; a
+proposed rubric fix made a blind judge worse; a control for repaired errors was confounded by the
+task's wording. The README reports those results next to the ones that went as planned.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has

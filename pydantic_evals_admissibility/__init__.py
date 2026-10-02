@@ -4,6 +4,8 @@ A judge's verdicts are evidence only once the judge has been shown to fail what 
 pass what it should pass, and give the same verdict when nothing that matters has changed.
 """
 
+from ._abstain import AbstainingJudge, AbstainVerdict, certify_abstention
+from ._apprentice import ApprenticeResult, Proposal, ReviewedCase, apprentice
 from ._bridge import Effect, JudgeBridge, compare_judge_reports, compare_judges
 from ._canary import CanaryMonitor, JudgeCanary
 from ._cases import HumanLabel, JudgeCase
@@ -17,6 +19,7 @@ from ._certify import (
     certify_judge,
     recertify,
 )
+from ._cited import CitedJudge, CitedVerdict, certify_citations, verify_citations
 from ._controls import (
     DEFAULT_CONTROLS,
     Control,
@@ -26,6 +29,7 @@ from ._controls import (
     Rewrite,
     WhitespaceReformat,
 )
+from ._conversation import RecoveryProfile, insert_turns, recovery_profile
 from ._dataset import (
     DatasetJudgeCertificate,
     EmptyProse,
@@ -37,6 +41,9 @@ from ._dataset import (
     rubric_kind,
 )
 from ._diagnose import diagnose
+from ._disagree import Rating, clarify_disagreements, find_disagreements, ratings_from_certificate
+from ._distill import Clause, HybridJudge, JudgeComparison, compare_hybrid, model_calls, split_rubric
+from ._evidence_budget import EvidenceBudget, check_budget, evidence_budget
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
 from ._identity import judge_identity
 from ._impact import ComparisonRecord, Impact, ImpactReport, decision_impact
@@ -59,6 +66,7 @@ from ._mutation import (
     mutation_report,
     observed_by,
 )
+from ._outcomes import OutcomeReport, PassRateEstimate, outcome_calibration, recalibrated_pass_rate
 from ._pairwise import (
     PairCase,
     PairThresholds,
@@ -69,11 +77,14 @@ from ._pairwise import (
     first_position_rate,
     recertify_pairwise,
 )
+from ._qualify import Qualification, UnqualifiedJudge, qualify
 from ._reports import compare_reports, outcomes
 from ._review import ReviewPlan, ReviewResult
+from ._routing import RoutedJudge, certify_routing, replay_routing
 from ._stats import cohen_kappa, wilson
 from ._steering import DEFAULT_NEUTRAL, SteeringResult, SteeringVerdict, assess_steering
 from ._stress import ATTACKS, Attack, StressResult, stress_judge
+from ._trace_controls import duplicate_call, hindsight_pair, retried_with_changed_arguments, transient_retry
 from ._witness import Witness, minimize_witness
 
 __all__ = (
@@ -164,4 +175,45 @@ __all__ = (
     'field_dropped',
     'mutation_report',
     'observed_by',
+    'Qualification',
+    'UnqualifiedJudge',
+    'qualify',
+    'OutcomeReport',
+    'PassRateEstimate',
+    'outcome_calibration',
+    'recalibrated_pass_rate',
+    'duplicate_call',
+    'hindsight_pair',
+    'retried_with_changed_arguments',
+    'transient_retry',
+    'CitedJudge',
+    'CitedVerdict',
+    'certify_citations',
+    'verify_citations',
+    'AbstainVerdict',
+    'AbstainingJudge',
+    'certify_abstention',
+    'RoutedJudge',
+    'certify_routing',
+    'replay_routing',
+    'EvidenceBudget',
+    'check_budget',
+    'evidence_budget',
+    'ApprenticeResult',
+    'Proposal',
+    'ReviewedCase',
+    'apprentice',
+    'Rating',
+    'clarify_disagreements',
+    'find_disagreements',
+    'ratings_from_certificate',
+    'Clause',
+    'HybridJudge',
+    'JudgeComparison',
+    'compare_hybrid',
+    'model_calls',
+    'split_rubric',
+    'RecoveryProfile',
+    'insert_turns',
+    'recovery_profile',
 )

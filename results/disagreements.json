@@ -1,0 +1,2217 @@
+{
+  "pydantic example dataset": {
+    "rubric": "Ensure the explanation or error_message fields are truly appropriate for user display, in a second-person or friendly style.",
+    "ratings": 210,
+    "raters": [
+      "no reasoning (hand controls)",
+      "reasoning high (hand controls)",
+      "reasoning high (certify_dataset)",
+      "dataset author (expected_output)"
+    ],
+    "items": 13,
+    "outliers": {
+      "no reasoning (hand controls)": {
+        "minority": 1,
+        "of": 5
+      },
+      "reasoning high (hand controls)": {
+        "minority": 0,
+        "of": 5
+      },
+      "reasoning high (certify_dataset)": {
+        "minority": 0,
+        "of": 5
+      },
+      "dataset author (expected_output)": {
+        "minority": 4,
+        "of": 5
+      }
+    },
+    "contested": [
+      {
+        "item": "No timeframe could be inferred from your request.",
+        "split": 0.75,
+        "instability": 0.5,
+        "kind": "between and within raters",
+        "between": true,
+        "within": true,
+        "minority": [
+          "dataset author (expected_output)"
+        ],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 0,
+            "of": 5
+          },
+          "reasoning high (hand controls)": {
+            "passed": 3,
+            "of": 6
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 2,
+            "of": 6
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is concise, user-facing, and uses second-person phrasing (\u201cyour request\u201d) to explain the issue clearly."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The message directly addresses the user\u2019s request and clearly explains the issue, making it suitable for display, though it could be slightly friendlier."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is clear, user-facing, and uses second-person phrasing ('your request')."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message addresses the user directly with \u201cyour request,\u201d satisfying the second-person user-display requirement."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is clear and appropriate for user display, and it refers directly to the user's request in a neutral, understandable style."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not user-friendly or second-person; it states the issue impersonally without addressing the user or offering guidance."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not in a friendly second-person style and does not directly guide the user; it refers impersonally to \u201cyour request.\u201d"
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not in a friendly or second-person style; it uses an impersonal passive construction and does not address the user directly."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not phrased in a friendly, user-directed style; it says no timeframe could be inferred rather than addressing the user directly or offering guidance."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not phrased in a friendly, second-person user-facing style and awkwardly omits a clear reference to the user's request."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is clear but impersonal and not phrased in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but uses impersonal passive wording rather than a friendly or clearly second-person style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is understandable but impersonal and technical; it does not address the user in second person or use a friendly tone."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is understandable but impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is clear but impersonal; it does not address the user directly or use a friendly second-person style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is understandable but impersonal and does not address the user in a second-person or friendly style; it should say something like \u201cI couldn\u2019t determine the timeframe from your request.\u201d"
+          }
+        ]
+      },
+      {
+        "item": "We interpret 'around the start of last quarter' as the first few days of Q2 2023.",
+        "split": 0.75,
+        "instability": 0.5,
+        "kind": "between and within raters",
+        "between": true,
+        "within": true,
+        "minority": [
+          "no reasoning (hand controls)"
+        ],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 0,
+            "of": 4
+          },
+          "reasoning high (hand controls)": {
+            "passed": 3,
+            "of": 4
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 2,
+            "of": 4
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation is concise, clear, and uses a conversational first-person plural style that is appropriate for user display."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation is clear and appropriate for user display, using a friendly first-person plural style to explain the interpretation."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation is suitable for display and uses a clear, friendly first-person plural style (\u201cWe interpret\u2026\u201d), though it contains minor extra spacing."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation is concise, clear, and suitable for user display, using a friendly first-person plural phrasing (\u201cWe interpret\u201d)."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation is clear, polite, and suitable for display to the user, even though it uses first-person plural rather than second person."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is clear but uses impersonal first-person phrasing (\u201cWe interpret\u201d) rather than addressing the user directly or using a friendly user-facing style."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is clear but uses first-person phrasing (\u201cWe interpret\u201d) rather than addressing the user directly or using a friendly user-facing style."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is clear but uses impersonal first-person wording ('We interpret') rather than addressing the user in a second-person or friendly style."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not written in a user-friendly second-person style; it uses the impersonal phrase \u201cWe interpret\u201d and contains awkward spacing."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation uses first-person plural (\u201cWe interpret\u201d) rather than addressing the user in second person or using a clearly friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation uses first-person plural ('We interpret') and is formal rather than second-person or clearly friendly user-facing language."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation is understandable but uses an internal first-person phrasing (\u201cWe interpret\u201d) rather than directly addressing the user or using clearly friendly user-facing language."
+          }
+        ]
+      },
+      {
+        "item": "Conflicting time instructions: 2025 and 2020 cannot both apply.",
+        "split": 0.5,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "dataset author (expected_output)"
+        ],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 0,
+            "of": 5
+          },
+          "reasoning high (hand controls)": {
+            "passed": 0,
+            "of": 5
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 0,
+            "of": 5
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not written in a friendly, user-facing style or addressed in the second person."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not user-friendly or second-person; it states the conflict impersonally without guidance."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not user-friendly or second-person; it states the conflict impersonally without guidance."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not user-friendly: it states the conflict without addressing the user or offering a helpful next step."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not user-friendly: it describes conflicting instructions impersonally and does not address the user in a second-person or welcoming style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message identifies the conflict but is terse and impersonal; it does not use a second-person or friendly user-facing style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is clear but uses a terse, system-oriented style rather than addressing the user directly or using a friendly tone."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is not written in a second-person or friendly style; it is a terse system-style statement."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but uses a neutral system-style phrasing rather than addressing the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but uses a terse, impersonal style and does not address the user in a second-person or friendly manner."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is understandable but uses a terse, technical style and does not address the user in a second-person or friendly manner."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is not written in a friendly or second-person style; it states the conflict impersonally."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is clear but impersonal and not phrased in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is understandable but impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is concise but impersonal and does not address the user in a second-person or friendly style."
+          }
+        ]
+      },
+      {
+        "item": "Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.",
+        "split": 0.5,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "dataset author (expected_output)"
+        ],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 0,
+            "of": 4
+          },
+          "reasoning high (hand controls)": {
+            "passed": 0,
+            "of": 5
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 0,
+            "of": 5
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not user-friendly: it describes the conflict impersonally and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message explains the conflict but is not phrased in a friendly, user-facing style or addressed in the second person."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is clear but not friendly or second-person; it describes the conflict impersonally and does not guide the user toward resolving it."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The error message is not user-friendly or second-person; it only states that instructions conflict and could not be reconciled."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but uses a neutral, system-style formulation rather than addressing the user directly or using a friendly tone."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is understandable but uses a neutral, technical style rather than addressing the user in second person or a friendly tone."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error is clear and suitable in content, but it is impersonal and does not use a second-person or friendly style as required."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The error message is impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is impersonal and does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is terse and technical, and it does not use a friendly or second-person style appropriate for user display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is clear but uses an impersonal, system-like style rather than addressing the user in second person or a friendly tone."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is impersonal and technical, and it does not address the user in a second-person or friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The error message is not written in a second-person or friendly style; it reads as a terse system diagnostic."
+          }
+        ]
+      },
+      {
+        "item": "We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time.",
+        "split": 0.5,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "dataset author (expected_output)"
+        ],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 0,
+            "of": 4
+          },
+          "reasoning high (hand controls)": {
+            "passed": 0,
+            "of": 4
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 0,
+            "of": 4
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not in a second-person or friendly user-facing style; it uses impersonal phrasing (\u201cWe interpret\u201d) and does not directly address the user."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not in a second-person or friendly user-facing style; it uses impersonal wording ('We interpret...')."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not in a second-person or friendly user-facing style; it uses impersonal technical wording such as \u201cWe interpret\u201d and does not directly address the user."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not in a second-person or friendly user-facing style; it uses an impersonal justification and contains awkward extra spacing."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation uses an internal, impersonal style (\u201cWe interpret\u201d) rather than addressing the user directly or using a friendly tone, so it is not appropriate for user display."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation uses internal, impersonal wording (\u201cWe interpret...\u201d) rather than addressing the user directly or using a clearly friendly user-facing style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation uses first-person plural (\u201cWe interpret\u201d) rather than addressing the user directly or using a clearly friendly user-facing style."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation uses internal-sounding first-person wording (\u201cWe interpret\u201d) rather than addressing the user in a second-person or clearly friendly style, so it is not appropriate for direct display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation uses an internal, impersonal phrasing (\u201cWe interpret\u201d) rather than addressing the user directly or using a clearly friendly user-facing style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation uses a neutral internal-style statement ('We interpret...') rather than addressing the user directly or using a clearly friendly user-facing tone."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation uses impersonal first-person wording ('We interpret') rather than addressing the user directly or using a clearly friendly style."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation uses an internal, impersonal \u201cWe interpret\u201d phrasing rather than addressing the user directly or using a friendly user-facing style."
+          }
+        ]
+      },
+      {
+        "item": "You requested logs starting from 2 hours prior to the current time.",
+        "split": 0.0,
+        "instability": 0.25,
+        "kind": "within a rater",
+        "between": false,
+        "within": true,
+        "minority": [],
+        "by_rater": {
+          "no reasoning (hand controls)": {
+            "passed": 3,
+            "of": 4
+          },
+          "reasoning high (hand controls)": {
+            "passed": 4,
+            "of": 4
+          },
+          "reasoning high (certify_dataset)": {
+            "passed": 4,
+            "of": 4
+          },
+          "dataset author (expected_output)": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation directly addresses the user in second person ('You requested') and clearly states the requested time range."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation directly addresses the user in second person (\u201cYou requested...\u201d) and is clear and friendly for display."
+          },
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly describes the requested time range."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation directly addresses the user in second person and clearly describes the requested log time range in a user-friendly manner."
+          },
+          {
+            "rater": "reasoning high (hand controls)",
+            "reason": "The explanation directly addresses the user in second person and clearly describes the requested log time range, making it appropriate for display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and appropriate for display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display."
+          },
+          {
+            "rater": "reasoning high (certify_dataset)",
+            "reason": "The explanation directly addresses the user in second person and clearly describes the requested log range, making it appropriate for display despite minor spacing issues."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "no reasoning (hand controls)",
+            "reason": "The explanation is not appropriate for user display because it contains awkward extra spacing and does not use a natural, friendly phrasing."
+          }
+        ]
+      }
+    ],
+    "clusters": [
+      {
+        "items": [
+          "No timeframe could be inferred from your request.",
+          "We interpret 'around the start of last quarter' as the first few days of Q2 2023.",
+          "Conflicting time instructions: 2025 and 2020 cannot both apply.",
+          "Conflicting instructions: 'yesterday' versus 'last year' could not be reconciled.",
+          "We interpret the mention of early May as extraneous, focusing on 'last week or so' from the current time."
+        ],
+        "between": 5,
+        "terms": [
+          "error",
+          "style",
+          "friendly",
+          "second-person",
+          "user",
+          "uses"
+        ],
+        "fail_reading": {
+          "terms": [
+            "impersonal",
+            "addressing",
+            "address",
+            "conflict",
+            "impersonally",
+            "user-friendly"
+          ],
+          "quotes": [
+            {
+              "rater": "no reasoning (hand controls)",
+              "reason": "The error message is clear but not user-friendly: it describes the conflict impersonally and does not address the user in a second-person or friendly style."
+            },
+            {
+              "rater": "reasoning high (hand controls)",
+              "reason": "The error message is impersonal and does not address the user in a second-person or friendly style."
+            },
+            {
+              "rater": "reasoning high (certify_dataset)",
+              "reason": "The error message is not written in a friendly or second-person style; it states the conflict impersonally."
+            },
+            {
+              "rater": "no reasoning (hand controls)",
+              "reason": "The error message is clear but not user-friendly or second-person; it states the conflict impersonally without guidance."
+            }
+          ]
+        },
+        "pass_reading": {
+          "terms": [
+            "though",
+            "addresses",
+            "explain",
+            "suitable",
+            "concise",
+            "display"
+          ],
+          "quotes": [
+            {
+              "rater": "reasoning high (hand controls)",
+              "reason": "The message directly addresses the user\u2019s request and clearly explains the issue, making it suitable for display, though it could be slightly friendlier."
+            },
+            {
+              "rater": "reasoning high (certify_dataset)",
+              "reason": "The explanation is concise, clear, and suitable for user display, using a friendly first-person plural phrasing (\u201cWe interpret\u201d)."
+            },
+            {
+              "rater": "reasoning high (certify_dataset)",
+              "reason": "The explanation is clear, polite, and suitable for display to the user, even though it uses first-person plural rather than second person."
+            },
+            {
+              "rater": "reasoning high (hand controls)",
+              "reason": "The explanation is suitable for display and uses a clear, friendly first-person plural style (\u201cWe interpret\u2026\u201d), though it contains minor extra spacing."
+            }
+          ]
+        },
+        "clarification": "Treat \u201cfriendly style\u201d as permitting clear, polite first-person plural phrasing (\u201cwe\u201d), not requiring explicit second-person address."
+      },
+      {
+        "items": [
+          "You requested logs starting from 2 hours prior to the current time."
+        ],
+        "between": 0,
+        "terms": [
+          "addresses",
+          "requested",
+          "second",
+          "person",
+          "user",
+          "range"
+        ],
+        "fail_reading": {
+          "terms": [
+            "awkward",
+            "contains",
+            "extra",
+            "natural",
+            "phrasing",
+            "use"
+          ],
+          "quotes": [
+            {
+              "rater": "no reasoning (hand controls)",
+              "reason": "The explanation is not appropriate for user display because it contains awkward extra spacing and does not use a natural, friendly phrasing."
+            }
+          ]
+        },
+        "pass_reading": {
+          "terms": [
+            "addresses",
+            "directly",
+            "person",
+            "second",
+            "requested",
+            "clear"
+          ],
+          "quotes": [
+            {
+              "rater": "no reasoning (hand controls)",
+              "reason": "The explanation directly addresses the user in second person (\u201cYou requested...\u201d) and is clear and friendly for display."
+            },
+            {
+              "rater": "reasoning high (certify_dataset)",
+              "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and is clear and appropriate for display."
+            },
+            {
+              "rater": "reasoning high (hand controls)",
+              "reason": "The explanation directly addresses the user in second person and is clear and appropriate for display."
+            },
+            {
+              "rater": "no reasoning (hand controls)",
+              "reason": "The explanation directly addresses the user in second person ('You requested') and clearly states the requested time range."
+            }
+          ]
+        },
+        "clarification": null
+      }
+    ]
+  },
+  "support task": {
+    "rubric": "The reply correctly answers the customer's question according to the store policy.",
+    "ratings": 1065,
+    "raters": [
+      "weak (no reasoning, sees the question)",
+      "strong (reasoning high, sees the question)",
+      "strong, default include_input=False",
+      "gpt-reserve (no reasoning, sees the question)",
+      "ground truth"
+    ],
+    "items": 155,
+    "outliers": {
+      "weak (no reasoning, sees the question)": {
+        "minority": 0,
+        "of": 15
+      },
+      "strong (reasoning high, sees the question)": {
+        "minority": 0,
+        "of": 15
+      },
+      "strong, default include_input=False": {
+        "minority": 14,
+        "of": 14
+      },
+      "gpt-reserve (no reasoning, sees the question)": {
+        "minority": 1,
+        "of": 15
+      },
+      "ground truth": {
+        "minority": 0,
+        "of": 15
+      }
+    },
+    "contested": [
+      {
+        "item": "return-3 | No. The 30-day return window expired on February 15, 2026. Answer: no",
+        "split": 0.5,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "gpt-reserve (no reasoning, sees the question)"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 1,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response incorrectly says the return window expired on February 15; 30 days after January 16 is February 15 only if counting delivery day as day one, but standard policy timing makes February 19 outside the 30-day window. The conclusion is correct, though the date calculation is ambiguous."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply correctly states that the 30-day return period has expired by February 19, 2026, so the unopened item cannot be returned under the policy."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response incorrectly says the return window expired on February 15; 30 days after January 16 is February 15 only if counting inclusively, but the policy generally permits returns through February 15, so the answer should be yes."
+          }
+        ]
+      },
+      {
+        "item": "refund-1 | The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered. Answer: no",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that the warranty lasts 12 months and correctly concludes that a failure 21 months after purchase is not covered, answering \u201cno.\u201d"
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply discusses an unrelated backpack warranty claim and does not calculate the refund for the opened $225.85 speaker. Under the policy, the refund should be $203.27 after the 10% restocking fee."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply addresses an unrelated warranty claim and does not calculate the refund for the opened $225.85 speaker. Under the policy, the refund should be $203.27 after the 10% restocking fee."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply discusses an unrelated backpack warranty claim and does not calculate the refund for the opened $225.85 speaker. The policy requires deducting a 10% restocking fee, yielding $203.27."
+          }
+        ]
+      },
+      {
+        "item": "refund-4 | Yes. It is within 45 days of delivery, and unopened items qualify for a full refund. Answer: yes",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The reply gives a clear affirmative answer and cites the relevant 45-day and unopened-item policy conditions."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply is incorrect: the backpack was opened, so the refund should be $105.81 after a 20% restocking fee, and the policy allows returns within 30 days, not 45."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply misstates the return window, treats the opened backpack as unopened, and fails to calculate the refund after the 20% restocking fee ($105.81)."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply incorrectly states a 45-day window and that the item is unopened. An opened $132.26 item returned within 30 days would receive a 20% restocking deduction, or $105.81."
+          }
+        ]
+      },
+      {
+        "item": "return-9 | Orders of $75 or more ship free. Answer: $0.00",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The output states that orders of $75 or more ship free and answers $0.00, correctly applying the stated shipping policy."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply discusses shipping costs and does not answer whether the unopened item is still returnable within 60 days of delivery."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply discusses free shipping and does not address that the return window has expired; the item is 98 days past delivery, so it cannot be returned."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply discusses free shipping and does not answer whether the unopened order is returnable within 60 days."
+          }
+        ]
+      },
+      {
+        "item": "shipping-1 | The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered. Answer: no",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that the blender stopped working 23 months after purchase, beyond the 6-month warranty period, and correctly answers \u201cno.\u201d"
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response discusses an unrelated warranty issue and does not state the $8.50 standard shipping charge for an $11.21 order."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response does not answer the shipping question and instead discusses an unrelated warranty issue. The correct standard shipping charge is $8.50."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response discusses warranty coverage and does not answer the shipping cost. The correct standard shipping charge for an $11.21 order is $8.50."
+          }
+        ]
+      },
+      {
+        "item": "shipping-2 | Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**. Answer: $160.26",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response clearly states that the opened lamp incurs a 10% restocking fee and provides the resulting refund amount of $160.26."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response does not answer the shipping question or apply the $8.50 standard shipping fee; it instead discusses an unrelated restocking fee and refund amount."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response does not answer the shipping question. For a $59.22 order, standard shipping should be the flat $8.50, but it instead discusses an unrelated restocking fee and refund amount."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response does not answer the shipping question. For a $59.22 order, standard shipping costs the flat $8.50, but it instead discusses a restocking fee and gives an unrelated amount."
+          }
+        ]
+      },
+      {
+        "item": "shipping-3 | Because your order is under $50, standard shipping costs $4.99. Answer: $4.99",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The reply states that orders under $50 incur a standard shipping fee of $4.99 and clearly answers $4.99."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response gives $4.99 shipping and incorrectly applies an under-$50 threshold; the policy states orders under $75 pay $6.99."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The policy states that orders under $75 pay a flat $6.99 standard shipping fee, so the stated $4.99 charge is incorrect."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The policy states that orders under $75 pay a flat $6.99 for standard shipping, but the reply incorrectly says $4.99 for orders under $50."
+          }
+        ]
+      },
+      {
+        "item": "shipping-5 | Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund. Answer: yes",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response explicitly answers \u201cyes\u201d and states that the unopened item is within 60 days, qualifying for a full refund under the policy."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response discusses an unrelated return/refund scenario and does not answer the shipping question. Orders of $35 or more ship free, so the correct shipping cost is $0."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply does not answer the shipping question; the correct standard shipping cost is $0 because the cart exceeds $35."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply does not answer the shipping-cost question and instead discusses an unrelated return scenario. For a $38.41 order, standard shipping should be free."
+          }
+        ]
+      },
+      {
+        "item": "warranty-2 | Orders of $35 or more ship free. Answer: $0.00",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that orders of $35 or more ship free and gives the corresponding shipping cost of $0.00."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response discusses shipping rather than answering whether the speaker\u2019s defect is covered by the 12-month warranty."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply discusses free shipping and does not address whether the speaker is covered for a defect under the 12-month warranty."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply discusses shipping and does not answer whether the speaker\u2019s defect is covered by the 12-month warranty."
+          }
+        ]
+      },
+      {
+        "item": "warranty-7 | Opened items incur a 20% restocking fee. Refund: $65.00 \u00d7 80% = **$52.00** Answer: $52.00",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The reply applies the stated 20% restocking fee to the $65.00 price, yielding the correct refund of $52.00."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply discusses a return restocking fee and refund amount, but does not answer whether a speaker failure 13 months after purchase is covered by the 6-month warranty."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply discusses a 20% restocking fee and refund amount, but the customer asked about warranty coverage. The policy covers defects for only 6 months, so a defect 13 months after purchase is not covered."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply discusses a restocking fee and refund amount, but the customer asked about warranty coverage 13 months after purchase. The policy covers defects for only 6 months, so it should state that the speaker is not covered."
+          }
+        ]
+      },
+      {
+        "item": "warranty-9 | Since your order is under $35, standard shipping costs $8.50. Answer: $8.50",
+        "split": 0.4,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 1,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The reply states that standard shipping for an order under $35 costs $8.50, directly answering the question according to the stated policy."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply discusses shipping cost rather than whether a backpack defect 21 months after purchase is covered. The policy warranty lasts only 12 months, so it should state that the item is not covered."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply addresses shipping costs instead of the warranty question. The backpack is outside the 12-month warranty period, and the quoted $8.50 shipping fee also conflicts with the policy."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The reply discusses shipping cost rather than whether the backpack is covered by the 12-month warranty. At 21 months, the defect is outside the warranty period, so the answer is incorrect."
+          }
+        ]
+      },
+      {
+        "item": "return-9 | Answer: no",
+        "split": 0.3999999999999999,
+        "instability": 0.2,
+        "kind": "between and within raters",
+        "between": true,
+        "within": true,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 3,
+            "of": 3
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 3,
+            "of": 3
+          },
+          "strong, default include_input=False": {
+            "passed": 0,
+            "of": 3
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 2,
+            "of": 3
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The order was delivered 98 days ago, exceeding the 60-day return window, so it cannot be returned even though it is unopened."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The item is within 60 days of delivery (98 days have passed), so it cannot be returned. The answer correctly says no."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The order is within 60 days of delivery (about 98 days have passed), so it is outside the return window. The answer \u201cno\u201d is correct."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The order is outside the 60-day return window, so the answer is correctly \u201cno.\u201d"
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The answer correctly says no because April 27 is more than 60 days after the January 19 delivery date, despite the item being unopened."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The answer 'no' is correct because April 27 is more than 60 days after the January 19 delivery date, so the item is outside the return window."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The item is unopened and was delivered 98 days ago, exceeding the 60-day return window, so the answer is no."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The item is unopened and was delivered 98 days ago, exceeding the 60-day return window, so it cannot be returned."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer's question and the applicable store policy are not provided, so the correctness of \u201cno\u201d cannot be established."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and the store policy are not provided, so \u201cno\u201d cannot be verified as correct."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer's question and store policy are not provided, so the answer \u201cno\u201d cannot be established as correct."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The item is unopened and was delivered within 60 days of April 27, 2026, so it can still be returned. The answer \u201cno\u201d is incorrect."
+          }
+        ]
+      },
+      {
+        "item": "shipping-1 | Answer: $8.50",
+        "split": 0.3999999999999999,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "strong, default include_input=False": {
+            "passed": 0,
+            "of": 5
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart total is below $35, so the policy charges the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The order is below $35, so standard shipping costs the flat $8.50 stated in the policy."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart is under $35, so the policy applies the flat $8.50 standard shipping fee."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart is under $35, so the policy applies the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The order is below $35, so standard shipping costs the flat $8.50 stated in the policy."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is below $35, so the policy requires the flat $8.50 standard shipping fee."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart is under $35, so the policy applies the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is below $35, so the policy charges the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the flat $8.50 standard shipping fee to an order under $35."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is below $35, so the policy charges the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is below $35, so standard shipping costs the flat $8.50."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is under $35, so the policy charges the flat standard shipping fee of $8.50."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The cart is below $35, so the policy applies the flat $8.50 standard shipping fee."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is under $35, so the policy applies the flat $8.50 standard shipping fee."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The cart total is under $35, so the policy charges the flat standard shipping fee of $8.50."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response provides only \u201c$8.50,\u201d but no customer question or store policy is given to establish that this is the correct answer."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer's question and store policy are not provided, so the correctness of \u201c$8.50\u201d cannot be established."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer's question and the applicable store policy are not provided, so the correctness of \u201c$8.50\u201d cannot be established."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and store policy are not provided, so the correctness of \u201c$8.50\u201d cannot be established."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and store policy are not provided, so the correctness of \u201c$8.50\u201d cannot be verified."
+          }
+        ]
+      },
+      {
+        "item": "shipping-3 | Answer: $6.99",
+        "split": 0.3999999999999999,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 4,
+            "of": 4
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 2,
+            "of": 2
+          },
+          "strong, default include_input=False": {
+            "passed": 0,
+            "of": 4
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 4,
+            "of": 4
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart is under $75, so standard shipping costs the flat $6.99 fee specified by the policy."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so the policy charges the flat standard shipping fee of $6.99."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so the policy applies the flat $6.99 standard shipping fee. The reply is correct."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is below $75, so standard shipping costs the flat $6.99 fee."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The cart total is below $75, so standard shipping costs the flat $6.99 stated in the policy."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and store policy are not provided, so the correctness of \u201c$6.99\u201d cannot be established."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer's question and store policy are not provided, so the correctness of \"$6.99\" cannot be verified."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and store policy are not provided, so the correctness of the $6.99 answer cannot be verified."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response gives only \u201c$6.99,\u201d but no customer question or store policy is provided to verify that this amount is correct."
+          }
+        ]
+      },
+      {
+        "item": "refund-4 | Your refund will be **$105.81** after the 20% restocking fee. Answer: $105.81",
+        "split": 0.3999999999999999,
+        "instability": 0.0,
+        "kind": "between raters",
+        "between": true,
+        "within": false,
+        "minority": [
+          "strong, default include_input=False"
+        ],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 1,
+            "of": 1
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 1,
+            "of": 1
+          },
+          "strong, default include_input=False": {
+            "passed": 0,
+            "of": 1
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 1,
+            "of": 1
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 20% restocking fee to $132.26: $132.26 \u00d7 0.80 = $105.81."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the 20% restocking fee to the $132.26 purchase, yielding a refund of $105.81."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 20% restocking fee to $132.26, yielding $105.81, and the return is within the allowed window."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The customer\u2019s question and the applicable store policy are not provided, so the correctness of the stated refund amount cannot be verified."
+          }
+        ]
+      },
+      {
+        "item": "return-7 | Yes. It is within 45 days of delivery, and unopened items are refunded in full. Answer: yes",
+        "split": 0.25,
+        "instability": 0.25,
+        "kind": "within a rater",
+        "between": false,
+        "within": true,
+        "minority": [],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 0,
+            "of": 2
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 0,
+            "of": 2
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 1,
+            "of": 2
+          },
+          "ground truth": {
+            "passed": 0,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly states that the unopened order is still within 45 days of delivery and can be returned for a full refund."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The item was delivered 53 days before June 5, exceeding the 45-day return window, so the reply incorrectly says it can still be returned."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The delivery was 53 days before June 5, exceeding the 45-day return window, so the reply incorrectly says it can still be returned."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The order was delivered 53 days before June 5, exceeding the 45-day return window, so the reply incorrectly says it is eligible for return."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response is incorrect: June 5 is more than 45 days after the April 13 delivery date, so the item is outside the return window."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is 53 days past delivery, exceeding the 45-day return window, so the reply incorrectly says it can be returned."
+          }
+        ]
+      },
+      {
+        "item": "refund-1 | Because the speaker was opened, a 10% restocking fee applies: $225.85 \u2212 $22.59 = **$203.26** Answer: $203.26",
+        "split": 0.19999999999999996,
+        "instability": 0.2,
+        "kind": "within a rater",
+        "between": false,
+        "within": true,
+        "minority": [],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 4,
+            "of": 4
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 2,
+            "of": 4
+          },
+          "strong, default include_input=False": {
+            "passed": 4,
+            "of": 4
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 4,
+            "of": 4
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to the opened $225.85 speaker and calculates the refund as $203.26."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The reply correctly applies the 10% restocking fee to the opened speaker and calculates the refund as $203.26."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response applies the stated 10% restocking fee and calculates the refund correctly: $225.85 minus $22.59 equals $203.26."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response correctly applies a 10% restocking fee to $225.85 and calculates the resulting refund as $203.26."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The calculation is correct: a 10% fee on $225.85 is $22.59, leaving a refund of $203.26."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response correctly applies a 10% restocking fee to $225.85 ($22.59) and calculates the resulting refund as $203.26, consistent with the stated policy."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates a refund of $203.26 for an opened item returned within the window."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the 10% restocking fee to the $225.85 opened item and calculates a refund of $203.26."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response applies the correct 10% restocking fee, but the arithmetic is off by one cent: $225.85 minus 10% should round to $203.27, not $203.26."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response applies the 10% restocking fee, but the refund should be $203.27 when rounding the exact calculation of $225.85 \u00d7 90%."
+          }
+        ]
+      },
+      {
+        "item": "return-1 | Answer: no",
+        "split": 0.0,
+        "instability": 0.5,
+        "kind": "within a rater",
+        "between": false,
+        "within": true,
+        "minority": [],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 2,
+            "of": 3
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 3,
+            "of": 3
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 2,
+            "of": 3
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The unopened item was delivered 81 days ago, exceeding the 60-day return window, so the correct answer is no."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The order is within 60 days of delivery (81 days have elapsed? Actually April 25 to July 15 is 81 days), so it is outside the return window; the answer 'no' is correct."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The order is 81 days past delivery, exceeding the 60-day return window, so it cannot be returned even though unopened."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The order was delivered 81 days ago, exceeding the 60-day return window, so it cannot be returned despite being unopened."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The item was delivered more than 60 days ago, so it is outside the return window despite being unopened."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The item was delivered 81 days ago, exceeding the 60-day return window, so it cannot be returned."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The unopened order was delivered 81 days ago, exceeding the 60-day return window, so it cannot be returned."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The item is unopened and was delivered within 60 days of July 15, 2026, so it remains eligible for return. The answer \u201cno\u201d is incorrect."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The order is within 60 days of delivery, and unopened items are eligible for a full refund. The reply incorrectly says no."
+          }
+        ]
+      },
+      {
+        "item": "shipping-5 | Orders of $35 or more ship free. Answer: $0.00",
+        "split": 0.0,
+        "instability": 0.2,
+        "kind": "within a rater",
+        "between": false,
+        "within": true,
+        "minority": [],
+        "by_rater": {
+          "weak (no reasoning, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "strong (reasoning high, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "strong, default include_input=False": {
+            "passed": 4,
+            "of": 5
+          },
+          "gpt-reserve (no reasoning, sees the question)": {
+            "passed": 5,
+            "of": 5
+          },
+          "ground truth": {
+            "passed": 1,
+            "of": 1
+          }
+        },
+        "pass_reasons": [
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply correctly applies the policy that orders of $35 or more qualify for free standard shipping and states the shipping cost as $0.00."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply correctly applies the policy that orders of $35 or more qualify for free standard shipping and gives the correct amount, $0.00."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping and gives the correct amount, $0.00."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping costs $0.00."
+          },
+          {
+            "rater": "weak (no reasoning, sees the question)",
+            "reason": "The reply correctly applies the $35 free-shipping threshold to the $38.41 cart total and answers $0.00."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total exceeds $35, so standard shipping is free and the $0.00 answer is correct."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The cart total is $38.41, which qualifies for free standard shipping under the $35 threshold, so $0.00 is correct."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so the shipping cost is $0.00."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the $35 free-shipping threshold to the $38.41 cart total and states $0.00 shipping."
+          },
+          {
+            "rater": "strong (reasoning high, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so the shipping cost is $0.00."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that orders of $35 or more ship free and gives the shipping cost as $0.00, correctly applying the stated store policy."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The reply correctly states that orders of $35 or more ship free and gives the corresponding shipping cost of $0.00."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response correctly applies the stated policy that orders of $35 or more have free shipping, giving a shipping cost of $0.00."
+          },
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that orders of $35 or more ship free and gives the corresponding shipping cost of $0.00."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping costs $0.00."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping costs $0.00."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping is $0.00."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so the shipping cost is $0.00."
+          },
+          {
+            "rater": "gpt-reserve (no reasoning, sees the question)",
+            "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping costs $0.00."
+          }
+        ],
+        "fail_reasons": [
+          {
+            "rater": "strong, default include_input=False",
+            "reason": "The response states that free shipping applies only to orders of $35 or more, but it gives $0.00 without establishing that the customer's order meets that threshold."
+          }
+        ]
+      }
+    ],
+    "clusters": [
+      {
+        "items": [
+          "shipping-1 | The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered. Answer: no",
+          "shipping-2 | Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**. Answer: $160.26",
+          "shipping-3 | Because your order is under $50, standard shipping costs $4.99. Answer: $4.99",
+          "shipping-5 | Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund. Answer: yes",
+          "warranty-2 | Orders of $35 or more ship free. Answer: $0.00",
+          "warranty-9 | Since your order is under $35, standard shipping costs $8.50. Answer: $8.50",
+          "shipping-1 | Answer: $8.50",
+          "shipping-3 | Answer: $6.99",
+          "shipping-5 | Orders of $35 or more ship free. Answer: $0.00"
+        ],
+        "between": 8,
+        "terms": [
+          "shipping",
+          "standard",
+          "flat",
+          "policy",
+          "warranty",
+          "orders"
+        ],
+        "fail_reading": {
+          "terms": [
+            "discusses",
+            "customer's",
+            "correctness",
+            "unrelated",
+            "instead",
+            "question"
+          ],
+          "quotes": [
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The response does not answer the shipping question and instead discusses an unrelated warranty issue. The correct standard shipping charge is $8.50."
+            },
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The reply does not answer the shipping-cost question and instead discusses an unrelated return scenario. For a $38.41 order, standard shipping should be free."
+            },
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The response does not answer the shipping question or apply the $8.50 standard shipping fee; it instead discusses an unrelated restocking fee and refund amount."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The customer\u2019s question and store policy are not provided, so the correctness of \u201c$8.50\u201d cannot be verified."
+            }
+          ]
+        },
+        "pass_reading": {
+          "terms": [
+            "correctly",
+            "total",
+            "qualify",
+            "cart",
+            "charges",
+            "answers"
+          ],
+          "quotes": [
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The reply correctly applies the $35 free-shipping threshold to the $38.41 cart total and answers $0.00."
+            },
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The response correctly applies the $35 free-shipping threshold to the $38.41 cart total and states $0.00 shipping."
+            },
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The cart total is below $75, so the policy applies the flat $6.99 standard shipping fee. The reply is correct."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The response states that the blender stopped working 23 months after purchase, beyond the 6-month warranty period, and correctly answers \u201cno.\u201d"
+            }
+          ]
+        },
+        "clarification": null
+      },
+      {
+        "items": [
+          "return-3 | No. The 30-day return window expired on February 15, 2026. Answer: no",
+          "refund-4 | Yes. It is within 45 days of delivery, and unopened items qualify for a full refund. Answer: yes",
+          "return-9 | Orders of $75 or more ship free. Answer: $0.00",
+          "return-9 | Answer: no",
+          "return-7 | Yes. It is within 45 days of delivery, and unopened items are refunded in full. Answer: yes",
+          "return-1 | Answer: no"
+        ],
+        "between": 4,
+        "terms": [
+          "days",
+          "window",
+          "day",
+          "return",
+          "unopened",
+          "delivery"
+        ],
+        "fail_reading": {
+          "terms": [
+            "incorrect",
+            "june",
+            "customer's",
+            "discusses",
+            "eligible",
+            "opened"
+          ],
+          "quotes": [
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The response is incorrect: June 5 is more than 45 days after the April 13 delivery date, so the item is outside the return window."
+            },
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The item is unopened and was delivered within 60 days of July 15, 2026, so it remains eligible for return. The answer \u201cno\u201d is incorrect."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The customer\u2019s question and the store policy are not provided, so \u201cno\u201d cannot be verified as correct."
+            },
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The reply discusses free shipping and does not answer whether the unopened order is returnable within 60 days."
+            }
+          ]
+        },
+        "pass_reading": {
+          "terms": [
+            "ago",
+            "correctly",
+            "despite",
+            "though",
+            "even",
+            "passed"
+          ],
+          "quotes": [
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The order was delivered 98 days ago, exceeding the 60-day return window, so it cannot be returned even though it is unopened."
+            },
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The item was delivered more than 60 days ago, so it is outside the return window despite being unopened."
+            },
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The item was delivered 81 days ago, exceeding the 60-day return window, so it cannot be returned."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The output states that orders of $75 or more ship free and answers $0.00, correctly applying the stated shipping policy."
+            }
+          ]
+        },
+        "clarification": null
+      },
+      {
+        "items": [
+          "refund-1 | The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered. Answer: no",
+          "warranty-7 | Opened items incur a 20% restocking fee. Refund: $65.00 \u00d7 80% = **$52.00** Answer: $52.00",
+          "refund-4 | Your refund will be **$105.81** after the 20% restocking fee. Answer: $105.81",
+          "refund-1 | Because the speaker was opened, a 10% restocking fee applies: $225.85 \u2212 $22.59 = **$203.26** Answer: $203.26"
+        ],
+        "between": 3,
+        "terms": [
+          "restocking",
+          "refund",
+          "fee",
+          "applies",
+          "correctly",
+          "months"
+        ],
+        "fail_reading": {
+          "terms": [
+            "discusses",
+            "amount",
+            "calculate",
+            "claim",
+            "unrelated",
+            "asked"
+          ],
+          "quotes": [
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The reply discusses an unrelated backpack warranty claim and does not calculate the refund for the opened $225.85 speaker. The policy requires deducting a 10% restocking fee, yielding $203.27."
+            },
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The reply discusses an unrelated backpack warranty claim and does not calculate the refund for the opened $225.85 speaker. Under the policy, the refund should be $203.27 after the 10% restocking fee."
+            },
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The reply addresses an unrelated warranty claim and does not calculate the refund for the opened $225.85 speaker. Under the policy, the refund should be $203.27 after the 10% restocking fee."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The customer\u2019s question and the applicable store policy are not provided, so the correctness of the stated refund amount cannot be verified."
+            }
+          ]
+        },
+        "pass_reading": {
+          "terms": [
+            "correctly",
+            "calculates",
+            "applies",
+            "item",
+            "resulting",
+            "window"
+          ],
+          "quotes": [
+            {
+              "rater": "gpt-reserve (no reasoning, sees the question)",
+              "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates a refund of $203.26 for an opened item returned within the window."
+            },
+            {
+              "rater": "strong, default include_input=False",
+              "reason": "The response correctly applies a 10% restocking fee to $225.85 and calculates the resulting refund as $203.26."
+            },
+            {
+              "rater": "weak (no reasoning, sees the question)",
+              "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26."
+            },
+            {
+              "rater": "strong (reasoning high, sees the question)",
+              "reason": "The reply correctly applies the 10% restocking fee to the opened speaker and calculates the refund as $203.26."
+            }
+          ]
+        },
+        "clarification": null
+      }
+    ]
+  },
+  "codex_calls": 1
+}

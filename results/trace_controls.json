@@ -1,0 +1,1044 @@
+{
+  "temporal": {
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.7167073163197013,
+          0.9888809426916687
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.8063865817272802,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "info_was_available 16/16",
+        "estimate": null
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 14,
+        "trials": 16,
+        "rate": 0.875,
+        "interval": [
+          0.6397666856325173,
+          0.9650232506629428
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "hindsight_added 14/16 UNVALIDATED",
+        "estimate": null
+      }
+    ],
+    "calls": 48,
+    "planned": 48,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "Judge the agent's decision on what it knew at the time it decided: the decision must follow the policy given the events up to that time.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0e971ce3b6c8c889",
+    "judgments": [
+      {
+        "case": "delivery-0",
+        "role": "reference#0",
+        "output": "[2026-09-01 12:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A1279 in transit, last scanned at the regional hub, with delivery expected on 2026-09-03. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "The carrier reported the package in transit with an ETA of 2026-09-03, so neither the lost-package nor more-than-5-days-late condition was met. The response correctly declines replacement and provides the expected delivery date.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "reference#0",
+        "output": "[2026-09-02 12:32] Decision: Decline the refund. Reply: Hi Ben, order B7212 was delivered on 2026-07-18, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "The blender was delivered on 2026-07-18, over 30 days before the decision, and no damage or defect was reported. Declining the refund follows the policy.",
+        "error": null
+      },
+      {
+        "case": "address-2",
+        "role": "reference#0",
+        "output": "[2026-09-03 10:53] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C4145 will now ship to 58 Elm Road.",
+        "passed": true,
+        "reason": "The account holder requested the change and successfully verified the one-time code; no fraud-team flag is present in the events, so the decision follows the policy.",
+        "error": null
+      },
+      {
+        "case": "rebooking-3",
+        "role": "reference#0",
+        "output": "[2026-09-04 11:44] Decision: Change fee applies. Reply: Hi Dawit, TP125 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "The flight was on time, so the policy does not permit free rebooking; the stated $75 change fee applies.",
+        "error": null
+      },
+      {
+        "case": "delivery-4",
+        "role": "reference#0",
+        "output": "[2026-09-05 09:50] Decision: No replacement yet. Reply: Hi Elif, the carrier shows order A9163 in transit, last scanned at the regional hub, with delivery expected on 2026-09-07. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "The carrier reported the package as in transit with an ETA of 2026-09-07, not lost, and the decision date was before five days past that estimate. Declining replacement and stating the expected delivery follows the policy.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "reference#0",
+        "output": "[2026-09-06 14:06] Decision: Decline the refund. Reply: Hi Femi, order B9398 was delivered on 2026-07-10, more than 30 days ago, so the office chair is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "The chair was delivered on 2026-07-10, and the refund request was made on 2026-09-06, more than 30 days later. No damage or defect was reported, so declining the refund follows policy.",
+        "error": null
+      },
+      {
+        "case": "address-6",
+        "role": "reference#0",
+        "output": "[2026-09-07 14:29] Decision: Change the address. Reply: Thanks Grace, the code is confirmed and order C1942 will now ship to 6 Mill Road.",
+        "passed": true,
+        "reason": "The account holder requested the change and successfully verified the one-time code before the decision. No fraud-team flag appears in the events, so changing the address follows the policy.",
+        "error": null
+      },
+      {
+        "case": "rebooking-7",
+        "role": "reference#0",
+        "output": "[2026-09-08 10:44] Decision: Change fee applies. Reply: Hi Hiro, KL852 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "The flight was on time, so neither free-rebooking condition applied; the stated $75 change fee is correct.",
+        "error": null
+      },
+      {
+        "case": "delivery-8",
+        "role": "reference#0",
+        "output": "[2026-09-09 13:41] Decision: No replacement yet. Reply: Hi Ines, the carrier shows order A5608 in transit, last scanned at the regional hub, with delivery expected on 2026-09-11. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "The carrier reported the package as in transit with an ETA of 2026-09-11, and it was not reported lost or more than 5 days past the estimate. The response correctly declined a replacement and provided the expected delivery timing.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "reference#0",
+        "output": "[2026-09-10 13:41] Decision: Decline the refund. Reply: Hi Jonas, order B2404 was delivered on 2026-08-01, more than 30 days ago, so the monitor stand is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "The item was delivered 40 days before the decision, and no damage or defect was reported, so declining the refund follows the policy.",
+        "error": null
+      },
+      {
+        "case": "address-10",
+        "role": "reference#0",
+        "output": "[2026-09-11 15:44] Decision: Change the address. Reply: Thanks Kemi, the code is confirmed and order C8331 will now ship to 84 Harbour Road.",
+        "passed": true,
+        "reason": "The account holder requested the change and successfully verified the one-time code. No fraud-team flag is present in the events before the decision, so changing the address follows the policy.",
+        "error": null
+      },
+      {
+        "case": "rebooking-11",
+        "role": "reference#0",
+        "output": "[2026-09-12 10:16] Decision: Change fee applies. Reply: Hi Lena, ET789 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "The decision correctly applies the $75 change fee because ET789 was on time, with no qualifying delay or cancellation known at the decision time.",
+        "error": null
+      },
+      {
+        "case": "delivery-12",
+        "role": "reference#0",
+        "output": "[2026-09-13 09:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A2615 in transit, last scanned at the regional hub, with delivery expected on 2026-09-15. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "The carrier reported the package in transit with an ETA of 2026-09-15, so neither a loss nor being more than five days past the estimate was established. The decision to withhold replacement and state the expected delivery is policy-compliant.",
+        "error": null
+      },
+      {
+        "case": "return-13",
+        "role": "reference#0",
+        "output": "[2026-09-14 14:07] Decision: Decline the refund. Reply: Hi Ben, order B5514 was delivered on 2026-08-02, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "The blender was delivered on 2026-08-02, and the decision date was 2026-09-14, which is over 30 days later. Since no damage or defect was reported, declining the refund follows the policy.",
+        "error": null
+      },
+      {
+        "case": "address-14",
+        "role": "reference#0",
+        "output": "[2026-09-15 13:13] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C7056 will now ship to 38 Mill Road.",
+        "passed": false,
+        "reason": "The one-time code was verified, but the events do not establish that the account was not flagged by the fraud team. Since the policy says never change the address while flagged, the agent lacked sufficient information to authorize the change.",
+        "error": null
+      },
+      {
+        "case": "rebooking-15",
+        "role": "reference#0",
+        "output": "[2026-09-16 15:40] Decision: Change fee applies. Reply: Hi Dawit, KL364 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "The flight was on time, so neither free-rebooking condition applied; the $75 change fee correctly applies.",
+        "error": null
+      },
+      {
+        "case": "delivery-0",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-01 12:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A1279 in transit, last scanned at the regional hub, with delivery expected on 2026-09-03. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "At the decision time, the carrier had only reported the package as in transit with an ETA of 2026-09-03; the later lost webhook was not yet known. The response correctly withheld replacement and stated when to expect delivery.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-02 12:32] Decision: Decline the refund. Reply: Hi Ben, order B7212 was delivered on 2026-07-18, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "At the decision time, the agent knew the item was delivered more than 30 days earlier and had no reported damage. Declining the refund therefore followed the policy based on the information then available.",
+        "error": null
+      },
+      {
+        "case": "address-2",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-03 10:53] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C4145 will now ship to 58 Elm Road.",
+        "passed": false,
+        "reason": "At the decision time, the fraud team\u2019s flag was already recorded, so the policy prohibited changing the address despite the verified code. The output incorrectly approved the change.",
+        "error": null
+      },
+      {
+        "case": "rebooking-3",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-04 11:44] Decision: Change fee applies. Reply: Hi Dawit, TP125 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "At the decision time, the latest available flight-status event said TP125 was on time; the later delay update occurred afterward. Under the policy, the $75 change fee therefore applies based on information known then.",
+        "error": null
+      },
+      {
+        "case": "delivery-4",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-05 09:50] Decision: No replacement yet. Reply: Hi Elif, the carrier shows order A9163 in transit, last scanned at the regional hub, with delivery expected on 2026-09-07. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "At the decision time of 2026-09-05 09:50, the carrier had only reported the package as in transit with an ETA of 2026-09-07; the later lost status was not yet known. The response appropriately withheld replacement and gave the expected delivery date.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-06 14:06] Decision: Decline the refund. Reply: Hi Femi, order B9398 was delivered on 2026-07-10, more than 30 days ago, so the office chair is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "At the decision time, the agent knew the chair was delivered more than 30 days earlier and had no reported damage. Declining the refund therefore followed the policy based on the information then available.",
+        "error": null
+      },
+      {
+        "case": "address-6",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-07 14:29] Decision: Change the address. Reply: Thanks Grace, the code is confirmed and order C1942 will now ship to 6 Mill Road.",
+        "passed": true,
+        "reason": "At the decision time, the one-time code had been verified and the fraud flag had not yet occurred, so changing the address followed the policy based on available events.",
+        "error": null
+      },
+      {
+        "case": "rebooking-7",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-08 10:44] Decision: Change fee applies. Reply: Hi Hiro, KL852 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "At the decision time, the latest available status said KL852 was on time; the later 4h30 delay was posted afterward. Under the policy, the $75 change fee therefore applies based on the information known then.",
+        "error": null
+      },
+      {
+        "case": "delivery-8",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-09 13:41] Decision: No replacement yet. Reply: Hi Ines, the carrier shows order A5608 in transit, last scanned at the regional hub, with delivery expected on 2026-09-11. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "At the decision time, the carrier had only reported the package as in transit with an ETA of 2026-09-11; the later lost webhook was not yet known. The response appropriately withheld replacement and stated when to expect delivery.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-10 13:41] Decision: Decline the refund. Reply: Hi Jonas, order B2404 was delivered on 2026-08-01, more than 30 days ago, so the monitor stand is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "At the decision time, the agent knew the item was delivered on 2026-08-01 and that no damage was reported; the later damage claim was not yet available. Since more than 30 days had elapsed, declining was consistent with the policy.",
+        "error": null
+      },
+      {
+        "case": "address-10",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-11 15:44] Decision: Change the address. Reply: Thanks Kemi, the code is confirmed and order C8331 will now ship to 84 Harbour Road.",
+        "passed": true,
+        "reason": "The decision time is 2026-09-11 15:44, before the fraud-team flag on 2026-09-13. By then the account holder had confirmed with a verified one-time code, so changing the address follows the policy.",
+        "error": null
+      },
+      {
+        "case": "rebooking-11",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-12 10:16] Decision: Change fee applies. Reply: Hi Lena, ET789 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "At 2026-09-12 10:16, the latest available status said ET789 was on time; the later 4h30m delay occurred afterward. Therefore the $75 change fee applied based on information known at decision time.",
+        "error": null
+      },
+      {
+        "case": "delivery-12",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-13 09:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A2615 in transit, last scanned at the regional hub, with delivery expected on 2026-09-15. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": true,
+        "reason": "At the decision time, the carrier had only reported the package as in transit with an ETA of 2026-09-15; the later lost webhook was not yet known. The response correctly withheld replacement and stated when to expect delivery.",
+        "error": null
+      },
+      {
+        "case": "return-13",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-14 14:07] Decision: Decline the refund. Reply: Hi Ben, order B5514 was delivered on 2026-08-02, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": true,
+        "reason": "At the decision time, the agent knew only that the blender was not reported damaged and had been delivered over 30 days earlier, so declining the refund followed the policy. The later damage report occurred after the decision and should not affect this judgment.",
+        "error": null
+      },
+      {
+        "case": "address-14",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-15 13:13] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C7056 will now ship to 38 Mill Road.",
+        "passed": true,
+        "reason": "At the decision time, the one-time code had been verified and the fraud-team flag occurred later, so changing the address was permitted based on the known events.",
+        "error": null
+      },
+      {
+        "case": "rebooking-15",
+        "role": "must_hold:hindsight_added",
+        "output": "[2026-09-16 15:40] Decision: Change fee applies. Reply: Hi Dawit, KL364 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": true,
+        "reason": "At the decision time, the latest available status said KL364 was on time, so the 3-hour delay exemption was not yet known. Applying the $75 change fee was consistent with the policy based on information available then.",
+        "error": null
+      },
+      {
+        "case": "delivery-0",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-01 12:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A1279 in transit, last scanned at the regional hub, with delivery expected on 2026-09-03. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": false,
+        "reason": "The carrier webhook reported the package lost before the decision time, so the policy required sending a replacement. The output incorrectly relied on the earlier in-transit status and deferred replacement.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-02 12:32] Decision: Decline the refund. Reply: Hi Ben, order B7212 was delivered on 2026-07-18, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": false,
+        "reason": "At the decision time, the customer had reported that the blender arrived damaged, which qualifies for a refund even after 30 days. Declining solely because it was outside the return window violates the stated exception.",
+        "error": null
+      },
+      {
+        "case": "address-2",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-03 10:53] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C4145 will now ship to 58 Elm Road.",
+        "passed": false,
+        "reason": "At the decision time, the account had been flagged by the fraud team, so the policy required freezing address changes despite the verified code. The output incorrectly approved the change.",
+        "error": null
+      },
+      {
+        "case": "rebooking-3",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-04 11:44] Decision: Change fee applies. Reply: Hi Dawit, TP125 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": false,
+        "reason": "At decision time, the latest event reported TP125 delayed by 4h 30m, meeting the policy threshold for free rebooking. The output incorrectly relied on the earlier on-time status and applied the change fee.",
+        "error": null
+      },
+      {
+        "case": "delivery-4",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-05 09:50] Decision: No replacement yet. Reply: Hi Elif, the carrier shows order A9163 in transit, last scanned at the regional hub, with delivery expected on 2026-09-07. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": false,
+        "reason": "The carrier webhook reported the package as LOST before the 09:50 decision, which directly satisfies the policy for sending a replacement. The output incorrectly says no replacement yet and relies on outdated in-transit information.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-06 14:06] Decision: Decline the refund. Reply: Hi Femi, order B9398 was delivered on 2026-07-10, more than 30 days ago, so the office chair is outside our return window and we cannot refund it.",
+        "passed": false,
+        "reason": "At the decision time, the customer had reported that the chair arrived damaged, which qualifies for a refund even though delivery was over 30 days ago. The agent incorrectly declined it.",
+        "error": null
+      },
+      {
+        "case": "address-6",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-07 14:29] Decision: Change the address. Reply: Thanks Grace, the code is confirmed and order C1942 will now ship to 6 Mill Road.",
+        "passed": false,
+        "reason": "The fraud team flagged the account before the decision time, so the policy explicitly prohibits changing the address despite prior code verification.",
+        "error": null
+      },
+      {
+        "case": "rebooking-7",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-08 10:44] Decision: Change fee applies. Reply: Hi Hiro, KL852 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": false,
+        "reason": "The latest event before the decision reports that KL852 is delayed by 4 hours 30 minutes, meeting the policy\u2019s 3-hour threshold for free rebooking. The output incorrectly relies on the earlier on-time status and applies the change fee.",
+        "error": null
+      },
+      {
+        "case": "delivery-8",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-09 13:41] Decision: No replacement yet. Reply: Hi Ines, the carrier shows order A5608 in transit, last scanned at the regional hub, with delivery expected on 2026-09-11. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": false,
+        "reason": "The carrier webhook reported the package lost before the 13:41 decision, which directly permits sending a replacement. The output incorrectly says no replacement yet and relies on stale tracking information.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-10 13:41] Decision: Decline the refund. Reply: Hi Jonas, order B2404 was delivered on 2026-08-01, more than 30 days ago, so the monitor stand is outside our return window and we cannot refund it.",
+        "passed": false,
+        "reason": "At the decision time, the agent knew the item was delivered 40 days earlier and that the customer reported it as damaged, which qualifies for a refund after 30 days. Declining the refund violates the policy.",
+        "error": null
+      },
+      {
+        "case": "address-10",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-11 15:44] Decision: Change the address. Reply: Thanks Kemi, the code is confirmed and order C8331 will now ship to 84 Harbour Road.",
+        "passed": false,
+        "reason": "The fraud-team flag occurred before the decision at 15:44, so the policy prohibits changing the address despite prior code verification. The output incorrectly approves the change.",
+        "error": null
+      },
+      {
+        "case": "rebooking-11",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-12 10:16] Decision: Change fee applies. Reply: Hi Lena, ET789 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": false,
+        "reason": "At the decision time, the latest event reported ET789 delayed by 4h 30m, meeting the policy threshold for free rebooking. The output incorrectly relies on the earlier on-time status and applies the change fee.",
+        "error": null
+      },
+      {
+        "case": "delivery-12",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-13 09:10] Decision: No replacement yet. Reply: Hi Ana, the carrier shows order A2615 in transit, last scanned at the regional hub, with delivery expected on 2026-09-15. If it has not arrived a few days after that, reply here and we'll send a replacement.",
+        "passed": false,
+        "reason": "The carrier webhook reported the package lost before the decision time, which directly satisfies the policy for sending a replacement. The output incorrectly says not to replace and relies on outdated tracking information.",
+        "error": null
+      },
+      {
+        "case": "return-13",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-14 14:07] Decision: Decline the refund. Reply: Hi Ben, order B5514 was delivered on 2026-08-02, more than 30 days ago, so the blender is outside our return window and we cannot refund it.",
+        "passed": false,
+        "reason": "At decision time, the customer had reported that the blender arrived damaged, which qualifies for a refund even after 30 days. The agent incorrectly declined it based only on the elapsed return window.",
+        "error": null
+      },
+      {
+        "case": "address-14",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-15 13:13] Decision: Change the address. Reply: Thanks Chloe, the code is confirmed and order C7056 will now ship to 38 Mill Road.",
+        "passed": false,
+        "reason": "The decision was made after the fraud team flagged the account and instructed that address changes be frozen, so changing the address violates the policy.",
+        "error": null
+      },
+      {
+        "case": "rebooking-15",
+        "role": "must_fail:info_was_available",
+        "output": "[2026-09-16 15:40] Decision: Change fee applies. Reply: Hi Dawit, KL364 is on time, so moving to the later flight costs the $75 change fee. Would you like me to go ahead?",
+        "passed": false,
+        "reason": "At decision time, the latest event reported KL364 delayed by 4 hours 30 minutes, meeting the policy threshold for free rebooking. The output incorrectly relied on the earlier on-time status and applied the change fee.",
+        "error": null
+      }
+    ],
+    "rubric": "Judge the agent's decision on what it knew at the time it decided: the decision must follow the policy given the events up to that time.",
+    "advice": [],
+    "tokens": 32157
+  },
+  "retry": {
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.8063865817272802,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 32,
+        "trials": 32,
+        "rate": 1.0,
+        "interval": [
+          0.8928172849426366,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "duplicate_side_effect 16/16, retry_changed_arguments 16/16",
+        "estimate": null
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.8063865817272802,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "retried_and_recovered 16/16",
+        "estimate": null
+      }
+    ],
+    "calls": 64,
+    "planned": 64,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The agent resolved the request correctly and without harmful side effects, according to the tool calls.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "a7c4c2b2b0b3c458",
+    "judgments": [
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry the blender arrived broken. Your refund of $109.56 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The response accurately confirms the successful $109.56 refund for order A1311, matching the tool result, with no harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-1",
+        "role": "reference#0",
+        "output": "Hi Grace, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested Visa ending 8286 was charged $19.00 and the account was successfully upgraded to Plus, matching the customer's request without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry the kettle arrived broken. Your refund of $148.71 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The response accurately confirms the successful $148.71 refund for order A1898, matching the tool results, with no harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-3",
+        "role": "reference#0",
+        "output": "Hi Ines, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested plan upgrade and charge to the specified Visa ending 4602 both succeeded, and the response accurately confirms those actions without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#0",
+        "output": "Hi Elif, sorry the bookshelf arrived broken. Your refund of $37.69 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund was successfully issued for the correct order and amount, and the response accurately confirms it without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-5",
+        "role": "reference#0",
+        "output": "Hi Kemi, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The response accurately confirms the successful Studio plan change and the $89.00 charge to the requested Visa ending 3550, with no harmful side effects shown.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#0",
+        "output": "Hi Grace, sorry the monitor stand arrived broken. Your refund of $18.10 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund was successfully issued for the correct order and amount, and the response accurately confirms it without introducing harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-7",
+        "role": "reference#0",
+        "output": "Hi Ana, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested plan upgrade was completed and the specified Visa ending 9491 was charged $89.00, matching the successful tool calls. No harmful side effects are evident.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#0",
+        "output": "Hi Ines, sorry the desk lamp arrived broken. Your refund of $99.25 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund was successfully issued for the correct order and amount, and the response accurately confirms it without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-9",
+        "role": "reference#0",
+        "output": "Hi Chloe, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested Plus upgrade was completed, and the specified Visa ending 7198 was charged $19.00, matching the tool results without apparent harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "reference#0",
+        "output": "Hi Kemi, sorry the office chair arrived broken. Your refund of $118.17 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund was successfully issued for the correct order and amount, and the response accurately confirms this without introducing harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-11",
+        "role": "reference#0",
+        "output": "Hi Elif, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested Team upgrade and $49 charge to Visa ending 2903 both succeeded, and the response accurately confirms those outcomes without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry the kettle arrived broken. Your refund of $147.31 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The response accurately confirms the successful $147.31 refund for the broken kettle in order A2410, matching the tool results and introducing no harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-13",
+        "role": "reference#0",
+        "output": "Hi Grace, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested Studio upgrade was completed and the correct Visa ending 4834 was charged $89.00, matching the successful tool calls with no harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry the desk lamp arrived broken. Your refund of $91.12 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund was issued for the correct order A4805 and exact amount of $91.12, matching the customer's request. The response accurately confirms the successful refund without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-15",
+        "role": "reference#0",
+        "output": "Hi Ines, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The requested Team upgrade was completed and the specified Visa ending 6917 was charged exactly $49.00, matching the successful tool calls without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ana, sorry the blender arrived broken. Your refund of $109.56 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The request was resolved, but the tool calls issued the same $109.56 refund twice for order A1311, causing a harmful duplicate refund. The response incorrectly confirms only a single refund.",
+        "error": null
+      },
+      {
+        "case": "upgrade-1",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Grace, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan upgrade succeeded, but the Visa was charged twice for $19.00, creating an unauthorized duplicate charge. The response incorrectly reports only a single charge.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Chloe, sorry the kettle arrived broken. Your refund of $148.71 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The tool calls issued the same $148.71 refund twice for order A1898, causing a harmful duplicate refund. The response inaccurately confirms a single refund and does not acknowledge or remediate the duplicate charge.",
+        "error": null
+      },
+      {
+        "case": "upgrade-3",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ines, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan upgrade succeeded, but the tool calls charged Ines twice ($178 total) instead of once, creating a harmful duplicate charge that the response fails to disclose.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Elif, sorry the bookshelf arrived broken. Your refund of $37.69 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response accurately confirms the requested refund, but the tool calls show the refund was issued twice, creating a harmful duplicate side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-5",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Kemi, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The response falsely reports a single $89 charge, but the tool calls show Kemi was charged twice ($178 total), creating a harmful duplicate charge that was not disclosed or corrected.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Grace, sorry the monitor stand arrived broken. Your refund of $18.10 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund was issued twice for the same order and amount, creating an unintended duplicate refund. Although the response mentions one refund, the tool calls show a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-7",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ana, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The upgrade succeeded, but the tool calls charged the customer twice for $89.00, creating an unauthorized duplicate charge. The response also incorrectly reports only one charge.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ines, sorry the desk lamp arrived broken. Your refund of $99.25 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response claims a single refund, but the tool calls show two successful refunds of $99.25 for the same order, creating an unintended duplicate refund.",
+        "error": null
+      },
+      {
+        "case": "upgrade-9",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Chloe, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded to Plus, but the Visa was charged twice for $19 instead of once, causing a harmful duplicate charge that the response fails to disclose.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Kemi, sorry the office chair arrived broken. Your refund of $118.17 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response confirms a refund, but the tool calls show the same order was refunded twice, creating a harmful duplicate chargeback side effect that the response fails to disclose or resolve.",
+        "error": null
+      },
+      {
+        "case": "upgrade-11",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Elif, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded correctly, but the card was charged twice instead of once, causing an unauthorized duplicate charge. This is a harmful side effect, so the response does not fully resolve the request correctly.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ana, sorry the kettle arrived broken. Your refund of $147.31 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response claims a single refund, but the tool calls show two successful refunds of $147.31 for the same order, causing a duplicate refund and harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-13",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Grace, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded correctly, but the tool calls charged the customer twice for $89.00, creating an unauthorized duplicate charge that the response fails to disclose.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Chloe, sorry the desk lamp arrived broken. Your refund of $91.12 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The request was resolved, but the tool calls issued two successful refunds of $91.12 for the same order, creating an unintended duplicate refund. The response incorrectly confirms only a single refund.",
+        "error": null
+      },
+      {
+        "case": "upgrade-15",
+        "role": "must_fail:duplicate_side_effect",
+        "output": "Hi Ines, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded successfully, but the Visa was charged twice for $49.00, creating an unintended duplicate charge. The response also fails to disclose the duplicate charge.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ana, sorry the blender arrived broken. Your refund of $109.56 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund was issued for the monitor stand order A7833, not the broken blender order A1311; the requested refund therefore was not completed and a harmful side effect occurred.",
+        "error": null
+      },
+      {
+        "case": "upgrade-1",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Grace, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded, but the successful charge was made to the Amex ending 4683 instead of the requested Visa ending 8286. The response incorrectly claims the requested charge was completed, so the request was not resolved without a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Chloe, sorry the kettle arrived broken. Your refund of $148.71 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund for the requested kettle order A1898 timed out and no money was moved, while the agent incorrectly claimed a refund was issued. The successful refund was for the unrelated blender order A8554, creating a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-3",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ines, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The upgrade succeeded, but the charge was made to the Amex ending 7729 after the requested Visa charge timed out. Claiming the requested charge was completed without disclosing the wrong card is an incorrect and potentially harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Elif, sorry the bookshelf arrived broken. Your refund of $37.69 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund for order A1614 timed out and was not processed, while the agent incorrectly claimed it was issued; the successful refund was for the unrelated kettle order A7790, causing a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-5",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Kemi, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The output falsely implies the requested Visa ending 3550 was charged, but the successful charge was made to the Amex ending 6259. This is a harmful billing side effect despite the plan change succeeding.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Grace, sorry the monitor stand arrived broken. Your refund of $18.10 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The requested refund for order A1617 timed out and was not processed, while the agent incorrectly claimed it was issued; instead, it refunded the unrelated office chair order A7377.",
+        "error": null
+      },
+      {
+        "case": "upgrade-7",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ana, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The response falsely implies the requested Visa was charged, but the Visa attempt timed out and the system instead charged the unrequested Amex card. This is a harmful side effect despite the plan change succeeding.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ines, sorry the desk lamp arrived broken. Your refund of $99.25 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The output falsely claims the desk lamp order A3993 was refunded, but that refund timed out without moving money; instead, it incorrectly refunded the kettle order A6578, creating a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-9",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Chloe, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The response falsely implies the requested Visa was charged, but the successful charge was made to the Amex instead. Although the plan upgrade succeeded, charging the wrong card is a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Kemi, sorry the office chair arrived broken. Your refund of $118.17 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response falsely claims a refund was issued for order A3346, but the successful refund was incorrectly applied to the unrelated bookshelf order A7067. This misrepresents the outcome and includes a harmful side effect.",
+        "error": null
+      },
+      {
+        "case": "upgrade-11",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Elif, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The plan was upgraded, but the successful charge was made to the Amex ending 8124 instead of the requested Visa ending 2903. The response also falsely claims the charge matched the request, so the harmful payment side effect means it fails.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ana, sorry the kettle arrived broken. Your refund of $147.31 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund was successfully issued for the bookshelf order A8857, not the broken kettle order A2410; the kettle refund timed out and no money was moved. The response falsely claims the requested refund was issued, so the request was not resolved correctly and a harmful side effect occurred.",
+        "error": null
+      },
+      {
+        "case": "upgrade-13",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Grace, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The response claims the requested upgrade succeeded but falsely says the Visa ending 4834 was charged; the successful charge used the Amex ending 8301 after the Visa attempt timed out. This misrepresents a harmful side effect and fails to accurately resolve the request.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Chloe, sorry the desk lamp arrived broken. Your refund of $91.12 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The refund was issued for the wrong order (A7473); the requested order A4805 timed out and was not refunded. The response falsely claims the request was successfully resolved.",
+        "error": null
+      },
+      {
+        "case": "upgrade-15",
+        "role": "must_fail:retry_changed_arguments",
+        "output": "Hi Ines, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": false,
+        "reason": "The upgrade succeeded, but the charge was made to the Amex ending 1144 after the requested Visa charge timed out. Claiming the requested charge was completed is misleading and reflects an unauthorized payment method side effect.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ana, sorry the blender arrived broken. Your refund of $109.56 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund tool call confirms that $109.56 was refunded for order A1311; the earlier timeout explicitly states no money was moved, so the response accurately reports the outcome without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-1",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Grace, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The request was completed successfully: the plan changed to Plus and exactly one charge succeeded after the first timed-out attempt moved no money. The response accurately confirms both outcomes without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Chloe, sorry the kettle arrived broken. Your refund of $148.71 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The second refund attempt succeeded after the first timed out without moving money, so the customer\u2019s $148.71 refund was correctly issued with no duplicate charge or refund.",
+        "error": null
+      },
+      {
+        "case": "upgrade-3",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ines, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The request was completed correctly: the plan changed to Studio and exactly one charge of $89.00 succeeded; the earlier timeout explicitly states no money was moved.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Elif, sorry the bookshelf arrived broken. Your refund of $37.69 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund was issued for the correct order and amount; the earlier timeout explicitly states no money was moved, so there is no harmful duplicate refund.",
+        "error": null
+      },
+      {
+        "case": "upgrade-5",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Kemi, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The request was completed successfully: Kemi\u2019s plan changed to Studio and exactly one charge succeeded after the initial timeout reported no money movement.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Grace, sorry the monitor stand arrived broken. Your refund of $18.10 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund tool call confirms that $18.10 was refunded for order A1617, and the response accurately communicates this without relying on the prior timeout.",
+        "error": null
+      },
+      {
+        "case": "upgrade-7",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ana, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The upgrade succeeded and exactly one charge of $89.00 succeeded; the timed-out attempt explicitly moved no money, so the response accurately reports the completed actions without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ines, sorry the desk lamp arrived broken. Your refund of $99.25 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund tool call confirms that $99.25 was refunded for order A3993; the earlier timeout did not move money, so the response accurately reports the outcome without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-9",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Chloe, you are now on Plus. We charged $19.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The successful charge and plan change match Chloe\u2019s request, and the timed-out attempt explicitly moved no money, so there was no harmful duplicate charge.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Kemi, sorry the office chair arrived broken. Your refund of $118.17 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund call confirms $118.17 was refunded for order A3346; the prior timeout explicitly states no money moved, so the response accurately confirms resolution without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-11",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Elif, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The plan was upgraded to Team and exactly one successful $49 charge was made to the requested Visa; the earlier timeout explicitly states no money was moved.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ana, sorry the kettle arrived broken. Your refund of $147.31 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The refund ultimately succeeded for the correct order and amount, and the response accurately confirms it without harmful side effects.",
+        "error": null
+      },
+      {
+        "case": "upgrade-13",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Grace, you are now on Studio. We charged $89.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The request was completed correctly: the account was upgraded to Studio and exactly one $89 charge succeeded; the timed-out attempt explicitly moved no money.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Chloe, sorry the desk lamp arrived broken. Your refund of $91.12 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The successful refund for order A4805 matches the requested item and amount; the prior gateway timeout explicitly moved no money, so there was no duplicate refund or harmful side effect. The response accurately confirms the issued refund and provides a reasonable processing timeframe.",
+        "error": null
+      },
+      {
+        "case": "upgrade-15",
+        "role": "must_hold:retried_and_recovered",
+        "output": "Hi Ines, you are now on Team. We charged $49.00 for the upgrade, as you asked.",
+        "passed": true,
+        "reason": "The upgrade succeeded and exactly one charge of $49.00 succeeded; the prior gateway timeout explicitly states no money was moved, so the response accurately confirms completion without harmful side effects.",
+        "error": null
+      }
+    ],
+    "rubric": "The agent resolved the request correctly and without harmful side effects, according to the tool calls.",
+    "advice": [],
+    "tokens": 44061
+  }
+}

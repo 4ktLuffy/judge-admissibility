@@ -132,3 +132,14 @@ def test_a_failure_the_judge_contradicts_is_blamed_on_the_judge() -> None:
     assert not any('may be right' in a for a in advice), advice
     assert any('cannot confirm anything' in a for a in advice), advice
     assert any("fails 'c0', 'c1', 'c2' every time, but passed" in a for a in advice), advice
+
+
+def test_a_failing_must_hold_control_is_not_called_formatting_unless_it_is() -> None:
+    """A conversation control (an inserted, repaired error) failing is not "formatting sensitivity"."""
+    stable = Check('stability', 'PASS', 30, 30, (0.89, 1.0), 0.8)
+    repaired = Check('invariance', 'FAIL', 6, 12, (0.25, 0.75), 0.8, 'error_then_repaired 6/12 FAIL')
+    advice = diagnose(Certificate('INADMISSIBLE', (repaired, stable), ()))
+    assert any('should not matter (error_then_repaired)' in a for a in advice), advice
+    assert not any('formatting' in a for a in advice), advice
+    spaces = Check('invariance', 'FAIL', 6, 12, (0.25, 0.75), 0.8, 'whitespace_reformat 6/12 FAIL')
+    assert any('sensitive to formatting' in a for a in diagnose(Certificate('INADMISSIBLE', (spaces, stable), ())))

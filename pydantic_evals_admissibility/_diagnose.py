@@ -186,7 +186,15 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 'the claim, not the work. Try a judge that reasons, or a rubric that says to check the answer '
                 'against the tool results.'
             )
-    if status('invariance') == 'FAIL' and not data_suspect:  # with suspect answers as donors, it would mislead
+    held = checks.get('invariance')
+    other = [f for f in _failed_families(held.detail) if not re.search(r'space|whitespace|format', f)] if held else []
+    if status('invariance') == 'FAIL' and not data_suspect and other:
+        advice.append(
+            f'Its verdict changes under a change that should not matter ({", ".join(other)}). Either the judge reads '
+            'something the rubric does not ask about, or the control changes more than it claims to: read the '
+            "flipped verdicts' reasons and check the control before the judge."
+        )
+    elif status('invariance') == 'FAIL' and not data_suspect:  # with suspect answers as donors, it would mislead
         if status('stability') in ('FAIL', 'UNVALIDATED'):
             advice.append(
                 'Its verdict changes when only whitespace changes, but it also disagrees with itself on the very '

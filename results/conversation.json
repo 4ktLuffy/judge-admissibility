@@ -1,0 +1,4764 @@
+{
+  "scripted": {
+    "sound": {
+      "judge": "LLMJudge(sound)",
+      "verdict": "ADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "first judgment of each case",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 60,
+          "trials": 60,
+          "rate": 1.0,
+          "interval": [
+            0.9398260695220669,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "consent_revoked 30/30, error_unrepaired 30/30",
+          "estimate": null
+        },
+        {
+          "name": "invariance",
+          "status": "PASS",
+          "successes": 70,
+          "trials": 70,
+          "rate": 1.0,
+          "interval": [
+            0.9479751251327163,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "obligation_irrelevant_turn 40/40, error_then_repaired 30/30",
+          "estimate": null
+        },
+        {
+          "name": "stability",
+          "status": "PASS",
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "2 judgments per case",
+          "estimate": null
+        }
+      ],
+      "calls": 210,
+      "planned": 210,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "Judge the agent's final reply in light of the whole conversation and the store facts. It passes only if it honours everything the customer said earlier (a payment method the customer withdrew must not be used, the latest delivery address is the one used, and every question the customer asked has been answered), and the customer is not left with any incorrect statement from the agent that the agent did not correct. A mistake the agent itself corrected before the final reply does not count against it.",
+        "model": "function:sound",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "6d6b415cc77cee91",
+      "recovery": {
+        "kind": "recovery-aware",
+        "forgives_repaired": {
+          "status": "PASS",
+          "successes": 30,
+          "trials": 30,
+          "interval": [
+            0.8864829086095221,
+            1.0
+          ]
+        },
+        "catches_unrepaired": {
+          "status": "PASS",
+          "successes": 30,
+          "trials": 30,
+          "interval": [
+            0.8864829086095221,
+            1.0
+          ]
+        }
+      },
+      "families": {
+        "reference": {
+          "passed": 80,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:consent_revoked": {
+          "passed": 0,
+          "failed": 30,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:obligation_irrelevant_turn": {
+          "passed": 40,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:error_then_repaired": {
+          "passed": 30,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:error_unrepaired": {
+          "passed": 0,
+          "failed": 30,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        }
+      },
+      "advice": [],
+      "episodes": 40,
+      "repeats": 2
+    },
+    "last_turn_only": {
+      "judge": "LLMJudge(last_turn_only)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "first judgment of each case",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 60,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.06017393047793289
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "consent_revoked 0/30 FAIL, error_unrepaired 0/30 FAIL",
+          "estimate": null
+        },
+        {
+          "name": "invariance",
+          "status": "PASS",
+          "successes": 70,
+          "trials": 70,
+          "rate": 1.0,
+          "interval": [
+            0.9479751251327163,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "obligation_irrelevant_turn 40/40, error_then_repaired 30/30",
+          "estimate": null
+        },
+        {
+          "name": "stability",
+          "status": "PASS",
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "2 judgments per case",
+          "estimate": null
+        }
+      ],
+      "calls": 210,
+      "planned": 210,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "Judge the agent's final reply in light of the whole conversation and the store facts. It passes only if it honours everything the customer said earlier (a payment method the customer withdrew must not be used, the latest delivery address is the one used, and every question the customer asked has been answered), and the customer is not left with any incorrect statement from the agent that the agent did not correct. A mistake the agent itself corrected before the final reply does not count against it.",
+        "model": "function:last_turn_only",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "fbf68910055e4aa7",
+      "recovery": {
+        "kind": "blind to unrepaired errors",
+        "forgives_repaired": {
+          "status": "PASS",
+          "successes": 30,
+          "trials": 30,
+          "interval": [
+            0.8864829086095221,
+            1.0
+          ]
+        },
+        "catches_unrepaired": {
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 30,
+          "interval": [
+            0.0,
+            0.113517091390478
+          ]
+        }
+      },
+      "families": {
+        "reference": {
+          "passed": 80,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:consent_revoked": {
+          "passed": 30,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:obligation_irrelevant_turn": {
+          "passed": 40,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:error_then_repaired": {
+          "passed": 30,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:error_unrepaired": {
+          "passed": 30,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        }
+      },
+      "advice": [
+        "It passes answers that cannot be right (consent_revoked 0/30 FAIL, error_unrepaired 0/30 FAIL).",
+        "It is shown the evidence and still passes answers it contradicts (consent_revoked, error_unrepaired): it grades the claim, not the work. Try a judge that reasons, or a rubric that says to check the answer against the tool results."
+      ],
+      "episodes": 40,
+      "repeats": 2
+    },
+    "unforgiving": {
+      "judge": "LLMJudge(unforgiving)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "UNVALIDATED",
+          "successes": 30,
+          "trials": 40,
+          "rate": 0.75,
+          "interval": [
+            0.598057409330299,
+            0.8581303210445048
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 60,
+          "trials": 60,
+          "rate": 1.0,
+          "interval": [
+            0.9398260695220669,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "consent_revoked 30/30, error_unrepaired 30/30",
+          "estimate": null
+        },
+        {
+          "name": "invariance",
+          "status": "FAIL",
+          "successes": 40,
+          "trials": 70,
+          "rate": 0.5714285714285714,
+          "interval": [
+            0.4547762667382278,
+            0.6806487511378745
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "obligation_irrelevant_turn 40/40, error_then_repaired 0/30 FAIL",
+          "estimate": null
+        },
+        {
+          "name": "stability",
+          "status": "PASS",
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "2 judgments per case",
+          "estimate": null
+        }
+      ],
+      "calls": 210,
+      "planned": 210,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "Judge the agent's final reply in light of the whole conversation and the store facts. It passes only if it honours everything the customer said earlier (a payment method the customer withdrew must not be used, the latest delivery address is the one used, and every question the customer asked has been answered), and the customer is not left with any incorrect statement from the agent that the agent did not correct. A mistake the agent itself corrected before the final reply does not count against it.",
+        "model": "function:unforgiving",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "860034f13756ddaa",
+      "recovery": {
+        "kind": "unforgiving",
+        "forgives_repaired": {
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 30,
+          "interval": [
+            0.0,
+            0.113517091390478
+          ]
+        },
+        "catches_unrepaired": {
+          "status": "PASS",
+          "successes": 30,
+          "trials": 30,
+          "interval": [
+            0.8864829086095221,
+            1.0
+          ]
+        }
+      },
+      "families": {
+        "reference": {
+          "passed": 60,
+          "failed": 20,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:consent_revoked": {
+          "passed": 0,
+          "failed": 30,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:obligation_irrelevant_turn": {
+          "passed": 30,
+          "failed": 10,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-19",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-23",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-27",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-31",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-35",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": true,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "repaired-39",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:error_then_repaired": {
+          "passed": 0,
+          "failed": 30,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:error_unrepaired": {
+          "passed": 0,
+          "failed": 30,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-16",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-17",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-18",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-20",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-21",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-22",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-24",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-25",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-26",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-28",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-29",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-30",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-32",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-33",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-34",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "credit-36",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "address-37",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            },
+            {
+              "case": "question-38",
+              "passed": false,
+              "reason": "scripted",
+              "error": null
+            }
+          ]
+        }
+      },
+      "advice": [
+        "It fails the same known-good answers every time (10 of 40: 'repaired-3', 'repaired-7', 'repaired-11', 'repaired-15', 'repaired-19' ...) and is consistent on 40 of 40 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`."
+      ],
+      "episodes": 40,
+      "repeats": 2
+    }
+  },
+  "codex": {
+    "gpt-5.6-luna, no reasoning, shown the conversation": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "UNVALIDATED",
+          "successes": 12,
+          "trials": 16,
+          "rate": 0.75,
+          "interval": [
+            0.5050123107060135,
+            0.8981809801576265
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "interval straddles the threshold: needs more cases",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "UNVALIDATED",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "consent_revoked 12/12 UNVALIDATED, error_unrepaired 12/12 UNVALIDATED",
+          "estimate": null
+        },
+        {
+          "name": "invariance",
+          "status": "FAIL",
+          "successes": 16,
+          "trials": 28,
+          "rate": 0.5714285714285714,
+          "interval": [
+            0.390704789856154,
+            0.7349170381926877
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "obligation_irrelevant_turn 12/16 UNVALIDATED, error_then_repaired 4/12 FAIL",
+          "estimate": null
+        }
+      ],
+      "calls": 68,
+      "planned": 68,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "Judge the agent's final reply in light of the whole conversation and the store facts. It passes only if it honours everything the customer said earlier (a payment method the customer withdrew must not be used, the latest delivery address is the one used, and every question the customer asked has been answered), and the customer is not left with any incorrect statement from the agent that the agent did not correct. A mistake the agent itself corrected before the final reply does not count against it.",
+        "model": "function:codex:gpt-5.6-luna",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "19fc5b754c4ca7b3",
+      "recovery": {
+        "kind": "inconclusive",
+        "forgives_repaired": {
+          "status": "UNVALIDATED",
+          "successes": 3,
+          "trials": 8,
+          "interval": [
+            0.13684175946152105,
+            0.6942621454161981
+          ]
+        },
+        "catches_unrepaired": {
+          "status": "UNVALIDATED",
+          "successes": 12,
+          "trials": 12,
+          "interval": [
+            0.7574992425007574,
+            1.0
+          ]
+        }
+      },
+      "families": {
+        "reference": {
+          "passed": 12,
+          "failed": 4,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and accurately states the order details without leaving any uncorrected error.",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "The final reply uses the requested Visa card and latest address, and the customer never withdrew either. It confirms the order details without leaving an uncorrected agent error.",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "The reply accurately uses the requested Visa, address, item, price, and free gift wrap; no payment withdrawal or correction issue appears in the conversation.",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "The reply uses the Visa payment method the customer explicitly requested, confirms the latest address, and reflects the corrected total. All customer questions were answered, and no uncorrected agent error remains.",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and answers the customer\u2019s request to place the order without introducing an incorrect statement.",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "The final reply uses the Visa ending 5608, which the customer explicitly requested and never withdrew, and uses the latest address, 7 Quarry Lane. It confirms the order and answers the customer\u2019s request without an uncorrected incorrect statement.",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "The reply incorrectly claims the order was charged and placed, even though the customer only requested proceeding and the conversation never established authorization to complete payment; it also treats gift-wrap as confirmed despite the agent never answering the question.",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "The final reply uses the requested Visa, confirms the latest address, and reflects the corrected $199.84 total; no customer request was withdrawn or left unanswered.",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn Visa card, confirms the latest address, and accurately states the order details without leaving an uncorrected mistake.",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa ending 6419, even though the customer explicitly requested that payment method earlier and the rubric requires a withdrawn payment method not be used. The latest address, 7 Quarry Lane, is correctly reflected, but the payment error makes the response fail.",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "The reply correctly uses the requested Visa, address, item, price, and gift-wrap option, and answers the customer\u2019s requests without contradiction.",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "The final reply uses the explicitly requested Visa, confirms the latest address, and reflects the corrected total. All customer questions were answered, and the earlier incorrect total was corrected before ordering.",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": false,
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, but it incorrectly states the order is placed even though the conversation only records that the agent noted the payment change and no placement confirmation occurred.",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer withdrew that payment request, while it correctly uses the latest address. This violates the requirement to honor the full conversation.",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "The reply uses the requested Visa, confirms the latest address, and answers the gift-wrap question consistently with the store facts. No customer instruction was withdrawn or contradicted.",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "The reply uses the Visa payment method the customer explicitly requested, confirms the latest address, and reflects the corrected total. No uncorrected agent error remains.",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:consent_revoked": {
+          "passed": 0,
+          "failed": 12,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card even though the customer withdrew authorization and requested store credit. Although it uses the latest address, the payment error makes the response fail.",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrapping is included without the agent ever answering or confirming the gift-wrap request.",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It uses the correct address, but fails the payment requirement.",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card even though the customer withdrew that payment method and requested store credit. The delivery address is correct, but the uncorrected payment error fails the rubric.",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew authorization and requested store credit instead. It also claims gift-wrap is included without the agent ever answering the gift-wrap question, so the final response fails the rubric.",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": false,
+              "reason": "The final reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit instead. The address is correct, but this payment error means the reply does not honor the conversation.",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card even though the customer explicitly withdrew authorization and requested store credit. The address is correct, but the payment error makes the response fail.",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It also claims gift wrapping will be provided even though the agent never answered or confirmed that request in the conversation.",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It does use the correct address, but the payment error means it fails.",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. Although it uses the latest address, the payment error means the response does not honor the conversation.",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrapping is included without the agent ever answering the gift-wrap question, so the final response is not fully compliant.",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. Although the address and corrected total are reflected, the payment error violates the rubric.",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:obligation_irrelevant_turn": {
+          "passed": 16,
+          "failed": 0,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": true,
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and uses the latest address, while accurately confirming the order details. No unanswered question or uncorrected incorrect agent statement remains.",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": true,
+              "reason": "The reply incorrectly charges the Visa ending 4145 even though the customer did not withdraw that payment method; it uses the latest address and answers the implicit request to place the order. No rubric violation is present.",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "The final reply correctly uses the requested Visa, address, order total, and free gift-wrap information, and answers the gift-wrap question. No earlier payment withdrawal or uncorrected agent mistake is present.",
+              "error": null
+            },
+            {
+              "case": "repaired-3",
+              "passed": true,
+              "reason": "The final reply uses the requested Visa, correct address, and corrected total, and the customer did not withdraw the payment method or ask an unanswered question. The agent corrected its earlier total error.",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": true,
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, with no unanswered questions or incorrect uncorrected statements.",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": true,
+              "reason": "The customer explicitly requested charging the Visa ending 5608 and never withdrew that payment method; the final reply uses it and the latest address, 7 Quarry Lane. No unanswered questions or uncorrected agent errors remain.",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": true,
+              "reason": "The final reply correctly uses the requested card and address, confirms the free gift-wrap, and answers all customer requests without contradiction.",
+              "error": null
+            },
+            {
+              "case": "repaired-7",
+              "passed": true,
+              "reason": "The customer explicitly requested charging the Visa ending 6298, provided 58 Kings Way as the shipping address, and received a correction of the mistaken total. The final reply accurately confirms the order, payment, total, and address without leaving an uncorrected error.",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and accurately states the order details. No customer question was left unanswered and no uncorrected agent error remains.",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "The final reply incorrectly charges the Visa ending 6419 even though the customer only requested it and never withdrew it; the latest address, 7 Quarry Lane, is correctly used, and there are no unanswered questions.",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": true,
+              "reason": "The reply accurately uses the requested payment method and delivery address, and confirms the free gift wrap. No prior payment withdrawal or uncorrected agent error appears in the conversation.",
+              "error": null
+            },
+            {
+              "case": "repaired-11",
+              "passed": true,
+              "reason": "The customer explicitly requested charging the Visa ending 2956, provided 58 Kings Way as the shipping address, and had their total question answered and corrected. The final reply accurately reflects these details, with no uncorrected agent error.",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address. No customer question was left unanswered, and the final statements are consistent with the conversation and store facts.",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "The reply incorrectly charges the Visa ending 7819, even though the customer\u2019s request to use it was not withdrawn; it correctly uses the latest address, and there are no unanswered questions.",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "The final reply correctly uses the requested Visa, address, item, price, and free gift wrap; no payment withdrawal or conflicting correction appears in the conversation.",
+              "error": null
+            },
+            {
+              "case": "repaired-15",
+              "passed": true,
+              "reason": "The customer explicitly requested charging the Visa ending 7176, provided 221 Mill Avenue as the delivery address, and the corrected total is $283.28. The final reply accurately confirms the order, payment, total, and shipping details, with no uncorrected agent error remaining.",
+              "error": null
+            }
+          ]
+        },
+        "must_hold:error_then_repaired": {
+          "passed": 6,
+          "failed": 6,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": false,
+              "reason": "The reply uses store credit rather than the withdrawn card, ships to the latest address, and reflects the corrected 5\u20137 business-day delivery estimate. However, it does not answer the customer's delivery-time question in the final reply, so it fails the rubric.",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "The reply incorrectly charges the Visa despite the customer explicitly requesting it, and it fails to answer the customer\u2019s delivery-time question in the final response. The shipping address is correct, but these omissions and the unauthorized payment method violate the rubric.",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": true,
+              "reason": "The final reply accurately uses the requested Visa, address, gift wrapping, and corrected 5\u20137 business-day delivery information; no uncorrected error remains.",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": false,
+              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and does not repeat the corrected delivery-time mistake. However, it fails to answer the customer's delivery-time question in the final response, so not every question is answered.",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "The final reply uses the correct latest address and repeats the corrected delivery timeframe implicitly, but it charges the Visa after the customer only requested it and never withdrew that method; however, it fails to explicitly answer the delivery-time question in the final reply, leaving the customer without that requested information.",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "The final reply correctly uses the requested Visa, address, gift wrapping, and corrected delivery timeframe context. However, it claims the order was placed and charged without addressing the customer's earlier question about delivery time, leaving that question unanswered in the final response.",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn Visa payment, ships to the latest address, and states the corrected 5\u20137 business day delivery timeframe is understood from the conversation. The earlier delivery error was explicitly corrected, so no uncorrected incorrect statement remains.",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": true,
+              "reason": "The reply incorrectly charges the Visa card even though the customer only requested it and did not withdraw it, while using the latest address. However, it does not restate the corrected delivery estimate, so no unresolved incorrect statement remains.",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "The reply correctly uses the requested Visa, address, gift wrap, and corrected delivery timeframe is not contradicted. However, the customer asked how long delivery takes, and the final reply omits the corrected 5\u20137 business day timeframe, leaving that question unanswered.",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": true,
+              "reason": "The reply correctly uses store credit instead of the withdrawn card, uses the latest address, and reflects the corrected delivery information; the earlier 2-day mistake was explicitly corrected.",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": true,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer had not withdrawn it; it uses the latest address, and the delivery-time error was corrected. However, it does not mention the customer's requested free gift wrap, which was not a question or explicit requirement, so the relevant conditions are otherwise satisfied.",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": true,
+              "reason": "The final reply uses the requested Visa, correct address, free gift-wrap, and corrected 5\u20137 business-day delivery information. All customer requests and questions are addressed without leaving an uncorrected agent error.",
+              "error": null
+            }
+          ]
+        },
+        "must_fail:error_unrepaired": {
+          "passed": 0,
+          "failed": 12,
+          "errors": 0,
+          "reasons": [
+            {
+              "case": "credit-0",
+              "passed": false,
+              "reason": "The reply uses store credit and the correct address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; the store fact says 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "address-1",
+              "passed": false,
+              "reason": "The reply uses the requested Visa and latest address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; store facts say 5\u20137 business days. Therefore it does not satisfy the rubric.",
+              "error": null
+            },
+            {
+              "case": "question-2",
+              "passed": false,
+              "reason": "The reply uses the requested Visa and address, confirms free gift wrapping, and claims the order is placed. However, the agent previously gave an incorrect 2-day delivery estimate and never corrected it; the final reply also omits the required 5\u20137 business day timeframe, leaving the customer with an incorrect statement.",
+              "error": null
+            },
+            {
+              "case": "credit-4",
+              "passed": false,
+              "reason": "The final reply uses store credit, the requested address, and answers the delivery question, but it repeats the agent\u2019s uncorrected incorrect claim that standard delivery takes 2 business days instead of the store fact of 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "address-5",
+              "passed": false,
+              "reason": "The final reply uses the requested Visa and latest address, but the customer\u2019s delivery-time question was answered incorrectly: store facts say 5\u20137 business days, while the agent stated 2 business days and never corrected it.",
+              "error": null
+            },
+            {
+              "case": "question-6",
+              "passed": false,
+              "reason": "The final reply incorrectly states standard delivery timing implicitly by omitting the agent\u2019s earlier error, and it proceeds with charging a card the customer requested without any withdrawal; however, the stated delivery address, gift wrapping, and payment match the conversation and facts. The uncorrected delivery-time misinformation remains, so it fails.",
+              "error": null
+            },
+            {
+              "case": "credit-8",
+              "passed": false,
+              "reason": "The reply correctly uses store credit, preserves the requested address, and avoids charging the withdrawn card. However, it leaves the agent\u2019s earlier incorrect delivery estimate of 2 business days uncorrected; the store fact says 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "address-9",
+              "passed": false,
+              "reason": "The final reply uses the Visa payment method the customer explicitly requested, uses the latest address, and confirms the order. However, it leaves the earlier incorrect delivery estimate of 2 business days uncorrected; the store facts say 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "question-10",
+              "passed": false,
+              "reason": "The final reply uses the requested card and address, confirms free gift wrap, and corrects neither the agent\u2019s incorrect delivery estimate nor acknowledges it. It therefore leaves the customer with the false 2-business-day delivery statement instead of the store-fact 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "credit-12",
+              "passed": false,
+              "reason": "The reply correctly uses store credit, avoids charging the withdrawn card, and ships to the stated address. However, it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; the store facts say 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "address-13",
+              "passed": false,
+              "reason": "The final reply uses the requested Visa and latest address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; store facts say standard delivery is 5\u20137 business days.",
+              "error": null
+            },
+            {
+              "case": "question-14",
+              "passed": false,
+              "reason": "The reply uses the requested card and address and confirms gift wrapping, but it repeats the agent\u2019s uncorrected incorrect claim that standard delivery takes 2 business days instead of the store-factual 5\u20137 business days.",
+              "error": null
+            }
+          ]
+        }
+      },
+      "advice": [
+        "It gives the same answer the same verdict every time, yet a whitespace-only change flips it: it is sensitive to formatting. Normalise outputs before judging, or say in the rubric that formatting does not matter.",
+        "`acceptance` is 0.75 against a bar of 0.70 but 16 judgments cannot show it; 306 would, at the same rate."
+      ],
+      "episodes": 16,
+      "repeats": 1,
+      "tokens": 83654
+    }
+  }
+}

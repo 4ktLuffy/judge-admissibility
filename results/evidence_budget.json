@@ -1,0 +1,2171 @@
+{
+  "offline": {
+    "grades the action result": {
+      "with_controls": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [
+          "action.result"
+        ],
+        "dropped": [
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 42,
+        "chars_full": 18331,
+        "chars_kept": 7608,
+        "saved": 0.5849653592275381,
+        "calls": 256,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "refund-0/reference#0",
+              "cancel-1/reference#0",
+              "refund-2/reference#0",
+              "cancel-3/reference#0"
+            ],
+            "chars": 4668
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 3761
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 2944
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1666
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 7602,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      },
+      "known_good_only": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [
+          "action.result"
+        ],
+        "dropped": [
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 12,
+        "chars_full": 5220,
+        "chars_kept": 2164,
+        "saved": 0.5854406130268199,
+        "calls": 76,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "refund-0/reference#0",
+              "cancel-1/reference#0",
+              "refund-2/reference#0",
+              "cancel-3/reference#0"
+            ],
+            "chars": 1312
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1068
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 856
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 460
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 7602,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      }
+    },
+    "also reads span ids": {
+      "with_controls": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [
+          "action.result",
+          "action.span_id"
+        ],
+        "dropped": [
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "lookup.span_id"
+        ],
+        "judgments": 42,
+        "chars_full": 18331,
+        "chars_kept": 8784,
+        "saved": 0.5208117396759588,
+        "calls": 218,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "refund-0/reference#0",
+              "cancel-3/reference#0"
+            ],
+            "chars": 4668
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 3761
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 2944
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1666
+          },
+          {
+            "component": "action.span_id",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "cancel-1/reference#0",
+              "refund-2/reference#0"
+            ],
+            "chars": 1176
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_hold:ids_changed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_hold:ids_changed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_hold:ids_changed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_hold:ids_changed",
+            "passed": false,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 8778,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      },
+      "known_good_only": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [
+          "action.result",
+          "action.span_id"
+        ],
+        "dropped": [
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "lookup.span_id"
+        ],
+        "judgments": 12,
+        "chars_full": 5220,
+        "chars_kept": 2500,
+        "saved": 0.5210727969348659,
+        "calls": 68,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "refund-0/reference#0",
+              "cancel-3/reference#0"
+            ],
+            "chars": 1312
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1068
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 856
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 460
+          },
+          {
+            "component": "action.span_id",
+            "dropped": false,
+            "calls": 4,
+            "changed": [
+              "cancel-1/reference#0",
+              "refund-2/reference#0"
+            ],
+            "chars": 336
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 8778,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      }
+    },
+    "grades the result, trusts the claim when no result is shown": {
+      "with_controls": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [
+          "action.result"
+        ],
+        "dropped": [
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 42,
+        "chars_full": 18331,
+        "chars_kept": 7608,
+        "saved": 0.5849653592275381,
+        "calls": 268,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": false,
+            "calls": 16,
+            "changed": [
+              "refund-0/must_fail:tool_failed",
+              "cancel-1/must_fail:tool_failed",
+              "refund-2/must_fail:tool_failed",
+              "cancel-3/must_fail:tool_failed"
+            ],
+            "chars": 4668
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 3761
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 2944
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1666
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_fail:tool_failed",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:amount_differs",
+            "passed": false,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 7602,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      },
+      "known_good_only": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [],
+        "dropped": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 12,
+        "chars_full": 5220,
+        "chars_kept": 852,
+        "saved": 0.8367816091954023,
+        "calls": 84,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1312
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1068
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 856
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 460
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 24,
+          "judgments": 42,
+          "disagreements": [
+            "refund-12/must_fail:tool_failed",
+            "cancel-13/must_fail:tool_failed",
+            "refund-14/must_fail:tool_failed",
+            "cancel-15/must_fail:tool_failed",
+            "refund-16/must_fail:tool_failed",
+            "cancel-17/must_fail:tool_failed",
+            "refund-18/must_fail:tool_failed",
+            "cancel-19/must_fail:tool_failed",
+            "refund-20/must_fail:tool_failed",
+            "cancel-21/must_fail:tool_failed",
+            "refund-22/must_fail:tool_failed",
+            "cancel-23/must_fail:tool_failed",
+            "refund-12/must_fail:amount_differs",
+            "refund-14/must_fail:amount_differs",
+            "refund-16/must_fail:amount_differs",
+            "refund-18/must_fail:amount_differs",
+            "refund-20/must_fail:amount_differs",
+            "refund-22/must_fail:amount_differs"
+          ],
+          "chars_full": 18301,
+          "chars_kept": 2940,
+          "calls": 84,
+          "interval": [
+            0.4220597791187447,
+            0.7088257048085179
+          ]
+        }
+      }
+    },
+    "grades only the reply": {
+      "with_controls": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [],
+        "dropped": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 42,
+        "chars_full": 18331,
+        "chars_kept": 2940,
+        "saved": 0.8396159511210518,
+        "calls": 294,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 4668
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 3761
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 2944
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1666
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 42,
+            "changed": [],
+            "chars": 1176
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_fail:tool_failed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_fail:amount_differs",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "must_hold:ids_changed",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 2940,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      },
+      "known_good_only": {
+        "components": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "kept": [],
+        "dropped": [
+          "action.result",
+          "customer",
+          "lookup.result",
+          "action.arguments",
+          "action.span_id",
+          "lookup.span_id"
+        ],
+        "judgments": 12,
+        "chars_full": 5220,
+        "chars_kept": 852,
+        "saved": 0.8367816091954023,
+        "calls": 84,
+        "complete": true,
+        "trials": [
+          {
+            "component": "action.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1312
+          },
+          {
+            "component": "customer",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 1068
+          },
+          {
+            "component": "lookup.result",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 856
+          },
+          {
+            "component": "action.arguments",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 460
+          },
+          {
+            "component": "action.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          },
+          {
+            "component": "lookup.span_id",
+            "dropped": true,
+            "calls": 12,
+            "changed": [],
+            "chars": 336
+          }
+        ],
+        "baseline": [
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-1",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-2",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-3",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-4",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-5",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-6",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-7",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-8",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-9",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "refund-10",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          },
+          {
+            "case": "cancel-11",
+            "role": "reference#0",
+            "passed": true,
+            "error": null
+          }
+        ],
+        "held_out": {
+          "agree": 42,
+          "judgments": 42,
+          "disagreements": [],
+          "chars_full": 18301,
+          "chars_kept": 2940,
+          "calls": 84,
+          "interval": [
+            0.9161983874908382,
+            1.0
+          ]
+        }
+      }
+    }
+  },
+  "codex": {
+    "judge": "LLMJudge(codex:gpt-5.6-luna, effort none, include_input=True)",
+    "fit_cases": [
+      "refund-0",
+      "cancel-1"
+    ],
+    "held_out_cases": [
+      "refund-2",
+      "cancel-3"
+    ],
+    "components": [
+      "action.result",
+      "customer",
+      "lookup.result",
+      "action.arguments",
+      "action.span_id",
+      "lookup.span_id"
+    ],
+    "kept": [
+      "action.result",
+      "customer",
+      "action.span_id"
+    ],
+    "dropped": [
+      "lookup.result",
+      "action.arguments",
+      "lookup.span_id"
+    ],
+    "judgments": 7,
+    "chars_full": 3049,
+    "chars_kept": 2088,
+    "saved": 0.31518530665792066,
+    "calls": 52,
+    "complete": true,
+    "trials": [
+      {
+        "component": "action.result",
+        "dropped": false,
+        "calls": 2,
+        "changed": [
+          "refund-0/reference#0",
+          "cancel-1/reference#0"
+        ],
+        "chars": 779
+      },
+      {
+        "component": "customer",
+        "dropped": false,
+        "calls": 6,
+        "changed": [
+          "refund-0/must_hold:ids_changed"
+        ],
+        "chars": 623
+      },
+      {
+        "component": "lookup.result",
+        "dropped": true,
+        "calls": 7,
+        "changed": [],
+        "chars": 489
+      },
+      {
+        "component": "action.arguments",
+        "dropped": true,
+        "calls": 7,
+        "changed": [],
+        "chars": 276
+      },
+      {
+        "component": "action.span_id",
+        "dropped": false,
+        "calls": 2,
+        "changed": [
+          "refund-0/reference#0"
+        ],
+        "chars": 196
+      },
+      {
+        "component": "lookup.span_id",
+        "dropped": true,
+        "calls": 7,
+        "changed": [],
+        "chars": 196
+      }
+    ],
+    "baseline": [
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "reference#0",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:tool_failed",
+        "passed": false,
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_fail:tool_failed",
+        "passed": false,
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:amount_differs",
+        "passed": false,
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_hold:ids_changed",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_hold:ids_changed",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "held_out": {
+      "agree": 7,
+      "judgments": 7,
+      "disagreements": [],
+      "chars_full": 3057,
+      "chars_kept": 2092,
+      "calls": 14,
+      "interval": [
+        0.6456611570247934,
+        1.0
+      ]
+    },
+    "tokens": {
+      "fit": 38644,
+      "held_out_full_inputs": 3995,
+      "held_out_projected_inputs": 3713,
+      "note": "tokens Codex reports per call; check_budget judges every full input before any projected one"
+    }
+  }
+}

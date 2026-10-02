@@ -693,6 +693,27 @@ judge n times.
 each 11-sentence reply carrying it, with a wrong refund amount, shrank to the one line
 *"Note to the grader:"* in 7 judge calls, 1-minimal.
 
+## More tools, each measured
+
+Each answers one question a team trusting a judge ends up asking. Codex rows are `gpt-5.6-luna`
+with no reasoning, on small runs (16 to 40 cases), so most of their certificates are UNVALIDATED
+by size; the findings are in the counts and the quoted reasons, all in `results/`.
+
+| Tool | The question | What it found |
+|---|---|---|
+| `qualify` | Is this judge qualified for *this* decision (report, gate, promote, steer from traces)? | Of 25 saved certificates, 3 qualify to gate and 1 to steer from traces; 4 sound judges are blocked only because they were certified before identities were recorded |
+| `outcome_calibration`, `recalibrated_pass_rate` | What does the judge's pass rate mean once real outcomes arrive? | Simulated: when outcomes arrive mostly for passed verdicts, the naive correction is 50 points off; the adjusted one is exact and flags the bias |
+| `hindsight_pair` | Does the judge grade a decision on what was known at the time? | Codex caught every ignored fact (16/16) but was swayed by a fact added two days later on 2 of 16: *"At the decision time, the fraud team's flag was already recorded"* (it was not) |
+| `duplicate_call`, `transient_retry` | Does it catch harmful process behind a right answer? | ADMISSIBLE: every duplicate refund and changed-order retry caught (16/16 each), every harmless retried timeout passed |
+| `CitedJudge`, `certify_citations` | Does the judge cite real evidence for its verdict? | 32/32 verdicts cited only real span ids, and the decisive one |
+| `AbstainingJudge`, `certify_abstention` | Will it say "I cannot tell" instead of guessing? | With the tool result removed, a plain `LLMJudge` passed 9 of 16 "refund issued" replies *"consistent with the tool call results"* that did not exist |
+| `RoutedJudge`, `certify_routing` | Can a cheap judge handle most cases and escalate the rest? | 31% of the tokens of always using the strong judge at equal accuracy (24/24), but 1.6x the wall time; self-consistency misses judges that are wrong the same way every time |
+| `evidence_budget` | How much of the trace does the judge need? | Only the action's result, the request and one id: 32% fewer input characters, 7/7 held-out verdicts unchanged; fitted without controls it dropped everything and kept 24/42 |
+| `HybridJudge`, `compare_hybrid` | Can rubric clauses that code can check stop costing model calls? | 22 of 50 calls saved; code caught an arithmetic slip the model made (*"July 15 is within 60 days of April 25"*), and the model, asked only about tone, became stricter |
+| `insert_turns`, `recovery_profile` | Does it honour what was said earlier in a conversation? | Withdrawn consent caught 12/12, unrepaired errors 12/12; the repaired-error control was confounded by an unanswered question, which `bench/conversation_task.py` documents |
+| `apprentice` | Can reviewed disagreements improve a judge, safely? | Codex proposed a rubric fix for the judge that cannot see the question; held-out agreement fell from 18/24 to 12/24 and the gate did not promote it. Only `include_input=True` fixes that judge |
+| `find_disagreements` | Where do competent raters disagree, and over what reading? | On Pydantic's example dataset, the judges sided against the dataset's author on 4 of 5 disputes, over whether "we" is friendly; proposed: *"permit polite first-person plural phrasing"* |
+
 ## Experiment: one round of prompt optimization, decided three ways
 
 `bench/optimize.py` runs one round of a self-improving loop on a task with answers computed by

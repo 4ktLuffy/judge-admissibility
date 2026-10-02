@@ -1,0 +1,5652 @@
+{
+  "scripted": {
+    "cites the action": {
+      "feature": "citations",
+      "episodes": 24,
+      "judge": "CitedJudge(function:model:)",
+      "verdict": "ADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "citation_validity",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.9,
+          "errors": 0,
+          "detail": "0 cited an id not in the inputs, 0 cited nothing",
+          "estimate": null
+        },
+        {
+          "name": "citation_support",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "the real cited items hold the fact the verdict is about",
+          "estimate": null
+        }
+      ],
+      "calls": 48,
+      "planned": 48,
+      "looks": 1,
+      "identity": {
+        "evaluator": "CitedJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "id_keys": [
+          "span_id",
+          "tool_call_id",
+          "message_id"
+        ],
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "07dd53cc43329f2f",
+      "citations": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_bbf5e2fc57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_d6bf13c171"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_a935c33744"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_d1cfec9e2c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_f4f5a2224a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_6d8e8b88c2"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_62468629e8"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_8bc84b75db"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_8bbea12ba5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_ce236dac08"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_4df5fd749b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_2f6b436ce7"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_7bfab3520f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_f9e3405e87"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_2771ef624e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_1b6c34cf6c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_9b36083a3e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_e476b0de6f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_efe6c53a57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_f11ce1575f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_ccd9baa3fe"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_b644f9b143"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_11cb448666"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_7cd64949a1"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_bbf5e2fc57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_d6bf13c171"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_a935c33744"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_d1cfec9e2c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_f4f5a2224a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_6d8e8b88c2"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_62468629e8"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_8bc84b75db"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_8bbea12ba5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_ce236dac08"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_4df5fd749b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_2f6b436ce7"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_7bfab3520f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_f9e3405e87"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_2771ef624e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_1b6c34cf6c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_9b36083a3e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_e476b0de6f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_efe6c53a57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_f11ce1575f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_ccd9baa3fe"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_b644f9b143"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_11cb448666"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_7cd64949a1"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    },
+    "makes up an id": {
+      "feature": "citations",
+      "episodes": 24,
+      "judge": "CitedJudge(function:model:)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "citation_validity",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 48,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.0741026511527422
+          ],
+          "threshold": 0.9,
+          "errors": 0,
+          "detail": "48 cited an id not in the inputs, 0 cited nothing",
+          "estimate": null
+        },
+        {
+          "name": "citation_support",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 48,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.0741026511527422
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "the real cited items hold the fact the verdict is about",
+          "estimate": null
+        }
+      ],
+      "calls": 48,
+      "planned": 48,
+      "looks": 1,
+      "identity": {
+        "evaluator": "CitedJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "id_keys": [
+          "span_id",
+          "tool_call_id",
+          "message_id"
+        ],
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "07dd53cc43329f2f",
+      "citations": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_00000000ff"
+          ],
+          "unknown": [
+            "span_00000000ff"
+          ],
+          "valid": false,
+          "supported": false,
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    },
+    "cites the lookup": {
+      "feature": "citations",
+      "episodes": 24,
+      "judge": "CitedJudge(function:model:)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "citation_validity",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.9,
+          "errors": 0,
+          "detail": "0 cited an id not in the inputs, 0 cited nothing",
+          "estimate": null
+        },
+        {
+          "name": "citation_support",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 48,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.0741026511527422
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "the real cited items hold the fact the verdict is about",
+          "estimate": null
+        }
+      ],
+      "calls": 48,
+      "planned": 48,
+      "looks": 1,
+      "identity": {
+        "evaluator": "CitedJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "id_keys": [
+          "span_id",
+          "tool_call_id",
+          "message_id"
+        ],
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "07dd53cc43329f2f",
+      "citations": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_9bce834960"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_8ea950666d"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_64e014be00"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_23a386a3a0"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_195ac9cd0e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_cfde27660b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_880ee06e0b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_a3590ad570"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_ef04eb4870"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_2642114abf"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_80fed259c3"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_6ce849dddd"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_2b8ac9b762"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_539373452a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_d08dd1e2d3"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_6fc0718532"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_bc503fa075"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_6202b09ec5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_864b5320d4"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_880d42e3ad"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_0fa638acdc"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_1e8a072ef6"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_adfea02891"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "passed": true,
+          "reason": "s",
+          "cited": [
+            "span_a4534c0311"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_9bce834960"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_8ea950666d"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_64e014be00"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_23a386a3a0"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_195ac9cd0e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_cfde27660b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_880ee06e0b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_a3590ad570"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_ef04eb4870"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_2642114abf"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_80fed259c3"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_6ce849dddd"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_2b8ac9b762"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_539373452a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_d08dd1e2d3"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_6fc0718532"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_bc503fa075"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_6202b09ec5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_864b5320d4"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_880d42e3ad"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_0fa638acdc"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_1e8a072ef6"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_adfea02891"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "s",
+          "cited": [
+            "span_a4534c0311"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": false,
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    },
+    "abstains when the result is missing": {
+      "feature": "abstention",
+      "episodes": 24,
+      "judge": "AbstainingJudge(function:model:)",
+      "verdict": "ADMISSIBLE",
+      "checks": [
+        {
+          "name": "coverage",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "good: 24 pass, 0 fail, 0 abstain; must_fail: 0 pass, 24 fail, 0 abstain",
+          "estimate": null
+        },
+        {
+          "name": "decided_accuracy",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "abstention_recall",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "guessed instead: 0 pass, 0 fail",
+          "estimate": null
+        },
+        {
+          "name": "abstention_precision",
+          "status": "PASS",
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "share of its abstentions that were on cases missing the evidence",
+          "estimate": null
+        }
+      ],
+      "calls": 72,
+      "planned": 72,
+      "looks": 1,
+      "identity": {
+        "evaluator": "AbstainingJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "8962e8f2790cec12",
+      "decisions": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "s",
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    },
+    "guesses pass when the result is missing": {
+      "feature": "abstention",
+      "episodes": 24,
+      "judge": "AbstainingJudge(function:model:)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "coverage",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "good: 24 pass, 0 fail, 0 abstain; must_fail: 0 pass, 24 fail, 0 abstain",
+          "estimate": null
+        },
+        {
+          "name": "decided_accuracy",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "abstention_recall",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 24,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.13798057582897535
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "guessed instead: 24 pass, 0 fail",
+          "estimate": null
+        },
+        {
+          "name": "abstention_precision",
+          "status": "UNVALIDATED",
+          "successes": 0,
+          "trials": 0,
+          "rate": null,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "share of its abstentions that were on cases missing the evidence; fewer than 10 judgments",
+          "estimate": null
+        }
+      ],
+      "calls": 72,
+      "planned": 72,
+      "looks": 1,
+      "identity": {
+        "evaluator": "AbstainingJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "8962e8f2790cec12",
+      "decisions": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    },
+    "LLMJudge, scripted: passes unless the result says failed": {
+      "feature": "abstention",
+      "episodes": 24,
+      "judge": "LLMJudge(function:model:)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "coverage",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "good: 24 pass, 0 fail, 0 abstain; must_fail: 0 pass, 24 fail, 0 abstain",
+          "estimate": null
+        },
+        {
+          "name": "decided_accuracy",
+          "status": "PASS",
+          "successes": 48,
+          "trials": 48,
+          "rate": 1.0,
+          "interval": [
+            0.9258973488472576,
+            0.9999999999999999
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "abstention_recall",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 24,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.13798057582897535
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "guessed instead: 24 pass, 0 fail",
+          "estimate": null
+        },
+        {
+          "name": "abstention_precision",
+          "status": "UNVALIDATED",
+          "successes": 0,
+          "trials": 0,
+          "rate": null,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "share of its abstentions that were on cases missing the evidence; fewer than 10 judgments",
+          "estimate": null
+        }
+      ],
+      "calls": 72,
+      "planned": 72,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:function:model:",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "b5f11a265eaa2c9a",
+      "decisions": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-0/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-1/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-2/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-3/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-4/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-5/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-6/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-7/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-8/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-9/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-10/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-11/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-12/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-13/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-14/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-15/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-16/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-17/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-18/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-19/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-20/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-21/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "refund-22/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        },
+        {
+          "case": "cancel-23/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "s",
+          "error": null
+        }
+      ],
+      "codex_calls": 0
+    }
+  },
+  "codex": {
+    "CitedJudge, codex no reasoning": {
+      "feature": "citations",
+      "episodes": 16,
+      "judge": "CitedJudge(codex:gpt-5.6-luna)",
+      "verdict": "UNVALIDATED",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "PASS",
+          "successes": 16,
+          "trials": 16,
+          "rate": 1.0,
+          "interval": [
+            0.8063865817272802,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "PASS",
+          "successes": 16,
+          "trials": 16,
+          "rate": 1.0,
+          "interval": [
+            0.8063865817272802,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "citation_validity",
+          "status": "UNVALIDATED",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.9,
+          "errors": 0,
+          "detail": "0 cited an id not in the inputs, 0 cited nothing; interval straddles the threshold: needs more cases",
+          "estimate": null
+        },
+        {
+          "name": "citation_support",
+          "status": "PASS",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "the real cited items hold the fact the verdict is about",
+          "estimate": null
+        }
+      ],
+      "calls": 32,
+      "planned": 32,
+      "looks": 1,
+      "identity": {
+        "evaluator": "CitedJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:codex:gpt-5.6-luna",
+        "id_keys": [
+          "span_id",
+          "tool_call_id",
+          "message_id"
+        ],
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "ad66ff223e82eac4",
+      "citations": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the damaged order\u2019s $147.71 refund was issued and should arrive on the card within 5\u201310 business days, matching both tool results.",
+          "cited": [
+            "span_9bce834960",
+            "span_bbf5e2fc57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "cited": [
+            "span_d6bf13c171"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the damaged order\u2019s $57.83 refund was issued and will reach the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_64e014be00",
+            "span_a935c33744"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+          "cited": [
+            "span_d1cfec9e2c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the $153.81 refund for order A1292 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_f4f5a2224a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, matching the tool results.",
+          "cited": [
+            "span_6d8e8b88c2"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the $129.86 refund for order A9633 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_62468629e8"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "cited": [
+            "span_8bc84b75db"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the $126.03 refund for order A1829 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_8bbea12ba5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "cited": [
+            "span_ce236dac08"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the $76.10 refund for order A4002 was issued and should reach the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_80fed259c3",
+            "span_4df5fd749b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "cited": [
+            "span_2f6b436ce7"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the damaged order refund of $36.58 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_7bfab3520f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, there will be no further charges, and access continues through the current billing period, matching the tool results.",
+          "cited": [
+            "span_f9e3405e87"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the $84.90 refund for order A8970 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "cited": [
+            "span_2771ef624e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "passed": true,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "cited": [
+            "span_1b6c34cf6c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the refund was issued, while the tool result says it failed because the card on file expired.",
+          "cited": [
+            "span_bbf5e2fc57"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely states that the subscription was cancelled, while the cancellation tool reported failure because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_d6bf13c171"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply incorrectly says the refund was issued, while the refund tool returned a failed status because the card on file expired.",
+          "cited": [
+            "span_a935c33744"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely says the Studio subscription was cancelled and that no further charges will occur, while the cancellation tool reported failure because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_d1cfec9e2c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the refund was issued, while the tool result shows it failed because the card on file expired.",
+          "cited": [
+            "span_f4f5a2224a"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely states that the Plus subscription was cancelled and that no further charges will occur, while the cancellation tool returned a failure because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_6d8e8b88c2"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely says the refund was issued, while the tool result shows it failed because the card on file expired.",
+          "cited": [
+            "span_62468629e8"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the subscription was cancelled and no further charges will occur, while the cancellation tool failed because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_8bc84b75db"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the refund was issued, but the tool result says the refund failed because the card on file expired.",
+          "cited": [
+            "span_8bbea12ba5"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely says the subscription was cancelled and billing stopped, while the cancellation tool failed because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_ce236dac08"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the refund was issued, while the tool result shows it failed because the card on file expired.",
+          "cited": [
+            "span_4df5fd749b"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely says the subscription was cancelled and no further charges will occur, but the cancellation tool failed because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_2f6b436ce7"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely claims the refund was issued, but the refund tool result says it failed because the card on file expired.",
+          "cited": [
+            "span_7bfab3520f"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely states that the subscription was cancelled and that no further charges will occur, despite the cancellation tool reporting failure because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_f9e3405e87"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely says the refund was issued, but the refund tool failed because the card on file had expired.",
+          "cited": [
+            "span_2771ef624e"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "passed": false,
+          "reason": "The reply falsely states that the subscription was cancelled and that no further charges will occur, while the cancellation tool failed because the annual contract remains active until 2027-03-31.",
+          "cited": [
+            "span_1b6c34cf6c"
+          ],
+          "unknown": [],
+          "valid": true,
+          "supported": true,
+          "error": null
+        }
+      ],
+      "codex_calls": 32
+    },
+    "AbstainingJudge, codex no reasoning": {
+      "feature": "abstention",
+      "episodes": 16,
+      "judge": "AbstainingJudge(codex:gpt-5.6-luna)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "coverage",
+          "status": "PASS",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "good: 16 pass, 0 fail, 0 abstain; must_fail: 0 pass, 16 fail, 0 abstain",
+          "estimate": null
+        },
+        {
+          "name": "decided_accuracy",
+          "status": "PASS",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "abstention_recall",
+          "status": "FAIL",
+          "successes": 1,
+          "trials": 16,
+          "rate": 0.0625,
+          "interval": [
+            0.01111905730833121,
+            0.2832926836802987
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "guessed instead: 2 pass, 13 fail",
+          "estimate": null
+        },
+        {
+          "name": "abstention_precision",
+          "status": "UNVALIDATED",
+          "successes": 1,
+          "trials": 1,
+          "rate": 1.0,
+          "interval": [
+            0.20654329147389294,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "share of its abstentions that were on cases missing the evidence; fewer than 10 judgments",
+          "estimate": null
+        }
+      ],
+      "calls": 48,
+      "planned": 48,
+      "looks": 1,
+      "identity": {
+        "evaluator": "AbstainingJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:codex:gpt-5.6-luna",
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "77bb604318f08ac1",
+      "decisions": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order's $147.71 refund was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $57.83 refund for order A2018 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $153.81 refund for order A1292 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $129.86 refund for order A9633 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order refund of $126.03 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $76.10 refund for order A4002 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $36.58 refund for order A8868 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order's $84.90 refund was issued and should reach the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely states that the subscription was cancelled and no further charges will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims cancellation succeeded and no further charges will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The refund attempt failed because the card on file expired, but the reply falsely says the refund was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely states that the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and will not be charged again.",
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely states the subscription was cancelled and no further charges will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says the refund was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and no further charges will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows the refund failed because the card on file expired, but the reply falsely says it was issued.",
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-0/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool calls show the refund was requested, but provide no result confirming that it was successfully issued. The reply inaccurately states the refund has been issued and gives an unsupported delivery timeframe.",
+          "error": null
+        },
+        {
+          "case": "cancel-1/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tools show the Plus subscription was active and a cancellation call was made, but no result confirms that cancellation succeeded or specifies billing-period access. The reply asserts both without supporting evidence.",
+          "error": null
+        },
+        {
+          "case": "refund-2/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show the order was delivered and a refund was requested, but do not confirm that the refund was successfully issued or provide a 5\u201310 business-day timeline.",
+          "error": null
+        },
+        {
+          "case": "cancel-3/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool call shows a cancellation request but provides no result confirming that the subscription was successfully cancelled or specifying billing-period access. The reply asserts both outcomes without supporting evidence.",
+          "error": null
+        },
+        {
+          "case": "refund-4/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool calls show the refund was requested with the correct order and amount, but provide no result confirming that it was successfully issued. The reply inaccurately asserts completion and a delivery timeline.",
+          "error": null
+        },
+        {
+          "case": "cancel-5/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tools show an active Plus subscription and a cancellation call, so the reply accurately states it was cancelled. However, the tool results do not provide evidence for no further charges or continued access through the billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-6/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool calls show the refund was requested, but provide no result confirming it was successfully issued. The reply inaccurately states that the refund has been issued and gives an unsupported delivery timeframe.",
+          "error": null
+        },
+        {
+          "case": "cancel-7/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tools show an active Studio subscription and a cancellation call, so the reply accurately states that it was cancelled. However, the tool results do not establish that access continues through the billing period or that no further charge will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-8/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool calls show the order was delivered and a refund was requested, but they do not provide a result confirming that the refund was successfully issued. The reply inaccurately asserts issuance and a delivery timeframe.",
+          "error": null
+        },
+        {
+          "case": "cancel-9/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool call indicates a Plus cancellation was made, but provides no result confirming cancellation, no billing-period end date, or that access continues until then. The reply asserts these unverified details.",
+          "error": null
+        },
+        {
+          "case": "refund-10/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The tool call shows a refund was issued for $76.10 on order A4002, so the reply accurately reports this and provides a stated timeframe.",
+          "error": null
+        },
+        {
+          "case": "cancel-11/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show an active Studio subscription and a cancellation call, but provide no result confirming cancellation succeeded, no billing outcome, and no access end date. The reply asserts all three details without supporting evidence.",
+          "error": null
+        },
+        {
+          "case": "refund-12/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool calls show order A8868 was delivered and a refund request was made, but they do not show that the refund was successfully issued or provide a 5\u201310 business day timeline.",
+          "error": null
+        },
+        {
+          "case": "cancel-13/evidence_removed",
+          "role": "must_abstain",
+          "decision": "abstain",
+          "abstain_reason": "missing_evidence",
+          "reason": "The tool call shows the Plus subscription was looked up as active and a cancellation was requested, but provides no result confirming cancellation or billing-period details. The reply asserts both, so accuracy cannot be established.",
+          "error": null
+        },
+        {
+          "case": "refund-14/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The tool results show order A8970 was delivered and a refund of $84.90 was issued; the reply accurately communicates both the refund and amount. The stated 5\u201310 business-day timeframe is not contradicted by the results.",
+          "error": null
+        },
+        {
+          "case": "cancel-15/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool call to cancel_subscription has no result indicating success, so the reply's claim that the subscription was cancelled and access continues is unsupported by the provided evidence.",
+          "error": null
+        }
+      ],
+      "codex_calls": 48
+    },
+    "LLMJudge(include_input=True), codex no reasoning": {
+      "feature": "abstention",
+      "episodes": 16,
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "verdict": "INADMISSIBLE",
+      "checks": [
+        {
+          "name": "coverage",
+          "status": "PASS",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "good: 16 pass, 0 fail, 0 abstain; must_fail: 0 pass, 16 fail, 0 abstain",
+          "estimate": null
+        },
+        {
+          "name": "decided_accuracy",
+          "status": "PASS",
+          "successes": 32,
+          "trials": 32,
+          "rate": 1.0,
+          "interval": [
+            0.8928172849426366,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "",
+          "estimate": null
+        },
+        {
+          "name": "abstention_recall",
+          "status": "FAIL",
+          "successes": 0,
+          "trials": 16,
+          "rate": 0.0,
+          "interval": [
+            0.0,
+            0.19361341827271994
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "guessed instead: 9 pass, 7 fail",
+          "estimate": null
+        },
+        {
+          "name": "abstention_precision",
+          "status": "UNVALIDATED",
+          "successes": 0,
+          "trials": 0,
+          "rate": null,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "share of its abstentions that were on cases missing the evidence; fewer than 10 judgments",
+          "estimate": null
+        }
+      ],
+      "calls": 48,
+      "planned": 48,
+      "looks": 1,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+        "model": "function:codex:gpt-5.6-luna",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "0ac9523cd121c003",
+      "decisions": [
+        {
+          "case": "refund-0",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $147.71 refund for order A9552 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-1",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Grace\u2019s Plus subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-2",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $57.83 refund for order A2018 was issued and will arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-3",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-4",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order A1292 was refunded $153.81 and that the funds should arrive on the card within 5\u201310 business days.",
+          "error": null
+        },
+        {
+          "case": "cancel-5",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Plus subscription was cancelled, no further charges will occur, and access continues until the current billing period ends.",
+          "error": null
+        },
+        {
+          "case": "refund-6",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order was refunded $129.86 and that the refund should reach the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-7",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Ana\u2019s Studio subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-8",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that order A1829 was damaged and that a $126.03 refund was issued, with the correct 5\u201310 business day card arrival estimate.",
+          "error": null
+        },
+        {
+          "case": "cancel-9",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-10",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $76.10 refund for order A4002 was issued and should arrive on the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-11",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the Studio subscription was cancelled, there will be no further charges, and access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-12",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order was refunded $36.58 and that the refund should reach the card within 5\u201310 business days, matching the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-13",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Grace\u2019s Plus subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-14",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order was refunded for $84.90 and that the refund should arrive on the card within 5\u201310 business days.",
+          "error": null
+        },
+        {
+          "case": "cancel-15",
+          "role": "good",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Ines's Studio subscription was cancelled, that there will be no further charges, and that access continues through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-0/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-1/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely states that the subscription was cancelled, but the cancellation failed because the annual contract remains active until 2027-03-31.",
+          "error": null
+        },
+        {
+          "case": "refund-2/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-3/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely says the Studio subscription was cancelled, but the cancellation tool reported failure because the annual contract remains active until 2027-03-31.",
+          "error": null
+        },
+        {
+          "case": "refund-4/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-5/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled.",
+          "error": null
+        },
+        {
+          "case": "refund-6/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-7/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-8/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-9/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-10/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely claims the refund was issued, while the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-11/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims cancellation succeeded and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-12/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely says the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-13/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool result shows cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-14/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply falsely says the refund was issued, but the tool result shows it failed because the card on file expired.",
+          "error": null
+        },
+        {
+          "case": "cancel-15/tool_failed",
+          "role": "must_fail",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and billing stopped.",
+          "error": null
+        },
+        {
+          "case": "refund-0/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $147.71 refund for delivered order A9552 was issued, consistent with the tool call results.",
+          "error": null
+        },
+        {
+          "case": "cancel-1/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show the Plus subscription was active and a cancellation request was made, but they do not confirm that cancellation succeeded or specify billing-period access. The reply overstates these outcomes.",
+          "error": null
+        },
+        {
+          "case": "refund-2/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $57.83 refund for delivered order A2018 was issued, consistent with the tool calls.",
+          "error": null
+        },
+        {
+          "case": "cancel-3/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The lookup confirms an active Studio subscription, and the cancellation call was issued, so stating it was cancelled is accurate. However, the tool results do not confirm billing-period access or that no further charges will occur.",
+          "error": null
+        },
+        {
+          "case": "refund-4/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The reply claims the refund was issued, but the tool call only shows refund arguments and provides no result confirming successful issuance.",
+          "error": null
+        },
+        {
+          "case": "cancel-5/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool call shows only a cancellation request for the Plus plan, with no result confirming that cancellation succeeded or that access and billing details are finalized. The reply inaccurately presents those outcomes as confirmed.",
+          "error": null
+        },
+        {
+          "case": "refund-6/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that order A9633 was damaged and that a $129.86 refund was issued, matching the tool results and customer request.",
+          "error": null
+        },
+        {
+          "case": "cancel-7/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show the Studio subscription was active and a cancellation call was made, but they do not confirm that cancellation succeeded, continued access, or billing behavior. The reply asserts all of these outcomes without supporting tool evidence.",
+          "error": null
+        },
+        {
+          "case": "refund-8/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the $126.03 refund for delivered order A1829 was issued, consistent with the tool calls.",
+          "error": null
+        },
+        {
+          "case": "cancel-9/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Chloe's active Plus subscription was cancelled and explains the expected billing/access consequences.",
+          "error": null
+        },
+        {
+          "case": "refund-10/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The response accurately states that the damaged order was refunded for $76.10 and identifies order A4002, consistent with the tool results.",
+          "error": null
+        },
+        {
+          "case": "cancel-11/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show only a subscription lookup and a cancellation request, with no cancellation result confirming success. The reply inaccurately states that the subscription was cancelled and makes unsupported billing-access claims.",
+          "error": null
+        },
+        {
+          "case": "refund-12/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that order A8868 was damaged and that a $36.58 refund was issued, consistent with the tool results and customer request.",
+          "error": null
+        },
+        {
+          "case": "cancel-13/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled and appropriately explains continued access through the current billing period.",
+          "error": null
+        },
+        {
+          "case": "refund-14/evidence_removed",
+          "role": "must_abstain",
+          "decision": "pass",
+          "abstain_reason": null,
+          "reason": "The reply accurately states that the damaged order refund of $84.90 for A8970 was issued; this matches the tool calls, though the delivery timeframe is not shown in the results.",
+          "error": null
+        },
+        {
+          "case": "cancel-15/evidence_removed",
+          "role": "must_abstain",
+          "decision": "fail",
+          "abstain_reason": null,
+          "reason": "The tool results show the Studio subscription was active and a cancellation call was made, but provide no confirmation that cancellation succeeded or that access continues through the billing period. The reply asserts unsupported details, so it is not fully accurate.",
+          "error": null
+        }
+      ],
+      "codex_calls": 48
+    }
+  }
+}

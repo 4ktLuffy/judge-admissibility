@@ -1,0 +1,1533 @@
+{
+  "replay": {
+    "support: no reasoning -> reasoning high": {
+      "k": 2,
+      "judgments": 40,
+      "escalated": {
+        "successes": 0,
+        "trials": 40,
+        "rate": 0.0,
+        "interval": [
+          0.0,
+          0.08762453925039232
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ]
+        },
+        "cheap alone": {
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ]
+        },
+        "expensive alone": {
+          "successes": 38,
+          "trials": 40,
+          "rate": 0.95,
+          "interval": [
+            0.834958291820748,
+            0.9861796228538989
+          ]
+        }
+      },
+      "confidently_wrong": 0,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 1672.0357142857142,
+        "expensive_cost": 1474.4785714285715,
+        "cheap_calls": 80,
+        "expensive_calls": 0,
+        "per_judgment": 3344.0714285714284,
+        "relative_to_always_expensive": 2.2679688219079868
+      },
+      "notes": [],
+      "cost_unit": "tokens per call (saved)"
+    },
+    "support: gpt-reserve -> reasoning high": {
+      "k": 2,
+      "judgments": 40,
+      "escalated": {
+        "successes": 0,
+        "trials": 40,
+        "rate": 0.0,
+        "interval": [
+          0.0,
+          0.08762453925039232
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ]
+        },
+        "cheap alone": {
+          "successes": 40,
+          "trials": 40,
+          "rate": 1.0,
+          "interval": [
+            0.9123754607496077,
+            1.0
+          ]
+        },
+        "expensive alone": {
+          "successes": 38,
+          "trials": 40,
+          "rate": 0.95,
+          "interval": [
+            0.834958291820748,
+            0.9861796228538989
+          ]
+        }
+      },
+      "confidently_wrong": 0,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 699.5321428571428,
+        "expensive_cost": 1474.4785714285715,
+        "cheap_calls": 80,
+        "expensive_calls": 0,
+        "per_judgment": 1399.0642857142857,
+        "relative_to_always_expensive": 0.9488535898889195
+      },
+      "notes": [],
+      "cost_unit": "tokens per call (saved)"
+    },
+    "evidence: reply only (cannot see the tool calls) -> reply and tool calls": {
+      "k": 2,
+      "judgments": 24,
+      "escalated": {
+        "successes": 3,
+        "trials": 24,
+        "rate": 0.125,
+        "interval": [
+          0.04344255039315584,
+          0.3100428814785757
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 12,
+          "trials": 24,
+          "rate": 0.5,
+          "interval": [
+            0.31427131627763083,
+            0.6857286837223692
+          ]
+        },
+        "cheap alone": {
+          "successes": 9,
+          "trials": 24,
+          "rate": 0.375,
+          "interval": [
+            0.21159133433631458,
+            0.5729038096209293
+          ]
+        },
+        "expensive alone": {
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ]
+        }
+      },
+      "confidently_wrong": 12,
+      "escalated_cheap_wrong": 3,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 975.969696969697,
+        "expensive_cost": 967.0757575757576,
+        "cheap_calls": 48,
+        "expensive_calls": 3,
+        "per_judgment": 2072.8238636363635,
+        "relative_to_always_expensive": 2.143393469848183
+      },
+      "notes": [],
+      "cost_unit": "tokens per call (saved)"
+    },
+    "pydantic example (truth: the dataset expected outputs): no reasoning -> high": {
+      "k": 2,
+      "judgments": 10,
+      "escalated": {
+        "successes": 0,
+        "trials": 10,
+        "rate": 0.0,
+        "interval": [
+          0.0,
+          0.2775401687666166
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 5,
+          "trials": 10,
+          "rate": 0.5,
+          "interval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ]
+        },
+        "cheap alone": {
+          "successes": 5,
+          "trials": 10,
+          "rate": 0.5,
+          "interval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ]
+        },
+        "expensive alone": {
+          "successes": 7,
+          "trials": 10,
+          "rate": 0.7,
+          "interval": [
+            0.39677321997956516,
+            0.892210712513788
+          ]
+        }
+      },
+      "confidently_wrong": 5,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 1.0,
+        "expensive_cost": 1.0,
+        "cheap_calls": 20,
+        "expensive_calls": 0,
+        "per_judgment": 2.0,
+        "relative_to_always_expensive": 2.0
+      },
+      "notes": [],
+      "cost_unit": "calls"
+    },
+    "pydantic example (truth: the dataset expected outputs): no reasoning -> high, k=3": {
+      "k": 3,
+      "judgments": 10,
+      "escalated": {
+        "successes": 0,
+        "trials": 10,
+        "rate": 0.0,
+        "interval": [
+          0.0,
+          0.2775401687666166
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 5,
+          "trials": 10,
+          "rate": 0.5,
+          "interval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ]
+        },
+        "cheap alone": {
+          "successes": 5,
+          "trials": 10,
+          "rate": 0.5,
+          "interval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ]
+        },
+        "expensive alone": {
+          "successes": 7,
+          "trials": 10,
+          "rate": 0.7,
+          "interval": [
+            0.39677321997956516,
+            0.892210712513788
+          ]
+        }
+      },
+      "confidently_wrong": 5,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 1.0,
+        "expensive_cost": 1.0,
+        "cheap_calls": 30,
+        "expensive_calls": 0,
+        "per_judgment": 3.0,
+        "relative_to_always_expensive": 3.0
+      },
+      "notes": [],
+      "cost_unit": "calls"
+    },
+    "support panel, every role: no reasoning and gpt-reserve agree, else reasoning high": {
+      "k": 2,
+      "judgments": 240,
+      "escalated": {
+        "successes": 3,
+        "trials": 240,
+        "rate": 0.0125,
+        "interval": [
+          0.004259990188158945,
+          0.036100637366778356
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 239,
+          "trials": 240,
+          "rate": 0.9958333333333333,
+          "interval": [
+            0.9767793433714805,
+            0.9992641209102499
+          ]
+        },
+        "cheap alone": {
+          "successes": 239,
+          "trials": 240,
+          "rate": 0.9958333333333333,
+          "interval": [
+            0.9767793433714805,
+            0.9992641209102499
+          ]
+        },
+        "expensive alone": {
+          "successes": 236,
+          "trials": 240,
+          "rate": 0.9833333333333333,
+          "interval": [
+            0.9579371621145085,
+            0.9935001644122201
+          ]
+        }
+      },
+      "confidently_wrong": 1,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 1.0,
+        "expensive_cost": 1.0,
+        "cheap_calls": 480,
+        "expensive_calls": 3,
+        "per_judgment": 2.0125,
+        "relative_to_always_expensive": 2.0125
+      },
+      "notes": [],
+      "unmatched_in_expensive": 0,
+      "cost_unit": "calls"
+    }
+  },
+  "codex": {
+    "cases": [
+      "return-0",
+      "return-1",
+      "shipping-0",
+      "shipping-1",
+      "refund-0",
+      "refund-1",
+      "warranty-0",
+      "warranty-1"
+    ],
+    "judgments": 24,
+    "routed": {
+      "certificate": {
+        "judge": "RoutedJudge",
+        "verdict": "UNVALIDATED",
+        "checks": [
+          {
+            "name": "acceptance",
+            "status": "UNVALIDATED",
+            "successes": 8,
+            "trials": 8,
+            "rate": 1.0,
+            "interval": [
+              0.6755843804891231,
+              1.0
+            ],
+            "threshold": 0.7,
+            "errors": 0,
+            "detail": "fewer than 10 judgments",
+            "estimate": null
+          },
+          {
+            "name": "rejection",
+            "status": "UNVALIDATED",
+            "successes": 8,
+            "trials": 8,
+            "rate": 1.0,
+            "interval": [
+              0.6755843804891231,
+              1.0
+            ],
+            "threshold": 0.8,
+            "errors": 0,
+            "detail": "mismatched_output 8/8 UNVALIDATED",
+            "estimate": null
+          },
+          {
+            "name": "invariance",
+            "status": "UNVALIDATED",
+            "successes": 0,
+            "trials": 0,
+            "rate": null,
+            "interval": [
+              0.0,
+              1.0
+            ],
+            "threshold": 0.8,
+            "errors": 0,
+            "detail": "no controls",
+            "estimate": null
+          },
+          {
+            "name": "human_agreement",
+            "status": "UNVALIDATED",
+            "successes": 8,
+            "trials": 8,
+            "rate": 1.0,
+            "interval": [
+              0.0,
+              1.0
+            ],
+            "threshold": 0.4,
+            "errors": 0,
+            "detail": "kappa undefined: no variation in labels or verdicts",
+            "estimate": null
+          }
+        ],
+        "calls": 24,
+        "planned": 24,
+        "looks": 1,
+        "identity": {
+          "evaluator": "RoutedJudge",
+          "cheap": {
+            "_cache": {},
+            "cap": 80,
+            "judge": {
+              "assertion": {
+                "include_reason": true
+              },
+              "include_expected_output": false,
+              "include_input": true,
+              "model": {
+                "_model_name": "codex:gpt-5.6-luna",
+                "_system": "function",
+                "function": "<function codex_model.<locals>.structured at 0x110107740>",
+                "stream_function": null
+              },
+              "model_settings": null,
+              "rubric": "The reply correctly answers the customer's question according to the store policy.",
+              "score": false
+            },
+            "ledger": {
+              "cheap": 48,
+              "expensive": 24,
+              "total": 72
+            },
+            "memo": false,
+            "tier": "cheap"
+          },
+          "expensive": {
+            "_cache": {
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $225.84')": {
+                "LLMJudge": {
+                  "reason": "The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $8.50')": {
+                "LLMJudge": {
+                  "reason": "The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+                "LLMJudge": {
+                  "reason": "The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Answer: no')": {
+                "LLMJudge": {
+                  "reason": "The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": {
+                  "reason": "The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \\n\\nAnswer: yes')": {
+                "LLMJudge": {
+                  "reason": "The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+                "LLMJudge": {
+                  "reason": "The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+                "LLMJudge": {
+                  "reason": "The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+                "LLMJudge": {
+                  "reason": "The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: $8.50')": {
+                "LLMJudge": {
+                  "reason": "The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: yes')": {
+                "LLMJudge": {
+                  "reason": "The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\\n\\nAnswer: no')": {
+                "LLMJudge": {
+                  "reason": "The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+                "LLMJudge": {
+                  "reason": "The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": {
+                  "reason": "The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+                "LLMJudge": {
+                  "reason": "The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+                "LLMJudge": {
+                  "reason": "The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $8.50')": {
+                "LLMJudge": {
+                  "reason": "The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+                "LLMJudge": {
+                  "reason": "The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Answer: $37.38')": {
+                "LLMJudge": {
+                  "reason": "The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+                "LLMJudge": {
+                  "reason": "The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": {
+                  "reason": "The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+                "LLMJudge": {
+                  "reason": "The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.",
+                  "value": true
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: yes')": {
+                "LLMJudge": {
+                  "reason": "The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.",
+                  "value": false
+                }
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": {
+                  "reason": "The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.",
+                  "value": false
+                }
+              }
+            },
+            "cap": 40,
+            "judge": {
+              "assertion": {
+                "include_reason": true
+              },
+              "include_expected_output": false,
+              "include_input": true,
+              "model": {
+                "_model_name": "codex:gpt-5.6-luna",
+                "_system": "function",
+                "function": "<function codex_model.<locals>.structured at 0x110107a00>",
+                "stream_function": null
+              },
+              "model_settings": null,
+              "rubric": "The reply correctly answers the customer's question according to the store policy.",
+              "score": false
+            },
+            "ledger": {
+              "cheap": 48,
+              "expensive": 24,
+              "total": 72
+            },
+            "memo": true,
+            "tier": "expensive"
+          },
+          "k": 2,
+          "assertion": null,
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        "fingerprint": "2d473ea0d9188c2d",
+        "judgments": [
+          {
+            "case": "return-0",
+            "role": "reference#0",
+            "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "passed": true,
+            "reason": "[routed: cheap PP] The reply correctly states that the item is within 60 days of delivery and that an unopened item qualifies for a full refund.",
+            "error": null
+          },
+          {
+            "case": "return-1",
+            "role": "reference#0",
+            "output": "Answer: no",
+            "passed": true,
+            "reason": "[routed: cheap PP] The unopened item was delivered 81 days ago, exceeding the 60-day return window, so the answer is no.",
+            "error": null
+          },
+          {
+            "case": "shipping-0",
+            "role": "reference#0",
+            "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "passed": true,
+            "reason": "[routed: cheap PP] The response correctly applies the policy: orders under $35 incur a flat $6.99 standard shipping fee.",
+            "error": null
+          },
+          {
+            "case": "shipping-1",
+            "role": "reference#0",
+            "output": "Answer: $8.50",
+            "passed": true,
+            "reason": "[routed: cheap PP] The order is below $35, so standard shipping costs the flat $8.50 stated in the policy.",
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "reference#0",
+            "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "passed": true,
+            "reason": "[routed: cheap PP] The response correctly applies the 20% restocking fee: $37.37 \u00d7 80% = $29.896, rounded to $29.90.",
+            "error": null
+          },
+          {
+            "case": "refund-1",
+            "role": "reference#0",
+            "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "passed": true,
+            "reason": "[routed: cheap PP] The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26.",
+            "error": null
+          },
+          {
+            "case": "warranty-0",
+            "role": "reference#0",
+            "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+            "passed": true,
+            "reason": "[routed: cheap PP] The reply correctly states that the blender is covered because it failed without accidental damage within six months of purchase.",
+            "error": null
+          },
+          {
+            "case": "warranty-1",
+            "role": "reference#0",
+            "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+            "passed": true,
+            "reason": "[routed: cheap PP] The response correctly states that the 12-month warranty does not cover headphones that stopped working 13 months after purchase.",
+            "error": null
+          },
+          {
+            "case": "return-0",
+            "role": "must_fail:mismatched_output",
+            "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "passed": false,
+            "reason": "[routed: cheap FF] The response gives an incorrect restocking fee and an unsupported refund amount, and it does not answer whether the unopened item is still within the 60-day return window.",
+            "error": null
+          },
+          {
+            "case": "return-1",
+            "role": "must_fail:mismatched_output",
+            "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "passed": false,
+            "reason": "[routed: cheap FF] The response gives an unrelated refund amount and does not answer whether the unopened item is still returnable within 60 days. The item is eligible for a full refund because July 15 is within 60 days of April 25.",
+            "error": null
+          },
+          {
+            "case": "shipping-0",
+            "role": "must_fail:mismatched_output",
+            "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "passed": false,
+            "reason": "[routed: cheap FF] The reply discusses returns and incorrectly says \u201cyes\u201d instead of stating the $6.99 standard shipping charge for an $11.67 order.",
+            "error": null
+          },
+          {
+            "case": "shipping-1",
+            "role": "must_fail:mismatched_output",
+            "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "passed": false,
+            "reason": "[routed: cheap FF] The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.",
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "must_fail:mismatched_output",
+            "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "passed": false,
+            "reason": "[routed: cheap FF] The reply applies the wrong restocking fee and uses an incorrect purchase amount. The policy requires a 20% fee on $37.37, yielding a refund of $29.90.",
+            "error": null
+          },
+          {
+            "case": "refund-1",
+            "role": "must_fail:mismatched_output",
+            "output": "Answer: $8.50",
+            "passed": false,
+            "reason": "[routed: cheap FF] The correct refund is $203.27, calculated as $225.85 minus the 10% restocking fee. The reply of $8.50 is incorrect.",
+            "error": null
+          },
+          {
+            "case": "warranty-0",
+            "role": "must_fail:mismatched_output",
+            "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "passed": false,
+            "reason": "[routed: cheap FF] The reply discusses an incorrect restocking fee and refund amount, and does not address warranty coverage for a blender that stopped working due to a likely defect within six months.",
+            "error": null
+          },
+          {
+            "case": "warranty-1",
+            "role": "must_fail:mismatched_output",
+            "output": "Answer: $8.50",
+            "passed": false,
+            "reason": "[routed: cheap FF] The response gives a dollar amount and does not address warranty coverage. The headphones are outside the 12-month warranty period, so the answer is incorrect.",
+            "error": null
+          },
+          {
+            "case": "return-0",
+            "role": "human:0",
+            "output": "Answer: no",
+            "passed": false,
+            "reason": "[routed: cheap FF] The item was delivered on February 17, 2026, and April 12, 2026 is within 60 days, so the unopened item can still be returned. The reply \u201cno\u201d is incorrect.",
+            "error": null
+          },
+          {
+            "case": "return-1",
+            "role": "human:0",
+            "output": "Answer: yes",
+            "passed": false,
+            "reason": "[routed: escalated FP] The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.",
+            "error": null
+          },
+          {
+            "case": "shipping-0",
+            "role": "human:0",
+            "output": "Answer: $0.00",
+            "passed": false,
+            "reason": "[routed: cheap FF] Orders under $35 incur the flat $6.99 standard shipping fee, so $0.00 is incorrect.",
+            "error": null
+          },
+          {
+            "case": "shipping-1",
+            "role": "human:0",
+            "output": "Answer: $0.00",
+            "passed": false,
+            "reason": "[routed: cheap FF] The $11.21 order is below $35, so standard shipping costs the flat $8.50, not $0.00.",
+            "error": null
+          },
+          {
+            "case": "refund-0",
+            "role": "human:0",
+            "output": "Answer: $37.38",
+            "passed": false,
+            "reason": "[routed: cheap FF] The blender was opened, so the 20% restocking fee applies: $37.37 \u00d7 80% = $29.90, not $37.38.",
+            "error": null
+          },
+          {
+            "case": "refund-1",
+            "role": "human:0",
+            "output": "Answer: $225.84",
+            "passed": false,
+            "reason": "[routed: cheap FF] The item was opened, so the 10% restocking fee applies: $225.85 \u00d7 90% = $203.265, rounded to $203.27, not $225.84.",
+            "error": null
+          },
+          {
+            "case": "warranty-0",
+            "role": "human:0",
+            "output": "Answer: no",
+            "passed": false,
+            "reason": "[routed: cheap FF] The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered. The reply \u201cno\u201d is incorrect.",
+            "error": null
+          },
+          {
+            "case": "warranty-1",
+            "role": "human:0",
+            "output": "Answer: yes",
+            "passed": false,
+            "reason": "[routed: cheap FF] The policy covers product defects for only 12 months, so headphones failing after 13 months are not covered. The reply incorrectly says yes.",
+            "error": null
+          }
+        ]
+      },
+      "routing": {
+        "k": 2,
+        "judgments": 24,
+        "escalated": {
+          "successes": 1,
+          "trials": 24,
+          "rate": 0.041666666666666664,
+          "interval": [
+            0.007393265354805126,
+            0.20242226248842232
+          ]
+        },
+        "accuracy": {
+          "routed": {
+            "successes": 24,
+            "trials": 24,
+            "rate": 1.0,
+            "interval": [
+              0.8620194241710247,
+              1.0
+            ]
+          },
+          "cheap alone": {
+            "successes": 24,
+            "trials": 24,
+            "rate": 1.0,
+            "interval": [
+              0.8620194241710247,
+              1.0
+            ]
+          },
+          "expensive alone": {
+            "successes": 23,
+            "trials": 24,
+            "rate": 0.9583333333333334,
+            "interval": [
+              0.7975777375115778,
+              0.992606734645195
+            ]
+          }
+        },
+        "confidently_wrong": 0,
+        "escalated_cheap_wrong": 0,
+        "unresolved": 0,
+        "cost": {
+          "cheap_cost": 1.0,
+          "expensive_cost": 1.0,
+          "cheap_calls": 48,
+          "expensive_calls": 1,
+          "per_judgment": 2.0416666666666665,
+          "relative_to_always_expensive": 2.0416666666666665
+        },
+        "notes": []
+      },
+      "baselines": {
+        "expensive alone": {
+          "judge": "Metered",
+          "verdict": "UNVALIDATED",
+          "checks": [
+            {
+              "name": "acceptance",
+              "status": "UNVALIDATED",
+              "successes": 7,
+              "trials": 8,
+              "rate": 0.875,
+              "interval": [
+                0.5291051942301386,
+                0.9775830911367038
+              ],
+              "threshold": 0.7,
+              "errors": 0,
+              "detail": "fewer than 10 judgments",
+              "estimate": null
+            },
+            {
+              "name": "rejection",
+              "status": "UNVALIDATED",
+              "successes": 8,
+              "trials": 8,
+              "rate": 1.0,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ],
+              "threshold": 0.8,
+              "errors": 0,
+              "detail": "mismatched_output 8/8 UNVALIDATED",
+              "estimate": null
+            },
+            {
+              "name": "invariance",
+              "status": "UNVALIDATED",
+              "successes": 0,
+              "trials": 0,
+              "rate": null,
+              "interval": [
+                0.0,
+                1.0
+              ],
+              "threshold": 0.8,
+              "errors": 0,
+              "detail": "no controls",
+              "estimate": null
+            },
+            {
+              "name": "human_agreement",
+              "status": "UNVALIDATED",
+              "successes": 8,
+              "trials": 8,
+              "rate": 1.0,
+              "interval": [
+                0.0,
+                1.0
+              ],
+              "threshold": 0.4,
+              "errors": 0,
+              "detail": "kappa undefined: no variation in labels or verdicts",
+              "estimate": null
+            }
+          ],
+          "calls": 24,
+          "planned": 24,
+          "looks": 1,
+          "identity": {
+            "evaluator": "Metered",
+            "judge": {
+              "assertion": {
+                "include_reason": true
+              },
+              "include_expected_output": false,
+              "include_input": true,
+              "model": {
+                "_model_name": "codex:gpt-5.6-luna",
+                "_system": "function",
+                "function": "<function codex_model.<locals>.structured at 0x110107a00>",
+                "stream_function": null
+              },
+              "model_settings": null,
+              "rubric": "The reply correctly answers the customer's question according to the store policy.",
+              "score": false
+            },
+            "tier": "expensive",
+            "ledger": {
+              "expensive": 24,
+              "total": 24
+            },
+            "cap": 40,
+            "memo": true,
+            "_cache": {
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $225.84')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.')"
+              },
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $8.50')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.')"
+              },
+              "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.')"
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Answer: no')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.')"
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.')"
+              },
+              "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \\n\\nAnswer: yes')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.')"
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.')"
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.')"
+              },
+              "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.')"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: $8.50')": {
+                "LLMJudge": "EvaluationReason(value=False, reason=\"The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.\")"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: yes')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.')"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\\n\\nAnswer: no')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.')"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.')"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.')"
+              },
+              "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.')"
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.')"
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $8.50')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.')"
+              },
+              "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Answer: $37.38')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+                "LLMJudge": "EvaluationReason(value=True, reason='The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: yes')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.')"
+              },
+              "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+                "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.')"
+              }
+            },
+            "pydantic_evals": "0.0.1.dev1+dac0464"
+          },
+          "fingerprint": "825191512ca030e3"
+        }
+      }
+    },
+    "expensive_alone": {
+      "judge": "Metered",
+      "verdict": "UNVALIDATED",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "UNVALIDATED",
+          "successes": 7,
+          "trials": 8,
+          "rate": 0.875,
+          "interval": [
+            0.5291051942301386,
+            0.9775830911367038
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "fewer than 10 judgments",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "UNVALIDATED",
+          "successes": 8,
+          "trials": 8,
+          "rate": 1.0,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "mismatched_output 8/8 UNVALIDATED",
+          "estimate": null
+        },
+        {
+          "name": "invariance",
+          "status": "UNVALIDATED",
+          "successes": 0,
+          "trials": 0,
+          "rate": null,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "no controls",
+          "estimate": null
+        },
+        {
+          "name": "human_agreement",
+          "status": "UNVALIDATED",
+          "successes": 8,
+          "trials": 8,
+          "rate": 1.0,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "threshold": 0.4,
+          "errors": 0,
+          "detail": "kappa undefined: no variation in labels or verdicts",
+          "estimate": null
+        }
+      ],
+      "calls": 24,
+      "planned": 24,
+      "looks": 1,
+      "identity": {
+        "evaluator": "Metered",
+        "judge": {
+          "assertion": {
+            "include_reason": true
+          },
+          "include_expected_output": false,
+          "include_input": true,
+          "model": {
+            "_model_name": "codex:gpt-5.6-luna",
+            "_system": "function",
+            "function": "<function codex_model.<locals>.structured at 0x110107a00>",
+            "stream_function": null
+          },
+          "model_settings": null,
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "score": false
+        },
+        "tier": "expensive",
+        "ledger": {
+          "expensive": 24,
+          "total": 24
+        },
+        "cap": 40,
+        "memo": true,
+        "_cache": {
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $225.84')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.')"
+          },
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $8.50')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.')"
+          },
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.')"
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Answer: no')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.')"
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.')"
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \\n\\nAnswer: yes')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.')"
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.')"
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.')"
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.')"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: $8.50')": {
+            "LLMJudge": "EvaluationReason(value=False, reason=\"The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.\")"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: yes')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.')"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\\n\\nAnswer: no')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.')"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.')"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.')"
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.')"
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.')"
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $8.50')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.')"
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Answer: $37.38')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+            "LLMJudge": "EvaluationReason(value=True, reason='The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: yes')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.')"
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.')"
+          }
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "fingerprint": "825191512ca030e3",
+      "judgments": [
+        {
+          "case": "return-0",
+          "role": "reference#0",
+          "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+          "passed": true,
+          "reason": "The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.",
+          "error": null
+        },
+        {
+          "case": "return-1",
+          "role": "reference#0",
+          "output": "Answer: no",
+          "passed": true,
+          "reason": "The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.",
+          "error": null
+        },
+        {
+          "case": "shipping-0",
+          "role": "reference#0",
+          "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+          "passed": true,
+          "reason": "The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.",
+          "error": null
+        },
+        {
+          "case": "shipping-1",
+          "role": "reference#0",
+          "output": "Answer: $8.50",
+          "passed": true,
+          "reason": "The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.",
+          "error": null
+        },
+        {
+          "case": "refund-0",
+          "role": "reference#0",
+          "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+          "passed": true,
+          "reason": "The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.",
+          "error": null
+        },
+        {
+          "case": "refund-1",
+          "role": "reference#0",
+          "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+          "passed": false,
+          "reason": "The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.",
+          "error": null
+        },
+        {
+          "case": "warranty-0",
+          "role": "reference#0",
+          "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+          "passed": true,
+          "reason": "The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.",
+          "error": null
+        },
+        {
+          "case": "warranty-1",
+          "role": "reference#0",
+          "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+          "passed": true,
+          "reason": "The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.",
+          "error": null
+        },
+        {
+          "case": "return-0",
+          "role": "must_fail:mismatched_output",
+          "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+          "passed": false,
+          "reason": "The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.",
+          "error": null
+        },
+        {
+          "case": "return-1",
+          "role": "must_fail:mismatched_output",
+          "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+          "passed": false,
+          "reason": "The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.",
+          "error": null
+        },
+        {
+          "case": "shipping-0",
+          "role": "must_fail:mismatched_output",
+          "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+          "passed": false,
+          "reason": "The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.",
+          "error": null
+        },
+        {
+          "case": "shipping-1",
+          "role": "must_fail:mismatched_output",
+          "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+          "passed": false,
+          "reason": "The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.",
+          "error": null
+        },
+        {
+          "case": "refund-0",
+          "role": "must_fail:mismatched_output",
+          "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+          "passed": false,
+          "reason": "The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.",
+          "error": null
+        },
+        {
+          "case": "refund-1",
+          "role": "must_fail:mismatched_output",
+          "output": "Answer: $8.50",
+          "passed": false,
+          "reason": "The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.",
+          "error": null
+        },
+        {
+          "case": "warranty-0",
+          "role": "must_fail:mismatched_output",
+          "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+          "passed": false,
+          "reason": "The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.",
+          "error": null
+        },
+        {
+          "case": "warranty-1",
+          "role": "must_fail:mismatched_output",
+          "output": "Answer: $8.50",
+          "passed": false,
+          "reason": "The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.",
+          "error": null
+        },
+        {
+          "case": "return-0",
+          "role": "human:0",
+          "output": "Answer: no",
+          "passed": false,
+          "reason": "The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.",
+          "error": null
+        },
+        {
+          "case": "return-1",
+          "role": "human:0",
+          "output": "Answer: yes",
+          "passed": false,
+          "reason": "The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.",
+          "error": null
+        },
+        {
+          "case": "shipping-0",
+          "role": "human:0",
+          "output": "Answer: $0.00",
+          "passed": false,
+          "reason": "The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.",
+          "error": null
+        },
+        {
+          "case": "shipping-1",
+          "role": "human:0",
+          "output": "Answer: $0.00",
+          "passed": false,
+          "reason": "The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.",
+          "error": null
+        },
+        {
+          "case": "refund-0",
+          "role": "human:0",
+          "output": "Answer: $37.38",
+          "passed": false,
+          "reason": "The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.",
+          "error": null
+        },
+        {
+          "case": "refund-1",
+          "role": "human:0",
+          "output": "Answer: $225.84",
+          "passed": false,
+          "reason": "The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.",
+          "error": null
+        },
+        {
+          "case": "warranty-0",
+          "role": "human:0",
+          "output": "Answer: no",
+          "passed": false,
+          "reason": "The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.",
+          "error": null
+        },
+        {
+          "case": "warranty-1",
+          "role": "human:0",
+          "output": "Answer: yes",
+          "passed": false,
+          "reason": "The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.",
+          "error": null
+        }
+      ]
+    },
+    "cost_in_tokens": {
+      "k": 2,
+      "judgments": 24,
+      "escalated": {
+        "successes": 1,
+        "trials": 24,
+        "rate": 0.041666666666666664,
+        "interval": [
+          0.007393265354805126,
+          0.20242226248842232
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ]
+        },
+        "cheap alone": {
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ]
+        },
+        "expensive alone": {
+          "successes": 23,
+          "trials": 24,
+          "rate": 0.9583333333333334,
+          "interval": [
+            0.7975777375115778,
+            0.992606734645195
+          ]
+        }
+      },
+      "confidently_wrong": 0,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 586.2291666666666,
+        "expensive_cost": 4371.416666666667,
+        "cheap_calls": 48,
+        "expensive_calls": 1,
+        "per_judgment": 1354.6006944444443,
+        "relative_to_always_expensive": 0.30987681974442555
+      },
+      "notes": []
+    },
+    "cost_in_seconds": {
+      "k": 2,
+      "judgments": 24,
+      "escalated": {
+        "successes": 1,
+        "trials": 24,
+        "rate": 0.041666666666666664,
+        "interval": [
+          0.007393265354805126,
+          0.20242226248842232
+        ]
+      },
+      "accuracy": {
+        "routed": {
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ]
+        },
+        "cheap alone": {
+          "successes": 24,
+          "trials": 24,
+          "rate": 1.0,
+          "interval": [
+            0.8620194241710247,
+            1.0
+          ]
+        },
+        "expensive alone": {
+          "successes": 23,
+          "trials": 24,
+          "rate": 0.9583333333333334,
+          "interval": [
+            0.7975777375115778,
+            0.992606734645195
+          ]
+        }
+      },
+      "confidently_wrong": 0,
+      "escalated_cheap_wrong": 0,
+      "unresolved": 0,
+      "cost": {
+        "cheap_cost": 7.569691591999799,
+        "expensive_cost": 9.727726598958421,
+        "cheap_calls": 48,
+        "expensive_calls": 1,
+        "per_judgment": 15.544705125622865,
+        "relative_to_always_expensive": 1.5979792367198402
+      },
+      "notes": [],
+      "note": "wall time per call at concurrency 2: phase seconds / calls in the phase"
+    },
+    "calls": {
+      "total": 72,
+      "expensive": 24,
+      "cheap": 48
+    },
+    "tokens": {
+      "cheap": 28139,
+      "expensive": 104914
+    },
+    "seconds": {
+      "cheap_phase": 363.34519641599036,
+      "expensive_phase": 233.46543837500212
+    }
+  }
+}

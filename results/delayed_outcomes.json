@@ -1,0 +1,2531 @@
+{
+  "simulation": {
+    "tickets_per_day": 2000,
+    "days": 500,
+    "truth": 0.6,
+    "sensitivity": 0.95,
+    "specificity": 0.7,
+    "resamples": 1000,
+    "scenarios": {
+      "uniform 30%": {
+        "observe_rate": {
+          "passed": 0.3,
+          "failed": 0.3
+        },
+        "truth_mean": 0.600174,
+        "raw_mean": 0.690044,
+        "raw_bias": 0.08986999999999999,
+        "flagged_biased_days": 25,
+        "adjusted": {
+          "days_estimated": 500,
+          "mean": 0.5998101497931575,
+          "bias": -0.0003638502068425282,
+          "mean_abs_error": 0.015148941185413153,
+          "coverage": 0.98,
+          "mean_width": 0.09129533730279835
+        },
+        "naive": {
+          "days_estimated": 500,
+          "mean": 0.5998169615243042,
+          "bias": -0.0003570384756958049,
+          "mean_abs_error": 0.01813151059701153,
+          "coverage": 0.966,
+          "mean_width": 0.10518459790849914
+        },
+        "seconds": 4.0
+      },
+      "passed only (30% of passed)": {
+        "observe_rate": {
+          "passed": 0.3,
+          "failed": 0.0
+        },
+        "truth_mean": 0.600174,
+        "raw_mean": 0.690044,
+        "raw_bias": 0.08986999999999999,
+        "flagged_biased_days": 500,
+        "adjusted": {
+          "days_estimated": 0,
+          "mean": null,
+          "bias": null,
+          "mean_abs_error": null,
+          "coverage": null,
+          "mean_width": null
+        },
+        "naive": {
+          "days_estimated": 0,
+          "mean": null,
+          "bias": null,
+          "mean_abs_error": null,
+          "coverage": null,
+          "mean_width": null
+        },
+        "seconds": 0.6
+      },
+      "verdict-dependent (45% passed, 10% failed)": {
+        "observe_rate": {
+          "passed": 0.45,
+          "failed": 0.1
+        },
+        "truth_mean": 0.600174,
+        "raw_mean": 0.690044,
+        "raw_bias": 0.08986999999999999,
+        "flagged_biased_days": 500,
+        "adjusted": {
+          "days_estimated": 500,
+          "mean": 0.5995169624902537,
+          "bias": -0.000657037509746411,
+          "mean_abs_error": 0.016291891741286528,
+          "coverage": 0.98,
+          "mean_width": 0.09464354392295991
+        },
+        "naive": {
+          "days_estimated": 500,
+          "mean": 0.10363557419661582,
+          "bias": -0.4965384258033842,
+          "mean_abs_error": 0.4965384258033842,
+          "coverage": 0.0,
+          "mean_width": 0.25916425980763047
+        },
+        "seconds": 3.8
+      }
+    }
+  },
+  "support_eval_replay": {
+    "weak (no reasoning, sees the question)": {
+      "replies": 80,
+      "errored": 0,
+      "all_replies": {
+        "cases": 80,
+        "observed": 80,
+        "pending": 0,
+        "cells": {
+          "pass_success": 72,
+          "pass_failure": 0,
+          "pass_pending": 0,
+          "fail_success": 0,
+          "fail_failure": 8,
+          "fail_pending": 0
+        },
+        "sensitivity": {
+          "rate": 1.0,
+          "successes": 72,
+          "trials": 72,
+          "interval": [
+            0.9493470601886036,
+            1.0
+          ]
+        },
+        "specificity": {
+          "rate": 1.0,
+          "successes": 8,
+          "trials": 8,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ]
+        },
+        "ppv": {
+          "rate": 1.0,
+          "successes": 72,
+          "trials": 72,
+          "interval": [
+            0.9493470601886036,
+            1.0
+          ]
+        },
+        "npv": {
+          "rate": 1.0,
+          "successes": 8,
+          "trials": 8,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ]
+        },
+        "agreement": {
+          "rate": 1.0,
+          "successes": 80,
+          "trials": 80,
+          "interval": [
+            0.954180263735425,
+            1.0
+          ]
+        },
+        "observed_passed": {
+          "rate": 1.0,
+          "successes": 72,
+          "trials": 72,
+          "interval": [
+            0.9493470601886036,
+            1.0
+          ]
+        },
+        "observed_failed": {
+          "rate": 1.0,
+          "successes": 8,
+          "trials": 8,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ]
+        },
+        "observation_gap": {
+          "value": 0.0,
+          "interval": [
+            -0.0506529398113964,
+            0.32441561951087694
+          ]
+        },
+        "biased": false,
+        "adjusted_sensitivity": {
+          "value": 1.0,
+          "interval": [
+            0.9640418513349078,
+            0.9999930934021685
+          ]
+        },
+        "adjusted_specificity": {
+          "value": 1.0,
+          "interval": [
+            0.7431582847522731,
+            0.9999524510105935
+          ]
+        },
+        "warnings": [],
+        "slices": {
+          "refund": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "return": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 12,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 8,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.2425007574992426,
+                0.32441561951087694
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 1.0,
+              "interval": [
+                0.8067730016634924,
+                0.999952943529582
+              ]
+            },
+            "adjusted_specificity": {
+              "value": 1.0,
+              "interval": [
+                0.7347179993582638,
+                0.9999372053338463
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "shipping": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "warranty": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          }
+        }
+      },
+      "split": {
+        "calibrated_on_first_replies": {
+          "cases": 40,
+          "observed": 40,
+          "pending": 0,
+          "cells": {
+            "pass_success": 36,
+            "pass_failure": 0,
+            "pass_pending": 0,
+            "fail_success": 0,
+            "fail_failure": 4,
+            "fail_pending": 0
+          },
+          "sensitivity": {
+            "rate": 1.0,
+            "successes": 36,
+            "trials": 36,
+            "interval": [
+              0.9035781695514236,
+              1.0
+            ]
+          },
+          "specificity": {
+            "rate": 1.0,
+            "successes": 4,
+            "trials": 4,
+            "interval": [
+              0.5100999795960008,
+              1.0
+            ]
+          },
+          "ppv": {
+            "rate": 1.0,
+            "successes": 36,
+            "trials": 36,
+            "interval": [
+              0.9035781695514236,
+              1.0
+            ]
+          },
+          "npv": {
+            "rate": 1.0,
+            "successes": 4,
+            "trials": 4,
+            "interval": [
+              0.5100999795960008,
+              1.0
+            ]
+          },
+          "agreement": {
+            "rate": 1.0,
+            "successes": 40,
+            "trials": 40,
+            "interval": [
+              0.9123754607496077,
+              1.0
+            ]
+          },
+          "observed_passed": {
+            "rate": 1.0,
+            "successes": 36,
+            "trials": 36,
+            "interval": [
+              0.9035781695514236,
+              1.0
+            ]
+          },
+          "observed_failed": {
+            "rate": 1.0,
+            "successes": 4,
+            "trials": 4,
+            "interval": [
+              0.5100999795960008,
+              1.0
+            ]
+          },
+          "observation_gap": {
+            "value": 0.0,
+            "interval": [
+              -0.09642183044857644,
+              0.48990002040399916
+            ]
+          },
+          "biased": false,
+          "adjusted_sensitivity": {
+            "value": 1.0,
+            "interval": [
+              0.9308894977271461,
+              0.9999880015231886
+            ]
+          },
+          "adjusted_specificity": {
+            "value": 1.0,
+            "interval": [
+              0.5157282647007871,
+              0.9998636916281284
+            ]
+          },
+          "warnings": [],
+          "slices": {}
+        },
+        "second_replies": 40,
+        "estimate": {
+          "raw": {
+            "rate": 0.9,
+            "passed": 36,
+            "cases": 40,
+            "interval": [
+              0.7694792561952611,
+              0.9604211124044252
+            ]
+          },
+          "corrected": 0.8999999999999999,
+          "unclipped": 0.8999999999999999,
+          "interval": [
+            0.7440137297624464,
+            0.9833724954472277
+          ],
+          "sensitivity": 1.0,
+          "specificity": 1.0,
+          "resamples": 2000,
+          "dropped": 0,
+          "warnings": []
+        },
+        "truth": 0.9
+      }
+    },
+    "strong (reasoning high, sees the question)": {
+      "replies": 80,
+      "errored": 0,
+      "all_replies": {
+        "cases": 80,
+        "observed": 80,
+        "pending": 0,
+        "cells": {
+          "pass_success": 71,
+          "pass_failure": 0,
+          "pass_pending": 0,
+          "fail_success": 1,
+          "fail_failure": 8,
+          "fail_pending": 0
+        },
+        "sensitivity": {
+          "rate": 0.9861111111111112,
+          "successes": 71,
+          "trials": 72,
+          "interval": [
+            0.9254321971571302,
+            0.9975441113595678
+          ]
+        },
+        "specificity": {
+          "rate": 1.0,
+          "successes": 8,
+          "trials": 8,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ]
+        },
+        "ppv": {
+          "rate": 1.0,
+          "successes": 71,
+          "trials": 71,
+          "interval": [
+            0.9486702582520953,
+            1.0
+          ]
+        },
+        "npv": {
+          "rate": 0.8888888888888888,
+          "successes": 8,
+          "trials": 9,
+          "interval": [
+            0.5649937852319399,
+            0.9801096286728695
+          ]
+        },
+        "agreement": {
+          "rate": 0.9875,
+          "successes": 79,
+          "trials": 80,
+          "interval": [
+            0.9325356757603457,
+            0.9977900813816939
+          ]
+        },
+        "observed_passed": {
+          "rate": 1.0,
+          "successes": 71,
+          "trials": 71,
+          "interval": [
+            0.9486702582520953,
+            1.0
+          ]
+        },
+        "observed_failed": {
+          "rate": 1.0,
+          "successes": 9,
+          "trials": 9,
+          "interval": [
+            0.7008472464490407,
+            1.0
+          ]
+        },
+        "observation_gap": {
+          "value": 0.0,
+          "interval": [
+            -0.05132974174790472,
+            0.29915275355095927
+          ]
+        },
+        "biased": false,
+        "adjusted_sensitivity": {
+          "value": 0.9861111111111112,
+          "interval": [
+            0.9401134191546429,
+            0.9985855911747278
+          ]
+        },
+        "adjusted_specificity": {
+          "value": 1.0,
+          "interval": [
+            0.7472442644497082,
+            0.9999340465838467
+          ]
+        },
+        "warnings": [],
+        "slices": {
+          "refund": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 19,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 1,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 0.95,
+              "successes": 19,
+              "trials": 20,
+              "interval": [
+                0.7638641064874331,
+                0.9911187805671268
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 19,
+              "trials": 19,
+              "interval": [
+                0.8318156346315496,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 0.0,
+              "successes": 0,
+              "trials": 1,
+              "interval": [
+                0.0,
+                0.7934567085261071
+              ]
+            },
+            "agreement": {
+              "rate": 0.95,
+              "successes": 19,
+              "trials": 20,
+              "interval": [
+                0.7638641064874331,
+                0.9911187805671268
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 19,
+              "trials": 19,
+              "interval": [
+                0.8318156346315496,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 1,
+              "trials": 1,
+              "interval": [
+                0.20654329147389294,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.16818436536845038,
+                0.7934567085261071
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 0.95,
+              "interval": [
+                0.8132907657277543,
+                0.9972610740227104
+              ]
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": [
+                0.0011304418251618306,
+                0.9983482359639199
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "return": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 12,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 8,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.2425007574992426,
+                0.32441561951087694
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 1.0,
+              "interval": [
+                0.8067730016634924,
+                0.999952943529582
+              ]
+            },
+            "adjusted_specificity": {
+              "value": 1.0,
+              "interval": [
+                0.7347179993582638,
+                0.9999372053338463
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "shipping": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "warranty": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          }
+        }
+      },
+      "split": {
+        "calibrated_on_first_replies": {
+          "cases": 40,
+          "observed": 40,
+          "pending": 0,
+          "cells": {
+            "pass_success": 35,
+            "pass_failure": 0,
+            "pass_pending": 0,
+            "fail_success": 1,
+            "fail_failure": 4,
+            "fail_pending": 0
+          },
+          "sensitivity": {
+            "rate": 0.9722222222222222,
+            "successes": 35,
+            "trials": 36,
+            "interval": [
+              0.8582996626496918,
+              0.9950797197044302
+            ]
+          },
+          "specificity": {
+            "rate": 1.0,
+            "successes": 4,
+            "trials": 4,
+            "interval": [
+              0.5100999795960008,
+              1.0
+            ]
+          },
+          "ppv": {
+            "rate": 1.0,
+            "successes": 35,
+            "trials": 35,
+            "interval": [
+              0.9010957324106112,
+              1.0
+            ]
+          },
+          "npv": {
+            "rate": 0.8,
+            "successes": 4,
+            "trials": 5,
+            "interval": [
+              0.3755282641185388,
+              0.9637768390302125
+            ]
+          },
+          "agreement": {
+            "rate": 0.975,
+            "successes": 39,
+            "trials": 40,
+            "interval": [
+              0.8711834051199223,
+              0.9955732825922052
+            ]
+          },
+          "observed_passed": {
+            "rate": 1.0,
+            "successes": 35,
+            "trials": 35,
+            "interval": [
+              0.9010957324106112,
+              1.0
+            ]
+          },
+          "observed_failed": {
+            "rate": 1.0,
+            "successes": 5,
+            "trials": 5,
+            "interval": [
+              0.5655085052479191,
+              1.0
+            ]
+          },
+          "observation_gap": {
+            "value": 0.0,
+            "interval": [
+              -0.09890426758938875,
+              0.43449149475208093
+            ]
+          },
+          "biased": false,
+          "adjusted_sensitivity": {
+            "value": 0.9722222222222222,
+            "interval": [
+              0.8843432018037993,
+              0.9972785464990229
+            ]
+          },
+          "adjusted_specificity": {
+            "value": 1.0,
+            "interval": [
+              0.5609876065709779,
+              0.9998833238033842
+            ]
+          },
+          "warnings": [],
+          "slices": {}
+        },
+        "second_replies": 40,
+        "estimate": {
+          "raw": {
+            "rate": 0.9,
+            "passed": 36,
+            "cases": 40,
+            "interval": [
+              0.7694792561952611,
+              0.9604211124044252
+            ]
+          },
+          "corrected": 0.9257142857142855,
+          "unclipped": 0.9257142857142855,
+          "interval": [
+            0.7644384467711516,
+            1.0
+          ],
+          "sensitivity": 0.9722222222222222,
+          "specificity": 1.0,
+          "resamples": 2000,
+          "dropped": 0,
+          "warnings": []
+        },
+        "truth": 0.9
+      }
+    },
+    "strong, default include_input=False": {
+      "replies": 20,
+      "errored": 0,
+      "all_replies": {
+        "cases": 20,
+        "observed": 20,
+        "pending": 0,
+        "cells": {
+          "pass_success": 13,
+          "pass_failure": 0,
+          "pass_pending": 0,
+          "fail_success": 5,
+          "fail_failure": 2,
+          "fail_pending": 0
+        },
+        "sensitivity": {
+          "rate": 0.7222222222222222,
+          "successes": 13,
+          "trials": 18,
+          "interval": [
+            0.49126922453805477,
+            0.8750043085364452
+          ]
+        },
+        "specificity": {
+          "rate": 1.0,
+          "successes": 2,
+          "trials": 2,
+          "interval": [
+            0.34237195288961925,
+            1.0
+          ]
+        },
+        "ppv": {
+          "rate": 1.0,
+          "successes": 13,
+          "trials": 13,
+          "interval": [
+            0.7718981569447083,
+            1.0
+          ]
+        },
+        "npv": {
+          "rate": 0.2857142857142857,
+          "successes": 2,
+          "trials": 7,
+          "interval": [
+            0.0822171657090155,
+            0.6410709098517873
+          ]
+        },
+        "agreement": {
+          "rate": 0.75,
+          "successes": 15,
+          "trials": 20,
+          "interval": [
+            0.5312949900419365,
+            0.888139947210597
+          ]
+        },
+        "observed_passed": {
+          "rate": 1.0,
+          "successes": 13,
+          "trials": 13,
+          "interval": [
+            0.7718981569447083,
+            1.0
+          ]
+        },
+        "observed_failed": {
+          "rate": 1.0,
+          "successes": 7,
+          "trials": 7,
+          "interval": [
+            0.6456611570247934,
+            1.0
+          ]
+        },
+        "observation_gap": {
+          "value": 0.0,
+          "interval": [
+            -0.2281018430552917,
+            0.35433884297520657
+          ]
+        },
+        "biased": false,
+        "adjusted_sensitivity": {
+          "value": 0.7222222222222222,
+          "interval": [
+            0.49871886050121406,
+            0.8886077506442476
+          ]
+        },
+        "adjusted_specificity": {
+          "value": 1.0,
+          "interval": [
+            0.33277303197694535,
+            0.9997081028316792
+          ]
+        },
+        "warnings": [],
+        "slices": {
+          "refund": {
+            "cases": 4,
+            "observed": 4,
+            "pending": 0,
+            "cells": {
+              "pass_success": 3,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 1,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 0.75,
+              "successes": 3,
+              "trials": 4,
+              "interval": [
+                0.3006360524426366,
+                0.9544139373553637
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 3,
+              "trials": 3,
+              "interval": [
+                0.43849391955098227,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 0.0,
+              "successes": 0,
+              "trials": 1,
+              "interval": [
+                0.0,
+                0.7934567085261071
+              ]
+            },
+            "agreement": {
+              "rate": 0.75,
+              "successes": 3,
+              "trials": 4,
+              "interval": [
+                0.3006360524426366,
+                0.9544139373553637
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 3,
+              "trials": 3,
+              "interval": [
+                0.43849391955098227,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 1,
+              "trials": 1,
+              "interval": [
+                0.20654329147389294,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.5615060804490177,
+                0.7934567085261071
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 0.75,
+              "interval": [
+                0.2832712393101445,
+                0.9840434107801993
+              ]
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": [
+                0.0013575322597814213,
+                0.9983839051055653
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "return": {
+            "cases": 2,
+            "observed": 2,
+            "pending": 0,
+            "cells": {
+              "pass_success": 0,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 2,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": 1.0,
+              "successes": 2,
+              "trials": 2,
+              "interval": [
+                0.34237195288961925,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 1.0,
+              "successes": 2,
+              "trials": 2,
+              "interval": [
+                0.34237195288961925,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 2,
+              "trials": 2,
+              "interval": [
+                0.34237195288961925,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 2,
+              "trials": 2,
+              "interval": [
+                0.34237195288961925,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "shipping": {
+            "cases": 8,
+            "observed": 8,
+            "pending": 0,
+            "cells": {
+              "pass_success": 4,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 4,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 0.5,
+              "successes": 4,
+              "trials": 8,
+              "interval": [
+                0.21521252682444186,
+                0.7847874731755582
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 4,
+              "trials": 4,
+              "interval": [
+                0.5100999795960008,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": 0.0,
+              "successes": 0,
+              "trials": 4,
+              "interval": [
+                0.0,
+                0.48990002040399916
+              ]
+            },
+            "agreement": {
+              "rate": 0.5,
+              "successes": 4,
+              "trials": 8,
+              "interval": [
+                0.21521252682444186,
+                0.7847874731755582
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 4,
+              "trials": 4,
+              "interval": [
+                0.5100999795960008,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 4,
+              "trials": 4,
+              "interval": [
+                0.5100999795960008,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.48990002040399916,
+                0.48990002040399916
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 0.5,
+              "interval": [
+                0.1954120718590523,
+                0.8229593036393538
+              ]
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": [
+                0.0011176452173078312,
+                0.9981508714494902
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "warranty": {
+            "cases": 6,
+            "observed": 6,
+            "pending": 0,
+            "cells": {
+              "pass_success": 6,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 6,
+              "trials": 6,
+              "interval": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 6,
+              "trials": 6,
+              "interval": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 6,
+              "trials": 6,
+              "interval": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 6,
+              "trials": 6,
+              "interval": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          }
+        }
+      },
+      "split": {
+        "calibrated_on_first_replies": {
+          "cases": 10,
+          "observed": 10,
+          "pending": 0,
+          "cells": {
+            "pass_success": 6,
+            "pass_failure": 0,
+            "pass_pending": 0,
+            "fail_success": 3,
+            "fail_failure": 1,
+            "fail_pending": 0
+          },
+          "sensitivity": {
+            "rate": 0.6666666666666666,
+            "successes": 6,
+            "trials": 9,
+            "interval": [
+              0.35419734749908977,
+              0.879418401317257
+            ]
+          },
+          "specificity": {
+            "rate": 1.0,
+            "successes": 1,
+            "trials": 1,
+            "interval": [
+              0.20654329147389294,
+              1.0
+            ]
+          },
+          "ppv": {
+            "rate": 1.0,
+            "successes": 6,
+            "trials": 6,
+            "interval": [
+              0.6096569663469354,
+              0.9999999999999999
+            ]
+          },
+          "npv": {
+            "rate": 0.25,
+            "successes": 1,
+            "trials": 4,
+            "interval": [
+              0.045586062644636216,
+              0.6993639475573634
+            ]
+          },
+          "agreement": {
+            "rate": 0.7,
+            "successes": 7,
+            "trials": 10,
+            "interval": [
+              0.39677321997956516,
+              0.892210712513788
+            ]
+          },
+          "observed_passed": {
+            "rate": 1.0,
+            "successes": 6,
+            "trials": 6,
+            "interval": [
+              0.6096569663469354,
+              0.9999999999999999
+            ]
+          },
+          "observed_failed": {
+            "rate": 1.0,
+            "successes": 4,
+            "trials": 4,
+            "interval": [
+              0.5100999795960008,
+              1.0
+            ]
+          },
+          "observation_gap": {
+            "value": 0.0,
+            "interval": [
+              -0.39034303365306455,
+              0.48990002040399916
+            ]
+          },
+          "biased": false,
+          "adjusted_sensitivity": {
+            "value": 0.6666666666666666,
+            "interval": [
+              0.3559531685562757,
+              0.9089407027789077
+            ]
+          },
+          "adjusted_specificity": {
+            "value": 1.0,
+            "interval": [
+              0.1403497041685788,
+              0.9996050356833062
+            ]
+          },
+          "warnings": [],
+          "slices": {}
+        },
+        "second_replies": 10,
+        "estimate": {
+          "raw": {
+            "rate": 0.7,
+            "passed": 7,
+            "cases": 10,
+            "interval": [
+              0.39677321997956516,
+              0.892210712513788
+            ]
+          },
+          "corrected": 1.0,
+          "unclipped": 1.0500000000000003,
+          "interval": [
+            0.0,
+            1.0
+          ],
+          "sensitivity": 0.6666666666666666,
+          "specificity": 1.0,
+          "resamples": 2000,
+          "dropped": 234,
+          "warnings": [
+            "in 234 of 2000 resamples the judge was no better than chance: the interval leaves them out, and the judge is too close to chance for the correction to be trusted"
+          ]
+        },
+        "truth": 0.9
+      }
+    },
+    "gpt-reserve (no reasoning, sees the question)": {
+      "replies": 80,
+      "errored": 0,
+      "all_replies": {
+        "cases": 80,
+        "observed": 80,
+        "pending": 0,
+        "cells": {
+          "pass_success": 71,
+          "pass_failure": 1,
+          "pass_pending": 0,
+          "fail_success": 1,
+          "fail_failure": 7,
+          "fail_pending": 0
+        },
+        "sensitivity": {
+          "rate": 0.9861111111111112,
+          "successes": 71,
+          "trials": 72,
+          "interval": [
+            0.9254321971571302,
+            0.9975441113595678
+          ]
+        },
+        "specificity": {
+          "rate": 0.875,
+          "successes": 7,
+          "trials": 8,
+          "interval": [
+            0.5291051942301386,
+            0.9775830911367038
+          ]
+        },
+        "ppv": {
+          "rate": 0.9861111111111112,
+          "successes": 71,
+          "trials": 72,
+          "interval": [
+            0.9254321971571302,
+            0.9975441113595678
+          ]
+        },
+        "npv": {
+          "rate": 0.875,
+          "successes": 7,
+          "trials": 8,
+          "interval": [
+            0.5291051942301386,
+            0.9775830911367038
+          ]
+        },
+        "agreement": {
+          "rate": 0.975,
+          "successes": 78,
+          "trials": 80,
+          "interval": [
+            0.9133539994467789,
+            0.9931172511018748
+          ]
+        },
+        "observed_passed": {
+          "rate": 1.0,
+          "successes": 72,
+          "trials": 72,
+          "interval": [
+            0.9493470601886036,
+            1.0
+          ]
+        },
+        "observed_failed": {
+          "rate": 1.0,
+          "successes": 8,
+          "trials": 8,
+          "interval": [
+            0.6755843804891231,
+            1.0
+          ]
+        },
+        "observation_gap": {
+          "value": 0.0,
+          "interval": [
+            -0.0506529398113964,
+            0.32441561951087694
+          ]
+        },
+        "biased": false,
+        "adjusted_sensitivity": {
+          "value": 0.9861111111111112,
+          "interval": [
+            0.9388487348772545,
+            0.9988249573394997
+          ]
+        },
+        "adjusted_specificity": {
+          "value": 0.8750000000000003,
+          "interval": [
+            0.5228125074419172,
+            0.9851704998103965
+          ]
+        },
+        "warnings": [],
+        "slices": {
+          "refund": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "return": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 11,
+              "pass_failure": 1,
+              "pass_pending": 0,
+              "fail_success": 1,
+              "fail_failure": 7,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 0.9166666666666666,
+              "successes": 11,
+              "trials": 12,
+              "interval": [
+                0.6461140782014047,
+                0.9851352905492264
+              ]
+            },
+            "specificity": {
+              "rate": 0.875,
+              "successes": 7,
+              "trials": 8,
+              "interval": [
+                0.5291051942301386,
+                0.9775830911367038
+              ]
+            },
+            "ppv": {
+              "rate": 0.9166666666666666,
+              "successes": 11,
+              "trials": 12,
+              "interval": [
+                0.6461140782014047,
+                0.9851352905492264
+              ]
+            },
+            "npv": {
+              "rate": 0.875,
+              "successes": 7,
+              "trials": 8,
+              "interval": [
+                0.5291051942301386,
+                0.9775830911367038
+              ]
+            },
+            "agreement": {
+              "rate": 0.9,
+              "successes": 18,
+              "trials": 20,
+              "interval": [
+                0.6989617935882066,
+                0.9721341060158468
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 12,
+              "trials": 12,
+              "interval": [
+                0.7574992425007574,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": 1.0,
+              "successes": 8,
+              "trials": 8,
+              "interval": [
+                0.6755843804891231,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": 0.0,
+              "interval": [
+                -0.2425007574992426,
+                0.32441561951087694
+              ]
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": 0.9166666666666666,
+              "interval": [
+                0.6662478366852304,
+                0.9924724694968967
+              ]
+            },
+            "adjusted_specificity": {
+              "value": 0.8749999999999999,
+              "interval": [
+                0.5349300415348993,
+                0.9845781626677172
+              ]
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "shipping": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          },
+          "warranty": {
+            "cases": 20,
+            "observed": 20,
+            "pending": 0,
+            "cells": {
+              "pass_success": 20,
+              "pass_failure": 0,
+              "pass_pending": 0,
+              "fail_success": 0,
+              "fail_failure": 0,
+              "fail_pending": 0
+            },
+            "sensitivity": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "specificity": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "ppv": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "npv": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "agreement": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_passed": {
+              "rate": 1.0,
+              "successes": 20,
+              "trials": 20,
+              "interval": [
+                0.8388698745050667,
+                1.0
+              ]
+            },
+            "observed_failed": {
+              "rate": null,
+              "successes": 0,
+              "trials": 0,
+              "interval": [
+                0.0,
+                1.0
+              ]
+            },
+            "observation_gap": {
+              "value": null,
+              "interval": null
+            },
+            "biased": false,
+            "adjusted_sensitivity": {
+              "value": null,
+              "interval": null
+            },
+            "adjusted_specificity": {
+              "value": null,
+              "interval": null
+            },
+            "warnings": [],
+            "slices": {}
+          }
+        }
+      },
+      "split": {
+        "calibrated_on_first_replies": {
+          "cases": 40,
+          "observed": 40,
+          "pending": 0,
+          "cells": {
+            "pass_success": 36,
+            "pass_failure": 1,
+            "pass_pending": 0,
+            "fail_success": 0,
+            "fail_failure": 3,
+            "fail_pending": 0
+          },
+          "sensitivity": {
+            "rate": 1.0,
+            "successes": 36,
+            "trials": 36,
+            "interval": [
+              0.9035781695514236,
+              1.0
+            ]
+          },
+          "specificity": {
+            "rate": 0.75,
+            "successes": 3,
+            "trials": 4,
+            "interval": [
+              0.3006360524426366,
+              0.9544139373553637
+            ]
+          },
+          "ppv": {
+            "rate": 0.972972972972973,
+            "successes": 36,
+            "trials": 37,
+            "interval": [
+              0.8617562156243666,
+              0.9952131489450924
+            ]
+          },
+          "npv": {
+            "rate": 1.0,
+            "successes": 3,
+            "trials": 3,
+            "interval": [
+              0.43849391955098227,
+              1.0
+            ]
+          },
+          "agreement": {
+            "rate": 0.975,
+            "successes": 39,
+            "trials": 40,
+            "interval": [
+              0.8711834051199223,
+              0.9955732825922052
+            ]
+          },
+          "observed_passed": {
+            "rate": 1.0,
+            "successes": 37,
+            "trials": 37,
+            "interval": [
+              0.9059390425448564,
+              1.0
+            ]
+          },
+          "observed_failed": {
+            "rate": 1.0,
+            "successes": 3,
+            "trials": 3,
+            "interval": [
+              0.43849391955098227,
+              1.0
+            ]
+          },
+          "observation_gap": {
+            "value": 0.0,
+            "interval": [
+              -0.09406095745514365,
+              0.5615060804490177
+            ]
+          },
+          "biased": false,
+          "adjusted_sensitivity": {
+            "value": 1.0,
+            "interval": [
+              0.9391107193240572,
+              0.9999868711777469
+            ]
+          },
+          "adjusted_specificity": {
+            "value": 0.7500000000000002,
+            "interval": [
+              0.2501225865867223,
+              0.9691768063506767
+            ]
+          },
+          "warnings": [],
+          "slices": {}
+        },
+        "second_replies": 40,
+        "estimate": {
+          "raw": {
+            "rate": 0.875,
+            "passed": 35,
+            "cases": 40,
+            "interval": [
+              0.7388757932976187,
+              0.9454058022645873
+            ]
+          },
+          "corrected": 0.8333333333333334,
+          "unclipped": 0.8333333333333334,
+          "interval": [
+            0.36243133870311517,
+            0.9620065594589237
+          ],
+          "sensitivity": 1.0,
+          "specificity": 0.7500000000000002,
+          "resamples": 2000,
+          "dropped": 0,
+          "warnings": []
+        },
+        "truth": 0.9
+      }
+    }
+  }
+}
