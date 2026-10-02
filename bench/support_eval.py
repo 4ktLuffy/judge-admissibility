@@ -80,7 +80,7 @@ async def agent_replies(cs: list[SupportCase]) -> dict[str, list[str]]:
 
     replies = await asyncio.gather(*(one(c, r) for c in cs for r in range(REPEATS)))
     out: dict[str, list[str]] = {}
-    for (c, _), reply in zip(((c, r) for c in cs for r in range(REPEATS)), replies):
+    for (c, _), reply in zip(((c, r) for c in cs for r in range(REPEATS)), replies, strict=True):
         out.setdefault(c.name, []).append(reply)
     return out
 
@@ -102,11 +102,13 @@ async def main() -> None:
     save(results)
 
     good = {
-        c.name: next((r for r, ok in zip(replies[c.name], truth[c.name]) if ok), f'Answer: {fmt(c, c.answer)}')
+        c.name: next(
+            (r for r, ok in zip(replies[c.name], truth[c.name], strict=True) if ok), f'Answer: {fmt(c, c.answer)}'
+        )
         for c in cs
     }
     judge_cases = [JudgeCase(c.name, c.inputs, good[c.name], expected_output=c.answer) for c in cs]
-    labels = [HumanLabel(n, r, ok) for n in replies for r, ok in zip(replies[n], truth[n])]
+    labels = [HumanLabel(n, r, ok) for n in replies for r, ok in zip(replies[n], truth[n], strict=True)]
 
     judges = {
         'weak (no reasoning, sees the question)': LLMJudge(
@@ -116,6 +118,10 @@ async def main() -> None:
             rubric=RUBRIC, model=codex_model(effort='high', timeout=300), include_input=True
         ),
         'strong, default include_input=False': LLMJudge(rubric=RUBRIC, model=codex_model(effort='high', timeout=300)),
+        # A different model, to see whether a judge can be swapped for another one.
+        'gpt-reserve (no reasoning, sees the question)': LLMJudge(
+            rubric=RUBRIC, model=codex_model('gpt-reserve', effort='none'), include_input=True
+        ),
     }
     for label, judge in judges.items():
         if label in results.get('certificates', {}):

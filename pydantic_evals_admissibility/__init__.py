@@ -14,8 +14,19 @@ from ._certify import (
     Thresholds,
     assertion_of,
     certify_judge,
+    recertify,
 )
 from ._controls import DEFAULT_CONTROLS, Control, EmptyOutput, MismatchedOutput, Rewrite, WhitespaceReformat
+from ._dataset import (
+    DatasetJudgeCertificate,
+    EmptyProse,
+    ProseWhitespace,
+    certify_dataset,
+    controls_for,
+    dataset_report,
+    map_prose,
+    rubric_kind,
+)
 from ._diagnose import diagnose
 from ._gate import Decision, GateResult, GateRules, decide, decide_unpaired, detectable_gain
 from ._logfire import finish_canary, promote, start_canary
@@ -32,6 +43,14 @@ from ._reports import compare_reports, outcomes
 from ._stats import cohen_kappa, wilson
 
 __all__ = (
+    'DatasetJudgeCertificate',
+    'EmptyProse',
+    'ProseWhitespace',
+    'certify_dataset',
+    'controls_for',
+    'dataset_report',
+    'map_prose',
+    'rubric_kind',
     'CanaryMonitor',
     'JudgeCanary',
     'DEFAULT_CONTROLS',
@@ -67,6 +86,7 @@ __all__ = (
     'assertion_of',
     'both_orders',
     'certify_judge',
+    'recertify',
     'certify_pairwise',
     'cohen_kappa',
     'wilson',

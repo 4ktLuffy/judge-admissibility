@@ -34,8 +34,8 @@ from pydantic_evals.evaluators import LLMJudge
 from task import Question, is_correct, questions
 
 from pydantic_evals_admissibility import Certificate, Check, GateRules, decide
-from pydantic_evals_admissibility._certify import _context, assertion_of
 from pydantic_evals_admissibility._cases import JudgeCase
+from pydantic_evals_admissibility._certify import _context, assertion_of
 
 ROOT = Path(__file__).parent.parent
 CACHE_PATH = ROOT / 'results' / 'optimize-cache.json'  # published, so the run is reproducible without new calls
@@ -126,7 +126,7 @@ async def verdicts(
     pairs = [(n, r) for n, rs in replies.items() for r in rs]
     results = await asyncio.gather(*(one(n, r) for n, r in pairs))
     out: dict[str, list[bool]] = {}
-    for (n, _), v in zip(pairs, results):
+    for (n, _), v in zip(pairs, results, strict=True):
         out.setdefault(n, []).append(v)
     return out
 
@@ -200,7 +200,8 @@ async def main() -> None:
     base_ref = await verdicts(base_train, by_name, cache, limit, reference=True)
     base_truth = truth(base_train, by_name)
     log(
-        f'baseline on train: plain judge {rate(base_judge):.2f}, reference judge {rate(base_ref):.2f}, truth {rate(base_truth):.2f}'
+        f'baseline on train: plain judge {rate(base_judge):.2f}, reference judge {rate(base_ref):.2f}, '
+        f'truth {rate(base_truth):.2f}'
     )
 
     candidates = await propose(base_train, base_judge, by_name, cache)
@@ -224,9 +225,9 @@ async def main() -> None:
     naive = best if best['judge_train'] > rate(base_judge) else None
     gated_judge = [decide(base_judge, r['judged'], certificate=judge_cert, rules=rules) for r in rows]
     gated_ref = [decide(base_ref, r['ref'], certificate=ref_cert, rules=rules) for r in rows]
-    promoted = [r for r, g in zip(rows, gated_ref) if g.decision == 'PROMOTE']
+    promoted = [r for r, g in zip(rows, gated_ref, strict=True) if g.decision == 'PROMOTE']
     gated_pick = max(promoted, key=lambda r: r['reference_train']) if promoted else None
-    for r, gj, gr in zip(rows, gated_judge, gated_ref):
+    for r, gj, gr in zip(rows, gated_judge, gated_ref, strict=True):
         log(f'candidate {r["index"]}: gate on plain judge -> {gj.decision}; gate on reference judge -> {gr.summary()}')
 
     held_out: dict[str, Any] = {}
@@ -250,7 +251,9 @@ async def main() -> None:
     (ROOT / 'results' / 'optimize.json').write_text(json.dumps({
         'baseline_prompt': BASELINE_PROMPT, 'rubric': RUBRIC, 'judge_certificate': judge_cert.verdict,
         'reference_certificate': ref_cert.verdict,
-        'baseline_train': {'plain_judge': rate(base_judge), 'reference_judge': rate(base_ref), 'truth': rate(base_truth)},
+        'baseline_train': {
+            'plain_judge': rate(base_judge), 'reference_judge': rate(base_ref), 'truth': rate(base_truth)
+        },
         'candidates': [{k: v for k, v in r.items() if k not in ('judged', 'ref', 'true')} for r in rows],
         'naive_pick': None if naive is None else naive['index'],
         'gate_on_judge': [g.decision for g in gated_judge],

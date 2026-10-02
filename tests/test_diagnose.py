@@ -107,3 +107,28 @@ def test_a_noisy_judge_is_not_mistaken_for_a_specific_one() -> None:
     )
     advice = diagnose(Certificate('INADMISSIBLE', checks, judgments))
     assert not any('may be right' in a for a in advice)
+
+
+def test_a_failure_the_judge_contradicts_is_blamed_on_the_judge() -> None:
+    """Found on pydantic-ai's example dataset with `certify_dataset`: the judge failed "No timeframe
+    could be inferred from your request." three times as not second person, then passed it with
+    doubled spaces. That one is the judge; the answers it never contradicted may still be the data."""
+    from pydantic_evals_admissibility import Judgment
+
+    references = [Judgment(f'c{i}', f'reference#{r}', 'out', i >= 3) for i in range(10) for r in range(3)]
+    variants = [Judgment(f'c{i}', 'must_hold:whitespace_reformat', 'out ', i >= 2) for i in range(10)]  # c2 passed
+    donors = [Judgment('c0', 'must_hold:mismatched_output', 'other', True)]  # another answer: says nothing about c0
+    checks = (
+        Check('acceptance', 'FAIL', 21, 30, (0.52, 0.83), 0.9),
+        Check('rejection', 'PASS', 20, 20, (0.84, 1.0), 0.8),
+    )
+    advice = diagnose(Certificate('INADMISSIBLE', checks, tuple(references + variants + donors)))
+    assert any("2 of 10: 'c0', 'c1'" in a and 'may be right' in a for a in advice), advice
+    assert any("fails 'c2' every time, but passed the same answer" in a for a in advice), advice
+
+    # When every consistent failure is contradicted, nothing points at the data and the usual advice stands.
+    all_contradicted = [Judgment(f'c{i}', 'must_hold:whitespace_reformat', 'out ', True) for i in range(10)]
+    advice = diagnose(Certificate('INADMISSIBLE', checks, tuple(references + all_contradicted)))
+    assert not any('may be right' in a for a in advice), advice
+    assert any('cannot confirm anything' in a for a in advice), advice
+    assert any("fails 'c0', 'c1', 'c2' every time, but passed" in a for a in advice), advice

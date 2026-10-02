@@ -16,7 +16,7 @@ from __future__ import annotations
 import asyncio
 import random
 from collections import defaultdict
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from statistics import NormalDist
 from typing import Any, Literal
@@ -26,7 +26,7 @@ from pydantic_evals.otel._errors import SpanTreeRecordingError
 
 from ._cases import HumanLabel, JudgeCase
 from ._controls import DEFAULT_CONTROLS, Control
-from ._stats import cohen_kappa, wilson
+from ._stats import clopper_pearson, cohen_kappa, wilson
 
 CheckStatus = Literal['PASS', 'FAIL', 'UNVALIDATED']
 Verdict = Literal['ADMISSIBLE', 'INADMISSIBLE', 'UNVALIDATED']
@@ -164,7 +164,34 @@ class Certificate:
                 }
                 for c in self.checks
             ],
+            'calls': self.calls,
+            'planned': self.planned,
         }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> Certificate:
+        """Rebuild a certificate saved with `to_dict`, to audit or `diagnose` it later without calling the judge.
+
+        Outputs come back as saved: strings, or the `repr` of structured outputs.
+        """
+        checks = tuple(
+            Check(
+                c['name'],
+                c['status'],
+                c['successes'],
+                c['trials'],
+                (c['interval'][0], c['interval'][1]),
+                c['threshold'],
+                c.get('detail', ''),
+                c.get('errors', 0),
+            )  # fmt: skip
+            for c in data['checks']
+        )
+        judgments = tuple(
+            Judgment(j['case'], j['role'], j['output'], j['passed'], j.get('reason'), j.get('error'))
+            for j in data.get('judgments', ())
+        )
+        return cls(data['verdict'], checks, judgments, data.get('judge', ''), data.get('calls'), data.get('planned'))
 
 
 def assertion_of(output: Any, assertion: str | None = None) -> tuple[bool, str | None]:
@@ -268,6 +295,7 @@ async def certify_judge(
     max_concurrency: int = 8,
     seed: int = 0,
     batch_size: int | None = None,
+    slice_by: Callable[[JudgeCase], str] | None = None,
 ) -> Certificate:
     """Run `judge` over `cases`, controls built from them, and any human labels.
 
@@ -284,6 +312,10 @@ async def certify_judge(
         batch_size: Judge this many cases at a time and stop early if the judge has clearly
             failed (intervals widened for the number of looks). A judge that is not failing runs
             to the end and is judged as if all at once. None judges everything at once.
+        slice_by: Names the kind of each case (for example its category and expected answer). Adds a
+            `slices` check that fails when the judge is shown to be below the acceptance bar on one
+            kind of case, which an overall rate can hide. Each slice's interval is widened for the
+            number of slices.
     """
     if repeats < 1:
         raise ValueError(f'repeats must be >= 1, got {repeats}')
@@ -293,14 +325,15 @@ async def certify_judge(
     rng = random.Random(seed)
     limit = asyncio.Semaphore(max_concurrency)
     planned = _plan(cases, controls, human_labels, repeats, rng)
+    slices = {case.name: slice_by(case) for case in cases} if slice_by else None
     if batch_size is None:
         judgments = await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in planned))
-        verdict, checks = _assess(judgments, repeats, thresholds)
+        verdict, checks = _assess(judgments, repeats, thresholds, slices=slices)
         return Certificate(
             verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(planned), planned=len(planned)
         )
     return await _certify_sequentially(
-        judge, cases, planned, repeats, thresholds, assertion, limit, rng, batch_size=batch_size
+        judge, cases, planned, repeats, thresholds, assertion, limit, rng, batch_size=batch_size, slices=slices
     )
 
 
@@ -315,6 +348,7 @@ async def _certify_sequentially(
     rng: random.Random,
     *,
     batch_size: int,
+    slices: dict[str, str] | None = None,
 ) -> Certificate:
     """Judge `batch_size` cases at a time and stop early only when the judge has clearly failed.
 
@@ -338,13 +372,32 @@ async def _certify_sequentially(
         todo = [(c, out, role) for c, out, role in planned if c.name in names]
         judgments += await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in todo))
         if index < len(batches) - 1:
-            verdict, checks = _assess(judgments, repeats, thresholds, z_early)
+            verdict, checks = _assess(judgments, repeats, thresholds, z_early, slices=slices)
             if verdict == 'INADMISSIBLE':
                 break
         else:
-            verdict, checks = _assess(judgments, repeats, thresholds)
+            verdict, checks = _assess(judgments, repeats, thresholds, slices=slices)
     return Certificate(
         verdict, checks, tuple(judgments), judge=_describe(judge), calls=len(judgments), planned=len(planned)
+    )
+
+
+def recertify(
+    certificate: Certificate,
+    *,
+    thresholds: Thresholds = DEFAULT_THRESHOLDS,
+    slices: Mapping[str, str] | None = None,
+) -> Certificate:
+    """Decide a certificate again from its saved judgments, without calling the judge.
+
+    For new thresholds or a new `slices` mapping (case name to kind of case) on a certificate
+    already paid for, for example one rebuilt with `Certificate.from_dict`.
+    """
+    refs = [j.role for j in certificate.judgments if j.role.startswith('reference#')]
+    repeats = max((int(role.split('#')[1]) + 1 for role in refs), default=1)
+    verdict, checks = _assess(certificate.judgments, repeats, thresholds, slices=dict(slices) if slices else None)
+    return Certificate(
+        verdict, checks, certificate.judgments, certificate.judge, certificate.calls, certificate.planned
     )
 
 
@@ -375,7 +428,12 @@ def _plan(
 
 
 def _assess(
-    judgments: Sequence[Judgment], repeats: int, thresholds: Thresholds, z: float = 1.96
+    judgments: Sequence[Judgment],
+    repeats: int,
+    thresholds: Thresholds,
+    z: float = 1.96,
+    *,
+    slices: dict[str, str] | None = None,
 ) -> tuple[Verdict, tuple[Check, ...]]:
     """Every check, and the verdict, from the judgments made so far."""
     references: dict[str, list[Judgment]] = defaultdict(list)
@@ -432,6 +490,9 @@ def _assess(
         )
     )
 
+    if slices:
+        checks.append(_slice_check(reference_judgments, slices, thresholds.min_acceptance, z))
+
     if repeats > 1:
         stable = [
             all(j.passed is not None for j in js) and len({j.passed for j in js}) == 1 for js in references.values()
@@ -480,6 +541,42 @@ def _assess(
     else:
         verdict = 'ADMISSIBLE'
     return verdict, tuple(checks)
+
+
+def _slice_check(references: Sequence[Judgment], slices: dict[str, str], threshold: float, z: float) -> Check:
+    """Acceptance on each kind of case; fails when one kind is shown to be below the bar.
+
+    It looks for a blind spot, it does not certify each slice. FAIL: a slice is shown to be below
+    the bar. UNVALIDATED: a slice is at or below the bar but has too few cases to show it. PASS:
+    every slice is above the bar and none is shown below it. To certify a slice, certify its cases
+    alone.
+    """
+    counts: dict[str, list[int]] = defaultdict(lambda: [0, 0])
+    for j in references:
+        if j.passed is not None:
+            counts[slices[j.case]][0] += j.passed
+            counts[slices[j.case]][1] += 1
+    # One test per slice: split the level across them, as `GateRules.for_candidates` does. Exact
+    # intervals, because Wilson's undercoverage on small slices failed a sound judge 6.3% of the time.
+    alpha = 2 * (1 - NormalDist().cdf(z)) / max(len(counts), 1)
+    bounds = {name: clopper_pearson(k, n, alpha) for name, (k, n) in counts.items()}
+    order = sorted(counts, key=lambda name: (bounds[name][1], name))
+    if not order:
+        return Check('slices', 'UNVALIDATED', 0, 0, (0.0, 1.0), threshold, 'no judgments yet')
+    worst = order[0]
+    k, n = counts[worst]
+    detail = 'worst first: ' + ', '.join(f'{name} {counts[name][0]}/{counts[name][1]}' for name in order)
+    low = [name for name in order if counts[name][0] <= threshold * counts[name][1]]
+    status: CheckStatus
+    if bounds[worst][1] < threshold:
+        status = 'FAIL'
+    elif low:
+        status, worst = 'UNVALIDATED', low[0]
+        k, n = counts[worst]
+        detail += f'; {worst} is at or below the bar but too small to show it'
+    else:
+        status = 'PASS'
+    return Check('slices', status, k, n, bounds[worst], threshold, detail)
 
 
 def _breakdown(judgments: Sequence[Judgment], ok: Any) -> str:

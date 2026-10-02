@@ -7,8 +7,8 @@ import uuid
 import logfire
 import pytest
 from logfire.testing import CaptureLogfire
-from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 from logfire.variables.config import LabeledValue, LatestVersion, Rollout, VariableConfig, VariablesConfig
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 from pydantic_evals_admissibility import GateResult, promote
 

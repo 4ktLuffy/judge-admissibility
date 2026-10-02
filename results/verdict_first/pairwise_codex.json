@@ -1,16 +1,16 @@
 {
   "judge": "PairwiseJudge(codex:gpt-5.6-luna)",
-  "verdict": "UNVALIDATED",
+  "verdict": "INADMISSIBLE",
   "checks": [
     {
       "name": "accuracy",
       "status": "UNVALIDATED",
-      "successes": 92,
+      "successes": 83,
       "trials": 108,
-      "rate": 0.8518518518518519,
+      "rate": 0.7685185185185185,
       "interval": [
-        0.7728269993471539,
-        0.906705482305469
+        0.6805831252811039,
+        0.8380074528222137
       ],
       "threshold": 0.8,
       "errors": 0,
@@ -18,21 +18,19 @@
     },
     {
       "name": "order_consistency",
-      "status": "UNVALIDATED",
-      "successes": 48,
+      "status": "FAIL",
+      "successes": 41,
       "trials": 54,
-      "rate": 0.8888888888888888,
+      "rate": 0.7592592592592593,
       "interval": [
-        0.7780505106792327,
-        0.9480704818244324
+        0.6305222087076177,
+        0.8535584529614926
       ],
       "threshold": 0.9,
       "errors": 0,
-      "detail": "when it flipped, it chose the answer shown first in 3/6; interval straddles the threshold: needs more cases"
+      "detail": "when it flipped, it chose the answer shown first in 10/13"
     }
   ],
-  "calls": 108,
-  "planned": 108,
   "judgments": [
     {
       "case": "arithmetic-0",
@@ -230,16 +228,16 @@
       "case": "letters-6",
       "role": "better_first#0",
       "output": "('The letter \u201ce\u201d appears **3 times**.\\n\\nAnswer: 3', 'Answer: 4')",
-      "passed": false,
-      "reason": "chose B",
+      "passed": true,
+      "reason": "chose A",
       "error": null
     },
     {
       "case": "letters-6",
       "role": "worse_first#0",
       "output": "('Answer: 4', 'The letter \u201ce\u201d appears **3 times**.\\n\\nAnswer: 3')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -278,8 +276,8 @@
       "case": "letters-14",
       "role": "better_first#0",
       "output": "('The letter **\u201co\u201d** appears **4** times.\\n\\nAnswer: 4', 'The letter **\u201co\u201d** appears **5** times.\\n\\nAnswer: 5')",
-      "passed": false,
-      "reason": "chose B",
+      "passed": true,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -326,24 +324,24 @@
       "case": "dates-0",
       "role": "better_first#0",
       "output": "('Answer: Sunday', 'Answer: Thursday')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
       "case": "dates-0",
       "role": "worse_first#0",
       "output": "('Answer: Thursday', 'Answer: Sunday')",
-      "passed": false,
-      "reason": "chose A",
+      "passed": true,
+      "reason": "chose B",
       "error": null
     },
     {
       "case": "dates-2",
       "role": "better_first#0",
       "output": "('313 days later is **Saturday**.\\n\\nAnswer: Saturday', '313 days later is **Sunday**.\\n\\nAnswer: Sunday')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
@@ -358,8 +356,8 @@
       "case": "dates-4",
       "role": "better_first#0",
       "output": "('203 mod 7 =  imao 0, so it remains Saturday.\\n\\nAnswer: Saturday', '203 days later is **Sunday**.\\n\\nAnswer: Sunday')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
@@ -374,16 +372,16 @@
       "case": "dates-6",
       "role": "better_first#0",
       "output": "('Answer: Sunday', '356 days later is **Tuesday**.\\n\\nAnswer: Tuesday')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
       "case": "dates-6",
       "role": "worse_first#0",
       "output": "('356 days later is **Tuesday**.\\n\\nAnswer: Tuesday', 'Answer: Sunday')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -414,8 +412,8 @@
       "case": "dates-10",
       "role": "worse_first#0",
       "output": "('243 days later is **Tuesday**.\\n\\nAnswer: Tuesday', '243 days later is **Saturday**.\\n\\nAnswer: Saturday')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -430,8 +428,8 @@
       "case": "dates-12",
       "role": "worse_first#0",
       "output": "('286 mod 7 = 2, so two days after Monday is Wednesday.\\n\\nAnswer: Wednesday', '286 mod 7 = 6, so six days after Monday is Sunday.\\n\\nAnswer: Sunday')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -462,8 +460,8 @@
       "case": "dates-16",
       "role": "worse_first#0",
       "output": "('123 days later is **Saturday**.\\n\\nAnswer: Saturday', '123 days later is a **Tuesday**.\\n\\nAnswer: Tuesday')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -526,16 +524,16 @@
       "case": "strings-10",
       "role": "worse_first#0",
       "output": "('mhtyrh\\n\\nAnswer: mhtyrh', 'Answer: mhtyhr')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
       "case": "strings-16",
       "role": "better_first#0",
       "output": "('Answer: ArbAdAcArbA', 'arbAdAcArbA\\n\\nAnswer: arbAdAcArbA')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
@@ -678,8 +676,8 @@
       "case": "letters-5",
       "role": "better_first#0",
       "output": "('The letter **\u201cp\u201d** appears **2 times**.\\n\\nAnswer: 2', 'The letter **\u201cp\u201d** appears **3 times**.\\n\\nAnswer: 3')",
-      "passed": false,
-      "reason": "chose B",
+      "passed": true,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -710,8 +708,8 @@
       "case": "letters-11",
       "role": "better_first#0",
       "output": "('2\\n\\nAnswer: 2', 'The letter \u201ca\u201d appears 1 time.\\n\\nAnswer: 1')",
-      "passed": false,
-      "reason": "chose B",
+      "passed": true,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -726,32 +724,32 @@
       "case": "letters-13",
       "role": "better_first#0",
       "output": "('The letter **\u201cl\u201d** appears **3 times** in \u201csassafras parallelogram\u201d.\\n\\nAnswer: 3', 'The letter **\u201cl\u201d** appears **2 times**.\\n\\nAnswer: 2')",
-      "passed": true,
-      "reason": "chose A",
+      "passed": false,
+      "reason": "chose B",
       "error": null
     },
     {
       "case": "letters-13",
       "role": "worse_first#0",
       "output": "('The letter **\u201cl\u201d** appears **2 times**.\\n\\nAnswer: 2', 'The letter **\u201cl\u201d** appears **3 times** in \u201csassafras parallelogram\u201d.\\n\\nAnswer: 3')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
       "case": "letters-15",
       "role": "better_first#0",
       "output": "('The letter \u201cm\u201d appears 2 times.\\n\\nAnswer: 2', 'The letter **\u201cm\u201d** appears **3 times**.\\n\\nAnswer: 3')",
-      "passed": false,
-      "reason": "chose B",
+      "passed": true,
+      "reason": "chose A",
       "error": null
     },
     {
       "case": "letters-15",
       "role": "worse_first#0",
       "output": "('The letter **\u201cm\u201d** appears **3 times**.\\n\\nAnswer: 3', 'The letter \u201cm\u201d appears 2 times.\\n\\nAnswer: 2')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -814,8 +812,8 @@
       "case": "dates-9",
       "role": "worse_first#0",
       "output": "('326 days later is **Thursday**.\\n\\nAnswer: Thursday', '326 mod 7 =  \u0442\u043e\u0433\u043e 4, so Tuesday + 4 days = **Saturday**.\\n\\nAnswer: Saturday')",
-      "passed": true,
-      "reason": "chose B",
+      "passed": false,
+      "reason": "chose A",
       "error": null
     },
     {
@@ -901,10 +899,11 @@
   ],
   "pairs": 54,
   "first_position_rate": [
-    0.5,
+    0.5648148148148148,
     [
-      0.407333152227769,
-      0.592666847772231
+      0.4706765816044607,
+      0.6545004544894435
     ]
-  ]
+  ],
+  "calls": 108
 }

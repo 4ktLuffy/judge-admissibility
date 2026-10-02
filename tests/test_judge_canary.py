@@ -51,13 +51,12 @@ async def test_sampling_rate_limits_extra_judge_calls() -> None:
 
 async def test_works_as_an_online_evaluator_on_a_live_function() -> None:
     """The same wrapper on `pydantic_evals.online.evaluate`: live calls, background evaluation."""
-    from pydantic_evals.online import evaluate, wait_for_evaluations
-
     import re
 
     from pydantic_ai.messages import ModelMessage, ModelResponse, ToolCallPart, UserPromptPart
     from pydantic_ai.models.function import AgentInfo, FunctionModel
     from pydantic_evals.evaluators import LLMJudge
+    from pydantic_evals.online import evaluate, wait_for_evaluations
 
     # Live traffic has no expected answer, so this judge checks the answer against the question.
     def by_question(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:

@@ -75,10 +75,20 @@ wrong.
 2 checks in 40 calls, a 0.1% draw. A monitor that must see a known number of checks per window
 should not depend on luck for it.
 
-**Why ask a comparison judge both ways round?** Because the order can decide. With only the
-final answers shown, the Codex comparison judge chose whichever came first in 68% of
-presentations. Asking both ways and answering only when they agree raised accuracy from 0.77 to
-0.85 where there was a signal to recover, and could not help where there was none.
+**Why ask a comparison judge both ways round?** Because the order can decide, and you cannot know
+in advance whether it will. Asked for its choice before its reason, the Codex comparison judge
+chose whichever answer came first in 68% of presentations; asked for its reason first, the same
+judge on the same pairs showed no preference (48%). Asking both ways and answering only when the
+two agree raised accuracy from 0.85 to 0.90 at the cost of abstaining on 6 of 54 pairs.
+
+**Why must the verdict come after the reason in a judge's output?** Structured output is written
+in schema order. A judge without reasoning asked for `pass` (or `choice`) first commits before it
+has written any reasoning. Measured by accident, through a bug in this repository's Codex adapter
+that sorted the schema's keys: on the support task the no-reasoning judge passed 70 of 80 good
+answers verdict-first and 80 of 80 reason-first, and the comparison judge's accuracy went from
+0.53 to 0.85. `LLMJudge` and `PairwiseJudge` both put the reason first; a provider adapter or a
+custom output type that reorders it undoes that silently. Judges with reasoning were unaffected:
+their certificates came out the same in both orders.
 
 ## When the controls or the data are the problem
 
@@ -95,6 +105,36 @@ at random; one that fails the same few every time and passes most others every t
 specific. Then the advice is to read those answers first, and the doctor stops drawing
 conclusions (noise, cases needed) from numbers those answers feed into. It does not blame the data
 when the judge passes almost nothing, because a dataset is not wrong everywhere.
+
+**Why does the doctor clear an answer the judge passed when reformatted?** `certify_dataset` on
+the same dataset found a fourth answer the judge failed every time: *"No timeframe could be
+inferred from your request."*, failed as "not second person". With its spaces doubled the judge
+passed it, citing "your request". A whitespace change is a must-hold control: it means the same
+answer, so passing it contradicts the three failures. Consistency over repeats points at the data
+only when nothing the judge did contradicts it; a contradicted answer is reported as the judge's
+mistake. Another case's answer (`mismatched_output`) does not count, because it is a different
+answer.
+
+**Why does `certify_dataset` change only prose fields?** A structured output holds timestamps
+and ids next to its explanation. Emptying or re-spacing the whole thing would test whether the
+judge notices a broken timestamp, not whether it reads the text the rubric is about, and a
+"whitespace only" change to an id is not whitespace only. So the controls touch strings with a
+space in them and leave the rest as it was.
+
+**Why slice a certificate by kind of case?** An overall rate is an average over kinds of case,
+and a judge can be wrong on every case of one kind while the average passes. Measured, through
+the field-order bug: two no-reasoning judges accepted 70 of 80 good answers, comfortably over the
+bar, and 0 of the 10 that were a correct "no" to a return-window question. `slice_by` is opt-in
+because only you know which kinds matter. Its `PASS` is weaker than the other checks': it means no
+slice is shown to be below the bar, not that each slice is shown above it. To certify one kind,
+certify its cases alone.
+
+**Why an exact interval for slices, when the other checks use Wilson?** Slices are small and
+many, and each is a chance to fail a sound judge. With Wilson intervals, a judge exactly at the
+bar on six slices of ten failed the check 6.3% of the time against a 5% budget. With exact
+Clopper-Pearson intervals, split across the slices, it was at most 1.9% in every layout simulated
+(2 to 12 slices of 10 to 40 cases), and a slice the judge always gets wrong was still caught every
+time. The price: a slice at 0.2 is caught 68% of the time with 10 cases instead of 89%.
 
 ## The sequential certificate
 
@@ -115,6 +155,10 @@ Every one of these was caught by a control or a check before a number was report
 
 - A Codex setting that silently ignored the judge's instructions made the default `LLMJudge` look
   like it passed wrong answers. With the instructions delivered, it fails right answers instead.
+- The Codex adapter sorted the output schema's keys, so judges gave the verdict before the reason.
+  It made a no-reasoning judge fail every correct "no" to a return-date question while its own
+  reasons said the answer was right, and it produced a 68% position bias that this README
+  reported. Found by slicing a certificate by kind of case; every affected result was re-run.
 - A ground-truth checker failed "−27" written with a Unicode minus. The certified judge was
   right and the checker was wrong.
 - The gate's bootstrap made too many false calls; the regression guard rejected real gains; the

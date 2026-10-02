@@ -163,3 +163,53 @@ def test_a_mismatched_answer_is_never_one_that_is_also_right() -> None:
         for seed in range(20):
             donor = control.make(case, cases, random.Random(seed))
             assert donor is not None and donor.split()[-1] != case.expected_output
+
+
+async def test_a_saved_certificate_can_be_rebuilt_and_diagnosed_later() -> None:
+    import json
+
+    from pydantic_evals_admissibility import Certificate, diagnose
+
+    cert = await certify_judge(judge(yes_man), CASES, repeats=2)
+    again = Certificate.from_dict(json.loads(json.dumps(cert.to_dict())))
+    assert again == cert
+    assert diagnose(again) == diagnose(cert)
+
+
+async def test_a_blind_spot_hidden_by_the_overall_rate_fails_the_slice_check() -> None:
+    """Found on the support task: two judges without reasoning were ADMISSIBLE overall and passed
+    none of the correct "no" answers to return-window questions. Here, a judge wrong on every capital
+    beginning with A (4 of 30 cases)."""
+    from pydantic_evals_admissibility import diagnose
+
+    def blind_to_a(output: str, expected: str) -> bool:
+        return oracle(output, expected) and not output.strip().startswith('A')
+
+    def first_letter(case: JudgeCase) -> str:
+        return 'starts with A' if str(case.output).startswith('A') else 'other'
+
+    overall = await certify_judge(judge(blind_to_a), CASES)
+    assert overall.verdict == 'ADMISSIBLE', overall.table()  # 78/90 accepted: the overall rate hides it
+
+    sliced = await certify_judge(judge(blind_to_a), CASES, slice_by=first_letter)
+    assert sliced.verdict == 'INADMISSIBLE' and [c.name for c in sliced.failures()] == ['slices'], sliced.table()
+    slices = next(c for c in sliced.checks if c.name == 'slices')
+    assert slices.detail == 'worst first: starts with A 0/12, other 78/78', slices
+    assert any('one kind of case (starts with A 0/12' in a for a in diagnose(sliced)), diagnose(sliced)
+
+    sound = await certify_judge(judge(oracle), CASES, slice_by=first_letter)
+    assert sound.verdict == 'ADMISSIBLE' and status(sound, 'slices') == 'PASS', sound.table()
+
+    # Too few cases of that kind to show it is below the bar: suspicious, not proven.
+    one_a = [c for c in CASES if c.output not in ('Athens', 'Ankara', 'Abuja')]  # Accra is left
+    few = await certify_judge(judge(blind_to_a), one_a, repeats=1, slice_by=first_letter)
+    assert status(few, 'slices') == 'UNVALIDATED', few.table()
+
+
+async def test_recertify_decides_again_from_saved_judgments() -> None:
+    from pydantic_evals_admissibility import recertify
+
+    cert = await certify_judge(judge(oracle), CASES, repeats=2)
+    assert recertify(cert).checks == cert.checks
+    sliced = recertify(cert, slices={c.name: c.output[0] for c in CASES})
+    assert 'slices' in [c.name for c in sliced.checks] and sliced.judgments == cert.judgments

@@ -40,8 +40,8 @@ from optimize import (
 from pydantic_evals.evaluators import LLMJudge
 
 from pydantic_evals_admissibility import CanaryMonitor, GateRules, JudgeCanary, decide, detectable_gain, promote
-from pydantic_evals_admissibility._certify import _context
 from pydantic_evals_admissibility._cases import JudgeCase
+from pydantic_evals_admissibility._certify import _context
 
 
 def step(n: int, text: str) -> None:
@@ -125,9 +125,8 @@ async def main() -> None:
     promoted = promote(confirmed, 'agent_prompt', chosen_prompt)
     with prompt_var.get() as served:
         now_serving = served.value
-    print(
-        f'    promoted: {promoted}; production now serves candidate {chosen_index if now_serving == chosen_prompt else "baseline"}'
-    )
+    serving = chosen_index if now_serving == chosen_prompt else 'baseline'
+    print(f'    promoted: {promoted}; production now serves candidate {serving}')
 
     step(6, 'Watch the judge on live traffic with JudgeCanary (every 4th call)')
     judge = LLMJudge(rubric=RUBRIC, model=codex_model(), include_input=True, include_expected_output=use_reference)

@@ -35,7 +35,7 @@ def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
     return None
 
 
-def _consistent_rejections(certificate: Certificate) -> list[str]:
+def _consistent_rejections(certificate: Certificate) -> tuple[list[str], bool]:
     """Known-good answers the judge fails every time: maybe the answers, not the judge.
 
     A noisy judge fails good answers at random. One that fails the same few answers on every
@@ -45,9 +45,14 @@ def _consistent_rejections(certificate: Certificate) -> list[str]:
     time, with reasons that hold up ("impersonal, not second person").
     """
     by_case: dict[str, list[bool]] = {}
+    variant_passed: set[str] = set()
     for j in certificate.judgments:
         if j.role.startswith('reference#') and j.passed is not None:
             by_case.setdefault(j.case, []).append(j.passed)
+        # A must-hold variant of the case's own answer (not another case's, as `mismatched_output` is)
+        # means the same thing; if the judge passed it, it contradicts its own failures of the original.
+        if j.role.startswith('must_hold:') and j.role != 'must_hold:mismatched_output' and j.passed:
+            variant_passed.add(j.case)
     repeated = {case: v for case, v in by_case.items() if len(v) > 1}
     always_failed = [case for case, v in repeated.items() if not any(v)]
     always_passed = [case for case, v in repeated.items() if all(v)]
@@ -55,19 +60,34 @@ def _consistent_rejections(certificate: Certificate) -> list[str]:
     if not always_failed or consistent < 0.8 * len(repeated) or len(always_passed) < 0.3 * len(repeated):
         # Nothing failed consistently; or too many mixed cases (noise, not specificity); or it passes
         # almost nothing, and a dataset is not wrong everywhere: then it is the judge.
-        return []
-    names = ', '.join(repr(c) for c in always_failed[:5]) + (' ...' if len(always_failed) > 5 else '')
-    return [
-        f'It fails the same known-good answers every time ({len(always_failed)} of {len(repeated)}: {names}) and '
-        f'is consistent on {consistent} of {len(repeated)} cases. A judge that consistent may be right: '
-        'read those answers against the rubric before blaming the judge, and fix or drop the ones that do '
-        'not meet it. Other cases borrow them '
-        'as controls too, so fix them before reading `invariance`.'
-    ]
+        return [], False
+    suspect = [case for case in always_failed if case not in variant_passed]
+    contradicted = [case for case in always_failed if case in variant_passed]
+    advice = []
+    if suspect:
+        names = ', '.join(repr(c) for c in suspect[:5]) + (' ...' if len(suspect) > 5 else '')
+        advice.append(
+            f'It fails the same known-good answers every time ({len(suspect)} of {len(repeated)}: {names}) and '
+            f'is consistent on {consistent} of {len(repeated)} cases. A judge that consistent may be right, or '
+            'those answers may share something it gets wrong every time: read them against the rubric. Fix or '
+            'drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever '
+            'its overall rate. Other cases borrow them as controls too, so settle them before reading '
+            '`invariance`.'
+        )
+    if contradicted:
+        names = ', '.join(repr(c) for c in contradicted[:5]) + (' ...' if len(contradicted) > 5 else '')
+        advice.append(
+            f'It also fails {names} every time, but passed the same answer with only its formatting changed: '
+            'there the judge contradicts itself, so that failure is the judge, not the answer.'
+        )
+    return advice, bool(suspect)  # with no answer left to suspect, the usual advice about the judge stands
 
 
 def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
     """Plain-language reasons the certificate is not ADMISSIBLE, and what to try first.
+
+    Some advice applies to an ADMISSIBLE certificate too: known-good answers it fails every time
+    can be hiding behind a passing overall rate.
 
     Args:
         certificate: The certificate to explain.
@@ -84,7 +104,7 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
         return checks[name].status if name in checks else None
 
     acceptance, rejection = checks.get('acceptance'), checks.get('rejection')
-    data_suspect = _consistent_rejections(certificate)
+    consistency_advice, data_suspect = _consistent_rejections(certificate)
     if status('acceptance') == 'FAIL' and status('rejection') == 'PASS':
         if data_suspect:
             advice.append(
@@ -168,7 +188,16 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 'It also disagrees with people beyond chance; fix the failures above first, then certify again '
                 'before reading anything into the disagreement.'
             )
-    advice += data_suspect
+    if status('slices') == 'FAIL' and 'slices' in checks:
+        s = checks['slices']
+        worst = s.detail.removeprefix('worst first: ').split(', ')[0]
+        advice.append(
+            f'It is below the bar on one kind of case ({worst}; at most {s.interval[1]:.2f} against '
+            f'{s.threshold:.2f}), whatever its overall acceptance: its verdicts on that kind are not evidence. '
+            'Read its reasons on those cases. If they need work it does not do reliably without reasoning '
+            '(dates, arithmetic), try a judge that reasons, or a rubric that spells out the rule for that kind.'
+        )
+    advice += consistency_advice
     for check in certificate.checks:
         if data_suspect and check.name in ('acceptance', 'invariance'):
             continue  # both are computed from the answers that need checking first

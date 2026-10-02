@@ -1,0 +1,388 @@
+{
+  "weak (no reasoning, sees the question)": {
+    "overall": "ADMISSIBLE",
+    "by_slice": "ADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": ""
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40, empty_output 40/40"
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 39,
+        "trials": 40,
+        "rate": 0.975,
+        "interval": [
+          0.8711834051199223,
+          0.9955732825922052
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 39/40"
+      },
+      {
+        "name": "slices",
+        "status": "PASS",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.7603045851549305,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10"
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9123754607496077,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case"
+      },
+      {
+        "name": "human_agreement",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=1.00"
+      }
+    ],
+    "calls": 280,
+    "planned": 280,
+    "advice": []
+  },
+  "strong (reasoning high, sees the question)": {
+    "overall": "ADMISSIBLE",
+    "by_slice": "ADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 76,
+        "trials": 80,
+        "rate": 0.95,
+        "interval": [
+          0.878375474489178,
+          0.9803867628727044
+        ],
+        "threshold": 0.7,
+        "errors": 4,
+        "detail": ""
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40, empty_output 40/40"
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 37,
+        "trials": 38,
+        "rate": 0.9736842105263158,
+        "interval": [
+          0.8650482156319974,
+          0.9953395324464698
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 37/38"
+      },
+      {
+        "name": "slices",
+        "status": "PASS",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.7603045851549305,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 16/16, warranty: no 10/10, warranty: yes 10/10"
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 38,
+        "trials": 40,
+        "rate": 0.95,
+        "interval": [
+          0.834958291820748,
+          0.9861796228538989
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case"
+      },
+      {
+        "name": "human_agreement",
+        "status": "PASS",
+        "successes": 79,
+        "trials": 80,
+        "rate": 0.9875,
+        "interval": [
+          0.9325356757603457,
+          0.9977900813816939
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=0.93"
+      }
+    ],
+    "calls": 280,
+    "planned": 280,
+    "advice": []
+  },
+  "strong, default include_input=False": {
+    "overall": "INADMISSIBLE",
+    "by_slice": "INADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 14,
+        "trials": 20,
+        "rate": 0.7,
+        "interval": [
+          0.4810232237710206,
+          0.854524726031006
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases"
+      },
+      {
+        "name": "rejection",
+        "status": "FAIL",
+        "successes": 10,
+        "trials": 20,
+        "rate": 0.5,
+        "interval": [
+          0.2992949144298199,
+          0.7007050855701801
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 0/10, empty_output 10/10"
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.7224598312333834,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 10/10; interval straddles the threshold: needs more cases"
+      },
+      {
+        "name": "slices",
+        "status": "UNVALIDATED",
+        "successes": 4,
+        "trials": 8,
+        "rate": 0.5,
+        "interval": [
+          0.0998649281979781,
+          0.9001350718020219
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "worst first: shipping 4/8, return: no 0/2, refund 4/4, warranty: no 4/4, warranty: yes 2/2; shipping is at or below the bar but too small to show it"
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.7224598312333834,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases"
+      },
+      {
+        "name": "human_agreement",
+        "status": "FAIL",
+        "successes": 15,
+        "trials": 20,
+        "rate": 0.75,
+        "interval": [
+          0.5312949900419365,
+          0.888139947210597
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=0.34"
+      }
+    ],
+    "calls": 70,
+    "planned": 280,
+    "advice": [
+      "It passes answers that cannot be right (mismatched_output 0/10, empty_output 10/10).",
+      "It rejects every empty answer and fails only on other cases' answers. If the rubric grades style, tone or format rather than correctness, another case's answer can satisfy it, and the control is wrong, not the judge: use `MismatchedOutput(kind='must_hold')` and `Rewrite` controls that break the rubric itself.",
+      "It also disagrees with people beyond chance; fix the failures above first, then certify again before reading anything into the disagreement.",
+      "It fails the same known-good answers every time (3 of 10: 'return-9', 'shipping-1', 'shipping-3') and is consistent on 10 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
+      "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 16 would, at the same rate."
+    ]
+  },
+  "gpt-reserve (no reasoning, sees the question)": {
+    "overall": "ADMISSIBLE",
+    "by_slice": "ADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-reserve)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": ""
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40, empty_output 40/40"
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 38,
+        "trials": 40,
+        "rate": 0.95,
+        "interval": [
+          0.834958291820748,
+          0.9861796228538989
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 38/40"
+      },
+      {
+        "name": "slices",
+        "status": "PASS",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.7603045851549305,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10"
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9123754607496077,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case"
+      },
+      {
+        "name": "human_agreement",
+        "status": "PASS",
+        "successes": 78,
+        "trials": 80,
+        "rate": 0.975,
+        "interval": [
+          0.9133539994467789,
+          0.9931172511018748
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=0.86"
+      }
+    ],
+    "calls": 280,
+    "planned": 280,
+    "advice": []
+  }
+}

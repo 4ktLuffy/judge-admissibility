@@ -65,7 +65,8 @@ async def main() -> None:
     print(cert.table())
     rate = first_position_rate(cert)
     print(
-        f'chose the answer shown first in {rate[0]:.2f} of presentations, 95% interval [{rate[1][0]:.2f}, {rate[1][1]:.2f}]'
+        f'chose the answer shown first in {rate[0]:.2f} of presentations, '
+        f'95% interval [{rate[1][0]:.2f}, {rate[1][1]:.2f}]'
         if rate
         else ''
     )

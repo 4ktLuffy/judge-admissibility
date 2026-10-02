@@ -44,7 +44,7 @@ async def main() -> None:
         j == t
         for label in out
         for name in out[label]['judge']
-        for j, t in zip(out[label]['judge'][name], out[label]['truth'][name])
+        for j, t in zip(out[label]['judge'][name], out[label]['truth'][name], strict=True)
     )
     total = sum(len(v) for label in out for v in out[label]['judge'].values())
     print(f'reference judge agrees with ground truth on {agree}/{total} held-out replies')

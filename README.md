@@ -14,17 +14,27 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproduced i
   replies against a store policy, a reasoning judge with the default `include_input=False`
   passed **10 of 10 answers that belonged to other customers' questions**. Certification caught it
   after 70 of 280 calls. With `include_input=True` the same judge agreed with ground truth on
-  80 of 80 replies.
-- **Order decides when the judge can't check:** asked which of two bare answers was right, the
-  comparison judge picked **whichever came first in 68% of presentations** (interval 0.58 to
-  0.76) and was right 53% of the time. On the support task, where it could check the policy, it
-  showed no preference (49%). Measure your judge on your task.
+  79 of 80 replies.
+- **Ask for the reason before the verdict.** A bug in this repository's Codex adapter sorted
+  the judge's output schema, so judges gave the verdict first. A judge without reasoning then
+  certified ADMISSIBLE overall while passing **0 of 10 correct "no" answers**, its own reasons
+  saying they were right; slicing the certificate by kind of case caught it. A comparison judge
+  picked **whichever answer came first 68% of the time** and was right 53%. With the reason first,
+  as `LLMJudge` defines it: 10 of 10, and no position preference (48%) at 85%. Judges with
+  reasoning were unaffected. Every result is re-run; `bench/field_order.py` shows both.
 - **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
   than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
   certified judge, then confirming on fresh questions, promoted the one real improvement
   (p = 0.015), the same call ground truth makes.
+- **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
+  `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
+  judge failed **the same 3 of its 10 "good" answers every time**, and its reasons hold up: they
+  are impersonal, while the rubric asks for "second-person or friendly". On a fourth it
+  contradicted itself: it failed *"...inferred from your request"* three times as not second
+  person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
 
 ```python
+results = await certify_dataset(dataset)  # every LLMJudge in a pydantic-evals Dataset, controls chosen per rubric
 certificate = await certify_judge(judge, cases, batch_size=10)  # is it evidence? stops early if clearly not
 certificate.raise_unless_admissible(judge)  # fail CI, with what's wrong and what to try
 result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)  # is the change real?
@@ -32,6 +42,7 @@ result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=
 
 **The core** is three functions: `certify_judge` (pointwise judges), `certify_pairwise`
 (comparison judges, including position bias) and `diagnose` (what to change when either fails).
+`certify_dataset` runs `certify_judge` on every judge in a `Dataset`.
 **Built on them:** `decide` / `compare_reports` (is a change real?), `detectable_gain` (can your
 dataset even see it?), and, for Logfire users, `promote`, the canary rollout and `JudgeCanary`
 (keep checking a judge in production). The reasoning behind every choice is in
@@ -56,6 +67,7 @@ online evaluation imports it), also `pip install sniffio` to use `JudgeCanary` o
 | `invariance` | keep its verdict when nothing that matters changes | the same answer, whitespace reformatted |
 | `stability` | give the same verdict when asked again | each answer judged `repeats` times |
 | `human_agreement` | agree with people beyond chance (Cohen's kappa) | `HumanLabel`s, in any form (they could come from a Logfire annotation export) |
+| `slices` (opt-in) | not be below the bar on any one kind of case | `slice_by`: a name for each case's kind |
 
 Each rate carries a 95% Wilson interval and is decided on it, not on the point estimate:
 
@@ -114,14 +126,18 @@ when a judge stops being evidence.
 `bench/support_eval.py`: a support agent (Codex, no reasoning) answers 40 customer questions
 from short store policies (return windows, restocking fees, shipping thresholds, warranties, with
 distracting details); answers are computed by code and balanced between yes and no. The agent got
-72 of 80 replies right. Three judges were certified on those 80 replies, ground truth as labels,
+72 of 80 replies right. Four judges were certified on those 80 replies, ground truth as labels,
 sequentially in batches of 10:
 
-| Judge (Codex `gpt-5.6-luna`) | Certificate | Calls | Agreement with ground truth |
+| Judge (Codex) | Certificate | Calls | Agreement with ground truth |
 |---|---|---|---|
-| no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 74/80, kappa 0.53 |
-| reasoning high, `include_input=True` | ADMISSIBLE | 280 of 280 | 80/80, kappa 1.00 |
-| reasoning high, default `include_input=False` | **INADMISSIBLE** | **70 of 280** | 16/20, kappa 0.23 |
+| `gpt-5.6-luna`, no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 80/80, kappa 1.00 |
+| `gpt-reserve`, no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 78/80, kappa 0.86 |
+| `gpt-5.6-luna`, reasoning high, `include_input=True` | ADMISSIBLE | 280 of 280 | 79/80, kappa 0.93 |
+| `gpt-5.6-luna`, reasoning high, default `include_input=False` | **INADMISSIBLE** | **70 of 280** | 15/20, kappa 0.34 |
+
+(The reasoning judge's acceptance is 76/80 because 4 calls timed out; a judgment that errors
+does not count as a pass.)
 
 The default-configured judge passed every one of the 10 answers borrowed from other customers'
 questions (each with a different correct answer, so wrong by construction). `diagnose` said why:
@@ -137,11 +153,26 @@ without the restocking fee, the wrong side of the shipping threshold), both ways
 
 | Comparison judge | Accuracy | Same pick both ways | Chose the answer shown first |
 |---|---|---|---|
-| no reasoning | 0.89 (71/80) | 39/40 | 0.49 |
-| reasoning high | 0.88 (70/80) | 40/40 | 0.50 |
+| no reasoning | 0.96 (77/80) | 39/40 | 0.51 |
+| reasoning high | 0.96 (77/80) | 39/40 | 0.51 |
 
-No position preference here, unlike the arithmetic task below, where the judge could not check
-the answers itself.
+(The same totals, from different mistakes: the two judges were wrong on different pairs.)
+
+### Slices: a passing rate can hide a kind of case
+
+`certify_judge(..., slice_by=...)` names the kind of each case and adds a `slices` check, which
+fails when the judge is shown to be below the bar on one kind of case. `recertify` applies it to a
+certificate already paid for. Sliced by kind and correct answer (`return: no`, `refund`, ...),
+every judge above passes it. It found something only when the judge was broken: through the adapter
+bug described under comparison judges, both judges without reasoning were asked for the verdict
+before the reason, and both certified ADMISSIBLE overall (70/80 accepted) while passing **0 of 10
+correct "no" answers** to return-window questions. Their reasons said the answers were right,
+after the verdict had been given: *"...98 days later, so the answer 'no' is correct."* Sliced,
+both certificates were INADMISSIBLE.
+
+Each slice is decided with an exact (Clopper-Pearson) interval, split across the slices. A sound
+judge exactly at the bar fails the check at most 1.9% of the time (simulated: 2 to 12 slices
+of 10 to 40 cases each); a slice it always gets wrong is caught every time with 10 cases.
 
 ## Pydantic's own example judge
 
@@ -159,11 +190,11 @@ dataset's 10 expected outputs are the answers marked good.
 
 | Judge (Codex `gpt-5.6-luna`) | Certificate | Good answers passed | Must-fail controls rejected |
 |---|---|---|---|
-| no reasoning | INADMISSIBLE | 14/30 | 20/20 |
+| no reasoning | INADMISSIBLE | 15/30 | 20/20 |
 | reasoning high | UNVALIDATED | 18/30 | 20/20 |
 
-Both judges failed the same three expected outputs every time they were asked, with reasons that
-hold up against the rubric's words:
+Both judges failed the same three expected outputs every time they were asked (the one without
+reasoning failed two more), with reasons that hold up against the rubric's words:
 
 - *"Conflicting time instructions: 2025 and 2020 cannot both apply."*: "clear but impersonal and
   does not address the user in a second-person or friendly style"
@@ -173,13 +204,56 @@ hold up against the rubric's words:
 
 So the low acceptance is at least partly the dataset: some of its answers marked good do not meet
 its own rubric as written. `diagnose` now says so instead of blaming the judge when a judge fails
-the same answers on every repeat and passes most others every time. With 10 cases, the judge could
-not be certified either way; the doctor puts the stability check alone at 54 cases for the
-weaker judge. Two things from this run changed the package: rubric-specific controls (`Rewrite`,
+the same answers on every repeat and passes most others every time. With 10 cases, the reasoning
+judge could not be certified either way. Its numbers came out identical in two runs, before and
+after the schema fix described under comparison judges. Two things from this run changed the package: rubric-specific controls (`Rewrite`,
 `MismatchedOutput(kind='must_hold')`), and the doctor checking the data before the judge.
 
 A third-person rewrite was left out as a control on purpose: the rubric says "second-person **or**
 friendly", so a friendly third-person explanation meets it.
+
+## One call for a whole dataset: `certify_dataset`
+
+```python
+dataset = Dataset[Inputs, Output, None].from_file(path, custom_evaluator_types=...)
+results = await certify_dataset(dataset)  # optionally model=..., to certify on a cheaper model
+print(dataset_report(results))
+```
+
+It finds every `LLMJudge` in the dataset: those in `evaluators`, and those attached to single
+cases, grouped by rubric. Each case's `expected_output` is a known-good answer. Two decisions it
+makes for you, and reports:
+
+- **What the rubric grades.** A rubric about style or tone (read from its words; pass `controls=`
+  to override) gets controls for style: another case's answer must *not* change the verdict, since
+  it is just as friendly. A rubric about correctness gets the default controls.
+- **Where the controls apply.** In structured outputs, the empty and whitespace controls change
+  only the prose fields (strings with a space in them), never timestamps or ids, so a
+  "whitespace only" change cannot change the answer.
+
+On pydantic-ai's example dataset (`bench/certify_pydantic_dataset.py`, their `main` at
+`6bc07cf`, Codex `gpt-5.6-luna` reasoning high, 3 repeats), against the hand-written controls of the
+previous section:
+
+| Controls | Calls | Good answers passed | Must-fail rejected | Certificate |
+|---|---|---|---|---|
+| written by hand for this rubric | 70 | 18/30 | 20/20 | UNVALIDATED |
+| chosen by `certify_dataset` | 60 | 17/30 | 10/10 | UNVALIDATED |
+
+The same verdict, without writing a control, and the same numbers again in a second run after
+the schema fix. The judge failed four answers on all three tries.
+Three are the three the hand-written run found ("Ambiguous mention", "Impossible range",
+"Confusing relative references"); the doctor says to read those against the rubric. The fourth,
+"No mention" (*"No timeframe could be inferred from your request."*), is second person, and the
+judge passed it once its spaces were doubled, now saying it "refers directly to 'your request'"
+(and again in the second run).
+The doctor reports that one as the judge contradicting itself, not as bad data. The one judge attached to a single case was reported and
+not certified: one case cannot certify anything.
+
+The automatic controls are weaker than hand-written ones. For a style rubric the only answer that
+must fail under any rubric is an empty one, so with 10 cases `rejection` cannot pass (10/10 has a
+lower bound of 0.72; the doctor says 16 cases would do it). A control that breaks your rubric
+(`Rewrite`), as in the previous section, adds the evidence.
 
 ## Comparison judges: does the order decide?
 
@@ -190,24 +264,34 @@ judge must pick the better one (`accuracy`) and the same one either way (`order_
 and when it flips, the certificate says which position it followed. `PairwiseJudge(rubric,
 model)` is a comparison judge on any Pydantic AI model with a typed verdict.
 
-Measured on Codex `gpt-5.6-luna` (`bench/pairwise_codex.py`): 54 pairs of real agent replies to
-the same question, one right and one wrong by ground truth, each asked both ways (108 calls).
+Measured on Codex `gpt-5.6-luna`, no reasoning (`bench/pairwise_codex.py`): 54 pairs of real
+agent replies to the same arithmetic question, one right and one wrong by ground truth, each asked
+both ways (108 calls). The output schema is `PairVerdict`: `reason`, then `choice`.
 
 | Pairs as the agent wrote them | Accuracy | Same pick both ways | Chose the answer shown first |
 |---|---|---|---|
-| full replies, with the working | 0.77 (83/108) | 41/54 | 0.56, interval [0.47, 0.65] |
-| final answer line only | **0.53** (57/108) | **29/54** | **0.68, interval [0.58, 0.76]** |
+| full replies, with the working | 0.85 (92/108) | 48/54 | 0.50, interval [0.41, 0.59] |
+| final answer line only | 0.85 (92/108) | 46/54 | 0.48, interval [0.39, 0.57] |
 
-With the working in view, it mostly picks the right answer, but a quarter of its picks change
-with the order. With the final answer only, so that it has to know the answer itself, it is at
-chance, and it goes with whichever answer came first: 68% of presentations, and 22 of the 25
-pairs where swapping changed its pick. Its 77% with the working in view is most likely the
-working, not the judge: right answers here tend to show it, wrong ones tend not to.
+No position preference, and the same accuracy whether or not the working is shown.
+`both_orders(compare)`, which asks both ways and answers only when the two agree, raised accuracy
+to 0.90 (43/48, abstaining on 6 pairs) with the working and 0.91 (42/46, abstaining on 8) without.
 
-`both_orders(compare)` asks both ways and answers only when the two agree. With the working in
-view it raised accuracy from 0.77 to 0.85 (35/41), abstaining on 13 of 54 pairs. With the final
-answer only it could not help (16/29, abstaining on 25): there was no signal under the bias to
-recover.
+**An earlier version of this section was wrong.** It reported that the judge picked whichever
+answer came first in 68% of presentations and was right 53% of the time. Those runs went through
+a bug in this repository's Codex adapter, which sorted the schema's keys and so asked for `choice`
+before `reason`: the judge chose before it thought. On the same 54 pairs, same model:
+
+| Final answer line only | Accuracy | Same pick both ways | Chose the answer shown first |
+|---|---|---|---|
+| choice first (the bug) | 0.53 (57/108) | 29/54 | 0.68, interval [0.58, 0.76] |
+| reason first | 0.85 (92/108) | 46/54 | 0.48, interval [0.39, 0.57] |
+
+The position bias was real, and the field order caused it: a judge without reasoning that is
+asked for its verdict first commits to it before writing a word of reasoning, and here it fell
+back on position. Keep the verdict after the reason in any judge's output type, and in anything
+that rewrites its schema.
+`bench/field_order.py` prints every certificate the bug touched next to its re-run.
 
 ## The package's own controls
 
@@ -262,8 +346,8 @@ baseline = await dataset.evaluate(agent_with_current_prompt, repeat=2)
 candidate = await dataset.evaluate(agent_with_new_prompt, repeat=2)
 
 result = compare_reports(baseline, candidate, assertion='LLMJudge', certificate=certificate)
-print(result.summary())                       # PROMOTE / REJECT / INCONCLUSIVE / REFUSED
-promote(result, 'agent_prompt', new_prompt)   # moves the Logfire label only on PROMOTE
+print(result.summary())  # PROMOTE / REJECT / INCONCLUSIVE / REFUSED
+promote(result, 'agent_prompt', new_prompt)  # moves the Logfire label only on PROMOTE
 ```
 
 - **`decide` / `compare_reports`** compare the two versions case by case (a paired sign-flip

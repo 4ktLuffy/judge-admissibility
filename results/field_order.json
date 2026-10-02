@@ -1,0 +1,194 @@
+{
+  "support_eval.json: weak (no reasoning, sees the question)": {
+    "verdict first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "70/80",
+      "rejection": "80/80",
+      "invariance": "40/40",
+      "stability": "40/40",
+      "human_agreement": "74/80",
+      "slices": "FAIL: worst first: return: no 0/10, refund 20/20, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "INADMISSIBLE"
+    },
+    "reason first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "80/80",
+      "rejection": "80/80",
+      "invariance": "39/40",
+      "stability": "40/40",
+      "human_agreement": "80/80",
+      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "ADMISSIBLE"
+    }
+  },
+  "support_eval.json: strong (reasoning high, sees the question)": {
+    "verdict first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "79/80",
+      "rejection": "80/80",
+      "invariance": "39/40",
+      "stability": "39/40",
+      "human_agreement": "80/80",
+      "slices": "PASS: worst first: refund 19/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "ADMISSIBLE"
+    },
+    "reason first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "76/80",
+      "rejection": "80/80",
+      "invariance": "37/38",
+      "stability": "38/40",
+      "human_agreement": "79/80",
+      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 16/16, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "ADMISSIBLE"
+    }
+  },
+  "support_eval.json: strong, default include_input=False": {
+    "verdict first": {
+      "verdict": "INADMISSIBLE",
+      "acceptance": "14/20",
+      "rejection": "10/20",
+      "invariance": "10/10",
+      "stability": "10/10",
+      "human_agreement": "16/20",
+      "slices": "UNVALIDATED: worst first: shipping 4/8, return: no 0/2, refund 4/4, warranty: no 4/4, warranty: yes 2/2; shipping is at or below the bar but too small to show it",
+      "verdict by slice": "INADMISSIBLE"
+    },
+    "reason first": {
+      "verdict": "INADMISSIBLE",
+      "acceptance": "14/20",
+      "rejection": "10/20",
+      "invariance": "10/10",
+      "stability": "10/10",
+      "human_agreement": "15/20",
+      "slices": "UNVALIDATED: worst first: shipping 4/8, return: no 0/2, refund 4/4, warranty: no 4/4, warranty: yes 2/2; shipping is at or below the bar but too small to show it",
+      "verdict by slice": "INADMISSIBLE"
+    }
+  },
+  "support_eval.json: gpt-reserve (no reasoning, sees the question)": {
+    "verdict first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "70/80",
+      "rejection": "80/80",
+      "invariance": "40/40",
+      "stability": "40/40",
+      "human_agreement": "75/80",
+      "slices": "FAIL: worst first: return: no 0/10, refund 20/20, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "INADMISSIBLE"
+    },
+    "reason first": {
+      "verdict": "ADMISSIBLE",
+      "acceptance": "80/80",
+      "rejection": "80/80",
+      "invariance": "38/40",
+      "stability": "40/40",
+      "human_agreement": "78/80",
+      "slices": "PASS: worst first: refund 20/20, return: no 10/10, return: yes 10/10, shipping 20/20, warranty: no 10/10, warranty: yes 10/10",
+      "verdict by slice": "ADMISSIBLE"
+    }
+  },
+  "support_eval.json: pairwise weak": {
+    "verdict first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "71/80",
+      "order_consistency": "39/40",
+      "first shown chosen": 0.49
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "77/80",
+      "order_consistency": "39/40",
+      "first shown chosen": 0.51
+    }
+  },
+  "support_eval.json: pairwise strong": {
+    "verdict first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "70/80",
+      "order_consistency": "40/40",
+      "first shown chosen": 0.5
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "77/80",
+      "order_consistency": "39/40",
+      "first shown chosen": 0.51
+    }
+  },
+  "pairwise_codex.json: comparison judge, no reasoning": {
+    "verdict first": {
+      "verdict": "INADMISSIBLE",
+      "accuracy": "83/108",
+      "order_consistency": "41/54",
+      "first shown chosen": 0.56
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "92/108",
+      "order_consistency": "48/54",
+      "first shown chosen": 0.5
+    }
+  },
+  "pairwise_codex.terse.json: comparison judge, no reasoning": {
+    "verdict first": {
+      "verdict": "INADMISSIBLE",
+      "accuracy": "57/108",
+      "order_consistency": "29/54",
+      "first shown chosen": 0.68
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "accuracy": "92/108",
+      "order_consistency": "46/54",
+      "first shown chosen": 0.48
+    }
+  },
+  "pydantic_example_judge.json: no reasoning": {
+    "verdict first": {
+      "verdict": "INADMISSIBLE",
+      "acceptance": "14/30",
+      "rejection": "20/20",
+      "invariance": "12/20",
+      "stability": "9/10"
+    },
+    "reason first": {
+      "verdict": "INADMISSIBLE",
+      "acceptance": "15/30",
+      "rejection": "20/20",
+      "invariance": "11/20",
+      "stability": "10/10"
+    }
+  },
+  "pydantic_example_judge.json: reasoning high": {
+    "verdict first": {
+      "verdict": "UNVALIDATED",
+      "acceptance": "18/30",
+      "rejection": "20/20",
+      "invariance": "14/20",
+      "stability": "8/10"
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "acceptance": "18/30",
+      "rejection": "20/20",
+      "invariance": "14/20",
+      "stability": "8/10"
+    }
+  },
+  "certify_pydantic_dataset.json: dataset: Ensure the explanation or error": {
+    "verdict first": {
+      "verdict": "UNVALIDATED",
+      "acceptance": "17/30",
+      "rejection": "10/10",
+      "invariance": "13/20",
+      "stability": "9/10"
+    },
+    "reason first": {
+      "verdict": "UNVALIDATED",
+      "acceptance": "17/30",
+      "rejection": "10/10",
+      "invariance": "13/20",
+      "stability": "9/10"
+    }
+  }
+}

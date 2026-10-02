@@ -106,17 +106,28 @@ def _strict(schema: Any) -> Any:
     return schema
 
 
-def codex_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120) -> FunctionModel:
+def _verdict_first(schema: Any) -> Any:
+    """The schema with every object's keys sorted, as the adapter wrongly did until it was caught."""
+    return json.loads(json.dumps(schema, sort_keys=True))
+
+
+def codex_model(
+    model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120, *, verdict_first: bool = False
+) -> FunctionModel:
     """A model for structured output: an `LLMJudge`, or any agent with an `output_type`.
 
     The agent's own output schema is passed to Codex (made strict), so the reply is that type.
+    `verdict_first=True` reproduces the old sorted schema, for the comparison in field_order.py.
     """
     WORKDIR.mkdir(parents=True, exist_ok=True)
 
     async def structured(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
         tool = info.output_tools[0]
         schema = _strict(tool.parameters_json_schema)
-        schema_text = json.dumps(schema, sort_keys=True)
+        # Keep the schema's own key order: structured output is written in that order, and
+        # `LLMJudge` puts `reason` before `pass` so the judge reasons before it decides. Sorting
+        # the keys (as this adapter once did) puts the verdict first; see bench/field_order.py.
+        schema_text = json.dumps(_verdict_first(schema) if verdict_first else schema)
         schema_path = WORKDIR / f'schema-{hashlib.sha256(schema_text.encode()).hexdigest()[:16]}.json'
         if not schema_path.exists():
             schema_path.write_text(schema_text)
