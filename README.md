@@ -139,6 +139,9 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible
   of the rubric: the answers are impersonal, and it asks for "second-person or friendly". On the fourth it
   contradicted itself: it failed *"...inferred from your request"* three times as not second
   person, then passed the same text with doubled spaces. `diagnose` tells the two apart.
+  Rewriting those three in second person, and nothing else, they pass on every repeat. What
+  that and a look at the docs found, each labelled by whether it looks intended, is in
+  [PYDANTIC_FINDINGS.md](PYDANTIC_FINDINGS.md).
 
 ```python
 results = await certify_dataset(dataset)  # every LLMJudge in a pydantic-evals Dataset, controls chosen per rubric

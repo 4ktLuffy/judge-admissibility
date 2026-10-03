@@ -1,0 +1,1459 @@
+{
+  "rubric": "Response accurately answers the question without hallucinating facts",
+  "source": "docs/evals/evaluators/llm-judge.md, Best Practices, \"1. Be Specific in Rubrics\", Better",
+  "cases": 40,
+  "as the guide writes it (include_input=False)": {
+    "verdict": "INADMISSIBLE",
+    "correct_replies_passed": [
+      10,
+      40
+    ],
+    "other_questions_answers_passed": [
+      13,
+      40
+    ],
+    "calls": 80,
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "FAIL",
+        "successes": 10,
+        "trials": 40,
+        "rate": 0.25,
+        "interval": [
+          0.12691479893284485,
+          0.41196198015143004
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 27,
+        "trials": 40,
+        "rate": 0.675,
+        "interval": [
+          0.5087051245215518,
+          0.8142710332366501
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 27/40 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 27,
+            "trials": 40,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      }
+    ],
+    "planned": 80,
+    "looks": 1,
+    "identity": {
+      "assertion": {
+        "include_reason": true
+      },
+      "evaluator": "LLMJudge",
+      "include_expected_output": false,
+      "include_input": false,
+      "model": "function:codex:gpt-5.6-luna@none",
+      "model_settings": null,
+      "pydantic_evals": "0.0.1.dev1+dac0464",
+      "rubric": "Response accurately answers the question without hallucinating facts",
+      "score": false
+    },
+    "fingerprint": "47d237e200c1e1e3",
+    "judgments": [
+      {
+        "case": "return-0",
+        "role": "reference#0",
+        "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a definitive yes and adds specific claims about a 60-day window and unopened-item refunds, but no underlying question or facts are provided to verify those claims. Thus, it cannot be considered accurate without hallucinating facts.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response only says \u201cno\u201d and provides no question or supporting context, so its accuracy cannot be established and it does not demonstrate a grounded answer.",
+        "error": null
+      },
+      {
+        "case": "return-2",
+        "role": "reference#0",
+        "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific facts about the item's condition and delivery timeframe that are not provided in the output, so the conclusion is unsupported and hallucinates information.",
+        "error": null
+      },
+      {
+        "case": "return-3",
+        "role": "reference#0",
+        "output": "No. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response gives a clear \u201cno\u201d answer, but it asserts a 30-day return window and a 34-day interval without the original question or supporting context, so factual accuracy cannot be established and the claims may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "return-4",
+        "role": "reference#0",
+        "output": "Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific return-policy facts (a 30-day window and full refunds for unopened items) without any provided context establishing them, so it hallucinates unsupported information despite answering \u201cyes.\u201d",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response only says \u201cno,\u201d but no question is provided to assess whether that answer is accurate; it is therefore not a demonstrably accurate answer.",
+        "error": null
+      },
+      {
+        "case": "return-6",
+        "role": "reference#0",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a clear \u201cyes\u201d but asserts specific return-policy facts without any provided context to support them, so it may be hallucinating.",
+        "error": null
+      },
+      {
+        "case": "return-7",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response only says \u201cno\u201d without providing the question or enough context to determine whether it is accurate, so it does not demonstrate a correct answer.",
+        "error": null
+      },
+      {
+        "case": "return-8",
+        "role": "reference#0",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific eligibility facts (unopened and within 60 days) without the underlying question or evidence, so it hallucinates support for its \u201cyes\u201d answer.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The output only says \u201cno,\u201d but no question is provided to assess whether that answer is accurate; it does not demonstrate an accurate, grounded response.",
+        "error": null
+      },
+      {
+        "case": "shipping-0",
+        "role": "reference#0",
+        "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+        "passed": false,
+        "reason": "The response states a shipping cost of $6.99, but no question or supporting context is provided to verify that this is accurate; it may be an unsupported claim.",
+        "error": null
+      },
+      {
+        "case": "shipping-1",
+        "role": "reference#0",
+        "output": "Answer: $8.50",
+        "passed": false,
+        "reason": "The response gives only \"$8.50\" without the underlying question, so its accuracy cannot be verified and it may be an unsupported answer.",
+        "error": null
+      },
+      {
+        "case": "shipping-2",
+        "role": "reference#0",
+        "output": "Because your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response gives a clear shipping cost of $8.50, but the underlying question and order details are not provided, so accuracy cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "shipping-3",
+        "role": "reference#0",
+        "output": "Answer: $6.99",
+        "passed": false,
+        "reason": "The response provides a specific price, but no question or supporting context is given to verify whether $6.99 is accurate; it may be an unsupported assertion.",
+        "error": null
+      },
+      {
+        "case": "shipping-4",
+        "role": "reference#0",
+        "output": "Since your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
+        "passed": false,
+        "reason": "The response gives a clear shipping cost, but no question or order details are provided to verify whether the $75 threshold and $6.99 fee are accurate; thus it asserts unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-5",
+        "role": "reference#0",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response states a free-shipping threshold but gives no supporting question or context, so the claimed $0.00 answer cannot be verified and may be unsupported.",
+        "error": null
+      },
+      {
+        "case": "shipping-6",
+        "role": "reference#0",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": false,
+        "reason": "The response states a specific shipping cost based on an unstated $50 threshold, so it introduces an unsupported fact and cannot be verified as accurate from the provided context.",
+        "error": null
+      },
+      {
+        "case": "shipping-7",
+        "role": "reference#0",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response states that orders of $75 or more ship free and gives the answer as $0.00, accurately addressing the apparent shipping-cost question without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-8",
+        "role": "reference#0",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response states that orders of $35 or more ship free and gives the answer as $0.00, with no unsupported claims.",
+        "error": null
+      },
+      {
+        "case": "shipping-9",
+        "role": "reference#0",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response gives a clear shipping cost, but no question or supporting order details are provided to verify that the $35 threshold and $8.50 fee are accurate. Thus, it asserts potentially hallucinated facts.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": true,
+        "reason": "The response clearly provides a refund amount of $29.90, consistent with the stated calculation and without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-1",
+        "role": "reference#0",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": false,
+        "reason": "The response provides a clear calculation and final answer, but the original question and basis for the 10% fee are not included, so accuracy cannot be fully verified.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": true,
+        "reason": "The response correctly calculates an 80% refund of $65.00 as $52.00 and does not introduce unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-3",
+        "role": "reference#0",
+        "output": "Opened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
+        "passed": false,
+        "reason": "The response gives a clear refund calculation, but without the original question or supporting context, the 15% fee and $190.08 amount cannot be verified and may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+        "passed": false,
+        "reason": "The response provides a clear refund calculation, but the original question is not included, so its accuracy cannot be verified from the available context.",
+        "error": null
+      },
+      {
+        "case": "refund-5",
+        "role": "reference#0",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": false,
+        "reason": "The response gives a specific refund amount and asserts a restocking fee, but the underlying question or supporting facts are not provided, so accuracy cannot be established and the claims may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#0",
+        "output": "Opened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
+        "passed": false,
+        "reason": "The response provides a clear calculation, but the original question is not included, so the accuracy of the stated refund and fee cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "refund-7",
+        "role": "reference#0",
+        "output": "Opened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
+        "passed": true,
+        "reason": "The response correctly applies a 10% restocking fee to $103.86, yielding $93.47, without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#0",
+        "output": "Opened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
+        "passed": true,
+        "reason": "The response correctly applies the stated 15% restocking fee to $105.89, yielding $90.01, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-9",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+        "passed": true,
+        "reason": "The response correctly applies the stated 20% restocking fee to $271.56, yielding $217.25, without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-0",
+        "role": "reference#0",
+        "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts warranty coverage based on a six-month timeline and an apparent product failure, but the underlying question and supporting facts are not provided, so the claim may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "warranty-1",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response gives a clear \u201cno\u201d based on the stated 12-month warranty and 13-month failure timeframe, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-2",
+        "role": "reference#0",
+        "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a clear \u201cyes\u201d but asserts warranty coverage based on facts not provided in the prompt, so it hallucinates supporting details.",
+        "error": null
+      },
+      {
+        "case": "warranty-3",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response states that coverage lasts 6 months and concludes that a failure 23 months later is not covered, but the underlying question or warranty terms are not provided, so those facts cannot be verified and may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "warranty-4",
+        "role": "reference#0",
+        "output": "Yes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a definitive warranty determination based on an apparent defect and timing, but the underlying question or warranty terms are not provided, so those facts are unsupported and potentially hallucinated.",
+        "error": null
+      },
+      {
+        "case": "warranty-5",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response asserts a 12-month warranty and concludes that 17 months is outside coverage, but the underlying question or warranty terms are not provided, so the factual basis cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "warranty-6",
+        "role": "reference#0",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts coverage based on a 12-month timeframe, but no underlying question or warranty terms are provided to verify that conclusion; it may be hallucinating the coverage condition.",
+        "error": null
+      },
+      {
+        "case": "warranty-7",
+        "role": "reference#0",
+        "output": "The warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response gives a clear \u201cno\u201d based on the stated 6-month warranty period and 13-month timeline, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-8",
+        "role": "reference#0",
+        "output": "Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response states that the blender is covered for defects within 12 months, but no underlying question or supporting facts are provided to verify this claim; the added warranty details may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "warranty-9",
+        "role": "reference#0",
+        "output": "The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response gives a clear \u201cno\u201d answer and bases it on the stated 12-month warranty versus 21 months since purchase, without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "return-0",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response states that a 12-month warranty does not cover an issue occurring after 17 months and answers \u201cno,\u201d which is internally consistent and introduces no unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response states that orders of $75 or more ship free and gives the answer as $0.00, without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "return-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+        "passed": false,
+        "reason": "The response provides a clear refund calculation, but the original question is not included, so accuracy cannot be verified and the stated 20% fee may be unsupported.",
+        "error": null
+      },
+      {
+        "case": "return-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts coverage based on a 12-month period, but the underlying question and warranty facts are not provided, so that conclusion cannot be verified and may hallucinate facts.",
+        "error": null
+      },
+      {
+        "case": "return-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response states a free-shipping threshold and gives an answer of $0.00, but no question or supporting context is provided to verify that these facts are accurate.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts that the item is unopened and within 14 days of delivery, but no question or supporting facts are provided to verify those claims. Thus, it hallucinates details rather than accurately answering based on available information.",
+        "error": null
+      },
+      {
+        "case": "return-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: $6.99",
+        "passed": false,
+        "reason": "The response gives a specific price, but the question it is meant to answer is not provided, so its accuracy cannot be established.",
+        "error": null
+      },
+      {
+        "case": "return-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": true,
+        "reason": "The response performs a 10% deduction from $225.85 and correctly calculates the refund as $203.26, with no apparent unsupported facts beyond the stated premise.",
+        "error": null
+      },
+      {
+        "case": "return-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": true,
+        "reason": "The response clearly states the refund amount as $29.90, consistent with the provided information and without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The output states that orders of $75 or more ship free and gives the answer as $0.00, with no unsupported or hallucinated facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-0",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": true,
+        "reason": "The response correctly calculates 80% of $65.00 as $52.00 and provides a clear answer without unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-1",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response gives a clear \u201cno\u201d based on the stated 6-month warranty period and the blender failing after 23 months, without introducing unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": false,
+        "reason": "The response gives a specific refund amount and justification, but the original question and supporting facts are not provided, so its accuracy cannot be verified and it may be hallucinating.",
+        "error": null
+      },
+      {
+        "case": "shipping-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": false,
+        "reason": "The response provides a clear shipping cost, but no question or supporting context is included to verify that the $50 threshold and $4.99 fee are accurate; therefore accuracy cannot be established.",
+        "error": null
+      },
+      {
+        "case": "shipping-4",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response gives a clear conclusion, but the underlying question is not provided, so its accuracy cannot be verified and it asserts an unsupported 12-month warranty period.",
+        "error": null
+      },
+      {
+        "case": "shipping-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific eligibility facts\u2014being unopened and within 60 days\u2014that are not established by the provided context, so it hallucinates supporting details despite answering \u201cyes.\u201d",
+        "error": null
+      },
+      {
+        "case": "shipping-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response provides a clear shipping-cost answer, but the underlying question and order details are not included, so accuracy cannot be verified and the $35 threshold appears unsupported.",
+        "error": null
+      },
+      {
+        "case": "shipping-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific eligibility facts (unopened and within 60 days) without any supporting context, so it hallucinates facts rather than reliably answering.",
+        "error": null
+      },
+      {
+        "case": "shipping-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts specific return-policy facts without the underlying question or supporting context, so accuracy cannot be established and it may hallucinate details.",
+        "error": null
+      },
+      {
+        "case": "shipping-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response states a free-shipping threshold but does not provide the question or enough context to verify that the $0.00 answer is accurate; it may be an unsupported conclusion.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response states a 12-month warranty and concludes that a claim after 17 months is not covered, but the underlying question is not provided, so accuracy cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "refund-1",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response gives a clear \u201cno\u201d and consistently applies the stated 12-month warranty period to the 21-month timeline without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The output only says \u201cno,\u201d but no question is provided, so its accuracy cannot be established.",
+        "error": null
+      },
+      {
+        "case": "refund-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response gives a clear shipping cost, but the underlying question or order details are not provided, so the $35 threshold and $8.50 charge cannot be verified and may be hallucinated.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a clear \u201cyes\u201d answer but asserts specific return-policy facts without any provided context to verify them, so it may hallucinate those details.",
+        "error": null
+      },
+      {
+        "case": "refund-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a clear affirmative answer but asserts specific refund-policy facts without any provided context to substantiate them, so it hallucinates information.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": false,
+        "reason": "The response provides a clear calculation, but the original question and item price are not included, so the accuracy of the stated restocking fee and answer cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "refund-7",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response provides a clear \u201cno\u201d answer and consistently applies the stated 12-month warranty period to the 13-month failure, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts coverage based on a 12-month policy period, but no underlying facts or policy details are provided to support that conclusion.",
+        "error": null
+      },
+      {
+        "case": "refund-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response asserts a 45-day return window and full refunds for unopened items, but no question or supporting facts are provided to verify those claims. Thus, it may hallucinate facts despite answering \u201cyes.\u201d",
+        "error": null
+      },
+      {
+        "case": "warranty-0",
+        "role": "must_fail:mismatched_output",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": false,
+        "reason": "The response states that standard shipping costs $4.99, but no underlying question or facts are provided to verify its accuracy; it asserts an unsupported condition about the order being under $50.",
+        "error": null
+      },
+      {
+        "case": "warranty-1",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response states that qualifying orders ship free and gives the corresponding shipping cost of $0.00, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response states that orders of $35 or more ship free and gives the answer as $0.00, accurately addressing the apparent shipping-cost question without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+        "passed": false,
+        "reason": "The response provides a clear refund calculation and answer, but the original question and purchase amount are not included, so its accuracy cannot be verified from the provided context.",
+        "error": null
+      },
+      {
+        "case": "warranty-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": false,
+        "reason": "The response provides a clear monetary answer, but the underlying question and basis for the 10% restocking fee are not provided, so accuracy cannot be verified and the claim may be unsupported.",
+        "error": null
+      },
+      {
+        "case": "warranty-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response gives a definitive warranty claim about a blender without any question or supporting context establishing those facts, so it may hallucinate details.",
+        "error": null
+      },
+      {
+        "case": "warranty-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: $8.50",
+        "passed": false,
+        "reason": "The response gives only \u201c$8.50,\u201d but no question is provided to verify whether that answer is accurate; it therefore cannot be established as answering the question without hallucination.",
+        "error": null
+      },
+      {
+        "case": "warranty-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": true,
+        "reason": "The response correctly calculates 80% of $65.00 as $52.00 and provides a clear answer without unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": true,
+        "reason": "The response provides a clear refund amount of $29.90 and does not introduce unsupported facts beyond the stated calculation.",
+        "error": null
+      },
+      {
+        "case": "warranty-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response gives a clear shipping cost, but the underlying question is not provided, so its accuracy cannot be verified.",
+        "error": null
+      }
+    ]
+  },
+  "with include_input=True": {
+    "verdict": "UNVALIDATED",
+    "correct_replies_passed": [
+      37,
+      40
+    ],
+    "other_questions_answers_passed": [
+      0,
+      40
+    ],
+    "calls": 80,
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 37,
+        "trials": 40,
+        "rate": 0.925,
+        "interval": [
+          0.7961352512671012,
+          0.9842578201489585
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      }
+    ],
+    "planned": 80,
+    "looks": 1,
+    "identity": {
+      "assertion": {
+        "include_reason": true
+      },
+      "evaluator": "LLMJudge",
+      "include_expected_output": false,
+      "include_input": true,
+      "model": "function:codex:gpt-5.6-luna@none",
+      "model_settings": null,
+      "pydantic_evals": "0.0.1.dev1+dac0464",
+      "rubric": "Response accurately answers the question without hallucinating facts",
+      "score": false
+    },
+    "fingerprint": "6bcc67784d81e0b4",
+    "judgments": [
+      {
+        "case": "return-0",
+        "role": "reference#0",
+        "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly determines that April 12 is within 60 days of the February 17 delivery and accurately states that unopened items receive a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response is inaccurate: July 15 is within 60 days of the April 25 delivery date, so the unopened item can still be returned for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-2",
+        "role": "reference#0",
+        "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly identifies that June 11 is within 14 days of the June 2 delivery and that unopened items qualify for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-3",
+        "role": "reference#0",
+        "output": "No. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response incorrectly calculates the elapsed time: February 19 is 34 days after January 16, exceeding the 30-day return window, so the conclusion that it cannot be returned is accurate.",
+        "error": null
+      },
+      {
+        "case": "return-4",
+        "role": "reference#0",
+        "output": "Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly determines that May 14 is within 30 days of the April 23 delivery and accurately states that unopened items qualify for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": true,
+        "reason": "The response incorrectly says no. July 26 is 37 days after June 19, exceeding the 30-day return window, so the answer is accurate despite the item being unopened.",
+        "error": null
+      },
+      {
+        "case": "return-6",
+        "role": "reference#0",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly states that the unopened item is within the 45-day return window and qualifies for a full refund, with no unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "return-7",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response is incorrect: June 5, 2026 is within 45 days of the April 13, 2026 delivery, and unopened items qualify for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-8",
+        "role": "reference#0",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly states that the unopened item is within 60 days of delivery and qualifies for a full refund, consistent with the policy.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "reference#0",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response incorrectly says no. April 27, 2026 is within 60 days of the January 19, 2026 delivery date, so the unopened item can be returned for a full refund.",
+        "error": null
+      },
+      {
+        "case": "shipping-0",
+        "role": "reference#0",
+        "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s $6.99 flat shipping fee for orders under $35.",
+        "error": null
+      },
+      {
+        "case": "shipping-1",
+        "role": "reference#0",
+        "output": "Answer: $8.50",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $8.50 shipping fee to an order under $35.",
+        "error": null
+      },
+      {
+        "case": "shipping-2",
+        "role": "reference#0",
+        "output": "Because your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $8.50 standard shipping fee to an order under $75.",
+        "error": null
+      },
+      {
+        "case": "shipping-3",
+        "role": "reference#0",
+        "output": "Answer: $6.99",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $6.99 shipping fee for orders under $75.",
+        "error": null
+      },
+      {
+        "case": "shipping-4",
+        "role": "reference#0",
+        "output": "Since your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $6.99 standard shipping fee to an order under $75 and does not add unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "shipping-5",
+        "role": "reference#0",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so the shipping cost is $0.00.",
+        "error": null
+      },
+      {
+        "case": "shipping-6",
+        "role": "reference#0",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $4.99 standard shipping fee to an order under $50.",
+        "error": null
+      },
+      {
+        "case": "shipping-7",
+        "role": "reference#0",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response correctly applies the policy threshold: a $78.44 order qualifies for free standard shipping, so the shipping cost is $0.00.",
+        "error": null
+      },
+      {
+        "case": "shipping-8",
+        "role": "reference#0",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": true,
+        "reason": "The response correctly applies the policy that orders of $35 or more qualify for free standard shipping, so shipping is $0.00.",
+        "error": null
+      },
+      {
+        "case": "shipping-9",
+        "role": "reference#0",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": true,
+        "reason": "The response correctly applies the policy\u2019s flat $8.50 standard shipping fee for orders under $35.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": true,
+        "reason": "The response correctly applies the 20% restocking fee to $37.37, yielding $29.896, rounded to $29.90.",
+        "error": null
+      },
+      {
+        "case": "refund-1",
+        "role": "reference#0",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": true,
+        "reason": "The response correctly applies the 10% restocking fee to $225.85 and calculates the refund as $203.26, consistent with the policy.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": true,
+        "reason": "The response correctly applies the 20% restocking fee to the $65.00 purchase, yielding a $52.00 refund.",
+        "error": null
+      },
+      {
+        "case": "refund-3",
+        "role": "reference#0",
+        "output": "Opened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
+        "passed": true,
+        "reason": "The response correctly applies the 15% restocking fee to $190.08, yielding $161.57, and does not add unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+        "passed": true,
+        "reason": "The response correctly applies the 20% restocking fee to $132.26, yielding $105.81, with no unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-5",
+        "role": "reference#0",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": true,
+        "reason": "The response correctly applies the 10% restocking fee to $178.07: $178.07 \u00d7 0.90 = $160.263, rounded to $160.26, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#0",
+        "output": "Opened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
+        "passed": true,
+        "reason": "The response correctly applies the 10% restocking fee to $223.88 and calculates the refund as $201.49.",
+        "error": null
+      },
+      {
+        "case": "refund-7",
+        "role": "reference#0",
+        "output": "Opened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
+        "passed": true,
+        "reason": "The response correctly applies the 10% restocking fee to $103.86, yielding $93.47, with no unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#0",
+        "output": "Opened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
+        "passed": true,
+        "reason": "The response correctly applies the 15% restocking fee to $105.89, yielding $90.01, and does not add unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "refund-9",
+        "role": "reference#0",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+        "passed": true,
+        "reason": "The response correctly applies the 20% restocking fee to $271.56, yielding $217.25, and does not introduce unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-0",
+        "role": "reference#0",
+        "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly states that the blender is covered because it failed on its own within the six-month warranty period, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-1",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response correctly applies the 12-month warranty period and concludes that a failure after 13 months is not covered.",
+        "error": null
+      },
+      {
+        "case": "warranty-2",
+        "role": "reference#0",
+        "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly applies the 12-month defect warranty and distinguishes it from excluded accidental damage; it does not add unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-3",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response correctly applies the stated six-month warranty period and accurately concludes that a failure 23 months after purchase is not covered.",
+        "error": null
+      },
+      {
+        "case": "warranty-4",
+        "role": "reference#0",
+        "output": "Yes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly applies the 24-month defect warranty to an apparent product failure occurring four months after purchase, without adding unsupported facts.",
+        "error": null
+      },
+      {
+        "case": "warranty-5",
+        "role": "reference#0",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response correctly applies the 12-month warranty period and accurately concludes that a defect arising 17 months after purchase is not covered.",
+        "error": null
+      },
+      {
+        "case": "warranty-6",
+        "role": "reference#0",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly states that the bike light is covered because it failed without accidental damage within the 12-month warranty period.",
+        "error": null
+      },
+      {
+        "case": "warranty-7",
+        "role": "reference#0",
+        "output": "The warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response correctly applies the six-month warranty period and accurately concludes that a defect occurring 13 months after purchase is not covered.",
+        "error": null
+      },
+      {
+        "case": "warranty-8",
+        "role": "reference#0",
+        "output": "Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+        "passed": true,
+        "reason": "The response correctly states that the blender is covered within the 12-month warranty period and appropriately notes the accidental-damage exclusion.",
+        "error": null
+      },
+      {
+        "case": "warranty-9",
+        "role": "reference#0",
+        "output": "The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+        "passed": true,
+        "reason": "The response correctly applies the 12-month warranty period and concludes that a failure 21 months after purchase is not covered.",
+        "error": null
+      },
+      {
+        "case": "return-0",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response incorrectly discusses a 12-month warranty and 17 months, neither of which addresses the return window. The item is unopened and within 60 days of delivery, so it can be returned for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-1",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response discusses free shipping and does not answer whether the unopened order is returnable within 60 days.",
+        "error": null
+      },
+      {
+        "case": "return-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+        "passed": false,
+        "reason": "The response does not answer whether the unopened item is returnable within 14 days and invents an unsupported price and refund calculation.",
+        "error": null
+      },
+      {
+        "case": "return-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly cites a 12-month warranty and an unstated product failure instead of applying the 30-day return window. Since February 19 is 34 days after January 16, the unopened item is outside the return period.",
+        "error": null
+      },
+      {
+        "case": "return-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response does not address whether the unopened order is eligible for return within 30 days and instead gives irrelevant shipping information and an unsupported $0.00 answer.",
+        "error": null
+      },
+      {
+        "case": "return-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly states the return is within 14 days; it is 37 days after delivery, beyond the 30-day return window. Therefore, the yes answer is inaccurate.",
+        "error": null
+      },
+      {
+        "case": "return-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: $6.99",
+        "passed": false,
+        "reason": "The response gives a dollar amount instead of answering whether the unopened order is returnable within 45 days, so it does not accurately address the question.",
+        "error": null
+      },
+      {
+        "case": "return-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": false,
+        "reason": "The response is inaccurate: it invents an order price and incorrectly claims the item was opened. It should state that the unopened item is still within the 45-day return window and eligible for a full refund.",
+        "error": null
+      },
+      {
+        "case": "return-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": false,
+        "reason": "The response incorrectly introduces a 20% restocking fee and a $29.90 refund despite the policy stating unopened items are refunded in full; it also fails to answer the return eligibility question directly.",
+        "error": null
+      },
+      {
+        "case": "return-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $75 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response discusses free shipping and does not answer whether the unopened order is returnable within 60 days.",
+        "error": null
+      },
+      {
+        "case": "shipping-0",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": false,
+        "reason": "The response incorrectly discusses a nonexistent return and restocking fee instead of stating the $6.99 standard shipping charge for an order under $35.",
+        "error": null
+      },
+      {
+        "case": "shipping-1",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response discusses an unrelated warranty scenario and does not answer the shipping question. The correct shipping charge is $8.50 for an order under $35.",
+        "error": null
+      },
+      {
+        "case": "shipping-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": false,
+        "reason": "The response incorrectly discusses a lamp return and restocking fee instead of applying the $8.50 standard shipping charge to the $59.22 order.",
+        "error": null
+      },
+      {
+        "case": "shipping-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": false,
+        "reason": "The response contradicts the policy: orders under $75 pay $6.99 shipping, so it hallucinates a $50 threshold and incorrect fee.",
+        "error": null
+      },
+      {
+        "case": "shipping-4",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response discusses an unrelated warranty period and does not calculate the $6.99 standard shipping charge for a $33.18 order.",
+        "error": null
+      },
+      {
+        "case": "shipping-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response does not answer the shipping-cost question and invents unrelated return details, including an unsupported 60-day period.",
+        "error": null
+      },
+      {
+        "case": "shipping-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response incorrectly states an under-$35 threshold and an $8.50 shipping fee. The policy specifies a flat $4.99 shipping charge for orders under $50.",
+        "error": null
+      },
+      {
+        "case": "shipping-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response does not answer the shipping question and invents unrelated return details. Orders of $75 or more ship free, so shipping is $0.",
+        "error": null
+      },
+      {
+        "case": "shipping-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response does not answer the shipping-cost question and invents unrelated return details, including an unsupported 45-day timeframe.",
+        "error": null
+      },
+      {
+        "case": "shipping-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The cart is below $35, so standard shipping costs the flat $8.50 fee; the output incorrectly says $0.00.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response discusses an unrelated warranty period, invents a 17-month timeline, and fails to calculate the refund for the opened $37.37 blender. The policy indicates a 20% restocking fee, yielding $29.90.",
+        "error": null
+      },
+      {
+        "case": "refund-1",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response discusses a nonexistent backpack, invents a 12-month warranty period, and does not calculate the refund for the opened $225.85 speaker.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: no",
+        "passed": false,
+        "reason": "The response does not calculate the refund. Under the policy, the customer would receive $52.00 after the 20% restocking fee.",
+        "error": null
+      },
+      {
+        "case": "refund-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response incorrectly claims the order is under $35 and answers with the shipping fee. The policy says opened items are refunded minus a 15% restocking fee, so the refund should be $161.57.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly states a 45-day window and that the item is unopened. Under the policy, the opened $132.26 item returned within 30 days is subject to a 20% restocking fee, yielding $105.81.",
+        "error": null
+      },
+      {
+        "case": "refund-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly says the item was unopened and applies a 30-day window instead of the policy\u2019s opened-item 10% fee and 14-day period; it also fails to calculate the refund amount.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+        "passed": false,
+        "reason": "The response incorrectly uses $225.85 instead of the stated $223.88 purchase price. The correct refund is $223.88 minus 10% ($22.39), or approximately $201.49.",
+        "error": null
+      },
+      {
+        "case": "refund-7",
+        "role": "must_fail:mismatched_output",
+        "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+        "passed": false,
+        "reason": "The response discusses a 12-month warranty and headphones, neither of which addresses the opened blender return. It fails to calculate the refund, which should account for the 10% restocking fee.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly discusses warranty coverage and does not calculate the refund. The headphones were opened, so the refund should be $90.01 after the 15% restocking fee.",
+        "error": null
+      },
+      {
+        "case": "refund-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly claims the lamp was unopened and invents that it was within 45 days. It fails to apply the 20% restocking fee to $271.56, which would result in a refund of $217.25.",
+        "error": null
+      },
+      {
+        "case": "warranty-0",
+        "role": "must_fail:mismatched_output",
+        "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+        "passed": false,
+        "reason": "The response discusses an unrelated shipping charge and does not answer whether the blender defect is covered by the six-month warranty.",
+        "error": null
+      },
+      {
+        "case": "warranty-1",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response discusses an unrelated shipping threshold and does not answer whether headphones failing after 13 months are covered. The policy states warranty coverage lasts 12 months, so the response is inaccurate and incomplete.",
+        "error": null
+      },
+      {
+        "case": "warranty-2",
+        "role": "must_fail:mismatched_output",
+        "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00",
+        "passed": false,
+        "reason": "The response discusses shipping costs and does not answer whether the speaker is covered under the 12-month defect warranty.",
+        "error": null
+      },
+      {
+        "case": "warranty-3",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+        "passed": false,
+        "reason": "The response discusses an unrelated return and invents a price and restocking fee. The blender is outside the 6-month warranty, so it does not accurately answer the question.",
+        "error": null
+      },
+      {
+        "case": "warranty-4",
+        "role": "must_fail:mismatched_output",
+        "output": "Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+        "passed": false,
+        "reason": "The response discusses a lamp return, restocking fee, and refund amount, none of which address whether the tent\u2019s defect is covered under the 24-month warranty.",
+        "error": null
+      },
+      {
+        "case": "warranty-5",
+        "role": "must_fail:mismatched_output",
+        "output": "Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+        "passed": false,
+        "reason": "The response incorrectly refers to a blender and claims warranty coverage, despite the backpack being 17 months old and the warranty lasting only 12 months.",
+        "error": null
+      },
+      {
+        "case": "warranty-6",
+        "role": "must_fail:mismatched_output",
+        "output": "Answer: $8.50",
+        "passed": false,
+        "reason": "The response gives a dollar amount rather than addressing whether the bike light is covered by the 12-month defect warranty, so it does not answer the question.",
+        "error": null
+      },
+      {
+        "case": "warranty-7",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+        "passed": false,
+        "reason": "The response discusses an unrelated 20% restocking fee and refund amount, while the policy states warranty coverage lasts only 6 months; a defect arising after 13 months is not covered.",
+        "error": null
+      },
+      {
+        "case": "warranty-8",
+        "role": "must_fail:mismatched_output",
+        "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+        "passed": false,
+        "reason": "The response incorrectly discusses a 20% restocking fee and a $29.90 refund, neither of which addresses the blender's 12-month defect warranty. It should state that the blender is covered because it failed on its own within 6 months, assuming no accidental damage.",
+        "error": null
+      },
+      {
+        "case": "warranty-9",
+        "role": "must_fail:mismatched_output",
+        "output": "Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+        "passed": false,
+        "reason": "The response discusses shipping cost and invents an order amount, while failing to address that the warranty lasts only 12 months and therefore does not cover damage 21 months after purchase.",
+        "error": null
+      }
+    ]
+  }
+}

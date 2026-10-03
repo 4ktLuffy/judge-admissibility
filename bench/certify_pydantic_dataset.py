@@ -1,11 +1,17 @@
 """One call on pydantic-ai's real example dataset: `certify_dataset(Dataset.from_file(...))`.
 
     PYTHONPATH=.:bench <venv>/bin/python bench/certify_pydantic_dataset.py [--rediagnose]
+    PYTHONPATH=.:bench <venv>/bin/python bench/certify_pydantic_dataset.py --second-person
 
 Loads `examples/pydantic_ai_examples/evals/datasets/time_range_v2.yaml` exactly as the example
 does, with its own custom evaluator types, and certifies every judge in it on Codex
 `gpt-5.6-luna` (reasoning high) in place of the judge's configured model. The example package
 builds an OpenAI agent on import, so a placeholder key is set; no OpenAI call is made.
+
+`--second-person` certifies the same judge on `bench/data/time_range_v2.second_person.yaml`: the
+dataset with only the three expected outputs the first run showed to miss the judge's own rubric
+("second-person or friendly") rewritten in second person, and saves to
+`results/certify_pydantic_dataset.second_person.json`.
 
 `--rediagnose` makes no judge calls: it rebuilds the saved certificates and runs the current
 doctor on them again, so a change to `diagnose` can be checked against the same verdicts.
@@ -34,6 +40,9 @@ ROOT = Path(__file__).parent.parent
 UPSTREAM = ROOT.parent / 'pydantic-durability' / 'upstream'
 PATH = UPSTREAM / 'examples/pydantic_ai_examples/evals/datasets/time_range_v2.yaml'
 SAVED = ROOT / 'results' / 'certify_pydantic_dataset.json'
+if '--second-person' in sys.argv:
+    PATH = ROOT / 'bench' / 'data' / 'time_range_v2.second_person.yaml'
+    SAVED = ROOT / 'results' / 'certify_pydantic_dataset.second_person.json'
 
 
 def rediagnose(dataset: Dataset) -> None:
