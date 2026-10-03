@@ -2,6 +2,7 @@
 
     PYTHONPATH=.:bench <venv>/bin/python bench/certify_pydantic_dataset.py [--rediagnose]
     PYTHONPATH=.:bench <venv>/bin/python bench/certify_pydantic_dataset.py --second-person
+    PYTHONPATH=.:bench <venv>/bin/python bench/certify_pydantic_dataset.py --fixed
 
 Loads `examples/pydantic_ai_examples/evals/datasets/time_range_v2.yaml` exactly as the example
 does, with its own custom evaluator types, and certifies every judge in it on Codex
@@ -12,6 +13,11 @@ builds an OpenAI agent on import, so a placeholder key is set; no OpenAI call is
 dataset with only the three expected outputs the first run showed to miss the judge's own rubric
 ("second-person or friendly") rewritten in second person, and saves to
 `results/certify_pydantic_dataset.second_person.json`.
+
+`--fixed` goes on to the rubric: `bench/data/time_range_v2.fixed.yaml` is the second-person
+dataset with the judge's rubric saying which it means (second person; "We interpret ..." does not
+count) and the two expected outputs the judge was split on rewritten to it. Saves to
+`results/certify_pydantic_dataset.fixed.json`.
 
 `--rediagnose` makes no judge calls: it rebuilds the saved certificates and runs the current
 doctor on them again, so a change to `diagnose` can be checked against the same verdicts.
@@ -43,6 +49,9 @@ SAVED = ROOT / 'results' / 'certify_pydantic_dataset.json'
 if '--second-person' in sys.argv:
     PATH = ROOT / 'bench' / 'data' / 'time_range_v2.second_person.yaml'
     SAVED = ROOT / 'results' / 'certify_pydantic_dataset.second_person.json'
+if '--fixed' in sys.argv:
+    PATH = ROOT / 'bench' / 'data' / 'time_range_v2.fixed.yaml'
+    SAVED = ROOT / 'results' / 'certify_pydantic_dataset.fixed.json'
 
 
 def rediagnose(dataset: Dataset) -> None:

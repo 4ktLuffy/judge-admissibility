@@ -1,0 +1,612 @@
+{
+  "commit": "6bc07cf1",
+  "dataset": "time_range_v2.fixed.yaml",
+  "calls": 60,
+  "judges": [
+    {
+      "label": "dataset: Ensure the explanation or error_message fields are truly app",
+      "kind": "style",
+      "cases": 10,
+      "skipped": null,
+      "advice": [
+        "`acceptance` is 1.00 against a bar of 0.70 but 10 judgments cannot show it; 11 would, at the same rate.",
+        "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 17 would, at the same rate."
+      ],
+      "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+      "verdict": "UNVALIDATED",
+      "checks": [
+        {
+          "name": "acceptance",
+          "status": "UNVALIDATED",
+          "successes": 10,
+          "trials": 10,
+          "rate": 1.0,
+          "interval": [
+            0.6915028921812392,
+            1.0
+          ],
+          "threshold": 0.7,
+          "errors": 0,
+          "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+          "estimate": null
+        },
+        {
+          "name": "rejection",
+          "status": "UNVALIDATED",
+          "successes": 10,
+          "trials": 10,
+          "rate": 1.0,
+          "interval": [
+            0.6915028921812392,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "empty_output 10/10 UNVALIDATED",
+          "estimate": null,
+          "families": [
+            {
+              "name": "empty_output",
+              "successes": 10,
+              "trials": 10,
+              "errors": 0,
+              "status": "UNVALIDATED"
+            }
+          ]
+        },
+        {
+          "name": "invariance",
+          "status": "UNVALIDATED",
+          "successes": 20,
+          "trials": 20,
+          "rate": 1.0,
+          "interval": [
+            0.8315665290169146,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "mismatched_output 10/10 UNVALIDATED, whitespace_reformat 10/10 UNVALIDATED",
+          "estimate": null,
+          "families": [
+            {
+              "name": "mismatched_output",
+              "successes": 10,
+              "trials": 10,
+              "errors": 0,
+              "status": "UNVALIDATED"
+            },
+            {
+              "name": "whitespace_reformat",
+              "successes": 10,
+              "trials": 10,
+              "errors": 0,
+              "status": "UNVALIDATED"
+            }
+          ]
+        },
+        {
+          "name": "stability",
+          "status": "UNVALIDATED",
+          "successes": 10,
+          "trials": 10,
+          "rate": 1.0,
+          "interval": [
+            0.6915028921812392,
+            1.0
+          ],
+          "threshold": 0.8,
+          "errors": 0,
+          "detail": "3 judgments per case; interval straddles the threshold: needs more cases",
+          "estimate": null
+        }
+      ],
+      "calls": 60,
+      "planned": 60,
+      "looks": 1,
+      "identity": {
+        "assertion": {
+          "include_reason": true
+        },
+        "evaluator": "LLMJudge",
+        "include_expected_output": false,
+        "include_input": false,
+        "model": "function:codex:gpt-5.6-luna@high",
+        "model_settings": null,
+        "pydantic_evals": "0.0.1.dev1+dac0464",
+        "rubric": "Ensure the explanation or error_message fields are truly appropriate for user display: written to the user in the second person (for example \"you asked\" or \"your request\") and in a friendly tone. A first-person plural statement such as \"We interpret ...\" does not count as second person.",
+        "score": false
+      },
+      "fingerprint": "021d32b3f354d0da",
+      "judgments": [
+        {
+          "case": "Single day mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You mentioned a single day (2021-05-08). The entire day is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person ('You mentioned') and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You mentioned a single day (2021-05-08). The entire day is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou mentioned\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You mentioned a single day (2021-05-08). The entire day is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou mentioned\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 21, 9, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation=\"You mentioned both 'last week or so' and early May, so I've shown you the last week and set early May aside.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou mentioned\u201d and \u201cyou\u201d) and uses a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 21, 9, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation=\"You mentioned both 'last week or so' and early May, so I've shown you the last week and set early May aside.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou mentioned\u201d and uses a friendly, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 21, 9, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation=\"You mentioned both 'last week or so' and early May, so I've shown you the last week and set early May aside.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou mentioned\u201d and uses a friendly, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 27, 13, 50, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 27, 14, 10, tzinfo=TzInfo(0)), explanation='You only mentioned a single point in time, so a 10-minute window around that time is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou only mentioned\u201d) and clearly, neutrally explains the applied time window.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 27, 13, 50, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 27, 14, 10, tzinfo=TzInfo(0)), explanation='You only mentioned a single point in time, so a 10-minute window around that time is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou only mentioned\u201d) and uses a clear, neutral-friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 27, 13, 50, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 27, 14, 10, tzinfo=TzInfo(0)), explanation='You only mentioned a single point in time, so a 10-minute window around that time is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou only mentioned\u201d) and uses a clear, neutral tone.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 28, 7, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='You requested logs starting from 2 hours prior to the current time.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and is appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 28, 7, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='You requested logs starting from 2 hours prior to the current time.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 28, 7, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='You requested logs starting from 2 hours prior to the current time.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and uses a clear, appropriate tone.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from both 2025 and 2020, which can't both apply. Which year did you mean?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user with \u201cYou asked\u201d and politely requests clarification in a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from both 2025 and 2020, which can't both apply. Which year did you mean?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person, clearly explains the ambiguity, and politely asks which year they intended.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from both 2025 and 2020, which can't both apply. Which year did you mean?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person, explains the conflicting years clearly, and asks a friendly clarification question.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderError(error_message=\"I couldn't find a time range in your request. Which dates would you like logs for?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user with \u201cyour request,\u201d uses a friendly tone, and appropriately asks which dates they want logs for.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderError(error_message=\"I couldn't find a time range in your request. Which dates would you like logs for?\")",
+          "passed": true,
+          "reason": "The message is friendly and directly addresses the user through \u201cyour request,\u201d while clearly asking which dates they want logs for.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderError(error_message=\"I couldn't find a time range in your request. Which dates would you like logs for?\")",
+          "passed": true,
+          "reason": "The error message directly refers to the user's request and asks them which dates they want, using a friendly second-person tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 4, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 4, 5, 23, 59, 59, tzinfo=TzInfo(0)), explanation=\"You said 'around the start of last quarter', so I've shown you the first few days of Q2 2023.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou said\u201d) and uses a friendly, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 4, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 4, 5, 23, 59, 59, tzinfo=TzInfo(0)), explanation=\"You said 'around the start of last quarter', so I've shown you the first few days of Q2 2023.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou said\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 4, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 4, 5, 23, 59, 59, tzinfo=TzInfo(0)), explanation=\"You said 'around the start of last quarter', so I've shown you the first few days of Q2 2023.\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou said\u201d and uses a friendly, clear tone.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and uses a clear, neutral tone.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and uses a clear, neutral-friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou requested\u201d and clearly states the applied date range in a neutral, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from yesterday and from last year, and I couldn't tell which you meant. Which one would you like?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person (\u201cYou asked\u201d) and uses a clear, friendly tone while requesting clarification.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from yesterday and from last year, and I couldn't tell which you meant. Which one would you like?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person and uses a clear, polite tone while asking for clarification.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from yesterday and from last year, and I couldn't tell which you meant. Which one would you like?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user with \u201cYou asked\u201d and uses a friendly clarification request.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#0",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou asked\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#1",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou asked\u201d and is phrased in a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "reference#2",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou asked\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message written in the second person or a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 21, 9, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a friendly, second-person message for the user.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 27, 13, 50, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 27, 14, 10, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it is not a user-facing message written in the second person or a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 28, 7, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it is not written to the user in a friendly second-person tone.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderError(error_message='')",
+          "passed": false,
+          "reason": "The error_message field is empty, so it does not provide a user-facing explanation in the second person or a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderError(error_message='')",
+          "passed": false,
+          "reason": "The error_message field is empty, so it does not provide a user-facing explanation in the second person or a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 4, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 4, 5, 23, 59, 59, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not address the user in the second person or use a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a friendly, second-person message for the user.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderError(error_message='')",
+          "passed": false,
+          "reason": "The error_message is empty, so it does not provide a user-facing explanation in a friendly second-person tone.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_fail:empty_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='')",
+          "passed": false,
+          "reason": "The explanation field is empty, so it does not provide a user-facing message written in the second person or a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and is suitably clear and friendly for display.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and is clear and appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You mentioned a single day (2021-05-08). The entire day is used.')",
+          "passed": true,
+          "reason": "The explanation addresses the user directly with \u201cYou mentioned\u201d and is clear and friendly.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderError(error_message=\"I couldn't find a time range in your request. Which dates would you like logs for?\")",
+          "passed": true,
+          "reason": "The message is friendly and directly addresses the user through \u201cyour request,\u201d clearly asking which dates they want logs for.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You asked specifically for December 25th to December 26th. The mention of an earlier date is ignored since a range was provided.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou asked\u201d) and uses a clear, friendly tone.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from yesterday and from last year, and I couldn't tell which you meant. Which one would you like?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person (\u201cYou asked\u201d) and uses a clear, friendly clarification question.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person using \u201cYou requested\u201d and is clear and appropriately friendly.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderError(error_message=\"You asked for logs from both 2025 and 2020, which can't both apply. Which year did you mean?\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person, explains the ambiguity clearly, and politely asks which year they intended.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You requested logs from January 3050. The entire month is used.')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou requested\u201d and clearly describes the selected month in a user-facing manner.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:mismatched_output",
+          "output": "TimeRangeBuilderError(error_message=\"I couldn't find a time range in your request. Which dates would you like logs for?\")",
+          "passed": true,
+          "reason": "The error message is friendly, directly addresses the user with \u201cyour request,\u201d and clearly asks which dates they want logs for.",
+          "error": null
+        },
+        {
+          "case": "Single day mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2021, 5, 8, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2021, 5, 8, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You  mentioned  a  single  day  (2021-05-08).  The  entire  day  is  used.\\n')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou mentioned\u201d) and uses a clear, neutral tone appropriate for display.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 21, 9, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation=\"You  mentioned  both  'last  week  or  so'  and  early  May,  so  I've  shown  you  the  last  week  and  set  early  May  aside.\\n\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user using second-person language (\u201cYou mentioned\u201d and \u201cshown you\u201d) and maintains a friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Single datetime mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 27, 13, 50, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 27, 14, 10, tzinfo=TzInfo(0)), explanation='You  only  mentioned  a  single  point  in  time,  so  a  10-minute  window  around  that  time  is  used.\\n')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou only mentioned\u201d) and clearly explains the applied time window in a neutral, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Relative mention without date",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 10, 28, 7, 30, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 10, 28, 9, 30, tzinfo=TzInfo(0)), explanation='You  requested  logs  starting  from  2  hours  prior  to  the  current  time.\\n')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in second person (\u201cYou requested\u201d) and clearly describes the request in a suitable, neutral tone.",
+          "error": null
+        },
+        {
+          "case": "Impossible range",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderError(error_message=\"You  asked  for  logs  from  both  2025  and  2020,  which  can't  both  apply.  Which  year  did  you  mean?\\n\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person (\u201cYou asked\u201d) and politely asks which year they intended.",
+          "error": null
+        },
+        {
+          "case": "No mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderError(error_message=\"I  couldn't  find  a  time  range  in  your  request.  Which  dates  would  you  like  logs  for?\\n\")",
+          "passed": true,
+          "reason": "The message directly addresses the user\u2019s request and asks which dates they would like, using a clear and friendly tone.",
+          "error": null
+        },
+        {
+          "case": "Ambiguous elliptical mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 4, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 4, 5, 23, 59, 59, tzinfo=TzInfo(0)), explanation=\"You  said  'around  the  start  of  last  quarter',  so  I've  shown  you  the  first  few  days  of  Q2  2023.\\n\")",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou said\u201d and \u201cshown you\u201d in a friendly, user-facing tone.",
+          "error": null
+        },
+        {
+          "case": "Far future mention",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(3050, 1, 1, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(3050, 1, 31, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You  requested  logs  from  January  3050.  The  entire  month  is  used.\\n')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user in the second person (\u201cYou requested\u201d) and is clear and suitable for display.",
+          "error": null
+        },
+        {
+          "case": "Confusing relative references",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderError(error_message=\"You  asked  for  logs  from  yesterday  and  from  last  year,  and  I  couldn't  tell  which  you  meant.  Which  one  would  you  like?\\n\")",
+          "passed": true,
+          "reason": "The error message directly addresses the user in the second person (\u201cYou asked\u201d) and uses a polite, friendly clarification request.",
+          "error": null
+        },
+        {
+          "case": "Range from speech",
+          "role": "must_hold:whitespace_reformat",
+          "output": "TimeRangeBuilderSuccess(min_timestamp_with_offset=datetime.datetime(2023, 12, 25, 0, 0, tzinfo=TzInfo(0)), max_timestamp_with_offset=datetime.datetime(2023, 12, 26, 23, 59, 59, tzinfo=TzInfo(0)), explanation='You  asked  specifically  for  December  25th  to  December  26th.  The  mention  of  an  earlier  date  is  ignored  since  a  range  was  provided.\\n')",
+          "passed": true,
+          "reason": "The explanation directly addresses the user with \u201cYou asked\u201d and uses a clear, neutral-friendly tone appropriate for display.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "1 case(s): Ambiguous mention: We want to interpret conflicting references by default to th",
+      "kind": "correctness",
+      "cases": 1,
+      "skipped": "grades 1 case(s) with an expected output; at least 10 are needed",
+      "advice": []
+    }
+  ]
+}

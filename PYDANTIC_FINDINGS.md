@@ -72,15 +72,30 @@ judge's verdict changes between runs on the same text:
   passed 2 of 3, then 1 of 3. One reason calls "We interpret" "a friendly first-person plural
   style"; another says it does not address the user directly.
 
-**Fix.** Say which is meant, for example "written to the user in the second person ('you',
-'your request'); first-person plural ('we interpret') does not count", and the expected outputs
-can then be written to it.
+**Fix, measured.** Say which is meant, and write the two split outputs to it
+(`bench/data/time_range_v2.fixed.yaml`: the second-person dataset above, plus the rubric
+"...written to the user in the second person (for example "you asked" or "your request") and in
+a friendly tone. A first-person plural statement such as "We interpret ..." does not count as
+second person.", "I couldn't find a time range in your request. Which dates would you like logs
+for?" and "You said 'around the start of last quarter', so I've shown you the first few days of
+Q2 2023."; `bench/certify_pydantic_dataset.py --fixed`, `results/certify_pydantic_dataset.fixed.json`):
+
+| | As shipped | Fully fixed |
+|---|---|---|
+| expected outputs passed, all repeats | 17 of 30 | 30 of 30 |
+| cases whose verdict changed between repeats in the run | 1 | 0 |
+| empty outputs failed | 10 of 10 | 10 of 10 |
+| harmless changes (another case's answer, reformatting) held | 13 of 20 | 20 of 20 |
+
+Choosing second person over "friendly" is a judgment call that belongs to the maintainers; the
+point is that either choice, stated, makes the judge consistent.
 
 ## 3. Ten cases cannot certify the judge either way (not a fault, but worth knowing)
 
 With 10 cases every check stays UNVALIDATED: the certificate cannot show the judge is reliable,
-nor that it is not. At the rate observed after the fix (8 of 10 first judgments passed),
-`diagnose` says 82 cases would be needed to show acceptance above 0.7. The dataset is an
+nor that it is not. After the first fix (8 of 10 first judgments passed), `diagnose` said 82
+cases would be needed to show acceptance above 0.7; after the full fix (10 of 10, every repeat),
+it says 11 for acceptance and 17 for stability. The dataset is an
 example, so this is expected; it is the reason the findings above are stated per case, not as
 a verdict on the judge.
 
