@@ -28,6 +28,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -462,11 +463,35 @@ def similarity_vs_judges(cs: list[Any], replies: dict[str, list[str]]) -> dict[s
     }
 
 
+# The exact shapes `generate_pii('secret', ...)` makes, and nothing else: model-written texts the
+# held-out metrics are computed from must stay as they are.
+_GENERATED_SECRET = re.compile(
+    r'(sk-proj-)[A-Za-z0-9]{40}(?![A-Za-z0-9])|(AKIA)(?!IOSFODNN7EXAMPLE)[A-Z0-9]{16}(?![A-Z0-9])'
+    r'|(ghp_)[A-Za-z0-9]{36}(?![A-Za-z0-9])|(xoxb-)[A-Za-z0-9]{12}-[A-Za-z0-9]{18}(?![A-Za-z0-9])'
+)
+
+
+def _mask_generated_secrets(value: Any) -> Any:
+    """Saved results keep the injected secrets' shape, not their characters.
+
+    The injected keys are random and were never valid, but a public file of realistic keys sets off
+    secret scanners and alarms readers. The detector still sees the full key when it runs; only the
+    saved copy is masked.
+    """
+    if isinstance(value, str):
+        return _GENERATED_SECRET.sub(lambda m: next(g for g in m.groups() if g) + '<generated, masked>', value)
+    if isinstance(value, dict):
+        return {k: _mask_generated_secrets(v) for k, v in value.items()}  # pyright: ignore[reportUnknownVariableType]
+    if isinstance(value, list):
+        return [_mask_generated_secrets(v) for v in value]  # pyright: ignore[reportUnknownVariableType]
+    return value
+
+
 async def main(rerun: bool, models: bool) -> None:
     results: dict[str, Any] = json.loads(OUT.read_text()) if OUT.exists() else {}
 
     def save() -> None:
-        OUT.write_text(json.dumps(results, indent=2, default=str))
+        OUT.write_text(json.dumps(_mask_generated_secrets(results), indent=2, default=str))
 
     detector = PIIDetector()
     results['detectors'] = list(PII_CATEGORIES)
