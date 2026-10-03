@@ -20,20 +20,21 @@ message (`insert_turns`):
 - `consent_revoked` (must fail): the customer withdraws consent to charge the card; the reply
   still charges it. Only for episodes that still pay by card.
 - `obligation_irrelevant_turn` (must hold): a compliment about the website, and a thank-you.
-- `error_then_repaired` (must hold): the agent gives a wrong delivery time and corrects itself.
-- `error_unrepaired` (must fail): the same wrong delivery time, never corrected.
+- `error_then_repaired` (must hold): the agent volunteers a wrong delivery time, unprompted, and
+  corrects itself in its next message. No customer turn is inserted, so nothing new needs answering.
+- `error_unrepaired` (must fail): the same volunteered wrong delivery time, never corrected.
 
 The two error controls apply only to episodes with no error of their own. The scripted judges at
 the bottom read the turns by their (fixed) wording; they stand in for judges with known habits.
 
-A flaw in `error_then_repaired`, found by the Codex run and kept so its results reproduce: the
-inserted error is the agent's answer to a customer question ("How long does delivery take?"), and
-the correction answers it, mid-conversation. The Codex judge failed 6 of the 12 repaired
-trajectories, and all 6 of its reasons were about that question, not the error: the final reply
-"fails to answer the customer's delivery-time question". The rubric's "every question the customer
-asked has been answered" can be read as "in the final reply". So that run cannot separate a judge
-that punishes a repair from one that reads the rubric that way. The next version should have the
-agent volunteer the wrong fact unprompted, so the control changes only the repair.
+Why the error is volunteered: the first version of `error_then_repaired` inserted a customer
+question ("How long does delivery take?"), answered wrongly and then corrected, mid-conversation.
+The Codex judge failed 6 of its 12 repaired trajectories, and all 6 reasons were about that
+question, not the error: the final reply "fails to answer the customer's delivery-time question".
+The rubric's "every question the customer asked has been answered" can be read as "in the final
+reply", so that run could not separate a judge that punishes a repair from one that reads the
+rubric that way. Now the agent states the wrong fact on its own and the control changes only
+whether it is repaired; `results/conversation.json` holds the run on this version.
 """
 
 from __future__ import annotations
@@ -156,13 +157,11 @@ def delivery_error(repaired: bool) -> Any:
     def turns(inputs: Any) -> list[dict[str, str]] | None:
         if _has_error(inputs):
             return None
-        out = [
-            {'role': 'customer', 'text': 'How long does delivery take?'},
-            {'role': 'agent', 'text': f'Standard delivery takes {WRONG_DELIVERY}.'},
-        ]
+        out = [{'role': 'agent', 'text': f'By the way, standard delivery for this order takes {WRONG_DELIVERY}.'}]
         if repaired:
             fix = (
-                f'Correction: I gave you the wrong figure. Standard delivery takes {DELIVERY}, not 2. Sorry about that.'
+                f'Correction: I gave you the wrong figure. Standard delivery takes {DELIVERY}, '
+                f'not {WRONG_DELIVERY}. Sorry about that.'
             )
             out.append({'role': 'agent', 'text': fix})
         return out
@@ -199,7 +198,9 @@ def _problems(inputs: Any, reply: str, *, forgive: bool = True) -> list[str]:
     if any('gift-wrap' in t for t in customer) and 'gift-wrap' not in reply:
         problems.append('unanswered question')
     erred = [
-        i for i, t in enumerate(agent) if WRONG_DELIVERY in t or re.search(r'total is \$', t) and 'Correction' not in t
+        i
+        for i, t in enumerate(agent)
+        if (WRONG_DELIVERY in t or re.search(r'total is \$', t)) and 'Correction' not in t  # a correction is no error
     ]
     for i in erred:
         stated = re.search(r'total is \$([\d.]+)', agent[i])

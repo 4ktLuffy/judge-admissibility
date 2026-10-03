@@ -1,0 +1,1602 @@
+{
+  "setup": {
+    "population": 5000,
+    "true_pass_rate": 0.6,
+    "trials": 2000,
+    "alpha": 0.05,
+    "audits": [
+      50,
+      100,
+      200
+    ],
+    "rogan_gladen_resamples": 200,
+    "truth_for_coverage": "the realized pass rate of each finite population"
+  },
+  "replay": {
+    "weak (no reasoning, sees the question)": {
+      "replies": 80,
+      "true_pass_rate": 0.9,
+      "judge_pass_rate": 0.9,
+      "false_fails": 0,
+      "false_passes": 0,
+      "audit 20": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2968,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2968,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2968,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.975,
+          "mean_width": 0.2647,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.9965,
+          "mean_width": 0.2938,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.909,
+          "mean_width": 0.198,
+          "zero_width": 0.0875
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.1336,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1825,
+          "bias": -0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.4958,
+          "zero_width": 0.0,
+          "undefined": 175
+        },
+        "ppi++ width / Wilson width (mean)": 1.1661,
+        "ppi++ lam (mean)": 1.0
+      },
+      "audit 40": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2038,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2038,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.2038,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.9945,
+          "mean_width": 0.1882,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.996,
+          "mean_width": 0.2053,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.8645,
+          "mean_width": 0.13,
+          "zero_width": 0.004
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.1336,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1992,
+          "bias": -0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.237,
+          "zero_width": 0.0,
+          "undefined": 8
+        },
+        "ppi++ width / Wilson width (mean)": 1.1029,
+        "ppi++ lam (mean)": 1.0
+      }
+    },
+    "strong (reasoning high, sees the question)": {
+      "replies": 80,
+      "true_pass_rate": 0.9,
+      "judge_pass_rate": 0.8875,
+      "false_fails": 1,
+      "false_passes": 0,
+      "audit 20": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0218,
+          "coverage": 1.0,
+          "mean_width": 0.268,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0007,
+          "rmse": 0.0233,
+          "coverage": 1.0,
+          "mean_width": 0.2691,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0218,
+          "coverage": 1.0,
+          "mean_width": 0.3091,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.975,
+          "mean_width": 0.2647,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.9965,
+          "mean_width": 0.2938,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.909,
+          "mean_width": 0.198,
+          "zero_width": 0.0875
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.0125,
+          "rmse": 0.0125,
+          "coverage": 1.0,
+          "mean_width": 0.1399,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1825,
+          "bias": 0.001,
+          "rmse": 0.0232,
+          "coverage": 1.0,
+          "mean_width": 0.4976,
+          "zero_width": 0.0,
+          "undefined": 175
+        },
+        "ppi++ width / Wilson width (mean)": 1.0633,
+        "ppi++ lam (mean)": 0.8954
+      },
+      "audit 40": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0125,
+          "coverage": 1.0,
+          "mean_width": 0.1382,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0002,
+          "rmse": 0.0138,
+          "coverage": 0.9905,
+          "mean_width": 0.1348,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0125,
+          "coverage": 1.0,
+          "mean_width": 0.2118,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.9945,
+          "mean_width": 0.1882,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.996,
+          "mean_width": 0.2053,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.8645,
+          "mean_width": 0.13,
+          "zero_width": 0.004
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.0125,
+          "rmse": 0.0125,
+          "coverage": 1.0,
+          "mean_width": 0.1399,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1992,
+          "bias": 0.0003,
+          "rmse": 0.0127,
+          "coverage": 1.0,
+          "mean_width": 0.2497,
+          "zero_width": 0.0,
+          "undefined": 8
+        },
+        "ppi++ width / Wilson width (mean)": 0.7317,
+        "ppi++ lam (mean)": 0.8907
+      }
+    },
+    "strong, default include_input=False": {
+      "replies": 20,
+      "true_pass_rate": 0.9,
+      "judge_pass_rate": 0.65,
+      "false_fails": 5,
+      "false_passes": 0,
+      "audit 5": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0363,
+          "rmse": 0.1292,
+          "coverage": 1.0,
+          "mean_width": 0.5211,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0226,
+          "rmse": 0.1352,
+          "coverage": 1.0,
+          "mean_width": 0.7496,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0363,
+          "rmse": 0.1292,
+          "coverage": 1.0,
+          "mean_width": 0.9134,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.004,
+          "rmse": 0.1203,
+          "coverage": 0.944,
+          "mean_width": 0.5094,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.004,
+          "rmse": 0.1203,
+          "coverage": 1.0,
+          "mean_width": 0.6148,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.004,
+          "rmse": 0.1203,
+          "coverage": 0.464,
+          "mean_width": 0.2658,
+          "zero_width": 0.536
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.25,
+          "rmse": 0.25,
+          "coverage": 0.0,
+          "mean_width": 0.386,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 924,
+          "bias": -0.041,
+          "rmse": 0.1372,
+          "coverage": 0.9978,
+          "mean_width": 0.9119,
+          "zero_width": 0.0,
+          "undefined": 1076
+        },
+        "ppi++ width / Wilson width (mean)": 1.5614,
+        "ppi++ lam (mean)": 0.3523
+      },
+      "audit 10": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0084,
+          "rmse": 0.0859,
+          "coverage": 0.8565,
+          "mean_width": 0.2825,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0018,
+          "rmse": 0.0738,
+          "coverage": 0.954,
+          "mean_width": 0.3434,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0084,
+          "rmse": 0.0859,
+          "coverage": 1.0,
+          "mean_width": 0.6642,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0017,
+          "rmse": 0.0693,
+          "coverage": 1.0,
+          "mean_width": 0.3777,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0017,
+          "rmse": 0.0693,
+          "coverage": 1.0,
+          "mean_width": 0.4334,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0017,
+          "rmse": 0.0693,
+          "coverage": 0.7685,
+          "mean_width": 0.2159,
+          "zero_width": 0.2315
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.25,
+          "rmse": 0.25,
+          "coverage": 0.0,
+          "mean_width": 0.386,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1537,
+          "bias": -0.0101,
+          "rmse": 0.1004,
+          "coverage": 0.9909,
+          "mean_width": 0.926,
+          "zero_width": 0.0,
+          "undefined": 463
+        },
+        "ppi++ width / Wilson width (mean)": 1.0136,
+        "ppi++ lam (mean)": 0.2909
+      }
+    },
+    "gpt-reserve (no reasoning, sees the question)": {
+      "replies": 80,
+      "true_pass_rate": 0.9,
+      "judge_pass_rate": 0.9,
+      "false_fails": 1,
+      "false_passes": 1,
+      "audit 20": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0307,
+          "coverage": 1.0,
+          "mean_width": 0.2388,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0015,
+          "rmse": 0.0307,
+          "coverage": 1.0,
+          "mean_width": 0.2405,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0307,
+          "coverage": 1.0,
+          "mean_width": 0.316,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.975,
+          "mean_width": 0.2647,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.9965,
+          "mean_width": 0.2938,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0008,
+          "rmse": 0.0588,
+          "coverage": 0.909,
+          "mean_width": 0.198,
+          "zero_width": 0.0875
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.1336,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1757,
+          "bias": -0.0004,
+          "rmse": 0.0385,
+          "coverage": 1.0,
+          "mean_width": 0.5517,
+          "zero_width": 0.0,
+          "undefined": 243
+        },
+        "ppi++ width / Wilson width (mean)": 0.9589,
+        "ppi++ lam (mean)": 0.8852
+      },
+      "audit 40": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0179,
+          "coverage": 1.0,
+          "mean_width": 0.1114,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0192,
+          "coverage": 0.946,
+          "mean_width": 0.108,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0179,
+          "coverage": 1.0,
+          "mean_width": 0.2254,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.9945,
+          "mean_width": 0.1882,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.996,
+          "mean_width": 0.2053,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0336,
+          "coverage": 0.8645,
+          "mean_width": 0.13,
+          "zero_width": 0.004
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "mean_width": 0.1336,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 1988,
+          "bias": -0.0027,
+          "rmse": 0.0252,
+          "coverage": 1.0,
+          "mean_width": 0.3323,
+          "zero_width": 0.0,
+          "undefined": 12
+        },
+        "ppi++ width / Wilson width (mean)": 0.5908,
+        "ppi++ lam (mean)": 0.8674
+      }
+    }
+  },
+  "simulation": {
+    "near-perfect (sens 0.98, spec 0.98)": {
+      "n=50": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.02,
+          "coverage": 0.998,
+          "mean_width": 0.1213,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0198,
+          "coverage": 0.994,
+          "mean_width": 0.12,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.02,
+          "coverage": 1.0,
+          "mean_width": 0.2043,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0677,
+          "coverage": 0.957,
+          "mean_width": 0.2598,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0677,
+          "coverage": 0.97,
+          "mean_width": 0.2816,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0677,
+          "coverage": 0.946,
+          "mean_width": 0.2703,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.004,
+          "rmse": 0.0045,
+          "coverage": 1.0,
+          "mean_width": 0.0272,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": 0.0005,
+          "rmse": 0.022,
+          "coverage": 0.996,
+          "mean_width": 0.1363,
+          "zero_width": 0.0
+        }
+      },
+      "n=100": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0005,
+          "rmse": 0.0144,
+          "coverage": 0.9815,
+          "mean_width": 0.0605,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0005,
+          "rmse": 0.0143,
+          "coverage": 0.9745,
+          "mean_width": 0.0597,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0005,
+          "rmse": 0.0144,
+          "coverage": 1.0,
+          "mean_width": 0.1202,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0487,
+          "coverage": 0.952,
+          "mean_width": 0.1876,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0487,
+          "coverage": 0.9585,
+          "mean_width": 0.1985,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0487,
+          "coverage": 0.946,
+          "mean_width": 0.19,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.004,
+          "rmse": 0.0044,
+          "coverage": 1.0,
+          "mean_width": 0.0272,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0152,
+          "coverage": 0.9855,
+          "mean_width": 0.0803,
+          "zero_width": 0.0
+        }
+      },
+      "n=200": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0098,
+          "coverage": 0.945,
+          "mean_width": 0.0376,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.0098,
+          "coverage": 0.9445,
+          "mean_width": 0.0371,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0098,
+          "coverage": 1.0,
+          "mean_width": 0.0755,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0345,
+          "coverage": 0.954,
+          "mean_width": 0.1341,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0345,
+          "coverage": 0.9595,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0345,
+          "coverage": 0.9475,
+          "mean_width": 0.1329,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.0039,
+          "rmse": 0.0044,
+          "coverage": 1.0,
+          "mean_width": 0.0272,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": 0.0002,
+          "rmse": 0.0101,
+          "coverage": 0.9885,
+          "mean_width": 0.0548,
+          "zero_width": 0.0
+        }
+      }
+    },
+    "good (0.95, 0.90)": {
+      "n=50": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0014,
+          "rmse": 0.0377,
+          "coverage": 0.956,
+          "mean_width": 0.145,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0013,
+          "rmse": 0.0369,
+          "coverage": 0.9505,
+          "mean_width": 0.1392,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0014,
+          "rmse": 0.0377,
+          "coverage": 1.0,
+          "mean_width": 0.2768,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0683,
+          "coverage": 0.961,
+          "mean_width": 0.2598,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0683,
+          "coverage": 0.973,
+          "mean_width": 0.2816,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0683,
+          "coverage": 0.9525,
+          "mean_width": 0.2703,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0099,
+          "rmse": 0.0106,
+          "coverage": 0.8335,
+          "mean_width": 0.027,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0031,
+          "rmse": 0.0459,
+          "coverage": 0.955,
+          "mean_width": 0.2259,
+          "zero_width": 0.0
+        }
+      },
+      "n=100": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0007,
+          "rmse": 0.0264,
+          "coverage": 0.9375,
+          "mean_width": 0.1008,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0007,
+          "rmse": 0.0255,
+          "coverage": 0.9415,
+          "mean_width": 0.0969,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0007,
+          "rmse": 0.0264,
+          "coverage": 1.0,
+          "mean_width": 0.1839,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0,
+          "rmse": 0.0479,
+          "coverage": 0.953,
+          "mean_width": 0.1877,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0,
+          "rmse": 0.0479,
+          "coverage": 0.96,
+          "mean_width": 0.1986,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0,
+          "rmse": 0.0479,
+          "coverage": 0.95,
+          "mean_width": 0.1901,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0101,
+          "rmse": 0.0107,
+          "coverage": 0.833,
+          "mean_width": 0.027,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0013,
+          "rmse": 0.0309,
+          "coverage": 0.946,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        }
+      },
+      "n=200": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0182,
+          "coverage": 0.947,
+          "mean_width": 0.0711,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.0175,
+          "coverage": 0.945,
+          "mean_width": 0.0685,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0182,
+          "coverage": 0.9995,
+          "mean_width": 0.1258,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0011,
+          "rmse": 0.0342,
+          "coverage": 0.951,
+          "mean_width": 0.1341,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0011,
+          "rmse": 0.0342,
+          "coverage": 0.9555,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0011,
+          "rmse": 0.0342,
+          "coverage": 0.9455,
+          "mean_width": 0.133,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0101,
+          "rmse": 0.0107,
+          "coverage": 0.835,
+          "mean_width": 0.027,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0004,
+          "rmse": 0.0211,
+          "coverage": 0.956,
+          "mean_width": 0.0948,
+          "zero_width": 0.0
+        }
+      }
+    },
+    "lenient (0.95, 0.70)": {
+      "n=50": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0035,
+          "rmse": 0.0532,
+          "coverage": 0.939,
+          "mean_width": 0.2075,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0028,
+          "rmse": 0.0508,
+          "coverage": 0.9325,
+          "mean_width": 0.1945,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0035,
+          "rmse": 0.0532,
+          "coverage": 0.998,
+          "mean_width": 0.3525,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0692,
+          "coverage": 0.9475,
+          "mean_width": 0.2597,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0692,
+          "coverage": 0.9655,
+          "mean_width": 0.2815,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0692,
+          "coverage": 0.942,
+          "mean_width": 0.2702,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0901,
+          "rmse": 0.0903,
+          "coverage": 0.0,
+          "mean_width": 0.0256,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0141,
+          "rmse": 0.0851,
+          "coverage": 0.952,
+          "mean_width": 0.3963,
+          "zero_width": 0.0
+        }
+      },
+      "n=100": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0369,
+          "coverage": 0.9505,
+          "mean_width": 0.145,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0349,
+          "coverage": 0.948,
+          "mean_width": 0.1364,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0369,
+          "coverage": 0.999,
+          "mean_width": 0.2394,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0483,
+          "coverage": 0.9535,
+          "mean_width": 0.1877,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0483,
+          "coverage": 0.964,
+          "mean_width": 0.1986,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0006,
+          "rmse": 0.0483,
+          "coverage": 0.9475,
+          "mean_width": 0.1901,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.09,
+          "rmse": 0.0901,
+          "coverage": 0.0,
+          "mean_width": 0.0256,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0046,
+          "rmse": 0.0546,
+          "coverage": 0.9535,
+          "mean_width": 0.2391,
+          "zero_width": 0.0
+        }
+      },
+      "n=200": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0259,
+          "coverage": 0.951,
+          "mean_width": 0.1019,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0244,
+          "coverage": 0.953,
+          "mean_width": 0.096,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0001,
+          "rmse": 0.0259,
+          "coverage": 0.9985,
+          "mean_width": 0.1661,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0343,
+          "coverage": 0.952,
+          "mean_width": 0.1341,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0343,
+          "coverage": 0.959,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0013,
+          "rmse": 0.0343,
+          "coverage": 0.9425,
+          "mean_width": 0.1329,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0899,
+          "rmse": 0.0901,
+          "coverage": 0.0,
+          "mean_width": 0.0256,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0024,
+          "rmse": 0.0372,
+          "coverage": 0.9595,
+          "mean_width": 0.1593,
+          "zero_width": 0.0
+        }
+      }
+    },
+    "mediocre (0.80, 0.80)": {
+      "n=50": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0029,
+          "rmse": 0.0639,
+          "coverage": 0.9335,
+          "mean_width": 0.2444,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0022,
+          "rmse": 0.057,
+          "coverage": 0.931,
+          "mean_width": 0.215,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0029,
+          "rmse": 0.0639,
+          "coverage": 0.9985,
+          "mean_width": 0.4064,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0684,
+          "coverage": 0.949,
+          "mean_width": 0.2598,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0684,
+          "coverage": 0.9665,
+          "mean_width": 0.2816,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.0684,
+          "coverage": 0.946,
+          "mean_width": 0.2703,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.0398,
+          "rmse": 0.0404,
+          "coverage": 0.0,
+          "mean_width": 0.0275,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0049,
+          "rmse": 0.1095,
+          "coverage": 0.936,
+          "mean_width": 0.4899,
+          "zero_width": 0.0
+        }
+      },
+      "n=100": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0441,
+          "coverage": 0.948,
+          "mean_width": 0.1722,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0004,
+          "rmse": 0.039,
+          "coverage": 0.95,
+          "mean_width": 0.1521,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0441,
+          "coverage": 0.9995,
+          "mean_width": 0.2829,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0005,
+          "rmse": 0.0479,
+          "coverage": 0.9575,
+          "mean_width": 0.1877,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0005,
+          "rmse": 0.0479,
+          "coverage": 0.9655,
+          "mean_width": 0.1986,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0005,
+          "rmse": 0.0479,
+          "coverage": 0.9495,
+          "mean_width": 0.1901,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.04,
+          "rmse": 0.0405,
+          "coverage": 0.0,
+          "mean_width": 0.0275,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0702,
+          "coverage": 0.951,
+          "mean_width": 0.3128,
+          "zero_width": 0.0
+        }
+      },
+      "n=200": {
+        "ppi": {
+          "defined": 2000,
+          "bias": -0.0003,
+          "rmse": 0.031,
+          "coverage": 0.9505,
+          "mean_width": 0.1204,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0274,
+          "coverage": 0.9525,
+          "mean_width": 0.1066,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": -0.0003,
+          "rmse": 0.031,
+          "coverage": 0.9965,
+          "mean_width": 0.197,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0012,
+          "rmse": 0.0342,
+          "coverage": 0.9535,
+          "mean_width": 0.1341,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0012,
+          "rmse": 0.0342,
+          "coverage": 0.9595,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0012,
+          "rmse": 0.0342,
+          "coverage": 0.9475,
+          "mean_width": 0.1329,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": -0.04,
+          "rmse": 0.0405,
+          "coverage": 0.0,
+          "mean_width": 0.0275,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 2000,
+          "bias": -0.0016,
+          "rmse": 0.048,
+          "coverage": 0.9465,
+          "mean_width": 0.2048,
+          "zero_width": 0.0
+        }
+      }
+    },
+    "useless (0.70, 0.30): verdict independent of truth": {
+      "n=50": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.0963,
+          "coverage": 0.9385,
+          "mean_width": 0.3689,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0011,
+          "rmse": 0.0697,
+          "coverage": 0.943,
+          "mean_width": 0.2687,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0003,
+          "rmse": 0.0963,
+          "coverage": 0.9965,
+          "mean_width": 0.5426,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0008,
+          "rmse": 0.0696,
+          "coverage": 0.953,
+          "mean_width": 0.2596,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0008,
+          "rmse": 0.0696,
+          "coverage": 0.965,
+          "mean_width": 0.2814,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0008,
+          "rmse": 0.0696,
+          "coverage": 0.943,
+          "mean_width": 0.2701,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.0998,
+          "rmse": 0.1003,
+          "coverage": 0.0,
+          "mean_width": 0.0254,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 936,
+          "bias": -0.0539,
+          "rmse": 0.3955,
+          "coverage": 0.9487,
+          "mean_width": 0.9117,
+          "zero_width": 0.0,
+          "undefined": 1064
+        }
+      },
+      "n=100": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0654,
+          "coverage": 0.955,
+          "mean_width": 0.2607,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": -0.0001,
+          "rmse": 0.0479,
+          "coverage": 0.944,
+          "mean_width": 0.1897,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0004,
+          "rmse": 0.0654,
+          "coverage": 0.9965,
+          "mean_width": 0.3867,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": -0.0002,
+          "rmse": 0.0478,
+          "coverage": 0.953,
+          "mean_width": 0.1877,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": -0.0002,
+          "rmse": 0.0478,
+          "coverage": 0.964,
+          "mean_width": 0.1986,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": -0.0002,
+          "rmse": 0.0478,
+          "coverage": 0.9455,
+          "mean_width": 0.1901,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.1002,
+          "rmse": 0.1006,
+          "coverage": 0.0,
+          "mean_width": 0.0254,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 938,
+          "bias": -0.0529,
+          "rmse": 0.3997,
+          "coverage": 0.9435,
+          "mean_width": 0.9062,
+          "zero_width": 0.0,
+          "undefined": 1062
+        }
+      },
+      "n=200": {
+        "ppi": {
+          "defined": 2000,
+          "bias": 0.0006,
+          "rmse": 0.0465,
+          "coverage": 0.9525,
+          "mean_width": 0.182,
+          "zero_width": 0.0
+        },
+        "ppi++": {
+          "defined": 2000,
+          "bias": 0.0014,
+          "rmse": 0.0346,
+          "coverage": 0.9415,
+          "mean_width": 0.1328,
+          "zero_width": 0.0
+        },
+        "ppi exact": {
+          "defined": 2000,
+          "bias": 0.0006,
+          "rmse": 0.0465,
+          "coverage": 0.9975,
+          "mean_width": 0.2714,
+          "zero_width": 0.0
+        },
+        "human only (Wilson)": {
+          "defined": 2000,
+          "bias": 0.0015,
+          "rmse": 0.0346,
+          "coverage": 0.95,
+          "mean_width": 0.1341,
+          "zero_width": 0.0
+        },
+        "human only (Clopper-Pearson)": {
+          "defined": 2000,
+          "bias": 0.0015,
+          "rmse": 0.0346,
+          "coverage": 0.957,
+          "mean_width": 0.1395,
+          "zero_width": 0.0
+        },
+        "human only (CLT, finite population)": {
+          "defined": 2000,
+          "bias": 0.0015,
+          "rmse": 0.0346,
+          "coverage": 0.941,
+          "mean_width": 0.1329,
+          "zero_width": 0.0
+        },
+        "judge only (Wilson on N)": {
+          "defined": 2000,
+          "bias": 0.1001,
+          "rmse": 0.1006,
+          "coverage": 0.0,
+          "mean_width": 0.0254,
+          "zero_width": 0.0
+        },
+        "Rogan-Gladen (audit as calibration)": {
+          "defined": 990,
+          "bias": -0.0608,
+          "rmse": 0.3937,
+          "coverage": 0.9525,
+          "mean_width": 0.922,
+          "zero_width": 0.0,
+          "undefined": 1010
+        }
+      }
+    }
+  }
+}

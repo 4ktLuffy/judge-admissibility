@@ -903,8 +903,9 @@
   "first_position_rate": [
     0.5,
     [
-      0.407333152227769,
-      0.592666847772231
+      0.4537037037037037,
+      0.5462962962962963
     ]
-  ]
+  ],
+  "first_position_rate_note": "rate over presentations; interval resamples pairs (first_position_rate, current version)"
 }

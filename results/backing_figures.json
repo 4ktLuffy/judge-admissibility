@@ -1,0 +1,71 @@
+{
+  "gate": {
+    "table": {
+      "identical versions": {
+        "PROMOTE": 5,
+        "INCONCLUSIVE": 193,
+        "REJECT": 2
+      },
+      "better by 0.1": {
+        "PROMOTE": 15,
+        "INCONCLUSIVE": 35,
+        "REJECT": 0
+      },
+      "better by 0.3": {
+        "PROMOTE": 49,
+        "INCONCLUSIVE": 1,
+        "REJECT": 0
+      },
+      "worse by 0.1": {
+        "PROMOTE": 0,
+        "INCONCLUSIVE": 45,
+        "REJECT": 5
+      },
+      "worse by 0.3": {
+        "PROMOTE": 0,
+        "INCONCLUSIVE": 1,
+        "REJECT": 49
+      }
+    },
+    "any_of_five_identical_promoted": {
+      "plain": "9/200",
+      "split_5_ways": "3/200"
+    }
+  },
+  "detectable_gain": {
+    "default_level": 0.25,
+    "level_split_five_ways": 0.4,
+    "note": "a shift added to each case success probability, capped at 1; not the mean gain"
+  },
+  "median_reply_chars_train": {
+    "baseline": 46.0,
+    "candidate 0": 16.0,
+    "candidate 1": 18.0,
+    "candidate 2": 67.0,
+    "candidate 3": 16.0,
+    "candidate 4": 16.0
+  },
+  "review_plan": {
+    "coverage_at_last_look": {
+      "N=200 gain 0.0 judge wrong 10%": 0.9975,
+      "N=200 gain 0.2 judge wrong 10%": 0.9975,
+      "N=200 gain 0.2 judge wrong 20%": 0.995,
+      "N=200 gain 0.3 judge wrong 5%": 1.0,
+      "N=400 gain 0.15 judge wrong 10%": 0.9975
+    },
+    "minimum": 0.995,
+    "trials": 400
+  },
+  "external_review": {
+    "slices_6x10_repeated_3x_false_fail": {
+      "counting_repeats": 0.2525,
+      "counting_cases": 0.0095
+    },
+    "sequential_4_looks_false_fail_at_bar": {
+      "old_rule": 0.0413,
+      "wilson_split_every_look": 0.0336,
+      "current_rule": 0.0118,
+      "judging_all_at_once": 0.0221
+    }
+  }
+}

@@ -13,11 +13,13 @@ with the same cases, controls and seed: another case's reply (must fail), an emp
 fail), the right reply made rude (must fail, and only the model can see it), and the reply
 re-spaced (must hold).
 
-A known flaw of the rude control, found in the Codex run and kept so the saved results reproduce:
-on a reply that is one line ("Answer: no", the fallback where none of the agent's replies was
-right, or a terse "Answer: $8.50"), the prefix lands on the answer line, so the `HybridJudge`
-fails it in code for a missing answer line rather than in the model for its tone (2 of 10 in the
-Codex run, 6 of 40 in the scripted one). It is still a correct rejection, for a different reason.
+The rude control puts the rude sentence on its own first line, above the unchanged reply, so the
+answer line and the answer are untouched: the code checks pass and only the tone can fail it. The
+first version prefixed the reply instead, and on a reply that is one line ("Answer: no", the
+fallback where none of the agent's replies was right, or a terse "Answer: $8.50") the prefix landed
+on the answer line, so the `HybridJudge` failed it in code for a missing answer line rather than in
+the model for its tone (2 of 10 in that Codex run, 6 of 40 in the scripted one): a correct
+rejection for the wrong reason. `results/distill.json` holds the runs on the fixed control.
 
 Replies are the support agent's real replies, read from `results/support-cache.json` (no agent
 calls; a missing reply is an error, not a new call). `scripted`: every case, two repeats, the 80
@@ -56,7 +58,7 @@ AGENT_PROMPT = (  # the prompt `bench/support_eval.py` cached the replies under
     'You are a customer support agent. Answer the customer using only the store policy given. '
     'End your reply with a line "Answer: <answer>", where the answer is yes or no, or a dollar amount.'
 )
-RUDE = 'Honestly, this is all in the policy, which you could have read yourself before bothering us. '
+RUDE = 'Honestly, this is all in the policy, which you could have read yourself before bothering us.'
 BY_NAME = {c.name: c for c in cases()}
 
 
@@ -77,7 +79,14 @@ CLAUSES = (
     ),
     Clause('The reply is polite and respectful to the customer.'),
 )
-CONTROLS = (*DEFAULT_CONTROLS, Rewrite(lambda o: RUDE + o if isinstance(o, str) and o else None, 'rude_tone'))
+
+
+def rude(output: Any) -> str | None:
+    """The reply with a rude first line of its own; the answer line below it is untouched."""
+    return f'{RUDE}\n\n{output}' if isinstance(output, str) and output else None
+
+
+CONTROLS = (*DEFAULT_CONTROLS, Rewrite(rude, 'rude_tone'))
 
 
 def replies() -> dict[str, list[str]]:

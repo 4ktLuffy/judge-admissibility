@@ -42,7 +42,7 @@ async def test_formatting_sensitivity_vs_noise_are_told_apart() -> None:
 def test_says_how_many_cases_would_settle_an_open_check() -> None:
     open_check = Check('stability', 'UNVALIDATED', 12, 12, (0.76, 1.0), 0.8, 'interval straddles the threshold')
     advice = diagnose(Certificate('UNVALIDATED', (open_check,), ()))
-    assert any('16 would' in a for a in advice), advice
+    assert any('17 would' in a for a in advice), advice
 
 
 async def test_ci_failure_carries_the_table_and_the_advice() -> None:
@@ -71,12 +71,12 @@ def test_disagreement_is_not_blamed_on_the_rubric_when_controls_fail() -> None:
 
 
 def test_cases_needed_is_the_smallest_that_works() -> None:
-    from pydantic_evals_admissibility import wilson
+    from pydantic_evals_admissibility._stats import clopper_pearson
 
-    check = Check('invariance', 'UNVALIDATED', 10, 10, (0.72, 1.0), 0.8, 'interval straddles the threshold')
+    check = Check('invariance', 'UNVALIDATED', 10, 10, (0.69, 1.0), 0.8, 'interval straddles the threshold')
     advice = diagnose(Certificate('UNVALIDATED', (check,), ()))
-    assert any('16 would' in a for a in advice), advice
-    assert wilson(16, 16)[0] >= 0.8 > wilson(15, 15)[0]
+    assert any('17 would' in a for a in advice), advice
+    assert clopper_pearson(17, 17)[0] >= 0.8 > clopper_pearson(16, 16)[0]  # the bound PASS is decided on
 
 
 def test_a_judge_that_consistently_fails_some_good_answers_points_at_the_data() -> None:
@@ -143,3 +143,17 @@ def test_a_failing_must_hold_control_is_not_called_formatting_unless_it_is() -> 
     assert not any('formatting' in a for a in advice), advice
     spaces = Check('invariance', 'FAIL', 6, 12, (0.25, 0.75), 0.8, 'whitespace_reformat 6/12 FAIL')
     assert any('sensitive to formatting' in a for a in diagnose(Certificate('INADMISSIBLE', (spaces, stable), ())))
+
+
+def test_family_names_with_punctuation_are_read_from_an_old_detail() -> None:
+    """Certificates saved before `Check.families` carry names only in the detail; `\\w+` cut them short."""
+    from pydantic_evals_admissibility._diagnose import _failed_families, _family_results
+
+    detail = 'policy-change 0/30 FAIL, tool.result:changed 3/30 FAIL, empty_output 30/30'
+    assert _failed_families(detail) == ['policy-change', 'tool.result:changed']
+    assert [f.name for f in _family_results(detail)] == ['policy-change', 'tool.result:changed', 'empty_output']
+    assert _failed_families('policy-change 28/30, other.one 30/30') == ['policy-change']  # unmarked: k < n
+    assert _family_results('no controls') == ()
+    check = Check('rejection', 'FAIL', 33, 90, (0.3, 0.4), 0.8, detail)
+    advice = diagnose(Certificate('INADMISSIBLE', (check,), ()))
+    assert any('(policy-change, tool.result:changed)' in a for a in advice), advice

@@ -2324,7 +2324,23 @@
         }
       ],
       "advice": [],
-      "tokens": 468170
+      "tokens": 468170,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "The reply correctly answers the customer's question according to the store policy.",
+        "model": "function:codex:gpt-5.6-luna@none",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "identity_source": "recorded after the run from the judge as configured in bench/support_eval.py; the run predates identities",
+      "looks": 4,
+      "looks_source": "batch_size=10 over 40 cases in bench/support_eval.py; recorded after the run"
     },
     "strong (reasoning high, sees the question)": {
       "judge": "LLMJudge(codex:gpt-5.6-luna)",
@@ -4646,7 +4662,23 @@
         }
       ],
       "advice": [],
-      "tokens": 412854
+      "tokens": 412854,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "The reply correctly answers the customer's question according to the store policy.",
+        "model": "function:codex:gpt-5.6-luna@high",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "identity_source": "recorded after the run from the judge as configured in bench/support_eval.py; the run predates identities",
+      "looks": 4,
+      "looks_source": "batch_size=10 over 40 cases in bench/support_eval.py; recorded after the run"
     },
     "strong, default include_input=False": {
       "judge": "LLMJudge(codex:gpt-5.6-luna)",
@@ -5294,7 +5326,9 @@
         "It fails the same known-good answers every time (3 of 10: 'return-9', 'shipping-1', 'shipping-3') and is consistent on 10 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
         "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 16 would, at the same rate."
       ],
-      "tokens": 46990
+      "tokens": 46990,
+      "looks": 4,
+      "looks_source": "batch_size=10 over 40 cases in bench/support_eval.py; recorded after the run"
     },
     "gpt-reserve (no reasoning, sees the question)": {
       "judge": "LLMJudge(codex:gpt-reserve)",
@@ -7616,7 +7650,23 @@
         }
       ],
       "advice": [],
-      "tokens": 195869
+      "tokens": 195869,
+      "identity": {
+        "evaluator": "LLMJudge",
+        "rubric": "The reply correctly answers the customer's question according to the store policy.",
+        "model": "function:codex:gpt-reserve@none",
+        "include_input": true,
+        "include_expected_output": false,
+        "model_settings": null,
+        "score": false,
+        "assertion": {
+          "include_reason": true
+        },
+        "pydantic_evals": "0.0.1.dev1+dac0464"
+      },
+      "identity_source": "recorded after the run from the judge as configured in bench/support_eval.py; the run predates identities",
+      "looks": 4,
+      "looks_source": "batch_size=10 over 40 cases in bench/support_eval.py; recorded after the run"
     }
   },
   "pairwise weak": {
@@ -8299,10 +8349,11 @@
     "first_position_rate": [
       0.5125,
       [
-        0.4049314460370689,
-        0.6189230605563166
+        0.5,
+        0.5375
       ]
-    ]
+    ],
+    "first_position_rate_note": "rate over presentations; interval resamples pairs (first_position_rate, current version)"
   },
   "pairwise strong": {
     "judge": "PairwiseJudge(codex:gpt-5.6-luna)",
@@ -8984,9 +9035,10 @@
     "first_position_rate": [
       0.5125,
       [
-        0.4049314460370689,
-        0.6189230605563166
+        0.5,
+        0.5375
       ]
-    ]
+    ],
+    "first_position_rate_note": "rate over presentations; interval resamples pairs (first_position_rate, current version)"
   }
 }

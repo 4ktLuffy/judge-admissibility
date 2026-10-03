@@ -13,7 +13,7 @@ from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_evals.evaluators import EvaluatorContext, LLMJudge
 
 sys.path.insert(0, str(Path(__file__).parent.parent / 'bench'))
-from distill import CLAUSES, CONTROLS, RUDE  # noqa: E402
+from distill import CLAUSES, CONTROLS, answer_is_right, has_answer_line, judge_cases, replies, rude  # noqa: E402
 from support_task import cases  # noqa: E402
 
 from pydantic_evals_admissibility import JudgeCase, certify_judge, judge_identity  # noqa: E402
@@ -89,7 +89,7 @@ async def test_the_model_is_asked_only_the_unchecked_clauses() -> None:
     judge = HybridJudge(CLAUSES, model=model.function_model())
     case = support_cases(1)[0]
     assert (await judge.evaluate(ctx(case, case.output))).value is True
-    assert (await judge.evaluate(ctx(case, RUDE + case.output))).value is False
+    assert (await judge.evaluate(ctx(case, rude(case.output)))).value is False
     assert model.rubrics == ['The reply is polite and respectful to the customer.'] * 2
 
 
@@ -99,6 +99,17 @@ async def test_every_clause_checked_means_no_model_at_all() -> None:
     case = support_cases(1)[0]
     result = await judge.evaluate(ctx(case, 'x'))
     assert result.value is True and (result.reason or '').startswith(CODE_PREFIX)
+
+
+def test_the_rude_control_never_breaks_the_answer_line() -> None:
+    """Rude replies pass both code checks, one-line replies included, so only the tone can fail them."""
+    jcs = judge_cases(cases(), replies())
+    one_line = [c for c in jcs if '\n' not in c.output.strip()]
+    assert one_line  # the replies the first version of the control broke
+    for case in jcs:
+        rude_reply = rude(case.output)
+        assert has_answer_line(ctx(case, rude_reply)) and answer_is_right(ctx(case, rude_reply)), case.name
+        assert has_answer_line(ctx(case, case.output)) and answer_is_right(ctx(case, case.output)), case.name
 
 
 def test_split_rubric_attaches_each_check_to_one_clause() -> None:

@@ -1,0 +1,75 @@
+# pytest plugin demo: scripted judges, no model calls. Regenerate: see examples/test_with_certified_judge.py.
+# test_demo.py certifies tests/judges.py's yes_man judge, its FunctionModel named 'scripted:yes_man', on the
+# 30 capitals in tests/test_certify.py.
+#     def test_gate_with_a_judge_that_passes_everything(certify_judge):
+#         certify_judge(judge(yes_man), CASES, name='yes-man')
+
+$ pytest test_demo.py   # a judge that passes everything, asked to gate
+
+test_demo.py F                                                           [100%]
+
+=================================== FAILURES ===================================
+________________ test_gate_with_a_judge_that_passes_everything _________________
+judge-admissibility: yes-man is not qualified to gate (certified in this session, fingerprint cca4eb82ac687be7)
+- verdict: INADMISSIBLE (rejection FAIL); gate needs ADMISSIBLE
+- checks: rejection FAIL
+
+LLMJudge(scripted:yes_man): INADMISSIBLE
+
+check                  status         rate  95% interval     needs  n
+acceptance             PASS           1.00  [0.89, 1.00]    >= 0.70  30  first judgment of each case
+rejection              FAIL           0.00  [0.00, 0.06]    >= 0.80  60  mismatched_output 0/30 FAIL, empty_output 0/30 FAIL
+invariance             PASS           1.00  [0.89, 1.00]    >= 0.80  30  whitespace_reformat 30/30
+stability              PASS           1.00  [0.89, 1.00]    >= 0.80  30  3 judgments per case
+
+what to try:
+- It passes answers that cannot be right (mismatched_output 0/30 FAIL, empty_output 0/30 FAIL).
+- It accepts another question's answer, and with `include_input=False` it cannot tell which question was asked. Set `include_input=True`.
+============================== judge certificates ==============================
+yes-man: INADMISSIBLE  fingerprint cca4eb82ac687be7
+  checks: acceptance PASS, rejection FAIL, invariance PASS, stability PASS
+  calls: 180 (certified in this session)
+  used for: gate NOT qualified (asked 1 time)
+=========================== short test summary info ============================
+FAILED test_demo.py::test_gate_with_a_judge_that_passes_everything - Failed: ...
+============================== 1 failed in N.NNs ===============================
+
+$ pytest --judge-recertify --judge-certificates=certs.json examples/test_with_certified_judge.py
+
+test_with_certified_judge.py ...                                         [100%]
+
+============================== judge certificates ==============================
+capital-judge: ADMISSIBLE  fingerprint cd27b5bd437ca824
+  checks: acceptance PASS, rejection PASS, invariance PASS, stability PASS
+  calls: 150 (certified in this session)
+  used for: gate qualified (asked 1 time); promote qualified (asked 1 time)
+  warning: promote: slices: no slices: a kind of case the judge gets wrong can hide in the overall rate
+certificates written to certs.json
+============================== 3 passed in N.NNs ===============================
+
+$ pytest --judge-certificates=certs.json examples/test_with_certified_judge.py   # CI: no judge calls
+
+test_with_certified_judge.py ...                                         [100%]
+
+============================== judge certificates ==============================
+capital-judge: ADMISSIBLE  fingerprint cd27b5bd437ca824
+  checks: acceptance PASS, rejection PASS, invariance PASS, stability PASS
+  calls: 0 (saved certificate, 150 calls when made 2026-10-02)
+  used for: gate qualified (asked 1 time); promote qualified (asked 1 time)
+  warning: promote: slices: no slices: a kind of case the judge gets wrong can hide in the overall rate
+============================== 3 passed in N.NNs ===============================
+
+# test_unnamed.py: tests/judges.py's oracle judge with an unnamed FunctionModel (judge(oracle, named=False)), in two tests.
+$ pytest --judge-recertify --judge-certificates=unnamed.json test_unnamed.py
+
+test_unnamed.py ..                                                       [100%]
+
+============================== judge certificates ==============================
+unnamed-oracle: ADMISSIBLE  fingerprint 771d0bdd0cf09eab
+  checks: acceptance PASS, rejection PASS, invariance PASS, stability PASS
+  calls: 360 (certified 2 times in this session: its identity is not reliable, so its certificate is never reused or saved)
+  not identified: model: unnamed function-backed model (function:model:); give it a model_name to have it trusted
+  used for: gate qualified (asked 2 times)
+============================== 2 passed in N.NNs ===============================
+$ ls unnamed.json
+unnamed.json: No such file or directory

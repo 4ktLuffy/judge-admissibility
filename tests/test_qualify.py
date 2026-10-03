@@ -141,3 +141,32 @@ def test_the_record_is_machine_readable_and_the_raise_lists_every_reason() -> No
     assert all(reason in str(raised.value) for reason in q.reasons)
     with pytest.raises(ValueError):
         qualify(None, c, decision='deploy')  # type: ignore[arg-type]
+
+
+def test_family_statuses_come_from_the_check_not_its_prose() -> None:
+    from pydantic_evals_admissibility._certify import FamilyResult
+
+    families = (FamilyResult('policy-change', 0, 30, 0, 'FAIL'), FamilyResult('tool.result:changed', 30, 30, 0, 'PASS'))
+    misleading = 'policy-change 30/30, tool.result:changed 30/30'  # the structured record wins over the detail
+    rejection = Check('rejection', 'FAIL', 30, 60, (0.4, 0.6), 0.8, misleading, families=families)
+    c = cert(check('acceptance'), rejection, check('invariance'), verdict='INADMISSIBLE')
+    q = qualify(IDENTITY, c, decision='steer', context={'sees_traces': True}, evidence_families=['policy-change'])
+    assert rule(q, 'evidence').detail == 'evidence controls not passed: policy-change FAIL'
+    old = Check('rejection', 'FAIL', 30, 60, (0.4, 0.6), 0.8, 'policy-change 0/30 FAIL, tool.result:changed 30/30')
+    c = cert(check('acceptance'), old, check('invariance'), verdict='INADMISSIBLE')
+    q = qualify(IDENTITY, c, decision='steer', context={'sees_traces': True}, evidence_families=['tool.result:changed'])
+    assert rule(q, 'evidence').outcome == 'ok'
+
+
+async def test_a_judge_that_cannot_be_identified_reliably_is_warned_about_not_refused() -> None:
+    """Certified just now from this object, coverage holds; the warning says not to reuse it elsewhere."""
+    from judges import judge, oracle
+    from test_certify import CASES
+
+    from pydantic_evals_admissibility import certify_judge, qualify
+
+    unnamed = judge(oracle, named=False)
+    certificate = await certify_judge(unnamed, CASES)
+    result = qualify(unnamed, certificate, decision='gate')
+    assert result.qualified, result.reasons
+    assert any('cannot be identified reliably' in w for w in result.warnings), result.warnings

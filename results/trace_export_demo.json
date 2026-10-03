@@ -1,0 +1,457 @@
+{
+  "saved: apprentice baseline": [
+    {
+      "name": "judge certificate {judge}: {verdict}",
+      "message": "judge certificate LLMJudge(codex:gpt-5.6-luna): INADMISSIBLE",
+      "attributes": {
+        "verdict": "INADMISSIBLE",
+        "fingerprint": "17575918de10a16f",
+        "calls": 48,
+        "looks": 1,
+        "failed_checks": [
+          "rejection"
+        ],
+        "dataset": "support_eval held-out questions",
+        "judge.model": "function:codex:gpt-5.6-luna",
+        "judge.include_input": false
+      },
+      "children": [
+        {
+          "name": "check {check}: {status}",
+          "message": "check acceptance: UNVALIDATED",
+          "attributes": {
+            "status": "UNVALIDATED",
+            "rate": 0.8333333333333334,
+            "low": 0.5519636426153274,
+            "high": 0.9530358523851776,
+            "trials": 12,
+            "errors": 0
+          },
+          "children": []
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check rejection: FAIL",
+          "attributes": {
+            "status": "FAIL",
+            "rate": 0.3333333333333333,
+            "low": 0.13811783989736134,
+            "high": 0.609382412602386,
+            "trials": 12,
+            "errors": 0,
+            "families": [
+              {
+                "family": "mismatched_output",
+                "successes": 4,
+                "trials": 12,
+                "status": "FAIL"
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "{check} {family}: {wrong} of {judged} judged wrongly",
+              "message": "rejection mismatched_output: 8 of 12 judged wrongly",
+              "attributes": {
+                "wrong": 8,
+                "judged": 12,
+                "examples": [
+                  {
+                    "case": "refund-2",
+                    "role": "must_fail:mismatched_output",
+                    "passed": true,
+                    "reason": "The reply states that orders under $50 incur a standard shipping fee of $4.99 and clearly gives $4.99 as the answer, matching the store policy.",
+                    "output": "Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99"
+                  },
+                  {
+                    "case": "return-1",
+                    "role": "must_fail:mismatched_output",
+                    "passed": true,
+                    "reason": "The response states that orders of $35 or more ship free and gives the shipping cost as $0.00, which correctly follows the stated store policy.",
+                    "output": "Orders of $35 or more ship free.\n\nAnswer: $0.00"
+                  },
+                  {
+                    "case": "return-6",
+                    "role": "must_fail:mismatched_output",
+                    "passed": true,
+                    "reason": "The reply applies the 20% restocking fee to $65, yielding the correct refund of $52.00.",
+                    "output": "Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00"
+                  }
+                ],
+                "examples_omitted": 5
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check invariance: UNVALIDATED",
+          "attributes": {
+            "status": "UNVALIDATED",
+            "low": 0.0,
+            "high": 1.0,
+            "trials": 0,
+            "errors": 0
+          },
+          "children": []
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check human_agreement: UNVALIDATED",
+          "attributes": {
+            "status": "UNVALIDATED",
+            "rate": 0.25000000000000006,
+            "low": 0.0,
+            "high": 0.5714285714285715,
+            "trials": 24,
+            "errors": 0
+          },
+          "children": []
+        }
+      ]
+    }
+  ],
+  "saved: evidence contract, reply only": [
+    {
+      "name": "judge certificate {judge}: {verdict}",
+      "message": "judge certificate LLMJudge(codex:gpt-5.6-luna): INADMISSIBLE",
+      "attributes": {
+        "verdict": "INADMISSIBLE",
+        "fingerprint": "c94450bccf2c2763",
+        "calls": 132,
+        "looks": 1,
+        "failed_checks": [
+          "acceptance",
+          "rejection"
+        ],
+        "dataset": "evidence contract",
+        "judge.model": "function:codex:gpt-5.6-luna",
+        "judge.include_input": false
+      },
+      "children": [
+        {
+          "name": "check {check}: {status}",
+          "message": "check acceptance: FAIL",
+          "attributes": {
+            "status": "FAIL",
+            "rate": 0.3333333333333333,
+            "low": 0.17971978688379642,
+            "high": 0.5329404050591954,
+            "trials": 24,
+            "errors": 0
+          },
+          "children": [
+            {
+              "name": "{check} {family}: {wrong} of {judged} judged wrongly",
+              "message": "acceptance reference: 16 of 24 judged wrongly",
+              "attributes": {
+                "wrong": 16,
+                "judged": 24,
+                "examples": [
+                  {
+                    "case": "refund-0",
+                    "role": "reference#0",
+                    "passed": false,
+                    "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, but no tool results are provided to verify accuracy.",
+                    "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days."
+                  },
+                  {
+                    "case": "cancel-1",
+                    "role": "reference#0",
+                    "passed": false,
+                    "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, but no tool results are provided to verify accuracy.",
+                    "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period."
+                  },
+                  {
+                    "case": "refund-2",
+                    "role": "reference#0",
+                    "passed": false,
+                    "reason": "The reply states a refund amount, order number, and delivery timeframe, but no tool results are provided to verify that these details are accurate.",
+                    "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days."
+                  }
+                ],
+                "examples_omitted": 13
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check rejection: FAIL",
+          "attributes": {
+            "status": "FAIL",
+            "rate": 0.7833333333333333,
+            "low": 0.6637973165265748,
+            "high": 0.8687707895359299,
+            "trials": 60,
+            "errors": 0,
+            "families": [
+              {
+                "family": "tool_failed",
+                "successes": 12,
+                "trials": 24,
+                "status": "FAIL"
+              },
+              {
+                "family": "amount_differs",
+                "successes": 11,
+                "trials": 12,
+                "status": "UNVALIDATED"
+              },
+              {
+                "family": "empty_output",
+                "successes": 24,
+                "trials": 24,
+                "status": "PASS"
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "{check} {family}: {wrong} of {judged} judged wrongly",
+              "message": "rejection tool_failed: 12 of 24 judged wrongly",
+              "attributes": {
+                "wrong": 12,
+                "judged": 24,
+                "examples": [
+                  {
+                    "case": "cancel-1",
+                    "role": "must_fail:tool_failed",
+                    "passed": true,
+                    "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; this accurately conveys the outcome.",
+                    "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period."
+                  },
+                  {
+                    "case": "cancel-3",
+                    "role": "must_fail:tool_failed",
+                    "passed": true,
+                    "reason": "The reply states that Ines\u2019s Studio subscription was cancelled, that no further charges will occur, and that access remains through the current billing period, accurately conveying the outcome.",
+                    "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period."
+                  },
+                  {
+                    "case": "cancel-5",
+                    "role": "must_fail:tool_failed",
+                    "passed": true,
+                    "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+                    "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period."
+                  }
+                ],
+                "examples_omitted": 9
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check invariance: UNVALIDATED",
+          "attributes": {
+            "status": "UNVALIDATED",
+            "rate": 0.75,
+            "low": 0.5510017468789357,
+            "high": 0.8800079652065766,
+            "trials": 24,
+            "errors": 0,
+            "families": [
+              {
+                "family": "ids_changed",
+                "successes": 18,
+                "trials": 24,
+                "status": "UNVALIDATED"
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "name": "check {check}: {status}",
+          "message": "check stability: UNVALIDATED",
+          "attributes": {
+            "status": "UNVALIDATED",
+            "rate": 0.7916666666666666,
+            "low": 0.5952915551476452,
+            "high": 0.9075531089521192,
+            "trials": 24,
+            "errors": 0
+          },
+          "children": []
+        }
+      ]
+    }
+  ],
+  "scripted: certify_judge_traced": [
+    {
+      "name": "certify judge {judge}",
+      "message": "certify judge LLMJudge(lenient-on-empty): INADMISSIBLE",
+      "attributes": {
+        "verdict": "INADMISSIBLE",
+        "fingerprint": "22150600c8d0e600",
+        "calls": 72,
+        "dataset": "items",
+        "cases": 12
+      },
+      "children": [
+        {
+          "name": "invoke_agent judge_output_expected",
+          "message": "judge_output_expected run",
+          "attributes": null,
+          "children": [
+            {
+              "name": "chat lenient-on-empty",
+              "message": "chat lenient-on-empty",
+              "attributes": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "invoke_agent judge_output_expected",
+          "message": "judge_output_expected run",
+          "attributes": null,
+          "children": [
+            {
+              "name": "chat lenient-on-empty",
+              "message": "chat lenient-on-empty",
+              "attributes": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "... 70 more judge model calls"
+        },
+        {
+          "name": "judge certificate {judge}: {verdict}",
+          "message": "judge certificate LLMJudge(lenient-on-empty): INADMISSIBLE",
+          "attributes": {
+            "verdict": "INADMISSIBLE",
+            "fingerprint": "22150600c8d0e600",
+            "calls": 72,
+            "looks": 1,
+            "failed_checks": [
+              "rejection"
+            ],
+            "dataset": "items",
+            "covers_judge": true,
+            "judge.model": "function:lenient-on-empty",
+            "judge.include_input": false
+          },
+          "children": [
+            {
+              "name": "check {check}: {status}",
+              "message": "check acceptance: PASS",
+              "attributes": {
+                "status": "PASS",
+                "rate": 1.0,
+                "low": 0.7353515306029488,
+                "high": 1.0,
+                "trials": 12,
+                "errors": 0
+              },
+              "children": []
+            },
+            {
+              "name": "check {check}: {status}",
+              "message": "check rejection: FAIL",
+              "attributes": {
+                "status": "FAIL",
+                "rate": 0.5,
+                "low": 0.2912417798362119,
+                "high": 0.7087582201637881,
+                "trials": 24,
+                "errors": 0,
+                "families": [
+                  {
+                    "family": "mismatched_output",
+                    "successes": 12,
+                    "trials": 12,
+                    "status": "UNVALIDATED"
+                  },
+                  {
+                    "family": "empty_output",
+                    "successes": 0,
+                    "trials": 12,
+                    "status": "FAIL"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "name": "{check} {family}: {wrong} of {judged} judged wrongly",
+                  "message": "rejection empty_output: 12 of 12 judged wrongly",
+                  "attributes": {
+                    "wrong": 12,
+                    "judged": 12,
+                    "examples": [
+                      {
+                        "case": "case-00",
+                        "role": "must_fail:empty_output",
+                        "passed": true,
+                        "reason": "nothing contradicts the expected answer",
+                        "output": ""
+                      },
+                      {
+                        "case": "case-01",
+                        "role": "must_fail:empty_output",
+                        "passed": true,
+                        "reason": "nothing contradicts the expected answer",
+                        "output": ""
+                      }
+                    ],
+                    "examples_omitted": 10
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "check {check}: {status}",
+              "message": "check invariance: UNVALIDATED",
+              "attributes": {
+                "status": "UNVALIDATED",
+                "rate": 1.0,
+                "low": 0.7353515306029488,
+                "high": 1.0,
+                "trials": 12,
+                "errors": 0,
+                "families": [
+                  {
+                    "family": "whitespace_reformat",
+                    "successes": 12,
+                    "trials": 12,
+                    "status": "UNVALIDATED"
+                  }
+                ]
+              },
+              "children": []
+            },
+            {
+              "name": "check {check}: {status}",
+              "message": "check stability: UNVALIDATED",
+              "attributes": {
+                "status": "UNVALIDATED",
+                "rate": 1.0,
+                "low": 0.7353515306029488,
+                "high": 1.0,
+                "trials": 12,
+                "errors": 0
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scripted: certificate table": [
+    "LLMJudge(lenient-on-empty): INADMISSIBLE",
+    "",
+    "check                  status         rate  95% interval     needs  n",
+    "acceptance             PASS           1.00  [0.74, 1.00]    >= 0.70  12  first judgment of each case",
+    "rejection              FAIL           0.50  [0.29, 0.71]    >= 0.80  24  mismatched_output 12/12 UNVALIDATED, empty_output 0/12 FAIL",
+    "invariance             UNVALIDATED    1.00  [0.74, 1.00]    >= 0.80  12  whitespace_reformat 12/12 UNVALIDATED",
+    "stability              UNVALIDATED    1.00  [0.74, 1.00]    >= 0.80  12  3 judgments per case; interval straddles the threshold: needs more cases"
+  ]
+}

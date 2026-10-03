@@ -3,6 +3,15 @@
 Each is a real `LLMJudge` whose model is a `FunctionModel` that reads the `<Output>` and
 `<ExpectedOutput>` sections of the prompt `LLMJudge` builds, so the code under test is the
 same code a real judge runs; only the model's decision is scripted.
+
+The model is named after its decide function, as a user names a function-backed judge: the name is
+what `judge_identity` trusts, so it must tell the judges of this suite apart. It is the function's
+qualified name plus the best-effort digest of its code and what it closes over (stable here: the
+decide functions do not change during a run), so `judge(oracle)` and `judge(yes_man)`, and two
+closures from one factory over different values, have different names. A decide function whose
+digest is not complete (it closes over an rng or a counter, as `coin` does) gets no name: its
+judge is not reliable, as a user's unnamed `FunctionModel` is not. `named=False` gives any judge
+pydantic-ai's default name, to test that path.
 """
 
 from __future__ import annotations
@@ -15,6 +24,8 @@ from pydantic_ai.messages import ModelMessage, ModelResponse, ToolCallPart, User
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_evals.evaluators import LLMJudge
 
+from pydantic_evals_admissibility._identity import _function_digest  # pyright: ignore[reportPrivateUsage]
+
 Decide = Callable[[str, str], bool]
 
 
@@ -23,7 +34,7 @@ def _section(prompt: str, tag: str) -> str:
     return match.group(1) if match else ''
 
 
-def judge(decide: Decide) -> LLMJudge:
+def judge(decide: Decide, *, named: bool = True) -> LLMJudge:
     def model(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
         prompt = ''.join(
             part.content
@@ -38,8 +49,16 @@ def judge(decide: Decide) -> LLMJudge:
         )
 
     return LLMJudge(
-        rubric='The output answers the question correctly.', model=FunctionModel(model), include_expected_output=True
+        rubric='The output answers the question correctly.',
+        model=FunctionModel(model, model_name=_name(decide) if named else None),
+        include_expected_output=True,
     )
+
+
+def _name(decide: Decide) -> str | None:
+    opaque: list[str] = []
+    digest = _function_digest(decide, opaque)
+    return None if opaque else f'scripted:{decide.__module__}.{decide.__qualname__}#{digest}'
 
 
 def oracle(output: str, expected: str) -> bool:

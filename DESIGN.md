@@ -17,15 +17,18 @@ here failed 40 of 40 right answers, and it would have passed a rejection-only te
 
 ## The statistics
 
-**Why Wilson intervals instead of the rate?** Ten passes out of ten is a rate of 1.0, but it is
-also what a judge that is right 75% of the time produces about one run in twenty. A Wilson interval
-says how low the true rate could plausibly be: 10/10 has a lower bound of 0.72. Wilson rather
-than the textbook normal interval because the normal one breaks near 0 and 1, which is exactly
-where a good judge lives.
+**Why exact intervals instead of the rate?** Ten passes out of ten is a rate of 1.0, but it is
+also what a judge that is right 75% of the time produces about one run in twenty. An interval
+says how low the true rate could plausibly be: 10/10 has an exact lower bound of 0.69. The
+textbook normal interval breaks near 0 and 1, which is exactly where a good judge lives. Wilson's
+interval was used first and is still the one other tools report, but it undercovers at small
+sizes: as a PASS rule it passed a judge exactly at the bar up to 3.5% of the time against 2.5%,
+and as a FAIL rule it leaked through a split budget. Certification now decides both sides on
+exact Clopper-Pearson bounds.
 
 **Why three outcomes (PASS, FAIL, UNVALIDATED) instead of two?** Because "not enough evidence"
 is not the same as "bad". The first version failed any check whose lower bound missed the bar,
-and so it failed a perfect judge on 12 cases (12/12, lower bound 0.76). Now a check fails only
+and so it failed a perfect judge on 12 cases (12/12, lower bound 0.74 exact). Now a check fails only
 when its *upper* bound is below the bar, which is evidence the judge is bad, and otherwise says
 how many cases would settle it (`diagnose` computes this: 16 for 12/12 at a 0.8 bar).
 
@@ -42,7 +45,8 @@ number of cases can see a smaller real gain.
 
 **Why divide the significance level by the number of candidates?** An optimizer that tries five
 prompts and keeps any that passes a 5% test gets several chances to be fooled. With the level
-split five ways, the chance of promoting any of five identical prompts fell from 9/200 to 3/200.
+split five ways, the chance of promoting any of five identical prompts fell from 9/200 to 3/200
+(`bench/backing_figures.py`).
 
 **Why select on one set of questions and confirm on another?** Splitting the level five ways
 makes each test stricter, and at 40 questions it missed a real 14-point gain. Testing only the
@@ -51,7 +55,8 @@ right prompt at p = 0.015, the same decision ground truth gives.
 
 **Why was the regression guard switched off by default?** It rejected a candidate when more
 than 10% of cases got worse. With two noisy runs per case a truly better prompt still shows
-chance drops on many cases, and the guard rejected a prompt that was 0.1 better 13 times in 50.
+chance drops on many cases, so the guard rejected prompts that were truly better (a measurement
+not kept in `results/`, so no number is claimed here).
 It stays available for scores that are not noisy.
 
 **What is `detectable_gain` for?** To say, before anything runs, whether the dataset can see the
@@ -62,8 +67,9 @@ smaller). A 5-point "improvement" on such a set is not evidence of anything.
 **Why is the case the unit, and not the judgment?** Judging a case again tells you about the
 judge's noise, not about another case. An external review showed the cost of pooling them: a
 judge right on 16 of 20 cases, judged ten times each, went from 16/20 (UNVALIDATED) to 160/200
-(ADMISSIBLE) without seeing a new case, and six slices of ten cases judged three times each
-failed a sound judge 25% of the time. `acceptance` and `slices` now use each case's first
+(ADMISSIBLE) without seeing a new case (`tests/test_certify.py` keeps the regression test), and six slices of ten cases
+judged three times each failed a sound judge 25% of the time, against 1% counting cases
+(`bench/backing_figures.py`). `acceptance` and `slices` now use each case's first
 judgment; the repeats feed `stability`, which is about exactly that noise. Comparison judges
 count one presentation per pair, the better answer first in alternate pairs.
 
@@ -155,7 +161,7 @@ because only you know which kinds matter. Its `PASS` is weaker than the other ch
 slice is shown to be below the bar, not that each slice is shown above it. To certify one kind,
 certify its cases alone.
 
-**Why an exact interval for slices, when the other checks use Wilson?** Slices are small and
+**Why an exact interval for slices, split across them?** Slices are small and
 many, and each is a chance to fail a sound judge. With Wilson intervals, a judge exactly at the
 bar on six slices of ten fails the check 6.2% of the time against a 5% budget, and up to 8.2% in
 other layouts. With exact Clopper-Pearson intervals, split across the slices, it is at most 2.5%
@@ -206,7 +212,46 @@ wrong part and leave an answer that is right, or empty, which proves nothing abo
 measured once on a real judge before it was described, and the measurement often disagreed with
 the plan: self-consistency routing cannot see a judge that is wrong the same way every time; a
 proposed rubric fix made a blind judge worse; a control for repaired errors was confounded by the
-task's wording. The README reports those results next to the ones that went as planned.
+task's wording, and was fixed and re-run (`bench/conversation_task.py` keeps the history). The
+README reports those results next to the ones that went as planned.
+
+**Why does a judge's identity reach into its model and its parts?** Because three times the
+identity said two different judges were the same, or one judge was two. A judge on Codex at no
+reasoning and the same judge at high reasoning had one identity, since the model's name hid the
+effort; the adapter now names it (`codex:gpt-5.6-luna@high`). Two scripted judges built by one
+factory, one sound and one that passes everything, had one identity, since the model was named
+after the factory's inner function; a function-backed model is now told apart by the functions it
+closes over. And a router of two judges had a new identity in every process, since its parts were
+recorded by `repr`, memory addresses included; judges inside judges are now recorded by their own
+identities. A fourth came from a second review: two scripted judges differing only in a captured
+setting (`always=True` against `False`) still shared an identity, so the identity now includes a
+function's code and the plain values it closes over. It still cannot see everything (what a
+function reaches through module globals, or captured mutable state), so instead of pretending,
+it marks what it could not pin down as opaque, and nothing that reuses certificates or verdicts
+(the cache, the pytest plugin, a jury, the report evaluator) trusts an identity that is not fully pinned down. A fourth review still found three reliable identities shared by different judges (a config
+dict in another order, state set in `__post_init__`, one class name in two modules), and a plugin
+key that dropped a dict subclass's state; a fifth found more of the same kind (a value reaching
+`evaluate` through its closure, a default or a class attribute; a pydantic private attribute; a
+field named `code` overwriting the class digest; state an input dataclass sets in `__post_init__`).
+A sixth found that classes were still told apart by name alone (a `__bool__`, a class held as a
+setting, a dict subclass's `__getitem__`, an input's property), that pydantic's record of which
+fields were set was missing, and that a report cannot show which custom evaluator produced its
+results at all, so it now calls their coverage unverifiable. Each now differs, with a regression
+test. A seventh found more in Python's corners (a special method wrapped in `staticmethod`, an
+enum's value, another library's `model_dump`, a metaclass, a `defaultdict`'s factory, a datetime's
+`fold`); input code that cannot be pinned down now gets a key that never matches. The lesson: identity must be built from everything an object holds, its class's code
+included, not from a list of what was thought to matter; and where the record cannot hold
+enough (a report's), say so rather than match on what it does hold. Each was found by
+a test, a review or a bench run; the three in the package each have a regression test (the
+reasoning effort is named by the bench's Codex adapter, not by the package).
+
+**Why two ways to correct a judge's pass rate?** They answer different questions. Rogan-Gladen
+(`recalibrated_pass_rate`) carries the judge's sensitivity and specificity from where they were
+measured to new traffic. Prediction-powered inference (`ppi_pass_rate`) needs a uniform random
+audit of the very outputs being estimated and assumes nothing carries over; it refuses an audit
+that was not drawn at random, because a queue of the judge's failures is exactly the sample that
+breaks it. On judges that almost never err, its asymptotic interval under-covers, so an exact
+interval is offered alongside it.
 
 ## The sequential certificate
 
@@ -221,14 +266,14 @@ was UNVALIDATED instead of INADMISSIBLE, the cost of paying for the looks.
 bad gives a sound judge several chances to look bad by luck. Every look's FAIL, the last
 included, uses an exact interval widened for the number of looks (Bonferroni). An earlier version
 used the normal interval at the last look; the review computed that this spent the budget twice
-(4.1% false FAILs at the bar against 2.2% judging all at once). Splitting the budget with Wilson
-intervals still leaked (3.4%), because Wilson undercovers at these sizes; with exact bounds it is
+(4.1% false FAILs at the bar against 2.2% judging all at once; `bench/backing_figures.py`). Splitting the budget with Wilson
+intervals over every look still leaked (3.4%, `bench/backing_figures.py`), because Wilson undercovers at these sizes; with exact bounds it is
 at most 2.2% in every layout computed (`bench/sequential_error.py`). A PASS, only possible at the
-end, uses the usual Wilson interval.
+end, uses the exact 95% lower bound.
 
 ## Mistakes that shaped it
 
-Every one of these was caught by a control or a check; three had already been reported publicly, and
+Every one of these was caught by a control, a check or a review; three had already been reported publicly, and
 were corrected where they were reported:
 
 - A Codex setting that silently ignored the judge's instructions made the default `LLMJudge` look
@@ -241,8 +286,23 @@ were corrected where they were reported:
   cases, which narrowed every interval; that pooled control families could hide one that always
   failed; that the last sequential look spent the error budget a second time; and that errored
   judgments were scored as failures. Each is fixed with a regression test, and every saved
-  certificate was decided again (`bench/recertify_all.py`). No headline verdict changed; one
-  other did (Pydantic's example judge without reasoning, INADMISSIBLE to UNVALIDATED on 10 cases).
+  certificate was decided again (`bench/recertify_all.py`). No headline verdict changed; two
+  others did: Pydantic's example judge without reasoning (INADMISSIBLE to UNVALIDATED on 10 cases),
+  and the arithmetic judge's sequential certificate (INADMISSIBLE after 140 calls to UNVALIDATED;
+  see the README).
+- An eighth review (Claude, after Codex ran out of credits) turned to the statistics. Human
+  agreement was wrong in both directions: with every human label the same, kappa is 0 for any
+  judge, so a judge agreeing on 11 of 12 FAILED; and twelve labels on one case PASSED on an
+  interval of [1, 1]. Both are now UNVALIDATED, with the reason. The missing-data rule was not
+  applied per slice (half of one slice errored and the check passed); it is now. A row could read
+  "straddles the threshold" with its whole interval below the bar; it now says below the bar but
+  not beyond the error budget. Recertifying a certificate saved without judgments silently gave
+  UNVALIDATED; it raises. No saved verdict changed from these fixes.
+- The same review found that PASS, decided on Wilson's lower bound, passed a judge exactly at the
+  bar up to 3.5% of the time at small n (n=15, bar 0.7) against 2.5% nominal. PASS is now decided
+  on the exact (Clopper-Pearson) bound. Two saved ADMISSIBLE certificates became UNVALIDATED: the
+  arithmetic reference judge (invariance 37/40, exact lower bound 0.796 against a bar of 0.8) and
+  the retry trace controls (16/16 per family, 0.794). The README says so where it cites them.
 - A ground-truth checker failed "−27" written with a Unicode minus. The certified judge was
   right and the checker was wrong.
 - The gate's bootstrap made too many false calls; the regression guard rejected real gains; the

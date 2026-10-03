@@ -1,4 +1,197 @@
 {
+  "apprentice.json result baseline_certificate": {
+    "before": "INADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 12,
+        "rate": 0.8333333333333334,
+        "interval": [
+          0.5158622513140327,
+          0.9791374745399076
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "FAIL",
+        "successes": 4,
+        "trials": 12,
+        "rate": 0.3333333333333333,
+        "interval": [
+          0.09924609114958327,
+          0.651124493581186
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 4/12 FAIL",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 4,
+            "trials": 12,
+            "errors": 0,
+            "status": "FAIL"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "UNVALIDATED",
+        "successes": 18,
+        "trials": 24,
+        "rate": 0.25000000000000006,
+        "interval": [
+          0.0,
+          0.5714285714285715
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=0.25, interval by case; agreement 18/24",
+        "estimate": 0.25000000000000006
+      }
+    ],
+    "calls": 48,
+    "planned": 48,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": false,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "17575918de10a16f",
+    "advice": [
+      "It passes answers that cannot be right (mismatched_output 4/12 FAIL).",
+      "`acceptance` is 0.83 against a bar of 0.70 but 12 judgments cannot show it; 45 would, at the same rate."
+    ]
+  },
+  "apprentice.json result revised_certificate": {
+    "before": "INADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "FAIL",
+        "successes": 3,
+        "trials": 12,
+        "rate": 0.25,
+        "interval": [
+          0.054860644527992664,
+          0.5718584618781892
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 9,
+        "trials": 12,
+        "rate": 0.75,
+        "interval": [
+          0.42814153812181077,
+          0.9451393554720073
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 9/12 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 9,
+            "trials": 12,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "UNVALIDATED",
+        "successes": 12,
+        "trials": 24,
+        "rate": 0.1818181818181818,
+        "interval": [
+          0.0,
+          0.46153846153846156
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=0.18, interval by case; agreement 12/24",
+        "estimate": 0.1818181818181818
+      }
+    ],
+    "calls": 48,
+    "planned": 48,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.\n\nClarification: Evaluate the output against the policy and customer message shown in the prompt, and perform any necessary date or arithmetic checks; do not claim they are missing, and mark the response incorrect when its factual conclusion conflicts with those provided details.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": false,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "7c8b5ad676cd3bc7",
+    "advice": [
+      "It fails answers that are right (3/12 passed) as readily as wrong ones: it cannot confirm anything, so its pass rate measures the judge, not the agent."
+    ]
+  },
   "certify_pydantic_dataset.json judges dataset: Ensure the explanation or error_message fields are truly app": {
     "before": "UNVALIDATED",
     "judge": "LLMJudge(codex:gpt-5.6-luna)",
@@ -11,8 +204,8 @@
         "trials": 10,
         "rate": 0.6,
         "interval": [
-          0.3126695474501864,
-          0.8318224187964902
+          0.262378076606945,
+          0.8784477418801728
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -26,13 +219,22 @@
         "trials": 10,
         "rate": 1.0,
         "interval": [
-          0.7224598312333834,
+          0.6915028921812392,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "empty_output 10/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -41,13 +243,29 @@
         "trials": 20,
         "rate": 0.65,
         "interval": [
-          0.43285051021946463,
-          0.8188104521320554
+          0.40781146546717184,
+          0.8460907952154589
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 5/10 UNVALIDATED, whitespace_reformat 8/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 5,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "whitespace_reformat",
+            "successes": 8,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -56,8 +274,8 @@
         "trials": 10,
         "rate": 0.9,
         "interval": [
-          0.5958436145024278,
-          0.9821242504842788
+          0.5549838829718046,
+          0.9974714214555382
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -68,16 +286,1260 @@
     "calls": 60,
     "planned": 60,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
       "It fails the same known-good answers every time (3 of 10: 'Ambiguous mention', 'Impossible range', 'Confusing relative references') and is consistent on 9 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
       "It also fails 'No mention' every time, but passed the same answer with only its formatting changed: there the judge contradicts itself, so that failure is the judge, not the answer.",
-      "`stability` is 0.90 against a bar of 0.80 but 10 judgments cannot show it; 54 would, at the same rate."
+      "`stability` is 0.90 against a bar of 0.80 but 10 judgments cannot show it; 55 would, at the same rate."
+    ]
+  },
+  "distill.json scripted certificates plain LLMJudge, full rubric": {
+    "before": "ADMISSIBLE",
+    "judge": "LLMJudge(scripted)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 120,
+        "trials": 120,
+        "rate": 1.0,
+        "interval": [
+          0.9697270274225799,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40, empty_output 40/40, rude_tone 40/40",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "rude_tone",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 40/40",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          1.0,
+          1.0
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=1.00, interval by case; agreement 80/80",
+        "estimate": 1.0
+      }
+    ],
+    "calls": 320,
+    "planned": 320,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply ends with a line starting with 'Answer:' that states the final answer. The answer is correct according to the store policy: the right yes or no, or the right dollar amount. The reply is polite and respectful to the customer.",
+      "model": "function:scripted",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "f1467408395f069a",
+    "advice": []
+  },
+  "distill.json scripted certificates HybridJudge, tone only to the model": {
+    "before": "ADMISSIBLE",
+    "judge": "HybridJudge(scripted)",
+    "verdict": "ADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "PASS",
+        "successes": 120,
+        "trials": 120,
+        "rate": 1.0,
+        "interval": [
+          0.9697270274225799,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 40/40, empty_output 40/40, rude_tone 40/40",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "rude_tone",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 40/40",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 40,
+        "trials": 40,
+        "rate": 1.0,
+        "interval": [
+          0.9119026971211976,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "PASS",
+        "successes": 80,
+        "trials": 80,
+        "rate": 1.0,
+        "interval": [
+          1.0,
+          1.0
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "kappa=1.00, interval by case; agreement 80/80",
+        "estimate": 1.0
+      }
+    ],
+    "calls": 320,
+    "planned": 320,
+    "looks": 1,
+    "identity": {
+      "evaluator": "HybridJudge",
+      "clauses": [
+        "Clause(\"The reply ends with a line starting with 'Answer:' that states the final answer.\", check=has_answer_line)",
+        "Clause('The answer is correct according to the store policy: the right yes or no, or the right dollar amount.', check=answer_is_right)",
+        "Clause('The reply is polite and respectful to the customer.', check=model)"
+      ],
+      "model": "function:scripted",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "58cdd1ddbde7ddda",
+    "advice": []
+  },
+  "distill.json codex certificates plain LLMJudge, full rubric": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 9,
+        "trials": 10,
+        "rate": 0.9,
+        "interval": [
+          0.5549838829718046,
+          0.9974714214555382
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 29,
+        "trials": 30,
+        "rate": 0.9666666666666667,
+        "interval": [
+          0.8278305443665872,
+          0.9991564290733695
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 9/10 UNVALIDATED, empty_output 10/10 UNVALIDATED, rude_tone 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 9,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "rude_tone",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 50,
+    "planned": 50,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply ends with a line starting with 'Answer:' that states the final answer. The answer is correct according to the store policy: the right yes or no, or the right dollar amount. The reply is polite and respectful to the customer.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "00e71d81b354955e",
+    "advice": [
+      "`acceptance` is 0.90 against a bar of 0.70 but 10 judgments cannot show it; 22 would, at the same rate."
+    ]
+  },
+  "distill.json codex certificates HybridJudge, tone only to the model": {
+    "before": "UNVALIDATED",
+    "judge": "HybridJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 7,
+        "trials": 10,
+        "rate": 0.7,
+        "interval": [
+          0.3475471499400028,
+          0.9332604888222655
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 30,
+        "trials": 30,
+        "rate": 1.0,
+        "interval": [
+          0.8842966917779722,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 10/10 UNVALIDATED, empty_output 10/10 UNVALIDATED, rude_tone 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "rude_tone",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 9,
+        "trials": 10,
+        "rate": 0.9,
+        "interval": [
+          0.5549838829718046,
+          0.9974714214555382
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 9/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 9,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 50,
+    "planned": 50,
+    "looks": 1,
+    "identity": {
+      "evaluator": "HybridJudge",
+      "clauses": [
+        "Clause(\"The reply ends with a line starting with 'Answer:' that states the final answer.\", check=has_answer_line)",
+        "Clause('The answer is correct according to the store policy: the right yes or no, or the right dollar amount.', check=answer_is_right)",
+        "Clause('The reply is polite and respectful to the customer.', check=model)"
+      ],
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "e620f1d4a59a5273",
+    "advice": [
+      "`acceptance` is 0.70, at or below its bar of 0.70: more cases will not make it pass."
+    ]
+  },
+  "evidence_contract.first_run.json reply only (default include_input=False), no reasoning": {
+    "before": "INADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "FAIL",
+        "successes": 8,
+        "trials": 24,
+        "rate": 0.3333333333333333,
+        "interval": [
+          0.15630228570913518,
+          0.5532196156596482
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "FAIL",
+        "successes": 47,
+        "trials": 60,
+        "rate": 0.7833333333333333,
+        "interval": [
+          0.6580438212653461,
+          0.879283975537304
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 12/24 FAIL, amount_differs 11/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null,
+        "families": [
+          {
+            "name": "tool_failed",
+            "successes": 12,
+            "trials": 24,
+            "errors": 0,
+            "status": "FAIL"
+          },
+          {
+            "name": "amount_differs",
+            "successes": 11,
+            "trials": 12,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 18,
+        "trials": 24,
+        "rate": 0.75,
+        "interval": [
+          0.5328871975773306,
+          0.9022695905254671
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "ids_changed 18/24 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "ids_changed",
+            "successes": 18,
+            "trials": 24,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 19,
+        "trials": 24,
+        "rate": 0.7916666666666666,
+        "interval": [
+          0.5784871563627472,
+          0.9286813828019451
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": false,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "c94450bccf2c2763",
+    "advice": [
+      "It passes answers that cannot be right (tool_failed 12/24 FAIL, amount_differs 11/12 UNVALIDATED, empty_output 24/24).",
+      "It is shown the evidence and still passes answers it contradicts (tool_failed): it grades the claim, not the work. Try a judge that reasons, or a rubric that says to check the answer against the tool results.",
+      "`stability` is 0.79, at or below its bar of 0.80: more cases will not make it pass."
+    ]
+  },
+  "evidence_contract.first_run.json reply and tool calls, no reasoning": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 17,
+        "trials": 24,
+        "rate": 0.7083333333333334,
+        "interval": [
+          0.48905218614216694,
+          0.8738479114763087
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 60,
+        "trials": 60,
+        "rate": 1.0,
+        "interval": [
+          0.9403705077138331,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 24/24, amount_differs 12/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null,
+        "families": [
+          {
+            "name": "tool_failed",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "amount_differs",
+            "successes": 12,
+            "trials": 12,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 18,
+        "trials": 24,
+        "rate": 0.75,
+        "interval": [
+          0.5328871975773306,
+          0.9022695905254671
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "ids_changed 18/24 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "ids_changed",
+            "successes": 18,
+            "trials": 24,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 24,
+        "rate": 0.6666666666666666,
+        "interval": [
+          0.44678038434035183,
+          0.8436977142908648
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0ac9523cd121c003",
+    "advice": [
+      "`acceptance` is 0.71, barely above its bar of 0.70: it would take about 11892 judgments to show it. Improve the judge rather than count on more cases.",
+      "`stability` is 0.67, at or below its bar of 0.80: more cases will not make it pass."
+    ]
+  },
+  "evidence_contract.json reply only (default include_input=False), no reasoning": {
+    "before": "INADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "FAIL",
+        "successes": 9,
+        "trials": 24,
+        "rate": 0.375,
+        "interval": [
+          0.18799292819600222,
+          0.594063615992056
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 52,
+        "trials": 60,
+        "rate": 0.8666666666666667,
+        "interval": [
+          0.7540777788695796,
+          0.9406355772946432
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 16/24 UNVALIDATED, amount_differs 12/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null,
+        "families": [
+          {
+            "name": "tool_failed",
+            "successes": 16,
+            "trials": 24,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "amount_differs",
+            "successes": 12,
+            "trials": 12,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 19,
+        "trials": 24,
+        "rate": 0.7916666666666666,
+        "interval": [
+          0.5784871563627472,
+          0.9286813828019451
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "ids_changed 19/24 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "ids_changed",
+            "successes": 19,
+            "trials": 24,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 21,
+        "trials": 24,
+        "rate": 0.875,
+        "interval": [
+          0.676388641811167,
+          0.9734406850137511
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": false,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "c94450bccf2c2763",
+    "advice": [
+      "It passed 9 of 24 judgments of the answers marked good, but it fails the same ones every time (below): check those answers before the judge.",
+      "It fails the same known-good answers every time (12 of 24: 'refund-0', 'refund-2', 'refund-4', 'refund-6', 'refund-8' ...) and is consistent on 21 of 24 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
+      "`stability` is 0.88 against a bar of 0.80 but 24 judgments cannot show it; 107 would, at the same rate."
+    ]
+  },
+  "evidence_contract.json reply and tool calls, no reasoning": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 24,
+        "trials": 24,
+        "rate": 1.0,
+        "interval": [
+          0.8575264022774743,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 60,
+        "trials": 60,
+        "rate": 1.0,
+        "interval": [
+          0.9403705077138331,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 24/24, amount_differs 12/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null,
+        "families": [
+          {
+            "name": "tool_failed",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "amount_differs",
+            "successes": 12,
+            "trials": 12,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 24,
+            "trials": 24,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 21,
+        "trials": 22,
+        "rate": 0.9545454545454546,
+        "interval": [
+          0.7715556023323666,
+          0.9988498524734265
+        ],
+        "threshold": 0.8,
+        "errors": 2,
+        "detail": "ids_changed 21/22 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "ids_changed",
+            "successes": 21,
+            "trials": 22,
+            "errors": 2,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "PASS",
+        "successes": 24,
+        "trials": 24,
+        "rate": 1.0,
+        "interval": [
+          0.8575264022774743,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0ac9523cd121c003",
+    "advice": []
+  },
+  "incremental.json codex first certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.8315665290169146,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 10/10 UNVALIDATED, empty_output 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 40,
+    "planned": 40,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "6cc32053e78edbf0",
+    "advice": [
+      "`acceptance` is 1.00 against a bar of 0.70 but 10 judgments cannot show it; 11 would, at the same rate."
+    ]
+  },
+  "incremental.json codex after edit certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.8315665290169146,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 10/10 UNVALIDATED, empty_output 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 40,
+    "planned": 40,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "6cc32053e78edbf0",
+    "advice": [
+      "`acceptance` is 1.00 against a bar of 0.70 but 10 judgments cannot show it; 11 would, at the same rate."
+    ]
+  },
+  "incremental.json codex unchanged rerun certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 20,
+        "trials": 20,
+        "rate": 1.0,
+        "interval": [
+          0.8315665290169146,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 10/10 UNVALIDATED, empty_output 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "interval": [
+          0.6915028921812392,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 10/10 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 40,
+    "planned": 40,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "6cc32053e78edbf0",
+    "advice": [
+      "`acceptance` is 1.00 against a bar of 0.70 but 10 judgments cannot show it; 11 would, at the same rate."
     ]
   },
   "judge_vs_truth.reference.json": {
     "before": "ADMISSIBLE",
     "judge": "LLMJudge(codex:gpt-5.6-luna)",
-    "verdict": "ADMISSIBLE",
+    "verdict": "UNVALIDATED",
     "checks": [
       {
         "name": "acceptance",
@@ -86,8 +1548,8 @@
         "trials": 40,
         "rate": 0.95,
         "interval": [
-          0.834958291820748,
-          0.9861796228538989
+          0.8308031360405824,
+          0.9938863534006492
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -101,28 +1563,53 @@
         "trials": 80,
         "rate": 1.0,
         "interval": [
-          0.954180263735425,
+          0.9549359649323077,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 40/40, empty_output 40/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "invariance",
-        "status": "PASS",
+        "status": "UNVALIDATED",
         "successes": 37,
         "trials": 40,
         "rate": 0.925,
         "interval": [
-          0.8013546984090248,
-          0.9741644432281419
+          0.7961352512671012,
+          0.9842578201489585
         ],
         "threshold": 0.8,
         "errors": 0,
-        "detail": "whitespace_reformat 37/40",
-        "estimate": null
+        "detail": "whitespace_reformat 37/40 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 37,
+            "trials": 40,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -131,8 +1618,8 @@
         "trials": 40,
         "rate": 0.975,
         "interval": [
-          0.8711834051199223,
-          0.9955732825922052
+          0.8684141415172344,
+          0.9993672550679507
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -158,6 +1645,20 @@
     "calls": 280,
     "planned": null,
     "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The output correctly answers the question.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": true,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "5cf47b2c4fcf4c68",
     "advice": [
       "It fails the same known-good answers every time (1 of 40: 'strings-6') and is consistent on 39 of 40 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
       "It also fails 'strings-2' every time, but passed the same answer with only its formatting changed: there the judge contradicts itself, so that failure is the judge, not the answer."
@@ -166,7 +1667,7 @@
   "judge_vs_truth.sequential.json": {
     "before": "INADMISSIBLE",
     "judge": "LLMJudge(codex:gpt-5.6-luna)",
-    "verdict": "INADMISSIBLE",
+    "verdict": "UNVALIDATED",
     "checks": [
       {
         "name": "acceptance",
@@ -175,8 +1676,8 @@
         "trials": 20,
         "rate": 0.7,
         "interval": [
-          0.4810232237710206,
-          0.854524726031006
+          0.45721081772371075,
+          0.8810684095942724
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -190,28 +1691,53 @@
         "trials": 40,
         "rate": 1.0,
         "interval": [
-          0.9123754607496077,
+          0.9119026971211976,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 20/20, empty_output 20/20",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 20,
+            "trials": 20,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 20,
+            "trials": 20,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "invariance",
-        "status": "FAIL",
+        "status": "UNVALIDATED",
         "successes": 10,
         "trials": 20,
         "rate": 0.5,
         "interval": [
-          0.2992949144298199,
-          0.7007050855701801
+          0.2719578495607916,
+          0.7280421504392084
         ],
         "threshold": 0.8,
         "errors": 0,
-        "detail": "whitespace_reformat 10/20 FAIL",
-        "estimate": null
+        "detail": "whitespace_reformat 10/20 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 20,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -220,8 +1746,8 @@
         "trials": 20,
         "rate": 0.75,
         "interval": [
-          0.5312949900419365,
-          0.888139947210597
+          0.5089541282920423,
+          0.9134285308985655
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -246,11 +1772,795 @@
     ],
     "calls": 140,
     "planned": null,
-    "looks": 1,
+    "looks": 4,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
-      "Its verdict changes when only whitespace changes, but it also disagrees with itself on the very same answer, so this is most likely noise rather than formatting sensitivity. Lower its temperature (`model_settings={\"temperature\": 0}`) or use a stronger model, then certify again.",
       "`acceptance` is 0.70, at or below its bar of 0.70: more cases will not make it pass.",
       "`stability` is 0.75, at or below its bar of 0.80: more cases will not make it pass."
+    ]
+  },
+  "jury.json members luna@none certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 31,
+        "trials": 32,
+        "rate": 0.96875,
+        "interval": [
+          0.8378290058184885,
+          0.9992091314020475
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 15/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 80,
+    "planned": 80,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "6cc32053e78edbf0",
+    "advice": [
+      "`acceptance` is 0.94 against a bar of 0.70 but 16 judgments cannot show it; 17 would, at the same rate.",
+      "`stability` is 0.94 against a bar of 0.80 but 16 judgments cannot show it; 34 would, at the same rate."
+    ]
+  },
+  "jury.json members reserve@none certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-reserve@none)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 32,
+        "trials": 32,
+        "rate": 1.0,
+        "interval": [
+          0.8911188393206471,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 16/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 80,
+    "planned": 80,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-reserve@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "e40bae0b9831bc03",
+    "advice": [
+      "`stability` is 0.94 against a bar of 0.80 but 16 judgments cannot show it; 34 would, at the same rate."
+    ]
+  },
+  "jury.json members luna@low certificate": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna@low)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 31,
+        "trials": 32,
+        "rate": 0.96875,
+        "interval": [
+          0.8378290058184885,
+          0.9992091314020475
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 15/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 80,
+    "planned": 80,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@low",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "cd4d0197389310c9",
+    "advice": [
+      "`stability` is 1.00 against a bar of 0.80 but 16 judgments cannot show it; 17 would, at the same rate."
+    ]
+  },
+  "jury.json juries majority jury": {
+    "before": "UNVALIDATED",
+    "judge": "Jury(majority: LLMJudge(codex:gpt-5.6-luna@none), LLMJudge(codex:gpt-reserve@none), LLMJudge(codex:gpt-5.6-luna@low))",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 31,
+        "trials": 32,
+        "rate": 0.96875,
+        "interval": [
+          0.8378290058184885,
+          0.9992091314020475
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 15/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 240,
+    "planned": 240,
+    "looks": 1,
+    "identity": {
+      "evaluator": "Jury",
+      "members": [
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-reserve@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@low",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        }
+      ],
+      "rule": "majority",
+      "assertion": null,
+      "quorum": null,
+      "tie": "fail",
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0d9d46887ea8e362",
+    "advice": [
+      "`stability` is 1.00 against a bar of 0.80 but 16 judgments cannot show it; 17 would, at the same rate."
+    ]
+  },
+  "jury.json juries unanimous_pass jury": {
+    "before": "UNVALIDATED",
+    "judge": "Jury(unanimous_pass: LLMJudge(codex:gpt-5.6-luna@none), LLMJudge(codex:gpt-reserve@none), LLMJudge(codex:gpt-5.6-luna@low))",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 32,
+        "trials": 32,
+        "rate": 1.0,
+        "interval": [
+          0.8911188393206471,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 16/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 240,
+    "planned": 240,
+    "looks": 1,
+    "identity": {
+      "evaluator": "Jury",
+      "members": [
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-reserve@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@low",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        }
+      ],
+      "rule": "unanimous_pass",
+      "assertion": null,
+      "quorum": null,
+      "tie": "fail",
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "4b1ab3eb2cc566a2",
+    "advice": [
+      "It fails the same known-good answers every time (1 of 16: 'return-1') and is consistent on 16 of 16 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
+      "`stability` is 1.00 against a bar of 0.80 but 16 judgments cannot show it; 17 would, at the same rate."
+    ]
+  },
+  "jury.json juries any_fail jury": {
+    "before": "UNVALIDATED",
+    "judge": "Jury(any_fail: LLMJudge(codex:gpt-5.6-luna@none), LLMJudge(codex:gpt-reserve@none), LLMJudge(codex:gpt-5.6-luna@low))",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 32,
+        "trials": 32,
+        "rate": 1.0,
+        "interval": [
+          0.8911188393206471,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "plausible_wrong 16/16 UNVALIDATED, plausible_wrong_explained 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "plausible_wrong",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "plausible_wrong_explained",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "whitespace_reformat 15/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 15,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 240,
+    "planned": 240,
+    "looks": 1,
+    "identity": {
+      "evaluator": "Jury",
+      "members": [
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-reserve@none",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        },
+        {
+          "evaluator": "LLMJudge",
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "model": "function:codex:gpt-5.6-luna@low",
+          "include_input": true,
+          "include_expected_output": false,
+          "model_settings": null,
+          "score": false,
+          "assertion": {
+            "include_reason": true
+          },
+          "pydantic_evals": "0.0.1.dev1+dac0464"
+        }
+      ],
+      "rule": "any_fail",
+      "assertion": null,
+      "quorum": null,
+      "tie": "fail",
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "454bf3479836575e",
+    "advice": [
+      "It fails the same known-good answers every time (1 of 16: 'return-1') and is consistent on 16 of 16 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
+      "`stability` is 1.00 against a bar of 0.80 but 16 judgments cannot show it; 17 would, at the same rate."
     ]
   },
   "pairwise_codex.json": {
@@ -265,8 +2575,8 @@
         "trials": 54,
         "rate": 0.8148148148148148,
         "interval": [
-          0.6916379770862061,
-          0.8961742549405703
+          0.6857034830197923,
+          0.9074545132939489
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -280,8 +2590,8 @@
         "trials": 54,
         "rate": 0.8888888888888888,
         "interval": [
-          0.7780505106792327,
-          0.9480704818244324
+          0.7736868373700342,
+          0.958116236422146
         ],
         "threshold": 0.9,
         "errors": 0,
@@ -292,8 +2602,10 @@
     "calls": 108,
     "planned": 108,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
-      "`accuracy` is 0.81 against a bar of 0.80 but 54 judgments cannot show it; 2850 would, at the same rate.",
+      "`accuracy` is 0.81, barely above its bar of 0.80: it would take about 3135 judgments to show it. Improve the judge rather than count on more cases.",
       "`order_consistency` is 0.89, at or below its bar of 0.90: more cases will not make it pass."
     ]
   },
@@ -309,8 +2621,8 @@
         "trials": 54,
         "rate": 0.8148148148148148,
         "interval": [
-          0.6916379770862061,
-          0.8961742549405703
+          0.6857034830197923,
+          0.9074545132939489
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -324,8 +2636,8 @@
         "trials": 54,
         "rate": 0.8518518518518519,
         "interval": [
-          0.733996325347515,
-          0.9229702869177059
+          0.728802311437877,
+          0.9338024228387033
         ],
         "threshold": 0.9,
         "errors": 0,
@@ -336,8 +2648,10 @@
     "calls": 108,
     "planned": 108,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
-      "`accuracy` is 0.81 against a bar of 0.80 but 54 judgments cannot show it; 2850 would, at the same rate.",
+      "`accuracy` is 0.81, barely above its bar of 0.80: it would take about 3135 judgments to show it. Improve the judge rather than count on more cases.",
       "`order_consistency` is 0.85, at or below its bar of 0.90: more cases will not make it pass."
     ]
   },
@@ -353,8 +2667,8 @@
         "trials": 10,
         "rate": 0.5,
         "interval": [
-          0.23658959361548731,
-          0.7634104063845126
+          0.18708602844739863,
+          0.8129139715526014
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -368,13 +2682,29 @@
         "trials": 20,
         "rate": 1.0,
         "interval": [
-          0.8388698745050667,
+          0.8315665290169146,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "empty_explanation 10/10 UNVALIDATED, debug_string 10/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "empty_explanation",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "debug_string",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -383,13 +2713,29 @@
         "trials": 16,
         "rate": 0.6875,
         "interval": [
-          0.4440393186673406,
-          0.8583556494803894
+          0.41337936354864113,
+          0.8898300452828826
         ],
         "threshold": 0.8,
         "errors": 4,
         "detail": "mismatched_output 2/6 UNVALIDATED, extra_spaces 9/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 2,
+            "trials": 6,
+            "errors": 4,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "extra_spaces",
+            "successes": 9,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -398,7 +2744,7 @@
         "trials": 10,
         "rate": 1.0,
         "interval": [
-          0.7224598312333834,
+          0.6915028921812392,
           1.0
         ],
         "threshold": 0.8,
@@ -410,9 +2756,11 @@
     "calls": 70,
     "planned": 70,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
       "It fails the same known-good answers every time (5 of 10: 'Ambiguous mention', 'Impossible range', 'No mention', 'Ambiguous elliptical mention', 'Confusing relative references') and is consistent on 10 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
-      "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 16 would, at the same rate."
+      "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 17 would, at the same rate."
     ]
   },
   "pydantic_example_judge.json judges reasoning high": {
@@ -427,8 +2775,8 @@
         "trials": 10,
         "rate": 0.7,
         "interval": [
-          0.39677321997956516,
-          0.892210712513788
+          0.3475471499400028,
+          0.9332604888222655
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -442,13 +2790,29 @@
         "trials": 20,
         "rate": 1.0,
         "interval": [
-          0.8388698745050667,
+          0.8315665290169146,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "empty_explanation 10/10 UNVALIDATED, debug_string 10/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "empty_explanation",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "debug_string",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -457,13 +2821,29 @@
         "trials": 20,
         "rate": 0.7,
         "interval": [
-          0.4810232237710206,
-          0.854524726031006
+          0.45721081772371075,
+          0.8810684095942724
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 5/10 UNVALIDATED, extra_spaces 9/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 5,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "extra_spaces",
+            "successes": 9,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -472,8 +2852,8 @@
         "trials": 10,
         "rate": 0.8,
         "interval": [
-          0.49015684672072335,
-          0.9433190520193067
+          0.4439045376923585,
+          0.9747892736731667
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -484,10 +2864,480 @@
     "calls": 70,
     "planned": 70,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
       "It fails the same known-good answers every time (3 of 10: 'Ambiguous mention', 'Impossible range', 'Confusing relative references') and is consistent on 8 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
       "`stability` is 0.80, at or below its bar of 0.80: more cases will not make it pass."
     ]
+  },
+  "routing.json codex routed certificate": {
+    "before": "UNVALIDATED",
+    "judge": "RoutedJudge",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "interval": [
+          0.6305833524471807,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "fewer than 10 judgments",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "interval": [
+          0.6305833524471807,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 8/8 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 8,
+            "trials": 8,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "UNVALIDATED",
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "humans labelled every output fail: kappa cannot measure agreement (agreement 8/8); label outputs that pass and outputs that fail",
+        "estimate": null
+      }
+    ],
+    "calls": 24,
+    "planned": 24,
+    "looks": 1,
+    "identity": {
+      "evaluator": "RoutedJudge",
+      "cheap": {
+        "_cache": {},
+        "cap": 80,
+        "judge": {
+          "assertion": {
+            "include_reason": true
+          },
+          "include_expected_output": false,
+          "include_input": true,
+          "model": {
+            "_model_name": "codex:gpt-5.6-luna",
+            "_system": "function",
+            "function": "<function codex_model.<locals>.structured at 0x110107740>",
+            "stream_function": null
+          },
+          "model_settings": null,
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "score": false
+        },
+        "ledger": {
+          "cheap": 48,
+          "expensive": 24,
+          "total": 72
+        },
+        "memo": false,
+        "tier": "cheap"
+      },
+      "expensive": {
+        "_cache": {
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $225.84')": {
+            "LLMJudge": {
+              "reason": "The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.",
+              "value": false
+            }
+          },
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $8.50')": {
+            "LLMJudge": {
+              "reason": "The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.",
+              "value": false
+            }
+          },
+          "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+            "LLMJudge": {
+              "reason": "The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.",
+              "value": false
+            }
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Answer: no')": {
+            "LLMJudge": {
+              "reason": "The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.",
+              "value": false
+            }
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": {
+              "reason": "The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.",
+              "value": false
+            }
+          },
+          "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \\n\\nAnswer: yes')": {
+            "LLMJudge": {
+              "reason": "The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.",
+              "value": true
+            }
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+            "LLMJudge": {
+              "reason": "The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.",
+              "value": false
+            }
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+            "LLMJudge": {
+              "reason": "The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.",
+              "value": true
+            }
+          },
+          "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+            "LLMJudge": {
+              "reason": "The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.",
+              "value": false
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: $8.50')": {
+            "LLMJudge": {
+              "reason": "The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.",
+              "value": false
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: yes')": {
+            "LLMJudge": {
+              "reason": "The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.",
+              "value": false
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\\n\\nAnswer: no')": {
+            "LLMJudge": {
+              "reason": "The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.",
+              "value": true
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+            "LLMJudge": {
+              "reason": "The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.",
+              "value": false
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": {
+              "reason": "The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.",
+              "value": false
+            }
+          },
+          "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+            "LLMJudge": {
+              "reason": "The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.",
+              "value": true
+            }
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+            "LLMJudge": {
+              "reason": "The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.",
+              "value": false
+            }
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $8.50')": {
+            "LLMJudge": {
+              "reason": "The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.",
+              "value": true
+            }
+          },
+          "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+            "LLMJudge": {
+              "reason": "The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.",
+              "value": false
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Answer: $37.38')": {
+            "LLMJudge": {
+              "reason": "The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.",
+              "value": false
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+            "LLMJudge": {
+              "reason": "The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.",
+              "value": false
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": {
+              "reason": "The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.",
+              "value": true
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+            "LLMJudge": {
+              "reason": "The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.",
+              "value": true
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: yes')": {
+            "LLMJudge": {
+              "reason": "The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.",
+              "value": false
+            }
+          },
+          "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+            "LLMJudge": {
+              "reason": "The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.",
+              "value": false
+            }
+          }
+        },
+        "cap": 40,
+        "judge": {
+          "assertion": {
+            "include_reason": true
+          },
+          "include_expected_output": false,
+          "include_input": true,
+          "model": {
+            "_model_name": "codex:gpt-5.6-luna",
+            "_system": "function",
+            "function": "<function codex_model.<locals>.structured at 0x110107a00>",
+            "stream_function": null
+          },
+          "model_settings": null,
+          "rubric": "The reply correctly answers the customer's question according to the store policy.",
+          "score": false
+        },
+        "ledger": {
+          "cheap": 48,
+          "expensive": 24,
+          "total": 72
+        },
+        "memo": true,
+        "tier": "expensive"
+      },
+      "k": 2,
+      "assertion": null,
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "2d473ea0d9188c2d",
+    "advice": []
+  },
+  "routing.json codex expensive_alone": {
+    "before": "UNVALIDATED",
+    "judge": "Metered",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 7,
+        "trials": 8,
+        "rate": 0.875,
+        "interval": [
+          0.4734903291247934,
+          0.9968402764687482
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "fewer than 10 judgments",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "interval": [
+          0.6305833524471807,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "mismatched_output 8/8 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 8,
+            "trials": 8,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "no controls",
+        "estimate": null
+      },
+      {
+        "name": "human_agreement",
+        "status": "UNVALIDATED",
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "interval": [
+          0.0,
+          1.0
+        ],
+        "threshold": 0.4,
+        "errors": 0,
+        "detail": "humans labelled every output fail: kappa cannot measure agreement (agreement 8/8); label outputs that pass and outputs that fail",
+        "estimate": null
+      }
+    ],
+    "calls": 24,
+    "planned": 24,
+    "looks": 1,
+    "identity": {
+      "evaluator": "Metered",
+      "judge": {
+        "assertion": {
+          "include_reason": true
+        },
+        "include_expected_output": false,
+        "include_input": true,
+        "model": {
+          "_model_name": "codex:gpt-5.6-luna",
+          "_system": "function",
+          "function": "<function codex_model.<locals>.structured at 0x110107a00>",
+          "stream_function": null
+        },
+        "model_settings": null,
+        "rubric": "The reply correctly answers the customer's question according to the store policy.",
+        "score": false
+      },
+      "tier": "expensive",
+      "ledger": {
+        "expensive": 24,
+        "total": 24
+      },
+      "cap": 40,
+      "memo": true,
+      "_cache": {
+        "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $225.84')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee for opened items, so the refund should be about $203.27, not $225.84.')"
+        },
+        "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Answer: $8.50')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee on the $225.85 purchase, so the refund should be $203.27, not $8.50.')"
+        },
+        "('Policy:\\nBluebell Home customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my speaker (paid $225.85) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy requires a 10% restocking fee. Ten percent of $225.85 is $22.585, so the refund should round to $203.27, not $203.26.')"
+        },
+        "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Answer: no')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 6 months, and the blender stopped working on its own after 4 months, so it is covered.')"
+        },
+        "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The reply does not address warranty coverage and instead gives an unrelated refund and restocking-fee amount. Under the policy, the blender is covered for a defect within 6 months, assuming the failure was not accidental.')"
+        },
+        "('Policy:\\nHarbor Lane Books customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My blender stopped working on its own 4 months after I bought it. Is it covered by the warranty?', 'Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \\n\\nAnswer: yes')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the blender is covered because it failed on its own within the six-month warranty period.')"
+        },
+        "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The cart total is below $35, so standard shipping costs the flat $6.99, not $0.00.')"
+        },
+        "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so the policy applies the flat $6.99 standard shipping fee. The reply gives the correct amount.')"
+        },
+        "('Policy:\\nJuniper Kitchenware customer policy.\\nReturns: items can be returned within 45 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.67 with standard shipping. How much will I pay for shipping?', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The reply does not answer the shipping question and incorrectly discusses returns. The correct standard shipping cost is $6.99.')"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: $8.50')": {
+          "LLMJudge": "EvaluationReason(value=False, reason=\"The response '$8.50' does not answer whether the headphones are covered; under the policy, the 12-month warranty expired after 13 months.\")"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'Answer: yes')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy covers product defects for 12 months from purchase, so a failure after 13 months is not covered. The reply \u201cyes\u201d is incorrect.')"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 12 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My headphones stopped working on its own 13 months after I bought it. Is it covered by the warranty?', 'The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\\n\\nAnswer: no')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the warranty lasts 12 months and excludes a failure occurring 13 months after purchase.')"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The order is within 60 days of delivery, so it can be returned; because it is unopened, it qualifies for a full refund. The answer \u201cno\u201d is incorrect.')"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The reply incorrectly treats the item as opened, cites a 20% fee instead of the policy\u2019s 15% fee, and gives an unsupported refund amount. It should state that the unopened item is eligible for a full refund because it is within 60 days.')"
+        },
+        "('Policy:\\nMeridian Optics customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 15% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on February 17, 2026. Today is April 12, 2026. Can I still return it? (It is unopened.)', 'Yes. It is within 60 days of delivery, and unopened items are refunded in full.\\n\\nAnswer: yes')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The reply correctly states that the unopened item is still within the 60-day return window and will be refunded in full.')"
+        },
+        "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $0.00')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy charges a flat $8.50 for standard shipping on orders below $35, so $0.00 is incorrect.')"
+        },
+        "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Answer: $8.50')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The order is under $35, so standard shipping costs the flat $8.50 stated in the policy.')"
+        },
+        "('Policy:\\nPinecrest Toys customer policy.\\nReturns: items can be returned within 14 days of delivery. Opened items are refunded minus a 10% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $35 or more ship free; smaller orders pay a flat $8.50. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My cart comes to $11.21 with standard shipping. How much will I pay for shipping?', 'Shipping will cost **$6.99**.\\n\\nAnswer: $6.99')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The policy specifies a flat $8.50 shipping fee for orders under $35, so the stated $6.99 is incorrect.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Answer: $37.38')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The opened blender is subject to a 20% restocking fee, so the refund should be $29.90, not $37.38.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Because the speaker was opened, a 10% restocking fee applies:\\n\\n$225.85 \u2212 $22.59 = **$203.26**\\n\\nAnswer: $203.26')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The response applies a 10% fee to an unrelated $225.85 amount, but the policy requires a 20% restocking fee on the $37.37 purchase, yielding $29.90.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 30 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $50 or more ship free; smaller orders pay a flat $6.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 24 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: I opened my blender (paid $37.37) and want to return it within the window. How much will I get back?', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The response correctly applies the 20% restocking fee to $37.37, yielding a rounded refund of $29.90.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: no')": {
+          "LLMJudge": "EvaluationReason(value=True, reason='The order was delivered more than 60 days ago, so it is outside the return window despite being unopened.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Answer: yes')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window: July 15 is more than 60 days after April 25, so it cannot be returned despite being unopened.')"
+        },
+        "('Policy:\\nSaffron Pantry customer policy.\\nReturns: items can be returned within 60 days of delivery. Opened items are refunded minus a 20% restocking fee; unopened items are refunded in full. Gift cards and final-sale items cannot be returned.\\nShipping: orders of $75 or more ship free; smaller orders pay a flat $4.99. Express shipping is available at checkout for an extra $12.\\nWarranty: every product is covered against defects for 6 months from purchase. Accidental damage is not covered.\\nSupport hours: Monday to Friday, 9am to 6pm. Loyalty members earn 2 points per dollar.\\n\\nCustomer: My order was delivered on April 25, 2026. Today is July 15, 2026. Can I still return it? (It is unopened.)', 'Opened items incur a 20% restocking fee. Refund: $29.90.\\n\\nAnswer: $29.90')": {
+          "LLMJudge": "EvaluationReason(value=False, reason='The item is outside the 60-day return window, so it cannot be returned. The reply incorrectly discusses an opened-item fee and gives an unsupported refund amount.')"
+        }
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "825191512ca030e3",
+    "advice": []
   },
   "support_eval.json certificates weak (no reasoning, sees the question)": {
     "before": "ADMISSIBLE",
@@ -501,7 +3351,7 @@
         "trials": 40,
         "rate": 1.0,
         "interval": [
-          0.9123754607496077,
+          0.9119026971211976,
           1.0
         ],
         "threshold": 0.7,
@@ -516,13 +3366,29 @@
         "trials": 80,
         "rate": 1.0,
         "interval": [
-          0.954180263735425,
+          0.9549359649323077,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 40/40, empty_output 40/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -531,13 +3397,22 @@
         "trials": 40,
         "rate": 0.975,
         "interval": [
-          0.8711834051199223,
-          0.9955732825922052
+          0.8684141415172344,
+          0.9993672550679507
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "whitespace_reformat 39/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 39,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -546,7 +3421,7 @@
         "trials": 40,
         "rate": 1.0,
         "interval": [
-          0.9123754607496077,
+          0.9119026971211976,
           1.0
         ],
         "threshold": 0.8,
@@ -572,7 +3447,21 @@
     ],
     "calls": 280,
     "planned": 280,
-    "looks": 1,
+    "looks": 4,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "6cc32053e78edbf0",
     "advice": []
   },
   "support_eval.json certificates strong (reasoning high, sees the question)": {
@@ -587,8 +3476,8 @@
         "trials": 38,
         "rate": 1.0,
         "interval": [
-          0.90818706741616,
-          0.9999999999999999
+          0.9074872385841217,
+          1.0
         ],
         "threshold": 0.7,
         "errors": 2,
@@ -602,13 +3491,29 @@
         "trials": 80,
         "rate": 1.0,
         "interval": [
-          0.954180263735425,
+          0.9549359649323077,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 40/40, empty_output 40/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -617,13 +3522,22 @@
         "trials": 38,
         "rate": 0.9736842105263158,
         "interval": [
-          0.8650482156319974,
-          0.9953395324464698
+          0.8619009702075799,
+          0.9993339637957976
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "whitespace_reformat 37/38",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 37,
+            "trials": 38,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -632,8 +3546,8 @@
         "trials": 38,
         "rate": 1.0,
         "interval": [
-          0.90818706741616,
-          0.9999999999999999
+          0.9074872385841217,
+          1.0
         ],
         "threshold": 0.8,
         "errors": 2,
@@ -658,7 +3572,21 @@
     ],
     "calls": 280,
     "planned": 280,
-    "looks": 1,
+    "looks": 4,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-5.6-luna@high",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "21adf74746311345",
     "advice": []
   },
   "support_eval.json certificates strong, default include_input=False": {
@@ -673,8 +3601,8 @@
         "trials": 10,
         "rate": 0.7,
         "interval": [
-          0.39677321997956516,
-          0.892210712513788
+          0.3475471499400028,
+          0.9332604888222655
         ],
         "threshold": 0.7,
         "errors": 0,
@@ -688,13 +3616,29 @@
         "trials": 20,
         "rate": 0.5,
         "interval": [
-          0.2992949144298199,
-          0.7007050855701801
+          0.2719578495607916,
+          0.7280421504392084
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 0/10 FAIL, empty_output 10/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 0,
+            "trials": 10,
+            "errors": 0,
+            "status": "FAIL"
+          },
+          {
+            "name": "empty_output",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -703,13 +3647,22 @@
         "trials": 10,
         "rate": 1.0,
         "interval": [
-          0.7224598312333834,
+          0.6915028921812392,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "whitespace_reformat 10/10 UNVALIDATED",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 10,
+            "trials": 10,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -718,7 +3671,7 @@
         "trials": 10,
         "rate": 1.0,
         "interval": [
-          0.7224598312333834,
+          0.6915028921812392,
           1.0
         ],
         "threshold": 0.8,
@@ -744,12 +3697,14 @@
     ],
     "calls": 70,
     "planned": 280,
-    "looks": 1,
+    "looks": 4,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
       "It passes answers that cannot be right (mismatched_output 0/10 FAIL, empty_output 10/10 UNVALIDATED).",
       "It rejects every empty answer and fails only on other cases' answers. If the rubric grades style, tone or format rather than correctness, another case's answer can satisfy it, and the control is wrong, not the judge: use `MismatchedOutput(kind='must_hold')` and `Rewrite` controls that break the rubric itself.",
       "It fails the same known-good answers every time (3 of 10: 'return-9', 'shipping-1', 'shipping-3') and is consistent on 10 of 10 cases. A judge that consistent may be right, or those answers may share something it gets wrong every time: read them against the rubric. Fix or drop the ones that do not meet it; if they do meet it, the judge has a blind spot there, whatever its overall rate. Other cases borrow them as controls too, so settle them before reading `invariance`.",
-      "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 16 would, at the same rate."
+      "`stability` is 1.00 against a bar of 0.80 but 10 judgments cannot show it; 17 would, at the same rate."
     ]
   },
   "support_eval.json certificates gpt-reserve (no reasoning, sees the question)": {
@@ -764,7 +3719,7 @@
         "trials": 40,
         "rate": 1.0,
         "interval": [
-          0.9123754607496077,
+          0.9119026971211976,
           1.0
         ],
         "threshold": 0.7,
@@ -779,13 +3734,29 @@
         "trials": 80,
         "rate": 1.0,
         "interval": [
-          0.954180263735425,
+          0.9549359649323077,
           1.0
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "mismatched_output 40/40, empty_output 40/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "mismatched_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          },
+          {
+            "name": "empty_output",
+            "successes": 40,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "invariance",
@@ -794,13 +3765,22 @@
         "trials": 40,
         "rate": 0.95,
         "interval": [
-          0.834958291820748,
-          0.9861796228538989
+          0.8308031360405824,
+          0.9938863534006492
         ],
         "threshold": 0.8,
         "errors": 0,
         "detail": "whitespace_reformat 38/40",
-        "estimate": null
+        "estimate": null,
+        "families": [
+          {
+            "name": "whitespace_reformat",
+            "successes": 38,
+            "trials": 40,
+            "errors": 0,
+            "status": "PASS"
+          }
+        ]
       },
       {
         "name": "stability",
@@ -809,7 +3789,7 @@
         "trials": 40,
         "rate": 1.0,
         "interval": [
-          0.9123754607496077,
+          0.9119026971211976,
           1.0
         ],
         "threshold": 0.8,
@@ -835,7 +3815,21 @@
     ],
     "calls": 280,
     "planned": 280,
-    "looks": 1,
+    "looks": 4,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply correctly answers the customer's question according to the store policy.",
+      "model": "function:codex:gpt-reserve@none",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "e40bae0b9831bc03",
     "advice": []
   },
   "support_eval.json pairwise weak": {
@@ -850,8 +3844,8 @@
         "trials": 40,
         "rate": 0.95,
         "interval": [
-          0.834958291820748,
-          0.9861796228538989
+          0.8308031360405824,
+          0.9938863534006492
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -865,8 +3859,8 @@
         "trials": 40,
         "rate": 0.975,
         "interval": [
-          0.8711834051199223,
-          0.9955732825922052
+          0.8684141415172344,
+          0.9993672550679507
         ],
         "threshold": 0.9,
         "errors": 0,
@@ -877,8 +3871,10 @@
     "calls": 80,
     "planned": 80,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
-      "`order_consistency` is 0.97 against a bar of 0.90 but 40 judgments cannot show it; 53 would, at the same rate."
+      "`order_consistency` is 0.97 against a bar of 0.90 but 40 judgments cannot show it; 54 would, at the same rate."
     ]
   },
   "support_eval.json pairwise strong": {
@@ -893,8 +3889,8 @@
         "trials": 40,
         "rate": 0.95,
         "interval": [
-          0.834958291820748,
-          0.9861796228538989
+          0.8308031360405824,
+          0.9938863534006492
         ],
         "threshold": 0.8,
         "errors": 0,
@@ -908,8 +3904,8 @@
         "trials": 40,
         "rate": 0.975,
         "interval": [
-          0.8711834051199223,
-          0.9955732825922052
+          0.8684141415172344,
+          0.9993672550679507
         ],
         "threshold": 0.9,
         "errors": 0,
@@ -920,8 +3916,195 @@
     "calls": 80,
     "planned": 80,
     "looks": 1,
+    "identity": null,
+    "fingerprint": null,
     "advice": [
-      "`order_consistency` is 0.97 against a bar of 0.90 but 40 judgments cannot show it; 53 would, at the same rate."
+      "`order_consistency` is 0.97 against a bar of 0.90 but 40 judgments cannot show it; 54 would, at the same rate."
     ]
+  },
+  "trace_controls.json temporal": {
+    "before": "UNVALIDATED",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 15,
+        "trials": 16,
+        "rate": 0.9375,
+        "interval": [
+          0.6976792615654681,
+          0.9984188882772341
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "info_was_available 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "info_was_available",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 14,
+        "trials": 16,
+        "rate": 0.875,
+        "interval": [
+          0.6165237631507365,
+          0.9844863961845861
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "hindsight_added 14/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "hindsight_added",
+            "successes": 14,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 48,
+    "planned": 48,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "Judge the agent's decision on what it knew at the time it decided: the decision must follow the policy given the events up to that time.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0e971ce3b6c8c889",
+    "advice": [
+      "`acceptance` is 0.94 against a bar of 0.70 but 16 judgments cannot show it; 17 would, at the same rate."
+    ]
+  },
+  "trace_controls.json retry": {
+    "before": "ADMISSIBLE",
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "PASS",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 32,
+        "trials": 32,
+        "rate": 1.0,
+        "interval": [
+          0.8911188393206471,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "duplicate_side_effect 16/16 UNVALIDATED, retry_changed_arguments 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "duplicate_side_effect",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          },
+          {
+            "name": "retry_changed_arguments",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 16,
+        "rate": 1.0,
+        "interval": [
+          0.7940927857921772,
+          1.0
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "retried_and_recovered 16/16 UNVALIDATED",
+        "estimate": null,
+        "families": [
+          {
+            "name": "retried_and_recovered",
+            "successes": 16,
+            "trials": 16,
+            "errors": 0,
+            "status": "UNVALIDATED"
+          }
+        ]
+      }
+    ],
+    "calls": 64,
+    "planned": 64,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The agent resolved the request correctly and without harmful side effects, according to the tool calls.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "a7c4c2b2b0b3c458",
+    "advice": []
   }
 }

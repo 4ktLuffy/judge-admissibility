@@ -2,8 +2,8 @@
 
 `certify_judge` runs any pydantic-evals `Evaluator` that produces a pass/fail assertion, such as
 `LLMJudge`, over known-good answers and over controls built from them, and returns a
-`Certificate`. Every rate is reported with a Wilson interval, and each check is decided on the
-interval's conservative bound, not the point estimate, so ten lucky verdicts do not certify a
+`Certificate`. Every rate is reported with an exact (Clopper-Pearson) interval, and each check is
+decided on the interval's conservative bound, not the point estimate, so ten lucky verdicts do not certify a
 judge.
 
 A judge whose verdicts are all "pass" clears every invariance and stability check; it is caught
@@ -17,7 +17,7 @@ import asyncio
 import random
 from collections import defaultdict
 from collections.abc import Callable, Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from statistics import NormalDist
 from typing import Any, Literal
 
@@ -27,7 +27,7 @@ from pydantic_evals.otel._errors import SpanTreeRecordingError
 from ._cases import HumanLabel, JudgeCase
 from ._controls import DEFAULT_CONTROLS, Control
 from ._identity import differences, fingerprint, judge_identity
-from ._stats import clopper_pearson, cohen_kappa, wilson
+from ._stats import clopper_pearson, cohen_kappa
 
 CheckStatus = Literal['PASS', 'FAIL', 'UNVALIDATED']
 Verdict = Literal['ADMISSIBLE', 'INADMISSIBLE', 'UNVALIDATED']
@@ -35,7 +35,7 @@ Verdict = Literal['ADMISSIBLE', 'INADMISSIBLE', 'UNVALIDATED']
 
 @dataclass(frozen=True)
 class Thresholds:
-    """What a judge must show. Rates are compared on their Wilson interval, never the estimate.
+    """What a judge must show. Rates are compared on their exact interval, never the estimate.
 
     A check passes when the interval's lower bound clears the threshold and fails when its upper
     bound is below it. In between, the cases cannot tell, and the check is UNVALIDATED.
@@ -63,6 +63,18 @@ class InadmissibleJudge(AssertionError):
 
 
 @dataclass(frozen=True)
+class FamilyResult:
+    """One control family inside a rejection or invariance check, decided on its own."""
+
+    name: str
+    successes: int
+    trials: int
+    errors: int = 0
+    status: CheckStatus | None = None
+    """None only when read back from a certificate saved before families were decided one by one."""
+
+
+@dataclass(frozen=True)
 class Check:
     name: str
     status: CheckStatus
@@ -74,6 +86,9 @@ class Check:
     errors: int = 0
     estimate: float | None = None
     """The statistic decided on when it is not `successes / trials` (Cohen's kappa)."""
+    families: tuple[FamilyResult, ...] = ()
+    """Each control family of a rejection or invariance check; empty for other checks, and for certificates
+    saved before it was recorded (read `detail` then)."""
 
     @property
     def rate(self) -> float | None:
@@ -191,6 +206,7 @@ class Certificate:
                     'errors': c.errors,
                     'detail': c.detail,
                     'estimate': c.estimate,
+                    **({'families': [asdict(f) for f in c.families]} if c.families else {}),
                 }
                 for c in self.checks
             ],
@@ -218,6 +234,10 @@ class Certificate:
                 c.get('detail', ''),
                 c.get('errors', 0),
                 c.get('estimate'),
+                tuple(
+                    FamilyResult(f['name'], f['successes'], f['trials'], f.get('errors', 0), f.get('status'))
+                    for f in c.get('families') or ()
+                ),
             )
             for c in data['checks']
         )
@@ -311,7 +331,7 @@ def _check(
     z_fail: float = 1.96,
     max_missing: float = 0.1,
 ) -> Check:
-    """PASS on the 95% lower bound; FAIL on an upper bound widened for every other chance to fail.
+    """PASS on the exact 95% lower bound; FAIL on an exact upper bound widened for every other chance to fail.
 
     A certificate needs every check to pass, so a PASS needs no correction for the number of
     checks. It is INADMISSIBLE if any check fails, so the FAILs share one error budget: `z_fail`
@@ -319,9 +339,10 @@ def _check(
     more than `max_missing` of them leaves the check UNVALIDATED: a judge that errors on the hard
     cases must not pass on the easy ones.
     """
-    interval = wilson(successes, trials)
-    # The FAIL bound is exact (Clopper-Pearson): Wilson's undercoverage at small n leaked through
-    # the split budget (3.4% false FAILs at the bar over four looks, against 2.5%).
+    # Both bounds are exact (Clopper-Pearson). Wilson's undercoverage at small n leaked on both
+    # sides: 3.4% false FAILs at the bar over four looks, and up to 3.5% false PASSes at the bar
+    # (n=15, bar 0.7), each against 2.5%.
+    interval = clopper_pearson(successes, trials)
     alpha_fail = 2 * (1 - NormalDist().cdf(z_fail))
     low, high = interval[0], clopper_pearson(successes, trials, alpha_fail)[1]
     if errors > max_missing * (trials + errors):
@@ -337,7 +358,12 @@ def _check(
         status = 'FAIL'
     else:
         status = 'UNVALIDATED'
-        detail = (detail + '; ' if detail else '') + 'interval straddles the threshold: needs more cases'
+        why = (
+            'below the bar, but not beyond the error budget every FAIL shares: needs more cases'
+            if interval[1] < threshold
+            else 'interval straddles the threshold: needs more cases'
+        )
+        detail = (detail + '; ' if detail else '') + why
     return Check(name, status, successes, trials, interval, threshold, detail, errors)
 
 
@@ -385,9 +411,51 @@ async def certify_judge(
     if len(set(names)) != len(names):
         raise ValueError('case names must be unique: human labels are matched to cases by name')
     rng = random.Random(seed)
-    limit = asyncio.Semaphore(max_concurrency)
     planned = _plan(cases, controls, human_labels, repeats, rng)
     slices = {case.name: slice_by(case) for case in cases} if slice_by else None
+    return await _certify_planned(
+        judge,
+        cases,
+        planned,
+        repeats=repeats,
+        thresholds=thresholds,
+        assertion=assertion,
+        max_concurrency=max_concurrency,
+        batch_size=batch_size,
+        slices=slices,
+        rng=rng,
+    )
+
+
+async def _certify_planned(
+    judge: Evaluator[Any, Any, Any],
+    cases: Sequence[JudgeCase],
+    planned: list[tuple[JudgeCase, Any, str]],
+    *,
+    repeats: int,
+    thresholds: Thresholds,
+    assertion: str | None,
+    max_concurrency: int,
+    batch_size: int | None,
+    slices: dict[str, str] | None,
+    rng: random.Random,
+) -> Certificate:
+    """Certify `judge` on judgments already planned (`_plan`): exactly these, none planned again.
+
+    For a caller that must know what the certificate is made of before it is made (the pytest
+    plugin hashes `planned` for its cache key). `rng` is the generator `_plan` drew from, in the
+    state it left it: a sequential certificate shuffles its batches with it.
+    """
+    if repeats < 1:
+        raise ValueError(f'repeats must be >= 1, got {repeats}')
+    if max_concurrency < 1 or (batch_size is not None and batch_size < 1):
+        raise ValueError('max_concurrency and batch_size must be >= 1')
+    if not cases:
+        raise ValueError('no cases to certify the judge on')
+    names = [case.name for case in cases]
+    if len(set(names)) != len(names):
+        raise ValueError('case names must be unique: human labels are matched to cases by name')
+    limit = asyncio.Semaphore(max_concurrency)
     if batch_size is None:
         judgments = await asyncio.gather(*(_judge(judge, c, out, role, assertion, limit) for c, out, role in planned))
         verdict, checks = _assess(judgments, repeats, thresholds, slices=slices)
@@ -464,8 +532,14 @@ def recertify(
 
     For new thresholds or a new `slices` mapping (case name to kind of case) on a certificate
     already paid for, for example one rebuilt with `Certificate.from_dict`. A sequential
-    certificate keeps its number of looks, so its error budget is not spent twice.
+    certificate keeps its number of looks, so its error budget is not spent twice. A certificate
+    saved without its judgments (`to_dict(judgments=False)`) cannot be decided again, and raises.
     """
+    if not certificate.judgments and certificate.checks:
+        raise ValueError(
+            'this certificate was saved without its judgments (to_dict(judgments=False)), so it cannot be '
+            'decided again; certify the judge again, or save certificates with their judgments'
+        )
     refs = [j.role for j in certificate.judgments if j.role.startswith('reference#')]
     repeats = max((int(role.split('#')[1]) + 1 for role in refs), default=1)
     verdict, checks = _assess(
@@ -641,8 +715,9 @@ def _families(
     if not parts:
         detail = 'no controls'
     return Check(
-        name, status, successes, trials, wilson(successes, trials), threshold, detail,
-        sum(c.errors for c in parts.values()),
+        name, status, successes, trials, clopper_pearson(successes, trials), threshold, detail,
+        sum(c.errors for c in parts.values()), None,
+        tuple(FamilyResult(family, c.successes, c.trials, c.errors, c.status) for family, c in parts.items()),
     )  # fmt: skip
 
 
@@ -659,12 +734,25 @@ def _agreement(labelled: Sequence[Judgment], thresholds: Thresholds, alpha_fail:
     pairs = [p for ps in by_case.values() for p in ps]
     kappa = cohen_kappa(pairs)
     agree = sum(a == b for a, b in pairs)
+    human_classes = {human for human, _ in pairs}
     if errors > 0.1 * len(labelled):
         status: CheckStatus = 'UNVALIDATED'
         detail, interval = f'{errors} of {len(labelled)} labelled judgments errored', (0.0, 1.0)
+    elif len(human_classes) == 1:
+        # Kappa is 0 for every judge when the humans gave one label to everything: it cannot
+        # measure agreement there, and would fail a judge that agrees on 11 of 12.
+        status, interval = 'UNVALIDATED', (0.0, 1.0)
+        label = 'pass' if human_classes.pop() else 'fail'
+        detail = (f'humans labelled every output {label}: kappa cannot measure agreement '
+                  f'(agreement {agree}/{len(pairs)}); label outputs that pass and outputs that fail')  # fmt: skip
     elif kappa is None or len(pairs) < thresholds.min_trials:
         status, interval = 'UNVALIDATED', (0.0, 1.0)
         detail = 'kappa undefined: no variation in labels or verdicts' if kappa is None else 'too few labels'
+    elif len(by_case) < thresholds.min_trials:
+        # The case is the unit of evidence: twelve labels on one case are one case, and a bootstrap
+        # over one or two cases collapses to a point.
+        status, interval = 'UNVALIDATED', (0.0, 1.0)
+        detail = f'labels on {len(by_case)} cases, fewer than {thresholds.min_trials}; kappa={kappa:.2f}'
     else:
         interval = _bootstrap_kappa(list(by_case.values()), 0.05)
         low, high = interval[0], _bootstrap_kappa(list(by_case.values()), alpha_fail)[1]
@@ -706,12 +794,14 @@ def _slice_check(
     decided with an exact interval at its share `alpha` of the error budget.
     """
     counts: dict[str, list[int]] = {name: [0, 0] for name in names}
+    missed: dict[str, int] = dict.fromkeys(names, 0)
     errors = 0
     for j in first:
         if j.case not in slices:
             continue
         if j.passed is None:
             errors += 1
+            missed[slices[j.case]] += 1
             continue
         counts[slices[j.case]][0] += j.passed
         counts[slices[j.case]][1] += 1
@@ -723,8 +813,14 @@ def _slice_check(
     detail = 'worst first: ' + ', '.join(f'{name} {counts[name][0]}/{counts[name][1]}' for name in order)
     low = [name for name in order if counts[name][1] == 0 or counts[name][0] <= threshold * counts[name][1]]
     status: CheckStatus
+    # The missing-data rule, per kind of case: a judge that errors on half the refunds must not
+    # pass on the refunds it did answer.
+    gaps = [name for name in order if missed[name] > 0.1 * (counts[name][1] + missed[name])]
     if counts[worst][1] and bounds[worst][1] < threshold:
         status = 'FAIL'
+    elif gaps:
+        status, worst = 'UNVALIDATED', gaps[0]
+        detail += f'; {worst}: {missed[worst]} of {counts[worst][1] + missed[worst]} judgments errored'
     elif low:
         status, worst = 'UNVALIDATED', low[0]
         detail += f'; {worst} is at or below the bar but too small to show it'

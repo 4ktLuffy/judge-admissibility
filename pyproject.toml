@@ -14,6 +14,10 @@ dependencies = ["pydantic-evals>=2.52,<3"]
 [project.scripts]
 judge-admissibility = "pydantic_evals_admissibility._cli:main_exit"
 
+[project.entry-points.pytest11]
+# Named after the module, so `-p pydantic_evals_admissibility.pytest_plugin` does not load it twice.
+"pydantic_evals_admissibility.pytest_plugin" = "pydantic_evals_admissibility.pytest_plugin"
+
 [project.optional-dependencies]
 # Only `promote`, `start_canary` and `finish_canary` need Logfire's managed variables.
 logfire = ["logfire[variables]>=5.1"]

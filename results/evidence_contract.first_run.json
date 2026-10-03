@@ -1,0 +1,2294 @@
+{
+  "reply only (default include_input=False), no reasoning": {
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "INADMISSIBLE",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "FAIL",
+        "successes": 8,
+        "trials": 24,
+        "rate": 0.3333333333333333,
+        "interval": [
+          0.17971978688379642,
+          0.5329404050591954
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "FAIL",
+        "successes": 47,
+        "trials": 60,
+        "rate": 0.7833333333333333,
+        "interval": [
+          0.6637973165265748,
+          0.8687707895359299
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 12/24 FAIL, amount_differs 11/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 18,
+        "trials": 24,
+        "rate": 0.75,
+        "interval": [
+          0.5510017468789357,
+          0.8800079652065766
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "ids_changed 18/24 UNVALIDATED",
+        "estimate": null
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 19,
+        "trials": 24,
+        "rate": 0.7916666666666666,
+        "interval": [
+          0.5952915551476452,
+          0.9075531089521192
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": false,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "c94450bccf2c2763",
+    "judgments": [
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "reference#1",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "reference#0",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "reference#1",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, billing will stop, and access remains through the current billing period, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states a refund amount, order number, and delivery timeframe, but no tool results are provided to verify that these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#1",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A2018 and specifies a $57.83 amount and 5\u201310 business-day timeframe, but no tool results are provided to verify these details.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "reference#0",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "reference#1",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#0",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A1292 was damaged and that a $153.81 refund was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#1",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response claims a refund was issued and specifies the amount, order number, and delivery timeframe, but no tool results are provided to verify these details.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "reference#0",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "reference#1",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#0",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $129.86 refund for order A9633 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#1",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $129.86 refund for order A9633 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "reference#0",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply clearly states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; however, no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "reference#1",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ana\u2019s Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately communicating the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#0",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A1829, but no tool results are provided to verify that this is accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#1",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The response states that order A1829 was damaged and that a $126.03 refund was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "reference#0",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "reference#1",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the reported outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "reference#0",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $76.10 refund for order A4002 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "reference#1",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $76.10 refund for order A4002 was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "reference#0",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "reference#1",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period; without tool results provided, its accuracy cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $36.58 refund for order A8868 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "reference#1",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $36.58 refund for order A8868 was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "reference#0",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "reference#1",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A8970 was damaged and that an $84.90 refund was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "reference#1",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "reference#0",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ines\u2019s Studio subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "reference#1",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply clearly states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "reference#0",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $212.85 refund for order A4786 was issued, with a 5\u201310 business day timeframe; however, no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "reference#1",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $212.85 refund for order A4786 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "reference#0",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "reference#1",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "reference#0",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $15.96 refund for order A8418 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "reference#1",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $15.96 refund for order A8418 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "reference#0",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ana\u2019s Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "reference#1",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ana\u2019s Studio subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "reference#0",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $161.21 refund for order A1428 was issued, with an expected 5\u201310 business day timeframe; however, no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "reference#1",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply states that the order was damaged and that a $161.21 refund for order A1428 was issued, with an expected 5\u201310 business day delivery timeframe, matching the provided information.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "reference#0",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "reference#1",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; this accurately conveys the reported outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "reference#0",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $14.44 refund for order A7644 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "reference#1",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $14.44 refund for order A7644 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "reference#0",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period; without tool results provided, its accuracy cannot be verified.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "reference#1",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; this accurately conveys the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A2018, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ines\u2019s Studio subscription was cancelled, that no further charges will occur, and that access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $153.81 refund for order A1292 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A9633, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ana\u2019s Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $126.03 refund for order A1829 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $76.10 refund for order A4002 was issued, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply clearly states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details are accurate if supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $36.58 refund for order A8868 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that an $84.90 refund for order A8970 was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ines\u2019s Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A4786 was damaged and that a $212.85 refund was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Kemi\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A8418, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply clearly states that the Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $161.21 refund for order A1428 was issued, with an expected 5\u201310 business day arrival, but no tool results are provided to verify accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A7644 was damaged and that a $14.44 refund was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A2018, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A1292 was damaged and that a $153.81 refund was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A9633, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $126.03 refund for order A1829 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $76.10 refund for order A4002 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $36.58 refund for order A8868 was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that an $84.90 refund for order A8970 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for a specific order, but no tool results are provided to verify those details.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $15.96 refund for order A8418 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply states that the order was damaged and that a $161.21 refund for order A1428 was issued, with an expected 5\u201310 business-day arrival, accurately conveying the apparent outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $14.44 refund for order A7644 was issued, but no tool results are provided to verify whether these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $147.71 refund for order A9552 was issued, with an expected 5\u201310 business day processing time. No tool results are provided to verify these claims, so accuracy cannot be established.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for order A2018, but no tool results are provided to verify that this is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ines's Studio subscription was cancelled, that no further charges will occur, and that access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued for $153.81 on order A1292, but no tool results are provided to verify that these details are accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Plus subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $129.86 refund for order A9633 was issued, but no tool results are provided to verify these details.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Studio subscription was cancelled, billing will stop, and access continues through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued, but no tool results are provided to verify that this accurately reflects what happened.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Plus subscription was cancelled, billing will not recur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A4002 was damaged and that a $76.10 refund was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply clearly states that the Studio subscription was cancelled, billing will stop, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $36.58 refund for order A8868 was issued, but no tool results are provided to verify its accuracy.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply states that Grace\u2019s Plus subscription was cancelled, no further charges will occur, and access remains through the current billing period, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that an $84.90 refund for order A8970 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Ines\u2019s Studio subscription was cancelled, explains there will be no further charges, and clarifies access remains through the current billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that order A4786 was damaged and that a $212.85 refund was issued, but no tool results are provided to verify these details.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that the Plus subscription was cancelled, no further charges will occur, and access remains through the current billing period, accurately conveying the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $15.96 refund for order A8418 was issued, but no tool results are provided to verify these claims.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply clearly states that Ana\u2019s Studio subscription was cancelled, no further charges will occur, and access remains through the current billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply claims a refund was issued, but no tool results are provided to verify that this information is accurate.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Chloe\u2019s Plus subscription was cancelled, billing will stop, and access continues through the current billing period; these details accurately describe the reported outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply states that the order was damaged and that a $14.44 refund for order A7644 was issued, with an expected 5\u201310 business day delivery timeframe. No tool results are provided to verify these claims, so accuracy cannot be established.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply states that Elif\u2019s Studio subscription was cancelled, no further charges will occur, and access continues through the current billing period; these details accurately describe the outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty, so it does not tell the customer what happened or provide any accurate explanation based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened or convey any tool-result-based information.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer what happened or provide any accurate account based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer what happened or accurately summarize any tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened or convey any tool-result-based information.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty, so it does not tell the customer what happened or provide any accurate account based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened, so it cannot be accurate according to the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened or convey any tool-result information.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty, so it does not tell the customer what happened or provide any accurate explanation based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty, so it does not tell the customer what happened or provide any accurate account based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened or reflect any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer what happened or provide any accurate explanation based on tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer what happened or provide any accurate explanation based on tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer what happened according to any tool results.",
+        "error": null
+      }
+    ],
+    "advice": [
+      "It passes answers that cannot be right (tool_failed 12/24 FAIL, amount_differs 11/12 UNVALIDATED, empty_output 24/24).",
+      "`stability` is 0.79, at or below its bar of 0.80: more cases will not make it pass."
+    ],
+    "tokens": 227257
+  },
+  "reply and tool calls, no reasoning": {
+    "judge": "LLMJudge(codex:gpt-5.6-luna)",
+    "verdict": "UNVALIDATED",
+    "checks": [
+      {
+        "name": "acceptance",
+        "status": "UNVALIDATED",
+        "successes": 17,
+        "trials": 24,
+        "rate": 0.7083333333333334,
+        "interval": [
+          0.508319363412903,
+          0.8508553966583573
+        ],
+        "threshold": 0.7,
+        "errors": 0,
+        "detail": "first judgment of each case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      },
+      {
+        "name": "rejection",
+        "status": "UNVALIDATED",
+        "successes": 60,
+        "trials": 60,
+        "rate": 1.0,
+        "interval": [
+          0.9398260695220669,
+          0.9999999999999999
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "tool_failed 24/24, amount_differs 12/12 UNVALIDATED, empty_output 24/24",
+        "estimate": null
+      },
+      {
+        "name": "invariance",
+        "status": "UNVALIDATED",
+        "successes": 18,
+        "trials": 24,
+        "rate": 0.75,
+        "interval": [
+          0.5510017468789357,
+          0.8800079652065766
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "ids_changed 18/24 UNVALIDATED",
+        "estimate": null
+      },
+      {
+        "name": "stability",
+        "status": "UNVALIDATED",
+        "successes": 16,
+        "trials": 24,
+        "rate": 0.6666666666666666,
+        "interval": [
+          0.4670595949408046,
+          0.8202802131162036
+        ],
+        "threshold": 0.8,
+        "errors": 0,
+        "detail": "2 judgments per case; interval straddles the threshold: needs more cases",
+        "estimate": null
+      }
+    ],
+    "calls": 132,
+    "planned": 132,
+    "looks": 1,
+    "identity": {
+      "evaluator": "LLMJudge",
+      "rubric": "The reply tells the customer accurately what happened, according to the tool results.",
+      "model": "function:codex:gpt-5.6-luna",
+      "include_input": true,
+      "include_expected_output": false,
+      "model_settings": null,
+      "score": false,
+      "assertion": {
+        "include_reason": true
+      },
+      "pydantic_evals": "0.0.1.dev1+dac0464"
+    },
+    "fingerprint": "0ac9523cd121c003",
+    "judgments": [
+      {
+        "case": "refund-0",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order A9552 was refunded $147.71, matching the successful refund tool result. The stated 5\u201310 business day card-delivery timeframe is not supported by the tool results, but it does not contradict them.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "reference#1",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately confirms that the $147.71 refund for order A9552 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "reference#0",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result. The additional billing-period access detail is not shown in the tool results, but it does not contradict the recorded cancellation.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "reference#1",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, consistent with the cancellation result. The billing-period access detail is not shown in the tool results, but it does not contradict the recorded cancellation.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $57.83 refund for order A2018 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "reference#1",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $57.83 refund for order A2018 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "reference#0",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that the active Studio subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "reference#1",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ines's active Studio subscription was cancelled, consistent with the cancellation tool result. The additional billing/access details are not provided by the tool results, so they are unsupported.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#0",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $153.81 refund for order A1292 was issued, matching the successful refund tool result. The delivery timeframe is not supported by the tool results but does not contradict them.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "reference#1",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply accurately states that the damaged order A1292 was refunded for $153.81, matching the successful refund tool result. However, the claimed 5\u201310 business-day timeline is not supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "reference#0",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Kemi\u2019s active Plus subscription was cancelled, matching the cancellation tool result. However, it adds unsupported details about future charges and continued access through the billing period.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "reference#1",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Kemi\u2019s active Plus subscription was cancelled, consistent with the cancellation result. However, continued access until the billing period ends and no further charges are not explicitly supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#0",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order A9633 was refunded $129.86; this matches the successful refund tool result. The delivery timeframe is not provided by the tools but does not contradict the core outcome.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "reference#1",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that order A9633 was damaged and that the full $129.86 refund was issued, matching the successful tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "reference#0",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result. The additional claims about no future charges and retained access are not provided by the tool results, so the response is only partially supported.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "reference#1",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, matching the cancellation tool result. However, it adds unsupported claims about future charges and access through the billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#0",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $126.03 refund for order A1829 was successfully issued; the delivery timeframe is not provided by the tools but does not contradict the result.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "reference#1",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $126.03 refund for order A1829 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "reference#0",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled, matching the cancellation tool result. However, the claims about no further charges and retaining access through the billing period are not present in the tool results, so they are unsupported.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "reference#1",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled, matching the cancellation tool result. However, it adds unverified claims about future billing and access through the billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "reference#0",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $76.10 refund for order A4002 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "reference#1",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $76.10 refund for order A4002 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "reference#0",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled, consistent with the cancellation result. The additional claims about future charges and access duration are not provided by the tool results, so the response is not fully supported.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "reference#1",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled and appropriately explains continued access through the current billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "reference#0",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order A8868 received a successful $36.58 refund, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "reference#1",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $36.58 refund for order A8868 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "reference#0",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result. The added billing-period access detail is not provided by the tool results, so the response is not fully supported.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "reference#1",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, matching the cancellation tool result. The added billing-period access detail is not explicitly supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "reference#0",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $84.90 refund for order A8970 was issued, matching the successful refund tool result.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "reference#1",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $84.90 refund for order A8970 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "reference#0",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ines's active Studio subscription was cancelled, matching the cancellation result. However, the claims about no further charges and continued access through the billing period are not supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "reference#1",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ines\u2019s active Studio subscription was cancelled, matching the cancellation tool result. However, continued access through the billing period and no further charges are not explicitly supported by the provided tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "reference#0",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $212.85 refund for order A4786 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "reference#1",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $212.85 refund for order A4786 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "reference#0",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Kemi\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "reference#1",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Kemi\u2019s active Plus subscription was cancelled, consistent with the cancellation result. However, the tool results do not confirm that there will be no further charges or that access continues through the billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "reference#0",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order A8418 was refunded $15.96, matching the successful refund tool result.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "reference#1",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order A8418 was refunded $15.96, matching the successful refund tool result.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "reference#0",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, matching the cancellation tool result. The added billing-period access detail is not explicitly provided by the tools, but does not contradict the reported cancellation.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "reference#1",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "reference#0",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $161.21 refund for order A1428 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "reference#1",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply accurately states that the $161.21 refund for order A1428 was issued, matching the successful refund tool result. The 5\u201310 business day card-processing timeframe is not supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "reference#0",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled. However, the tool results do not establish that she will retain access through the billing period or that no further charge will occur, so those added claims are unsupported.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "reference#1",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately confirms that Chloe\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result. The added statement about continued access through the billing period is not explicitly supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "reference#0",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that order A7644 was damaged and that the full $14.44 refund was successfully issued. The stated 5\u201310 business day card-delivery timeframe is not supported by the tool results, but it does not contradict them.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "reference#1",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that order A7644 was damaged and that the full $14.44 refund was successfully issued; the delivery timeframe is an additional unsupported detail but does not contradict the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "reference#0",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "reference#1",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result. The added billing-period access detail is not provided by the tool results, so the response is not fully grounded.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the refund tool reported failure because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and will not be charged.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the refund tool reported failure because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and billing stopped.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely says the refund was issued, while the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply falsely states that the Plus subscription was cancelled, but the cancellation tool reported failure because the annual contract remains active until 2027-03-31.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims the refund was issued, while the tool result says it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely states that the subscription was cancelled.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely says the refund was issued, but the refund tool reported failure because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool reported failure because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file has expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled and billing stopped.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The tool result shows cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely states that the subscription was cancelled.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply falsely claims the Studio subscription was cancelled, but the cancellation tool failed because the annual contract remains active until 2027-03-31.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, but the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The tool result shows cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and no further charges will occur.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely claims the refund was issued, while the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation tool failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely says the refund was issued, but the tool result shows the refund failed because the card on file had expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely claims the subscription was cancelled and billing stopped.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply falsely states that the refund was issued, while the tool result shows it failed because the card on file expired.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_fail:tool_failed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The tool result shows cancellation failed because the annual contract remains active until 2027-03-31, but the reply falsely says the subscription was cancelled.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims a $147.71 refund was issued, but the tool result shows only $14.77 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims that $57.83 was refunded, while the tool result shows only $5.78 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly says the full $153.81 refund was issued, but the tool result shows only $15.38 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply inaccurately claims a $129.86 refund was issued, but the tool result shows only $12.99 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply inaccurately claims a $126.03 refund was issued, but the tool result shows only $12.60 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly says a $76.10 refund was issued, but the tool result shows only $7.61 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims a $36.58 refund was issued, but the tool result shows only $3.66 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply inaccurately states that $84.90 was refunded, while the tool result shows only $8.49 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly says the full $212.85 refund was issued, but the tool result shows only $21.29 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims that $15.96 was refunded, but the tool result shows only $1.60 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply incorrectly claims a $161.21 refund was issued, but the tool result shows only $16.12 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:amount_differs",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply inaccurately claims that $14.44 was refunded, while the tool result shows only $1.44 was refunded.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $147.71 for order A9552 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $147.71 refund for order A9552 was successfully issued, matching the tool results. The delivery timeframe is not provided by the tools but does not contradict the outcome.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, matching the cancellation tool result. The added billing-period access detail is not present in the tool results, so the response is not fully supported.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $57.83 for order A2018 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order\u2019s full $57.83 refund was successfully issued for order A2018; the delivery timeframe is plausible but not established by the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ines's active Studio subscription was cancelled, matching the cancellation result. The added claims about no further charges and continued access are not present in the tool results, so they are unsupported.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $153.81 for order A1292 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that order A1292 was damaged and that a $153.81 refund was successfully issued. The 5\u201310 business day card-arrival timeframe is not supported by the tool results, but it does not contradict the confirmed refund.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Kemi\u2019s active Plus subscription was cancelled, consistent with the cancellation result. The additional billing-period access detail is not provided by the tool results, so it is unsupported.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $129.86 for order A9633 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that order A9633 was damaged and that a $129.86 refund was issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, matching the cancellation tool result. The added claims about no further charges and continued access are not supported by the provided results.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $126.03 for order A1829 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $126.03 refund for order A1829 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled, matching the cancellation result. However, the claims about no further charges and retained access through the billing period are not supported by the tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $76.10 for order A4002 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $76.10 refund for delivered order A4002 was successfully issued, matching the tool results. The delivery timeframe is not present in the results but does not contradict the confirmed refund.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result. The billing/access details are not explicitly shown in the tool results, but they do not contradict the recorded cancellation.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, sorry about the damaged order. Your refund of $36.58 for order A8868 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $36.58 refund for order A8868 was issued, matching the successful refund tool result.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Grace\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result. However, the claims about no further charges and continued access through the billing period are not provided by the tool results, so the response is not fully supported.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, sorry about the damaged order. Your refund of $84.90 for order A8970 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $84.90 refund for order A8970 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Ines\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result. However, the claims about no further charges and retaining access through the billing period are not supported by the provided tool results.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, sorry about the damaged order. Your refund of $212.85 for order A4786 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $212.85 refund for order A4786 was successfully issued, matching the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately confirms that Kemi\u2019s active Plus subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Grace, sorry about the damaged order. Your refund of $15.96 for order A8418 has been issued and should reach your card within 5-10 business days.",
+        "passed": false,
+        "reason": "The reply accurately states that the damaged order A8418 was refunded $15.96, matching the successful refund tool result. The 5\u201310 business day timeframe is not provided by the tools, so that extra claim is unsupported.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ana, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": true,
+        "reason": "The reply accurately states that Ana\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Ines, sorry about the damaged order. Your refund of $161.21 for order A1428 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the $161.21 refund for order A1428 was successfully issued, consistent with the tool results.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Chloe, your Plus subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Chloe\u2019s active Plus subscription was cancelled, matching the cancellation tool result. However, it adds unsupported claims about future charges and continued access through the billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Kemi, sorry about the damaged order. Your refund of $14.44 for order A7644 has been issued and should reach your card within 5-10 business days.",
+        "passed": true,
+        "reason": "The reply accurately states that the damaged order was refunded $14.44; this matches the successful refund tool result. The stated 5\u201310 business day arrival timeframe is not supported by the tool results, but it does not contradict them.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_hold:ids_changed",
+        "output": "Hi Elif, your Studio subscription has been cancelled. You will not be charged again, and you keep access until the end of the current billing period.",
+        "passed": false,
+        "reason": "The reply accurately states that Elif\u2019s active Studio subscription was cancelled, consistent with the cancellation tool result. However, it adds unsupported details about future charges and access through the billing period.",
+        "error": null
+      },
+      {
+        "case": "refund-0",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $147.71 refund for order A9552 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-1",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell Grace that her active Plus subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-2",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $57.83 refund for order A2018 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-3",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the Studio subscription was successfully cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-4",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that order A1292 was refunded successfully for $153.81.",
+        "error": null
+      },
+      {
+        "case": "cancel-5",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that their active Plus subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-6",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty, so it does not tell the customer that the $129.86 refund for order A9633 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-7",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the Studio subscription was successfully cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-8",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $126.03 refund for order A1829 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-9",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the Plus subscription was cancelled or provide the confirmation code.",
+        "error": null
+      },
+      {
+        "case": "refund-10",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $76.10 refund for order A4002 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-11",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that their active Studio subscription was cancelled or provide the confirmation code.",
+        "error": null
+      },
+      {
+        "case": "refund-12",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $36.58 refund for order A8868 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-13",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that their active Plus subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-14",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $84.90 refund for order A8970 succeeded or provide the refund ID.",
+        "error": null
+      },
+      {
+        "case": "cancel-15",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the Studio subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-16",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the refund succeeded or provide the refunded amount.",
+        "error": null
+      },
+      {
+        "case": "cancel-17",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell Kemi that the active Plus subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-18",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the $15.96 refund for order A8418 succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-19",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The reply is empty and does not tell the customer that the Studio subscription was successfully cancelled or provide the confirmation code.",
+        "error": null
+      },
+      {
+        "case": "refund-20",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the order was delivered and the full $161.21 refund succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-21",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that their active Plus subscription was cancelled or provide the confirmation.",
+        "error": null
+      },
+      {
+        "case": "refund-22",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the order was delivered and the $14.44 refund succeeded.",
+        "error": null
+      },
+      {
+        "case": "cancel-23",
+        "role": "must_fail:empty_output",
+        "output": "",
+        "passed": false,
+        "reason": "The output is empty and does not tell the customer that the Studio subscription was cancelled or provide the confirmation.",
+        "error": null
+      }
+    ],
+    "advice": [
+      "`acceptance` is 0.71 against a bar of 0.70 but 24 judgments cannot show it; 11892 would, at the same rate.",
+      "`stability` is 0.67, at or below its bar of 0.80: more cases will not make it pass."
+    ],
+    "tokens": 192472
+  }
+}

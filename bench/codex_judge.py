@@ -120,6 +120,9 @@ def codex_model(
     `verdict_first=True` reproduces the old sorted schema, for the comparison in field_order.py.
     """
     WORKDIR.mkdir(parents=True, exist_ok=True)
+    # Everything that changes the judge is in its name, so a certificate's identity tells a
+    # no-reasoning judge from a reasoning one, and the reproduced field-order bug from the fix.
+    name = f'codex:{model}@{effort}' + ('/verdict-first' if verdict_first else '')
 
     async def structured(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
         tool = info.output_tools[0]
@@ -141,9 +144,9 @@ def codex_model(
             schema=schema_path,
             timeout=timeout,
         )
-        return ModelResponse(parts=[ToolCallPart(tool.name, json.loads(reply))], model_name=f'codex:{model}')
+        return ModelResponse(parts=[ToolCallPart(tool.name, json.loads(reply))], model_name=name)
 
-    return FunctionModel(structured, model_name=f'codex:{model}')
+    return FunctionModel(structured, model_name=name)
 
 
 def codex_text_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout: float = 120) -> FunctionModel:
@@ -155,6 +158,6 @@ def codex_text_model(model: str = 'gpt-5.6-luna', effort: str = 'none', timeout:
             instructions or 'Answer the question.', _text(messages, UserPromptPart),
             model=model, effort=effort, schema=None, timeout=timeout,
         )  # fmt: skip
-        return ModelResponse(parts=[TextPart(reply)], model_name=f'codex:{model}')
+        return ModelResponse(parts=[TextPart(reply)], model_name=f'codex:{model}@{effort}')
 
-    return FunctionModel(agent, model_name=f'codex:{model}')
+    return FunctionModel(agent, model_name=f'codex:{model}@{effort}')

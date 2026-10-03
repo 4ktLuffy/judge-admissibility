@@ -324,7 +324,7 @@ class MutationReport:
 
         For a test: `report.raise_unless_caught('correctness judge', 'number_changed')`. Also raises
         when no defect was judged, or when more than a tenth of verdicts errored, since then the
-        rate is not about the evaluator. 10 of 10 caught clears 0.7, not 0.8 (lower bound 0.72).
+        rate is not about the evaluator. 10 of 10 caught clears 0.7, not 0.8 (Wilson lower bound 0.72).
         """
         rate = self.kill_rate(evaluator, mutant)
         what = f'{evaluator} on {mutant or "every mutant"}'

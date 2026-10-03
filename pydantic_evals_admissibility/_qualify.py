@@ -50,7 +50,8 @@ from datetime import datetime, timezone
 from typing import Any, Literal
 
 from ._certify import Certificate, Check
-from ._identity import differences, fingerprint, judge_identity
+from ._diagnose import _family_results
+from ._identity import differences, fingerprint, identity_reliable, judge_identity
 
 Decision = Literal['report', 'gate', 'promote', 'steer']
 Outcome = Literal['ok', 'warn', 'fail']
@@ -194,6 +195,18 @@ def _coverage(judge: Any, certificate: Certificate, decision: Decision) -> Rule:
     changed = differences(certificate.identity, identity)
     if changed:
         return Rule('coverage', 'fail', f'the certificate is for another configuration: {", ".join(changed)} changed')
+    if not (identity_reliable(certificate.identity) and identity_reliable(identity)):
+        # Two judges can look alike here and behave differently (an unnamed function-backed model, a
+        # function held as a setting): a matching identity is then no proof the certificate is about it.
+        opaque = ', '.join(certificate.identity.get('opaque') or identity.get('opaque') or ['not fully identified'])
+        # A warning, not a failure: certified just now from this very object, coverage holds by
+        # construction. Reusing such a certificate elsewhere is refused by the cache, the pytest
+        # plugin, juries and the report evaluator, which is where a look-alike judge could slip in.
+        return Rule(
+            'coverage',
+            'warn',
+            f'the judge cannot be identified reliably ({opaque}): use this certificate only for this object',
+        )
     return Rule('coverage', 'ok', f'covers this judge ({fingerprint(identity)})')
 
 
@@ -284,19 +297,11 @@ def _find(certificate: Certificate, name: str) -> Check | None:
     return next((c for c in certificate.checks if c.name == name), None)
 
 
-_FAMILY = re.compile(r'^(.+) (\d+)/(\d+)(?: (FAIL|UNVALIDATED))?$')
-
-
 def _family_statuses(check: Check | None) -> dict[str, str]:
-    """Each family's status from a rejection or invariance check's detail, as `_families` writes it."""
-    if check is None or check.detail == 'no controls':
+    """Each family's status in a rejection or invariance check: `check.families`, or its detail if saved before."""
+    if check is None:
         return {}
-    out = {}
-    for part in check.detail.split(', '):
-        match = _FAMILY.match(part.strip())
-        if match:
-            out[match.group(1)] = match.group(4) or 'PASS'
-    return out
+    return {f.name: f.status or 'PASS' for f in _family_results(check)}
 
 
 def _slice_counts(detail: str) -> dict[str, tuple[int, int]]:

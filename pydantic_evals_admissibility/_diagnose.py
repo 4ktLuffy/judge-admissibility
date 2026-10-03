@@ -9,10 +9,10 @@ a fix: change one thing, certify again.
 from __future__ import annotations
 
 import re
-from typing import Any
+from typing import Any, cast
 
-from ._certify import Certificate, Check
-from ._stats import wilson
+from ._certify import Certificate, Check, CheckStatus, FamilyResult
+from ._stats import clopper_pearson
 
 _MENTIONS_INPUT = re.compile(
     r"\b(question|input|query|prompt|asked|context|user'?s? (?:question|request|message|query))\b", re.I
@@ -22,15 +22,42 @@ _ABOUT_STYLE = re.compile(r'\b(style|tone|friendly|polite|format\w*|concise|seco
 _MENTIONS_EXPECTED = re.compile(r'\b(expected|reference|correct answer|ground truth|gold)\b', re.I)
 
 
-def _failed_families(detail: str) -> list[str]:
-    """Control families a check's detail marks as FAIL, e.g. `tool_failed 0/24 FAIL`.
+_FAMILY = re.compile(r'^(.+) (\d+)/(\d+)(?: (FAIL|UNVALIDATED))?$')
+
+
+def _family_results(check: Check | str) -> tuple[FamilyResult, ...]:
+    """A rejection or invariance check's control families: recorded on the check, or read from its detail.
+
+    Certificates saved before `Check.families` existed have only the detail, `name k/n[ STATUS], ...`;
+    names may hold any character but `, ` (`policy-change`, `tool.failed`, `must:x`). Certificates
+    saved before families were decided one by one carry no status marks; their status is None.
+    """
+    if isinstance(check, Check) and check.families:
+        return check.families
+    detail = check.detail if isinstance(check, Check) else check
+    if detail == 'no controls':
+        return ()
+    marked = bool(re.search(r'\d+/\d+ (FAIL|UNVALIDATED)', detail)) or 'PASS' in detail
+    out = []
+    for part in detail.split('; ')[0].split(', '):
+        match = _FAMILY.match(part.strip())
+        if match:
+            name, k, n, status = match.groups()
+            decided = cast(CheckStatus, status or 'PASS') if marked else None
+            out.append(FamilyResult(name, int(k), int(n), 0, decided))
+    return tuple(out)
+
+
+def _failed_families(check: Check | str) -> list[str]:
+    """Control families a check marks as FAIL, e.g. `tool_failed 0/24 FAIL`.
 
     Certificates saved before families were decided one by one carry no marks; for those, a family
     that did not reject all its controls is the best available reading.
     """
-    if re.search(r'\d+/\d+ (FAIL|UNVALIDATED)', detail) or 'PASS' in detail:
-        return re.findall(r'(\w+) \d+/\d+ FAIL', detail)
-    return [name for name, k, n in re.findall(r'(\w+) (\d+)/(\d+)', detail) if int(k) < int(n)]
+    families = _family_results(check)
+    if any(f.status is not None for f in families):
+        return [f.name for f in families if f.status == 'FAIL']
+    return [f.name for f in families if f.successes < f.trials]
 
 
 def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
@@ -40,7 +67,7 @@ def _cases_needed(check: Check, *, limit: int = 100_000) -> int | None:
         return None
     n = max(check.trials, 1)
     while n <= limit:
-        if wilson(round(rate * n), n)[0] >= check.threshold:
+        if clopper_pearson(round(rate * n), n)[0] >= check.threshold:  # the rule PASS is decided on
             return n
         n += 1 if n < 1000 else n // 10  # exact for any realistic size, coarse beyond it
     return None
@@ -144,8 +171,8 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
     if status('rejection') == 'FAIL' and rejection:
         detail = rejection.detail
         advice.append(f'It passes answers that cannot be right ({detail}).')
-        failed = set(_failed_families(detail))
-        empty = re.search(r'empty_output (\d+)/(\d+)', detail)
+        failed = set(_failed_families(rejection))
+        empty = next((f for f in _family_results(rejection) if f.name == 'empty_output'), None)
         # A judge of correctness that passes another question's answer is broken; only a rubric
         # about style can make that control the mistake. With no rubric to read, say it as a maybe.
         about_style = bool(_ABOUT_STYLE.search(rubric)) if rubric else True
@@ -153,7 +180,7 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
         if (
             'mismatched_output' in failed
             and empty
-            and empty.group(1) == empty.group(2)
+            and empty.successes == empty.trials
             and about_style
             and not about_correctness
         ):
@@ -187,7 +214,7 @@ def diagnose(certificate: Certificate, judge: Any = None) -> list[str]:
                 'against the tool results.'
             )
     held = checks.get('invariance')
-    other = [f for f in _failed_families(held.detail) if not re.search(r'space|whitespace|format', f)] if held else []
+    other = [f for f in _failed_families(held) if not re.search(r'space|whitespace|format', f)] if held else []
     if status('invariance') == 'FAIL' and not data_suspect and other:
         advice.append(
             f'Its verdict changes under a change that should not matter ({", ".join(other)}). Either the judge reads '

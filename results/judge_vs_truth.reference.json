@@ -2323,5 +2323,19 @@
       "reason": "The output is incorrect: reversing \u201cstrawberry\u201d gives \u201cyrrebwarts,\u201d and uppercasing vowels produces \u201cyrrEbwArts,\u201d not \u201cyrRebwaRts.\u201d",
       "error": null
     }
-  ]
+  ],
+  "identity": {
+    "evaluator": "LLMJudge",
+    "rubric": "The output correctly answers the question.",
+    "model": "function:codex:gpt-5.6-luna@none",
+    "include_input": true,
+    "include_expected_output": true,
+    "model_settings": null,
+    "score": false,
+    "assertion": {
+      "include_reason": true
+    },
+    "pydantic_evals": "0.0.1.dev1+dac0464"
+  },
+  "identity_source": "recorded after the run from the judge as configured in bench/judge_vs_truth.py (--reference); the run predates identities"
 }

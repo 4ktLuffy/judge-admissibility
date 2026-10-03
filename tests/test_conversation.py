@@ -50,6 +50,23 @@ def test_controls_apply_only_where_they_mean_something() -> None:
     }
 
 
+def test_error_controls_insert_no_customer_turn_and_differ_only_by_the_repair() -> None:
+    """The error is volunteered, so nothing new needs answering; the repair is the one difference."""
+    cases = episodes(16)
+    by_name = {c.name: c for c in CONTROLS}  # type: ignore[attr-defined]
+    for case in cases:
+        made = [
+            by_name[n].make_case(case, cases, random.Random(0)) for n in ('error_then_repaired', 'error_unrepaired')
+        ]
+        if made[0] is None:
+            assert made[1] is None
+            continue
+        repaired, unrepaired = (m.inputs['conversation'][len(case.inputs['conversation']) - 1 : -1] for m in made)
+        assert all(t['role'] == 'agent' for t in repaired + unrepaired)
+        assert repaired[:-1] == unrepaired and len(repaired) == 2 and 'Correction' in repaired[-1]['text']
+        assert not any('?' in t['text'] for t in repaired)
+
+
 def test_insert_turns_skips_inputs_without_a_conversation() -> None:
     control = insert_turns(lambda inputs: [{'role': 'agent', 'text': 'hi'}], 'x', 'must_hold')
     assert control.rewrite('just a string') is None

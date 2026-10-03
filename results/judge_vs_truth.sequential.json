@@ -1203,5 +1203,7 @@
       "reason": "The output is incorrect: \u201conomatopoeia\u201d backwards is \u201caieopo tamono\u201d without the space, and the required casing is \u201cAIEOPO TAMONO,\u201d not \u201cAeOpOtAmOnO.\u201d",
       "error": null
     }
-  ]
+  ],
+  "looks": 4,
+  "looks_source": "batch_size=10 over the 40 questions in bench/judge_vs_truth.py --sequential; recorded after the run"
 }

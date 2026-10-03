@@ -1,0 +1,414 @@
+{
+  "wrong_answers": [
+    3,
+    8,
+    15
+  ],
+  "cases": 20,
+  "runs": [
+    {
+      "title": "sound judge, certified before the run",
+      "judge_pass_rate": 0.85,
+      "analyses": [
+        {
+          "type": "table",
+          "title": "Judge certificate: LLMJudge(oracle) ADMISSIBLE (fingerprint f548b950ecbc0c29)",
+          "description": "100 of 100 judge calls; a check passes on its 95% lower bound and fails on an exact upper bound.",
+          "columns": [
+            "check",
+            "status",
+            "rate",
+            "95% interval",
+            "needs",
+            "n",
+            "detail"
+          ],
+          "rows": [
+            [
+              "acceptance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.7,
+              20,
+              "first judgment of each case"
+            ],
+            [
+              "rejection",
+              "PASS",
+              1.0,
+              "[0.91, 1.00]",
+              0.8,
+              40,
+              "mismatched_output 20/20, empty_output 20/20"
+            ],
+            [
+              "invariance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "whitespace_reformat 20/20"
+            ],
+            [
+              "stability",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "2 judgments per case"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Certificate coverage: yes",
+          "description": null,
+          "columns": [
+            "certified fingerprint",
+            "judge fingerprint",
+            "covers",
+            "why"
+          ],
+          "rows": [
+            [
+              "f548b950ecbc0c29",
+              "f548b950ecbc0c29",
+              "yes",
+              "same configuration as certified, and the report records the results as that judge's"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Judge results in this report: evidence",
+          "description": "The scores are as the judge gave them; this says only whether they count as evidence.",
+          "columns": [
+            "result",
+            "kind",
+            "runs",
+            "in this report",
+            "status",
+            "why"
+          ],
+          "rows": [
+            [
+              "LLMJudge",
+              "assertion",
+              20,
+              "17/20 passed",
+              "evidence",
+              "ADMISSIBLE, and the certificate covers this judge"
+            ]
+          ]
+        }
+      ],
+      "report_evaluator_failures": []
+    },
+    {
+      "title": "judge that passes everything, certified during the run",
+      "judge_pass_rate": 1.0,
+      "analyses": [
+        {
+          "type": "table",
+          "title": "Judge certificate: LLMJudge(yes-man) INADMISSIBLE (fingerprint 1515f207b051ecb9)",
+          "description": "100 of 100 judge calls; a check passes on its 95% lower bound and fails on an exact upper bound.",
+          "columns": [
+            "check",
+            "status",
+            "rate",
+            "95% interval",
+            "needs",
+            "n",
+            "detail"
+          ],
+          "rows": [
+            [
+              "acceptance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.7,
+              20,
+              "first judgment of each case"
+            ],
+            [
+              "rejection",
+              "FAIL",
+              0.0,
+              "[0.00, 0.09]",
+              0.8,
+              40,
+              "mismatched_output 0/20 FAIL, empty_output 0/20 FAIL"
+            ],
+            [
+              "invariance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "whitespace_reformat 20/20"
+            ],
+            [
+              "stability",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "2 judgments per case"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Certificate coverage: yes",
+          "description": null,
+          "columns": [
+            "certified fingerprint",
+            "judge fingerprint",
+            "covers",
+            "why"
+          ],
+          "rows": [
+            [
+              "1515f207b051ecb9",
+              "1515f207b051ecb9",
+              "yes",
+              "same configuration as certified, and the report records the results as that judge's"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Judge results in this report: NOT EVIDENCE",
+          "description": "The scores are as the judge gave them; this says only whether they count as evidence.",
+          "columns": [
+            "result",
+            "kind",
+            "runs",
+            "in this report",
+            "status",
+            "why"
+          ],
+          "rows": [
+            [
+              "LLMJudge",
+              "assertion",
+              20,
+              "20/20 passed",
+              "NOT EVIDENCE",
+              "the judge failed certification (rejection)"
+            ]
+          ]
+        }
+      ],
+      "report_evaluator_failures": []
+    },
+    {
+      "title": "certificate of the sound judge, rubric since changed",
+      "judge_pass_rate": 0.85,
+      "analyses": [
+        {
+          "type": "table",
+          "title": "Judge certificate: LLMJudge(oracle) ADMISSIBLE (fingerprint f548b950ecbc0c29)",
+          "description": "100 of 100 judge calls; a check passes on its 95% lower bound and fails on an exact upper bound.",
+          "columns": [
+            "check",
+            "status",
+            "rate",
+            "95% interval",
+            "needs",
+            "n",
+            "detail"
+          ],
+          "rows": [
+            [
+              "acceptance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.7,
+              20,
+              "first judgment of each case"
+            ],
+            [
+              "rejection",
+              "PASS",
+              1.0,
+              "[0.91, 1.00]",
+              0.8,
+              40,
+              "mismatched_output 20/20, empty_output 20/20"
+            ],
+            [
+              "invariance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "whitespace_reformat 20/20"
+            ],
+            [
+              "stability",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "2 judgments per case"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Certificate coverage: no",
+          "description": null,
+          "columns": [
+            "certified fingerprint",
+            "judge fingerprint",
+            "covers",
+            "why"
+          ],
+          "rows": [
+            [
+              "f548b950ecbc0c29",
+              "af32dca9f9ec5c2d",
+              "no",
+              "rubric changed since certification"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Judge results in this report: NOT EVIDENCE",
+          "description": "The scores are as the judge gave them; this says only whether they count as evidence.",
+          "columns": [
+            "result",
+            "kind",
+            "runs",
+            "in this report",
+            "status",
+            "why"
+          ],
+          "rows": [
+            [
+              "LLMJudge",
+              "assertion",
+              20,
+              "17/20 passed",
+              "NOT EVIDENCE",
+              "the certificate is about another configuration of the judge"
+            ]
+          ]
+        }
+      ],
+      "report_evaluator_failures": []
+    },
+    {
+      "title": "unnamed FunctionModel: the sound judge certified, a pass-everything judge scored the report",
+      "judge_pass_rate": 1.0,
+      "analyses": [
+        {
+          "type": "table",
+          "title": "Judge certificate: LLMJudge(function:model:) ADMISSIBLE (fingerprint 771d0bdd0cf09eab)",
+          "description": "100 of 100 judge calls; a check passes on its 95% lower bound and fails on an exact upper bound.",
+          "columns": [
+            "check",
+            "status",
+            "rate",
+            "95% interval",
+            "needs",
+            "n",
+            "detail"
+          ],
+          "rows": [
+            [
+              "acceptance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.7,
+              20,
+              "first judgment of each case"
+            ],
+            [
+              "rejection",
+              "PASS",
+              1.0,
+              "[0.91, 1.00]",
+              0.8,
+              40,
+              "mismatched_output 20/20, empty_output 20/20"
+            ],
+            [
+              "invariance",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "whitespace_reformat 20/20"
+            ],
+            [
+              "stability",
+              "PASS",
+              1.0,
+              "[0.83, 1.00]",
+              0.8,
+              20,
+              "2 judgments per case"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Certificate coverage: unverifiable",
+          "description": null,
+          "columns": [
+            "certified fingerprint",
+            "judge fingerprint",
+            "covers",
+            "why"
+          ],
+          "rows": [
+            [
+              "771d0bdd0cf09eab",
+              "771d0bdd0cf09eab",
+              "unverifiable",
+              "the certified identity is not reliable (model: unnamed function-backed model (function:model:); give it a model_name to have it trusted): another judge can share it; the report records the model only as 'function:function:model:', the name every unnamed FunctionModel of that function name shares, so which function produced these results cannot be told. Give the judge's model a name of its own"
+            ]
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Judge results in this report: NOT EVIDENCE (coverage cannot be verified)",
+          "description": "The scores are as the judge gave them; this says only whether they count as evidence.",
+          "columns": [
+            "result",
+            "kind",
+            "runs",
+            "in this report",
+            "status",
+            "why"
+          ],
+          "rows": [
+            [
+              "LLMJudge",
+              "assertion",
+              20,
+              "20/20 passed",
+              "NOT EVIDENCE (coverage cannot be verified)",
+              "the certified identity is not reliable (model: unnamed function-backed model (function:model:); give it a model_name to have it trusted): another judge can share it; the report records the model only as 'function:function:model:', the name every unnamed FunctionModel of that function name shares, so which function produced these results cannot be told"
+            ]
+          ]
+        }
+      ],
+      "report_evaluator_failures": []
+    }
+  ]
+}

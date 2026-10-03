@@ -38,9 +38,9 @@
       },
       "calls": [
         320,
-        226
+        232
       ],
-      "calls_saved": 94,
+      "calls_saved": 88,
       "agreement": {
         "agreed": 320,
         "compared": 320,
@@ -1753,7 +1753,7 @@
           {
             "case": "return-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1761,7 +1761,7 @@
           {
             "case": "return-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1769,7 +1769,7 @@
           {
             "case": "return-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1777,7 +1777,7 @@
           {
             "case": "return-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. No. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nNo. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1785,7 +1785,7 @@
           {
             "case": "return-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1793,7 +1793,7 @@
           {
             "case": "return-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1801,7 +1801,7 @@
           {
             "case": "return-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1809,7 +1809,7 @@
           {
             "case": "return-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1817,7 +1817,7 @@
           {
             "case": "return-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1825,7 +1825,7 @@
           {
             "case": "return-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1833,7 +1833,7 @@
           {
             "case": "shipping-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nShipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1841,7 +1841,7 @@
           {
             "case": "shipping-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $8.50",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1849,7 +1849,7 @@
           {
             "case": "shipping-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1857,7 +1857,7 @@
           {
             "case": "shipping-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $6.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1865,7 +1865,7 @@
           {
             "case": "shipping-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Since your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nSince your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1873,7 +1873,7 @@
           {
             "case": "shipping-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $35 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $35 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1881,7 +1881,7 @@
           {
             "case": "shipping-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1889,7 +1889,7 @@
           {
             "case": "shipping-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $75 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $75 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1897,7 +1897,7 @@
           {
             "case": "shipping-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $35 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $35 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1905,7 +1905,7 @@
           {
             "case": "shipping-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nSince your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1913,7 +1913,7 @@
           {
             "case": "refund-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1921,7 +1921,7 @@
           {
             "case": "refund-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1929,7 +1929,7 @@
           {
             "case": "refund-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1937,7 +1937,7 @@
           {
             "case": "refund-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1945,7 +1945,7 @@
           {
             "case": "refund-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1953,7 +1953,7 @@
           {
             "case": "refund-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1961,7 +1961,7 @@
           {
             "case": "refund-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1969,7 +1969,7 @@
           {
             "case": "refund-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1977,7 +1977,7 @@
           {
             "case": "refund-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1985,7 +1985,7 @@
           {
             "case": "refund-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -1993,7 +1993,7 @@
           {
             "case": "warranty-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2001,7 +2001,7 @@
           {
             "case": "warranty-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2009,7 +2009,7 @@
           {
             "case": "warranty-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2017,7 +2017,7 @@
           {
             "case": "warranty-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2025,7 +2025,7 @@
           {
             "case": "warranty-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2033,7 +2033,7 @@
           {
             "case": "warranty-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2041,7 +2041,7 @@
           {
             "case": "warranty-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2049,7 +2049,7 @@
           {
             "case": "warranty-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2057,7 +2057,7 @@
           {
             "case": "warranty-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -2065,7 +2065,7 @@
           {
             "case": "warranty-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4414,7 +4414,7 @@
           {
             "case": "return-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4422,15 +4422,15 @@
           {
             "case": "return-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "return-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4438,7 +4438,7 @@
           {
             "case": "return-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. No. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nNo. The return window is 30 days, and February 19 is 34 days after January 16.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4446,7 +4446,7 @@
           {
             "case": "return-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 30 days of delivery, and unopened items are eligible for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4454,15 +4454,15 @@
           {
             "case": "return-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "return-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 45 days of delivery, and unopened items qualify for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4470,15 +4470,15 @@
           {
             "case": "return-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "return-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 60 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4486,15 +4486,15 @@
           {
             "case": "return-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "shipping-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nShipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4502,15 +4502,15 @@
           {
             "case": "shipping-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $8.50",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "shipping-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause your order is under $75, standard shipping costs $8.50.\n\nAnswer: $8.50",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4518,15 +4518,15 @@
           {
             "case": "shipping-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $6.99",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "scripted",
             "error": null
           },
           {
             "case": "shipping-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Since your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nSince your order is under $75, standard shipping costs $6.99.\n\nAnswer: $6.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4534,7 +4534,7 @@
           {
             "case": "shipping-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $35 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $35 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4542,7 +4542,7 @@
           {
             "case": "shipping-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause your order is under $50, standard shipping costs $4.99.\n\nAnswer: $4.99",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4550,7 +4550,7 @@
           {
             "case": "shipping-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $75 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $75 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4558,7 +4558,7 @@
           {
             "case": "shipping-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Orders of $35 or more ship free.\n\nAnswer: $0.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOrders of $35 or more ship free.\n\nAnswer: $0.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4566,7 +4566,7 @@
           {
             "case": "shipping-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Since your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nSince your order is under $35, standard shipping costs $8.50.\n\nAnswer: $8.50",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4574,7 +4574,7 @@
           {
             "case": "refund-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4582,7 +4582,7 @@
           {
             "case": "refund-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4590,7 +4590,7 @@
           {
             "case": "refund-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee.\n\nRefund: $65.00 \u00d7 80% = **$52.00**\n\nAnswer: $52.00",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4598,7 +4598,7 @@
           {
             "case": "refund-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items are refunded minus a 15% restocking fee.\n\nRefund: $190.08 \u00d7 85% = **$161.57**\n\nAnswer: $161.57",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4606,7 +4606,7 @@
           {
             "case": "refund-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $132.26 \u00d7 80% = **$105.81**.\n\nAnswer: $105.81",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4614,7 +4614,7 @@
           {
             "case": "refund-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the lamp was opened, a 10% restocking fee applies. You\u2019ll receive **$160.26**.\n\nAnswer: $160.26",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4622,7 +4622,7 @@
           {
             "case": "refund-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 10% restocking fee.\n\nRefund: $223.88 \u2212 $22.39 = **$201.49**\n\nAnswer: $201.49",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4630,7 +4630,7 @@
           {
             "case": "refund-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 10% restocking fee.\n\nRefund: $103.86 \u00d7 90% = **$93.47**\n\nAnswer: $93.47",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4638,7 +4638,7 @@
           {
             "case": "refund-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 15% restocking fee.\n\nRefund: $105.89 \u00d7 85% = **$90.01**\n\nAnswer: $90.01",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4646,7 +4646,7 @@
           {
             "case": "refund-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee.\n\nRefund: $271.56 \u00d7 80% = **$217.25**\n\nAnswer: $217.25",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4654,7 +4654,7 @@
           {
             "case": "warranty-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4662,7 +4662,7 @@
           {
             "case": "warranty-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4670,7 +4670,7 @@
           {
             "case": "warranty-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4678,7 +4678,7 @@
           {
             "case": "warranty-3",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 6 months from purchase, so a blender that stopped working 23 months later is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4686,7 +4686,7 @@
           {
             "case": "warranty-4",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it is covered by the 24-month warranty, since the issue appears to be a defect and occurred 4 months after purchase.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4694,7 +4694,7 @@
           {
             "case": "warranty-5",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase, so it is not covered after 17 months.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4702,7 +4702,7 @@
           {
             "case": "warranty-6",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is covered because it stopped working on its own within 12 months of purchase.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4710,7 +4710,7 @@
           {
             "case": "warranty-7",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers product defects for 6 months from purchase, so a speaker that stopped working 13 months later is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4718,7 +4718,7 @@
           {
             "case": "warranty-8",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The blender is covered for defects within 12 months of purchase, provided the issue wasn\u2019t caused by accidental damage.\n\nAnswer: yes",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -4726,7 +4726,7 @@
           {
             "case": "warranty-9",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers product defects for 12 months from purchase. Since your backpack stopped working 21 months after purchase, it is not covered.\n\nAnswer: no",
             "passed": false,
             "reason": "scripted",
             "error": null
@@ -5372,7 +5372,7 @@
             "error": null
           }
         ],
-        "model_calls": 226
+        "model_calls": 232
       }
     }
   },
@@ -5407,9 +5407,9 @@
       },
       "calls": [
         50,
-        28
+        30
       ],
-      "calls_saved": 22,
+      "calls_saved": 20,
       "agreement": {
         "agreed": 46,
         "compared": 50,
@@ -5424,38 +5424,38 @@
           "role": "reference#0",
           "plain": true,
           "hybrid": false,
-          "plain_reason": "The reply ends with \u201cAnswer: $29.90\u201d and correctly calculates a 20% restocking fee on $37.37 ($29.90 after rounding). It is clear and respectful.",
-          "hybrid_reason": "The reply is concise and neutral but does not explicitly use a polite or respectful customer-facing expression."
+          "plain_reason": "The reply ends with \u201cAnswer: $29.90,\u201d correctly applying the 20% restocking fee to $37.37, and is polite and respectful.",
+          "hybrid_reason": "The reply is concise and neutral but does not explicitly use a polite acknowledgment or courteous phrasing toward the customer."
+        },
+        {
+          "case": "refund-1",
+          "role": "reference#0",
+          "plain": true,
+          "hybrid": false,
+          "plain_reason": "The response ends with \u201cAnswer: $203.26,\u201d correctly applying the 10% restocking fee to the opened $225.85 speaker, and is polite.",
+          "hybrid_reason": "The reply is concise and professional, but it does not explicitly use a courteous acknowledgment or address the customer directly; it remains neutral rather than clearly polite and respectful."
         },
         {
           "case": "return-1",
           "role": "must_fail:mismatched_output",
           "plain": true,
           "hybrid": false,
-          "plain_reason": "The reply ends with \u201cAnswer: yes\u201d and is polite, but its justification incorrectly invokes the warranty rather than the applicable 60-day return policy. Since July 15 is within 60 days of April 25 and the item is unopened, the final yes is correct.",
+          "plain_reason": "The reply ends with an 'Answer: yes' line and is polite, but its explanation incorrectly invokes the warranty rather than the applicable 60-day return policy. The return decision itself is correct because July 15 is within 60 days of April 25.",
           "hybrid_reason": "decided in code: fails \"The answer is correct according to the store policy: the right yes or no, or the right dollar amount.\""
-        },
-        {
-          "case": "shipping-1",
-          "role": "must_hold:whitespace_reformat",
-          "plain": true,
-          "hybrid": false,
-          "plain_reason": "The reply correctly states the $8.50 standard shipping fee for an order under $35 and uses the required 'Answer:' format. It is concise and respectful.",
-          "hybrid_reason": "The reply is concise and neutral, but it does not include any explicit polite or respectful language such as a greeting or acknowledgment."
         },
         {
           "case": "refund-0",
           "role": "must_hold:whitespace_reformat",
           "plain": true,
           "hybrid": false,
-          "plain_reason": "The reply ends with an 'Answer:' line stating $29.90, which is the correct 80% refund of $37.37 after the 20% restocking fee, and it is respectful.",
-          "hybrid_reason": "The reply is concise and neutral but does not explicitly use a polite or respectful acknowledgment beyond stating the refund policy and amount."
+          "plain_reason": "The reply ends with an 'Answer:' line stating $29.90, which correctly applies the 20% restocking fee to $37.37, and it is respectful in tone.",
+          "hybrid_reason": "The reply is concise and neutral but does not include an explicit polite acknowledgment or courtesy phrase directed to the customer."
         }
       ]
     },
     "certificates": {
       "plain LLMJudge, full rubric": {
-        "judge": "LLMJudge(codex:gpt-5.6-luna)",
+        "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
         "verdict": "UNVALIDATED",
         "checks": [
           {
@@ -5510,7 +5510,7 @@
         "identity": {
           "evaluator": "LLMJudge",
           "rubric": "The reply ends with a line starting with 'Answer:' that states the final answer. The answer is correct according to the store policy: the right yes or no, or the right dollar amount. The reply is polite and respectful to the customer.",
-          "model": "function:codex:gpt-5.6-luna",
+          "model": "function:codex:gpt-5.6-luna@none",
           "include_input": true,
           "include_expected_output": false,
           "model_settings": null,
@@ -5520,14 +5520,14 @@
           },
           "pydantic_evals": "0.0.1.dev1+dac0464"
         },
-        "fingerprint": "d6b80cd462d60ff7",
+        "fingerprint": "00e71d81b354955e",
         "judgments": [
           {
             "case": "return-0",
             "role": "reference#0",
             "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: yes,\u201d correctly determines the item is within 60 days and is polite.",
+            "reason": "The reply is polite, correctly states that the unopened order is within the 60-day return window, and ends with \u201cAnswer: yes.\u201d",
             "error": null
           },
           {
@@ -5535,7 +5535,7 @@
             "role": "reference#0",
             "output": "Answer: no",
             "passed": false,
-            "reason": "The reply ends with 'Answer: no,' but the item is within 60 days of delivery (81 days? Actually April 25 to July 15 is 81 days), so no is correct; however, it is not polite or respectful because it provides no customer-facing courtesy or explanation.",
+            "reason": "The reply ends with \u201cAnswer: no,\u201d but the item is unopened and within 60 days of delivery (81 days? Actually July 15 is beyond 60 days from April 25), so \u201cno\u201d is correct; however, it is not polite or respectful.",
             "error": null
           },
           {
@@ -5543,7 +5543,7 @@
             "role": "reference#0",
             "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: yes,\u201d which is correct because June 11 is within 14 days of June 2 and the item is unopened. It is also polite and respectful.",
+            "reason": "The reply ends with \u201cAnswer: yes,\u201d correctly states the item is returnable within 14 days and unopened for a full refund, and is polite.",
             "error": null
           },
           {
@@ -5551,7 +5551,7 @@
             "role": "reference#0",
             "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": true,
-            "reason": "The response ends with \u201cAnswer: $6.99,\u201d which matches the policy for orders under $35, and it is politely phrased.",
+            "reason": "The response ends with an 'Answer:' line stating $6.99, which is correct for an order under $35, and it is polite.",
             "error": null
           },
           {
@@ -5559,7 +5559,7 @@
             "role": "reference#0",
             "output": "Answer: $8.50",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer:\u201d and correctly states the $8.50 standard shipping charge for an order under $35. It is concise and respectful.",
+            "reason": "The reply ends with an 'Answer:' line stating the correct $8.50 shipping fee and is concise and respectful.",
             "error": null
           },
           {
@@ -5567,7 +5567,7 @@
             "role": "reference#0",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: $29.90\u201d and correctly calculates a 20% restocking fee on $37.37 ($29.90 after rounding). It is clear and respectful.",
+            "reason": "The reply ends with \u201cAnswer: $29.90,\u201d correctly applying the 20% restocking fee to $37.37, and is polite and respectful.",
             "error": null
           },
           {
@@ -5575,7 +5575,7 @@
             "role": "reference#0",
             "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: $203.26,\u201d correctly applying the 10% restocking fee to the opened item, and is polite and respectful.",
+            "reason": "The response ends with \u201cAnswer: $203.26,\u201d correctly applying the 10% restocking fee to the opened $225.85 speaker, and is polite.",
             "error": null
           },
           {
@@ -5583,7 +5583,7 @@
             "role": "reference#0",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply correctly states the blender is covered within the six-month warranty and ends with a clear 'Answer: yes' line. It is polite and respectful.",
+            "reason": "The reply correctly states the blender is covered within the six-month warranty and ends with the required \u201cAnswer: yes\u201d line; it is polite.",
             "error": null
           },
           {
@@ -5591,7 +5591,7 @@
             "role": "reference#0",
             "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": true,
-            "reason": "The reply correctly states the 12-month warranty limit and ends with the correct final answer, \u201cAnswer: no.\u201d It is clear and respectful.",
+            "reason": "The reply ends with \u201cAnswer: no,\u201d correctly applying the 12-month warranty limit to a defect occurring after 13 months, and it is respectfully phrased.",
             "error": null
           },
           {
@@ -5599,7 +5599,7 @@
             "role": "reference#0",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply correctly states the 12-month warranty covers the speaker and ends with \u201cAnswer: yes.\u201d It is polite and respectful.",
+            "reason": "The reply ends with \u201cAnswer: yes,\u201d correctly applies the 12-month defect warranty, and is polite and respectful.",
             "error": null
           },
           {
@@ -5607,7 +5607,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
-            "reason": "The reply ends with an Answer line, but it gives an unsupported $29.90 refund and incorrectly states a 20% restocking fee. The unopened item is within 60 days and should be eligible for a full refund, so it is not correct or appropriately responsive.",
+            "reason": "The response includes an 'Answer:' line, but it gives an unsupported dollar amount and incorrectly cites a 20% fee; the policy indicates the unopened item can be returned for a full refund, and the response is not appropriately helpful.",
             "error": null
           },
           {
@@ -5615,7 +5615,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: yes\u201d and is polite, but its justification incorrectly invokes the warranty rather than the applicable 60-day return policy. Since July 15 is within 60 days of April 25 and the item is unopened, the final yes is correct.",
+            "reason": "The reply ends with an 'Answer: yes' line and is polite, but its explanation incorrectly invokes the warranty rather than the applicable 60-day return policy. The return decision itself is correct because July 15 is within 60 days of April 25.",
             "error": null
           },
           {
@@ -5623,7 +5623,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Answer: no",
             "passed": false,
-            "reason": "The reply uses the required 'Answer:' format but incorrectly says no; the unopened item is within the 14-day return window and should be returnable. It also lacks a polite customer-facing explanation.",
+            "reason": "The reply ends with \u201cAnswer: no,\u201d but this is incorrect because June 11 is within 14 days of the June 2 delivery. It also lacks a polite explanation.",
             "error": null
           },
           {
@@ -5631,7 +5631,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
-            "reason": "The reply ends with an Answer line, but $29.90 is incorrect: a $11.67 order incurs the flat $6.99 shipping charge, and the response is unrelated and not customer-appropriate.",
+            "reason": "The reply ends with an Answer line, but it gives $29.90 instead of the correct $6.99 shipping cost and includes irrelevant information.",
             "error": null
           },
           {
@@ -5639,7 +5639,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply includes a correctly formatted Answer line, but it gives an irrelevant warranty response instead of the correct $8.50 shipping charge and is not responsive to the customer\u2019s question.",
+            "reason": "The response includes an 'Answer:' line, but it answers an unrelated warranty question instead of the $8.50 standard shipping charge for an $11.21 order.",
             "error": null
           },
           {
@@ -5647,7 +5647,7 @@
             "role": "must_fail:mismatched_output",
             "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": false,
-            "reason": "The response gives an incorrect warranty-related answer about headphones instead of calculating the refund for the opened blender. It also does not end with the correct dollar amount following 'Answer:'.",
+            "reason": "The response does not address the blender return or calculate the refund, gives incorrect warranty information, and ends with \u201cAnswer: no,\u201d which is not the correct dollar amount.",
             "error": null
           },
           {
@@ -5655,7 +5655,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": false,
-            "reason": "The response ends with an Answer line, but it incorrectly addresses warranty coverage instead of calculating the return refund ($203.27 after the 10% restocking fee).",
+            "reason": "The reply includes an 'Answer:' line, but it gives 'yes' instead of the correct refund amount ($203.27 after a 10% restocking fee).",
             "error": null
           },
           {
@@ -5663,7 +5663,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Answer: $8.50",
             "passed": false,
-            "reason": "The response gives \"$8.50,\" which is neither the correct warranty answer (\u201cyes\u201d) nor a polite customer-facing reply, and it does not explain coverage for a blender that failed on its own within six months.",
+            "reason": "The response gives '$8.50,' which is unrelated to the warranty question and does not state whether the blender is covered; it also lacks a polite customer-facing explanation.",
             "error": null
           },
           {
@@ -5671,7 +5671,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply has the required 'Answer:' line and is polite, but it incorrectly says the item is covered after 13 months; the policy limits warranty coverage to 12 months.",
+            "reason": "The response ends with \u201cAnswer: yes\u201d and is polite, but the warranty expired after 12 months, so the correct answer is no. It also incorrectly refers to the headphones as a speaker.",
             "error": null
           },
           {
@@ -5679,7 +5679,7 @@
             "role": "must_fail:mismatched_output",
             "output": "Answer: $8.50",
             "passed": false,
-            "reason": "The response ends with an Answer line, but \u201c$8.50\u201d is not the correct warranty determination and does not address the customer politely.",
+            "reason": "The response ends with an Answer line, but '$8.50' is unrelated to the warranty question and does not state whether the speaker is covered; it also provides no polite customer-facing explanation.",
             "error": null
           },
           {
@@ -5687,7 +5687,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The response is empty, so it does not include the required 'Answer:' line, policy-correct conclusion, or polite customer-facing reply.",
+            "reason": "The output is empty, so it does not include the required polite response or an 'Answer:' line stating that the unopened item is still returnable within 60 days.",
             "error": null
           },
           {
@@ -5695,7 +5695,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The reply is empty, so it does not provide a polite response or an 'Answer:' line stating whether the unopened item is within the 60-day return window.",
+            "reason": "The reply is empty, so it does not include the required 'Answer:' line, a correct return determination, or a polite response.",
             "error": null
           },
           {
@@ -5703,7 +5703,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The reply is empty and does not provide the required polite response or an 'Answer:' line stating that the unopened item can still be returned within 14 days.",
+            "reason": "The reply is empty, so it does not provide the required polite answer or an 'Answer:' line stating that the unopened item can still be returned within 14 days.",
             "error": null
           },
           {
@@ -5711,7 +5711,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The output is empty, so it does not provide a polite response or an 'Answer:' line stating the correct $6.99 shipping charge.",
+            "reason": "The response is empty, so it does not provide a polite answer or an 'Answer:' line stating the correct $6.99 shipping cost.",
             "error": null
           },
           {
@@ -5719,7 +5719,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The response is empty, so it does not provide a polite answer or an 'Answer:' line with the correct $8.50 shipping charge.",
+            "reason": "The response is empty, so it does not provide the required 'Answer:' line, shipping amount, or polite customer-facing reply.",
             "error": null
           },
           {
@@ -5727,7 +5727,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The output is empty, so it does not provide the required polite reply, an 'Answer:' line, or the correct refund amount of $29.90 after the 20% restocking fee.",
+            "reason": "The reply is empty, so it does not include the required 'Answer:' line, dollar amount, or polite response.",
             "error": null
           },
           {
@@ -5735,7 +5735,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The output is empty, so it does not provide a polite response or an 'Answer:' line stating the correct refund amount ($203.27 after a 10% restocking fee).",
+            "reason": "The reply is empty, so it does not include the required 'Answer:' line, refund amount, or polite response.",
             "error": null
           },
           {
@@ -5743,7 +5743,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The reply is empty, so it does not provide a polite response or an 'Answer:' line stating that the defect is covered within the 6-month warranty.",
+            "reason": "The output is empty, so it does not include the required 'Answer:' line or address the warranty question politely.",
             "error": null
           },
           {
@@ -5751,7 +5751,7 @@
             "role": "must_fail:empty_output",
             "output": "",
             "passed": false,
-            "reason": "The reply is empty, so it does not include the required 'Answer:' line, a correct warranty determination, or a polite response.",
+            "reason": "The reply is empty and does not include the required 'Answer:' line or a polite, policy-based response. Since the warranty covers only 12 months and the issue occurred after 13 months, the correct answer would be no.",
             "error": null
           },
           {
@@ -5767,7 +5767,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The response ends with \u201cAnswer: yes,\u201d correctly determines the item is returnable within 60 days, and is polite.",
+            "reason": "The reply ends with \u201cAnswer: yes,\u201d which is correct because April 12 is within 60 days of February 17. It is also polite and respectful.",
             "error": null
           },
           {
@@ -5775,7 +5775,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Answer: no\n",
             "passed": false,
-            "reason": "The response ends with \u201cAnswer: no,\u201d but the unopened item is within 60 days of delivery and should be returnable, so the answer is incorrect.",
+            "reason": "The response ends with \u201cAnswer: no,\u201d but the unopened item was delivered within 60 days (81 days is incorrect; April 25 to July 15 is 81 days), so no is correct. However, it is not polite or respectful because it provides no customer-facing explanation or courtesy.",
             "error": null
           },
           {
@@ -5783,7 +5783,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: yes,\u201d which is correct because June 11 is within 14 days of June 2, and it is polite.",
+            "reason": "The response ends with \u201cAnswer: yes,\u201d which is correct because June 11 is within 14 days of June 2, and it is polite and respectful.",
             "error": null
           },
           {
@@ -5791,7 +5791,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Shipping will cost **$6.99**.\n\n\n\nAnswer: $6.99\n",
             "passed": true,
-            "reason": "The reply ends with an 'Answer:' line stating the correct $6.99 shipping cost and is polite.",
+            "reason": "The response ends with an 'Answer:' line stating $6.99, which correctly matches the policy for orders under $35, and it is polite.",
             "error": null
           },
           {
@@ -5799,7 +5799,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Answer: $8.50\n",
             "passed": true,
-            "reason": "The reply correctly states the $8.50 standard shipping fee for an order under $35 and uses the required 'Answer:' format. It is concise and respectful.",
+            "reason": "The response gives the correct $8.50 shipping charge and uses the required 'Answer:' format; it is concise and respectful.",
             "error": null
           },
           {
@@ -5807,7 +5807,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\n\n\nAnswer: $29.90\n",
             "passed": true,
-            "reason": "The reply ends with an 'Answer:' line stating $29.90, which is the correct 80% refund of $37.37 after the 20% restocking fee, and it is respectful.",
+            "reason": "The reply ends with an 'Answer:' line stating $29.90, which correctly applies the 20% restocking fee to $37.37, and it is respectful in tone.",
             "error": null
           },
           {
@@ -5815,7 +5815,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n\n\n$225.85 \u2212 $22.59 = **$203.26**\n\n\n\nAnswer: $203.26\n",
             "passed": true,
-            "reason": "The reply ends with 'Answer: $203.26,' correctly applying the 10% restocking fee to the opened $225.85 item, and is polite.",
+            "reason": "The response ends with an 'Answer:' line giving the correct refund amount of $203.26 after the 10% restocking fee, and it is respectful.",
             "error": null
           },
           {
@@ -5823,7 +5823,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase. \n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply ends with \u201cAnswer: yes,\u201d which is correct because defects are covered for 6 months and the blender failed without accidental damage. It is also polite and respectful.",
+            "reason": "The response correctly states that the blender is covered within the 6-month warranty and ends with the required 'Answer: yes' line. It is polite and respectful.",
             "error": null
           },
           {
@@ -5831,7 +5831,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\n\n\nAnswer: no\n",
             "passed": true,
-            "reason": "The response correctly states that a defect arising 13 months after purchase is outside the 12-month warranty and ends with the required \u201cAnswer: no\u201d line. It is polite and respectful.",
+            "reason": "The response correctly says the 12-month warranty does not cover a failure occurring after 13 months, and it ends with the required \u201cAnswer: no\u201d line. Its tone is polite and respectful.",
             "error": null
           },
           {
@@ -5839,105 +5839,105 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The response ends with \u201cAnswer: yes,\u201d correctly applies the 12-month warranty to a speaker that failed without accidental damage, and is polite.",
+            "reason": "The reply ends with \u201cAnswer: yes,\u201d correctly applies the 12-month warranty to a speaker that failed without accidental damage, and is polite.",
             "error": null
           },
           {
             "case": "return-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply ends with \u201cAnswer: yes\u201d and correctly applies the 60-day return policy, but its opening is dismissive and disrespectful toward the customer.",
+            "reason": "The reply ends with \u201cAnswer: yes\u201d and correctly determines the item is within 60 days and unopened. However, the opening sentence is rude and disrespectful toward the customer, so it fails the politeness requirement.",
             "error": null
           },
           {
             "case": "return-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "The reply ends with \u201cAnswer: no,\u201d but the unopened item is within 60 days of delivery and should be returnable. It also uses rude, disrespectful language toward the customer.",
+            "reason": "The reply correctly ends with \u201cAnswer: no\u201d format, but the return is actually allowed within 60 days (81 days is not within the window? April 25 to July 15 is 81 days), and the preceding language is disrespectful.",
             "error": null
           },
           {
             "case": "return-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply correctly says the item can be returned and qualifies for a full refund, but its opening is rude and disrespectful to the customer.",
+            "reason": "The final line correctly states \u201cAnswer: yes,\u201d but the opening sentence is dismissive and disrespectful toward the customer.",
             "error": null
           },
           {
             "case": "shipping-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nShipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": false,
-            "reason": "The final Answer line correctly states $6.99, but the response includes insulting and disrespectful language toward the customer.",
+            "reason": "The final line starts with \u201cAnswer:\u201d and gives the correct $6.99 shipping cost, but the preceding remark is disrespectful to the customer.",
             "error": null
           },
           {
             "case": "shipping-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $8.50",
             "passed": false,
-            "reason": "The reply ends with \u201cAnswer: $8.50,\u201d which is correct, but its insulting wording is not polite or respectful.",
+            "reason": "The reply ends with the correct \u201cAnswer: $8.50\u201d line, but its opening is disrespectful and insulting to the customer.",
             "error": null
           },
           {
             "case": "refund-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
-            "reason": "The final answer is correctly stated as $29.90, but the response is not polite or respectful because it criticizes the customer.",
+            "reason": "The final line starts with \u201cAnswer:\u201d and the refund amount is correct: $37.37 \u00d7 80% = $29.90. However, the opening language is insulting and disrespectful to the customer.",
             "error": null
           },
           {
             "case": "refund-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
             "passed": false,
-            "reason": "The reply gives the correct refund amount and an Answer line, but its insulting language is not polite or respectful.",
+            "reason": "The response gives the correct refund amount of $203.26 and ends with an Answer line, but its insulting wording is not polite or respectful.",
             "error": null
           },
           {
             "case": "warranty-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply correctly states that the blender is covered within the six-month warranty and ends with \u201cAnswer: yes,\u201d but its insulting language is not polite or respectful.",
+            "reason": "The response correctly states the warranty applies and ends with the required \u201cAnswer: yes\u201d line, but its opening is rude and disrespectful to the customer.",
             "error": null
           },
           {
             "case": "warranty-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": false,
-            "reason": "The reply correctly states that a defect occurring after 13 months is outside the 12-month warranty and ends with \u201cAnswer: no,\u201d but its insulting language is not polite or respectful.",
+            "reason": "The reply correctly states that a 13-month-old defect is outside the 12-month warranty and ends with \u201cAnswer: no,\u201d but its opening is rude and disrespectful to the customer.",
             "error": null
           },
           {
             "case": "warranty-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply includes a final line starting with \u201cAnswer:\u201d and gives the correct answer, but the opening language is dismissive and disrespectful toward the customer.",
+            "reason": "The reply gives the correct warranty answer and ends with \u201cAnswer: yes,\u201d but the opening is insulting and disrespectful to the customer.",
             "error": null
           }
         ],
         "model_calls": 50
       },
       "HybridJudge, tone only to the model": {
-        "judge": "HybridJudge(codex:gpt-5.6-luna)",
+        "judge": "HybridJudge(codex:gpt-5.6-luna@none)",
         "verdict": "UNVALIDATED",
         "checks": [
           {
             "name": "acceptance",
             "status": "UNVALIDATED",
-            "successes": 8,
+            "successes": 7,
             "trials": 10,
-            "rate": 0.8,
+            "rate": 0.7,
             "interval": [
-              0.49015684672072335,
-              0.9433190520193067
+              0.39677321997956516,
+              0.892210712513788
             ],
             "threshold": 0.7,
             "errors": 0,
@@ -5985,20 +5985,20 @@
             "Clause('The answer is correct according to the store policy: the right yes or no, or the right dollar amount.', check=answer_is_right)",
             "Clause('The reply is polite and respectful to the customer.', check=model)"
           ],
-          "model": "function:codex:gpt-5.6-luna",
+          "model": "function:codex:gpt-5.6-luna@none",
           "include_input": true,
           "include_expected_output": false,
           "model_settings": null,
           "pydantic_evals": "0.0.1.dev1+dac0464"
         },
-        "fingerprint": "1b93a0311f194e32",
+        "fingerprint": "e620f1d4a59a5273",
         "judgments": [
           {
             "case": "return-0",
             "role": "reference#0",
             "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply is clear and respectful, but it does not use an explicit polite marker such as \u201cplease\u201d or \u201cthank you.\u201d",
+            "reason": "The reply is courteous and directly answers the customer\u2019s question in a respectful manner.",
             "error": null
           },
           {
@@ -6006,7 +6006,7 @@
             "role": "reference#0",
             "output": "Answer: no",
             "passed": false,
-            "reason": "The reply is not polite or respectful; it is only the terse phrase \u201cno.\u201d",
+            "reason": "The reply is not polite or respectful; it only says \u201cno\u201d and does not acknowledge or assist the customer.",
             "error": null
           },
           {
@@ -6014,7 +6014,7 @@
             "role": "reference#0",
             "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply is clear, courteous, and respectfully answers the customer\u2019s question.",
+            "reason": "The reply is clear and respectfully answers the customer\u2019s return question.",
             "error": null
           },
           {
@@ -6022,7 +6022,7 @@
             "role": "reference#0",
             "output": "Shipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": true,
-            "reason": "The reply is concise and professionally phrased, with no disrespectful or impolite language.",
+            "reason": "The reply is concise and respectful, with no impolite or dismissive language.",
             "error": null
           },
           {
@@ -6030,7 +6030,7 @@
             "role": "reference#0",
             "output": "Answer: $8.50",
             "passed": true,
-            "reason": "The reply is concise and directly answers the customer\u2019s question, with no impolite or disrespectful language.",
+            "reason": "The reply is concise and directly answers the customer\u2019s shipping question without using impolite or disrespectful language.",
             "error": null
           },
           {
@@ -6038,15 +6038,15 @@
             "role": "reference#0",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
-            "reason": "The reply is concise and neutral but does not explicitly use a polite or respectful customer-facing expression.",
+            "reason": "The reply is concise and neutral but does not explicitly use a polite acknowledgment or courteous phrasing toward the customer.",
             "error": null
           },
           {
             "case": "refund-1",
             "role": "reference#0",
             "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
-            "passed": true,
-            "reason": "The reply is clear and respectful, though it does not use an explicit greeting or courtesy phrase.",
+            "passed": false,
+            "reason": "The reply is concise and professional, but it does not explicitly use a courteous acknowledgment or address the customer directly; it remains neutral rather than clearly polite and respectful.",
             "error": null
           },
           {
@@ -6054,7 +6054,7 @@
             "role": "reference#0",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply is courteous, direct, and respectfully addresses the customer\u2019s question.",
+            "reason": "The reply is clear, courteous, and respectfully addresses the customer\u2019s warranty question.",
             "error": null
           },
           {
@@ -6070,7 +6070,7 @@
             "role": "reference#0",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": true,
-            "reason": "The reply is clear and respectful, with no rude or dismissive language.",
+            "reason": "The reply is courteous and directly addresses the customer\u2019s warranty question in a respectful tone.",
             "error": null
           },
           {
@@ -6238,7 +6238,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply is clear and respectful, using a polite affirmative response without rude or dismissive language.",
+            "reason": "The reply is clear, courteous, and respectfully answers the customer's question.",
             "error": null
           },
           {
@@ -6246,7 +6246,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Answer: no\n",
             "passed": false,
-            "reason": "The reply is not polite or respectful; it only says \u201cno\u201d and does not acknowledge or address the customer courteously.",
+            "reason": "The reply is a terse \u201cno\u201d and does not demonstrate a polite or respectful customer-facing response.",
             "error": null
           },
           {
@@ -6254,7 +6254,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply is clear, courteous, and respectfully answers the customer's return question.",
+            "reason": "The reply is clear and respectful, using polite customer-service language.",
             "error": null
           },
           {
@@ -6262,15 +6262,15 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Shipping will cost **$6.99**.\n\n\n\nAnswer: $6.99\n",
             "passed": true,
-            "reason": "The reply is concise and professionally phrased, directly answering the customer's shipping question without any disrespectful language.",
+            "reason": "The reply is concise and directly answers the customer\u2019s shipping question in a professional, respectful manner.",
             "error": null
           },
           {
             "case": "shipping-1",
             "role": "must_hold:whitespace_reformat",
             "output": "Answer: $8.50\n",
-            "passed": false,
-            "reason": "The reply is concise and neutral, but it does not include any explicit polite or respectful language such as a greeting or acknowledgment.",
+            "passed": true,
+            "reason": "The reply is concise and directly answers the customer's shipping question without using disrespectful or impolite language.",
             "error": null
           },
           {
@@ -6278,7 +6278,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Opened items incur a 20% restocking fee. Refund: $29.90.\n\n\n\nAnswer: $29.90\n",
             "passed": false,
-            "reason": "The reply is concise and neutral but does not explicitly use a polite or respectful acknowledgment beyond stating the refund policy and amount.",
+            "reason": "The reply is concise and neutral but does not include an explicit polite acknowledgment or courtesy phrase directed to the customer.",
             "error": null
           },
           {
@@ -6286,7 +6286,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Because the speaker was opened, a 10% restocking fee applies:\n\n\n\n$225.85 \u2212 $22.59 = **$203.26**\n\n\n\nAnswer: $203.26\n",
             "passed": true,
-            "reason": "The reply is concise, professional, and respectfully explains the refund calculation without using rude or dismissive language.",
+            "reason": "The reply is clear and respectful, with no rude or dismissive language.",
             "error": null
           },
           {
@@ -6294,7 +6294,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase. \n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply is courteous, direct, and respectfully answers the customer's warranty question.",
+            "reason": "The reply is courteous, direct, and respectfully answers the customer\u2019s question.",
             "error": null
           },
           {
@@ -6302,7 +6302,7 @@
             "role": "must_hold:whitespace_reformat",
             "output": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\n\n\nAnswer: no\n",
             "passed": true,
-            "reason": "The reply is clear and respectfully answers the customer\u2019s warranty question without rude or dismissive language.",
+            "reason": "The reply is clear and respectful, with no rude or dismissive language.",
             "error": null
           },
           {
@@ -6310,91 +6310,91 @@
             "role": "must_hold:whitespace_reformat",
             "output": "Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\n\n\nAnswer: yes\n",
             "passed": true,
-            "reason": "The reply is clear, courteous, and respectfully addresses the customer\u2019s warranty question.",
+            "reason": "The reply is clear and respectful, answering the customer courteously without dismissive or inappropriate language.",
             "error": null
           },
           {
             "case": "return-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. It is within 60 days of delivery, and unopened items are refunded in full.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply is disrespectful, including remarks that the customer should have read the policy and was bothering support.",
+            "reason": "The reply includes a rude, dismissive remark telling the customer they should have read the policy and not bothered support, so it is not polite or respectful.",
             "error": null
           },
           {
             "case": "return-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: no",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "The reply is disrespectful and dismissive, telling the customer they should have read the policy and describing their inquiry as a bother.",
             "error": null
           },
           {
             "case": "return-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The item is unopened and within 14 days of delivery, so it qualifies for a full refund.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The response includes a dismissive and insulting remark (\u201cbefore bothering us\u201d), so it is not polite or respectful.",
+            "reason": "The reply includes a disrespectful remark implying the customer should have read the policy and was bothering support, so it is not polite or respectful.",
             "error": null
           },
           {
             "case": "shipping-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Shipping will cost **$6.99**.\n\nAnswer: $6.99",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nShipping will cost **$6.99**.\n\nAnswer: $6.99",
             "passed": false,
-            "reason": "The reply includes a disrespectful remark implying the customer should have read the policy and is bothering support, so it is not polite or respectful.",
+            "reason": "The response is disrespectful, saying the customer should have read the policy and was bothering support, despite providing the correct shipping cost.",
             "error": null
           },
           {
             "case": "shipping-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Answer: $8.50",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nAnswer: $8.50",
             "passed": false,
-            "reason": "decided in code: fails \"The reply ends with a line starting with 'Answer:' that states the final answer.\"",
+            "reason": "The response is disrespectful and dismissive, telling the customer they should have read the policy and implying they are a bother.",
             "error": null
           },
           {
             "case": "refund-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Opened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nOpened items incur a 20% restocking fee. Refund: $29.90.\n\nAnswer: $29.90",
             "passed": false,
-            "reason": "The response is disrespectful, telling the customer they should have read the policy and accusing them of bothering support.",
+            "reason": "The response uses insulting and dismissive language, telling the customer they should have read the policy and were bothering support.",
             "error": null
           },
           {
             "case": "refund-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Because the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nBecause the speaker was opened, a 10% restocking fee applies:\n\n$225.85 \u2212 $22.59 = **$203.26**\n\nAnswer: $203.26",
             "passed": false,
-            "reason": "The response is disrespectful, telling the customer they should have read the policy and implying they are bothering support.",
+            "reason": "The response uses insulting and dismissive language, telling the customer they should have read the policy and were bothering support.",
             "error": null
           },
           {
             "case": "warranty-0",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes, it\u2019s covered by the warranty since it stopped working on its own within 6 months of purchase.  \n\nAnswer: yes",
             "passed": false,
-            "reason": "The response is not polite or respectful because it belittles the customer for asking, saying they could have read the policy and were \"bothering us.\"",
+            "reason": "The response uses insulting and dismissive language, telling the customer they should have read the policy and were bothering support.",
             "error": null
           },
           {
             "case": "warranty-1",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. The warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nThe warranty covers defects for 12 months from purchase. Since the headphones stopped working after 13 months, they are not covered.\n\nAnswer: no",
             "passed": false,
-            "reason": "The reply is disrespectful, particularly by saying the customer could have read the policy themselves and was bothering support.",
+            "reason": "The reply is disrespectful, particularly by saying the customer could have read the policy and was bothering support.",
             "error": null
           },
           {
             "case": "warranty-2",
             "role": "must_fail:rude_tone",
-            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us. Yes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
+            "output": "Honestly, this is all in the policy, which you could have read yourself before bothering us.\n\nYes. The speaker is covered by the 12-month warranty because it stopped working on its own and wasn\u2019t accidentally damaged.\n\nAnswer: yes",
             "passed": false,
-            "reason": "The reply is not polite or respectful because it says the customer could have read the policy themselves and was \u201cbothering us.\u201d",
+            "reason": "The opening sentence is dismissive and insulting, telling the customer they should have read the policy and implying they are bothering support. Although the warranty answer is correct, the reply is not consistently polite or respectful.",
             "error": null
           }
         ],
-        "model_calls": 28
+        "model_calls": 30
       }
     }
   }

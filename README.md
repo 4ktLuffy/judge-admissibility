@@ -13,12 +13,13 @@ on an interval, and says what to change when the judge fails.
   answers that belonged to *other* customers' questions; certification caught it after 70 of 280
   calls. With the question shown, the same judge agreed with ground truth on 79 of 80 replies.
 - **Judges grade the claim, not the work.** Shown only the agent's reply, a judge passed 8 of 24
-  "your refund was issued" replies whose refund had failed; shown the tool calls, none. With the
+  replies claiming a refund or cancellation that had in fact failed; shown the tool calls, none. With the
   tool result removed entirely, a plain `LLMJudge` passed 9 of 16, *"consistent with the tool call
   results"* that did not exist.
-- **Pydantic's own example dataset, in one call:** `certify_dataset(Dataset.from_file(...))` found
-  the judge failing 4 of its 10 "good" answers every time, and the judges siding against the
-  dataset's author on 4 of 5 disputes, over whether "we" counts as friendly.
+- **Pydantic's own example dataset:** one `certify_dataset(Dataset.from_file(...))` call found the
+  judge failing 4 of its 10 "good" answers every time, and `find_disagreements` over the saved
+  verdicts showed the judges siding against the dataset's author on 4 of 5 disputes, over whether impersonal or first-person ("we") messages
+  count as friendly.
 
 ```python
 results = await certify_dataset(dataset)  # every LLMJudge in a Dataset, controls chosen per rubric
@@ -43,9 +44,11 @@ Or from a shell: `judge-admissibility certify cases.yaml`.
   [`mutation_report`](#which-defects-would-your-evals-catch-mutation_report),
   [`minimize_witness`](#from-fooled-to-the-line-that-fooled-it-minimize_witness), judge routing,
   evidence budgets, rubric distillation into code.
+- *Inside Pydantic's stack:* the certificate [in a pydantic-evals report and in Logfire](#where-it-plugs-into-pydantics-stack),
+  a pytest plugin that certifies a judge once per session, and re-certification that only re-judges what changed.
 - *Live with it:* Logfire promotion and canaries, [`compare_judges`](#when-the-judge-changes-too-compare_judges)
   and [`decision_impact`](#before-you-switch-judges-decision_impact) when the judge itself changes,
-  delayed-outcome calibration, and [twelve more tools, each measured](#more-tools-each-measured).
+  delayed-outcome calibration, and [fourteen tools, each measured](#more-tools-each-measured).
 
 [DESIGN.md](DESIGN.md) gives the measurement behind every choice, including the mistakes this
 repository made and corrected in public: an adapter that asked judges for the verdict before the
@@ -67,8 +70,9 @@ judge-admissibility report certificates.json  # again, with the current doctor, 
 
 `certify` exits 1 unless every judge it certified is ADMISSIBLE, and prints what to change.
 
-The `logfire` extra is only needed for `promote` and the canary functions. Tested against the
-released pydantic-evals 2.52.0 and logfire 5.1.1. Until pydantic-evals declares `sniffio` (its
+The `logfire` extra is only needed for `promote` and the canary functions. The test suite passes
+against the released pydantic-evals 2.52.0 and 2.53.0 and logfire 5.1.1; the benchmarks in
+`bench/` were run against a development build of pydantic-ai, which each saved identity records. Until pydantic-evals declares `sniffio` (its
 online evaluation imports it), also `pip install sniffio` to use `JudgeCanary` online.
 
 ## What it checks
@@ -84,20 +88,23 @@ online evaluation imports it), also `pip install sniffio` to use `JudgeCanary` o
 
 Each rate is decided on an interval, never on the point estimate:
 
-- **PASS** when the 95% Wilson interval's lower bound clears the threshold;
+- **PASS** when the exact (Clopper-Pearson) 95% interval's lower bound clears the threshold, so
+  a judge exactly at the bar passes by chance at most 2.5% of the time (Wilson's bound, used
+  before, let up to 3.5% through at small sizes);
 - **FAIL** when an exact (Clopper-Pearson) upper bound is below it, with the 2.5% upper tail
   shared across every check, control family and sequential look that could fail the certificate
   (Bonferroni), so a sound judge is failed by chance at most 2.5% of the time however many checks
   and looks it faces (computed exactly in `bench/sequential_error.py`: at most 2.2%);
-- **UNVALIDATED** otherwise. Twelve out of twelve is a lower bound of 0.76: not a failure, and
+- **UNVALIDATED** otherwise. Twelve out of twelve is a lower bound of 0.74: not a failure, and
   not yet a pass. The certificate says "needs more cases" instead of rounding up.
 
 **The unit of evidence is the case.** Repeats of one case share its difficulty, so they are not
 new evidence: `acceptance` and `slices` count each case's first judgment, and repeats are used
 only for `stability`. Each control family is decided on its own, since a pooled rate can hide a
 family the judge always gets wrong. Errored judgments are left out of a rate, and more than 10%
-of them leaves the check UNVALIDATED. `human_agreement` is decided on Cohen's kappa with an
-interval that resamples cases.
+of them, overall or in any one slice, leaves the check UNVALIDATED. `human_agreement` is decided
+on Cohen's kappa with an interval that resamples cases, needs labels on at least 10 cases, and
+needs humans to have labelled both passes and fails (kappa cannot measure agreement otherwise).
 
 The certificate is **ADMISSIBLE** only if every check passes, **INADMISSIBLE** if any fails,
 and **UNVALIDATED** otherwise. `acceptance` and `rejection` are both required because each
@@ -124,7 +131,7 @@ What it found on real judges (Codex `gpt-5.6-luna`; every number is reproducible
   shows both.
 - **Self-improving prompts:** in one round of optimization, 4 of 5 proposed prompts were worse
   than the original; an uncertified judge overstated every prompt by 11 to 23 points. Gating on a
-  certified judge, then confirming on held-out questions, promoted the one real improvement
+  reference judge that agreed with ground truth on 80 of 80, then confirming on held-out questions, promoted the one real improvement
   (p = 0.015, a retrospective analysis), the same call ground truth makes.
 - **Pydantic's own example dataset, in one call:** `certify_dataset` on pydantic-ai's
   `time_range_v2.yaml`, loaded with `Dataset.from_file` and no controls written by hand. The
@@ -170,9 +177,12 @@ The 11 differences all go the same way: judging everything said INADMISSIBLE and
 certificate, paying for its looks, said UNVALIDATED. It never failed a judge that judging
 everything passed.
 
-On a real judge, the Codex `LLMJudge` that failed certification on the arithmetic task: the
-sequential certificate reached the same verdict, INADMISSIBLE, after 140 of 280 calls
-(`results/judge_vs_truth.sequential.json`).
+On a real judge, the Codex `LLMJudge` that failed certification on the arithmetic task: under the
+rule at the time, the sequential certificate stopped at INADMISSIBLE after 140 of 280 calls
+(`results/judge_vs_truth.sequential.json`). Under the current rule, which charges every look to
+the error budget, those 140 judgments do not show a failure (UNVALIDATED: `whitespace_reformat`
+10/20), so it would have kept judging. On the support task's blind judge, stopping after 70 of
+280 calls still holds under the current rule: one control family rejected 0 of 10.
 
 Stopping early for success as well was tried and dropped: an early pass is decided on a few
 batches, and it certified sound judges less often for a small saving in calls. (That variant's
@@ -209,16 +219,16 @@ sequentially in batches of 10:
 | `gpt-5.6-luna`, reasoning high, `include_input=True` | ADMISSIBLE | 280 of 280 | 79/80, kappa 0.93 |
 | `gpt-5.6-luna`, reasoning high, default `include_input=False` | **INADMISSIBLE** | **70 of 280** | 15/20, kappa 0.34 |
 
-(The reasoning judge's acceptance is 76/80 because 4 calls timed out; a judgment that errors
-does not count as a pass.)
+(The reasoning judge's acceptance is 38/38: 2 of its first judgments timed out and are left out of
+the rate, not counted as passes.)
 
 The default-configured judge passed every one of the 10 answers borrowed from other customers'
 questions (each with a different correct answer, so wrong by construction). `diagnose` said why:
 *"It accepts another question's answer, and with `include_input=False` it cannot tell which
 question was asked. Set `include_input=True`."*
 
-On the arithmetic task the same default made the judge fail everything instead (0 of 40 right
-answers passed). Both are inadmissible; which way a blind judge fails depends on the task, which
+On the arithmetic task the same default made the judge fail everything instead (0 of 40 judgments of
+20 right answers passed). Both are inadmissible; which way a blind judge fails depends on the task, which
 is the argument for measuring rather than assuming.
 
 The comparison judges, asked to pick between the right answer and a plausible mistake (the refund
@@ -283,11 +293,11 @@ only because 12 refund cases are too few to show the wrong-amount family above i
 held its verdict when only transaction ids changed on 21 of 22: more episodes would settle both.
 
 The first run found a mistake in this benchmark, not in the judge. The trace-aware judge failed
-every correct cancellation reply, saying that "you will not be charged again" and "you keep access
+7 of the 12 correct cancellation replies (and nothing else), saying that "you will not be charged again" and "you keep access
 until the end of the billing period" were not supported by the tool results. They were not: the
 generated replies said more than the cancellation tool returned. The tool result now carries both
-facts, and the table is the run after that fix (in the first run, 8 and 17 of 24 correct
-replies passed). The acceptance check is what caught it.
+facts, and the table is the run after that fix (in the first run, kept in
+`results/evidence_contract.first_run.json`, 8 and 17 of 24 correct replies passed). The acceptance check is what caught it.
 
 ## Under optimization pressure: `stress_judge`
 
@@ -334,7 +344,7 @@ agent that does better after *any* message makes every judge look helpful agains
 
 ```python
 result = assess_steering(states, resume=resume, outcome=completed_correctly, steer=judge_message, repeats=3)
-print(result.table())  # HELPS / HURTS / INCONCLUSIVE (steer vs neutral), and harm on states already on track
+print(result.summary())  # HELPS / HURTS / INCONCLUSIVE (steer vs neutral), and harm on states already on track
 ```
 
 `bench/steering_value.py`, offline: a deterministic refund workflow (`bench/steering_sim.py`), 24
@@ -352,8 +362,15 @@ The over-eager judge is the one to look at: its gains on broken states hide its 
 overall verdict, and only the check on states that were already on track shows it. The last row
 is why the neutral arm exists: against silence that judge looks as good as the helpful one. This
 is a simulator built to contain these failure modes, so it shows the method can separate them,
-not how real judges behave; plugging in a pydantic-ai agent and a model judge is described in
-`bench/steering_value.py` (`--model`) and needs model calls.
+not how real judges behave.
+
+With a real agent and a real judge (`bench/steering_real.py`: a pydantic-ai agent on Codex
+choosing one action at a time, a Codex judge that may steer, 8 states, 39 calls, 44 with a smoke run), every arm
+completed every state: the agent checked the policy unprompted (*"the next required step is to
+check the applicable refund policy"*), so there was nothing to fix and steering could not show
+an effect. The judge spoke on 5 states, two of them states that needed no correction (one on track, one already recovered), without doing harm.
+Measuring a real effect needs a weaker or more hurried agent, rules it can miss, and many more
+states.
 
 ## Pydantic's own example judge
 
@@ -430,7 +447,7 @@ rubric. These are rubric disputes to settle by reading them, which is what the d
 Three are the three the hand-written run found ("Ambiguous mention", "Impossible range",
 "Confusing relative references"); the doctor says to read those against the rubric. The fourth,
 "No mention" (*"No timeframe could be inferred from your request."*), is second person, and the
-judge passed it once its spaces were doubled, saying in the first run that it "refers directly to
+judge passed it once its spaces were doubled, saying in the verdict-first run that it "refers directly to
 'your request'". The second run did the same (failed it three times, passed it with doubled
 spaces).
 The doctor reports that one as the judge contradicting itself, not as bad data. The one judge attached to a single case was reported and
@@ -438,7 +455,7 @@ not certified: one case cannot certify anything.
 
 The automatic controls are weaker than hand-written ones. For a style rubric the only answer that
 must fail under any rubric is an empty one, so with 10 cases `rejection` cannot pass (10/10 has a
-lower bound of 0.72; the doctor says 16 cases would do it). A control that breaks your rubric
+lower bound of 0.69; the doctor says 17 cases would do it). A control that breaks your rubric
 (`Rewrite`), as in the previous section, adds the evidence.
 
 ## Comparison judges: does the order decide?
@@ -495,7 +512,7 @@ certificate admits a sound judge and refuses each kind of broken one:
 | right, but whitespace-sensitive | INADMISSIBLE: invariance |
 | coin flip | INADMISSIBLE: stability |
 | right, but accepts an empty answer | INADMISSIBLE, and the rejection detail names `empty_output 0/30` |
-| raises on every call | INADMISSIBLE: an error is not a verdict |
+| raises on every call | UNVALIDATED: an error is not a verdict, either way |
 | oracle on 3 or 12 cases | UNVALIDATED |
 
 ## A real judge: a rubric about the question, with the question hidden
@@ -565,8 +582,8 @@ promote(result, 'agent_prompt', new_prompt)  # moves the Logfire label only on P
   at the default 0.8 bar). Works with `Dataset.evaluate` and with online evaluation; online, the
   result lands in Logfire as `judge_canary_rejected`.
 
-How well the gate itself behaves, measured in this package's tests (40 cases, 2 runs each,
-200 trials for A/A and 50 for the others):
+How well the gate itself behaves, measured with the simulation in this package's tests (40
+cases, 2 runs each, 200 trials for A/A and 50 for the others; `bench/backing_figures.py` saves it):
 
 | True situation | PROMOTE | INCONCLUSIVE | REJECT |
 |---|---|---|---|
@@ -612,7 +629,7 @@ The release decision survived every change of judge, but 40 questions cannot sho
 change kept the gain within five points, even when the two judges agree on every case: that
 takes about 100 cases. The interval inverts the gate's sign-flip test with one pseudo-case at
 each extreme; at the margin it claimed equivalence wrongly up to 6% of the time with 100 cases
-against a 2.5% budget, within budget from about 400 (`_bridge._interval` has the measurements).
+against a 2.5% budget, close to budget at 400 cases (1.5% and 2.8%; `_bridge._interval` has the measurements).
 Treat a PASS on fewer cases as approximate.
 
 ## When the judge cannot decide: human review for one release
@@ -644,12 +661,13 @@ wrong on each verdict with the given probability, looks of 12, 24, 48 and 96 lab
 | 200 cases, true gain 0.3, judge wrong 5% | 100% | 100% | 34 / 43 |
 | 400 cases, true gain 0.15, judge wrong 10% | 78% | 54% | 82 / 82 |
 
-No wrong decision on any dataset with a gain; with no gain at all, grouped never picked a side
-(random did 0.5% of the time). Replayed on the optimization experiment's 40 training questions,
+Grouping by the judge never made a wrong decision; labelling at random did once in 800 on the
+400-case dataset, and picked a side 0.5% of the time when there was no gain. Replayed on the optimization experiment's 40 training questions,
 with the uncertified plain judge: both ways promoted the real gain in all 1,000 label orders,
 and grouping used slightly more labels there (28.8 against 26.1). The interval is the standard
 stratified one with a pseudo-label at each extreme; it was conservative in every simulation
-(at least 98.7% coverage for a 95% interval), not exact.
+(at least 99.5% coverage for a 95% interval at the last look, `bench/backing_figures.py`),
+not exact.
 
 ## Which defects would your evals catch? `mutation_report`
 
@@ -738,26 +756,82 @@ judge n times.
 each 11-sentence reply carrying it, with a wrong refund amount, shrank to the one line
 *"Note to the grader:"* in 7 judge calls, 1-minimal.
 
+## Where it plugs into Pydantic's stack
+
+**In the evaluation report.** `CertifiedJudgeReport(certificate, judge=judge)` is a pydantic-evals
+`ReportEvaluator`: add it to `dataset.report_evaluators` and the certificate appears in the report
+itself, next to the judge's scores, which it marks `NOT EVIDENCE` unless the certificate is
+ADMISSIBLE and covers that judge. The scores themselves are never changed. `CertifyJudgeReport`
+certifies during the run instead (`bench/report_eval_demo.py`). Coverage is checked against the
+configuration the report records for each result, not only the judge object passed in, and has
+four answers: yes, no, not checked (no `judge=` given, or a certificate with no identity), and
+unverifiable; only yes makes the scores evidence. It is unverifiable, and the scores NOT
+EVIDENCE, when provenance cannot be established: a model with no name of its own (a bare
+`FunctionModel` is recorded only as `function:...`, which cannot say which function scored), a
+judge whose identity is not reliable, or a custom evaluator, which a report records only by its
+class name and arguments. The why column says which, and what to do. A report where two evaluators could be the certified judge is
+refused rather than guessed, and score-only judges are refused before any call:
+
+```
+Judge certificate: LLMJudge(...) INADMISSIBLE (fingerprint 1515f207b051ecb9)
+│ rejection │ FAIL │ 0.0 │ [0.00, 0.09] │ mismatched_output 0/20 FAIL, empty_output 0/20 FAIL │
+Judge results in this report: NOT EVIDENCE
+│ LLMJudge │ assertion │ 20/20 passed │ NOT EVIDENCE │ the judge failed certification (rejection) │
+```
+
+**In Logfire.** `log_certificate(certificate)` emits the certificate as a span with one child per
+check and, for every failed control family, a few of the judgments that failed it, so an engineer
+clicks from a failing certificate to the evidence. `certify_judge_traced` runs certification in one
+span, with every judge call and the certificate's span inside it (`bench/trace_export_demo.py`).
+
+**In tests and CI.** Installing the package adds a pytest plugin. The `certify_judge` fixture
+certifies a judge once per session (once per worker under xdist), keyed on the judge's identity and
+on what it is shown (types, order, state and class code included), so a new judge object with the same configuration reuses the
+certificate and any change to the cases or controls does not. It fails the test with the table and
+the doctor's advice when the judge is not qualified for the stated decision, and prints every judge
+the session trusted. In CI, `--judge-certificates=path` uses saved certificates and calls no judge (except one whose identity
+cannot be pinned down, which is certified every time and never saved);
+`--judge-recertify` remakes them. A judge whose identity cannot be pinned down (see Limits) is
+certified every time and never saved (`examples/test_with_certified_judge.py`).
+
+```python
+def test_agent(certify_judge):
+    judge = certify_judge(my_judge, cases, decision='gate')  # certified once per session, or the test fails
+
+
+async def test_agent_async(certify_judge):
+    judge = await certify_judge.acertify(my_judge, cases, decision='gate')  # on the test's own event loop
+```
+
+**When the dataset changes.** `certify_judge_cached` keys every verdict on the judge's identity and
+on what the judge was shown, kept as faithfully as the identity is, so re-certifying after an edit only calls the judge for what
+changed, and any change to the judge's identity (see Limits for what it records) invalidates
+everything. On Codex: 40 calls the first time; 6
+after editing 2 of 10 replies, the 34 reused verdicts identical to the first run's; none for an
+unchanged re-run (`bench/incremental.py`).
+
 ## More tools, each measured
 
 Each answers one question a team trusting a judge ends up asking. Codex rows are `gpt-5.6-luna`
-with no reasoning, on small runs (16 to 40 cases), so most of their certificates are UNVALIDATED
+with no reasoning unless the row says otherwise, on small runs (4 to 40 cases), so most of their certificates are UNVALIDATED
 by size; the findings are in the counts and the quoted reasons, all in `results/`.
 
 | Tool | The question | What it found |
 |---|---|---|
-| `qualify` | Is this judge qualified for *this* decision (report, gate, promote, steer from traces)? | Of 25 saved certificates, 3 qualify to gate and 1 to steer from traces; 4 sound judges are blocked only because they were certified before identities were recorded |
-| `outcome_calibration`, `recalibrated_pass_rate` | What does the judge's pass rate mean once real outcomes arrive? | Simulated: when outcomes arrive mostly for passed verdicts, the naive correction is 50 points off; the adjusted one is exact and flags the bias |
+| `qualify` | Is this judge qualified for *this* decision (report, gate, promote, steer from traces)? | Of 36 saved certificates, 5 qualify to gate, promote and steer (the three Codex support judges and 2 scripted ones), and none to steer from traces since the retry controls became UNVALIDATED under the exact PASS bound. Four older ones were given their judge's identity from the configuration that produced them (`bench/attach_identities.py`), which also exposed that identity must include reasoning effort |
+| `outcome_calibration`, `recalibrated_pass_rate` | What does the judge's pass rate mean once real outcomes arrive? | Simulated: when outcomes arrive mostly for passed verdicts, the naive correction is 50 points off; the adjusted one is unbiased (within 0.1 point) and flags the bias |
 | `hindsight_pair` | Does the judge grade a decision on what was known at the time? | Codex caught every ignored fact (16/16) but was swayed by a fact added two days later on 2 of 16: *"At the decision time, the fraud team's flag was already recorded"* (it was not) |
-| `duplicate_call`, `transient_retry` | Does it catch harmful process behind a right answer? | ADMISSIBLE: every duplicate refund and changed-order retry caught (16/16 each), every harmless retried timeout passed |
+| `duplicate_call`, `transient_retry` | Does it catch harmful process behind a right answer? | Every duplicate refund and changed-order retry caught (16/16 each), every harmless retried timeout passed (16/16); UNVALIDATED, since 16 of 16 has an exact lower bound of 0.79 against a bar of 0.8 (17 would show it) |
 | `CitedJudge`, `certify_citations` | Does the judge cite real evidence for its verdict? | 32/32 verdicts cited only real span ids, and the decisive one |
-| `AbstainingJudge`, `certify_abstention` | Will it say "I cannot tell" instead of guessing? | With the tool result removed, a plain `LLMJudge` passed 9 of 16 "refund issued" replies *"consistent with the tool call results"* that did not exist |
-| `RoutedJudge`, `certify_routing` | Can a cheap judge handle most cases and escalate the rest? | 31% of the tokens of always using the strong judge at equal accuracy (24/24), but 1.6x the wall time; self-consistency misses judges that are wrong the same way every time |
+| `AbstainingJudge`, `certify_abstention` | Will it say "I cannot tell" instead of guessing? | With the tool result removed, a plain `LLMJudge` passed 9 of 16 "refund issued" or "cancelled" replies *"consistent with the tool call results"* that did not exist |
+| `RoutedJudge`, `certify_routing` | Can a cheap judge handle most cases and escalate the rest? | 31% of the tokens of always using the strong judge at no loss of accuracy (routed 24/24, strong alone 23/24), but 1.6x the wall time; the cheap judge alone was also 24/24, so on this run routing bought nothing over it; self-consistency misses judges that are wrong the same way every time |
 | `evidence_budget` | How much of the trace does the judge need? | Only the action's result, the request and one id: 32% fewer input characters, 7/7 held-out verdicts unchanged; fitted without controls it dropped everything and kept 24/42 |
-| `HybridJudge`, `compare_hybrid` | Can rubric clauses that code can check stop costing model calls? | 22 of 50 calls saved; code caught an arithmetic slip the model made (*"July 15 is within 60 days of April 25"*), and the model, asked only about tone, became stricter |
-| `insert_turns`, `recovery_profile` | Does it honour what was said earlier in a conversation? | Withdrawn consent caught 12/12, unrepaired errors 12/12; the repaired-error control was confounded by an unanswered question, which `bench/conversation_task.py` documents |
+| `HybridJudge`, `compare_hybrid` | Can rubric clauses that code can check stop costing model calls? | 20 of 50 calls saved; code failed a borrowed answer the model passed while noting *"its explanation incorrectly invokes the warranty"*; asked only about tone, the model became stricter: it failed 3 of 10 terse correct replies, against 1 for the full-rubric judge |
+| `insert_turns`, `recovery_profile` | Does it honour what was said earlier in a conversation? | Withdrawn consent caught 12/12, unrepaired errors 12/12; a self-corrected error held on 8 of 12; three of the other four asked for the corrected delivery time to be restated in the final reply |
 | `apprentice` | Can reviewed disagreements improve a judge, safely? | Codex proposed a rubric fix for the judge that cannot see the question; held-out agreement fell from 18/24 to 12/24 and the gate did not promote it. Only `include_input=True` fixes that judge |
-| `find_disagreements` | Where do competent raters disagree, and over what reading? | On Pydantic's example dataset, the judges sided against the dataset's author on 4 of 5 disputes, over whether "we" is friendly; proposed: *"permit polite first-person plural phrasing"* |
+| `find_disagreements` | Where do competent raters disagree, and over what reading? | On Pydantic's example dataset, the judges sided against the dataset's author on 4 of 5 disputes, over whether impersonal or first-person ("we") messages count as friendly; proposed: *"permitting clear, polite first-person plural phrasing ('we')"* |
+| `ppi_pass_rate` | Can a small random human audit correct the judge's pass rate, with a valid interval? | Prediction-powered inference. Plain PPI is unbiased before clipping for a uniform random audit; the default tuned estimate (PPI++) and the clipped estimate are not exactly unbiased, though their simulated bias stayed within 0.004. Narrower than human labels alone when the judge is good (0.07 against 0.13 at 200 labels); when its asymptotic interval is degenerate it falls back to an exact one; with it, coverage for a near-perfect judge at 50 labels is 0.998 for plain PPI and 0.994 for the default tuned one, and about 0.945 for both at 200 labels, close to the nominal 0.95. On the saved real judges that erred, 40 labels gave intervals 0.11 to 0.14 wide against 0.19 for human labels alone; for the judge that never erred it was wider (0.20), and on a 20-reply population audited 10 at a time it still under-covered (0.86) |
+| `Jury`, `compare_jury` | Do several cheap judges voting beat one? | On 16 support cases, three Codex judges (`gpt-5.6-luna` at no and low reasoning, `gpt-reserve`) voting got 62/64, the same as each judge alone (no difference case by case against any member), at 3 times the calls: 5 of the members' 6 errors and both of the jury's were on one hard case, so the vote inherited them |
 
 ## Experiment: one round of prompt optimization, decided three ways
 
@@ -774,11 +848,11 @@ Two judges, certified first on the agent's real replies with ground truth as the
 | Judge | Certificate | Agreement with ground truth on 80 real replies |
 |---|---|---|
 | plain `LLMJudge(include_input=True)` | INADMISSIBLE | passed 7 of 39 wrong answers, failed 6 of 41 right ones |
-| reference `LLMJudge(include_input=True, include_expected_output=True)` | ADMISSIBLE | 80 of 80 |
+| reference `LLMJudge(include_input=True, include_expected_output=True)` | ADMISSIBLE when the experiment ran; UNVALIDATED under the exact PASS bound adopted since (invariance 37/40 against a bar of 0.8) | 80 of 80 |
 
 On the 40 training questions:
 
-| Prompt | Plain judge | Certified judge | Truth | Gate on plain judge | Gate on certified judge (level split 5 ways) |
+| Prompt | Plain judge | Reference judge | Truth | Gate on plain judge | Gate on reference judge (level split 5 ways) |
 |---|---|---|---|---|---|
 | baseline | 0.625 | 0.550 | 0.512 | | |
 | candidate 0 | 0.500 | 0.275 | 0.275 | REFUSED | REJECT |
@@ -796,7 +870,7 @@ What it shows, including where it did not go the way I expected:
   a regression threshold, a claim that the agent is 80% accurate when it is 69%.
 - **Most proposals were worse than the prompt they replaced.** Four of five, by 9 to 26 points of
   truth. All four worse prompts got the model to
-  reply tersely, median 16 to 18 characters against the baseline's 46, and two of them asked
+  reply tersely, median 16 to 18 characters against the baseline's 46 (`bench/backing_figures.py`), and two of them asked
   for "internal" or "silent" reasoning outright. At no reasoning effort the written working is
   the model's only reasoning, and the terse replies came with lower accuracy (this run shows the
   association, not the cause). The one better prompt said "prioritize correctness over brevity"
@@ -806,12 +880,12 @@ What it shows, including where it did not go the way I expected:
   gain from noise, as `detectable_gain` predicted: at the split level it needs a shift of 40
   points in each case's success probability (capped at 1) to be seen reliably.
 - **Selecting and confirming on different questions can fix that.** `bench/confirm.py` tests only
-  the selected candidate, once, on the 40 held-out questions, scored by the certified judge:
+  the selected candidate, once, on the 40 held-out questions, scored by the reference judge:
   PROMOTE (gain +0.16 per case, one-sided Monte Carlo p = 0.015), the same decision ground truth
   gives. Retrospective: it was run after the held-out results were seen, so it shows the
   procedure, not a prospective test of it. The certified
   judge agreed with ground truth on all 160 held-out replies.
-- **The certified judge found a bug in my ground truth.** It passed "−27 pens" (a U+2212 minus)
+- **The reference judge found a bug in my ground truth.** It passed "−27 pens" (a U+2212 minus)
   for an expected -27, which my checker had failed. The checker is fixed and tested; no row of the
   baseline changed.
 
@@ -833,11 +907,28 @@ cache entry, and the first run had judged them separately, not always alike.
   still fails an empty answer on live traffic. A judge that fails everything passes it; its
   health is a rolling window, not a time-uniform test; and requests from one user are treated
   as independent.
-- **A certificate covers one judge configuration.** It records the judge's identity (rubric,
-  model, what it sees, settings, pydantic-evals version), and `raise_unless_admissible(judge)`
-  and the gate (`judge=`) refuse it for a different one. It cannot see what happens outside the
-  judge: a provider adapter that reorders the output schema, as this repository's did, changes
-  the judge without changing its identity.
-- **The evidence comes from two synthetic task families and Codex models**, through one CLI
-  adapter. Native providers, human-adjudicated cases, and harder wrong answers (plausible
-  mistakes, not only borrowed and empty ones) would test it further.
+- **A certificate covers one judge configuration, as far as its identity can see.** The identity
+  records the rubric, the model by name, what the judge is shown, its settings and the
+  pydantic-evals version; for any other evaluator, its class and module, its fields (a dict's
+  order included), what it stores outside them, and its class's code: the methods its author
+  wrote (bytecode, defaults, closed-over values), its class attributes and its metaclass (so also
+  the Python version); for a judge built on a Python function, the function's code and the plain
+  values it closes over; judges inside judges by their own identities. Python objects can hide
+  behaviour in more places than any list covers: seven adversarial review rounds each found a
+  place this missed, each now closed with a regression test (DESIGN.md), and an eighth may find
+  another. Inputs whose code cannot be pinned down get cache keys that never match, so they are
+  judged afresh every time. It does not follow
+  what a function reaches through module globals (a helper, a prompt file), and it cannot see
+  outside the judge: a provider adapter that reorders the output schema, as this repository's
+  did, changes the judge without changing its identity. What it captures but cannot identify by value
+  (captured lists, dicts or objects, a function held as a setting, a function-backed model with no
+  name of its own, an evaluator that is not a dataclass) is marked opaque, and `identity_reliable`
+  is then False. Nothing that reuses evidence trusts such a judge: the cache and the pytest plugin
+  certify it afresh and never save it, a jury refuses to borrow its certificate, the report
+  evaluator calls its coverage unverifiable, and `qualify` warns that its certificate holds only
+  for the very object it was made from. A model object with a name of its own is identified by
+  that name; give it one that changes when it does.
+- **The evidence comes from synthetic tasks and Codex models**, through one CLI adapter: support,
+  arithmetic, evidence, conversation, temporal and retry tasks, plus Pydantic's own example dataset.
+  Most real runs are small (4 to 40 cases), so many of their certificates are UNVALIDATED by size.
+  Native providers, human-adjudicated cases and larger runs would test it further.

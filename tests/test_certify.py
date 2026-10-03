@@ -6,6 +6,7 @@ import pytest
 from judges import coin, exact, judge, lenient_on_empty, no_man, oracle, yes_man
 
 from pydantic_evals_admissibility import HumanLabel, JudgeCase, Thresholds, certify_judge, cohen_kappa, wilson
+from pydantic_evals_admissibility._certify import Judgment
 
 CAPITALS = {
     'France': 'Paris',
@@ -288,3 +289,85 @@ async def test_agreement_with_many_errored_labels_is_not_a_pass() -> None:
     cert = await certify_judge(judge(errors_on_most), CASES, human_labels=labels, controls=())
     agreement = next(c for c in cert.checks if c.name == 'human_agreement')
     assert agreement.status == 'UNVALIDATED' and 'errored' in agreement.detail, cert.table()
+
+
+async def test_control_families_are_recorded_on_the_check_and_saved() -> None:
+    from pydantic_evals_admissibility import Certificate, Rewrite
+
+    controls = (Rewrite(lambda o: f'{o}, no longer, after the policy change', 'policy-change', 'must_fail'),)
+    cert = await certify_judge(judge(oracle), CASES, controls=controls)
+    rejection = next(c for c in cert.checks if c.name == 'rejection')
+    [family] = rejection.families
+    assert (family.name, family.successes, family.trials, family.errors, family.status) == (
+        'policy-change', 0, 30, 0, 'FAIL'
+    )  # fmt: skip
+    assert Certificate.from_dict(cert.to_dict()).checks == cert.checks
+    old = cert.to_dict()
+    for c in old['checks']:
+        c.pop('families', None)
+    assert all(c.families == () for c in Certificate.from_dict(old).checks)  # files saved before still load
+    assert 'families' not in next(c for c in cert.to_dict()['checks'] if c['name'] == 'acceptance')
+
+
+def _labelled(case_and_labels: list[tuple[str, bool, bool]]) -> list[Judgment]:
+    """Judgments of human-labelled outputs: (case, the human's label, the judge's verdict)."""
+    from pydantic_evals_admissibility._certify import Judgment
+
+    return [Judgment(case, f'human:{int(human)}', 'out', verdict, None) for case, human, verdict in case_and_labels]
+
+
+def test_human_agreement_is_unvalidated_when_humans_used_one_label() -> None:
+    """Found in the eighth review: with every human label `fail`, kappa is 0 for any judge, so a
+    judge agreeing on 11 of 12 was INADMISSIBLE. Kappa cannot measure agreement there."""
+    from pydantic_evals_admissibility._certify import _agreement  # pyright: ignore[reportPrivateUsage]
+
+    labels = _labelled([(f'c{i}', False, i == 0) for i in range(12)])
+    from pydantic_evals_admissibility._certify import DEFAULT_THRESHOLDS
+
+    check = _agreement(labels, DEFAULT_THRESHOLDS, 0.0125)
+    assert check.status == 'UNVALIDATED' and 'every output fail' in check.detail and '11/12' in check.detail
+
+
+def test_human_agreement_counts_cases_not_labels() -> None:
+    """Found in the eighth review: twelve labels on one case passed, on an interval of [1, 1]."""
+    from pydantic_evals_admissibility._certify import (
+        DEFAULT_THRESHOLDS,
+        _agreement,  # pyright: ignore[reportPrivateUsage]
+    )
+
+    one_case = _labelled([('c0', i % 2 == 0, i % 2 == 0) for i in range(12)])
+    check = _agreement(one_case, DEFAULT_THRESHOLDS, 0.0125)
+    assert check.status == 'UNVALIDATED' and 'labels on 1 cases' in check.detail
+    many = _labelled([(f'c{i}', i % 2 == 0, i % 2 == 0) for i in range(12)])
+    assert _agreement(many, DEFAULT_THRESHOLDS, 0.0125).status == 'PASS'
+
+
+def test_a_slice_with_many_errors_is_unvalidated() -> None:
+    """Found in the eighth review: half of one slice errored and the slice check still passed."""
+    from pydantic_evals_admissibility._certify import Judgment, _slice_check  # pyright: ignore[reportPrivateUsage]
+
+    first = [Judgment(f'o{i}', 'reference#0', 'out', True, None) for i in range(90)]
+    first += [Judgment(f'r{i}', 'reference#0', 'out', None if i < 5 else True,
+                       error='context length' if i < 5 else None) for i in range(10)]  # fmt: skip
+    slices = {f'o{i}': 'other' for i in range(90)} | {f'r{i}': 'refund' for i in range(10)}
+    check = _slice_check(first, slices, ['other', 'refund'], 0.7, 0.0125)
+    assert check.status == 'UNVALIDATED' and 'refund: 5 of 10 judgments errored' in check.detail
+
+
+def test_a_row_below_the_bar_says_so() -> None:
+    from pydantic_evals_admissibility._certify import _check  # pyright: ignore[reportPrivateUsage]
+
+    check = _check('acceptance', 15, 30, 0.7, 10, z_fail=2.5)
+    assert check.status == 'UNVALIDATED' and 'below the bar' in check.detail
+
+
+async def test_recertifying_a_certificate_saved_without_judgments_raises() -> None:
+    """Found in the eighth review: it silently turned ADMISSIBLE into UNVALIDATED (\"no controls\")."""
+    from judges import judge, oracle
+
+    from pydantic_evals_admissibility import Certificate, certify_judge, recertify
+
+    certificate = await certify_judge(judge(oracle), CASES)
+    saved = Certificate.from_dict(certificate.to_dict(judgments=False))
+    with pytest.raises(ValueError, match='saved without its judgments'):
+        recertify(saved)

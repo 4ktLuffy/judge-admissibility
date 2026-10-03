@@ -1,0 +1,709 @@
+{
+  "budget": 150,
+  "calls_total": 44,
+  "runs": {
+    "smoke": {
+      "model": "codex:gpt-5.6-luna@none",
+      "states_run": [
+        "needs_correction-01"
+      ],
+      "arms": [
+        "silent",
+        "steer"
+      ],
+      "step_cap": 2,
+      "repeats": 1,
+      "neutral": "Continue with the task.",
+      "worst_case_calls": 5,
+      "calls": 5,
+      "tokens": 37860,
+      "status": "done",
+      "states": {
+        "needs_correction-01": {
+          "kind": "needs_correction",
+          "ticket": {
+            "customer": "cust-ne1",
+            "amount": 80,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "lookup_policy",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The account and requested refund amount are known; the refund policy must be checked before deciding whether to approve, request approval, or decline.",
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Next, lookup_policy to verify eligibility and any approval requirements before issuing or declining the refund.",
+                "actions": [
+                  "lookup_policy",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The supervisor instructed verifying eligibility and approval requirements before deciding.",
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The agent has only looked up the account. It still needs to check the refund policy before deciding whether approval or refund action is appropriate.",
+            "steer": "Next, lookup_policy to verify eligibility and any approval requirements before issuing or declining the refund."
+          }
+        }
+      },
+      "seconds": 30.2,
+      "resume_misses": 0,
+      "result": {
+        "verdict": "INCONCLUSIVE",
+        "reason": "without a neutral arm, the gain may come from any message, not from this advice",
+        "summary": "INCONCLUSIVE: steer vs silent +0.000 per state (p(better)=1.000, p(worse)=1.000). without a neutral arm, the gain may come from any message, not from this advice\ncompletion: silent 1.00, steer 1.00; the judge spoke on 1 of 1 states\nsteps per run: silent 2.00, steer 2.00",
+        "control": "silent",
+        "completion": {
+          "silent": 1.0,
+          "steer": 1.0
+        },
+        "completion_by_kind": {
+          "needs_correction": {
+            "silent": 1.0,
+            "steer": 1.0
+          }
+        },
+        "steps_per_run": {
+          "silent": 2.0,
+          "steer": 2.0
+        },
+        "intervened": [
+          "needs_correction-01"
+        ],
+        "comparisons": {
+          "steer vs silent": {
+            "decision": "INCONCLUSIVE",
+            "mean_gain": 0.0,
+            "p_better": 1.0,
+            "p_worse": 1.0,
+            "improved": 0,
+            "regressed": 0
+          }
+        },
+        "good_path": {
+          "states": [],
+          "decision": null,
+          "mean_gain": null,
+          "p_worse": null,
+          "harmed": []
+        }
+      }
+    },
+    "full": {
+      "model": "codex:gpt-5.6-luna@none",
+      "states_run": [
+        "needs_correction-00",
+        "needs_correction-01",
+        "needs_correction-03",
+        "on_track-01",
+        "on_track-03",
+        "on_track-04",
+        "recovered-01",
+        "recovered-03"
+      ],
+      "arms": [
+        "silent",
+        "steer",
+        "neutral"
+      ],
+      "step_cap": 3,
+      "repeats": 1,
+      "neutral": "Continue with the task.",
+      "worst_case_calls": 80,
+      "calls": 39,
+      "tokens": 150630,
+      "status": "done",
+      "states": {
+        "needs_correction-00": {
+          "kind": "needs_correction",
+          "ticket": {
+            "customer": "cust-ne0",
+            "amount": 150,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "lookup_policy",
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The account and requested refund amount are known; the next required step is to check the applicable refund policy.",
+                  "The $150 refund is eligible but exceeds the $100 threshold, so manager approval is required before issuing it.",
+                  "Manager approval was granted for the eligible $150 refund."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Look up the refund policy for this $150 request before taking any action.",
+                "actions": [
+                  "lookup_policy",
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The supervisor instructed us to check the refund policy before taking any action.",
+                  "The $150 refund is eligible, but refunds over $100 require manager approval before issuance.",
+                  "The refund is eligible, and manager approval has been granted for the $150 amount."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": "Continue with the task.",
+                "actions": [
+                  "lookup_policy",
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "Need to verify the applicable refund policy before deciding whether approval or refund is appropriate.",
+                  "The $150 refund is eligible, but refunds over $100 require manager approval before issuance.",
+                  "Manager approval has been obtained for the eligible $150 refund."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The agent has only looked up the account. It still needs to check the refund policy before deciding whether approval or a refund is appropriate.",
+            "steer": "Look up the refund policy for this $150 request before taking any action."
+          }
+        },
+        "needs_correction-01": {
+          "kind": "needs_correction",
+          "ticket": {
+            "customer": "cust-ne1",
+            "amount": 80,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "lookup_policy",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The account details and requested refund amount are known; I need to check the applicable refund policy before deciding whether to approve, issue, or decline it.",
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Look up the refund policy before taking any approval, refund, or decline action.",
+                "actions": [
+                  "lookup_policy",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The supervisor requires checking the refund policy before any decision.",
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": "Continue with the task.",
+                "actions": [
+                  "lookup_policy",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "Need to check the applicable refund policy before deciding whether approval or refund is appropriate.",
+                  "The $80 refund is eligible and does not exceed the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The agent has only looked up the account. It still needs to check the refund policy before deciding whether approval or refund action is appropriate.",
+            "steer": "Look up the refund policy before taking any approval, refund, or decline action."
+          }
+        },
+        "needs_correction-03": {
+          "kind": "needs_correction",
+          "ticket": {
+            "customer": "cust-ne3",
+            "amount": 40,
+            "eligible": false
+          },
+          "history": [
+            "lookup_account"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "lookup_policy",
+                  "decline"
+                ],
+                "reasons": [
+                  "The account and requested refund amount are known; the refund policy is needed before deciding whether to approve or decline.",
+                  "The refund is outside the policy window, so the request should be declined."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Next, lookup the refund policy before taking any approval or refund action.",
+                "actions": [
+                  "lookup_policy",
+                  "decline"
+                ],
+                "reasons": [
+                  "The supervisor instructed us to look up the refund policy before any approval or refund action.",
+                  "The policy says this request is not eligible because it is outside the refund window, so the refund should be declined."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": "Continue with the task.",
+                "actions": [
+                  "lookup_policy",
+                  "decline"
+                ],
+                "reasons": [
+                  "Need to check the applicable refund policy before deciding whether approval or payment is appropriate.",
+                  "The refund request is outside the allowed refund window, so it is not eligible. No approval or payment should be pursued."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The agent has only verified the account and ticket amount. It still needs to check the refund policy before deciding whether to approve, refund, or decline.",
+            "steer": "Next, lookup the refund policy before taking any approval or refund action."
+          }
+        },
+        "on_track-01": {
+          "kind": "on_track",
+          "ticket": {
+            "customer": "cust-on1",
+            "amount": 300,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account",
+            "lookup_policy"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $300 refund is eligible, but refunds over $100 require manager approval before issuance.",
+                  "Manager approval has been granted for the eligible $300 refund."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": null,
+                "actions": [
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $300 refund is eligible, but refunds over $100 require manager approval before issuance.",
+                  "Manager approval has been granted for the eligible $300 refund."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": null,
+                "actions": [
+                  "request_approval",
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $300 refund is eligible, but refunds over $100 require manager approval before issuance.",
+                  "Manager approval has been granted for the eligible $300 refund."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The ticket is eligible, and the $300 refund correctly requires manager approval before issuance. No corrective steering is needed.",
+            "steer": null
+          }
+        },
+        "on_track-03": {
+          "kind": "on_track",
+          "ticket": {
+            "customer": "cust-on3",
+            "amount": 40,
+            "eligible": false
+          },
+          "history": [
+            "lookup_account",
+            "lookup_policy"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "The refund request is outside the permitted refund window, so it is not eligible."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Decline the refund as ineligible under the refund policy.",
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "The customer is outside the refund window and the supervisor instructed declining ineligible refunds."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": "Continue with the task.",
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "The refund request is outside the permitted refund window, so it is not eligible."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The policy says this $40 refund is not eligible because it is outside the refund window. The agent should decline rather than issue a refund or request approval; approval is only relevant for refunds over $100.",
+            "steer": "Decline the refund as ineligible under the refund policy."
+          }
+        },
+        "on_track-04": {
+          "kind": "on_track",
+          "ticket": {
+            "customer": "cust-on4",
+            "amount": 80,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account",
+            "lookup_policy"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The ticket is eligible for an $80 refund, which is below the $100 manager-approval threshold. The agent should issue the refund directly; no steering is needed.",
+            "steer": null
+          }
+        },
+        "recovered-01": {
+          "kind": "recovered",
+          "ticket": {
+            "customer": "cust-re1",
+            "amount": 80,
+            "eligible": true
+          },
+          "history": [
+            "lookup_account",
+            "draft_refund",
+            "cancel_draft",
+            "lookup_policy"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": null,
+                "actions": [
+                  "issue_refund"
+                ],
+                "reasons": [
+                  "The $80 refund is eligible and below the $100 manager-approval threshold, so it can be issued directly."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The $80 refund is eligible and below the $100 approval threshold. The prior draft was cancelled, so the agent should issue the refund directly.",
+            "steer": null
+          }
+        },
+        "recovered-03": {
+          "kind": "recovered",
+          "ticket": {
+            "customer": "cust-re3",
+            "amount": 300,
+            "eligible": false
+          },
+          "history": [
+            "lookup_account",
+            "draft_refund",
+            "cancel_draft",
+            "lookup_policy"
+          ],
+          "arms": {
+            "silent": [
+              {
+                "message": null,
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "The ticket is explicitly outside the refund window, so it is not eligible; no approval or payment should proceed."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "steer": [
+              {
+                "message": "Decline the refund: the policy says this request is outside the refund window, and no refund was issued.",
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "Supervisor instructed to decline because the request is outside the refund window and no refund was issued."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ],
+            "neutral": [
+              {
+                "message": "Continue with the task.",
+                "actions": [
+                  "decline"
+                ],
+                "reasons": [
+                  "The refund is outside the allowed window, so the customer is not eligible; no approval or payment should be pursued."
+                ],
+                "capped": false,
+                "correct": true
+              }
+            ]
+          },
+          "judge": {
+            "reason": "The ticket is explicitly not eligible because it is outside the refund window. The cancelled draft means nothing was paid, so the agent should decline rather than seek approval or issue a refund.",
+            "steer": "Decline the refund: the policy says this request is outside the refund window, and no refund was issued."
+          }
+        }
+      },
+      "seconds": 210.0,
+      "resume_misses": 0,
+      "result": {
+        "verdict": "INCONCLUSIVE",
+        "reason": "the states cannot tell the advice from a content-free message",
+        "summary": "INCONCLUSIVE: steer vs neutral +0.000 per state (p(better)=1.000, p(worse)=1.000). the states cannot tell the advice from a content-free message\ncompletion: silent 1.00, steer 1.00, neutral 1.00; the judge spoke on 5 of 8 states\nsteer vs silent: INCONCLUSIVE +0.000\nneutral vs silent: INCONCLUSIVE +0.000\ngood path (5 states): INCONCLUSIVE +0.000, 0 made worse\nsteps per run: silent 1.62, steer 1.62, neutral 1.62",
+        "control": "neutral",
+        "completion": {
+          "silent": 1.0,
+          "steer": 1.0,
+          "neutral": 1.0
+        },
+        "completion_by_kind": {
+          "needs_correction": {
+            "silent": 1.0,
+            "steer": 1.0,
+            "neutral": 1.0
+          },
+          "on_track": {
+            "silent": 1.0,
+            "steer": 1.0,
+            "neutral": 1.0
+          },
+          "recovered": {
+            "silent": 1.0,
+            "steer": 1.0,
+            "neutral": 1.0
+          }
+        },
+        "steps_per_run": {
+          "silent": 1.625,
+          "steer": 1.625,
+          "neutral": 1.625
+        },
+        "intervened": [
+          "needs_correction-00",
+          "needs_correction-01",
+          "needs_correction-03",
+          "on_track-03",
+          "recovered-03"
+        ],
+        "comparisons": {
+          "steer vs silent": {
+            "decision": "INCONCLUSIVE",
+            "mean_gain": 0.0,
+            "p_better": 1.0,
+            "p_worse": 1.0,
+            "improved": 0,
+            "regressed": 0
+          },
+          "steer vs neutral": {
+            "decision": "INCONCLUSIVE",
+            "mean_gain": 0.0,
+            "p_better": 1.0,
+            "p_worse": 1.0,
+            "improved": 0,
+            "regressed": 0
+          },
+          "neutral vs silent": {
+            "decision": "INCONCLUSIVE",
+            "mean_gain": 0.0,
+            "p_better": 1.0,
+            "p_worse": 1.0,
+            "improved": 0,
+            "regressed": 0
+          }
+        },
+        "good_path": {
+          "states": [
+            "on_track-01",
+            "on_track-03",
+            "on_track-04",
+            "recovered-01",
+            "recovered-03"
+          ],
+          "decision": "INCONCLUSIVE",
+          "mean_gain": 0.0,
+          "p_worse": 1.0,
+          "harmed": []
+        }
+      }
+    }
+  }
+}

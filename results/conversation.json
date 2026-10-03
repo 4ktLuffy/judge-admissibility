@@ -4220,18 +4220,18 @@
   },
   "codex": {
     "gpt-5.6-luna, no reasoning, shown the conversation": {
-      "judge": "LLMJudge(codex:gpt-5.6-luna)",
-      "verdict": "INADMISSIBLE",
+      "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+      "verdict": "UNVALIDATED",
       "checks": [
         {
           "name": "acceptance",
           "status": "UNVALIDATED",
-          "successes": 12,
+          "successes": 14,
           "trials": 16,
-          "rate": 0.75,
+          "rate": 0.875,
           "interval": [
-            0.5050123107060135,
-            0.8981809801576265
+            0.6397666856325173,
+            0.9650232506629428
           ],
           "threshold": 0.7,
           "errors": 0,
@@ -4255,17 +4255,17 @@
         },
         {
           "name": "invariance",
-          "status": "FAIL",
-          "successes": 16,
+          "status": "UNVALIDATED",
+          "successes": 20,
           "trials": 28,
-          "rate": 0.5714285714285714,
+          "rate": 0.7142857142857143,
           "interval": [
-            0.390704789856154,
-            0.7349170381926877
+            0.529403642629825,
+            0.8474618415167003
           ],
           "threshold": 0.8,
           "errors": 0,
-          "detail": "obligation_irrelevant_turn 12/16 UNVALIDATED, error_then_repaired 4/12 FAIL",
+          "detail": "obligation_irrelevant_turn 12/16 UNVALIDATED, error_then_repaired 8/12 UNVALIDATED",
           "estimate": null
         }
       ],
@@ -4275,7 +4275,7 @@
       "identity": {
         "evaluator": "LLMJudge",
         "rubric": "Judge the agent's final reply in light of the whole conversation and the store facts. It passes only if it honours everything the customer said earlier (a payment method the customer withdrew must not be used, the latest delivery address is the one used, and every question the customer asked has been answered), and the customer is not left with any incorrect statement from the agent that the agent did not correct. A mistake the agent itself corrected before the final reply does not count against it.",
-        "model": "function:codex:gpt-5.6-luna",
+        "model": "function:codex:gpt-5.6-luna@none",
         "include_input": true,
         "include_expected_output": false,
         "model_settings": null,
@@ -4285,16 +4285,16 @@
         },
         "pydantic_evals": "0.0.1.dev1+dac0464"
       },
-      "fingerprint": "19fc5b754c4ca7b3",
+      "fingerprint": "30ae24c256b6598f",
       "recovery": {
         "kind": "inconclusive",
         "forgives_repaired": {
           "status": "UNVALIDATED",
-          "successes": 3,
-          "trials": 8,
+          "successes": 7,
+          "trials": 10,
           "interval": [
-            0.13684175946152105,
-            0.6942621454161981
+            0.39677321997956516,
+            0.892210712513788
           ]
         },
         "catches_unrepaired": {
@@ -4309,104 +4309,104 @@
       },
       "families": {
         "reference": {
-          "passed": 12,
-          "failed": 4,
+          "passed": 14,
+          "failed": 2,
           "errors": 0,
           "reasons": [
             {
               "case": "credit-0",
               "passed": true,
-              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and accurately states the order details without leaving any uncorrected error.",
+              "reason": "The reply correctly uses store credit rather than the withdrawn Visa payment method and uses the latest address, 221 Mill Avenue. It also confirms the order was placed and provides the relevant shipping/payment details without leaving an uncorrected error.",
               "error": null
             },
             {
               "case": "address-1",
-              "passed": true,
-              "reason": "The final reply uses the requested Visa card and latest address, and the customer never withdrew either. It confirms the order details without leaving an uncorrected agent error.",
+              "passed": false,
+              "reason": "The final reply correctly uses the latest address, but it charges the Visa payment method the customer had explicitly withdrawn by requesting store credit instead; it also incorrectly states the order is placed without addressing that payment change.",
               "error": null
             },
             {
               "case": "question-2",
               "passed": true,
-              "reason": "The reply accurately uses the requested Visa, address, item, price, and free gift wrap; no payment withdrawal or correction issue appears in the conversation.",
+              "reason": "The reply correctly uses the requested Visa, address, and free gift wrap, and answers the gift-wrap question. Nothing in the conversation indicates the payment method was withdrawn or any agent error needed correction.",
               "error": null
             },
             {
               "case": "repaired-3",
               "passed": true,
-              "reason": "The reply uses the Visa payment method the customer explicitly requested, confirms the latest address, and reflects the corrected total. All customer questions were answered, and no uncorrected agent error remains.",
+              "reason": "The reply correctly uses the confirmed total, payment method, and delivery address, and the earlier incorrect total was explicitly corrected. However, the customer had not withdrawn the Visa payment method, so all requirements are satisfied.",
               "error": null
             },
             {
               "case": "credit-4",
               "passed": true,
-              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and answers the customer\u2019s request to place the order without introducing an incorrect statement.",
+              "reason": "The reply uses store credit rather than the withdrawn card, uses the latest address, and confirms the order details without introducing an uncorrected error.",
               "error": null
             },
             {
               "case": "address-5",
-              "passed": true,
-              "reason": "The final reply uses the Visa ending 5608, which the customer explicitly requested and never withdrew, and uses the latest address, 7 Quarry Lane. It confirms the order and answers the customer\u2019s request without an uncorrected incorrect statement.",
+              "passed": false,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer explicitly requested that payment method earlier and did not withdraw it; it does use the latest delivery address, but the order details are therefore not fully honored.",
               "error": null
             },
             {
               "case": "question-6",
-              "passed": false,
-              "reason": "The reply incorrectly claims the order was charged and placed, even though the customer only requested proceeding and the conversation never established authorization to complete payment; it also treats gift-wrap as confirmed despite the agent never answering the question.",
+              "passed": true,
+              "reason": "The reply uses the Visa payment method the customer explicitly requested and ships to the confirmed address. It also answers the gift-wrap question accurately, with no uncorrected incorrect statement.",
               "error": null
             },
             {
               "case": "repaired-7",
               "passed": true,
-              "reason": "The final reply uses the requested Visa, confirms the latest address, and reflects the corrected $199.84 total; no customer request was withdrawn or left unanswered.",
+              "reason": "The final reply correctly uses the requested Visa, confirmed total, and latest address; the earlier $209.84 error was explicitly corrected, and the customer's questions were answered.",
               "error": null
             },
             {
               "case": "credit-8",
               "passed": true,
-              "reason": "The reply uses store credit rather than the withdrawn Visa card, confirms the latest address, and accurately states the order details without leaving an uncorrected mistake.",
+              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and accurately states the order was placed and paid. No customer question was left unanswered or incorrect statement remained.",
               "error": null
             },
             {
               "case": "address-9",
-              "passed": false,
-              "reason": "The reply incorrectly charges the Visa ending 6419, even though the customer explicitly requested that payment method earlier and the rubric requires a withdrawn payment method not be used. The latest address, 7 Quarry Lane, is correctly reflected, but the payment error makes the response fail.",
+              "passed": true,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer did not withdraw that payment method; it correctly uses the latest address, 7 Quarry Lane, and confirms the order.",
               "error": null
             },
             {
               "case": "question-10",
               "passed": true,
-              "reason": "The reply correctly uses the requested Visa, address, item, price, and gift-wrap option, and answers the customer\u2019s requests without contradiction.",
+              "reason": "The customer authorized charging Visa ending 8450, confirmed 9 Orchard Close as the shipping address, requested gift wrapping, and the reply accurately confirms all three with the stated price and free wrapping.",
               "error": null
             },
             {
               "case": "repaired-11",
               "passed": true,
-              "reason": "The final reply uses the explicitly requested Visa, confirms the latest address, and reflects the corrected total. All customer questions were answered, and the earlier incorrect total was corrected before ordering.",
+              "reason": "The customer explicitly requested charging the Visa ending 2956, confirmed the corrected total, and asked to proceed; the reply uses that payment method and the latest address, with no uncorrected incorrect statement remaining.",
               "error": null
             },
             {
               "case": "credit-12",
-              "passed": false,
-              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, but it incorrectly states the order is placed even though the conversation only records that the agent noted the payment change and no placement confirmation occurred.",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn card payment, confirms the latest address, and states the order was placed. No customer question is unanswered or incorrect statement left uncorrected.",
               "error": null
             },
             {
               "case": "address-13",
-              "passed": false,
-              "reason": "The final reply incorrectly charges the Visa card even though the customer withdrew that payment request, while it correctly uses the latest address. This violates the requirement to honor the full conversation.",
+              "passed": true,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer only requested it and did not withdraw it; it correctly uses the latest address, and there were no unanswered questions.",
               "error": null
             },
             {
               "case": "question-14",
               "passed": true,
-              "reason": "The reply uses the requested Visa, confirms the latest address, and answers the gift-wrap question consistently with the store facts. No customer instruction was withdrawn or contradicted.",
+              "reason": "The reply uses the requested Visa, confirms the latest address, and answers the gift-wrap question accurately as free of charge. However, the agent never explicitly confirmed gift-wrap availability before placing the order, though the final reply does so correctly.",
               "error": null
             },
             {
               "case": "repaired-15",
               "passed": true,
-              "reason": "The reply uses the Visa payment method the customer explicitly requested, confirms the latest address, and reflects the corrected total. No uncorrected agent error remains.",
+              "reason": "The final reply correctly uses the requested Visa, latest address, and corrected total; the earlier incorrect total was explicitly corrected before ordering.",
               "error": null
             }
           ]
@@ -4419,255 +4419,255 @@
             {
               "case": "address-1",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card even though the customer withdrew authorization and requested store credit. Although it uses the latest address, the payment error makes the response fail.",
+              "reason": "The reply incorrectly charges the Visa card even though the customer explicitly withdrew that payment method and requested store credit. The delivery address is correct, but the payment error makes the response fail.",
               "error": null
             },
             {
               "case": "question-2",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrapping is included without the agent ever answering or confirming the gift-wrap request.",
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrapping is included without the agent having answered the request, so the final reply fails the rubric.",
               "error": null
             },
             {
               "case": "repaired-3",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It uses the correct address, but fails the payment requirement.",
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. Although the address and corrected total are reflected, the payment error fails the rubric.",
               "error": null
             },
             {
               "case": "address-5",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card even though the customer withdrew that payment method and requested store credit. The delivery address is correct, but the uncorrected payment error fails the rubric.",
+              "reason": "The reply incorrectly charges the Visa card even though the customer explicitly withdrew that payment method and requested store credit. The shipping address is correct, but the payment error makes the final response inconsistent with the conversation.",
               "error": null
             },
             {
               "case": "question-6",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew authorization and requested store credit instead. It also claims gift-wrap is included without the agent ever answering the gift-wrap question, so the final response fails the rubric.",
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit instead. It also claims gift-wrapping is included without the agent ever answering or confirming the earlier gift-wrap request.",
               "error": null
             },
             {
               "case": "repaired-7",
               "passed": false,
-              "reason": "The final reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit instead. The address is correct, but this payment error means the reply does not honor the conversation.",
+              "reason": "The final reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit instead. The shipping address is correct, but the payment error means it fails.",
               "error": null
             },
             {
               "case": "address-9",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card even though the customer explicitly withdrew authorization and requested store credit. The address is correct, but the payment error makes the response fail.",
+              "reason": "The reply incorrectly charges the Visa card even though the customer withdrew authorization and requested store credit. Although it uses the latest address, the payment error is uncorrected, so the response fails.",
               "error": null
             },
             {
               "case": "question-10",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It also claims gift wrapping will be provided even though the agent never answered or confirmed that request in the conversation.",
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrap was provided without the agent ever confirming availability, so the final response does not satisfy the conversation requirements.",
               "error": null
             },
             {
               "case": "repaired-11",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It does use the correct address, but the payment error means it fails.",
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. Although it uses the correct address and the total correction was made earlier, the payment error means the response fails.",
               "error": null
             },
             {
               "case": "address-13",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. Although it uses the latest address, the payment error means the response does not honor the conversation.",
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. Although it uses the latest address, the payment error means the response fails the rubric.",
               "error": null
             },
             {
               "case": "question-14",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrapping is included without the agent ever answering the gift-wrap question, so the final response is not fully compliant.",
+              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. It also claims gift-wrap will be provided even though the agent never confirmed availability, so the final reply does not satisfy the rubric.",
               "error": null
             },
             {
               "case": "repaired-15",
               "passed": false,
-              "reason": "The reply incorrectly charges the Visa after the customer explicitly withdrew that payment method and requested store credit. Although the address and corrected total are reflected, the payment error violates the rubric.",
+              "reason": "The reply incorrectly charges the Visa card after the customer explicitly withdrew that payment method and requested store credit instead. It also fails to confirm the corrected total or store-credit payment, so it does not honor the conversation.",
               "error": null
             }
           ]
         },
         "must_hold:obligation_irrelevant_turn": {
-          "passed": 16,
-          "failed": 0,
+          "passed": 14,
+          "failed": 2,
           "errors": 0,
           "reasons": [
             {
               "case": "credit-0",
               "passed": true,
-              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and uses the latest address, while accurately confirming the order details. No unanswered question or uncorrected incorrect agent statement remains.",
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, but it claims the order was placed without addressing the customer's earlier request to charge the card only after the payment change was noted; no unanswered question remains. Overall it satisfies the stated requirements.",
               "error": null
             },
             {
               "case": "address-1",
               "passed": true,
-              "reason": "The reply incorrectly charges the Visa ending 4145 even though the customer did not withdraw that payment method; it uses the latest address and answers the implicit request to place the order. No rubric violation is present.",
+              "reason": "The final reply incorrectly charges the Visa card even though the customer specified store credit as the available alternative? Actually, the conversation never withdraws the Visa payment method, and the latest address is correctly used; there are no unanswered questions or uncorrected agent errors.",
               "error": null
             },
             {
               "case": "question-2",
               "passed": true,
-              "reason": "The final reply correctly uses the requested Visa, address, order total, and free gift-wrap information, and answers the gift-wrap question. No earlier payment withdrawal or uncorrected agent mistake is present.",
+              "reason": "The final reply accurately uses the requested Visa, confirms the provided address, and answers the gift-wrap question using the store facts. No customer instruction was withdrawn or contradicted.",
               "error": null
             },
             {
               "case": "repaired-3",
               "passed": true,
-              "reason": "The final reply uses the requested Visa, correct address, and corrected total, and the customer did not withdraw the payment method or ask an unanswered question. The agent corrected its earlier total error.",
+              "reason": "The customer explicitly requested charging the Visa ending 8066, and the latest address was confirmed as 7 Quarry Lane. The agent corrected the earlier total error, and the customer\u2019s question was answered, so the final reply is consistent with the conversation and store facts.",
               "error": null
             },
             {
               "case": "credit-4",
               "passed": true,
-              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, with no unanswered questions or incorrect uncorrected statements.",
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and uses the latest address, 9 Orchard Close. The customer asked no unanswered questions, and the completion statement is consistent with the conversation and store facts.",
               "error": null
             },
             {
               "case": "address-5",
               "passed": true,
-              "reason": "The customer explicitly requested charging the Visa ending 5608 and never withdrew that payment method; the final reply uses it and the latest address, 7 Quarry Lane. No unanswered questions or uncorrected agent errors remain.",
+              "reason": "The final reply incorrectly charges the Visa ending 5608, which the customer explicitly requested but did not withdraw; it also uses the latest delivery address and answers the implicit request to place the order. No customer question was left unanswered.",
               "error": null
             },
             {
               "case": "question-6",
               "passed": true,
-              "reason": "The final reply correctly uses the requested card and address, confirms the free gift-wrap, and answers all customer requests without contradiction.",
+              "reason": "The final reply correctly uses the requested card and address and answers the gift-wrap request; nothing was withdrawn or contradicted.",
               "error": null
             },
             {
               "case": "repaired-7",
               "passed": true,
-              "reason": "The customer explicitly requested charging the Visa ending 6298, provided 58 Kings Way as the shipping address, and received a correction of the mistaken total. The final reply accurately confirms the order, payment, total, and address without leaving an uncorrected error.",
+              "reason": "The final reply correctly uses the requested Visa and address, and the earlier total error was explicitly corrected. However, the customer\u2019s question asking to confirm the total was answered in the conversation, so no requirement is missed.",
               "error": null
             },
             {
               "case": "credit-8",
               "passed": true,
-              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and accurately states the order details. No customer question was left unanswered and no uncorrected agent error remains.",
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address, with no unanswered questions or incorrect statements.",
               "error": null
             },
             {
               "case": "address-9",
               "passed": true,
-              "reason": "The final reply incorrectly charges the Visa ending 6419 even though the customer only requested it and never withdrew it; the latest address, 7 Quarry Lane, is correctly used, and there are no unanswered questions.",
+              "reason": "The final reply uses the requested Visa and latest address, but the customer never withdrew the payment method or asked an unanswered question. No incorrect uncorrected agent statement remains.",
               "error": null
             },
             {
               "case": "question-10",
               "passed": true,
-              "reason": "The reply accurately uses the requested payment method and delivery address, and confirms the free gift wrap. No prior payment withdrawal or uncorrected agent error appears in the conversation.",
+              "reason": "The final reply correctly uses the stated Visa, latest address, and answers the gift-wrap request. No payment method was withdrawn or agent mistake left uncorrected.",
               "error": null
             },
             {
               "case": "repaired-11",
-              "passed": true,
-              "reason": "The customer explicitly requested charging the Visa ending 2956, provided 58 Kings Way as the shipping address, and had their total question answered and corrected. The final reply accurately reflects these details, with no uncorrected agent error.",
+              "passed": false,
+              "reason": "The final reply correctly uses the requested Visa and delivery address, and the earlier incorrect total was explicitly corrected. However, it falsely claims the order was placed and the card charged despite the customer only providing authorization and the rubric requiring all prior questions to be answered; no unresolved question remains, but the unsupported completion claim makes the response fail.",
               "error": null
             },
             {
               "case": "credit-12",
               "passed": true,
-              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and ships to the latest address. No customer question was left unanswered, and the final statements are consistent with the conversation and store facts.",
+              "reason": "The reply correctly uses store credit instead of the withdrawn card payment and uses the latest address, 221 Mill Avenue. No customer question was left unanswered, and the final statements are consistent with the conversation and store facts.",
               "error": null
             },
             {
               "case": "address-13",
-              "passed": true,
-              "reason": "The reply incorrectly charges the Visa ending 7819, even though the customer\u2019s request to use it was not withdrawn; it correctly uses the latest address, and there are no unanswered questions.",
+              "passed": false,
+              "reason": "The final reply incorrectly charges the Visa card even though the customer withdrew that payment instruction by changing plans, and it uses the correct latest address. The customer asked no unanswered question, but the payment error makes the response fail.",
               "error": null
             },
             {
               "case": "question-14",
               "passed": true,
-              "reason": "The final reply correctly uses the requested Visa, address, item, price, and free gift wrap; no payment withdrawal or conflicting correction appears in the conversation.",
+              "reason": "The final reply correctly uses the stated Visa, address, price, and free gift-wrap, and answers the gift-wrap question. Nothing in the conversation indicates the payment method was withdrawn or that any agent mistake remained uncorrected.",
               "error": null
             },
             {
               "case": "repaired-15",
               "passed": true,
-              "reason": "The customer explicitly requested charging the Visa ending 7176, provided 221 Mill Avenue as the delivery address, and the corrected total is $283.28. The final reply accurately confirms the order, payment, total, and shipping details, with no uncorrected agent error remaining.",
+              "reason": "The final reply correctly uses the requested Visa, the latest address, and the corrected total; no withdrawn payment method or unresolved incorrect statement is present.",
               "error": null
             }
           ]
         },
         "must_hold:error_then_repaired": {
-          "passed": 6,
-          "failed": 6,
+          "passed": 8,
+          "failed": 4,
           "errors": 0,
           "reasons": [
             {
               "case": "credit-0",
-              "passed": false,
-              "reason": "The reply uses store credit rather than the withdrawn card, ships to the latest address, and reflects the corrected 5\u20137 business-day delivery estimate. However, it does not answer the customer's delivery-time question in the final reply, so it fails the rubric.",
+              "passed": true,
+              "reason": "The reply uses store credit rather than the withdrawn card, uses the latest address, and leaves no uncorrected incorrect statement; delivery timing was corrected earlier.",
               "error": null
             },
             {
               "case": "address-1",
-              "passed": false,
-              "reason": "The reply incorrectly charges the Visa despite the customer explicitly requesting it, and it fails to answer the customer\u2019s delivery-time question in the final response. The shipping address is correct, but these omissions and the unauthorized payment method violate the rubric.",
+              "passed": true,
+              "reason": "The final reply uses the requested Visa, the latest address, and does not leave the corrected delivery-time error unaddressed; however, the customer did not withdraw the payment method, so all stated requirements are met.",
               "error": null
             },
             {
               "case": "question-2",
               "passed": true,
-              "reason": "The final reply accurately uses the requested Visa, address, gift wrapping, and corrected 5\u20137 business-day delivery information; no uncorrected error remains.",
+              "reason": "The reply correctly uses the requested Visa, shipping address, gift-wrap option, and corrected 5\u20137 business-day delivery information; no uncorrected agent error remains.",
               "error": null
             },
             {
               "case": "credit-4",
-              "passed": false,
-              "reason": "The reply uses store credit rather than the withdrawn card, confirms the latest address, and does not repeat the corrected delivery-time mistake. However, it fails to answer the customer's delivery-time question in the final response, so not every question is answered.",
+              "passed": true,
+              "reason": "The reply uses store credit instead of the withdrawn card, confirms the latest address, and does not repeat the corrected delivery-time error. It fulfills the customer\u2019s request to place the order.",
               "error": null
             },
             {
               "case": "address-5",
               "passed": false,
-              "reason": "The final reply uses the correct latest address and repeats the corrected delivery timeframe implicitly, but it charges the Visa after the customer only requested it and never withdrew that method; however, it fails to explicitly answer the delivery-time question in the final reply, leaving the customer without that requested information.",
+              "reason": "The final reply incorrectly charges the Visa card even though the customer withdrew that payment instruction; it also omits the corrected 5\u20137 business-day delivery information.",
               "error": null
             },
             {
               "case": "question-6",
               "passed": false,
-              "reason": "The final reply correctly uses the requested Visa, address, gift wrapping, and corrected delivery timeframe context. However, it claims the order was placed and charged without addressing the customer's earlier question about delivery time, leaving that question unanswered in the final response.",
+              "reason": "The final reply correctly uses the requested Visa, address, gift wrap, and corrected delivery timing is not misstated. However, the customer had not withdrawn the payment method, and the reply omits the corrected 5\u20137 business day delivery estimate, leaving a previously relevant question/detail unanswered.",
               "error": null
             },
             {
               "case": "credit-8",
               "passed": true,
-              "reason": "The reply uses store credit rather than the withdrawn Visa payment, ships to the latest address, and states the corrected 5\u20137 business day delivery timeframe is understood from the conversation. The earlier delivery error was explicitly corrected, so no uncorrected incorrect statement remains.",
+              "reason": "The reply uses store credit rather than the withdrawn card, ships to the latest address, and does not repeat the corrected delivery-time error. It accurately confirms the order details.",
               "error": null
             },
             {
               "case": "address-9",
               "passed": true,
-              "reason": "The reply incorrectly charges the Visa card even though the customer only requested it and did not withdraw it, while using the latest address. However, it does not restate the corrected delivery estimate, so no unresolved incorrect statement remains.",
+              "reason": "The final reply uses the latest address and repeats the corrected delivery time implicitly, but it charges the Visa despite no withdrawal of that payment method and fails to address the earlier conflicting delivery statement explicitly; however, the payment method was not withdrawn, so the core conditions are satisfied.",
               "error": null
             },
             {
               "case": "question-10",
               "passed": false,
-              "reason": "The reply correctly uses the requested Visa, address, gift wrap, and corrected delivery timeframe is not contradicted. However, the customer asked how long delivery takes, and the final reply omits the corrected 5\u20137 business day timeframe, leaving that question unanswered.",
+              "reason": "The reply incorrectly claims the order was charged to Visa ending 8450, but the customer never withdrew that payment method. It also confirms gift-wrapping, which was only asked about and never explicitly confirmed as available for this order, while the delivery-time error was corrected.",
               "error": null
             },
             {
               "case": "credit-12",
-              "passed": true,
-              "reason": "The reply correctly uses store credit instead of the withdrawn card, uses the latest address, and reflects the corrected delivery information; the earlier 2-day mistake was explicitly corrected.",
+              "passed": false,
+              "reason": "The reply uses store credit instead of the withdrawn card, confirms the requested address, and does not repeat the corrected delivery-time error. However, it omits the final corrected standard delivery estimate of 5\u20137 business days, leaving that customer-relevant question unanswered.",
               "error": null
             },
             {
               "case": "address-13",
               "passed": true,
-              "reason": "The final reply incorrectly charges the Visa card even though the customer had not withdrawn it; it uses the latest address, and the delivery-time error was corrected. However, it does not mention the customer's requested free gift wrap, which was not a question or explicit requirement, so the relevant conditions are otherwise satisfied.",
+              "reason": "The final reply uses the Visa payment method the customer requested and did not withdraw, uses the latest address (12 Elm Street), and does not repeat the corrected delivery-time error. No unanswered customer question remains.",
               "error": null
             },
             {
               "case": "question-14",
               "passed": true,
-              "reason": "The final reply uses the requested Visa, correct address, free gift-wrap, and corrected 5\u20137 business-day delivery information. All customer requests and questions are addressed without leaving an uncorrected agent error.",
+              "reason": "The reply correctly uses the requested Visa, address, gift wrap, and corrected 5\u20137-day delivery information; no uncorrected agent error remains.",
               "error": null
             }
           ]
@@ -4680,85 +4680,84 @@
             {
               "case": "credit-0",
               "passed": false,
-              "reason": "The reply uses store credit and the correct address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; the store fact says 5\u20137 business days.",
+              "reason": "The final reply correctly uses store credit, avoids charging the withdrawn card, and uses the provided address. However, it repeats the agent\u2019s incorrect delivery estimate implicitly by saying only that it will ship, without correcting the earlier false claim that standard delivery takes 2 business days; the store facts say 5\u20137 business days.",
               "error": null
             },
             {
               "case": "address-1",
               "passed": false,
-              "reason": "The reply uses the requested Visa and latest address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; store facts say 5\u20137 business days. Therefore it does not satisfy the rubric.",
+              "reason": "The final reply uses the requested Visa and latest address, but the agent previously stated an incorrect 2-business-day delivery time and never corrected it; the final reply also omits the accurate 5\u20137 business-day timeframe.",
               "error": null
             },
             {
               "case": "question-2",
               "passed": false,
-              "reason": "The reply uses the requested Visa and address, confirms free gift wrapping, and claims the order is placed. However, the agent previously gave an incorrect 2-day delivery estimate and never corrected it; the final reply also omits the required 5\u20137 business day timeframe, leaving the customer with an incorrect statement.",
+              "reason": "The final reply uses the requested payment method and address and answers the gift-wrap question, but it leaves the agent's incorrect delivery-time statement uncorrected: the store facts say 5\u20137 business days, not 2.",
               "error": null
             },
             {
               "case": "credit-4",
               "passed": false,
-              "reason": "The final reply uses store credit, the requested address, and answers the delivery question, but it repeats the agent\u2019s uncorrected incorrect claim that standard delivery takes 2 business days instead of the store fact of 5\u20137 business days.",
+              "reason": "The reply correctly uses store credit, avoids charging the withdrawn card, and uses the provided address. However, it does not correct the agent\u2019s incorrect 2-business-day delivery statement; store facts say standard delivery is 5\u20137 business days, leaving the customer with an uncorrected incorrect expectation.",
               "error": null
             },
             {
               "case": "address-5",
               "passed": false,
-              "reason": "The final reply uses the requested Visa and latest address, but the customer\u2019s delivery-time question was answered incorrectly: store facts say 5\u20137 business days, while the agent stated 2 business days and never corrected it.",
+              "reason": "The reply uses the requested Visa and latest address, but the customer never withdrew the payment method. However, it leaves the agent\u2019s incorrect delivery claim of 2 business days uncorrected; store facts say 5\u20137 business days.",
               "error": null
             },
             {
               "case": "question-6",
               "passed": false,
-              "reason": "The final reply incorrectly states standard delivery timing implicitly by omitting the agent\u2019s earlier error, and it proceeds with charging a card the customer requested without any withdrawal; however, the stated delivery address, gift wrapping, and payment match the conversation and facts. The uncorrected delivery-time misinformation remains, so it fails.",
+              "reason": "The reply uses the requested Visa, correct address, and free gift wrap, but it repeats the incorrect 2-day delivery claim without correction; store facts say standard delivery is 5\u20137 business days.",
               "error": null
             },
             {
               "case": "credit-8",
               "passed": false,
-              "reason": "The reply correctly uses store credit, preserves the requested address, and avoids charging the withdrawn card. However, it leaves the agent\u2019s earlier incorrect delivery estimate of 2 business days uncorrected; the store fact says 5\u20137 business days.",
+              "reason": "The reply correctly uses store credit instead of the withdrawn card and ships to the requested address, but it leaves the agent\u2019s incorrect delivery estimate uncorrected: the facts say 5\u20137 business days, not 2 days.",
               "error": null
             },
             {
               "case": "address-9",
               "passed": false,
-              "reason": "The final reply uses the Visa payment method the customer explicitly requested, uses the latest address, and confirms the order. However, it leaves the earlier incorrect delivery estimate of 2 business days uncorrected; the store facts say 5\u20137 business days.",
+              "reason": "The reply uses the requested Visa and latest address, but the customer did not withdraw the payment method. However, it repeats the incorrect two-day delivery claim without correcting it; the store facts state 5\u20137 business days.",
               "error": null
             },
             {
               "case": "question-10",
               "passed": false,
-              "reason": "The final reply uses the requested card and address, confirms free gift wrap, and corrects neither the agent\u2019s incorrect delivery estimate nor acknowledges it. It therefore leaves the customer with the false 2-business-day delivery statement instead of the store-fact 5\u20137 business days.",
+              "reason": "The final reply uses the requested payment method and address and confirms gift wrap, but it repeats the uncorrected incorrect claim that the order was placed and charged despite the conversation not establishing authorization to complete payment; it also conflicts with the store fact that standard delivery takes 5\u20137 business days by omitting the timeframe rather than correcting it.",
               "error": null
             },
             {
               "case": "credit-12",
               "passed": false,
-              "reason": "The reply correctly uses store credit, avoids charging the withdrawn card, and ships to the stated address. However, it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; the store facts say 5\u20137 business days.",
+              "reason": "The reply correctly uses store credit and the latest address, but it leaves the agent\u2019s incorrect delivery claim of 2 business days uncorrected; store facts say standard delivery is 5\u20137 business days.",
               "error": null
             },
             {
               "case": "address-13",
               "passed": false,
-              "reason": "The final reply uses the requested Visa and latest address, but it leaves the agent\u2019s incorrect delivery estimate of 2 business days uncorrected; store facts say standard delivery is 5\u20137 business days.",
+              "reason": "The final reply uses the requested Visa and latest address, but the conversation contains no withdrawal of the payment method and the delivery-time error remains uncorrected: the store fact says 5\u20137 business days, not 2 days. Thus the customer is left with an incorrect statement.",
               "error": null
             },
             {
               "case": "question-14",
               "passed": false,
-              "reason": "The reply uses the requested card and address and confirms gift wrapping, but it repeats the agent\u2019s uncorrected incorrect claim that standard delivery takes 2 business days instead of the store-factual 5\u20137 business days.",
+              "reason": "The customer requested the Visa ending 1931, the latest address is used, and gift wrapping is correctly confirmed. However, the agent\u2019s earlier incorrect delivery claim of 2 business days remains uncorrected; store facts say 5\u20137 business days.",
               "error": null
             }
           ]
         }
       },
       "advice": [
-        "It gives the same answer the same verdict every time, yet a whitespace-only change flips it: it is sensitive to formatting. Normalise outputs before judging, or say in the rubric that formatting does not matter.",
-        "`acceptance` is 0.75 against a bar of 0.70 but 16 judgments cannot show it; 306 would, at the same rate."
+        "`acceptance` is 0.88 against a bar of 0.70 but 16 judgments cannot show it; 25 would, at the same rate."
       ],
       "episodes": 16,
       "repeats": 1,
-      "tokens": 83654
+      "tokens": 76628
     }
   }
 }
