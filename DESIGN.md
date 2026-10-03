@@ -253,6 +253,35 @@ that was not drawn at random, because a queue of the judge's failures is exactly
 breaks it. On judges that almost never err, its asymptotic interval under-covers, so an exact
 interval is offered alongside it.
 
+**Why does choosing a confidence gate need its own held-out cases?** Because a gate picked on the
+labels it is then graded on is graded on its best day. At 390 simulated cases, choosing the
+thresholds in sample left the true accuracy below the reported lower bound 3.6% of the time (2.5%
+nominal), and choosing by point estimate claimed 153 of 400 gates that were truly below the bar.
+`calibrate_gate` chooses on one half and certifies on the other, or tests a sequence of gates
+ordered before any label is seen (Learn-then-Test); neither claimed a gate below the bar. The
+price is power: on the real run, a 120-case split could not show 0.9 where the whole set could.
+
+**Why are cached task outputs marked, and why can a cache never serve an unidentified task?** A
+re-scored report that looks like a fresh run would hide that the task did not run: its duration,
+its cost, its span tree. So a served case says it was served, and its span tree raises rather
+than returning an empty one. And a task whose identity cannot be pinned down (it closes over a
+list, reads a mutable global, holds an `Agent`) is never read from or stored to the cache, for
+the same reason judges are not: anything else would replay one task's outputs as another's.
+`version=` is the user's word that it is the same task, as a named model is for a judge. The key
+also holds the module globals read by the methods of every class an input holds: review found an
+input whose method read a changed constant served the old output.
+
+**Why is a production output never ground truth in a traced dataset?** A trace records what the
+agent said, not what it should have said. `dataset_from_spans` keeps it as metadata unless asked
+to make it the expected output, and `judge_cases_from_spans` requires `accepted=`, the runs a
+person approved, before a traced output can serve as a known-good answer.
+
+**Why certify a deterministic evaluator?** Because "deterministic" does not mean "right". A PII
+detector is a judge too, and the same controls apply: inject PII it must catch, insert lookalikes
+it must not flag. The certificate covers the formats the controls generate, which is why the
+held-out set, written by another model, is reported next to it. It also showed what a string
+similarity cannot do: as a correctness judge on the support task it was INADMISSIBLE.
+
 ## The sequential certificate
 
 **Why stop early only for failure?** A broken judge shows it in the first batch; a sound one has
@@ -303,6 +332,22 @@ were corrected where they were reported:
   on the exact (Clopper-Pearson) bound. Two saved ADMISSIBLE certificates became UNVALIDATED: the
   arithmetic reference judge (invariance 37/40, exact lower bound 0.796 against a bar of 0.8) and
   the retry trace controls (16/16 per family, 0.794). The README says so where it cites them.
+- A review of the five newer tools found that perfect agreement collapsed the kappa interval to
+  [1, 1]: ten labels drawn from a judge with kappa 0.8 would certify kappa >= 0.99 about a third of
+  the time. A first fix applied an exact bound on agreement (by case, carried to kappa) only where
+  the bootstrap collapsed, to keep two support judges ADMISSIBLE. The verification review showed
+  why that was wrong: one disagreement switched the floor off, so a slightly worse sample certified
+  where a perfect one did not, and judges just below the bar passed at least 7% of the time. The
+  lower bound is now always the lower of the bootstrap and the exact bound. Measured on 2,000
+  samples per setting with the true kappa 0.01 below the bar: 1.2% false PASSes (balanced labels,
+  40 cases), 0.15% (90% pass labels, 80 cases), 0.7% (balanced, 100 cases), all under the 2.5%
+  promised (`bench/kappa_coverage.py`). The price: two support judges (79/80 and 78/80 agreement, 8 failures among 40
+  questions) went from ADMISSIBLE to UNVALIDATED; the README says so where it cites them.
+- Building the task cache found that on Python 3.14 every class written without `from __future__
+  import annotations` carries an `__annotate_func__` closing over its namespace, which the class
+  digest marked opaque: such a custom judge was never reliable and such an input's cache key was
+  random. This repository's own modules use the future import, so its tests missed it. The digest
+  now skips Python's annotation machinery, with a regression test in a module without the import.
 - A ground-truth checker failed "−27" written with a Unicode minus. The certified judge was
   right and the checker was wrong.
 - The gate's bootstrap made too many false calls; the regression guard rejected real gains; the

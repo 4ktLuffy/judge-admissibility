@@ -589,3 +589,18 @@ def test_cache_keys_never_match_unidentified_input_code_and_keep_factories_and_f
     moment = datetime.datetime(2026, 11, 1, 1, 30)
     assert _canonical(moment) != _canonical(moment.replace(fold=1))
     assert _canonical(moment) == _canonical(datetime.datetime(2026, 11, 1, 1, 30))
+
+
+def test_classes_written_without_future_annotations_are_identified() -> None:
+    """Found while building the task cache: on Python 3.14 a class written without
+    `from __future__ import annotations` carries `__annotate_func__`, which closed over the class
+    namespace and made every such judge unreliable and every such input's cache key random."""
+    from plain_annotations_module import PlainInput, PlainJudge, Point
+
+    from pydantic_evals_admissibility._cache import _canonical  # pyright: ignore[reportPrivateUsage]
+
+    identity = judge_identity(PlainJudge())
+    assert identity_reliable(identity), identity.get('opaque')
+    assert judge_identity(PlainJudge()) == identity != judge_identity(PlainJudge(threshold=0.9))
+    assert _canonical(PlainInput('a')) == _canonical(PlainInput('a')) != _canonical(PlainInput('b'))
+    assert identity_reliable(judge_identity(_Holder(Point(1, 2))))

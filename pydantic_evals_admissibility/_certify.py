@@ -14,6 +14,7 @@ Neither check alone is a certificate, which is why both are required.
 from __future__ import annotations
 
 import asyncio
+import math
 import random
 from collections import defaultdict
 from collections.abc import Callable, Mapping, Sequence
@@ -754,13 +755,41 @@ def _agreement(labelled: Sequence[Judgment], thresholds: Thresholds, alpha_fail:
         status, interval = 'UNVALIDATED', (0.0, 1.0)
         detail = f'labels on {len(by_case)} cases, fewer than {thresholds.min_trials}; kappa={kappa:.2f}'
     else:
-        interval = _bootstrap_kappa(list(by_case.values()), 0.05)
-        low, high = interval[0], _bootstrap_kappa(list(by_case.values()), alpha_fail)[1]
+        clusters = list(by_case.values())
+        boot, boot_fail = _bootstrap_kappa(clusters, 0.05), _bootstrap_kappa(clusters, alpha_fail)
+        # The PASS side takes the lower of two bounds: the bootstrap by case, and an exact bound on
+        # agreement by case carried to kappa. The bootstrap alone is a point where every case agrees
+        # ([1, 1] from ten cases) and undercovers just short of it (one disagreement in 40 certified
+        # more often than none); the exact bound is monotone in agreement. The FAIL side is the
+        # bootstrap: a judge that passes everything has kappa 0 however often it agrees.
+        interval = (min(boot[0], _exact_kappa_lower(clusters, 0.05)), boot[1])
+        low, high = interval[0], boot_fail[1]
         status = 'PASS' if low >= thresholds.min_kappa else 'FAIL' if high < thresholds.min_kappa else 'UNVALIDATED'
         detail = f'kappa={kappa:.2f}, interval by case; agreement {agree}/{len(pairs)}'
     return Check(
         'human_agreement', status, agree, len(pairs), interval, thresholds.min_kappa, detail, errors, estimate=kappa
     )
+
+
+def _exact_kappa_lower(clusters: Sequence[Sequence[tuple[bool, bool]]], alpha: float) -> float:
+    """A lower bound on kappa from an exact (Clopper-Pearson) lower bound on agreement, by case.
+
+    Each case counts once, by its share of agreeing pairs (rounded down), and the bound is carried to
+    kappa with the observed chance agreement held fixed. That ignores the uncertainty in chance
+    agreement, so it is a floor under the bootstrap, not a replacement: where the bootstrap
+    collapses (every resample agrees perfectly), it still says how little ten cases show.
+    """
+    pairs = [p for c in clusters for p in c]
+    if not pairs:
+        return 0.0
+    a_yes = sum(a for a, _ in pairs) / len(pairs)
+    b_yes = sum(b for _, b in pairs) / len(pairs)
+    expected = a_yes * b_yes + (1 - a_yes) * (1 - b_yes)
+    if expected >= 1:
+        return 0.0
+    shares = sum(sum(a == b for a, b in c) / len(c) for c in clusters)
+    low = clopper_pearson(math.floor(shares + 1e-9), len(clusters), alpha)[0]
+    return max(-1.0, (low - expected) / (1 - expected))
 
 
 def _bootstrap_kappa(

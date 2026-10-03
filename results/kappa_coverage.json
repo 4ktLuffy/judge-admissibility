@@ -1,0 +1,23 @@
+{
+  "balanced, 40 cases": {
+    "true_kappa": 0.8,
+    "bar": 0.81,
+    "trials": 2000,
+    "false_pass": 24,
+    "rate": 0.012
+  },
+  "skewed (90% pass), 80 cases": {
+    "true_kappa": 0.849,
+    "bar": 0.859,
+    "trials": 2000,
+    "false_pass": 3,
+    "rate": 0.0015
+  },
+  "balanced, 100 cases": {
+    "true_kappa": 0.8,
+    "bar": 0.81,
+    "trials": 2000,
+    "false_pass": 14,
+    "rate": 0.007
+  }
+}

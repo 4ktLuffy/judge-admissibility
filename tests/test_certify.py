@@ -371,3 +371,17 @@ async def test_recertifying_a_certificate_saved_without_judgments_raises() -> No
     saved = Certificate.from_dict(certificate.to_dict(judgments=False))
     with pytest.raises(ValueError, match='saved without its judgments'):
         recertify(saved)
+
+
+def test_perfect_agreement_on_few_cases_does_not_certify_a_high_kappa() -> None:
+    """Found in review: ten perfectly agreeing labels gave a kappa interval of [1, 1], so a judge
+    from a population with kappa 0.8 would be certified at kappa >= 0.99 about a third of the time."""
+    from pydantic_evals_admissibility._certify import _agreement  # pyright: ignore[reportPrivateUsage]
+
+    labels = _labelled([(f'c{i}', i % 2 == 0, i % 2 == 0) for i in range(10)])
+    check = _agreement(labels, Thresholds(min_kappa=0.99), 0.0125)
+    assert check.status == 'UNVALIDATED' and check.interval[0] < 0.5, check
+    # Many cases still certify, and the interval is no longer a point.
+    many = _labelled([(f'c{i}', i % 2 == 0, i % 2 == 0) for i in range(80)])
+    check = _agreement(many, Thresholds(min_kappa=0.4), 0.0125)
+    assert check.status == 'PASS' and check.interval[0] < 1.0

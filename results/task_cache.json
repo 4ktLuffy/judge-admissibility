@@ -1,0 +1,457 @@
+{
+  "python": "3.14.7",
+  "scripted": {
+    "model": "scripted FunctionModel (no model calls)",
+    "identity_without_version": {
+      "reliable": false,
+      "opaque": [
+        "task global __main__.SCRIPTED_AGENT: Agent"
+      ]
+    },
+    "steps": [
+      {
+        "step": "1 first evaluation",
+        "model_calls": 8,
+        "task_runs": 8,
+        "served_from_cache": 0,
+        "ran": [
+          "cancel",
+          "change-plan",
+          "delete-account",
+          "export",
+          "invoice",
+          "refund-window",
+          "reset-password",
+          "two-factor"
+        ],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true
+          },
+          "reset-password": {
+            "Answered": true
+          },
+          "change-plan": {
+            "Answered": true
+          },
+          "cancel": {
+            "Answered": true
+          },
+          "invoice": {
+            "Answered": true
+          },
+          "two-factor": {
+            "Answered": true
+          },
+          "export": {
+            "Answered": true
+          },
+          "delete-account": {
+            "Answered": true
+          }
+        },
+        "outputs": {
+          "refund-window": "Support answer to: How many days do I have to ask for a refund?",
+          "reset-password": "Support answer to: How do I reset my password?",
+          "change-plan": "Support answer to: Can I switch from the monthly to the yearly plan?",
+          "cancel": "Support answer to: How do I cancel my subscription?",
+          "invoice": "Support answer to: Where can I download last month's invoice?",
+          "two-factor": "Support answer to: How do I turn on two-factor authentication?",
+          "export": "Support answer to: Can I export my data as CSV?",
+          "delete-account": "Support answer to: How do I delete my account?"
+        },
+        "served_marked_cached": 0,
+        "mean_task_seconds_served": null,
+        "mean_original_task_seconds_served": null,
+        "wall_seconds": 1.299
+      },
+      {
+        "step": "2 re-score with a new evaluator (Concise)",
+        "model_calls": 0,
+        "task_runs": 0,
+        "served_from_cache": 8,
+        "ran": [],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          },
+          "invoice": {
+            "Answered": true,
+            "Concise": true
+          },
+          "two-factor": {
+            "Answered": true,
+            "Concise": true
+          },
+          "export": {
+            "Answered": true,
+            "Concise": true
+          },
+          "delete-account": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "Support answer to: How many days do I have to ask for a refund?",
+          "reset-password": "Support answer to: How do I reset my password?",
+          "change-plan": "Support answer to: Can I switch from the monthly to the yearly plan?",
+          "cancel": "Support answer to: How do I cancel my subscription?",
+          "invoice": "Support answer to: Where can I download last month's invoice?",
+          "two-factor": "Support answer to: How do I turn on two-factor authentication?",
+          "export": "Support answer to: Can I export my data as CSV?",
+          "delete-account": "Support answer to: How do I delete my account?"
+        },
+        "served_marked_cached": 8,
+        "mean_task_seconds_served": 7.8e-05,
+        "mean_original_task_seconds_served": 0.028135,
+        "wall_seconds": 0.008,
+        "outputs_identical_to_first": true
+      },
+      {
+        "step": "3 one case edited (refund-window)",
+        "model_calls": 1,
+        "task_runs": 1,
+        "served_from_cache": 7,
+        "ran": [
+          "refund-window"
+        ],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          },
+          "invoice": {
+            "Answered": true,
+            "Concise": true
+          },
+          "two-factor": {
+            "Answered": true,
+            "Concise": true
+          },
+          "export": {
+            "Answered": true,
+            "Concise": true
+          },
+          "delete-account": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "Support answer to: How many days after delivery can I still ask for a refund?",
+          "reset-password": "Support answer to: How do I reset my password?",
+          "change-plan": "Support answer to: Can I switch from the monthly to the yearly plan?",
+          "cancel": "Support answer to: How do I cancel my subscription?",
+          "invoice": "Support answer to: Where can I download last month's invoice?",
+          "two-factor": "Support answer to: How do I turn on two-factor authentication?",
+          "export": "Support answer to: Can I export my data as CSV?",
+          "delete-account": "Support answer to: How do I delete my account?"
+        },
+        "served_marked_cached": 7,
+        "mean_task_seconds_served": 6.9e-05,
+        "mean_original_task_seconds_served": 0.027243,
+        "wall_seconds": 0.033,
+        "unedited_outputs_identical": true
+      },
+      {
+        "step": "4 unchanged rerun",
+        "model_calls": 0,
+        "task_runs": 0,
+        "served_from_cache": 8,
+        "ran": [],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          },
+          "invoice": {
+            "Answered": true,
+            "Concise": true
+          },
+          "two-factor": {
+            "Answered": true,
+            "Concise": true
+          },
+          "export": {
+            "Answered": true,
+            "Concise": true
+          },
+          "delete-account": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "Support answer to: How many days after delivery can I still ask for a refund?",
+          "reset-password": "Support answer to: How do I reset my password?",
+          "change-plan": "Support answer to: Can I switch from the monthly to the yearly plan?",
+          "cancel": "Support answer to: How do I cancel my subscription?",
+          "invoice": "Support answer to: Where can I download last month's invoice?",
+          "two-factor": "Support answer to: How do I turn on two-factor authentication?",
+          "export": "Support answer to: Can I export my data as CSV?",
+          "delete-account": "Support answer to: How do I delete my account?"
+        },
+        "served_marked_cached": 8,
+        "mean_task_seconds_served": 7e-05,
+        "mean_original_task_seconds_served": 0.027659,
+        "wall_seconds": 0.007
+      }
+    ],
+    "model_calls_by_step": {
+      "1 first evaluation": 8,
+      "2 re-score with a new evaluator (Concise)": 0,
+      "3 one case edited (refund-window)": 1,
+      "4 unchanged rerun": 0
+    },
+    "model_calls_total": 9,
+    "model_calls_without_cache": 32,
+    "version_bump": {
+      "model_calls": 8,
+      "task_runs": 8
+    },
+    "without_version": {
+      "model_calls_by_run": [
+        8,
+        8
+      ],
+      "stored": 0
+    },
+    "two_concurrent_evaluations": {
+      "model_calls": 8,
+      "cases": 8
+    }
+  },
+  "codex": {
+    "model": "codex:gpt-5.6-luna@none",
+    "fallback": {
+      "active": false,
+      "reason": null
+    },
+    "models_used": [
+      "codex:gpt-5.6-luna@none"
+    ],
+    "calls": [
+      {
+        "model": "codex:gpt-5.6-luna@none",
+        "question": "How many days do I have to ask for a refund?"
+      },
+      {
+        "model": "codex:gpt-5.6-luna@none",
+        "question": "How do I reset my password?"
+      },
+      {
+        "model": "codex:gpt-5.6-luna@none",
+        "question": "Can I switch from the monthly to the yearly plan?"
+      },
+      {
+        "model": "codex:gpt-5.6-luna@none",
+        "question": "How do I cancel my subscription?"
+      },
+      {
+        "model": "codex:gpt-5.6-luna@none",
+        "question": "How many days after delivery can I still ask for a refund?"
+      }
+    ],
+    "steps": [
+      {
+        "step": "1 first evaluation",
+        "model_calls": 4,
+        "task_runs": 4,
+        "served_from_cache": 0,
+        "ran": [
+          "cancel",
+          "change-plan",
+          "refund-window",
+          "reset-password"
+        ],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true
+          },
+          "reset-password": {
+            "Answered": true
+          },
+          "change-plan": {
+            "Answered": true
+          },
+          "cancel": {
+            "Answered": true
+          }
+        },
+        "outputs": {
+          "refund-window": "I don\u2019t know your subscription\u2019s refund window; please check the refund policy in your account\u2019s billing settings or contact support.",
+          "reset-password": "On the sign-in page, click **\u201cForgot password?\u201d**, enter your account email, and follow the reset link sent to you. If you don\u2019t receive it, check your spam folder or your product\u2019s Help Center for account-recovery instructions.",
+          "change-plan": "Yes\u2014if annual billing is available for your subscription, you can switch from monthly to yearly in your account\u2019s **Billing** or **Plan** settings. Check that page for the exact change date, prorated credit, and pricing details.",
+          "cancel": "Open your account\u2019s **Settings/Billing** page, select **Manage subscription**, then choose **Cancel subscription** and follow the prompts. If you don\u2019t see that option, check your purchase receipt or app-store subscription settings to cancel through the service where you subscribed."
+        },
+        "served_marked_cached": 0,
+        "mean_task_seconds_served": null,
+        "mean_original_task_seconds_served": null,
+        "wall_seconds": 34.579
+      },
+      {
+        "step": "2 re-score with a new evaluator (Concise)",
+        "model_calls": 0,
+        "task_runs": 0,
+        "served_from_cache": 4,
+        "ran": [],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "I don\u2019t know your subscription\u2019s refund window; please check the refund policy in your account\u2019s billing settings or contact support.",
+          "reset-password": "On the sign-in page, click **\u201cForgot password?\u201d**, enter your account email, and follow the reset link sent to you. If you don\u2019t receive it, check your spam folder or your product\u2019s Help Center for account-recovery instructions.",
+          "change-plan": "Yes\u2014if annual billing is available for your subscription, you can switch from monthly to yearly in your account\u2019s **Billing** or **Plan** settings. Check that page for the exact change date, prorated credit, and pricing details.",
+          "cancel": "Open your account\u2019s **Settings/Billing** page, select **Manage subscription**, then choose **Cancel subscription** and follow the prompts. If you don\u2019t see that option, check your purchase receipt or app-store subscription settings to cancel through the service where you subscribed."
+        },
+        "served_marked_cached": 4,
+        "mean_task_seconds_served": 3e-05,
+        "mean_original_task_seconds_served": 17.267125,
+        "wall_seconds": 0.003,
+        "outputs_identical_to_first": true
+      },
+      {
+        "step": "3 one case edited (refund-window)",
+        "model_calls": 1,
+        "task_runs": 1,
+        "served_from_cache": 3,
+        "ran": [
+          "refund-window"
+        ],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "I don\u2019t know the refund window for your subscription\u2014please check the purchase confirmation, billing terms, or Refund Policy in your account.",
+          "reset-password": "On the sign-in page, click **\u201cForgot password?\u201d**, enter your account email, and follow the reset link sent to you. If you don\u2019t receive it, check your spam folder or your product\u2019s Help Center for account-recovery instructions.",
+          "change-plan": "Yes\u2014if annual billing is available for your subscription, you can switch from monthly to yearly in your account\u2019s **Billing** or **Plan** settings. Check that page for the exact change date, prorated credit, and pricing details.",
+          "cancel": "Open your account\u2019s **Settings/Billing** page, select **Manage subscription**, then choose **Cancel subscription** and follow the prompts. If you don\u2019t see that option, check your purchase receipt or app-store subscription settings to cancel through the service where you subscribed."
+        },
+        "served_marked_cached": 3,
+        "mean_task_seconds_served": 2.8e-05,
+        "mean_original_task_seconds_served": 18.364333,
+        "wall_seconds": 21.104,
+        "unedited_outputs_identical": true
+      },
+      {
+        "step": "4 unchanged rerun",
+        "model_calls": 0,
+        "task_runs": 0,
+        "served_from_cache": 4,
+        "ran": [],
+        "failures": [],
+        "assertions": {
+          "refund-window": {
+            "Answered": true,
+            "Concise": true
+          },
+          "reset-password": {
+            "Answered": true,
+            "Concise": true
+          },
+          "change-plan": {
+            "Answered": true,
+            "Concise": true
+          },
+          "cancel": {
+            "Answered": true,
+            "Concise": true
+          }
+        },
+        "outputs": {
+          "refund-window": "I don\u2019t know the refund window for your subscription\u2014please check the purchase confirmation, billing terms, or Refund Policy in your account.",
+          "reset-password": "On the sign-in page, click **\u201cForgot password?\u201d**, enter your account email, and follow the reset link sent to you. If you don\u2019t receive it, check your spam folder or your product\u2019s Help Center for account-recovery instructions.",
+          "change-plan": "Yes\u2014if annual billing is available for your subscription, you can switch from monthly to yearly in your account\u2019s **Billing** or **Plan** settings. Check that page for the exact change date, prorated credit, and pricing details.",
+          "cancel": "Open your account\u2019s **Settings/Billing** page, select **Manage subscription**, then choose **Cancel subscription** and follow the prompts. If you don\u2019t see that option, check your purchase receipt or app-store subscription settings to cancel through the service where you subscribed."
+        },
+        "served_marked_cached": 4,
+        "mean_task_seconds_served": 2.1e-05,
+        "mean_original_task_seconds_served": 19.048694,
+        "wall_seconds": 0.002
+      }
+    ],
+    "model_calls_by_step": {
+      "1 first evaluation": 4,
+      "2 re-score with a new evaluator (Concise)": 0,
+      "3 one case edited (refund-window)": 1,
+      "4 unchanged rerun": 0
+    },
+    "model_calls_total": 5,
+    "model_calls_without_cache": 16
+  }
+}

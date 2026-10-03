@@ -1,0 +1,356 @@
+{
+  "source": "results/support_eval.json",
+  "export": "tests/fixtures/annotations/support_eval_truth.jsonl",
+  "what_is_real": "replies and judge verdicts (Codex, saved in support_eval.json); ground truth from is_correct",
+  "what_is_constructed": "the annotation export: ground truth stands in for reviewers; ids are hashes; key names are AnnotationFormat defaults, since Logfire does not document them",
+  "annotations": {
+    "rows": 80,
+    "runs_annotated": 80,
+    "labelled": 80,
+    "pass": 72,
+    "fail": 8,
+    "neutral_annotations": 0,
+    "neutral_runs": 0,
+    "conflicts": 0,
+    "superseded": 0,
+    "missing_id": 0
+  },
+  "judges": {
+    "weak (no reasoning, sees the question)": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "certificate_verdict": "ADMISSIBLE",
+      "labelled_replies_judged": 80,
+      "alone": {
+        "status": "PASS",
+        "kappa": 1.0,
+        "kappa_interval": [
+          0.510570539562209,
+          1.0
+        ],
+        "min_kappa": 0.4,
+        "detail": "kappa=1.00, interval by case; agreement 80/80",
+        "agreement": 80,
+        "trials": 80,
+        "agreement_interval": [
+          0.9549359649323077,
+          1.0
+        ],
+        "cases": 40,
+        "confusion": {
+          "both_pass": 72,
+          "both_fail": 8,
+          "judge_pass_human_fail": 0,
+          "judge_fail_human_pass": 0
+        },
+        "human_only": [],
+        "judge_only": [],
+        "judge_errors": [],
+        "disagreements": [],
+        "annotations": {
+          "rows": 80,
+          "runs_annotated": 80,
+          "labelled": 80,
+          "pass": 72,
+          "fail": 8,
+          "neutral_annotations": 0,
+          "neutral_runs": 0,
+          "conflicts": 0,
+          "superseded": 0,
+          "missing_id": 0
+        }
+      },
+      "with_certificate_budget": {
+        "alpha_fail": 0.004166666666666667,
+        "status": "PASS",
+        "identical_to_recertify": true
+      },
+      "saved_check_older_rule": {
+        "status": "PASS",
+        "interval": [
+          0.954180263735425,
+          1.0
+        ],
+        "detail": "kappa=1.00",
+        "note": "decided when the certificate was made, on a raw-agreement interval; recertify re-decides it with the current case-bootstrap kappa interval"
+      }
+    },
+    "strong (reasoning high, sees the question)": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "certificate_verdict": "ADMISSIBLE",
+      "labelled_replies_judged": 80,
+      "alone": {
+        "status": "UNVALIDATED",
+        "kappa": 0.9342105263157897,
+        "kappa_interval": [
+          0.30744285009070754,
+          1.0
+        ],
+        "min_kappa": 0.4,
+        "detail": "kappa=0.93, interval by case; agreement 79/80",
+        "agreement": 79,
+        "trials": 80,
+        "agreement_interval": [
+          0.9323122155360777,
+          0.9996835774723674
+        ],
+        "cases": 40,
+        "confusion": {
+          "both_pass": 71,
+          "both_fail": 8,
+          "judge_pass_human_fail": 0,
+          "judge_fail_human_pass": 1
+        },
+        "human_only": [],
+        "judge_only": [],
+        "judge_errors": [],
+        "disagreements": [
+          [
+            "c11cac3a569f2d80",
+            true,
+            false
+          ]
+        ],
+        "annotations": {
+          "rows": 80,
+          "runs_annotated": 80,
+          "labelled": 80,
+          "pass": 72,
+          "fail": 8,
+          "neutral_annotations": 0,
+          "neutral_runs": 0,
+          "conflicts": 0,
+          "superseded": 0,
+          "missing_id": 0
+        }
+      },
+      "with_certificate_budget": {
+        "alpha_fail": 0.004166666666666667,
+        "status": "UNVALIDATED",
+        "identical_to_recertify": true
+      },
+      "saved_check_older_rule": {
+        "status": "PASS",
+        "interval": [
+          0.9325356757603457,
+          0.9977900813816939
+        ],
+        "detail": "kappa=0.93",
+        "note": "decided when the certificate was made, on a raw-agreement interval; recertify re-decides it with the current case-bootstrap kappa interval"
+      }
+    },
+    "strong, default include_input=False": {
+      "judge": "LLMJudge(codex:gpt-5.6-luna)",
+      "certificate_verdict": "INADMISSIBLE",
+      "labelled_replies_judged": 20,
+      "alone": {
+        "status": "UNVALIDATED",
+        "kappa": 0.3421052631578946,
+        "kappa_interval": [
+          -0.7169811843684142,
+          0.782608695652174
+        ],
+        "min_kappa": 0.4,
+        "detail": "kappa=0.34, interval by case; agreement 15/20",
+        "agreement": 15,
+        "trials": 20,
+        "agreement_interval": [
+          0.5089541282920423,
+          0.9134285308985655
+        ],
+        "cases": 10,
+        "confusion": {
+          "both_pass": 13,
+          "both_fail": 2,
+          "judge_pass_human_fail": 0,
+          "judge_fail_human_pass": 5
+        },
+        "human_only": [
+          "d09455fba2dce5da",
+          "daf44fe45f510dae",
+          "1e2e3cbd25205b5f",
+          "8dfd15b47d5ba556",
+          "37255764eb42b86f",
+          "54a2b01fb9db370c",
+          "25b083ceca049af4",
+          "4bc047d8e1d143a2",
+          "2ed7079fcb7281b5",
+          "c8689406d865f9fe",
+          "cb034d4508f862de",
+          "5df85df887034029",
+          "38da92e6ec7a215d",
+          "5ce6c28e2d39c9aa",
+          "d79322a15f261fa5",
+          "e8f90da63d24a3bd",
+          "9cd7a49b97eae4e8",
+          "e9ad77c61eba08c3",
+          "76be6f042b296639",
+          "60fa178a05191c5a",
+          "5466fd3de3c9e801",
+          "3816e9a31aff019f",
+          "850fd8be8eb60812",
+          "616be3f642d72426",
+          "661732fe04321c68",
+          "c4dd6b633de697ae",
+          "d1518540fa0dd401",
+          "dbeeb6c3d2c8308e",
+          "17b59df432464be6",
+          "5637af5d64fe919b",
+          "9b7ce39d7d8c1745",
+          "cd17f2ea53bd5318",
+          "c62b219ae393bf50",
+          "041a07441880b9cc",
+          "f36e2beab8172fe7",
+          "a8307fda66d58ce9",
+          "9cb3c77cee51d061",
+          "96d2d823ec2d7e73",
+          "0befed4dd536b83e",
+          "fce943dd4906d536",
+          "08090c15d0a54929",
+          "8119305ec6124a48",
+          "d921fff33763c555",
+          "4f7cf980e369f835",
+          "755288b79d40441b",
+          "f5c325ccec75d3db",
+          "8af8559740ade951",
+          "3ca63af8ce9e25f9",
+          "ab1552beffb26c8a",
+          "fa22ff503586b6e7",
+          "2339c07911b6a8e3",
+          "7d8c504ac9943b74",
+          "ae546a1be38832d0",
+          "2ec7c2f182b0524b",
+          "ba82b33990c600c6",
+          "43b186b416d26d0b",
+          "e79fdebaa3374a3a",
+          "09c3c2668faaf2b8",
+          "e148e655d808f936",
+          "53832ab1284d0fff"
+        ],
+        "judge_only": [],
+        "judge_errors": [],
+        "disagreements": [
+          [
+            "0c65f34902e09a19",
+            true,
+            false
+          ],
+          [
+            "bff638a3bf6f0921",
+            true,
+            false
+          ],
+          [
+            "d93a1ddcf070fd3f",
+            true,
+            false
+          ],
+          [
+            "87cbaefe5cd7d4dc",
+            true,
+            false
+          ],
+          [
+            "00891277f8ad44cf",
+            true,
+            false
+          ]
+        ],
+        "annotations": {
+          "rows": 80,
+          "runs_annotated": 80,
+          "labelled": 80,
+          "pass": 72,
+          "fail": 8,
+          "neutral_annotations": 0,
+          "neutral_runs": 0,
+          "conflicts": 0,
+          "superseded": 0,
+          "missing_id": 0
+        }
+      },
+      "with_certificate_budget": {
+        "alpha_fail": 0.004166666666666667,
+        "status": "UNVALIDATED",
+        "identical_to_recertify": true
+      },
+      "saved_check_older_rule": {
+        "status": "FAIL",
+        "interval": [
+          0.47121130473446693,
+          0.9099075687323014
+        ],
+        "detail": "kappa=0.34",
+        "note": "decided when the certificate was made, on a raw-agreement interval; recertify re-decides it with the current case-bootstrap kappa interval"
+      }
+    },
+    "gpt-reserve (no reasoning, sees the question)": {
+      "judge": "LLMJudge(codex:gpt-reserve)",
+      "certificate_verdict": "ADMISSIBLE",
+      "labelled_replies_judged": 80,
+      "alone": {
+        "status": "UNVALIDATED",
+        "kappa": 0.8611111111111109,
+        "kappa_interval": [
+          0.26896745287352414,
+          1.0
+        ],
+        "min_kappa": 0.4,
+        "detail": "kappa=0.86, interval by case; agreement 78/80",
+        "agreement": 78,
+        "trials": 80,
+        "agreement_interval": [
+          0.9125928440694083,
+          0.9969579138351904
+        ],
+        "cases": 40,
+        "confusion": {
+          "both_pass": 71,
+          "both_fail": 7,
+          "judge_pass_human_fail": 1,
+          "judge_fail_human_pass": 1
+        },
+        "human_only": [],
+        "judge_only": [],
+        "judge_errors": [],
+        "disagreements": [
+          [
+            "661732fe04321c68",
+            false,
+            true
+          ],
+          [
+            "4f7cf980e369f835",
+            true,
+            false
+          ]
+        ],
+        "annotations": {
+          "rows": 80,
+          "runs_annotated": 80,
+          "labelled": 80,
+          "pass": 72,
+          "fail": 8,
+          "neutral_annotations": 0,
+          "neutral_runs": 0,
+          "conflicts": 0,
+          "superseded": 0,
+          "missing_id": 0
+        }
+      },
+      "with_certificate_budget": {
+        "alpha_fail": 0.004166666666666667,
+        "status": "UNVALIDATED",
+        "identical_to_recertify": true
+      },
+      "saved_check_older_rule": {
+        "status": "PASS",
+        "interval": [
+          0.9133539994467789,
+          0.9931172511018748
+        ],
+        "detail": "kappa=0.86",
+        "note": "decided when the certificate was made, on a raw-agreement interval; recertify re-decides it with the current case-bootstrap kappa interval"
+      }
+    }
+  }
+}

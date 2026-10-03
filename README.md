@@ -218,12 +218,17 @@ sequentially in batches of 10:
 | Judge (Codex) | Certificate | Calls | Agreement with ground truth |
 |---|---|---|---|
 | `gpt-5.6-luna`, no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 80/80, kappa 1.00 |
-| `gpt-reserve`, no reasoning, `include_input=True` | ADMISSIBLE | 280 of 280 | 78/80, kappa 0.86 |
-| `gpt-5.6-luna`, reasoning high, `include_input=True` | ADMISSIBLE | 280 of 280 | 79/80, kappa 0.93 |
+| `gpt-reserve`, no reasoning, `include_input=True` | UNVALIDATED (see below) | 280 of 280 | 78/80, kappa 0.86 |
+| `gpt-5.6-luna`, reasoning high, `include_input=True` | UNVALIDATED (see below) | 280 of 280 | 79/80, kappa 0.93 |
 | `gpt-5.6-luna`, reasoning high, default `include_input=False` | **INADMISSIBLE** | **70 of 280** | 15/20, kappa 0.34 |
 
 (The reasoning judge's acceptance is 38/38: 2 of its first judgments timed out and are left out of
-the rate, not counted as passes.)
+the rate, not counted as passes.) All three judges that see the question were ADMISSIBLE when
+first certified. A review then showed the kappa interval could undercover (at least 7% false PASSes
+against 2.5%); with the corrected bound, `human_agreement` on 40 questions shows kappa above 0.4
+only for the judge that agreed on all 80 (lower bound 0.51). The other two agree on 79 and 78 of 80,
+but with 8 failures among 40 questions their kappa lower bounds are 0.31 and 0.27: UNVALIDATED,
+not shown bad. More labelled failures would settle them.
 
 The default-configured judge passed every one of the 10 answers borrowed from other customers'
 questions (each with a different correct answer, so wrong by construction). `diagnose` said why:
@@ -813,6 +818,18 @@ everything. On Codex: 40 calls the first time; 6
 after editing 2 of 10 replies, the 34 reused verdicts identical to the first run's; none for an
 unchanged re-run (`bench/incremental.py`).
 
+## Built for pydantic-evals' open requests
+
+Each answers a request open on pydantic-ai today, is measured, and says what it did not measure.
+
+| Request | What it does | Measured |
+|---|---|---|
+| Validate judges against human labels ([docs](https://pydantic.dev/logfire/llm-as-a-judge): "A judge nobody has checked against a person is a number, not a measurement") | `read_annotations` reads a Logfire run-annotation export (JSONL or CSV); `annotation_agreement` joins it to a judge's verdicts: Cohen's kappa with a by-case interval, a confusion matrix, and what neither side covered | On the saved Codex verdicts, with ground truth standing in for reviewers: kappa 1.00 [0.51, 1.00], 80/80, PASS for the judge without reasoning; 79/80 and 78/80 for the other two, UNVALIDATED on 40 questions; the same check `certify_judge` makes. Logfire documents the export's fields but not their key names, so every key is configurable (`bench/annotations_agreement.py`) |
+| Confidence gating for judges ([#9641](https://github.com/pydantic/pydantic-ai/issues/9641), [#9723](https://github.com/pydantic/pydantic-ai/pull/9723)) | `certify_confidence_gate` certifies a gate (decide at p >= high or p <= low, defer the rest) on accuracy, coverage and end to end; `calibrate_gate` chooses thresholds without grading them on the cases that chose them (a held-out split, or a fixed sequence) | In simulation at 390 cases, choosing in sample put the true accuracy below the reported lower bound 3.6% of the time and claimed 153 of 400 gates that were truly below the bar; the held-out split claimed none. On Codex, the stated confidence was 0.99 or 1.0 on all 120 replies, so no gate deferred anything: verbalized confidence carried no signal on this task (`bench/confidence_gate.py`) |
+| Datasets from production traces ([#4340](https://github.com/pydantic/pydantic-ai/issues/4340)) | `dataset_from_spans` turns pydantic-ai agent-run spans (OTel, OTLP/JSON, Logfire rows) into a `Dataset`, with history, tool calls and errors, linked back to each trace; `judge_cases_from_spans` makes certification cases from runs a person accepted | 50 traced runs to 35 cases (15 duplicates folded), identical across instrumentation versions 2 and 5, round-tripped through YAML and JSON. Reads spans you have; fetching them from Logfire's query API was not run (`bench/dataset_from_traces.py`) |
+| Re-score without re-running the task ([#1350](https://github.com/pydantic/pydantic-ai/issues/1350), [#3314](https://github.com/pydantic/pydantic-ai/issues/3314)) | `evaluate_cached` runs the task once per task identity and inputs and reruns only the evaluators; cached cases are marked as cached in the report, never passed off as fresh runs | A Codex agent over four steps (first run, a new evaluator, one edited case, an unchanged rerun): 5 task calls against 16 (`bench/task_cache.py`) |
+| Safety and similarity evaluators ([#6526](https://github.com/pydantic/pydantic-ai/issues/6526)) | `PIIDetector` (deterministic: email, phone, card with Luhn, IBAN with checksum, SSN, IP, secrets; reasons never echo the value), `StringSimilarity`, `EmbeddingSimilarity`, and toxicity, bias and PII rubrics for `LLMJudge`, each certified with controls | `PIIDetector` ADMISSIBLE on 80 real replies with injected PII. On 60 texts Codex wrote and labelled: precision 20/21, recall 20/30; Codex used reserved test values (`example.test`, documentation IPs) that the detector skips by design, and with that off recall is 28/30. `StringSimilarity` is INADMISSIBLE as a correctness judge on the support task (accepts 6% of correct replies). Toxicity and bias rubrics ADMISSIBLE on a small constructed set; the PII rubric UNVALIDATED, as it flagged addresses its own rubric excludes. No real embedding model was measured (`bench/safety_evaluators.py`) |
+
 ## More tools, each measured
 
 Each answers one question a team trusting a judge ends up asking. Codex rows are `gpt-5.6-luna`
@@ -821,7 +838,7 @@ by size; the findings are in the counts and the quoted reasons, all in `results/
 
 | Tool | The question | What it found |
 |---|---|---|
-| `qualify` | Is this judge qualified for *this* decision (report, gate, promote, steer from traces)? | Of 36 saved certificates, 5 qualify to gate, promote and steer (the three Codex support judges and 2 scripted ones), and none to steer from traces since the retry controls became UNVALIDATED under the exact PASS bound. Four older ones were given their judge's identity from the configuration that produced them (`bench/attach_identities.py`), which also exposed that identity must include reasoning effort |
+| `qualify` | Is this judge qualified for *this* decision (report, gate, promote, steer from traces)? | Of 43 saved certificates, 5 qualify to gate, promote and steer (the Codex support judge without reasoning, the Codex toxicity and bias rubrics, and 2 scripted judges), and none to steer from traces since the retry controls became UNVALIDATED under the exact PASS bound. Four older ones were given their judge's identity from the configuration that produced them (`bench/attach_identities.py`), which also exposed that identity must include reasoning effort |
 | `outcome_calibration`, `recalibrated_pass_rate` | What does the judge's pass rate mean once real outcomes arrive? | Simulated: when outcomes arrive mostly for passed verdicts, the naive correction is 50 points off; the adjusted one is unbiased (within 0.1 point) and flags the bias |
 | `hindsight_pair` | Does the judge grade a decision on what was known at the time? | Codex caught every ignored fact (16/16) but was swayed by a fact added two days later on 2 of 16: *"At the decision time, the fraud team's flag was already recorded"* (it was not) |
 | `duplicate_call`, `transient_retry` | Does it catch harmful process behind a right answer? | Every duplicate refund and changed-order retry caught (16/16 each), every harmless retried timeout passed (16/16); UNVALIDATED, since 16 of 16 has an exact lower bound of 0.79 against a bar of 0.8 (17 would show it) |

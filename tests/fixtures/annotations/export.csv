@@ -1,0 +1,11 @@
+trace_id,span_id,agent_name,verdict,category,expected_output,comment,tags,reviewer_email,created_at,updated_at
+0af7651916cd43dd8448eb211c80319c,b7ad6b7169203331,support,pass,,,Correct refund.,,ana@example.com,2026-09-01T10:00:00Z,2026-09-01T10:00:00Z
+0af7651916cd43dd8448eb211c80319d,c7ad6b7169203332,support,fail,hallucination,Answer: no,Invented a policy.,"[""hallucination""]",ana@example.com,2026-09-01T10:01:00Z,2026-09-01T10:01:00Z
+0af7651916cd43dd8448eb211c80319e,d7ad6b7169203333,support,neutral,off topic,,Not enough context.,,ana@example.com,2026-09-01T10:02:00Z,2026-09-01T10:02:00Z
+0af7651916cd43dd8448eb211c80319f,e7ad6b7169203334,support,pass,,,,,ana@example.com,2026-09-01T10:03:00Z,2026-09-01T10:03:00Z
+0af7651916cd43dd8448eb211c80319f,e7ad6b7169203334,support,fail,format error,Answer: yes,Second reviewer disagrees.,format,ben@example.com,2026-09-01T11:00:00Z,2026-09-01T11:00:00Z
+0af7651916cd43dd8448eb211c8031a0,f7ad6b7169203335,support,fail,refused,Answer: $12.00,First take.,,ben@example.com,2026-09-01T11:01:00Z,2026-09-01T11:01:00Z
+0af7651916cd43dd8448eb211c8031a0,f7ad6b7169203335,support,pass,,,Edited: it was right.,,ben@example.com,2026-09-01T11:01:00Z,2026-09-02T09:00:00Z
+0af7651916cd43dd8448eb211c8031a1,,support,fail,,,Row with no span id.,,ben@example.com,2026-09-01T11:02:00Z,2026-09-01T11:02:00Z
+0af7651916cd43dd8448eb211c8031a2,a8ad6b7169203336,support,Fail,wrong tool,Answer: no,,"tool-error, escalate",ana@example.com,2026-09-01T12:00:00Z,2026-09-01T12:00:00Z
+0af7651916cd43dd8448eb211c8031a2,a8ad6b7169203336,support,Neutral,,,Unsure.,,ben@example.com,2026-09-01T12:05:00Z,2026-09-01T12:05:00Z

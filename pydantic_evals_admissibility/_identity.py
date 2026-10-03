@@ -358,6 +358,10 @@ _LIBRARY_ROOTS = frozenset(
 """Packages whose classes are identified by the installed version (pydantic-evals is recorded), not by digest."""
 
 _STDLIB = os.path.dirname(dataclasses.__file__)
+_ANNOTATION_MACHINERY = frozenset({'__annotate__', '__annotate_func__', '__annotations__', '__annotations_cache__'})
+"""What Python 3.14 keeps on every class for its annotations: `__annotate_func__` closes over the class
+namespace, so digesting it marked every class written without `from __future__ import annotations`
+opaque. A class's annotated fields are recorded by value already."""
 _DATACLASS_METHODS = frozenset({'__init__', '__repr__', '__eq__', '__hash__', '__setattr__', '__delattr__',
                                 '__lt__', '__le__', '__gt__', '__ge__', '__getstate__', '__setstate__'})  # fmt: skip
 _DIGESTING: contextvars.ContextVar[frozenset[int]] = contextvars.ContextVar('_DIGESTING', default=frozenset())
@@ -411,6 +415,8 @@ def _class_material(cls: type, opaque: list[str]) -> str:
             if (
                 (dunder and not isinstance(held, types.FunctionType | property))
                 or name.startswith('_abc_')
+                or name in _ANNOTATION_MACHINERY
+                or type(attr).__name__ == '_tuplegetter'  # a namedtuple's field accessors, built by `collections`
                 or _generated(klass, name, held)
                 or (issubclass(klass, enum.Enum) and (_sunder(name) or isinstance(attr, klass)))
             ):

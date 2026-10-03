@@ -1,0 +1,184 @@
+{
+  "traffic": {
+    "first_questions_asked": 40,
+    "distinct_first_questions": 25,
+    "follow_ups_with_history": 5,
+    "failing_runs": 5
+  },
+  "version_5": {
+    "spans": 190,
+    "agent_runs": 50,
+    "runs_with_problems": 0,
+    "cases": 35,
+    "cases_with_history": 5,
+    "cases_with_error": 5,
+    "cases_with_tool_calls": 30,
+    "duplicate_runs_folded": 15,
+    "cases_without_dedup": 50,
+    "cases_errors_excluded": 30,
+    "sample_10_seed_0": 10,
+    "judge_cases_accepted_all": 30,
+    "agent_seconds": 0.156,
+    "conversion_seconds": 0.0039
+  },
+  "version_2": {
+    "spans": 190,
+    "agent_runs": 50,
+    "runs_with_problems": 0,
+    "cases": 35,
+    "cases_with_history": 5,
+    "cases_with_error": 5,
+    "cases_with_tool_calls": 30,
+    "duplicate_runs_folded": 15,
+    "cases_without_dedup": 50,
+    "cases_errors_excluded": 30,
+    "sample_10_seed_0": 10,
+    "judge_cases_accepted_all": 30,
+    "agent_seconds": 0.125,
+    "conversion_seconds": 0.0024
+  },
+  "version_2_and_5_same_cases": true,
+  "round_trip": {
+    "yaml": {
+      "bytes": 27349,
+      "cases_loaded": 35,
+      "identical": true
+    },
+    "json": {
+      "bytes": 40263,
+      "cases_loaded": 35,
+      "identical": true
+    }
+  },
+  "sample_cases": [
+    {
+      "name": "orders-115b41ba-5b2389da",
+      "inputs": {
+        "prompt": "Where is order 0?",
+        "message_history": []
+      },
+      "expected_output": null,
+      "metadata": {
+        "source": "trace",
+        "trace_id": "115b41ba003052450d89d54ab45d4bb9",
+        "span_id": "5b2389da6a21a17d",
+        "run_id": "01a10129-cfda-7486-bfae-20c6deb9db77",
+        "conversation_id": "01a10129-cfda-7486-bfae-20c7c86a515a",
+        "agent_name": "orders",
+        "model": "orders-v1",
+        "start_time": "2026-10-03T09:47:59.851856+00:00",
+        "instructions": "Answer questions about orders.",
+        "tool_calls": [
+          {
+            "id": "lookup-0",
+            "name": "lookup",
+            "arguments": {
+              "order": 0
+            },
+            "result": "order 0 shipped on day 1"
+          }
+        ],
+        "recorded_output": "Your order: order 0 shipped on day 1.",
+        "duplicates": [
+          {
+            "trace_id": "530283cc561489ede7619ae5472b7a5a",
+            "span_id": "3c048d0c0d71fa4b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "orders-99178993-19de19e7",
+      "inputs": {
+        "prompt": "And order 100?",
+        "message_history": [
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "text",
+                "content": "Where is order 0?"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "tool_call",
+                "id": "lookup-0",
+                "name": "lookup",
+                "arguments": {
+                  "order": 0
+                }
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "parts": [
+              {
+                "type": "tool_call_response",
+                "id": "lookup-0",
+                "name": "lookup",
+                "result": "order 0 shipped on day 1"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "parts": [
+              {
+                "type": "text",
+                "content": "Your order: order 0 shipped on day 1."
+              }
+            ]
+          }
+        ]
+      },
+      "expected_output": null,
+      "metadata": {
+        "source": "trace",
+        "trace_id": "99178993b08e4b81350ac5e98be9de49",
+        "span_id": "19de19e7448a461f",
+        "run_id": "01a10129-d058-72ad-aa24-753973c5e001",
+        "conversation_id": "01a10129-cfda-7486-bfae-20c7c86a515a",
+        "agent_name": "orders",
+        "model": "orders-v1",
+        "start_time": "2026-10-03T09:47:59.961114+00:00",
+        "instructions": "Answer questions about orders.",
+        "tool_calls": [
+          {
+            "id": "lookup-100",
+            "name": "lookup",
+            "arguments": {
+              "order": 100
+            },
+            "result": "order 100 shipped on day 3"
+          }
+        ],
+        "recorded_output": "Your order: order 100 shipped on day 3."
+      }
+    },
+    {
+      "name": "orders-b354d8ac-4b88b43f",
+      "inputs": {
+        "prompt": "outage test 0",
+        "message_history": []
+      },
+      "expected_output": null,
+      "metadata": {
+        "source": "trace",
+        "trace_id": "b354d8ac6502c6b3077ee2b40ee87c9b",
+        "span_id": "4b88b43f8e915df2",
+        "run_id": "01a10129-d065-75d2-883b-16b7204c0d5f",
+        "conversation_id": "01a10129-d065-75d2-883b-16b872be179f",
+        "agent_name": "orders",
+        "model": "orders-v1",
+        "start_time": "2026-10-03T09:47:59.973381+00:00",
+        "instructions": "Answer questions about orders.",
+        "error": "RuntimeError: upstream order service unavailable"
+      }
+    }
+  ]
+}

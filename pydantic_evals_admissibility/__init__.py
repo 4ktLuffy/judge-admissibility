@@ -5,6 +5,17 @@ pass what it should pass, and give the same verdict when nothing that matters ha
 """
 
 from ._abstain import AbstainingJudge, AbstainVerdict, certify_abstention
+from ._annotations import (
+    AgreementResult,
+    Annotation,
+    AnnotationFormat,
+    Annotations,
+    Confusion,
+    annotation_agreement,
+    read_annotations,
+    verdicts_from_certificate,
+    verdicts_from_report,
+)
 from ._apprentice import ApprenticeResult, Proposal, ReviewedCase, apprentice
 from ._bridge import Effect, JudgeBridge, compare_judge_reports, compare_judges
 from ._cache import CacheStats, JudgmentCache, certify_judge_cached, uncached_judgments
@@ -22,6 +33,18 @@ from ._certify import (
     recertify,
 )
 from ._cited import CitedJudge, CitedVerdict, certify_citations, verify_citations
+from ._confidence_gate import (
+    ConfidenceGate,
+    ConfidenceRequirements,
+    GateCase,
+    GateReport,
+    GateSelection,
+    calibrate_gate,
+    certify_confidence_gate,
+    choose_gate,
+    confidence_grid,
+    gate_cases,
+)
 from ._controls import (
     DEFAULT_CONTROLS,
     Control,
@@ -86,11 +109,36 @@ from ._report_eval import CertifiedJudgeReport, CertifyJudgeReport, certify_for_
 from ._reports import compare_reports, outcomes
 from ._review import ReviewPlan, ReviewResult
 from ._routing import RoutedJudge, certify_routing, replay_routing
+from ._safety import (
+    BIAS_JUDGE_RUBRIC,
+    PII_CATEGORIES,
+    PII_JUDGE_RUBRIC,
+    TOXICITY_JUDGE_RUBRIC,
+    PIIDetector,
+    PIIFinding,
+    PIIInjection,
+    PIILookalike,
+    detect_pii,
+    pii_controls,
+    redact,
+)
+from ._similarity import EmbeddingSimilarity, StringSimilarity, levenshtein, string_similarity
 from ._stats import cohen_kappa, wilson
 from ._steering import DEFAULT_NEUTRAL, SteeringResult, SteeringVerdict, assess_steering
 from ._stress import ATTACKS, Attack, StressResult, stress_judge
+from ._task_cache import (
+    OutputCodec,
+    TaskCache,
+    TaskCacheStats,
+    evaluate_cached,
+    evaluate_cached_sync,
+    task_identity,
+    task_identity_reliable,
+    uncached_cases,
+)
 from ._trace_controls import duplicate_call, hindsight_pair, retried_with_changed_arguments, transient_retry
 from ._trace_export import certificate_attributes, certify_judge_traced, log_certificate
+from ._traces import TracedRun, agent_runs, dataset_from_spans, history_messages, judge_cases_from_spans
 from ._witness import Witness, minimize_witness
 
 __all__ = (
@@ -244,4 +292,51 @@ __all__ = (
     'JudgmentCache',
     'certify_judge_cached',
     'uncached_judgments',
+    'AgreementResult',
+    'Annotation',
+    'AnnotationFormat',
+    'Annotations',
+    'Confusion',
+    'annotation_agreement',
+    'read_annotations',
+    'verdicts_from_certificate',
+    'verdicts_from_report',
+    'ConfidenceGate',
+    'ConfidenceRequirements',
+    'GateCase',
+    'GateReport',
+    'GateSelection',
+    'calibrate_gate',
+    'certify_confidence_gate',
+    'choose_gate',
+    'confidence_grid',
+    'gate_cases',
+    'BIAS_JUDGE_RUBRIC',
+    'PII_CATEGORIES',
+    'PII_JUDGE_RUBRIC',
+    'TOXICITY_JUDGE_RUBRIC',
+    'PIIDetector',
+    'PIIFinding',
+    'PIIInjection',
+    'PIILookalike',
+    'detect_pii',
+    'pii_controls',
+    'redact',
+    'OutputCodec',
+    'TaskCache',
+    'TaskCacheStats',
+    'evaluate_cached',
+    'evaluate_cached_sync',
+    'task_identity',
+    'task_identity_reliable',
+    'uncached_cases',
+    'EmbeddingSimilarity',
+    'StringSimilarity',
+    'levenshtein',
+    'string_similarity',
+    'TracedRun',
+    'agent_runs',
+    'dataset_from_spans',
+    'history_messages',
+    'judge_cases_from_spans',
 )

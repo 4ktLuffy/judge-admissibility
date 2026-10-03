@@ -1,0 +1,1331 @@
+{
+  "simulation": {
+    "judge": "p = sigmoid(+-sep + N(0, 1.5)), 70% of outputs pass",
+    "candidates": "confidence_grid(): confidence 0, 0.05, ..., 0.95 at cutoff 0.5",
+    "runs": [
+      {
+        "n": 100,
+        "separation": 1.2,
+        "bar": 0.9,
+        "true_accuracy_by_gate": {
+          "0.5/0.5": 0.7876,
+          "0.475/0.525": 0.7986,
+          "0.45/0.55": 0.8095,
+          "0.425/0.575": 0.8202,
+          "0.4/0.6": 0.8305,
+          "0.375/0.625": 0.8409,
+          "0.35/0.65": 0.8512,
+          "0.325/0.675": 0.8616,
+          "0.3/0.7": 0.872,
+          "0.275/0.725": 0.8825,
+          "0.25/0.75": 0.8929,
+          "0.225/0.775": 0.9027,
+          "0.2/0.8": 0.913,
+          "0.175/0.825": 0.9232,
+          "0.15/0.85": 0.9337,
+          "0.125/0.875": 0.9446,
+          "0.1/0.9": 0.9556,
+          "0.075/0.925": 0.9663,
+          "0.05/0.95": 0.9759,
+          "0.025/0.975": 0.9879
+        },
+        "in_sample_lower_bound": {
+          "trials": 400,
+          "chosen": 37,
+          "mean_overstatement": 0.0750633436177872,
+          "share_overstated": 1.0,
+          "truth_below_lower_bound": 0.32432432432432434,
+          "claims_while_truly_below_bar": 5,
+          "claims_while_truly_below_bar_share_of_trials": 0.0125,
+          "claims": 37
+        },
+        "in_sample_estimate": {
+          "trials": 400,
+          "chosen": 391,
+          "mean_overstatement": 0.019225838645737337,
+          "share_overstated": 0.6879795396419437,
+          "truth_below_lower_bound": 0.03580562659846547,
+          "claims_while_truly_below_bar": 196,
+          "claims_while_truly_below_bar_share_of_trials": 0.49,
+          "claims": 391
+        },
+        "split_in_sample_half": {
+          "trials": 400,
+          "chosen": 1,
+          "mean_overstatement": 0.19047773981888183,
+          "share_overstated": 1.0,
+          "truth_below_lower_bound": 1.0,
+          "claims_while_truly_below_bar": 1,
+          "claims_while_truly_below_bar_share_of_trials": 0.0025,
+          "claims": 1
+        },
+        "split_confirmed": {
+          "trials": 400,
+          "chosen": 1,
+          "mean_overstatement": 0.10537135684015841,
+          "share_overstated": 1.0,
+          "truth_below_lower_bound": 0.0,
+          "claims_while_truly_below_bar": 0,
+          "claims_while_truly_below_bar_share_of_trials": 0.0,
+          "claims": 0
+        },
+        "fixed_sequence": {
+          "trials": 400,
+          "chosen": 31,
+          "mean_overstatement": 0.07189808209841834,
+          "share_overstated": 1.0,
+          "truth_below_lower_bound": 0.1935483870967742,
+          "claims_while_truly_below_bar": 1,
+          "claims_while_truly_below_bar_share_of_trials": 0.0025,
+          "claims": 31
+        }
+      },
+      {
+        "n": 390,
+        "separation": 1.2,
+        "bar": 0.9,
+        "true_accuracy_by_gate": {
+          "0.5/0.5": 0.7876,
+          "0.475/0.525": 0.7986,
+          "0.45/0.55": 0.8095,
+          "0.425/0.575": 0.8202,
+          "0.4/0.6": 0.8305,
+          "0.375/0.625": 0.8409,
+          "0.35/0.65": 0.8512,
+          "0.325/0.675": 0.8616,
+          "0.3/0.7": 0.872,
+          "0.275/0.725": 0.8825,
+          "0.25/0.75": 0.8929,
+          "0.225/0.775": 0.9027,
+          "0.2/0.8": 0.913,
+          "0.175/0.825": 0.9232,
+          "0.15/0.85": 0.9337,
+          "0.125/0.875": 0.9446,
+          "0.1/0.9": 0.9556,
+          "0.075/0.925": 0.9663,
+          "0.05/0.95": 0.9759,
+          "0.025/0.975": 0.9879
+        },
+        "in_sample_lower_bound": {
+          "trials": 400,
+          "chosen": 275,
+          "mean_overstatement": 0.019706121742873155,
+          "share_overstated": 0.9781818181818182,
+          "truth_below_lower_bound": 0.03636363636363636,
+          "claims_while_truly_below_bar": 1,
+          "claims_while_truly_below_bar_share_of_trials": 0.0025,
+          "claims": 275
+        },
+        "in_sample_estimate": {
+          "trials": 400,
+          "chosen": 400,
+          "mean_overstatement": 0.0047534284949142976,
+          "share_overstated": 0.6075,
+          "truth_below_lower_bound": 0.0275,
+          "claims_while_truly_below_bar": 153,
+          "claims_while_truly_below_bar_share_of_trials": 0.3825,
+          "claims": 400
+        },
+        "split_in_sample_half": {
+          "trials": 400,
+          "chosen": 128,
+          "mean_overstatement": 0.04205985261406312,
+          "share_overstated": 1.0,
+          "truth_below_lower_bound": 0.09375,
+          "claims_while_truly_below_bar": 5,
+          "claims_while_truly_below_bar_share_of_trials": 0.0125,
+          "claims": 128
+        },
+        "split_confirmed": {
+          "trials": 400,
+          "chosen": 128,
+          "mean_overstatement": 0.0003481964123404676,
+          "share_overstated": 0.578125,
+          "truth_below_lower_bound": 0.0078125,
+          "claims_while_truly_below_bar": 0,
+          "claims_while_truly_below_bar_share_of_trials": 0.0,
+          "claims": 17
+        },
+        "fixed_sequence": {
+          "trials": 400,
+          "chosen": 158,
+          "mean_overstatement": 0.01965508893006416,
+          "share_overstated": 0.9936708860759493,
+          "truth_below_lower_bound": 0.03164556962025317,
+          "claims_while_truly_below_bar": 0,
+          "claims_while_truly_below_bar_share_of_trials": 0.0,
+          "claims": 158
+        }
+      },
+      {
+        "n": 1000,
+        "separation": 1.2,
+        "bar": 0.9,
+        "true_accuracy_by_gate": {
+          "0.5/0.5": 0.7876,
+          "0.475/0.525": 0.7986,
+          "0.45/0.55": 0.8095,
+          "0.425/0.575": 0.8202,
+          "0.4/0.6": 0.8305,
+          "0.375/0.625": 0.8409,
+          "0.35/0.65": 0.8512,
+          "0.325/0.675": 0.8616,
+          "0.3/0.7": 0.872,
+          "0.275/0.725": 0.8825,
+          "0.25/0.75": 0.8929,
+          "0.225/0.775": 0.9027,
+          "0.2/0.8": 0.913,
+          "0.175/0.825": 0.9232,
+          "0.15/0.85": 0.9337,
+          "0.125/0.875": 0.9446,
+          "0.1/0.9": 0.9556,
+          "0.075/0.925": 0.9663,
+          "0.05/0.95": 0.9759,
+          "0.025/0.975": 0.9879
+        },
+        "in_sample_lower_bound": {
+          "trials": 200,
+          "chosen": 198,
+          "mean_overstatement": 0.0037113796976170404,
+          "share_overstated": 0.6111111111111112,
+          "truth_below_lower_bound": 0.03535353535353535,
+          "claims_while_truly_below_bar": 1,
+          "claims_while_truly_below_bar_share_of_trials": 0.005,
+          "claims": 198
+        },
+        "in_sample_estimate": {
+          "trials": 200,
+          "chosen": 200,
+          "mean_overstatement": 0.0020913946502293048,
+          "share_overstated": 0.535,
+          "truth_below_lower_bound": 0.045,
+          "claims_while_truly_below_bar": 54,
+          "claims_while_truly_below_bar_share_of_trials": 0.27,
+          "claims": 200
+        },
+        "split_in_sample_half": {
+          "trials": 200,
+          "chosen": 166,
+          "mean_overstatement": 0.013957240371877665,
+          "share_overstated": 0.8795180722891566,
+          "truth_below_lower_bound": 0.030120481927710843,
+          "claims_while_truly_below_bar": 1,
+          "claims_while_truly_below_bar_share_of_trials": 0.005,
+          "claims": 166
+        },
+        "split_confirmed": {
+          "trials": 200,
+          "chosen": 166,
+          "mean_overstatement": 0.000213345309405956,
+          "share_overstated": 0.5240963855421686,
+          "truth_below_lower_bound": 0.012048192771084338,
+          "claims_while_truly_below_bar": 0,
+          "claims_while_truly_below_bar_share_of_trials": 0.0,
+          "claims": 68
+        },
+        "fixed_sequence": {
+          "trials": 200,
+          "chosen": 144,
+          "mean_overstatement": 0.00426220953684694,
+          "share_overstated": 0.6458333333333334,
+          "truth_below_lower_bound": 0.034722222222222224,
+          "claims_while_truly_below_bar": 0,
+          "claims_while_truly_below_bar_share_of_trials": 0.0,
+          "claims": 144
+        }
+      }
+    ],
+    "negative_control": {
+      "n": 390,
+      "separation": 0.9,
+      "bar": 0.97,
+      "true_accuracy_by_gate": {
+        "0.5/0.5": 0.7255,
+        "0.475/0.525": 0.7351,
+        "0.45/0.55": 0.7452,
+        "0.425/0.575": 0.7556,
+        "0.4/0.6": 0.7658,
+        "0.375/0.625": 0.7761,
+        "0.35/0.65": 0.7862,
+        "0.325/0.675": 0.7959,
+        "0.3/0.7": 0.8063,
+        "0.275/0.725": 0.8176,
+        "0.25/0.75": 0.8285,
+        "0.225/0.775": 0.8404,
+        "0.2/0.8": 0.8528,
+        "0.175/0.825": 0.8649,
+        "0.15/0.85": 0.8784,
+        "0.125/0.875": 0.8921,
+        "0.1/0.9": 0.9075,
+        "0.075/0.925": 0.925,
+        "0.05/0.95": 0.9432,
+        "0.025/0.975": 0.9615
+      },
+      "in_sample_lower_bound": {
+        "chosen": 0,
+        "trials": 400
+      },
+      "in_sample_estimate": {
+        "trials": 400,
+        "chosen": 216,
+        "mean_overstatement": 0.042680249844617005,
+        "share_overstated": 1.0,
+        "truth_below_lower_bound": 0.037037037037037035,
+        "claims_while_truly_below_bar": 216,
+        "claims_while_truly_below_bar_share_of_trials": 0.54,
+        "claims": 216
+      },
+      "split_in_sample_half": {
+        "chosen": 0,
+        "trials": 400
+      },
+      "split_confirmed": {
+        "chosen": 0,
+        "trials": 400
+      },
+      "fixed_sequence": {
+        "chosen": 0,
+        "trials": 400
+      }
+    },
+    "seconds": 266.2
+  },
+  "real": {
+    "judgments": {
+      "55e4203eacd4dc11824e": {
+        "case": "return-0#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that the unopened item is eligible for return within 60 days and receives a full refund. February 17 to April 12 is within 60 days."
+      },
+      "319d8be40373769d1890": {
+        "case": "return-1#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply incorrectly says the item is within 60 days. From April 25 to July 15 is 81 days, so it is outside the return window despite being unopened."
+      },
+      "dfcf43aa2bc0e7d592a4": {
+        "case": "return-0#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy allows returns within 60 days of delivery. April 12 is 54 days after February 17, so the unopened item is still eligible and would be refunded in full; replying \u201cno\u201d is incorrect."
+      },
+      "5f779ae8ff12b52c8429": {
+        "case": "return-1#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The item was delivered 81 days ago, exceeding the 60-day return window. The reply incorrectly says yes."
+      },
+      "2b1a1f5c2b17c7df155d": {
+        "case": "return-1#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply correctly states that the unopened item is eligible for a full refund within 60 days. April 25 to July 15 is 81 days, so it is not within the return window; the answer is incorrect."
+      },
+      "a0123bb658075ede6df0": {
+        "case": "return-2#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly states that the unopened item is within 14 days of delivery and qualifies for a full refund under the policy."
+      },
+      "480b5c2a4112b2784bbd": {
+        "case": "return-2#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The item is within 14 days of delivery (June 2 to June 11) and unopened, so it can be returned for a full refund. The reply incorrectly says no."
+      },
+      "c60a8191dbfd914ffea2": {
+        "case": "return-3#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly determines that February 19 is 34 days after January 16, exceeding the 30-day return period. The unopened status does not extend the deadline."
+      },
+      "ba025dd014b767780327": {
+        "case": "return-3#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy allows returns within 30 days of delivery. From January 16, 2026, the 30-day window ends February 15, so on February 19 the unopened item is no longer returnable. The reply correctly answers no."
+      },
+      "d34644492f64faeeba8b": {
+        "case": "return-2#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that the item is within 14 days of delivery and that unopened items receive a full refund."
+      },
+      "9b96c7b7c31ce07e65eb": {
+        "case": "return-4#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly determines that May 14 is within 30 days of the April 23 delivery and correctly states that an unopened item receives a full refund."
+      },
+      "12c3900c5768707aeb18": {
+        "case": "return-3#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly says yes: February 19 is within 30 days of the January 16 delivery, and the item is unopened, so it qualifies for a full refund."
+      },
+      "0504619c7eb6fc8cd7a4": {
+        "case": "return-4#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The item was delivered 21 days ago, which is within the 30-day return window, and unopened items are eligible for a full refund. The reply incorrectly says no."
+      },
+      "c4d2d8b2ea97671c44e6": {
+        "case": "return-5#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply incorrectly says the item is within 30 days: July 26 is 37 days after June 19, so the return window has expired despite the item being unopened."
+      },
+      "3b1fc7f3e11aaea7cba8": {
+        "case": "return-5#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy allows returns within 30 days of delivery. July 26 is 37 days after June 19, so the unopened item is outside the return window; answering \u201cyes\u201d is incorrect."
+      },
+      "d7aaaa561f7ab72d6785": {
+        "case": "return-6#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that the item is within the 45-day return window and that unopened items receive a full refund."
+      },
+      "4e3ac58b446125c01594": {
+        "case": "return-6#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that the item is within the 45-day return window and that unopened items receive a full refund."
+      },
+      "fc2f32702792a7ccadec": {
+        "case": "return-6#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy allows returns within 45 days of delivery, and March 30 is 23 days after March 7. Since the item is unopened, it qualifies for a full refund. The reply \u201cno\u201d is incorrect."
+      },
+      "88f51390f99eda750a5b": {
+        "case": "return-7#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply correctly states that the unopened order is returnable within 45 days and eligible for a full refund. April 13 to June 5 is 53 days, however, so it is actually outside the return window."
+      },
+      "5d28af6350e77a230514": {
+        "case": "return-7#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The item is unopened and was delivered on April 13, 2026; June 5, 2026 is within the 45-day return window, so it can be returned for a full refund. The reply correctly answers yes."
+      },
+      "93acdbae78f4dbfaa258": {
+        "case": "return-8#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly states that the unopened item is within the 60-day return window and qualifies for a full refund."
+      },
+      "0762b29e0b14f8a306e8": {
+        "case": "return-8#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The item was delivered 16 days ago, which is within the 60-day return window, and unopened items are eligible for a full refund. The reply incorrectly says no."
+      },
+      "458ef824aa9c8e57282f": {
+        "case": "return-8#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly states that the item is within the 60-day return period and that unopened items receive a full refund."
+      },
+      "17ddc85e4552f085c28d": {
+        "case": "return-9#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply incorrectly says the item is within 60 days. January 19 to April 27 is 98 days, so it is outside the return window despite being unopened."
+      },
+      "00c985b65094c0f37156": {
+        "case": "return-9#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The reply incorrectly says April 27 is within 60 days of January 19; it is more than 60 days later, so the item is outside the return window despite being unopened."
+      },
+      "03adf7d8da8c6a94b4a6": {
+        "case": "return-9#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The item is unopened and was delivered January 19, 2026; April 27, 2026 is within the 60-day return window. The reply correctly answers yes."
+      },
+      "457b5c899818b2c829c2": {
+        "case": "shipping-0#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy charges a flat $6.99 shipping fee for orders under $35, so the reply is correct."
+      },
+      "e24fd1ade6c509cff977": {
+        "case": "shipping-0#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders under $35 incur a flat standard shipping fee of $6.99, and the reply gives that amount."
+      },
+      "170dbcf67e8ae3460a4a": {
+        "case": "shipping-0#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders under $35 incur the flat standard shipping fee of $6.99, so $0.00 is incorrect."
+      },
+      "d361f191a0fc77594254": {
+        "case": "shipping-1#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The order is under $35, so the policy charges the flat standard shipping fee of $8.50. The reply gives the correct amount."
+      },
+      "a9269684a24abe8e18f7": {
+        "case": "shipping-1#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders under $35 incur the flat $8.50 standard shipping fee, so $0.00 is incorrect."
+      },
+      "138e7df50ee1f69a7c4b": {
+        "case": "shipping-2#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy charges a flat $8.50 for orders under $75, and the reply correctly states that amount."
+      },
+      "54822e58821938bb7ddc": {
+        "case": "shipping-2#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The order is under $75, so standard shipping costs the flat $8.50. The reply incorrectly states $0.00."
+      },
+      "5406d43f3d13af24046e": {
+        "case": "shipping-2#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy charges a flat $8.50 for orders under $75, and the reply correctly states the shipping cost."
+      },
+      "a2fccddb32d503dc4848": {
+        "case": "shipping-3#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "Orders under $75 incur the flat $6.99 standard shipping fee, so the reply is correct."
+      },
+      "9c559ce14119a8b4bdb4": {
+        "case": "shipping-3#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders under $75 incur the flat $6.99 standard shipping fee, so $0.00 is incorrect."
+      },
+      "6ac5dc461dac90d16893": {
+        "case": "shipping-4#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders under $75 pay a flat $6.99 standard shipping fee, and the reply gives that exact amount."
+      },
+      "6a83a15c53fce6c6abdc": {
+        "case": "shipping-3#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy\u2019s flat $6.99 standard shipping fee for orders under $75 and gives the requested amount."
+      },
+      "f2d31c269013b952ef2c": {
+        "case": "shipping-4#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the policy: orders under $75 incur a flat $6.99 standard shipping fee, so the customer pays $6.99."
+      },
+      "724ed9078981ef1f7204": {
+        "case": "shipping-4#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders under $75 incur the flat standard shipping fee of $6.99, so the reply of $0.00 is incorrect."
+      },
+      "6578ea9218942968f620": {
+        "case": "shipping-5#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders totaling $35 or more qualify for free standard shipping, so the reply correctly answers the $38.41 cart question."
+      },
+      "cb1943b0889f410d4725": {
+        "case": "shipping-5#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders of $35 or more qualify for free standard shipping, so the $38.41 cart has $0 shipping. The reply incorrectly states $4.99."
+      },
+      "0581f798683219d700ab": {
+        "case": "shipping-6#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders under $50 pay a flat $4.99 standard shipping fee. The reply correctly answers the customer's question."
+      },
+      "37ba886e15116dc84b83": {
+        "case": "shipping-6#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy charges a flat $4.99 shipping fee for orders under $50, and the reply gives the correct amount."
+      },
+      "5809575e8801a28f458e": {
+        "case": "shipping-6#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy charges a flat $4.99 shipping fee for orders under $50. The reply incorrectly states $0.00."
+      },
+      "b94caba92853128b94fa": {
+        "case": "shipping-7#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The policy states that orders totaling $75 or more qualify for free standard shipping. Since the cart is $78.44, the $0.00 shipping answer is correct."
+      },
+      "20bdc31b4a91503d236a": {
+        "case": "shipping-7#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders of $75 or more qualify for free standard shipping, so the reply correctly answers $0.00."
+      },
+      "bb1934cd5b149a449b69": {
+        "case": "shipping-7#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders of $75 or more qualify for free standard shipping, so the $78.44 cart has $0 shipping. The reply incorrectly states $6.99."
+      },
+      "64c6344d81e5378c8f60": {
+        "case": "shipping-8#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy says orders of $35 or more qualify for free standard shipping, so the $79 cart has a $0.00 shipping charge."
+      },
+      "2abe11ba0d41683d46b1": {
+        "case": "shipping-8#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders of $35 or more qualify for free standard shipping, so the $79 cart ships free. The reply incorrectly says $6.99."
+      },
+      "51d0ca2174861053e1b3": {
+        "case": "shipping-9#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders under $35 pay a flat $8.50 standard shipping fee, and the reply correctly applies this to the $27.43 cart."
+      },
+      "24b206a8efaaf9fc1aec": {
+        "case": "shipping-9#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Orders under $35 pay a flat $8.50 standard shipping fee, so the reply of $0.00 is incorrect."
+      },
+      "46c13dc582ffc4a39eef": {
+        "case": "shipping-8#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy states that orders of $35 or more qualify for free standard shipping, so a $79 cart has a $0.00 shipping charge."
+      },
+      "2b549ea9fe8cbe530a4b": {
+        "case": "refund-0#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy requires a 20% restocking fee, so the refund is 80% of $37.37: $29.896, which rounds to $29.90. The reply correctly answers the question."
+      },
+      "1c5511a5ce162b39486d": {
+        "case": "refund-0#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 20% restocking fee to the $37.37 purchase price, yielding $29.896, rounded to $29.90. The order value is below $50, but shipping is not included in the stated refund calculation or policy requirement."
+      },
+      "bcdc4fd1f5a46243291a": {
+        "case": "refund-0#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Opened items are refunded minus a 20% restocking fee, so the refund is $37.37 \u00d7 80% = $29.896, typically $29.90. The reply\u2019s $37.38 is incorrect."
+      },
+      "a89c26f51582425c6ced": {
+        "case": "refund-1#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 10% restocking fee to the opened item: $225.85 \u00d7 90% = $203.265, rounded to $203.26."
+      },
+      "e6e78da04e8bec36bac1": {
+        "case": "refund-1#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The item is opened, so the policy deducts a 10% restocking fee. Ten percent of $225.85 is $22.585, leaving $203.265, which rounds to $203.27."
+      },
+      "ac6831fdefc196953e24": {
+        "case": "refund-2#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the 20% restocking fee to the $65 opened item, yielding a $52 refund within the stated return window."
+      },
+      "3e0093ff7146ceec0299": {
+        "case": "refund-1#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The opened item is subject to a 10% restocking fee, so the refund should be $203.27 (90% of $225.85), not $225.84."
+      },
+      "b2a924f22102a7e6d568": {
+        "case": "refund-2#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the 20% restocking fee to the $65 opened item, yielding a $52 refund."
+      },
+      "e2d96d03a5460abd6174": {
+        "case": "refund-3#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 15% restocking fee to the $190.08 purchase price, yielding $161.568, rounded to $161.57."
+      },
+      "bbcd8d5246c6071c5fd6": {
+        "case": "refund-3#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 15% restocking fee to the $190.08 opened-item purchase, yielding $161.568, rounded to $161.57."
+      },
+      "1f58454f4dba802479c8": {
+        "case": "refund-2#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy says opened items incur a 20% restocking fee. A $65.00 purchase therefore receives $52.00, not the full $65.00."
+      },
+      "04f156fd6556f97e8378": {
+        "case": "refund-3#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy says opened items returned within 30 days are refunded minus a 15% restocking fee. For $190.08, the refund is $161.57, not the full $190.08."
+      },
+      "8cebc56f8792da066a7d": {
+        "case": "refund-4#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the 20% restocking fee to the $132.26 opened item, yielding $105.808, rounded to $105.81."
+      },
+      "0768d4b092bb3bdc90c5": {
+        "case": "refund-4#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy says opened items are refunded minus a 20% restocking fee. 80% of $132.26 is $105.808, which rounds to $105.81, so the reply is correct."
+      },
+      "7a89b6f106da27ffd5a1": {
+        "case": "refund-4#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy states opened items are refunded minus a 20% restocking fee. For $132.26, the refund is $105.81, not the full purchase price."
+      },
+      "452605df0fea22741933": {
+        "case": "refund-5#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy refunds opened items minus a 10% restocking fee. Ten percent of $178.07 is $17.807, leaving $160.263, which rounds to $160.26."
+      },
+      "f9bf04c13d15a17dc55f": {
+        "case": "refund-5#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 10% restocking fee to the $178.07 purchase price, yielding $160.26 after rounding to cents."
+      },
+      "6f00bf0098544bec3d20": {
+        "case": "refund-5#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy says opened items are refunded minus a 10% restocking fee. For $178.07, the refund is $160.26, not the full purchase price."
+      },
+      "8ad65a648ac4aa2225fe": {
+        "case": "refund-6#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 10% restocking fee to the $223.88 opened item and calculates the refund as $201.49, assuming it is within the 45-day return window."
+      },
+      "2c7e8f1421827ecd4188": {
+        "case": "refund-6#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the 10% restocking fee to the $223.88 opened item: $223.88 \u2212 $22.388 = $201.492, rounded to $201.49."
+      },
+      "50901eb4066a5c740296": {
+        "case": "refund-6#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy says opened items are refunded minus a 10% restocking fee. On $223.88, the refund is $201.49, not the full purchase price."
+      },
+      "ffd9db6516224d51a39f": {
+        "case": "refund-7#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 10% restocking fee to the $103.86 purchase price, yielding $93.47, assuming the return is within 14 days as stated."
+      },
+      "053e791c5369e785e9c3": {
+        "case": "refund-7#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 10% restocking fee to the opened item's $103.86 price and calculates the refund as $93.47, assuming no separate shipping refund issue is relevant."
+      },
+      "5f70f62ea1e2ad65d7b5": {
+        "case": "refund-7#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy requires a 10% restocking fee for opened items. On $103.86, the refund should be $93.47, not the full purchase price."
+      },
+      "fe909db269f5c58ae9bb": {
+        "case": "refund-8#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the 15% restocking fee to the $105.89 purchase price and calculates the refund as $90.0065, rounded to $90.01."
+      },
+      "32ea76bc267520f0f992": {
+        "case": "refund-8#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 15% restocking fee to the $105.89 purchase price, yielding $90.0065, rounded to $90.01."
+      },
+      "67352fa1f7c4415f8be3": {
+        "case": "refund-8#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "Opened items are refunded minus a 15% restocking fee. A 15% deduction from $105.89 leaves $90.16, so the reply\u2019s full refund amount is incorrect."
+      },
+      "7664d197dfa1236000ef": {
+        "case": "refund-9#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 20% restocking fee to the $271.56 opened-item purchase, yielding $217.248, rounded to $217.25."
+      },
+      "1bc9687089ad54dfe2b4": {
+        "case": "refund-9#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy requires a 20% restocking fee on opened items, so the refund is 80% of $271.56: $217.248, which rounds to $217.25."
+      },
+      "8add5f2657b3c7a544d8": {
+        "case": "refund-9#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The policy says opened items are refunded minus a 20% restocking fee. For $271.56, the refund should be $217.25, not the full purchase price."
+      },
+      "416c714ab2b022d9db53": {
+        "case": "warranty-0#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: defects are covered for 6 months, and the blender stopped working on its own after 4 months, with no accidental damage indicated."
+      },
+      "f3bd5ac234bcf3bb4f1d": {
+        "case": "warranty-0#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 6 months, and the blender stopped working on its own after 4 months, indicating a covered defect. The reply correctly confirms coverage."
+      },
+      "9cf32ef5e2fbe6d8ddfe": {
+        "case": "warranty-0#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 6 months, and the blender stopped working on its own after 4 months, indicating a covered defect. The reply \u201cno\u201d is incorrect."
+      },
+      "bc8affb893f07ee48fe3": {
+        "case": "warranty-1#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts 12 months from purchase, so a defect occurring after 13 months is not covered."
+      },
+      "bae42373ed4ebdac38b0": {
+        "case": "warranty-1#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The warranty covers defects for 12 months from purchase. Since the headphones stopped working 13 months after purchase, they are outside the warranty period, so \u201cyes\u201d is incorrect."
+      },
+      "06ba64c495011457e6b4": {
+        "case": "warranty-2#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 12 months, and the speaker stopped working on its own after 6 months, indicating a covered defect. The reply correctly confirms warranty coverage."
+      },
+      "41e7856d93a3f94dfc7e": {
+        "case": "warranty-2#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: products are covered for defects for 12 months, and the speaker failed on its own after 6 months with no accidental damage indicated."
+      },
+      "e19c0a1dc5c29b1e11a4": {
+        "case": "warranty-3#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts only 6 months, and 23 months exceeds that period."
+      },
+      "f5cb17aa45feb45b68db": {
+        "case": "warranty-3#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The warranty covers product defects for only 6 months from purchase, so a blender failing 23 months later is not covered. The reply incorrectly says yes."
+      },
+      "5cc7a4d8674eed73f9a2": {
+        "case": "warranty-3#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that the blender is not covered because the warranty lasts only 6 months, while the failure occurred 23 months after purchase."
+      },
+      "3cddccf73154f0182fc3": {
+        "case": "warranty-4#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 24 months, while excluding only accidental damage. Since the tent stopped working on its own after 4 months, the reply correctly treats it as a covered defect."
+      },
+      "b7947156da09453af74e": {
+        "case": "warranty-2#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 12 months, and the speaker stopped working on its own after 6 months, indicating a likely defect. The reply incorrectly says no."
+      },
+      "d25d67b39bdd5defe06f": {
+        "case": "warranty-4#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 24 months from purchase, and the tent stopped working on its own after 4 months, indicating a likely defect rather than accidental damage. The reply incorrectly says no."
+      },
+      "4bca17cad6314aea6f96": {
+        "case": "warranty-4#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 24-month defect warranty and distinguishes the customer's stated non-accidental failure from excluded accidental damage."
+      },
+      "c549b03456bcdf6bbd14": {
+        "case": "warranty-5#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts 12 months from purchase, so a defect arising at 17 months is not covered. It also answers 'no.'"
+      },
+      "7a25a651e695c34b9975": {
+        "case": "warranty-5#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The policy covers product defects for 12 months from purchase. Since the backpack failed after 17 months, the reply correctly says it is not covered."
+      },
+      "96e6a8376c5c9cfcac92": {
+        "case": "warranty-5#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The warranty covers defects for only 12 months from purchase, so a product that stopped working 17 months later is not covered. The reply incorrectly says yes."
+      },
+      "5114631995cfe9090be4": {
+        "case": "warranty-6#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 12 months, and the customer reports the bike light stopped working on its own after 4 months, indicating a covered defect. The reply correctly answers yes."
+      },
+      "c667644b009d58c73e03": {
+        "case": "warranty-6#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly states that defects are covered for 12 months and appropriately notes the exclusion for accidental damage, matching the policy and the customer's situation."
+      },
+      "52c6c155197e8b6e0cc7": {
+        "case": "warranty-7#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts 6 months from purchase, so a failure after 13 months is not covered."
+      },
+      "edd76134d2fea3a52274": {
+        "case": "warranty-6#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 12 months, and the light stopped working on its own after 4 months, indicating a likely defect. The reply incorrectly says no."
+      },
+      "f447d9d29875cfee124c": {
+        "case": "warranty-7#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The warranty covers product defects for only 6 months from purchase. A speaker failing 13 months after purchase is outside the warranty period, so \u201cyes\u201d is incorrect."
+      },
+      "68bee7b7a2d292e7bf28": {
+        "case": "warranty-8#reply0",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the 12-month defect warranty and notes the accidental-damage exclusion. It directly answers that the blender is covered."
+      },
+      "232b4d1d52318e31d00a": {
+        "case": "warranty-8#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: defects are covered for 12 months, and the customer reports the blender stopped working on its own after 6 months, with no accidental damage indicated."
+      },
+      "b33e65910f12110f03d3": {
+        "case": "warranty-7#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 1.0,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts 6 months, and 13 months is outside that period. It directly answers that the speaker is not covered."
+      },
+      "f2b2ec2bba7550e7580f": {
+        "case": "warranty-9#reply1",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": true,
+        "confidence": 0.99,
+        "reason": "The reply correctly applies the policy: warranty coverage lasts 12 months from purchase, so a failure after 21 months is not covered."
+      },
+      "091b42e6af56781f8e99": {
+        "case": "warranty-9#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 1.0,
+        "reason": "The warranty covers defects for only 12 months from purchase, so a backpack that stopped working after 21 months is not covered. The reply incorrectly says yes."
+      },
+      "5ef2070f6f35fe2e43ab": {
+        "case": "warranty-8#wrong",
+        "model": "codex:gpt-5.6-luna@none",
+        "passed": false,
+        "confidence": 0.99,
+        "reason": "The policy covers every product against defects for 12 months, and the blender stopped working on its own after 6 months, indicating a likely defect. The reply incorrectly says no."
+      }
+    },
+    "judge": "codex:gpt-5.6-luna@none",
+    "fallback_judge": null,
+    "models_used": [
+      "codex:gpt-5.6-luna@none"
+    ],
+    "confidence_is": "verbalized (stated in the reply), not a model probability",
+    "outputs": 120,
+    "judged": 120,
+    "errors": 0,
+    "labels_pass": 72,
+    "labels_fail": 48,
+    "verdict_accuracy": 0.975,
+    "verdict_right": 117,
+    "distinct_stated_confidences": [
+      0.99,
+      1.0
+    ],
+    "stated_confidence_counts": {
+      "0.99": 47,
+      "1.0": 73
+    },
+    "fallback_asked": 0,
+    "fallback_complete": true,
+    "calls_this_run": 0,
+    "tokens_this_run": 0,
+    "reports": {
+      "ungated (p >= 0.5)": {
+        "gate": {
+          "low": 0.5,
+          "high": 0.5,
+          "describe": "ungated (pass at p >= 0.5)"
+        },
+        "status": "UNVALIDATED",
+        "reason": "not enough evidence: auto_accuracy",
+        "unit": "group",
+        "units": 40,
+        "cases": 120,
+        "decided": 40,
+        "fully_decided": 40,
+        "outputs_decided": 120,
+        "outputs_correct": 117,
+        "output_accuracy": 0.975,
+        "deferred": 0,
+        "auto_correct": 37,
+        "false_passes": 3,
+        "false_fails": 0,
+        "accuracy": 0.925,
+        "coverage": 1.0,
+        "end_to_end": 0.925,
+        "end_to_end_correct": 37,
+        "repeated_cases": 0,
+        "stability": null,
+        "chosen_on": 0,
+        "checks": [
+          {
+            "name": "auto_accuracy",
+            "status": "UNVALIDATED",
+            "successes": 37,
+            "trials": 40,
+            "rate": 0.925,
+            "interval": [
+              0.7961352512671012,
+              0.9842578201489585
+            ],
+            "threshold": 0.9,
+            "detail": "interval straddles the threshold: needs more cases"
+          },
+          {
+            "name": "coverage",
+            "status": "PASS",
+            "successes": 40,
+            "trials": 40,
+            "rate": 1.0,
+            "interval": [
+              0.9119026971211976,
+              1.0
+            ],
+            "threshold": 0.0,
+            "detail": ""
+          }
+        ]
+      },
+      "#9641's gate (0.2/0.8), fixed in advance": {
+        "gate": {
+          "low": 0.2,
+          "high": 0.8,
+          "describe": "pass at p >= 0.8, fail at p <= 0.2, defer between"
+        },
+        "status": "UNVALIDATED",
+        "reason": "not enough evidence: auto_accuracy",
+        "unit": "group",
+        "units": 40,
+        "cases": 120,
+        "decided": 40,
+        "fully_decided": 40,
+        "outputs_decided": 120,
+        "outputs_correct": 117,
+        "output_accuracy": 0.975,
+        "deferred": 0,
+        "auto_correct": 37,
+        "false_passes": 3,
+        "false_fails": 0,
+        "accuracy": 0.925,
+        "coverage": 1.0,
+        "end_to_end": 0.925,
+        "end_to_end_correct": 37,
+        "repeated_cases": 0,
+        "stability": null,
+        "chosen_on": 0,
+        "checks": [
+          {
+            "name": "auto_accuracy",
+            "status": "UNVALIDATED",
+            "successes": 37,
+            "trials": 40,
+            "rate": 0.925,
+            "interval": [
+              0.7961352512671012,
+              0.9842578201489585
+            ],
+            "threshold": 0.9,
+            "detail": "interval straddles the threshold: needs more cases"
+          },
+          {
+            "name": "coverage",
+            "status": "PASS",
+            "successes": 40,
+            "trials": 40,
+            "rate": 1.0,
+            "interval": [
+              0.9119026971211976,
+              1.0
+            ],
+            "threshold": 0.0,
+            "detail": ""
+          }
+        ]
+      },
+      "SUPERSEDED: ungated, counted per output (outputs of one question are not independent)": {
+        "gate": {
+          "low": 0.5,
+          "high": 0.5,
+          "describe": "ungated (pass at p >= 0.5)"
+        },
+        "status": "PASS",
+        "reason": "every check clears its bar on the exact interval",
+        "unit": "case",
+        "units": 120,
+        "cases": 120,
+        "decided": 120,
+        "fully_decided": 120,
+        "outputs_decided": 120,
+        "outputs_correct": 117,
+        "output_accuracy": 0.975,
+        "deferred": 0,
+        "auto_correct": 117,
+        "false_passes": 3,
+        "false_fails": 0,
+        "accuracy": 0.975,
+        "coverage": 1.0,
+        "end_to_end": 0.975,
+        "end_to_end_correct": 117,
+        "repeated_cases": 0,
+        "stability": null,
+        "chosen_on": 0,
+        "checks": [
+          {
+            "name": "auto_accuracy",
+            "status": "PASS",
+            "successes": 117,
+            "trials": 120,
+            "rate": 0.975,
+            "interval": [
+              0.9286768058430954,
+              0.9948144250416786
+            ],
+            "threshold": 0.9,
+            "detail": ""
+          },
+          {
+            "name": "coverage",
+            "status": "PASS",
+            "successes": 120,
+            "trials": 120,
+            "rate": 1.0,
+            "interval": [
+              0.9697270274225799,
+              1.0
+            ],
+            "threshold": 0.0,
+            "detail": ""
+          }
+        ]
+      }
+    },
+    "split_seed0": {
+      "method": "split",
+      "chosen": null,
+      "status": "UNVALIDATED",
+      "reason": "no candidate shows accuracy >= 0.9 on the 60 selection cases",
+      "in_sample": null,
+      "confirmed": null,
+      "selection_cases": 60,
+      "confirmation_cases": 60,
+      "tested": []
+    },
+    "fixed_sequence": {
+      "method": "fixed_sequence",
+      "chosen": null,
+      "status": "UNVALIDATED",
+      "reason": "the first gate tested is not shown to reach accuracy 0.9",
+      "in_sample": null,
+      "confirmed": null,
+      "selection_cases": 120,
+      "confirmation_cases": 120,
+      "tested": [
+        {
+          "low": 0.05,
+          "high": 0.95,
+          "decided": 40,
+          "correct": 37,
+          "passed": false
+        }
+      ]
+    },
+    "split_over_20_seeds": {
+      "status": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVALIDATED": 20
+      },
+      "chosen": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "questions (groups, the unit of evidence)": 40,
+    "distinct saved verdicts": 111,
+    "calls_first_run": 120
+  }
+}

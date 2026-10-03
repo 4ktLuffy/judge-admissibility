@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-03T04:47:06.659635+00:00",
+  "checked_at": "2026-10-03T10:30:05.174897+00:00",
   "max_age_days": 30,
   "judges": {
     "apprentice.json result baseline_certificate": {
@@ -32,12 +32,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -70,12 +70,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -115,12 +115,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -158,12 +158,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -207,14 +207,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -249,12 +249,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -287,12 +287,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -332,12 +332,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -375,12 +375,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -424,14 +424,231 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "certify_pydantic_dataset.fixed.json judges dataset: Ensure the explanation or error_message fields are truly app": {
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T11:21:39+03:00",
+      "issued_at_source": "git commit",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "021d32b3f354d0da",
+          "reasons": [],
+          "warnings": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED): report the numbers as unvalidated"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (021d32b3f354d0da)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "warn",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED): report the numbers as unvalidated"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:21:39+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "021d32b3f354d0da",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); gate needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (021d32b3f354d0da)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); gate needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:21:39+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "021d32b3f354d0da",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); promote needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (021d32b3f354d0da)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); promote needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:21:39+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "021d32b3f354d0da",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (021d32b3f354d0da)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:21:39+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "021d32b3f354d0da",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED",
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (021d32b3f354d0da)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T11:21:39+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -467,12 +684,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -506,12 +723,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -552,12 +769,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -596,12 +813,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -646,21 +863,238 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "certify_pydantic_dataset.second_person.json judges dataset: Ensure the explanation or error_message fields are truly app": {
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T11:01:08+03:00",
+      "issued_at_source": "git commit",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "c5340b8bfcccf757",
+          "reasons": [],
+          "warnings": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED): report the numbers as unvalidated"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (c5340b8bfcccf757)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "warn",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED): report the numbers as unvalidated"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "c5340b8bfcccf757",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); gate needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (c5340b8bfcccf757)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); gate needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "c5340b8bfcccf757",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); promote needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (c5340b8bfcccf757)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); promote needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "c5340b8bfcccf757",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (c5340b8bfcccf757)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@high)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "c5340b8bfcccf757",
+          "reasons": [
+            "verdict: UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance UNVALIDATED; rejection UNVALIDATED",
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (c5340b8bfcccf757)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (acceptance UNVALIDATED, rejection UNVALIDATED, invariance UNVALIDATED, stability UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance UNVALIDATED; rejection UNVALIDATED"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "distill.json scripted certificates plain LLMJudge, full rubric": {
       "verdict": "ADMISSIBLE",
-      "issued_at": "2026-10-02T23:24:04+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -686,12 +1120,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -721,12 +1155,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -763,12 +1197,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -803,12 +1237,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -850,21 +1284,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "distill.json scripted certificates HybridJudge, tone only to the model": {
       "verdict": "ADMISSIBLE",
-      "issued_at": "2026-10-02T23:24:04+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -890,12 +1324,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -925,12 +1359,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -967,12 +1401,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -1007,12 +1441,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -1054,21 +1488,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "distill.json codex certificates plain LLMJudge, full rubric": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:24:04+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -1096,12 +1530,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -1134,12 +1568,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -1179,12 +1613,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -1222,12 +1656,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -1271,21 +1705,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "distill.json codex certificates HybridJudge, tone only to the model": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:24:04+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -1313,12 +1747,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -1351,12 +1785,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -1396,12 +1830,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -1439,12 +1873,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -1488,22 +1922,452 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "docs_rubrics.json as the guide writes it (include_input=False)": {
+      "verdict": "INADMISSIBLE",
+      "issued_at": "2026-10-03T11:01:08+03:00",
+      "issued_at_source": "git commit",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "INADMISSIBLE",
+          "fingerprint": "47d237e200c1e1e3",
+          "reasons": [
+            "verdict: INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); report needs ADMISSIBLE"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (47d237e200c1e1e3)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); report needs ADMISSIBLE"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "INADMISSIBLE",
+          "fingerprint": "47d237e200c1e1e3",
+          "reasons": [
+            "verdict: INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); gate needs ADMISSIBLE",
+            "checks: acceptance FAIL; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (47d237e200c1e1e3)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); gate needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance FAIL; rejection UNVALIDATED"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "INADMISSIBLE",
+          "fingerprint": "47d237e200c1e1e3",
+          "reasons": [
+            "verdict: INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); promote needs ADMISSIBLE",
+            "checks: acceptance FAIL; rejection UNVALIDATED"
+          ],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (47d237e200c1e1e3)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); promote needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance FAIL; rejection UNVALIDATED"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "INADMISSIBLE",
+          "fingerprint": "47d237e200c1e1e3",
+          "reasons": [
+            "verdict: INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance FAIL; rejection UNVALIDATED"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (47d237e200c1e1e3)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance FAIL; rejection UNVALIDATED"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "INADMISSIBLE",
+          "fingerprint": "47d237e200c1e1e3",
+          "reasons": [
+            "verdict: INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); steer needs ADMISSIBLE",
+            "checks: acceptance FAIL; rejection UNVALIDATED",
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (47d237e200c1e1e3)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "INADMISSIBLE (acceptance FAIL, rejection UNVALIDATED, invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "fail",
+              "detail": "acceptance FAIL; rejection UNVALIDATED"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "docs_rubrics.json with include_input=True": {
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T11:01:08+03:00",
+      "issued_at_source": "git commit",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "6bcc67784d81e0b4",
+          "reasons": [],
+          "warnings": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED): report the numbers as unvalidated"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (6bcc67784d81e0b4)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "warn",
+              "detail": "UNVALIDATED (invariance UNVALIDATED): report the numbers as unvalidated"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "6bcc67784d81e0b4",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); gate needs ADMISSIBLE"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (6bcc67784d81e0b4)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); gate needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "6bcc67784d81e0b4",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); promote needs ADMISSIBLE"
+          ],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (6bcc67784d81e0b4)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); promote needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "6bcc67784d81e0b4",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (6bcc67784d81e0b4)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "6bcc67784d81e0b4",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE",
+            "evidence: no evidence controls (EvidenceRewrite, must_fail) in the certificate"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (6bcc67784d81e0b4)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "no evidence controls (EvidenceRewrite, must_fail) in the certificate"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.1 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T11:01:08+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "evidence_contract.first_run.json reply only (default include_input=False), no reasoning": {
       "verdict": "INADMISSIBLE",
-      "issued_at": "2026-10-02T21:28:17.197903+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -1530,12 +2394,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -1568,12 +2432,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -1613,12 +2477,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -1656,12 +2520,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -1705,22 +2569,22 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "evidence_contract.first_run.json reply and tool calls, no reasoning": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T21:28:17.197903+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -1747,12 +2611,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -1785,12 +2649,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -1830,12 +2694,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -1873,12 +2737,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -1922,14 +2786,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T21:28:17.197903+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -1964,12 +2828,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -2002,12 +2866,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -2047,12 +2911,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -2090,12 +2954,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -2139,14 +3003,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -2181,12 +3045,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -2219,12 +3083,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -2264,12 +3128,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -2307,12 +3171,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -2356,22 +3220,22 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.4 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T22:13:05+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "incremental.json codex first certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:12:01.566068+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -2402,8 +3266,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -2440,8 +3304,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -2485,8 +3349,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -2528,8 +3392,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -2579,16 +3443,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "incremental.json codex after edit certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:12:01.566068+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -2619,8 +3483,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -2657,8 +3521,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -2702,8 +3566,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -2745,8 +3609,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -2796,16 +3660,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "incremental.json codex unchanged rerun certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:12:01.566068+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -2836,8 +3700,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -2874,8 +3738,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -2919,8 +3783,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -2962,8 +3826,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -3013,15 +3877,15 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:12:01.566068+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "judge_vs_truth.reference.json": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T04:05:43+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -3049,12 +3913,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.2 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T04:05:43+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -3086,12 +3950,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.2 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T04:05:43+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -3130,12 +3994,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.2 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T04:05:43+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -3172,12 +4036,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.2 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T04:05:43+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -3220,21 +4084,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.2 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T04:05:43+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "judge_vs_truth.sequential.json": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T07:47:54+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -3263,12 +4127,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.0 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T07:47:54+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -3302,12 +4166,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.0 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T07:47:54+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -3348,12 +4212,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.0 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T07:47:54+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -3392,12 +4256,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.0 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T07:47:54+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -3442,22 +4306,22 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "1.0 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T07:47:54+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json members luna@none certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -3488,8 +4352,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -3526,8 +4390,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -3571,8 +4435,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -3614,8 +4478,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -3665,16 +4529,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json members reserve@none certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -3705,8 +4569,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -3743,8 +4607,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -3788,8 +4652,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -3831,8 +4695,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -3882,16 +4746,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json members luna@low certificate": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -3922,8 +4786,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -3960,8 +4824,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -4005,8 +4869,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -4048,8 +4912,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -4099,16 +4963,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json juries majority jury": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -4139,8 +5003,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -4177,8 +5041,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -4222,8 +5086,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -4265,8 +5129,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -4316,16 +5180,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json juries unanimous_pass jury": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -4356,8 +5220,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -4394,8 +5258,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -4439,8 +5303,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -4482,8 +5346,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -4533,16 +5397,16 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "jury.json juries any_fail jury": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T23:06:07.372916+00:00",
-      "issued_at_source": "file modified (not committed)",
+      "issued_at": "2026-10-03T09:12:20+03:00",
+      "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
         "report": {
@@ -4573,8 +5437,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -4611,8 +5475,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -4656,8 +5520,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -4699,8 +5563,8 @@
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -4750,15 +5614,15 @@
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T23:06:07.372916+00:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "pairwise_codex.json": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -4787,12 +5651,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -4826,12 +5690,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -4872,12 +5736,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -4916,12 +5780,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -4966,21 +5830,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "pairwise_codex.terse.json": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -5009,12 +5873,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -5048,12 +5912,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -5094,12 +5958,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -5138,12 +6002,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -5188,14 +6052,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -5231,12 +6095,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -5270,12 +6134,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -5316,12 +6180,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -5360,12 +6224,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -5410,14 +6274,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -5453,12 +6317,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -5492,12 +6356,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -5538,12 +6402,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -5582,12 +6446,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -5632,14 +6496,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.8 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -5674,12 +6538,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -5712,12 +6576,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -5757,12 +6621,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -5800,12 +6664,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -5849,14 +6713,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -5891,12 +6755,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -5929,12 +6793,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -5974,12 +6838,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -6017,12 +6881,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -6066,21 +6930,642 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "safety_evaluators.json judges toxicity": {
+      "verdict": "ADMISSIBLE",
+      "issued_at": "2026-10-03T09:48:18.557789+00:00",
+      "issued_at_source": "file modified (not committed)",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "88f3cbd529163fd5",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (88f3cbd529163fd5)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "88f3cbd529163fd5",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (88f3cbd529163fd5)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "88f3cbd529163fd5",
+          "reasons": [],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (88f3cbd529163fd5)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "88f3cbd529163fd5",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (88f3cbd529163fd5)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "88f3cbd529163fd5",
+          "reasons": [
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (88f3cbd529163fd5)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "safety_evaluators.json judges bias": {
+      "verdict": "ADMISSIBLE",
+      "issued_at": "2026-10-03T09:48:18.557789+00:00",
+      "issued_at_source": "file modified (not committed)",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "531e4903ff18a3c0",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (531e4903ff18a3c0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "531e4903ff18a3c0",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (531e4903ff18a3c0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "531e4903ff18a3c0",
+          "reasons": [],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (531e4903ff18a3c0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "531e4903ff18a3c0",
+          "reasons": [],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (531e4903ff18a3c0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "ADMISSIBLE",
+          "fingerprint": "531e4903ff18a3c0",
+          "reasons": [
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (531e4903ff18a3c0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "ok",
+              "detail": "ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        }
+      }
+    },
+    "safety_evaluators.json judges pii": {
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T09:48:18.557789+00:00",
+      "issued_at_source": "file modified (not committed)",
+      "has_identity": true,
+      "uses": {
+        "report": {
+          "decision": "report",
+          "qualified": true,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "ed19b08bb41512b0",
+          "reasons": [],
+          "warnings": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED): report the numbers as unvalidated"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (ed19b08bb41512b0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "warn",
+              "detail": "UNVALIDATED (invariance UNVALIDATED): report the numbers as unvalidated"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "gate": {
+          "decision": "gate",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "ed19b08bb41512b0",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); gate needs ADMISSIBLE"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (ed19b08bb41512b0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); gate needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "promote": {
+          "decision": "promote",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "ed19b08bb41512b0",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); promote needs ADMISSIBLE"
+          ],
+          "warnings": [
+            "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
+          ],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (ed19b08bb41512b0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); promote needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "slices",
+              "outcome": "warn",
+              "detail": "no slices: a kind of case the judge gets wrong can hide in the overall rate"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "ed19b08bb41512b0",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (ed19b08bb41512b0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {},
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
+          "blocked_only_by_coverage": false
+        },
+        "steer+traces": {
+          "decision": "steer",
+          "qualified": false,
+          "judge": "LLMJudge(codex:gpt-5.6-luna@none)",
+          "verdict": "UNVALIDATED",
+          "fingerprint": "ed19b08bb41512b0",
+          "reasons": [
+            "verdict: UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE",
+            "evidence: the certified judge was not shown its inputs (include_input=False)"
+          ],
+          "warnings": [],
+          "rules": [
+            {
+              "name": "coverage",
+              "outcome": "ok",
+              "detail": "covers this judge (ed19b08bb41512b0)"
+            },
+            {
+              "name": "verdict",
+              "outcome": "fail",
+              "detail": "UNVALIDATED (invariance UNVALIDATED); steer needs ADMISSIBLE"
+            },
+            {
+              "name": "checks",
+              "outcome": "ok",
+              "detail": "acceptance and rejection PASS"
+            },
+            {
+              "name": "evidence",
+              "outcome": "fail",
+              "detail": "the certified judge was not shown its inputs (include_input=False)"
+            },
+            {
+              "name": "reasons",
+              "outcome": "ok",
+              "detail": "gives reasons"
+            },
+            {
+              "name": "freshness",
+              "outcome": "ok",
+              "detail": "0.0 days old"
+            }
+          ],
+          "context": {
+            "sees_traces": true
+          },
+          "issued_at": "2026-10-03T09:48:18.557789+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json certificates weak (no reasoning, sees the question)": {
       "verdict": "ADMISSIBLE",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -6106,12 +7591,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -6141,12 +7626,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -6183,12 +7668,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -6223,12 +7708,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -6270,21 +7755,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json certificates strong (reasoning high, sees the question)": {
-      "verdict": "ADMISSIBLE",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -6292,10 +7777,12 @@
           "decision": "report",
           "qualified": true,
           "judge": "LLMJudge(codex:gpt-5.6-luna)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "21adf74746311345",
           "reasons": [],
-          "warnings": [],
+          "warnings": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED): report the numbers as unvalidated"
+          ],
           "rules": [
             {
               "name": "coverage",
@@ -6304,27 +7791,29 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "warn",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED): report the numbers as unvalidated"
             },
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
           "decision": "gate",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-5.6-luna)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "21adf74746311345",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); gate needs ADMISSIBLE"
+          ],
           "warnings": [],
           "rules": [
             {
@@ -6334,8 +7823,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); gate needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6345,21 +7834,23 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
           "decision": "promote",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-5.6-luna)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "21adf74746311345",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); promote needs ADMISSIBLE"
+          ],
           "warnings": [
             "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
           ],
@@ -6371,8 +7862,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); promote needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6387,21 +7878,23 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
           "decision": "steer",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-5.6-luna)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "21adf74746311345",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
+          ],
           "warnings": [],
           "rules": [
             {
@@ -6411,8 +7904,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6427,21 +7920,22 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
           "decision": "steer",
           "qualified": false,
           "judge": "LLMJudge(codex:gpt-5.6-luna)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "21adf74746311345",
           "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE",
             "evidence: no evidence controls (EvidenceRewrite, must_fail) in the certificate"
           ],
           "warnings": [],
@@ -6453,8 +7947,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6474,21 +7968,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json certificates strong, default include_input=False": {
       "verdict": "INADMISSIBLE",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -6518,12 +8012,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -6557,12 +8051,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -6603,12 +8097,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -6647,12 +8141,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -6697,21 +8191,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json certificates gpt-reserve (no reasoning, sees the question)": {
-      "verdict": "ADMISSIBLE",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "verdict": "UNVALIDATED",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": true,
       "uses": {
@@ -6719,10 +8213,12 @@
           "decision": "report",
           "qualified": true,
           "judge": "LLMJudge(codex:gpt-reserve)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "e40bae0b9831bc03",
           "reasons": [],
-          "warnings": [],
+          "warnings": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED): report the numbers as unvalidated"
+          ],
           "rules": [
             {
               "name": "coverage",
@@ -6731,27 +8227,29 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "warn",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED): report the numbers as unvalidated"
             },
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
           "decision": "gate",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-reserve)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "e40bae0b9831bc03",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); gate needs ADMISSIBLE"
+          ],
           "warnings": [],
           "rules": [
             {
@@ -6761,8 +8259,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); gate needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6772,21 +8270,23 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
           "decision": "promote",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-reserve)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "e40bae0b9831bc03",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); promote needs ADMISSIBLE"
+          ],
           "warnings": [
             "slices: no slices: a kind of case the judge gets wrong can hide in the overall rate"
           ],
@@ -6798,8 +8298,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); promote needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6814,21 +8314,23 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
           "decision": "steer",
-          "qualified": true,
+          "qualified": false,
           "judge": "LLMJudge(codex:gpt-reserve)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "e40bae0b9831bc03",
-          "reasons": [],
+          "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
+          ],
           "warnings": [],
           "rules": [
             {
@@ -6838,8 +8340,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6854,21 +8356,22 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
           "decision": "steer",
           "qualified": false,
           "judge": "LLMJudge(codex:gpt-reserve)",
-          "verdict": "ADMISSIBLE",
+          "verdict": "UNVALIDATED",
           "fingerprint": "e40bae0b9831bc03",
           "reasons": [
+            "verdict: UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE",
             "evidence: no evidence controls (EvidenceRewrite, must_fail) in the certificate"
           ],
           "warnings": [],
@@ -6880,8 +8383,8 @@
             },
             {
               "name": "verdict",
-              "outcome": "ok",
-              "detail": "ADMISSIBLE"
+              "outcome": "fail",
+              "detail": "UNVALIDATED (human_agreement UNVALIDATED); steer needs ADMISSIBLE"
             },
             {
               "name": "checks",
@@ -6901,21 +8404,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json pairwise weak": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -6944,12 +8447,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -6983,12 +8486,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -7029,12 +8532,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -7073,12 +8576,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -7123,21 +8626,21 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     },
     "support_eval.json pairwise strong": {
       "verdict": "UNVALIDATED",
-      "issued_at": "2026-10-02T17:53:51+03:00",
+      "issued_at": "2026-10-03T09:12:20+03:00",
       "issued_at_source": "git commit",
       "has_identity": false,
       "uses": {
@@ -7166,12 +8669,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -7205,12 +8708,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -7251,12 +8754,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -7295,12 +8798,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {},
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -7345,14 +8848,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.6 days old"
+              "detail": "0.2 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
-          "issued_at": "2026-10-02T17:53:51+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "issued_at": "2026-10-03T09:12:20+03:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -7387,12 +8890,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -7425,12 +8928,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -7470,12 +8973,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -7513,12 +9016,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -7562,14 +9065,14 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
@@ -7604,12 +9107,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "gate": {
@@ -7642,12 +9145,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "promote": {
@@ -7687,12 +9190,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer": {
@@ -7730,12 +9233,12 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {},
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         },
         "steer+traces": {
@@ -7779,23 +9282,23 @@
             {
               "name": "freshness",
               "outcome": "ok",
-              "detail": "0.3 days old"
+              "detail": "0.6 days old"
             }
           ],
           "context": {
             "sees_traces": true
           },
           "issued_at": "2026-10-02T23:24:04+03:00",
-          "checked_at": "2026-10-03T04:47:06.659635+00:00",
+          "checked_at": "2026-10-03T10:30:05.174897+00:00",
           "blocked_only_by_coverage": false
         }
       }
     }
   },
   "summary": {
-    "certificates": 36,
+    "certificates": 43,
     "qualified": {
-      "report": 31,
+      "report": 37,
       "gate": 5,
       "promote": 5,
       "steer": 5,
